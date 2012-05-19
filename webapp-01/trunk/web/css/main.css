@@ -1,0 +1,197 @@
+        body {
+            margin: 0;
+            background: black;
+            color: white;
+            font-size: medium;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+        }
+        
+        .headerLink
+        {
+            color: #FFFFFF;
+            font-weight: bold;
+            font-family: "Times New Roman", serif;
+            font-size: 80%;
+        }
+        
+        div#bannerText {
+            width: 500px;
+            margin: 0 auto 20px auto;
+        }
+        
+        div#bannerText h1, div#bannerText h2 {
+            margin: 0 0 5px 0;
+            padding: 0;
+            font-family: cursive;
+            font-weight: normal;
+            color: #aa0000;
+            text-align: center;
+            line-height: 150%;
+        }
+        
+        span.first {
+            font-size: 150%;
+        }
+        
+        div#bannerText h1 {
+            padding-top: 5px;
+            font-size: 300%;
+        }
+        
+        div#bannerText h2 {
+            font-size: 130%;
+        }
+        
+        div.header
+        {
+            margin: 20px auto 0 auto;
+            width: 80%;
+            background-color: #330000;
+            text-align: center;
+        }
+        
+        div.header ul {
+            padding: 0;
+            margin: 0 20px 5px 20px;
+        }
+        
+        div.header ul li {
+            list-style: none;
+            margin-left: 5px;
+            display: inline;
+        }
+
+        div#colLeft, div#colRight {
+            width: 150px;
+            height: 900px;
+        }
+        
+        div#colLeft {
+            float: left;
+        }
+        
+        div#colRight {
+            float: right;
+        }
+        
+        /*
+         Set up default left and right images used if a new page is added but
+         the page specific css hasn't been added
+        */
+        
+        div#colLeft  {background: url('../site_images/02l.jpg')}
+        div#colRight {background: url('../site_images/02r.jpg')}
+        
+        /* Set up different left and right images for different pages */
+
+        body[id="Edit"]             div#colLeft  {background: none}
+        body[id="Edit"]             div#colRight {background: none}
+
+        body[id="Home"]             div#colLeft  {background: url('../site_images/01l.jpg')}
+        body[id="Home"]             div#colRight {background: url('../site_images/01r.jpg')}
+
+        body[id="Lady Zara"]        div#colLeft  {background: url('../site_images/02l.jpg')}
+        body[id="Lady Zara"]        div#colRight {background: url('../site_images/02r.jpg')}
+
+        body[id="Mistress Madox"]   div#colLeft  {background: url('../site_images/03l.jpg')}
+        body[id="Mistress Madox"]   div#colRight {background: url('../site_images/03r.jpg')}
+
+        body[id="Hunteress"]        div#colLeft  {background: url('../site_images/04l.jpg')}
+        body[id="Hunteress"]        div#colRight {background: url('../site_images/04r.jpg')}
+
+        body[id="My_Facilities"]    div#colLeft  {background: url('../site_images/05l.jpg')}
+        body[id="My_Facilities"]    div#colRight {background: url('../site_images/05r.jpg')}
+
+        body[id="Specialities"]     div#colLeft  {background: url('../site_images/06l.jpg')}
+        body[id="Specialities"]     div#colRight {background: url('../site_images/06r.jpg')}
+
+        body[id="Images"]           div#colLeft  {background: url('../site_images/07l.jpg')}
+        body[id="Images"]           div#colRight {background: url('../site_images/07r.jpg')}
+
+        body[id="More Images"]      div#colLeft  {background: url('../site_images/08l.jpg')}
+        body[id="More Images"]      div#colRight {background: url('../site_images/08r.jpg')}
+
+        body[id="Hall Of Shame"]    div#colLeft  {background: url('../site_images/09l.jpg')}
+        body[id="Hall Of Shame"]    div#colRight {background: url('../site_images/09r.jpg')}
+
+        body[id="Slave Musings"]    div#colLeft  {background: url('../site_images/01l.jpg')}
+        body[id="Slave Musings"]    div#colRight {background: url('../site_images/01r.jpg')}
+
+        body[id="Wishlist"]         div#colLeft  {background: url('../site_images/02l.jpg')}
+        body[id="Wishlist"]         div#colRight {background: url('../site_images/02r.jpg')}
+
+        body[id="Contact"]          div#colLeft  {background: url('../site_images/03l.jpg')}
+        body[id="Contact"]          div#colRight {background: url('../site_images/03r.jpg')}
+
+        body[id="Links"]            div#colLeft  {background: url('../site_images/04l.jpg')}
+        body[id="Links"]            div#colRight {background: url('../site_images/04r.jpg')}
+
+        div#colMiddle {
+            margin: 0 180px 0 180px;
+        }
+        
+        div#pageText {
+            text-align: center;
+            font-size: 75%;
+            line-height: 20px;
+        }
+        
+        div#pageText h1, div#pageText h2, div#pageText h3 {
+            font-family: sans-serif;
+            color: #D20000  ;
+        }
+        
+        div#pageText h1 {
+            font-size: 1.3em;
+        }
+        
+        div#pageText h2 {
+            font-size: 1.2em;
+        }
+        
+        div#pageText h3 {
+            font-size: 1.1em;
+        }
+        
+        div#pageText blockquote {
+            /*font-size: larger;*/
+            font-size: 120%;
+            font-family: serif;
+            font-style: italic;
+        }
+        
+        div#pageText a {
+            color: #D20000  ;
+        }
+        
+        div#pageText ul {
+            margin: 0 20%;
+            text-align: left;
+        }
+        
+        table.gallery {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        table.gallery td {
+            height: 120px;
+            width: 120px;
+            /*background: #222;*/
+            background: black;
+        }
+        
+        table.gallery td a {
+            display: block;
+        }
+    
+        table.gallery td a img {
+            border: none;
+            display: block;
+            margin-left: auto;
+            margin-right : auto;
+        }
+
+        div#editForm {
+            width: 400px;
+        }
