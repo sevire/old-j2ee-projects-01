@@ -1,16 +1,14 @@
 package co.uk.genonline.simpleweb.web;
 
-import co.uk.genonline.simpleweb.model.WebPage;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.hibernate.SessionFactory;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Connection;
 
 /**
  * Created with IntelliJ IDEA.
@@ -28,14 +26,14 @@ public class Controller extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ControllerHelper helper = new ControllerHelper(request, response, (Connection)(getServletConfig().getServletContext().getAttribute("connection")));
+        ControllerHelper helper = new ControllerHelper(request, response, (SessionFactory)(getServletConfig().getServletContext().getAttribute("sessionFactory")));
         logger.info("doPost called");
         helper.doPost();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-        ControllerHelper helper = new ControllerHelper(request, response, (Connection)(getServletConfig().getServletContext().getAttribute("connection")));
+        ControllerHelper helper = new ControllerHelper(request, response, (SessionFactory)(getServletConfig().getServletContext().getAttribute("sessionFactory")));
         logger.info("doGet called");
         helper.doGet();
     }

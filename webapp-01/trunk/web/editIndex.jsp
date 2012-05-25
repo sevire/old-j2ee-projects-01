@@ -18,7 +18,7 @@
 <div id="'colMiddle">
     <div id="editIndex">
         <%
-            String[] pageData = (String[]) request.getAttribute("PageData");
+            String[] pageData = (String[]) request.getAttribute("Screen");
 
             for (int pageCount=0; pageCount< (Integer) request.getAttribute("pageCount");pageCount++) {
                 System.out.print();

@@ -24,10 +24,6 @@
     </servlet>
 -->
     <servlet>
-        <servlet-name>View</servlet-name>
-        <servlet-class>co.uk.genonline.simpleweb.web.View</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>Controller</servlet-name>
         <servlet-class>co.uk.genonline.simpleweb.web.Controller</servlet-class>
     </servlet>

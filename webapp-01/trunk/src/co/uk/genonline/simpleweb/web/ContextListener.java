@@ -1,13 +1,12 @@
 package co.uk.genonline.simpleweb.web;
 
+import co.uk.genonline.simpleweb.model.HibernateUtil;
 import org.apache.log4j.*;
+import org.hibernate.SessionFactory;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -30,31 +29,16 @@ public class ContextListener implements ServletContextListener {
         initLogger(null,appender,Level.ALL);
 
         logger.info("Context invoked");
+        logger.info("Getting session factory...");
 
-        Connection conn;
-        String dbName = event.getServletContext().getInitParameter("dbName");
-        String dbUser = event.getServletContext().getInitParameter("dbUser");
-        String dbPassword = event.getServletContext().getInitParameter("dbPassword");
-        if (dbPassword.equals("EMPTY")) {
-            dbPassword = "";
-        }
-        try {
-            logger.info(String.format("Just about to establish connection using %s:%s:%s",dbName, dbUser, dbPassword));
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + dbName, dbUser, dbPassword);
-            logger.info(String.format("Setting attribute 'connection'"));
-            event.getServletContext().setAttribute("connection", conn);
-        } catch (SQLException e) {
-            logger.fatal(String.format("Error establishing connection %s:%s:%s",dbName, dbUser, dbPassword));
-            e.printStackTrace();
-        }
+        SessionFactory factory = HibernateUtil.getSessionFactory();
+
+        logger.info(String.format("Saving session factory in context attribute"));
+        event.getServletContext().setAttribute("sessionFactory", factory);
     }
 
     public void contextDestroyed(ServletContextEvent event) {
-        try {
-            ((Connection)(event.getServletContext().getAttribute("connection"))).close();
-        } catch (SQLException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
+            ((SessionFactory)(event.getServletContext().getAttribute("sessionFactory"))).close();
     }
 
     private FileAppender getAppender(ServletContextEvent event, String fileName) {
