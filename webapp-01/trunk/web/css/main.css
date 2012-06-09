@@ -138,7 +138,7 @@
         
         div#pageText h1, div#pageText h2, div#pageText h3 {
             font-family: sans-serif;
-            color: #D20000  ;
+            color: #D20000;
         }
         
         div#pageText h1 {
@@ -194,4 +194,8 @@
 
         div#editForm {
             width: 400px;
+        }
+
+        div#editForm col.label {
+            width: 150px;
         }

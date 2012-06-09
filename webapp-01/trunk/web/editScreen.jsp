@@ -20,6 +20,7 @@
         <label for="editScreen">Screen Details</label>
         <form id="editScreen" method="post" action='Controller.do'>
             <table>
+                <col class='label' />
                 <tr>
                     <td>
                         <label>Screen Name:</label>

@@ -28,8 +28,10 @@ public class ControllerHelper extends HelperBase {
                             SessionFactory factory) {
         super(request, response);
 
+        System.out.println("getLogger");
         logger = Logger.getLogger("ControllerHelper");
         logger.setLevel(Level.ALL);
+        logger.info("Logger initiated - " + logger.getName());
         data = new Screens();
         this.factory = factory;
     }
@@ -38,23 +40,61 @@ public class ControllerHelper extends HelperBase {
         return data;
     }
 
-    public String editMethod() {
+    protected String editMethod() {
+        Session session = factory.openSession();
+        String query = String.format("from Screens s where s.name = '%s'", data.getName());
+        logger.info("About to execute HQL query : " + query);
+        java.util.List pages = session.createQuery(query).list();
+        data.setId(((Screens) pages.get(0)).getId());
+        data.setScreenContents(((Screens) pages.get(0)).getScreenContents());
+        data.setScreenTitleLong(((Screens) pages.get(0)).getScreenTitleLong());
+        data.setScreenTitleShort(((Screens) pages.get(0)).getScreenTitleShort());
         return jspLocation("editScreen.jsp");
     }
 
-    public String viewMethod() {
+    protected String viewMethod() {
         Session session = factory.openSession();
         String query = String.format("from Screens s where s.name = '%s'", data.getName());
         logger.info("About to execute HQL query : " + query);
         java.util.List pages = session.createQuery(query).list();
         data.setScreenContents(((Screens) pages.get(0)).getScreenContents());
+        data.setScreenTitleLong(((Screens) pages.get(0)).getScreenTitleLong());
+        data.setScreenTitleShort(((Screens) pages.get(0)).getScreenTitleShort());
         return jspLocation("screen.jsp");
+    }
+
+    protected String updateMethod() {
+
+        String screen = request.getParameter("name");
+        logger.info(String.format("Updating screen <%s>", screen));
+        logger.info("Screen contents from form... ");
+        logger.info(request.getParameter("screenContents"));
+        data.setName(screen);
+        data.setScreenContents(request.getParameter("screenContents"));
+        data.setScreenTitleLong(request.getParameter("screenTitleLong"));
+        data.setScreenTitleShort(request.getParameter("screenTitleShort"));
+        Session session = factory.openSession();
+        logger.info(String.format("About to save data, id is <%d>", data.getId()));
+        logger.info("Contents = ");
+        logger.info(data.getScreenContents());
+        session.update(data);
+        session.flush();
+        return jspLocation("screen.jsp");
+    }
+
+    protected String editIndexMethod() {
+        Session session = factory.openSession();
+        String query = String.format("from Screens s");
+        logger.info("About to execute HQL query : " + query);
+        java.util.List pages = session.createQuery(query).list();
+        request.setAttribute("editList", pages);
+        return jspLocation("editIndex.jsp");
     }
 
     protected void doPost()
         throws ServletException, IOException {
 
-        request.getSession().setAttribute("helper", this);
+        addHelperToSession("helper", SessionData.READ);
 
         data.setName(request.getParameter("screen"));
         data.setScreenTitleShort(request.getParameter("screenTitleShort"));
@@ -64,7 +104,7 @@ public class ControllerHelper extends HelperBase {
         String address;
 
         if (request.getParameter("updateButton") != null) {
-            address = editMethod();
+            address = updateMethod();
         } else {
             logger.error(String.format("DoPost1: Didn't recognise request, defaulting to screen view"));
             address = "screen.jsp";
@@ -95,7 +135,10 @@ public class ControllerHelper extends HelperBase {
             address = viewMethod();
         } else if (command.equals("/edit")) {
             logger.info("edit: screen is " + data.getName());
-            address = jspLocation("editScreen.jsp");
+            address = editMethod();
+        } else if (command.equals("/editIndex")) {
+            logger.info("editIndex");
+            address = editIndexMethod();
         } else {
             logger.error(String.format("DoGet: Didn't recognise request, defaulting to screen view"));
             address = jspLocation("screen.jsp");

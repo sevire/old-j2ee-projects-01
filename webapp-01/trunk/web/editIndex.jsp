@@ -1,3 +1,4 @@
+<%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: thomassecondary
@@ -17,14 +18,9 @@
 <div id='colRight'></div>
 <div id="'colMiddle">
     <div id="editIndex">
-        <%
-            String[] pageData = (String[]) request.getAttribute("Screen");
-
-            for (int pageCount=0; pageCount< (Integer) request.getAttribute("pageCount");pageCount++) {
-                System.out.print();
-            }
-
-        %>
+        <core:forEach var="row" items="${editList}">
+            <p><a href="edit?screen=${row.name}"><core:out value="${row.screenTitleLong}" /></a></p>
+        </core:forEach>
     </div>
 </div>
 </body>
