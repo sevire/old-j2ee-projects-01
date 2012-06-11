@@ -41,6 +41,10 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>
+        <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller</servlet-name>
         <url-pattern>/Controller.do</url-pattern>
     </servlet-mapping>
     <listener>

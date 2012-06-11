@@ -1,6 +1,7 @@
 package co.uk.genonline.simpleweb.web;
 
 import co.uk.genonline.simpleweb.model.bean.Screens;
+import com.petebevin.markdown.MarkdownProcessor;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
@@ -28,7 +29,7 @@ public class ControllerHelper extends HelperBase {
                             SessionFactory factory) {
         super(request, response);
 
-        System.out.println("getLogger");
+        //System.out.println("getLogger");
         logger = Logger.getLogger("ControllerHelper");
         logger.setLevel(Level.ALL);
         logger.info("Logger initiated - " + logger.getName());
@@ -53,11 +54,12 @@ public class ControllerHelper extends HelperBase {
     }
 
     protected String viewMethod() {
+        MarkdownProcessor markdownDecoder = new MarkdownProcessor();
         Session session = factory.openSession();
         String query = String.format("from Screens s where s.name = '%s'", data.getName());
         logger.info("About to execute HQL query : " + query);
         java.util.List pages = session.createQuery(query).list();
-        data.setScreenContents(((Screens) pages.get(0)).getScreenContents());
+        data.setScreenContents(markdownDecoder.markdown(((Screens) pages.get(0)).getScreenContents()));
         data.setScreenTitleLong(((Screens) pages.get(0)).getScreenTitleLong());
         data.setScreenTitleShort(((Screens) pages.get(0)).getScreenTitleShort());
         return jspLocation("screen.jsp");
@@ -79,7 +81,23 @@ public class ControllerHelper extends HelperBase {
         logger.info(data.getScreenContents());
         session.update(data);
         session.flush();
-        return jspLocation("screen.jsp");
+        return jspLocation("/editIndex");
+    }
+
+    protected String deleteMethod() {
+        String screen = request.getParameter("screen");
+
+        logger.info(String.format("Deleting screen <%s>", screen));
+
+        String query = String.format("from Screens s where s.name = '%s'", screen);
+
+        logger.info("About to execute HQL query : " + query);
+
+        Session session = factory.openSession();
+        java.util.List pages = session.createQuery(query).list();
+        session.delete(((Screens) pages.get(0)));
+        session.flush();
+        return jspLocation("/editIndex");
     }
 
     protected String editIndexMethod() {
@@ -89,6 +107,10 @@ public class ControllerHelper extends HelperBase {
         java.util.List pages = session.createQuery(query).list();
         request.setAttribute("editList", pages);
         return jspLocation("editIndex.jsp");
+    }
+
+    protected String cancelMethod() {
+        return jspLocation("/editIndex");
     }
 
     protected void doPost()
@@ -102,17 +124,26 @@ public class ControllerHelper extends HelperBase {
         data.setScreenContents(request.getParameter("screenContents"));
 
         String address;
+        boolean redirectFlag = false;
 
         if (request.getParameter("updateButton") != null) {
             address = updateMethod();
+            redirectFlag = true;
+        } else if (request.getParameter("cancelButton") != null) {
+            address = cancelMethod();
+            redirectFlag = true;
         } else {
             logger.error(String.format("DoPost1: Didn't recognise request, defaulting to screen view"));
-            address = "screen.jsp";
-            data.setName("Home");
+            address = "/view?screen=Home";
+            redirectFlag = true;
         }
-        logger.info("(doPost): Forwarding to " + address);
-        RequestDispatcher dispatcher = request.getRequestDispatcher(address);
-        dispatcher.forward(request, response);
+        if (redirectFlag) {
+            response.sendRedirect(address);
+        } else {
+            logger.info("(doPost): Forwarding to " + address);
+            RequestDispatcher dispatcher = request.getRequestDispatcher(address);
+            dispatcher.forward(request, response);
+        }
     }
 
     protected void doGet() throws IOException, ServletException {
@@ -129,6 +160,7 @@ public class ControllerHelper extends HelperBase {
 */
 
         String address;
+        boolean redirectFlag = false;
 
         if (command.equals("/view")) {
             logger.info("view: screen is " + data.getName());
@@ -139,13 +171,21 @@ public class ControllerHelper extends HelperBase {
         } else if (command.equals("/editIndex")) {
             logger.info("editIndex");
             address = editIndexMethod();
+        } else if (command.equals("/delete")) {
+            logger.info("editIndex");
+            redirectFlag = true;
+            address = deleteMethod();
         } else {
             logger.error(String.format("DoGet: Didn't recognise request, defaulting to screen view"));
             address = jspLocation("screen.jsp");
             data.setName("Home");
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher(address);
-        dispatcher.forward(request, response);
+        if (redirectFlag) {
+            response.sendRedirect(address);
+        } else {
+            RequestDispatcher dispatcher = request.getRequestDispatcher(address);
+            dispatcher.forward(request, response);
+        }
     }
 
     public void copyFromSession(Object sessionHelper) {

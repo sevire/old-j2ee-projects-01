@@ -10,17 +10,35 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-    <title>Lucifer's Dark Angel - Edit : <%out.print((String)request.getAttribute("screenTitleLong"));%></title>
+    <title>Lucifer's Dark Angel - Edit Index</title>
     <link rel="stylesheet" href="./css/main.css" type="text/css" media="all" >
 </head>
-<body id='Edit'>
+<body id='EditIndex'>
 <div id='colLeft'></div>
 <div id='colRight'></div>
 <div id="'colMiddle">
-    <div id="editIndex">
-        <core:forEach var="row" items="${editList}">
-            <p><a href="edit?screen=${row.name}"><core:out value="${row.screenTitleLong}" /></a></p>
-        </core:forEach>
+    <div>
+        <table>
+            <core:forEach var="row" items="${editList}">
+                <tr>
+                    <td>
+                        <core:out value="${row.screenTitleLong}" />
+                    </td>
+                    <td>
+                        <core:out value="${row.screenTitleShort}" />
+                    </td>
+                    <td>
+                        <a href="edit?screen=${row.name}">Edit</a>
+                    </td>
+                    <td>
+                        <a href="delete?screen=${row.name}">Delete</a>
+                    </td>
+                    <td>
+                        <a href="view?screen=${row.name}">View</a>
+                    </td>
+                </tr>
+            </core:forEach>
+        </table>
     </div>
 </div>
 </body>
