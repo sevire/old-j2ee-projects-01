@@ -8,8 +8,8 @@ import java.sql.Timestamp;
 /**
  * Created with IntelliJ IDEA.
  * User: thomassecondary
- * Date: 24/05/2012
- * Time: 08:09
+ * Date: 11/06/2012
+ * Time: 17:26
  * To change this template use File | Settings | File Templates.
  */
 @Entity
@@ -122,6 +122,18 @@ public class Screens {
         this.modified = modified;
     }
 
+    private String screenType;
+
+    @javax.persistence.Column(name = "ScreenType")
+    @Basic
+    public String getScreenType() {
+        return screenType;
+    }
+
+    public void setScreenType(String screenType) {
+        this.screenType = screenType;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -141,6 +153,7 @@ public class Screens {
             return false;
         if (screenTitleShort != null ? !screenTitleShort.equals(screens.screenTitleShort) : screens.screenTitleShort != null)
             return false;
+        if (screenType != null ? !screenType.equals(screens.screenType) : screens.screenType != null) return false;
 
         return true;
     }
@@ -156,6 +169,7 @@ public class Screens {
         result = 31 * result + (enabledFlag ? 1 : 0);
         result = 31 * result + (created != null ? created.hashCode() : 0);
         result = 31 * result + (modified != null ? modified.hashCode() : 0);
+        result = 31 * result + (screenType != null ? screenType.hashCode() : 0);
         return result;
     }
 }

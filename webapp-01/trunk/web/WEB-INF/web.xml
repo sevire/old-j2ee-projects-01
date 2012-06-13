@@ -6,7 +6,7 @@
            version="3.0">
     <context-param>
         <param-name>dbName</param-name>
-        <param-value>a26manc_db01</param-value>
+        <param-value>LDA_DEV</param-value>
     </context-param>
     <context-param>
         <param-name>dbUser</param-name>
@@ -38,6 +38,10 @@
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>
         <url-pattern>/edit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller</servlet-name>
+        <url-pattern>/add</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>

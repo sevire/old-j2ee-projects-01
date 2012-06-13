@@ -1,5 +1,6 @@
 package co.uk.genonline.simpleweb.web;
 
+import co.uk.genonline.simpleweb.model.bean.ScreenType;
 import co.uk.genonline.simpleweb.model.bean.Screens;
 import com.petebevin.markdown.MarkdownProcessor;
 import org.apache.log4j.Level;
@@ -22,6 +23,7 @@ import java.io.IOException;
  */
 public class ControllerHelper extends HelperBase {
     protected Screens data;
+    protected ScreenType type;
     Logger logger;
     SessionFactory factory;
 
@@ -50,6 +52,8 @@ public class ControllerHelper extends HelperBase {
         data.setScreenContents(((Screens) pages.get(0)).getScreenContents());
         data.setScreenTitleLong(((Screens) pages.get(0)).getScreenTitleLong());
         data.setScreenTitleShort(((Screens) pages.get(0)).getScreenTitleShort());
+        data.setScreenType(((Screens) pages.get(0)).getScreenType());
+        //request.setAttribute("screenTypes", );
         return jspLocation("editScreen.jsp");
     }
 
@@ -57,16 +61,27 @@ public class ControllerHelper extends HelperBase {
         MarkdownProcessor markdownDecoder = new MarkdownProcessor();
         Session session = factory.openSession();
         String query = String.format("from Screens s where s.name = '%s'", data.getName());
+
         logger.info("About to execute HQL query : " + query);
+
         java.util.List pages = session.createQuery(query).list();
-        data.setScreenContents(markdownDecoder.markdown(((Screens) pages.get(0)).getScreenContents()));
-        data.setScreenTitleLong(((Screens) pages.get(0)).getScreenTitleLong());
-        data.setScreenTitleShort(((Screens) pages.get(0)).getScreenTitleShort());
+
+        if (pages.size() != 1) {
+            logger.warn(String.format("View page: retrieved <%d> pages for screen <%s>, should be 1",
+                    pages.size(), data.getName()));
+        }
+
+        if (pages.size() > 0) {
+            if (((Screens) pages.get(0)).isEnabledFlag()) {
+                data.setScreenContents(markdownDecoder.markdown(((Screens) pages.get(0)).getScreenContents()));
+                data.setScreenTitleLong(((Screens) pages.get(0)).getScreenTitleLong());
+                data.setScreenTitleShort(((Screens) pages.get(0)).getScreenTitleShort());
+            }
+        }
         return jspLocation("screen.jsp");
     }
 
     protected String updateMethod() {
-
         String screen = request.getParameter("name");
         logger.info(String.format("Updating screen <%s>", screen));
         logger.info("Screen contents from form... ");
@@ -75,11 +90,33 @@ public class ControllerHelper extends HelperBase {
         data.setScreenContents(request.getParameter("screenContents"));
         data.setScreenTitleLong(request.getParameter("screenTitleLong"));
         data.setScreenTitleShort(request.getParameter("screenTitleShort"));
+        data.setScreenType(request.getParameter("screenType"));
+
         Session session = factory.openSession();
-        logger.info(String.format("About to save data, id is <%d>", data.getId()));
+        logger.info(String.format("About to update data, id is <%d>", data.getId()));
         logger.info("Contents = ");
         logger.info(data.getScreenContents());
         session.update(data);
+        session.flush();
+        return jspLocation("/editIndex");
+    }
+
+    protected String addMethod() {
+        String screen = request.getParameter("name");
+        logger.info(String.format("Updating screen <%s>", screen));
+        logger.info("Screen contents from form... ");
+        logger.info(request.getParameter("screenContents"));
+        data.setName(screen);
+        data.setScreenContents(request.getParameter("screenContents"));
+        data.setScreenTitleLong(request.getParameter("screenTitleLong"));
+        data.setScreenTitleShort(request.getParameter("screenTitleShort"));
+        data.setScreenType(request.getParameter("screenType"));
+
+        Session session = factory.openSession();
+        logger.info(String.format("About to save data"));
+        logger.info("Contents = ");
+        logger.info(data.getScreenContents());
+        session.save(data);
         session.flush();
         return jspLocation("/editIndex");
     }
@@ -118,16 +155,14 @@ public class ControllerHelper extends HelperBase {
 
         addHelperToSession("helper", SessionData.READ);
 
-        data.setName(request.getParameter("screen"));
-        data.setScreenTitleShort(request.getParameter("screenTitleShort"));
-        data.setScreenTitleLong(request.getParameter("screenTitleLong"));
-        data.setScreenContents(request.getParameter("screenContents"));
-
         String address;
         boolean redirectFlag = false;
 
         if (request.getParameter("updateButton") != null) {
             address = updateMethod();
+            redirectFlag = true;
+        } else if (request.getParameter("addButton") != null) {
+            address = addMethod();
             redirectFlag = true;
         } else if (request.getParameter("cancelButton") != null) {
             address = cancelMethod();
@@ -168,6 +203,8 @@ public class ControllerHelper extends HelperBase {
         } else if (command.equals("/edit")) {
             logger.info("edit: screen is " + data.getName());
             address = editMethod();
+        } else if (command.equals("/add")) {
+            address = jspLocation("addScreen.jsp");
         } else if (command.equals("/editIndex")) {
             logger.info("editIndex");
             address = editIndexMethod();

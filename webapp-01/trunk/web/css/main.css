@@ -196,6 +196,21 @@
             width: 400px;
         }
 
+        div#editForm td {
+            font-size: .75em;
+        }
+
         div#editForm col.label {
-            width: 150px;
+            width: 300px;
+        }
+
+        body#editIndex table td {
+            font-size: small;
+        }
+
+        table tr.tableHeading {
+            border-bottom: solid red 1px;
+        }
+        table tr.tableHeading td {
+            color: red;
         }

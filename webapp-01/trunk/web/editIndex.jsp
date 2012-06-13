@@ -13,19 +13,39 @@
     <title>Lucifer's Dark Angel - Edit Index</title>
     <link rel="stylesheet" href="./css/main.css" type="text/css" media="all" >
 </head>
-<body id='EditIndex'>
+<body id='editIndex'>
 <div id='colLeft'></div>
 <div id='colRight'></div>
-<div id="'colMiddle">
+<div id='colMiddle'>
     <div>
         <table>
+            <tr class='tableHeading'>
+                <td>
+                    Name
+                </td>
+                <td>
+                    Long Title
+                </td>
+                <td>
+                    Short Title
+                </td>
+                <td>
+                    Text
+                </td>
+            </tr>
             <core:forEach var="row" items="${editList}">
                 <tr>
+                    <td>
+                        <core:out value="${row.name}" />
+                    </td>
                     <td>
                         <core:out value="${row.screenTitleLong}" />
                     </td>
                     <td>
                         <core:out value="${row.screenTitleShort}" />
+                    </td>
+                    <td>
+                        <core:out value="${(row.screenContents).substring(0,java.lang.Math.min((row.screenContents).length(),40)}" />
                     </td>
                     <td>
                         <a href="edit?screen=${row.name}">Edit</a>
@@ -35,6 +55,9 @@
                     </td>
                     <td>
                         <a href="view?screen=${row.name}">View</a>
+                    </td>
+                    <td>
+                        <a href="add">Add</a>
                     </td>
                 </tr>
             </core:forEach>
