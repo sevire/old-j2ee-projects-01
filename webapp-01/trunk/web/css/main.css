@@ -193,7 +193,7 @@
         }
 
         div#editForm {
-            width: 400px;
+            width: 500px;
         }
 
         div#editForm td {
@@ -205,7 +205,7 @@
         }
 
         body#editIndex table td {
-            font-size: small;
+            font-size: .65em;
         }
 
         table tr.tableHeading {

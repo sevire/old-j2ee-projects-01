@@ -45,7 +45,7 @@
                         <core:out value="${row.screenTitleShort}" />
                     </td>
                     <td>
-                        <core:out value="${(row.screenContents).substring(0,java.lang.Math.min((row.screenContents).length(),40)}" />
+                        <core:out value="${row.screenContents}" />
                     </td>
                     <td>
                         <a href="edit?screen=${row.name}">Edit</a>

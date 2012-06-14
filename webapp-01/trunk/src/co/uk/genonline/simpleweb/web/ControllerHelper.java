@@ -73,7 +73,12 @@ public class ControllerHelper extends HelperBase {
 
         if (pages.size() > 0) {
             if (((Screens) pages.get(0)).isEnabledFlag()) {
-                data.setScreenContents(markdownDecoder.markdown(((Screens) pages.get(0)).getScreenContents()));
+                logger.info("About to parse page with Markdown");
+                String pageText = ((Screens) pages.get(0)).getScreenContents();
+                logger.info("Markdown Input text is " + pageText.substring(0, Math.min(39, pageText.length()))+"...");
+                String HTML = markdownDecoder.markdown(pageText);
+                logger.info("Markdown Output HTML is " + HTML.substring(0, Math.min(39, HTML.length()))+"...");
+                data.setScreenContents(HTML);
                 data.setScreenTitleLong(((Screens) pages.get(0)).getScreenTitleLong());
                 data.setScreenTitleShort(((Screens) pages.get(0)).getScreenTitleShort());
             }
@@ -142,6 +147,10 @@ public class ControllerHelper extends HelperBase {
         String query = String.format("from Screens s");
         logger.info("About to execute HQL query : " + query);
         java.util.List pages = session.createQuery(query).list();
+        for (Object s : pages) {
+            String contents = ((Screens)s).getScreenContents();
+            ((Screens)s).setScreenContents(contents.substring(0, Math.min(39, contents.length()))+"...");
+        }
         request.setAttribute("editList", pages);
         return jspLocation("editIndex.jsp");
     }
