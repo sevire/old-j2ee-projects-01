@@ -24,6 +24,9 @@
                     Name
                 </td>
                 <td>
+                    Enabled?
+                </td>
+                <td>
                     Long Title
                 </td>
                 <td>
@@ -37,6 +40,9 @@
                 <tr>
                     <td>
                         <core:out value="${row.name}" />
+                    </td>
+                    <td>
+                        <core:out value="${row.enabledFlag ? 'Yes' : 'No'}" />
                     </td>
                     <td>
                         <core:out value="${row.screenTitleLong}" />

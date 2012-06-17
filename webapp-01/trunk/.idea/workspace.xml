@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="03fdf521-209b-4654-a976-0dbf9d87148b" name="Default" comment="">
+    <list default="true" readonly="true" id="03fdf521-209b-4654-a976-0dbf9d87148b" name="Default" comment="[#4] More work on Edit Index page.  A bit of formatting and inclusion of the first 40 characters of the page contents field.">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/error.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/application.xml" afterPath="$PROJECT_DIR$/src/META-INF/application.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/ControllerHelper.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/ControllerHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/main.css" afterPath="$PROJECT_DIR$/web/css/main.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/editIndex.jsp" afterPath="$PROJECT_DIR$/web/editIndex.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/editScreen.jsp" afterPath="$PROJECT_DIR$/web/editScreen.jsp" />
     </list>
     <ignored path="ManchesterGoddesses(java).iws" />
     <ignored path=".idea/workspace.xml" />
@@ -75,25 +78,28 @@
       <file leaf-file-name="ControllerHelper.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/ControllerHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="38" selection-start="3469" selection-end="3469" vertical-scroll-proportion="-5.1702127">
+            <state line="90" column="0" selection-start="3863" selection-end="3863" vertical-scroll-proportion="-5.7819147">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="web.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
-          <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorProvider">
-            <state />
+      <file leaf-file-name="Controller.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/Controller.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="13" selection-start="518" selection-end="518" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
           </provider>
-          <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorReferencesProvider">
-            <state />
-          </provider>
-          <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleGeneralEditorProvider">
+        </entry>
+      </file>
+      <file leaf-file-name="application.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/META-INF/application.xml">
+          <provider editor-type-id="com.intellij.javaee.module.view.app.viewlets.ApplicationModuleGeneralEditorProvider">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="25" selection-start="1542" selection-end="1542" vertical-scroll-proportion="-10.227273">
+            <state line="5" column="0" selection-start="307" selection-end="307" vertical-scroll-proportion="-3.409091">
               <folding />
             </state>
           </provider>
@@ -102,7 +108,7 @@
       <file leaf-file-name="screen.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/screen.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="3.5">
+            <state line="0" column="0" selection-start="0" selection-end="690" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
@@ -120,7 +126,7 @@
       <file leaf-file-name="Screens.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/bean/Screens.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="13" selection-start="354" selection-end="354" vertical-scroll-proportion="0.0">
+            <state line="66" column="23" selection-start="1357" selection-end="1357" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -129,16 +135,7 @@
       <file leaf-file-name="editScreen.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/editScreen.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="78" selection-start="2174" selection-end="2174" vertical-scroll-proportion="-29.875">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="addScreen.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/addScreen.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="71" column="68" selection-start="2402" selection-end="2402" vertical-scroll-proportion="-14.0">
+            <state line="38" column="38" selection-start="1345" selection-end="1345" vertical-scroll-proportion="-23.75">
               <folding />
             </state>
           </provider>
@@ -153,21 +150,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MarkdownProcessor.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar:///Library/Java/Extensions/markdownj-1.0.2b4-0.3.0.jar!/com/petebevin/markdown/MarkdownProcessor.class">
+      <file leaf-file-name="editIndex.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/editIndex.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="4" selection-start="535" selection-end="535" vertical-scroll-proportion="16.84">
-              <folding>
-                <element signature="e#0#4389#0" expanded="true" />
-              </folding>
+            <state line="26" column="28" selection-start="749" selection-end="749" vertical-scroll-proportion="-5.625">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="editIndex.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/editIndex.jsp">
+      <file leaf-file-name="error.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/error.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="61" selection-start="1446" selection-end="1446" vertical-scroll-proportion="-6.25">
+            <state line="22" column="65" selection-start="539" selection-end="539" vertical-scroll-proportion="-9.625">
               <folding />
             </state>
           </provider>
@@ -183,8 +178,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/bean/PageData.java" />
-        <option value="/Hibernate QL Fragment (ControllerHelper.java:1302).hql" />
         <option value="/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/Controller.java" />
         <option value="/Library/Java/Extensions/JSTL/javax.servlet.jsp.jstl-1.2.1.jar!/META-INF/c-1_0.tld" />
@@ -193,12 +186,14 @@
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/bean/Screens.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/ContextListener.java" />
         <option value="$PROJECT_DIR$/src/hibernate.cfg.xml" />
-        <option value="$PROJECT_DIR$/web/editScreen.jsp" />
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/web/addScreen.jsp" />
-        <option value="$PROJECT_DIR$/web/editIndex.jsp" />
         <option value="$PROJECT_DIR$/web/css/main.css" />
+        <option value="$PROJECT_DIR$/web/editScreen.jsp" />
+        <option value="$PROJECT_DIR$/web/editIndex.jsp" />
+        <option value="$PROJECT_DIR$/src/META-INF/application.xml" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/ControllerHelper.java" />
+        <option value="$PROJECT_DIR$/web/error.jsp" />
       </list>
     </option>
   </component>
@@ -981,7 +976,11 @@
       <created>1339571907164</created>
       <updated>1339571907164</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="[#4] More work on Edit Index page.  A bit of formatting and inclusion of the first 40 characters of the page contents field.">
+      <created>1339672734101</created>
+      <updated>1339672734101</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1012,7 +1011,7 @@
       <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32924962" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3184765" sideWeight="0.29862174" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="JavaEE:App" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32658023" sideWeight="0.21745789" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="JavaEE:App" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31685576" sideWeight="0.20214395" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1028,7 +1027,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32658023" sideWeight="0.36906585" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39951378" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31685576" sideWeight="0.6707504" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31685576" sideWeight="0.45788667" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3047473" sideWeight="0.47730955" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CSS Styles" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Repositories" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1101,21 +1100,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/WebPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="546" selection-end="611" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/bean/ScreenType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="13" selection-start="408" selection-end="408" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/HibernateUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="30" selection-start="560" selection-end="560" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/hibernate.cfg.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="71" selection-start="312" selection-end="312" vertical-scroll-proportion="0.0" />
@@ -1137,13 +1121,6 @@
           <folding>
             <element signature="e#0#4389#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/editScreen.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="78" selection-start="2174" selection-end="2174" vertical-scroll-proportion="-29.875">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1170,23 +1147,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="207" column="26" selection-start="6327" selection-end="6327" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/bean/Screens.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="13" selection-start="354" selection-end="354" vertical-scroll-proportion="0.0">
+        <state line="66" column="23" selection-start="1357" selection-end="1357" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/editScreen.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="38" selection-start="1345" selection-end="1345" vertical-scroll-proportion="-23.75">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/editIndex.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="61" selection-start="1446" selection-end="1446" vertical-scroll-proportion="-6.25">
+        <state line="26" column="28" selection-start="749" selection-end="749" vertical-scroll-proportion="-5.625">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/css/main.css">
+    <entry file="file://$PROJECT_DIR$/src/META-INF/application.xml">
+      <provider editor-type-id="com.intellij.javaee.module.view.app.viewlets.ApplicationModuleGeneralEditorProvider">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="207" column="26" selection-start="6327" selection-end="6327" vertical-scroll-proportion="0.0">
+        <state line="5" column="0" selection-start="307" selection-end="307" vertical-scroll-proportion="-3.409091">
           <folding />
         </state>
       </provider>
@@ -1200,14 +1194,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/screen.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="3.5">
+        <state line="0" column="0" selection-start="0" selection-end="690" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/error.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="65" selection-start="539" selection-end="539" vertical-scroll-proportion="-9.625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="13" selection-start="518" selection-end="518" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/ControllerHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="38" selection-start="3469" selection-end="3469" vertical-scroll-proportion="-5.1702127">
+        <state line="90" column="0" selection-start="3863" selection-end="3863" vertical-scroll-proportion="-5.7819147">
           <folding />
         </state>
       </provider>

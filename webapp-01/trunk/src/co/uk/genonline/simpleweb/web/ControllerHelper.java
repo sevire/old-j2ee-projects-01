@@ -49,6 +49,7 @@ public class ControllerHelper extends HelperBase {
         logger.info("About to execute HQL query : " + query);
         java.util.List pages = session.createQuery(query).list();
         data.setId(((Screens) pages.get(0)).getId());
+        data.setEnabledFlag(((Screens) pages.get(0)).isEnabledFlag());
         data.setScreenContents(((Screens) pages.get(0)).getScreenContents());
         data.setScreenTitleLong(((Screens) pages.get(0)).getScreenTitleLong());
         data.setScreenTitleShort(((Screens) pages.get(0)).getScreenTitleShort());
@@ -69,6 +70,8 @@ public class ControllerHelper extends HelperBase {
         if (pages.size() != 1) {
             logger.warn(String.format("View page: retrieved <%d> pages for screen <%s>, should be 1",
                     pages.size(), data.getName()));
+            response.setStatus(404);
+            return jspLocation("error.jsp");
         }
 
         if (pages.size() > 0) {
@@ -81,6 +84,10 @@ public class ControllerHelper extends HelperBase {
                 data.setScreenContents(HTML);
                 data.setScreenTitleLong(((Screens) pages.get(0)).getScreenTitleLong());
                 data.setScreenTitleShort(((Screens) pages.get(0)).getScreenTitleShort());
+            } else {
+                logger.info(String.format("Screen disabled, treating like non-existent page <%s>", ((Screens) pages.get(0)).isEnabledFlag()));
+                response.setStatus(404);
+                return jspLocation("error.jsp");
             }
         }
         return jspLocation("screen.jsp");
@@ -92,6 +99,7 @@ public class ControllerHelper extends HelperBase {
         logger.info("Screen contents from form... ");
         logger.info(request.getParameter("screenContents"));
         data.setName(screen);
+        data.setEnabledFlag(request.getParameter("enabledFlag").equals("Yes"));
         data.setScreenContents(request.getParameter("screenContents"));
         data.setScreenTitleLong(request.getParameter("screenTitleLong"));
         data.setScreenTitleShort(request.getParameter("screenTitleShort"));

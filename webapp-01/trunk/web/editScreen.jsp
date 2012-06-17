@@ -23,15 +23,23 @@
                 <col class='label' />
                 <tr>
                     <td>
-                        <label>Screen Name:</label>
+                        <label>Name:</label>
                     </td>
                     <td>
-                        <input type='text' name='name' value="${helper.data.name}">
+                        <input type='text' name='name' value="${helper.data.name}" />
                     </td>
                 </tr>
-                <tr><td>
-                    <input type='hidden' name='oldScreenName' value="${helper.data.name}">
-                </td></tr>
+                <tr>
+                    <td>
+                        <label>Enabled?:</label>
+                    </td>
+                    <td>
+                        <select name='enabledFlag'>
+                            <option${helper.data.enabledFlag ? " selected='selected'" : ""}>Yes</option>
+                            <option${!helper.data.enabledFlag ? " selected='selected'" : ""}>No</option>
+                        </select>
+                    </td>
+                </tr>
                 <tr>
                     <td>
                         <label>Screen Title Short:</label>
