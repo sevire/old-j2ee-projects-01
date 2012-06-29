@@ -27,10 +27,10 @@
                     Enabled?
                 </td>
                 <td>
-                    Long Title
+                    Short Title
                 </td>
                 <td>
-                    Short Title
+                    Long Title
                 </td>
                 <td>
                     Text
@@ -45,10 +45,10 @@
                         <core:out value="${row.enabledFlag ? 'Yes' : 'No'}" />
                     </td>
                     <td>
-                        <core:out value="${row.screenTitleLong}" />
+                        <core:out value="${row.screenTitleShort}" />
                     </td>
                     <td>
-                        <core:out value="${row.screenTitleShort}" />
+                        <core:out value="${row.screenTitleLong}" />
                     </td>
                     <td>
                         <core:out value="${row.screenContents}" />
@@ -62,11 +62,14 @@
                     <td>
                         <a href="view?screen=${row.name}">View</a>
                     </td>
-                    <td>
-                        <a href="add">Add</a>
-                    </td>
                 </tr>
             </core:forEach>
+            <tr>
+            <td colspan="5"></td>
+                <td>
+                    <a href="add">Add</a>
+                 </td>
+            </tr>
         </table>
     </div>
 </div>

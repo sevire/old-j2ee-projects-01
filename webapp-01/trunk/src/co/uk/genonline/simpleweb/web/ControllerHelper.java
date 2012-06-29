@@ -99,7 +99,11 @@ public class ControllerHelper extends HelperBase {
         logger.info("Screen contents from form... ");
         logger.info(request.getParameter("screenContents"));
         data.setName(screen);
-        data.setEnabledFlag(request.getParameter("enabledFlag").equals("Yes"));
+
+        boolean checked = request.getParameter("enabledFlag") == null ? false : request.getParameter("enabledFlag").equals("Enabled");
+
+        logger.info("Enabled flag is: " + checked);
+        data.setEnabledFlag(checked);
         data.setScreenContents(request.getParameter("screenContents"));
         data.setScreenTitleLong(request.getParameter("screenTitleLong"));
         data.setScreenTitleShort(request.getParameter("screenTitleShort"));
@@ -119,7 +123,10 @@ public class ControllerHelper extends HelperBase {
         logger.info(String.format("Updating screen <%s>", screen));
         logger.info("Screen contents from form... ");
         logger.info(request.getParameter("screenContents"));
+        data.setId(0);
         data.setName(screen);
+        boolean checked = request.getParameter("enabledFlag") == null ? false : request.getParameter("enabledFlag").equals("Enabled");
+        data.setEnabledFlag(checked);
         data.setScreenContents(request.getParameter("screenContents"));
         data.setScreenTitleLong(request.getParameter("screenTitleLong"));
         data.setScreenTitleShort(request.getParameter("screenTitleShort"));

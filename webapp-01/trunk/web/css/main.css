@@ -201,7 +201,7 @@
         }
 
         div#editForm col.label {
-            width: 300px;
+            min-width: 150px;
         }
 
         body#editIndex table td {

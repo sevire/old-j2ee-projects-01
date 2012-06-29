@@ -1,6 +1,7 @@
 package co.uk.genonline.simpleweb.model.bean;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.sql.Timestamp;
@@ -16,7 +17,7 @@ import java.sql.Timestamp;
 public class Screens {
     private int id;
 
-    @javax.persistence.Column(name = "id")
+    @Column(name = "id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
     @Id
     public int getId() {
         return id;
@@ -28,7 +29,7 @@ public class Screens {
 
     private int parentId;
 
-    @javax.persistence.Column(name = "parent_id")
+    @Column(name = "parent_id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
     @Basic
     public int getParentId() {
         return parentId;
@@ -40,7 +41,7 @@ public class Screens {
 
     private String name;
 
-    @javax.persistence.Column(name = "name")
+    @Column(name = "name", nullable = true, insertable = true, updatable = true, length = 20, precision = 0)
     @Basic
     public String getName() {
         return name;
@@ -52,7 +53,7 @@ public class Screens {
 
     private String screenTitleLong;
 
-    @javax.persistence.Column(name = "ScreenTitleLong")
+    @Column(name = "ScreenTitleLong", nullable = true, insertable = true, updatable = true, length = 50, precision = 0)
     @Basic
     public String getScreenTitleLong() {
         return screenTitleLong;
@@ -64,7 +65,7 @@ public class Screens {
 
     private String screenTitleShort;
 
-    @javax.persistence.Column(name = "ScreenTitleShort")
+    @Column(name = "ScreenTitleShort", nullable = true, insertable = true, updatable = true, length = 20, precision = 0)
     @Basic
     public String getScreenTitleShort() {
         return screenTitleShort;
@@ -76,7 +77,7 @@ public class Screens {
 
     private String screenContents;
 
-    @javax.persistence.Column(name = "ScreenContents")
+    @Column(name = "ScreenContents", nullable = true, insertable = true, updatable = true, length = 65535, precision = 0)
     @Basic
     public String getScreenContents() {
         return screenContents;
@@ -88,7 +89,7 @@ public class Screens {
 
     private boolean enabledFlag;
 
-    @javax.persistence.Column(name = "EnabledFlag")
+    @Column(name = "EnabledFlag", nullable = true, insertable = true, updatable = true, length = 0, precision = 0)
     @Basic
     public boolean isEnabledFlag() {
         return enabledFlag;
@@ -100,7 +101,7 @@ public class Screens {
 
     private Timestamp created;
 
-    @javax.persistence.Column(name = "created")
+    @Column(name = "created", nullable = true, insertable = true, updatable = true, length = 19, precision = 0)
     @Basic
     public Timestamp getCreated() {
         return created;
@@ -112,7 +113,7 @@ public class Screens {
 
     private Timestamp modified;
 
-    @javax.persistence.Column(name = "modified")
+    @Column(name = "modified", nullable = true, insertable = true, updatable = true, length = 19, precision = 0)
     @Basic
     public Timestamp getModified() {
         return modified;
@@ -124,7 +125,7 @@ public class Screens {
 
     private String screenType;
 
-    @javax.persistence.Column(name = "ScreenType")
+    @Column(name = "ScreenType", nullable = false, insertable = true, updatable = true, length = 45, precision = 0)
     @Basic
     public String getScreenType() {
         return screenType;

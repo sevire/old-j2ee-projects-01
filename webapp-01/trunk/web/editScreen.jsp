@@ -20,7 +20,7 @@
         <label for="editScreen">Screen Details</label>
         <form id="editScreen" method="post" action='Controller.do'>
             <table>
-                <col class='label' />
+                <col class='label'/>
                 <tr>
                     <td>
                         <label>Name:</label>
@@ -34,10 +34,7 @@
                         <label>Enabled?:</label>
                     </td>
                     <td>
-                        <select name='enabledFlag'>
-                            <option${helper.data.enabledFlag ? " selected='selected'" : ""}>Yes</option>
-                            <option${!helper.data.enabledFlag ? " selected='selected'" : ""}>No</option>
-                        </select>
+                        <input type="checkbox" name="enabledFlag" value="Enabled"${helper.data.enabledFlag ? " checked" : ""}>
                     </td>
                 </tr>
                 <tr>
