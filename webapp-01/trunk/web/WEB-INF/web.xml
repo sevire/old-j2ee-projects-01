@@ -16,6 +16,10 @@
         <param-name>dbPassword</param-name>
         <param-value>EMPTY</param-value>
     </context-param>
+    <context-param>
+        <param-name>homePage</param-name>
+        <param-value>lucina</param-value>
+    </context-param>
 <!--
     <servlet>
         <servlet-name>InitLog4J</servlet-name>

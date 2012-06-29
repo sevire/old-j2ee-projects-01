@@ -1,6 +1,5 @@
 package co.uk.genonline.simpleweb.web;
 
-import co.uk.genonline.simpleweb.model.bean.ScreenType;
 import co.uk.genonline.simpleweb.model.bean.Screens;
 import com.petebevin.markdown.MarkdownProcessor;
 import org.apache.log4j.Level;
@@ -23,7 +22,6 @@ import java.io.IOException;
  */
 public class ControllerHelper extends HelperBase {
     protected Screens data;
-    protected ScreenType type;
     Logger logger;
     SessionFactory factory;
 
@@ -62,6 +60,11 @@ public class ControllerHelper extends HelperBase {
         MarkdownProcessor markdownDecoder = new MarkdownProcessor();
         Session session = factory.openSession();
         String query = String.format("from Screens s where s.name = '%s'", data.getName());
+        WebHelper helper = new WebHelper(request, response, factory);
+
+        request.setAttribute("chambersLinkBar", helper.generateLinkBarCategory("Chambers"));
+        request.setAttribute("mistressLinkBar", helper.generateLinkBarCategory("Mistress"));
+        request.setAttribute("homePage", helper.generateHomeLink());
 
         logger.info("About to execute HQL query : " + query);
 

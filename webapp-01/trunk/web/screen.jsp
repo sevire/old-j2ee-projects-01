@@ -19,8 +19,15 @@
 <div id='colRight'>
 </div>
 <div id='colMiddle'>
-    <%@ include file="header.jsp" %>
+        <%@ include file="header.jsp" %>
+    <div class='header'>
+        <ul><li class='headerLink'>${homePage}</li></ul>
+        ${chambersLinkBar}
+        ${mistressLinkBar}
+        <ul><li class='headerLink'><a href="http://groups.yahoo.com/group/lucifersdarkangel/">YAHOO!&nbsp;GROUP</a></li></ul>
+    </div>
     <div id="pageText">
+        <h3>${helper.data.screenTitleLong}</h3>
         ${helper.data.screenContents}
     </div>
 </div>
