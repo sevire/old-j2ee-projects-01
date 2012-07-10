@@ -30,6 +30,7 @@
       <column name="ScreenTitleShort" sqlType="CHAR" length="20" precision="0" nullable="true" jdbcType="1" />
       <column name="ScreenContents" sqlType="TEXT" length="65535" precision="0" nullable="true" jdbcType="-1" />
       <column name="EnabledFlag" sqlType="BIT" length="0" precision="0" nullable="true" jdbcType="-7" />
+      <column name="GalleryFlag" sqlType="BIT" length="0" precision="0" nullable="true" jdbcType="-7" />
       <column name="created" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
       <column name="modified" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
       <column name="ScreenType" sqlType="VARCHAR" length="45" precision="0" nullable="false" jdbcType="12" />

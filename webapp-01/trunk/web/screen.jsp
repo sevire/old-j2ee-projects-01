@@ -1,3 +1,4 @@
+<%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: thomassecondary
@@ -19,7 +20,6 @@
 <div id='colRight'>
 </div>
 <div id='colMiddle'>
-        <%@ include file="header.jsp" %>
     <div class='header'>
         <ul><li class='headerLink'>${homePage}</li></ul>
         ${chambersLinkBar}
@@ -30,6 +30,9 @@
         <h3>${helper.data.screenTitleLong}</h3>
         ${helper.data.screenContents}
     </div>
+        <div id='gallery'>
+            ${galleryHTML}
+        </div>
 </div>
 <div id='footer'>
 </div>

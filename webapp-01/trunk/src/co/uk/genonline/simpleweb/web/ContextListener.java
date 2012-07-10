@@ -1,6 +1,7 @@
 package co.uk.genonline.simpleweb.web;
 
 import co.uk.genonline.simpleweb.model.HibernateUtil;
+import co.uk.genonline.simpleweb.web.gallery.GalleryManager;
 import org.apache.log4j.*;
 import org.hibernate.SessionFactory;
 
@@ -35,6 +36,13 @@ public class ContextListener implements ServletContextListener {
 
         logger.info(String.format("Saving session factory in context attribute"));
         event.getServletContext().setAttribute("sessionFactory", factory);
+
+        logger.info("Creating and saving Gallery Manager in context attribute");
+        String galleryRoot = event.getServletContext().getInitParameter("galleryRoot");
+
+        logger.debug("Saving gallery root = " + galleryRoot);
+
+        event.getServletContext().setAttribute("Galleries", new GalleryManager(event.getServletContext().getRealPath("/"), galleryRoot));
     }
 
     public void contextDestroyed(ServletContextEvent event) {

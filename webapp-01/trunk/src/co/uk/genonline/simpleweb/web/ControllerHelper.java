@@ -1,6 +1,7 @@
 package co.uk.genonline.simpleweb.web;
 
 import co.uk.genonline.simpleweb.model.bean.Screens;
+import co.uk.genonline.simpleweb.web.gallery.GalleryManager;
 import com.petebevin.markdown.MarkdownProcessor;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -78,15 +79,24 @@ public class ControllerHelper extends HelperBase {
         }
 
         if (pages.size() > 0) {
-            if (((Screens) pages.get(0)).isEnabledFlag()) {
-                logger.info("About to parse page with Markdown");
-                String pageText = ((Screens) pages.get(0)).getScreenContents();
-                logger.info("Markdown Input text is " + pageText.substring(0, Math.min(39, pageText.length()))+"...");
-                String HTML = markdownDecoder.markdown(pageText);
-                logger.info("Markdown Output HTML is " + HTML.substring(0, Math.min(39, HTML.length()))+"...");
-                data.setScreenContents(HTML);
-                data.setScreenTitleLong(((Screens) pages.get(0)).getScreenTitleLong());
-                data.setScreenTitleShort(((Screens) pages.get(0)).getScreenTitleShort());
+            Screens screen = (Screens) pages.get(0);
+            logger.info("About to parse page with Markdown");
+            String pageText = screen.getScreenContents();
+            logger.info("Markdown Input text is " + pageText.substring(0, Math.min(39, pageText.length()))+"...");
+            String HTML = markdownDecoder.markdown(pageText);
+            logger.info("Markdown Output HTML is " + HTML.substring(0, Math.min(39, HTML.length()))+"...");
+            data.setScreenContents(HTML);
+            data.setScreenTitleLong(screen.getScreenTitleLong());
+            data.setScreenTitleShort(screen.getScreenTitleShort());
+            if (screen.isEnabledFlag()) {
+                if (screen.isGalleryFlag()) {
+                    logger.info("About to create gallery for the page");
+                    GalleryManager manager = (GalleryManager)request.getServletContext().getAttribute("Galleries");
+                    logger.debug("manager = " + manager);
+                    request.setAttribute("galleryHTML", (manager.getGallery(screen.getName())).getHTML());
+                } else {
+                    request.setAttribute("galleryHTML", "<p>No Gallery</p>");
+                }
             } else {
                 logger.info(String.format("Screen disabled, treating like non-existent page <%s>", ((Screens) pages.get(0)).isEnabledFlag()));
                 response.setStatus(404);
@@ -94,6 +104,16 @@ public class ControllerHelper extends HelperBase {
             }
         }
         return jspLocation("screen.jsp");
+    }
+
+    protected String viewImageMethod() {
+        String gallery = request.getParameter("gallery");
+        String image = request.getParameter("image");
+        String img = "/galleries/" + gallery + "/" + request.getParameter("image");
+        logger.debug(String.format("Displaying image for gallery <%s>, image <%s>, img = <%s>", gallery, image, img));
+        request.setAttribute("gallery", gallery);
+        request.setAttribute("image", img);
+        return jspLocation("viewImage.jsp");
     }
 
     protected String updateMethod() {
@@ -215,11 +235,6 @@ public class ControllerHelper extends HelperBase {
         logger.info("Servlet path is " + command);
 
         data.setName(request.getParameter("screen"));
-/*
-        data.setScreenTitleShort(request.getParameter("screenTitleShort"));
-        data.setScreenTitleLong(request.getParameter("screenTitleLong"));
-        data.setScreenContents(request.getParameter("screenContents"));
-*/
 
         String address;
         boolean redirectFlag = false;
@@ -236,9 +251,12 @@ public class ControllerHelper extends HelperBase {
             logger.info("editIndex");
             address = editIndexMethod();
         } else if (command.equals("/delete")) {
-            logger.info("editIndex");
+            logger.info("delete");
             redirectFlag = true;
             address = deleteMethod();
+        } else if (command.equals("/viewImage")) {
+            logger.info("Gallery View");
+            address = viewImageMethod();
         } else {
             logger.error(String.format("DoGet: Didn't recognise request, defaulting to screen view"));
             address = jspLocation("screen.jsp");

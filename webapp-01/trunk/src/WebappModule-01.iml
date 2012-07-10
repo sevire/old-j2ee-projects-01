@@ -57,6 +57,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="imgscalr-lib-4.2" level="application" />
   </component>
 </module>
 

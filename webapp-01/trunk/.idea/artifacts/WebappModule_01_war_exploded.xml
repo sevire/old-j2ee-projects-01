@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="WebappModule-01:war exploded">
+  <artifact type="exploded-war" build-on-make="true" name="WebappModule-01:war exploded">
     <output-path>$PROJECT_DIR$/out/artifacts/WebappModule_01_war_exploded</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
@@ -11,6 +11,7 @@
           <element id="library" level="application" name="markdownj-1.0.2b4-0.3.0" />
           <element id="library" level="application" name="mysql-connector-java-5.1.20-bin" />
           <element id="library" level="project" name="hibernate-4.1.1" />
+          <element id="library" level="application" name="imgscalr-lib-4.2" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="WebappModule-01/web/Web" />

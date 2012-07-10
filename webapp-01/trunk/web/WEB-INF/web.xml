@@ -20,13 +20,31 @@
         <param-name>homePage</param-name>
         <param-value>lucina</param-value>
     </context-param>
-<!--
-    <servlet>
-        <servlet-name>InitLog4J</servlet-name>
-        <servlet-class>co.uk.genonline.simpleweb.web.InitLogging</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
--->
+    <context-param>
+        <param-name>galleryRoot</param-name>
+        <param-value>galleries</param-value>
+    </context-param>
+    <context-param>
+        <param-name>numGalleryColumns</param-name>
+        <param-value>2</param-value>
+    </context-param>
+    <context-param>
+        <param-name>maxThumbnailWidth</param-name>
+        <param-value>130</param-value>
+    </context-param>
+    <context-param>
+        <param-name>maxThumbnailHeight</param-name>
+        <param-value>130</param-value>
+    </context-param>
+    <context-param>
+        <param-name>maxImageWidth</param-name>
+        <param-value>800</param-value>
+    </context-param>
+    <context-param>
+        <param-name>maxImageHeight</param-name>
+        <param-value>800</param-value>
+    </context-param>
+
     <servlet>
         <servlet-name>Controller</servlet-name>
         <servlet-class>co.uk.genonline.simpleweb.web.Controller</servlet-class>
@@ -54,6 +72,10 @@
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>
         <url-pattern>/Controller.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller</servlet-name>
+        <url-pattern>/viewImage</url-pattern>
     </servlet-mapping>
     <listener>
         <listener-class>

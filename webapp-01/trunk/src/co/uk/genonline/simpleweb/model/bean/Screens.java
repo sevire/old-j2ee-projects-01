@@ -173,4 +173,16 @@ public class Screens {
         result = 31 * result + (screenType != null ? screenType.hashCode() : 0);
         return result;
     }
+
+    private boolean galleryFlag;
+
+    @Column(name = "GalleryFlag", nullable = true, insertable = true, updatable = true, length = 0, precision = 0)
+    @Basic
+    public boolean isGalleryFlag() {
+        return galleryFlag;
+    }
+
+    public void setGalleryFlag(boolean galleryFlag) {
+        this.galleryFlag = galleryFlag;
+    }
 }
