@@ -1,4 +1,3 @@
-<%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: thomassecondary
@@ -10,19 +9,17 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-    <title>Lucifer's Dark Angel - View Gallery ${gallery} - Image ${image}</title>
-    <link rel="stylesheet" href="./css/main.css" type="text/css" media="all" >
+    <title>Lucifer's Dark Angel - Error Page</title>
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="all" >
 </head>
 
-<body>
+<body id='error'>
 <div id='colLeft'>
 </div>
 <div id='colRight'>
 </div>
 <div id='colMiddle'>
-    <div id="image">
-        <img src='${image}' />
-    </div>
+    <p>Error - page not found</p>
 </div>
 <div id='footer'>
 </div>

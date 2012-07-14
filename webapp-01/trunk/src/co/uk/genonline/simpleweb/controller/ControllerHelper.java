@@ -1,6 +1,8 @@
-package co.uk.genonline.simpleweb.web;
+package co.uk.genonline.simpleweb.controller;
 
 import co.uk.genonline.simpleweb.model.bean.Screens;
+import co.uk.genonline.simpleweb.web.SessionData;
+import co.uk.genonline.simpleweb.web.WebHelper;
 import co.uk.genonline.simpleweb.web.gallery.GalleryManager;
 import com.petebevin.markdown.MarkdownProcessor;
 import org.apache.log4j.Level;
@@ -143,7 +145,7 @@ public class ControllerHelper extends HelperBase {
 
     protected String addMethod() {
         String screen = request.getParameter("name");
-        logger.info(String.format("Updating screen <%s>", screen));
+        logger.info(String.format("Adding screen <%s>", screen));
         logger.info("Screen contents from form... ");
         logger.info(request.getParameter("screenContents"));
         data.setId(0);
@@ -277,6 +279,6 @@ public class ControllerHelper extends HelperBase {
     }
 
     protected String jspLocation(String page) {
-        return page;
+        return "WEB-INF/" + page;
     }
 }

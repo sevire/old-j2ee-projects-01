@@ -1,4 +1,6 @@
-package co.uk.genonline.simpleweb.web;
+package co.uk.genonline.simpleweb.controller;
+
+import co.uk.genonline.simpleweb.web.SessionData;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

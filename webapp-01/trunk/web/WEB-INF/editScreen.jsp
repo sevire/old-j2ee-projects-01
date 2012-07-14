@@ -9,8 +9,8 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-    <title>Lucifer's Dark Angel - Add Screen</title>
-    <link rel="stylesheet" href="./css/main.css" type="text/css" media="all" >
+    <title>Lucifer's Dark Angel - Edit : ${helper.data.screenTitleLong}</title>
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="all" >
 </head>
 <body id='Edit'>
 <div id='colLeft'></div>
@@ -20,13 +20,13 @@
         <label for="editScreen">Screen Details</label>
         <form id="editScreen" method="post" action='Controller.do'>
             <table>
-                <col class='label' />
+                <col class='label'/>
                 <tr>
                     <td>
-                        <label>Screen Name:</label>
+                        <label>Name:</label>
                     </td>
                     <td>
-                        <input type='text' name='name'>
+                        <input type='text' name='name' value="${helper.data.name}" />
                     </td>
                 </tr>
                 <tr>
@@ -34,18 +34,15 @@
                         <label>Enabled?:</label>
                     </td>
                     <td>
-                        <input type="checkbox" name="enabledFlag" value="Enabled" checked>
+                        <input type="checkbox" name="enabledFlag" value="Enabled"${helper.data.enabledFlag ? " checked" : ""}>
                     </td>
                 </tr>
-                <tr><td>
-                    <input type='hidden' name='oldScreenName'>
-                </td></tr>
                 <tr>
                     <td>
                         <label>Screen Title Short:</label>
                     </td>
                     <td>
-                        <input type='text' name='screenTitleShort'>
+                        <input type='text' name='screenTitleShort' value="${helper.data.screenTitleShort}">
                     </td>
                 </tr>
                 <tr>
@@ -53,7 +50,7 @@
                         <label>Screen Title Long:</label>
                     </td>
                     <td>
-                        <input type='text' name='screenTitleLong'>
+                        <input type='text' name='screenTitleLong' value="${helper.data.screenTitleLong}">
                     </td>
                 </tr>
                 <tr>
@@ -62,8 +59,8 @@
                     </td>
                     <td>
                         <select name='screenType'>
-                            <option>Mistress</option>
-                            <option>Chambers</option>
+                            <option${helper.data.screenType == 'Mistress' ? " selected='selected'" : ""}>Mistress</option>
+                            <option${helper.data.screenType == 'Chambers' ? " selected='selected'" : ""}>Chambers</option>
                         </select>
                     </td>
                 </tr>
@@ -72,11 +69,13 @@
                 <label>Screen Contents: </label>
                     </td>
                     <td>
-                        <textarea rows="10" cols="60" name="screenContents" ></textarea>
+                <textarea rows="10" cols="60" name="screenContents" >
+${helper.data.screenContents}
+                </textarea>
                     </td>
                 </tr>
                 <tr><td>
-                    <input type='submit' name='addButton' value='Add'>
+                    <input type='submit' name='updateButton' value='Update'>
                 </td></tr>
                 <tr><td>
                     <input type='submit' name='cancelButton' value='Cancel'>

@@ -1,4 +1,4 @@
-package co.uk.genonline.simpleweb.web;
+package co.uk.genonline.simpleweb.controller;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
