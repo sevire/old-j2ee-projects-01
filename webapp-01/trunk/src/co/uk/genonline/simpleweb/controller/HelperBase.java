@@ -1,9 +1,13 @@
 package co.uk.genonline.simpleweb.controller;
 
 import co.uk.genonline.simpleweb.web.SessionData;
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,10 +19,13 @@ import javax.servlet.http.HttpServletResponse;
 public abstract class HelperBase {
     protected HttpServletRequest request;
     protected HttpServletResponse response;
+    Logger logger;
 
     public HelperBase(HttpServletRequest request, HttpServletResponse response) {
         this.request = request;
         this.response = response;
+        logger = Logger.getLogger("ControllerHelper");
+        logger.setLevel(Level.ALL);
     }
 
     public abstract void copyFromSession(Object helper);
@@ -32,4 +39,18 @@ public abstract class HelperBase {
         }
         request.getSession().setAttribute(name, this);
     }
+
+    public void fillBeanFromRequest(Object data) {
+        try {
+            BeanUtils.populate(data, request.getParameterMap());
+        } catch (IllegalAccessException e) {
+            logger.error("Populate - Illegal Access", e);
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (InvocationTargetException e) {
+            logger.error("Populate - Invocation Target", e);
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+    }
+
+
 }

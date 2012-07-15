@@ -58,6 +58,9 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="imgscalr-lib-4.2" level="application" />
+    <orderEntry type="library" name="commons-beanutils-1.8" level="project" />
+    <orderEntry type="library" name="commons-beanutils-1.8" level="application" />
+    <orderEntry type="library" name="commons-collections-3.2" level="project" />
   </component>
 </module>
 

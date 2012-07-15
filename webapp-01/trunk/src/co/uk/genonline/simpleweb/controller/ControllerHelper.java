@@ -7,8 +7,10 @@ import co.uk.genonline.simpleweb.web.gallery.GalleryManager;
 import com.petebevin.markdown.MarkdownProcessor;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -46,15 +48,25 @@ public class ControllerHelper extends HelperBase {
 
     protected String editMethod() {
         Session session = factory.openSession();
+        Criteria criteria = session.createCriteria(Screens.class).add(Restrictions.eq("name", data.getName()));
+        data = (Screens) criteria.uniqueResult();
+/*
         String query = String.format("from Screens s where s.name = '%s'", data.getName());
         logger.info("About to execute HQL query : " + query);
         java.util.List pages = session.createQuery(query).list();
+        Screens result = (Screens)pages.get(0);
+*/
+
+
+
+/*
         data.setId(((Screens) pages.get(0)).getId());
         data.setEnabledFlag(((Screens) pages.get(0)).isEnabledFlag());
         data.setScreenContents(((Screens) pages.get(0)).getScreenContents());
         data.setScreenTitleLong(((Screens) pages.get(0)).getScreenTitleLong());
         data.setScreenTitleShort(((Screens) pages.get(0)).getScreenTitleShort());
         data.setScreenType(((Screens) pages.get(0)).getScreenType());
+*/
         //request.setAttribute("screenTypes", );
         return jspLocation("editScreen.jsp");
     }
@@ -140,7 +152,7 @@ public class ControllerHelper extends HelperBase {
         logger.info(data.getScreenContents());
         session.update(data);
         session.flush();
-        return jspLocation("/editIndex");
+        return "/editIndex";
     }
 
     protected String addMethod() {
@@ -163,7 +175,7 @@ public class ControllerHelper extends HelperBase {
         logger.info(data.getScreenContents());
         session.save(data);
         session.flush();
-        return jspLocation("/editIndex");
+        return "/editIndex";
     }
 
     protected String deleteMethod() {
@@ -179,7 +191,7 @@ public class ControllerHelper extends HelperBase {
         java.util.List pages = session.createQuery(query).list();
         session.delete(((Screens) pages.get(0)));
         session.flush();
-        return jspLocation("/editIndex");
+        return "/editIndex";
     }
 
     protected String editIndexMethod() {
@@ -196,7 +208,7 @@ public class ControllerHelper extends HelperBase {
     }
 
     protected String cancelMethod() {
-        return jspLocation("/editIndex");
+        return "/editIndex";
     }
 
     protected void doPost()

@@ -19,40 +19,24 @@ import java.io.IOException;
  */
 public class Gallery {
 
-    private String webRoot;
     private String galleryName;
-    private File galleryFile;
-    private Logger logger;
-    private File thumbnailFolderFile;
-    private String html;
-    private int maxWidth;
-    private int maxHeight;
-    private int imagesAdded = 0;
-    private int numColumns;
+    private GalleryHelper helper;
 
-    Gallery(
-            String webRoot,
-            String galleryPath,
-            String thumbnailPath,
-            String galleryName,
-            int maxWidth,
-            int maxHeight,
-            int numColumns) {
+    private String html;
+    private int imagesAdded = 0;
+    private Logger logger;
+
+    Gallery(GalleryHelper helper, String galleryName) {
         logger = Logger.getLogger(this.getClass().getName());
         logger.setLevel(Level.ALL);
 
-        this.webRoot = webRoot;
+        this.helper = helper;
         this.galleryName = galleryName;
-        this.galleryFile = new File(galleryPath);
-        this.thumbnailFolderFile = new File(thumbnailPath);
-        this.maxWidth = maxWidth;
-        this.maxHeight = maxHeight;
-        this.numColumns= numColumns;
         html = null;
     }
 
     public void generateThumbnail(File image, File thumbnail, boolean force) {
-        if (!force && image.isFile()) {
+        if (!force && thumbnail.isFile()) {
             logger.info(String.format("Thumbnail for <%s> exists, nothing to do", thumbnail));
         } else {
             BufferedImage bufferedImage;
@@ -69,8 +53,8 @@ public class Gallery {
 
             int height = bufferedImage.getHeight();
             int width = bufferedImage.getWidth();
-            float widthScaleFactor = maxWidth / width;
-            float heightScaleFactor = maxHeight / height;
+            float widthScaleFactor = helper.getMaxWidth() / (float)width;
+            float heightScaleFactor = helper.getMaxHeight() / (float)height;
 
             float scaleFactor = Math.min(widthScaleFactor, heightScaleFactor);
 
@@ -95,25 +79,31 @@ public class Gallery {
             }
         }
     }
+    private File getGalleryImageFile(File imageFile) {
+        return new File(helper.getGalleryFullPathFile(galleryName), imageFile.getName());
+    }
+
+    private File getGalleryThumbnailImageFile(File imageFile) {
+        return new File(helper.getGalleryFullPathFile(galleryName),  helper.getThumbnailRelPath() + File.separator + imageFile.getName());
+    }
 
     public String getHTML() {
         if (html == null) {
-            File galleryFullPath = new File(webRoot, galleryFile.getPath());
-            if (!galleryFullPath.isDirectory()) {
-                logger.error(String.format("Gallery path <%s> isn't a directory, can't generate gallery", galleryFile.getAbsolutePath()));
+            if (!helper.getGalleryFullPathFile(galleryName).isDirectory()) {
+                logger.error(String.format("Gallery path for <%s> isn't a directory, can't generate gallery", helper.getGalleryFullPathFile(galleryName)));
             } else {
                 String[] extensions = {"jpg", "png"};
                 FileFilter filter = new ImageFileFilter(extensions);
-                File list[] = galleryFullPath.listFiles(filter);
+                File list[] = helper.getGalleryFullPathFile(galleryName).listFiles(filter);
 
                 html = String.format("<table class='gallery'>%n");
 
                 for (File file : list) {
                     logger.info(String.format("Processing file <%s> within gallery <%s>", file, galleryName));
-                    File imageFile = new File(galleryFile, file.getName());
-                    File thumbnail = new File(thumbnailFolderFile.getPath() + File.separator + file.getName());
-                    generateThumbnail(file, thumbnail, false);
-                    addImageToHTML(imageFile, thumbnail);
+                    File imageFile = getGalleryImageFile(file);
+                    File thumbnailFile = getGalleryThumbnailImageFile(file);
+                    generateThumbnail(imageFile, thumbnailFile, false);
+                    addImageToHTML(file.getName());
                 }
 
                 html += String.format("</table>%n");
@@ -123,8 +113,8 @@ public class Gallery {
         return html;
     }
 
-    private void addImageToHTML(File image, File thumbnail) {
-        if (imagesAdded % numColumns == 0) {
+    private void addImageToHTML(String imageName) {
+        if (imagesAdded % helper.getNumGalleryColumns() == 0) {
             // Last row is full so starting new row
             // Begin by terminating previous row, but only if there is one
 
@@ -136,14 +126,18 @@ public class Gallery {
 
         // add this image as td element
 
-        String img = String.format("<img src='%s' />%n", thumbnail.getPath());
-        String anchor = String.format("<a href='/viewImage?gallery=%s&image=%s'>%s</a>%n", galleryName, image.getName(), img);
+        String img = String.format("<img src='%s' />%n", getHTMLRelPath(galleryName + File.separator + helper.getThumbnailRelPath() + File.separator + imageName));
+        String anchor = String.format("<a href='/viewImage?gallery=%s&image=%s'>%s</a>%n", galleryName, imageName, img);
 
         html += String.format("<td>%n%s</td>%n", anchor);
         imagesAdded++;
     }
 
-/**
+    private String getHTMLRelPath(String path) {
+        return helper.getGalleryRootRelPath() + File.separator + path;
+    }
+
+    /**
  * Convenience method that returns a scaled instance of the
  * provided {@code BufferedImage}.
  *

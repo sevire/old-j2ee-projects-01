@@ -16,13 +16,25 @@ public class GalleryManager {
     private static final int THUMBNAIL_MAX_DIM = 130;
     private static final int GALLERY_COLUMNS = 4;
 
-    private Map<String, Gallery> galleries;
-    private String webRoot;
-    private String galleryRoot;
+    private GalleryHelper helper;
 
-    public GalleryManager(String webRoot, String galleryRoot) {
-        this.webRoot = webRoot;
-        this.galleryRoot =  galleryRoot;
+    private Map<String, Gallery> galleries;
+
+    private File galleryFullPathFile; // Used in IO operations
+    private String galleryRelPath; // Used for references in HTML (<a> and <img>)
+
+/*
+    private String webRootFullPath;
+    private String galleryRoot;
+*/
+
+    public GalleryManager(String webRoot, String galleryRelPath) {
+        helper = new GalleryHelper(new File(webRoot),
+                             galleryRelPath,
+                             THUMBNAIL_RELPATH,
+                             THUMBNAIL_MAX_DIM,
+                             THUMBNAIL_MAX_DIM,
+                             GALLERY_COLUMNS);
         galleries = new HashMap<String, Gallery>();
 
         // For now add gallery manually for testing
@@ -31,14 +43,7 @@ public class GalleryManager {
     }
 
     public void addGallery(String galleryName) {
-        galleries.put(galleryName, new Gallery(
-                webRoot,
-                galleryRoot+File.separator+galleryName,
-                galleryRoot+File.separator+galleryName+File.separator+THUMBNAIL_RELPATH,
-                galleryName,
-                THUMBNAIL_MAX_DIM,
-                THUMBNAIL_MAX_DIM,
-                GALLERY_COLUMNS));
+        galleries.put(galleryName, new Gallery(helper, galleryName));
     }
 
     public Gallery getGallery(String galleryName) {

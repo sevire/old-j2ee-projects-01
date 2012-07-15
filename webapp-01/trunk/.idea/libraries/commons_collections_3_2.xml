@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="commons-collections-3.2">
+    <CLASSES>
+      <root url="file:///Library/Java/Extensions/commons-collections-3.2.1" />
+      <root url="file:///Library/Java/Extensions/commons-collections-3.2.1" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file:///Library/Java/Extensions/commons-collections-3.2.1/apidocs" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="file:///Library/Java/Extensions/commons-collections-3.2.1" />
+      <root url="file:///Library/Java/Extensions/commons-collections-3.2.1" />
+    </SOURCES>
+    <jarDirectory url="file:///Library/Java/Extensions/commons-collections-3.2.1" recursive="false" />
+    <jarDirectory url="file:///Library/Java/Extensions/commons-collections-3.2.1" recursive="false" />
+    <jarDirectory url="file:///Library/Java/Extensions/commons-collections-3.2.1" recursive="false" type="SOURCES" />
+    <jarDirectory url="file:///Library/Java/Extensions/commons-collections-3.2.1" recursive="false" type="SOURCES" />
+  </library>
+</component>
