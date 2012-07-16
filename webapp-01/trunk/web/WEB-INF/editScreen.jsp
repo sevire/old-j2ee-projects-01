@@ -31,14 +31,6 @@
                 </tr>
                 <tr>
                     <td>
-                        <label>Enabled?:</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="enabledFlag" value="Enabled"${helper.data.enabledFlag ? " checked" : ""}>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
                         <label>Screen Title Short:</label>
                     </td>
                     <td>
@@ -62,6 +54,24 @@
                             <option${helper.data.screenType == 'Mistress' ? " selected='selected'" : ""}>Mistress</option>
                             <option${helper.data.screenType == 'Chambers' ? " selected='selected'" : ""}>Chambers</option>
                         </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Enabled?:</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="enabledFlag" value="Enabled"${helper.data.enabledFlag ? " checked" : ""}>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            Gallery?
+                        </label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="galleryFlag" value="Enabled"${helper.data.galleryFlag ? " checked" : ""}>
                     </td>
                 </tr>
                 <tr>

@@ -140,7 +140,10 @@ public class ControllerHelper extends HelperBase {
         boolean checked = request.getParameter("enabledFlag") == null ? false : request.getParameter("enabledFlag").equals("Enabled");
 
         logger.info("Enabled flag is: " + checked);
-        data.setEnabledFlag(checked);
+        boolean enabledChecked = request.getParameter("enabledFlag") == null ? false : request.getParameter("enabledFlag").equals("Enabled");
+        boolean galleryChecked = request.getParameter("galleryFlag") == null ? false : request.getParameter("galleryFlag").equals("Enabled");
+        data.setEnabledFlag(enabledChecked);
+        data.setGalleryFlag(galleryChecked);
         data.setScreenContents(request.getParameter("screenContents"));
         data.setScreenTitleLong(request.getParameter("screenTitleLong"));
         data.setScreenTitleShort(request.getParameter("screenTitleShort"));
@@ -162,8 +165,10 @@ public class ControllerHelper extends HelperBase {
         logger.info(request.getParameter("screenContents"));
         data.setId(0);
         data.setName(screen);
-        boolean checked = request.getParameter("enabledFlag") == null ? false : request.getParameter("enabledFlag").equals("Enabled");
-        data.setEnabledFlag(checked);
+        boolean enabledChecked = request.getParameter("enabledFlag") == null ? false : request.getParameter("enabledFlag").equals("Enabled");
+        boolean galleryChecked = request.getParameter("galleryFlag") == null ? false : request.getParameter("galleryFlag").equals("Enabled");
+        data.setEnabledFlag(enabledChecked);
+        data.setGalleryFlag(galleryChecked);
         data.setScreenContents(request.getParameter("screenContents"));
         data.setScreenTitleLong(request.getParameter("screenTitleLong"));
         data.setScreenTitleShort(request.getParameter("screenTitleShort"));

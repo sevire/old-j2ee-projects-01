@@ -29,14 +29,6 @@
                         <input type='text' name='name'>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <label>Enabled?:</label>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="enabledFlag" value="Enabled" checked>
-                    </td>
-                </tr>
                 <tr><td>
                     <input type='hidden' name='oldScreenName'>
                 </td></tr>
@@ -54,6 +46,24 @@
                     </td>
                     <td>
                         <input type='text' name='screenTitleLong'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Enabled?:</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="enabledFlag" value="Enabled" checked>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            Gallery?
+                        </label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="galleryFlag" value="Enabled">
                     </td>
                 </tr>
                 <tr>

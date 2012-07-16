@@ -7,17 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="03fdf521-209b-4654-a976-0dbf9d87148b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/commons_beanutils_1_8.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/commons_collections_3_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/commons_logging_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/GalleryHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/WebappModule_01_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/WebappModule_01_war_exploded.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/WebappModule-01.iml" afterPath="$PROJECT_DIR$/src/WebappModule-01.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ControllerHelper.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ControllerHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/HelperBase.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/HelperBase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/Gallery.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/Gallery.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/GalleryManager.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/GalleryManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/addScreen.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/addScreen.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/editIndex.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/editIndex.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/editScreen.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/editScreen.jsp" />
     </list>
     <ignored path="ManchesterGoddesses(java).iws" />
     <ignored path=".idea/workspace.xml" />
@@ -135,7 +129,7 @@
       <file leaf-file-name="ControllerHelper.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ControllerHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="109" column="98" selection-start="4655" selection-end="4655" vertical-scroll-proportion="0.0">
+            <state line="146" column="0" selection-start="6482" selection-end="6482" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -159,10 +153,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gallery.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Gallery.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/Gallery.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="90" column="0" selection-start="3450" selection-end="3450" vertical-scroll-proportion="0.33212996">
+            <state line="90" column="0" selection-start="3450" selection-end="3450" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -191,7 +185,7 @@
       <file leaf-file-name="editScreen.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/WEB-INF/editScreen.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="66" column="0" selection-start="2474" selection-end="2474" vertical-scroll-proportion="-8.708333">
               <folding />
             </state>
           </provider>
@@ -200,16 +194,16 @@
       <file leaf-file-name="addScreen.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/WEB-INF/addScreen.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="58" column="0" selection-start="1897" selection-end="1897" vertical-scroll-proportion="-3.625">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="editIndex.jsp" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="editIndex.jsp" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/WEB-INF/editIndex.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="34" column="0" selection-start="922" selection-end="922" vertical-scroll-proportion="0.33103448">
               <folding />
             </state>
           </provider>
@@ -225,9 +219,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/ImageFileFilter.java" />
-        <option value="$PROJECT_DIR$/src/hibernate.cfg.xml" />
-        <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/ContextListener.java" />
         <option value="$PROJECT_DIR$/web/screen.jsp" />
         <option value="$PROJECT_DIR$/web/viewImage.jsp" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/ControllerHelper.java" />
@@ -236,11 +227,14 @@
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/Action.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/Model.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/HelperBase.java" />
-        <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ControllerHelper.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/GalleryConfig.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/GalleryManager.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/GalleryHelper.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/Gallery.java" />
+        <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ControllerHelper.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/addScreen.jsp" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/editScreen.jsp" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/editIndex.jsp" />
       </list>
     </option>
   </component>
@@ -1199,7 +1193,11 @@
       <created>1342258274104</created>
       <updated>1342258274104</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="[#10] Got automatic thumbnails working and gallery display.  Still need to update screen edit page to allow gallery configuration flag to be set.">
+      <created>1342390637105</created>
+      <updated>1342390637105</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1224,7 +1222,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="774" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.6967841" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1233,7 +1231,7 @@
       <window_info id="JavaEE:App" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31633466" sideWeight="0.20980091" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.48085758" sideWeight="0.493517" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48085758" sideWeight="0.493517" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.474732" sideWeight="0.5235008" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -1242,10 +1240,10 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.49027553" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959481" sideWeight="0.21745789" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30794165" sideWeight="0.37366003" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30794165" sideWeight="0.424196" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39951378" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30794165" sideWeight="0.13476263" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30794165" sideWeight="0.5650842" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.45635527" sideWeight="0.47082657" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CSS Styles" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Repositories" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1295,7 +1293,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started a bit of general re-factoring and cleaning up.  Still quite a lot to do." />
+    <option name="LAST_COMMIT_MESSAGE" value="[#10] Got automatic thumbnails working and gallery display.  Still need to update screen edit page to allow gallery configuration flag to be set." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1315,6 +1313,7 @@
     <MESSAGE value="[#5 state:resolved][#6 state:resolved][#8 state:resolved][#9 state:resolved]&#10;- Implemented code to generate linkbars for pages of given Category (Mistress or Chambers)&#10;- Replaced current hard coded header include files with dynamically generate linkbars&#10;- Implemented the name of the home page as a servlet context init parameter.&#10;- Created method to calculate a link to the home page" />
     <MESSAGE value="[#8] Added code to read flag for a screen to check whether it is a gallery page. If so the appropriate folder is parsed and any images have a thumbnail created unless the thumbnail already exists.  A thumbnail table is added to the end of the page.&#10;&#10;This is a first pass.  The flag isn't reflected in the edit and update pages yet.  Quite a lot of code written to create the thumbnails and manipulate the files in the folder and create the html to represent the thumbnail table." />
     <MESSAGE value="Started a bit of general re-factoring and cleaning up.  Still quite a lot to do." />
+    <MESSAGE value="[#10] Got automatic thumbnails working and gallery display.  Still need to update screen edit page to allow gallery configuration flag to be set." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1392,11 +1391,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ControllerHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="109" column="98" selection-start="4655" selection-end="4655" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/GalleryManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="35" column="22" selection-start="1068" selection-end="1068" vertical-scroll-proportion="0.0" />
@@ -1412,23 +1406,6 @@
         <state line="27" column="8" selection-start="870" selection-end="870" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/editScreen.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/addScreen.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/editIndex.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/ContextListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="39" column="0" selection-start="1265" selection-end="1265" vertical-scroll-proportion="0.0">
@@ -1438,10 +1415,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/Gallery.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="0" selection-start="3450" selection-end="3450" vertical-scroll-proportion="0.33212996">
+        <state line="90" column="0" selection-start="3450" selection-end="3450" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ControllerHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="146" column="0" selection-start="6482" selection-end="6482" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/addScreen.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="0" selection-start="1897" selection-end="1897" vertical-scroll-proportion="-3.625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/editScreen.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="66" column="0" selection-start="2474" selection-end="2474" vertical-scroll-proportion="-8.708333">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/editIndex.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="0" selection-start="922" selection-end="922" vertical-scroll-proportion="0.33103448">
+          <folding />
         </state>
       </provider>
     </entry>

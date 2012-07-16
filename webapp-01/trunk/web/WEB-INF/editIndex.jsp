@@ -24,13 +24,16 @@
                     Name
                 </td>
                 <td>
-                    Enabled?
-                </td>
-                <td>
                     Short Title
                 </td>
                 <td>
                     Long Title
+                </td>
+                <td>
+                    Enabled?
+                </td>
+                <td>
+                    Gallery?
                 </td>
                 <td>
                     Text
@@ -42,13 +45,16 @@
                         <core:out value="${row.name}" />
                     </td>
                     <td>
-                        <core:out value="${row.enabledFlag ? 'Yes' : 'No'}" />
-                    </td>
-                    <td>
                         <core:out value="${row.screenTitleShort}" />
                     </td>
                     <td>
                         <core:out value="${row.screenTitleLong}" />
+                    </td>
+                    <td>
+                        <core:out value="${row.enabledFlag ? 'Yes' : 'No'}" />
+                    </td>
+                    <td>
+                        <core:out value="${row.galleryFlag ? 'Yes' : 'No'}" />
                     </td>
                     <td>
                         <core:out value="${row.screenContents}" />
