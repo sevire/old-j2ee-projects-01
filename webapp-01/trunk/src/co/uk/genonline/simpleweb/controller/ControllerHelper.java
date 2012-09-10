@@ -2,15 +2,10 @@ package co.uk.genonline.simpleweb.controller;
 
 import co.uk.genonline.simpleweb.model.bean.Screens;
 import co.uk.genonline.simpleweb.web.SessionData;
-import co.uk.genonline.simpleweb.web.WebHelper;
-import co.uk.genonline.simpleweb.web.gallery.GalleryManager;
-import com.petebevin.markdown.MarkdownProcessor;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -46,80 +41,6 @@ public class ControllerHelper extends HelperBase {
         return data;
     }
 
-    protected String editMethod() {
-        Session session = factory.openSession();
-        Criteria criteria = session.createCriteria(Screens.class).add(Restrictions.eq("name", data.getName()));
-        data = (Screens) criteria.uniqueResult();
-/*
-        String query = String.format("from Screens s where s.name = '%s'", data.getName());
-        logger.info("About to execute HQL query : " + query);
-        java.util.List pages = session.createQuery(query).list();
-        Screens result = (Screens)pages.get(0);
-*/
-
-
-
-/*
-        data.setId(((Screens) pages.get(0)).getId());
-        data.setEnabledFlag(((Screens) pages.get(0)).isEnabledFlag());
-        data.setScreenContents(((Screens) pages.get(0)).getScreenContents());
-        data.setScreenTitleLong(((Screens) pages.get(0)).getScreenTitleLong());
-        data.setScreenTitleShort(((Screens) pages.get(0)).getScreenTitleShort());
-        data.setScreenType(((Screens) pages.get(0)).getScreenType());
-*/
-        //request.setAttribute("screenTypes", );
-        return jspLocation("editScreen.jsp");
-    }
-
-    protected String viewMethod() {
-        MarkdownProcessor markdownDecoder = new MarkdownProcessor();
-        Session session = factory.openSession();
-        String query = String.format("from Screens s where s.name = '%s'", data.getName());
-        WebHelper helper = new WebHelper(request, response, factory);
-
-        request.setAttribute("chambersLinkBar", helper.generateLinkBarCategory("Chambers"));
-        request.setAttribute("mistressLinkBar", helper.generateLinkBarCategory("Mistress"));
-        request.setAttribute("homePage", helper.generateHomeLink());
-
-        logger.info("About to execute HQL query : " + query);
-
-        java.util.List pages = session.createQuery(query).list();
-
-        if (pages.size() != 1) {
-            logger.warn(String.format("View page: retrieved <%d> pages for screen <%s>, should be 1",
-                    pages.size(), data.getName()));
-            response.setStatus(404);
-            return jspLocation("error.jsp");
-        }
-
-        if (pages.size() > 0) {
-            Screens screen = (Screens) pages.get(0);
-            logger.info("About to parse page with Markdown");
-            String pageText = screen.getScreenContents();
-            logger.info("Markdown Input text is " + pageText.substring(0, Math.min(39, pageText.length()))+"...");
-            String HTML = markdownDecoder.markdown(pageText);
-            logger.info("Markdown Output HTML is " + HTML.substring(0, Math.min(39, HTML.length()))+"...");
-            data.setScreenContents(HTML);
-            data.setScreenTitleLong(screen.getScreenTitleLong());
-            data.setScreenTitleShort(screen.getScreenTitleShort());
-            if (screen.isEnabledFlag()) {
-                if (screen.isGalleryFlag()) {
-                    logger.info("About to create gallery for the page");
-                    GalleryManager manager = (GalleryManager)request.getServletContext().getAttribute("Galleries");
-                    logger.debug("manager = " + manager);
-                    request.setAttribute("galleryHTML", (manager.getGallery(screen.getName())).getHTML());
-                } else {
-                    request.setAttribute("galleryHTML", "<p>No Gallery</p>");
-                }
-            } else {
-                logger.info(String.format("Screen disabled, treating like non-existent page <%s>", ((Screens) pages.get(0)).isEnabledFlag()));
-                response.setStatus(404);
-                return jspLocation("error.jsp");
-            }
-        }
-        return jspLocation("screen.jsp");
-    }
-
     protected String viewImageMethod() {
         String gallery = request.getParameter("gallery");
         String image = request.getParameter("image");
@@ -127,7 +48,7 @@ public class ControllerHelper extends HelperBase {
         logger.debug(String.format("Displaying image for gallery <%s>, image <%s>, img = <%s>", gallery, image, img));
         request.setAttribute("gallery", gallery);
         request.setAttribute("image", img);
-        return jspLocation("viewImage.jsp");
+        return oldJspLocation("viewImage.jsp");
     }
 
     protected String updateMethod() {
@@ -183,35 +104,6 @@ public class ControllerHelper extends HelperBase {
         return "/editIndex";
     }
 
-    protected String deleteMethod() {
-        String screen = request.getParameter("screen");
-
-        logger.info(String.format("Deleting screen <%s>", screen));
-
-        String query = String.format("from Screens s where s.name = '%s'", screen);
-
-        logger.info("About to execute HQL query : " + query);
-
-        Session session = factory.openSession();
-        java.util.List pages = session.createQuery(query).list();
-        session.delete(((Screens) pages.get(0)));
-        session.flush();
-        return "/editIndex";
-    }
-
-    protected String editIndexMethod() {
-        Session session = factory.openSession();
-        String query = String.format("from Screens s");
-        logger.info("About to execute HQL query : " + query);
-        java.util.List pages = session.createQuery(query).list();
-        for (Object s : pages) {
-            String contents = ((Screens)s).getScreenContents();
-            ((Screens)s).setScreenContents(contents.substring(0, Math.min(39, contents.length()))+"...");
-        }
-        request.setAttribute("editList", pages);
-        return jspLocation("editIndex.jsp");
-    }
-
     protected String cancelMethod() {
         return "/editIndex";
     }
@@ -260,25 +152,31 @@ public class ControllerHelper extends HelperBase {
 
         if (command.equals("/view")) {
             logger.info("view: screen is " + data.getName());
-            address = viewMethod();
+            Action action = new ViewPageAction(request, response, factory, data);
+            address = action.perform();
         } else if (command.equals("/edit")) {
             logger.info("edit: screen is " + data.getName());
-            address = editMethod();
+            Action action = new EditPageAction(request,response, factory, data);
+            address = action.perform();
         } else if (command.equals("/add")) {
-            address = jspLocation("addScreen.jsp");
+            logger.info("add: screen is " + data.getName());
+            Action action = new AddAction(request,response, factory, data);
+            address = action.perform();
         } else if (command.equals("/editIndex")) {
             logger.info("editIndex");
-            address = editIndexMethod();
+            Action action = new EditIndexAction(request,response, factory, data);
+            address = action.perform();
         } else if (command.equals("/delete")) {
-            logger.info("delete");
-            redirectFlag = true;
-            address = deleteMethod();
+            logger.info("delete: screen is " + data.getName());
+            Action action = new DeleteAction(request,response, factory, data);
+            address = action.perform();
+            redirectFlag = true; // ToDo: remove need for this in here
         } else if (command.equals("/viewImage")) {
             logger.info("Gallery View");
             address = viewImageMethod();
         } else {
             logger.error(String.format("DoGet: Didn't recognise request, defaulting to screen view"));
-            address = jspLocation("screen.jsp");
+            address = oldJspLocation("screen.jsp");
             data.setName("Home");
         }
         if (redirectFlag) {
@@ -289,13 +187,14 @@ public class ControllerHelper extends HelperBase {
         }
     }
 
+    protected String oldJspLocation(String page) {
+        return "WEB-INF/" + page;
+    }
+
     public void copyFromSession(Object sessionHelper) {
         if (sessionHelper.getClass() == this.getClass()) {
             data = ((ControllerHelper)sessionHelper).data;
         }
     }
 
-    protected String jspLocation(String page) {
-        return "WEB-INF/" + page;
-    }
 }

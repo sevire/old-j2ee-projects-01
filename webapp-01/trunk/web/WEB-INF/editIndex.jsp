@@ -11,7 +11,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <title>Lucifer's Dark Angel - Edit Index</title>
-    <link rel="stylesheet" href="../css/main.css" type="text/css" media="all" >
+    <link rel="stylesheet" href="css/main.css" type="text/css" media="all" >
 </head>
 <body id='editIndex'>
 <div id='colLeft'></div>

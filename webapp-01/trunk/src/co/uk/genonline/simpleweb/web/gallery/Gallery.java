@@ -88,7 +88,8 @@ public class Gallery {
     }
 
     public String getHTML() {
-        if (html == null) {
+        boolean forceHTML = true;
+        if (forceHTML || html == null) {
             if (!helper.getGalleryFullPathFile(galleryName).isDirectory()) {
                 logger.error(String.format("Gallery path for <%s> isn't a directory, can't generate gallery", helper.getGalleryFullPathFile(galleryName)));
             } else {
