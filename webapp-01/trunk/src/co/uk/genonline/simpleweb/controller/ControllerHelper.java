@@ -4,7 +4,6 @@ import co.uk.genonline.simpleweb.model.bean.Screens;
 import co.uk.genonline.simpleweb.web.SessionData;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import javax.servlet.RequestDispatcher;
@@ -41,69 +40,6 @@ public class ControllerHelper extends HelperBase {
         return data;
     }
 
-    protected String viewImageMethod() {
-        String gallery = request.getParameter("gallery");
-        String image = request.getParameter("image");
-        String img = "/galleries/" + gallery + "/" + request.getParameter("image");
-        logger.debug(String.format("Displaying image for gallery <%s>, image <%s>, img = <%s>", gallery, image, img));
-        request.setAttribute("gallery", gallery);
-        request.setAttribute("image", img);
-        return oldJspLocation("viewImage.jsp");
-    }
-
-    protected String updateMethod() {
-        String screen = request.getParameter("name");
-        logger.info(String.format("Updating screen <%s>", screen));
-        logger.info("Screen contents from form... ");
-        logger.info(request.getParameter("screenContents"));
-        data.setName(screen);
-
-        boolean checked = request.getParameter("enabledFlag") == null ? false : request.getParameter("enabledFlag").equals("Enabled");
-
-        logger.info("Enabled flag is: " + checked);
-        boolean enabledChecked = request.getParameter("enabledFlag") == null ? false : request.getParameter("enabledFlag").equals("Enabled");
-        boolean galleryChecked = request.getParameter("galleryFlag") == null ? false : request.getParameter("galleryFlag").equals("Enabled");
-        data.setEnabledFlag(enabledChecked);
-        data.setGalleryFlag(galleryChecked);
-        data.setScreenContents(request.getParameter("screenContents"));
-        data.setScreenTitleLong(request.getParameter("screenTitleLong"));
-        data.setScreenTitleShort(request.getParameter("screenTitleShort"));
-        data.setScreenType(request.getParameter("screenType"));
-
-        Session session = factory.openSession();
-        logger.info(String.format("About to update data, id is <%d>", data.getId()));
-        logger.info("Contents = ");
-        logger.info(data.getScreenContents());
-        session.update(data);
-        session.flush();
-        return "/editIndex";
-    }
-
-    protected String addMethod() {
-        String screen = request.getParameter("name");
-        logger.info(String.format("Adding screen <%s>", screen));
-        logger.info("Screen contents from form... ");
-        logger.info(request.getParameter("screenContents"));
-        data.setId(0);
-        data.setName(screen);
-        boolean enabledChecked = request.getParameter("enabledFlag") == null ? false : request.getParameter("enabledFlag").equals("Enabled");
-        boolean galleryChecked = request.getParameter("galleryFlag") == null ? false : request.getParameter("galleryFlag").equals("Enabled");
-        data.setEnabledFlag(enabledChecked);
-        data.setGalleryFlag(galleryChecked);
-        data.setScreenContents(request.getParameter("screenContents"));
-        data.setScreenTitleLong(request.getParameter("screenTitleLong"));
-        data.setScreenTitleShort(request.getParameter("screenTitleShort"));
-        data.setScreenType(request.getParameter("screenType"));
-
-        Session session = factory.openSession();
-        logger.info(String.format("About to save data"));
-        logger.info("Contents = ");
-        logger.info(data.getScreenContents());
-        session.save(data);
-        session.flush();
-        return "/editIndex";
-    }
-
     protected String cancelMethod() {
         return "/editIndex";
     }
@@ -117,13 +53,16 @@ public class ControllerHelper extends HelperBase {
         boolean redirectFlag = false;
 
         if (request.getParameter("updateButton") != null) {
-            address = updateMethod();
+            Action action = new UpdateScreenAction(request,response, factory, data);
+            address = action.perform();
             redirectFlag = true;
         } else if (request.getParameter("addButton") != null) {
-            address = addMethod();
+            Action action = new AddScreenAction(request,response, factory, data);
+            address = action.perform();
             redirectFlag = true;
         } else if (request.getParameter("cancelButton") != null) {
-            address = cancelMethod();
+            Action action = new CancelButtonAction(request,response, factory, data);
+            address = action.perform();
             redirectFlag = true;
         } else {
             logger.error(String.format("DoPost1: Didn't recognise request, defaulting to screen view"));
@@ -156,7 +95,7 @@ public class ControllerHelper extends HelperBase {
             address = action.perform();
         } else if (command.equals("/edit")) {
             logger.info("edit: screen is " + data.getName());
-            Action action = new EditPageAction(request,response, factory, data);
+            Action action = new EditScreenAction(request,response, factory, data);
             address = action.perform();
         } else if (command.equals("/add")) {
             logger.info("add: screen is " + data.getName());
@@ -173,7 +112,8 @@ public class ControllerHelper extends HelperBase {
             redirectFlag = true; // ToDo: remove need for this in here
         } else if (command.equals("/viewImage")) {
             logger.info("Gallery View");
-            address = viewImageMethod();
+            Action action = new ViewImageAction(request,response, factory, data);
+            address = action.perform();
         } else {
             logger.error(String.format("DoGet: Didn't recognise request, defaulting to screen view"));
             address = oldJspLocation("screen.jsp");
@@ -196,5 +136,4 @@ public class ControllerHelper extends HelperBase {
             data = ((ControllerHelper)sessionHelper).data;
         }
     }
-
 }

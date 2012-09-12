@@ -5,6 +5,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.BeanUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,16 +17,17 @@ import javax.servlet.http.HttpServletResponse;
  * Time: 08:09
  * To change this template use File | Settings | File Templates.
  */
-public class EditPageAction extends ActionClass {
+public class EditScreenAction extends ActionClass {
 
-    public EditPageAction(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, Screens data) {
+    public EditScreenAction(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, Screens data) {
         super(request, response, factory, data);
     }
 
     public String perform() {
         Session session = factory.openSession();
         Criteria criteria = session.createCriteria(Screens.class).add(Restrictions.eq("name", data.getName()));
-        data = (Screens) criteria.uniqueResult();
+        //data = (Screens) criteria.uniqueResult();
+        BeanUtils.copyProperties(criteria.uniqueResult(), data);
         return jspLocation("editScreen.jsp");
     }
 }
