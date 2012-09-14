@@ -8,8 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="03fdf521-209b-4654-a976-0dbf9d87148b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/AddScreenAction.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/AddScreenAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/editIndex.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/editIndex.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/GalleryManager.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/GalleryManager.java" />
     </list>
     <ignored path="ManchesterGoddesses(java).iws" />
     <ignored path=".idea/workspace.xml" />
@@ -142,10 +141,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="editIndex.jsp" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="editIndex.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/WEB-INF/editIndex.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="73" column="45" selection-start="2297" selection-end="2297" vertical-scroll-proportion="0.89041096">
+            <state line="73" column="45" selection-start="2297" selection-end="2297" vertical-scroll-proportion="-13.541667">
               <folding />
             </state>
           </provider>
@@ -180,37 +179,37 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="GalleryManager.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/GalleryManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="37" column="51" selection-start="1192" selection-end="1192" vertical-scroll-proportion="0.5501285">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Gallery.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/Gallery.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="13" selection-start="452" selection-end="452" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ContextListener.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/ContextListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="13" selection-start="513" selection-end="513" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="AddAction.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/AddAction.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="25" column="0" selection-start="396" selection-end="700" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HelperBase.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/HelperBase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="22" selection-start="540" selection-end="540" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Screens.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/bean/Screens.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="13" selection-start="387" selection-end="387" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UpdateScreenAction.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/UpdateScreenAction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="35" selection-start="1134" selection-end="1134" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -226,7 +225,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ActionClass.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ViewPage.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/EditPage.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/EditIndex.java" />
@@ -242,6 +240,7 @@
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/AddScreenAction.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ControllerHelper.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/editIndex.jsp" />
+        <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/GalleryManager.java" />
       </list>
     </option>
   </component>
@@ -493,6 +492,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="simpleweb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp-01" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp-01(trunk)" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="simpleweb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gallery" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1102,7 +1131,11 @@
       <created>1347433190102</created>
       <updated>1347433190102</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="[#24 state:resolved] Modified editIndex.jsp to remove option to delete a page.  This is in anticipation of going live and ensuring that pages aren't deleted by mistake.  Can us enabled flag to stop pages being displayed and where necessary pages can be deleted through direct database manipulation.">
+      <created>1347615914102</created>
+      <updated>1347615914102</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1198,7 +1231,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="[#16] Have completed this round of re-factoring.  All the methods to process the request strings have been replaced by instantiations of an object (subclass of ActionClass).  A couple of notes:&#10;&#10;- The setting of the redirect flag is still hard coded within the if then else loop in doGet / doPost in ControllerHelper.  I need to delegate this to the ActionClass subClasses.&#10;&#10;- Because I moved the code out of the ControllerHelper the way the data object was populated within the UpdateScreenAction class didn't work because data was passed in.  In fixing this I discovered the BeanUtils class and the populate method.  This has opened a whole new world and has helped to increase my understanding of the way Java Beans work.  I also believe the code is more cohesive and modular now so I am happy this is going in the right direction although there is a long way to go." />
+    <option name="LAST_COMMIT_MESSAGE" value="[#24 state:resolved] Modified editIndex.jsp to remove option to delete a page.  This is in anticipation of going live and ensuring that pages aren't deleted by mistake.  Can us enabled flag to stop pages being displayed and where necessary pages can be deleted through direct database manipulation." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1222,6 +1255,7 @@
     <MESSAGE value="[#10] Updated so gallery flag appears and can be edited (editIndex, add and edit)" />
     <MESSAGE value="[#16] More work on refactoring.  Am replacing the long if then else sequence in doGet and doPost with instantiations of subclasses of ActionClass.  This will simplify the logic and create a more homogeneous approach to dealing with different types of request.  Not sure it is right but I am sure I am moving in the right direction.&#10;&#10;Need to think how I will deal with the fact that some requests result in a redirection - where should this logic be implemented?" />
     <MESSAGE value="[#16] Have completed this round of re-factoring.  All the methods to process the request strings have been replaced by instantiations of an object (subclass of ActionClass).  A couple of notes:&#10;&#10;- The setting of the redirect flag is still hard coded within the if then else loop in doGet / doPost in ControllerHelper.  I need to delegate this to the ActionClass subClasses.&#10;&#10;- Because I moved the code out of the ControllerHelper the way the data object was populated within the UpdateScreenAction class didn't work because data was passed in.  In fixing this I discovered the BeanUtils class and the populate method.  This has opened a whole new world and has helped to increase my understanding of the way Java Beans work.  I also believe the code is more cohesive and modular now so I am happy this is going in the right direction although there is a long way to go." />
+    <MESSAGE value="[#24 state:resolved] Modified editIndex.jsp to remove option to delete a page.  This is in anticipation of going live and ensuring that pages aren't deleted by mistake.  Can us enabled flag to stop pages being displayed and where necessary pages can be deleted through direct database manipulation." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1231,23 +1265,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/error.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="33" selection-start="352" selection-end="352" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/viewImage.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="33" selection-start="450" selection-end="450" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/EditIndexAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="0" selection-start="1229" selection-end="1229" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/DeleteAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="33" column="28" selection-start="1100" selection-end="1100" vertical-scroll-proportion="0.0">
@@ -1320,9 +1337,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ViewPageAction.java">
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/editIndex.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="39" selection-start="2832" selection-end="2832" vertical-scroll-proportion="0.0">
+        <state line="73" column="45" selection-start="2297" selection-end="2297" vertical-scroll-proportion="-13.541667">
           <folding />
         </state>
       </provider>
@@ -1334,9 +1351,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/editIndex.jsp">
+    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/ContextListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="45" selection-start="2297" selection-end="2297" vertical-scroll-proportion="0.89041096">
+        <state line="18" column="13" selection-start="513" selection-end="513" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/Gallery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="13" selection-start="452" selection-end="452" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ViewPageAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="39" selection-start="2832" selection-end="2832" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/GalleryManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="51" selection-start="1192" selection-end="1192" vertical-scroll-proportion="0.5501285">
           <folding />
         </state>
       </provider>

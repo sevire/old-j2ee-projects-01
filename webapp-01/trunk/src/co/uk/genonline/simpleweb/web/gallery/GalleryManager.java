@@ -36,10 +36,6 @@ public class GalleryManager {
                              THUMBNAIL_MAX_DIM,
                              GALLERY_COLUMNS);
         galleries = new HashMap<String, Gallery>();
-
-        // For now add gallery manually for testing
-
-        addGallery("chambers");
     }
 
     public void addGallery(String galleryName) {
@@ -47,7 +43,14 @@ public class GalleryManager {
     }
 
     public Gallery getGallery(String galleryName) {
-        return galleries.get(galleryName);
+        Gallery gallery = galleries.get(galleryName);
+        if (gallery == null) {
+            // This is first call so create gallery
+
+            addGallery(galleryName);
+            gallery = galleries.get(galleryName); // Should always work at this point
+        }
+        return gallery;
     }
 
 
