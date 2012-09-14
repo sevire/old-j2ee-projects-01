@@ -62,9 +62,11 @@
                     <td>
                         <a href="edit?screen=${row.name}">Edit</a>
                     </td>
+<%--
                     <td>
                         <a href="delete?screen=${row.name}">Delete</a>
                     </td>
+--%>
                     <td>
                         <a href="view?screen=${row.name}">View</a>
                     </td>
