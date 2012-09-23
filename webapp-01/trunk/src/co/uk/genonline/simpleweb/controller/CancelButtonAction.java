@@ -20,6 +20,6 @@ public class CancelButtonAction extends ActionClass {
     }
 
     public String perform() {
-        return "/editIndex";
+        return URLwithContext("/editIndex");
     }
 }

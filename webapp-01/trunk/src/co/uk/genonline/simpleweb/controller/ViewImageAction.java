@@ -22,7 +22,7 @@ public class ViewImageAction extends ActionClass {
     public String perform() {
         String gallery = request.getParameter("gallery");
         String image = request.getParameter("image");
-        String img = "/galleries/" + gallery + "/" + request.getParameter("image");
+        String img = "galleries/" + gallery + "/" + request.getParameter("image");
         logger.debug(String.format("Displaying image for gallery <%s>, image <%s>, img = <%s>", gallery, image, img));
         request.setAttribute("gallery", gallery);
         request.setAttribute("image", img);

@@ -38,4 +38,18 @@ abstract class ActionClass implements Action {
     protected String jspLocation(String page) {
         return "WEB-INF/" + page;
     }
+
+    protected String URLwithContext(String URL) {
+        return request.getServletContext().getContextPath() + URL;
+    }
+
+    protected void resetStatusMessage() {
+        request.getSession().setAttribute("statusMessage", "");
+        request.getSession().setAttribute("statusType", "none");
+    }
+
+    protected void setStatusMessage(String message, String type) {
+        request.getSession().setAttribute("statusMessage", message);
+        request.getSession().setAttribute("statusType", type);
+    }
 }

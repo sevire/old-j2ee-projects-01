@@ -33,6 +33,6 @@ public class DeleteAction extends ActionClass {
         java.util.List pages = session.createQuery(query).list();
         session.delete(pages.get(0));
         session.flush();
-        return "/editIndex";
+        return URLwithContext("/editIndex");
     }
 }

@@ -28,8 +28,9 @@ public class ContextListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent event) {
         FileAppender appender = getAppender(event, logPath);
         initLogger(null,appender,Level.ALL);
+        String contextPath = event.getServletContext().getContextPath();
 
-        logger.info("Context invoked");
+        logger.info(String.format("Context invoked, path = %s", contextPath));
         logger.info("Getting session factory...");
 
         SessionFactory factory = HibernateUtil.getSessionFactory();
@@ -42,7 +43,12 @@ public class ContextListener implements ServletContextListener {
 
         logger.debug("Saving gallery root = " + galleryRoot);
 
-        event.getServletContext().setAttribute("Galleries", new GalleryManager(event.getServletContext().getRealPath("/"), galleryRoot));
+        event.getServletContext().setAttribute("Galleries", new GalleryManager(event.getServletContext().getContextPath(), event.getServletContext().getRealPath("/"), galleryRoot));
+
+        // Initialise session level variable for status message and status type used in JSPs to display error messages etc.
+
+        event.getServletContext().setAttribute("statusMessage", "");
+        event.getServletContext().setAttribute("statusType", "none");
     }
 
     public void contextDestroyed(ServletContextEvent event) {

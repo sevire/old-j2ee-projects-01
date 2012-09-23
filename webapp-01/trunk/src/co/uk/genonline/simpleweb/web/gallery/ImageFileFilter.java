@@ -23,6 +23,7 @@ public class ImageFileFilter implements FileFilter {
             String name = file.getName();
             int mid = name.lastIndexOf(".");
             String extension = name.substring(mid+1,name.length());
+            extension = extension.toLowerCase();
             for (String ext : extensionList) {
                 if (ext.equals(extension)) {
                     accept = true;

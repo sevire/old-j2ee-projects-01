@@ -45,7 +45,7 @@ public class WebHelper {
     public String generateLinkBarCategory(String category) {
         String html = "";
         Session session = factory.openSession();
-        String query = String.format("from Screens s where s.screenType = '%s'", category);
+        String query = String.format("from Screens s where s.screenType = '%s' and s.enabledFlag = true", category);
         logger.info("About to execute HQL query : " + query);
         java.util.List pages = session.createQuery(query).list();
         for (Object o : pages) {

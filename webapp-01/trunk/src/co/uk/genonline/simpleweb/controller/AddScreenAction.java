@@ -34,8 +34,15 @@ public class AddScreenAction extends ActionClass {
         logger.info("Contents = ");
         logger.info(data.getScreenContents());
         session.save(data);
-        session.flush();
-        return "/editIndex";
+        resetStatusMessage();
+        try {
+            session.flush();
+        } catch (Exception e) {
+            setStatusMessage(e.getMessage(), "error");
+            // Would like to send back to addScreen but redirect flag is hard coded in controller!
+            // I always knew that would be a problem eventually.
+        }
+        return URLwithContext("/editIndex");
     }
 }
 

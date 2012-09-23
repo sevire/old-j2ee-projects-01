@@ -23,6 +23,7 @@ public class ControllerHelper extends HelperBase {
     protected Screens data;
     Logger logger;
     SessionFactory factory;
+    boolean pageNotFound;
 
     public ControllerHelper(HttpServletRequest request, HttpServletResponse response,
                             SessionFactory factory) {
@@ -40,17 +41,14 @@ public class ControllerHelper extends HelperBase {
         return data;
     }
 
-    protected String cancelMethod() {
-        return "/editIndex";
-    }
-
     protected void doPost()
         throws ServletException, IOException {
 
         addHelperToSession("helper", SessionData.READ);
 
-        String address;
+        String address = null;
         boolean redirectFlag = false;
+        pageNotFound = false;
 
         if (request.getParameter("updateButton") != null) {
             Action action = new UpdateScreenAction(request,response, factory, data);
@@ -65,11 +63,13 @@ public class ControllerHelper extends HelperBase {
             address = action.perform();
             redirectFlag = true;
         } else {
-            logger.error(String.format("DoPost1: Didn't recognise request, defaulting to screen view"));
-            address = "/view?screen=Home";
-            redirectFlag = true;
+            logger.error(String.format("DoPost: Didn't recognise request, displaying error page"));
+            pageNotFound = true;
         }
-        if (redirectFlag) {
+
+        if (pageNotFound || address == null) {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+        } else if (redirectFlag) {
             response.sendRedirect(address);
         } else {
             logger.info("(doPost): Forwarding to " + address);
@@ -86,7 +86,7 @@ public class ControllerHelper extends HelperBase {
 
         data.setName(request.getParameter("screen"));
 
-        String address;
+        String address = null;
         boolean redirectFlag = false;
 
         if (command.equals("/view")) {
@@ -115,20 +115,20 @@ public class ControllerHelper extends HelperBase {
             Action action = new ViewImageAction(request,response, factory, data);
             address = action.perform();
         } else {
-            logger.error(String.format("DoGet: Didn't recognise request, defaulting to screen view"));
-            address = oldJspLocation("screen.jsp");
-            data.setName("Home");
+            logger.error(String.format("DoGet: Didn't recognise request <%s>, display error page", command));
+            pageNotFound = true;
         }
-        if (redirectFlag) {
+
+        if (pageNotFound || address == null) {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+        } else if (redirectFlag) {
+            logger.info("Redirecting to " + address);
             response.sendRedirect(address);
         } else {
+            logger.info("Forwarding to " + address);
             RequestDispatcher dispatcher = request.getRequestDispatcher(address);
             dispatcher.forward(request, response);
         }
-    }
-
-    protected String oldJspLocation(String page) {
-        return "WEB-INF/" + page;
     }
 
     public void copyFromSession(Object sessionHelper) {

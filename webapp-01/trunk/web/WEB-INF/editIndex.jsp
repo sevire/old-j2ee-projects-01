@@ -19,6 +19,9 @@
 <div id='colMiddle'>
     <div>
         <table>
+            <tr class='statusRow ${statusType}'>
+                <td colspan="9">${statusMessage}</td>
+            </tr>
             <tr class='tableHeading'>
                 <td>
                     Name
@@ -28,6 +31,9 @@
                 </td>
                 <td>
                     Long Title
+                </td>
+                <td>
+                    Screen Type
                 </td>
                 <td>
                     Enabled?
@@ -49,6 +55,9 @@
                     </td>
                     <td>
                         <core:out value="${row.screenTitleLong}" />
+                    </td>
+                    <td>
+                        <core:out value="${row.screenType}" />
                     </td>
                     <td>
                         <core:out value="${row.enabledFlag ? 'Yes' : 'No'}" />
@@ -73,7 +82,7 @@
                 </tr>
             </core:forEach>
             <tr>
-            <td colspan="5"></td>
+            <td colspan="7"></td>
                 <td>
                     <a href="add">Add</a>
                  </td>

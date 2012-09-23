@@ -135,6 +135,10 @@
             font-size: 75%;
             line-height: 20px;
         }
+
+        img.imageTop {
+            height: 250px;
+        }
         
         div#pageText h1, div#pageText h2, div#pageText h3 {
             font-family: sans-serif;
@@ -202,6 +206,30 @@
 
         div#editForm col.label {
             min-width: 150px;
+        }
+
+        table tr.statusRow {
+            font-size: 120%;
+        }
+
+        table tr.statusRow.none {
+            background-color: transparent;
+            color: white;
+        }
+
+        table tr.statusRow.info {
+            background-color: #46b144;
+            color: #063f05;
+        }
+
+        table tr.statusRow.error {
+            background-color: #ff706b;
+            color: #6f0e0b;
+        }
+
+        table tr.statusRow.warning {
+            background-color: #ff8e3a;
+            color: #5d3317;
         }
 
         body#editIndex table td {

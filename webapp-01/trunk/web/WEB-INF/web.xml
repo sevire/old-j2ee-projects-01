@@ -9,18 +9,10 @@
             co.uk.genonline.simpleweb.web.ContextListener
         </listener-class>
     </listener>
-    <context-param>
-        <param-name>dbName</param-name>
-        <param-value>LDA_DEV</param-value>
-    </context-param>
-    <context-param>
-        <param-name>dbUser</param-name>
-        <param-value>root</param-value>
-    </context-param>
-    <context-param>
-        <param-name>dbPassword</param-name>
-        <param-value>EMPTY</param-value>
-    </context-param>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/error.jsp</location>
+    </error-page>
     <context-param>
         <param-name>homePage</param-name>
         <param-value>lucina</param-value>
@@ -56,7 +48,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>
-        <url-pattern>/view</url-pattern>
+        <url-pattern>/Controller.do</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>
@@ -64,7 +56,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>
-        <url-pattern>/edit</url-pattern>
+        <url-pattern>/view</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>
@@ -72,11 +64,11 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>
-        <url-pattern>/delete</url-pattern>
+        <url-pattern>/edit</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>
-        <url-pattern>/Controller.do</url-pattern>
+        <url-pattern>/delete</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>

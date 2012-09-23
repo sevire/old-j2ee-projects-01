@@ -20,6 +20,9 @@
         <label for="editScreen">Screen Details</label>
         <form id="editScreen" method="post" action='Controller.do'>
             <table>
+                <tr class='statusRow ${statusType}'>
+                    <td colspan="2">${statusMessage}</td>
+                </tr>
                 <col class='label'/>
                 <tr>
                     <td>

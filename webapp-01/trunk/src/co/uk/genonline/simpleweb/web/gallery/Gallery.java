@@ -88,7 +88,7 @@ public class Gallery {
     }
 
     public String getHTML() {
-        boolean forceHTML = true;
+        boolean forceHTML = true; // True to force HTML when when running in debugger
         if (forceHTML || html == null) {
             if (!helper.getGalleryFullPathFile(galleryName).isDirectory()) {
                 logger.error(String.format("Gallery path for <%s> isn't a directory, can't generate gallery", helper.getGalleryFullPathFile(galleryName)));
@@ -98,6 +98,7 @@ public class Gallery {
                 File list[] = helper.getGalleryFullPathFile(galleryName).listFiles(filter);
 
                 html = String.format("<table class='gallery'>%n");
+                imagesAdded = 0;
 
                 for (File file : list) {
                     logger.info(String.format("Processing file <%s> within gallery <%s>", file, galleryName));
@@ -127,8 +128,14 @@ public class Gallery {
 
         // add this image as td element
 
-        String img = String.format("<img src='%s' />%n", getHTMLRelPath(galleryName + File.separator + helper.getThumbnailRelPath() + File.separator + imageName));
-        String anchor = String.format("<a href='/viewImage?gallery=%s&image=%s'>%s</a>%n", galleryName, imageName, img);
+        String imgPath = galleryName + File.separator + helper.getThumbnailRelPath() + File.separator + imageName;
+        String imgSrc = getHTMLRelPath(imgPath);
+        logger.trace(String.format("Image source is <%s>", imgSrc));
+
+        String img = String.format("<img src='%s' />%n", imgSrc);
+
+        String anchor = String.format("<a href='%s/viewImage?gallery=%s&image=%s'>%s</a>%n",
+                helper.getContextPath(), galleryName, imageName, img);
 
         html += String.format("<td>%n%s</td>%n", anchor);
         imagesAdded++;

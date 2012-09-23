@@ -16,6 +16,7 @@ public class GalleryManager {
     private static final int THUMBNAIL_MAX_DIM = 130;
     private static final int GALLERY_COLUMNS = 4;
 
+
     private GalleryHelper helper;
 
     private Map<String, Gallery> galleries;
@@ -28,8 +29,9 @@ public class GalleryManager {
     private String galleryRoot;
 */
 
-    public GalleryManager(String webRoot, String galleryRelPath) {
+    public GalleryManager(String contextPath, String webRoot, String galleryRelPath) {
         helper = new GalleryHelper(new File(webRoot),
+                             contextPath,
                              galleryRelPath,
                              THUMBNAIL_RELPATH,
                              THUMBNAIL_MAX_DIM,

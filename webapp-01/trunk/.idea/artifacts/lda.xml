@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="lda">
+    <output-path>$PROJECT_DIR$/out/artifacts/lda-war</output-path>
+    <root id="archive" name="lda.war">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="artifact" artifact-name="WebappModule-01:war exploded" />
+    </root>
+  </artifact>
+</component>

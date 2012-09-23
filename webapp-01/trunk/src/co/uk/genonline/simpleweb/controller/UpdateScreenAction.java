@@ -45,6 +45,6 @@ public class UpdateScreenAction extends ActionClass {
         logger.info(data.getScreenContents());
         session.update(data);
         session.flush();
-        return "/editIndex";
+        return URLwithContext("/editIndex");
     }
 }
