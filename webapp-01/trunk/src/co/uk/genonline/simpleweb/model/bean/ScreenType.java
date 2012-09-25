@@ -1,8 +1,6 @@
 package co.uk.genonline.simpleweb.model.bean;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,12 +9,12 @@ import javax.persistence.Id;
  * Time: 12:41
  * To change this template use File | Settings | File Templates.
  */
-@javax.persistence.Table(name = "screen_type", schema = "", catalog = "LDA_DEV")
+@Table(name = "Screen_type", schema = "", catalog = "lda_dev")
 @Entity
 public class ScreenType {
     private int id;
 
-    @javax.persistence.Column(name = "id")
+    @Column(name = "id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
     @Id
     public int getId() {
         return id;
@@ -28,7 +26,7 @@ public class ScreenType {
 
     private String category;
 
-    @javax.persistence.Column(name = "category")
+    @Column(name = "category", nullable = false, insertable = true, updatable = true, length = 45, precision = 0)
     @Basic
     public String getCategory() {
         return category;

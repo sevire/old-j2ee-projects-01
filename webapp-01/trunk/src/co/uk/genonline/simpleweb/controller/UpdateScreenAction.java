@@ -23,9 +23,10 @@ public class UpdateScreenAction extends ActionClass {
     public RequestResult perform() {
         String screen = request.getParameter("name");
         logger.info(String.format("Updating screen <%s>", screen));
-        logger.info("Screen contents from form... ");
-        logger.info(request.getParameter("screenContents"));
+        logger.debug("Screen contents from form... ");
+        logger.debug(request.getParameter("screenContents"));
         data.setName(screen);
+        data.setSortKey(Integer.parseInt(request.getParameter("sortKey")));
 
         boolean checked = request.getParameter("enabledFlag") == null ? false : request.getParameter("enabledFlag").equals("Enabled");
 

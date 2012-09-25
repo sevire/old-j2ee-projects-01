@@ -185,4 +185,16 @@ public class Screens {
     public void setGalleryFlag(boolean galleryFlag) {
         this.galleryFlag = galleryFlag;
     }
+
+    private int sortKey;
+
+    @Column(name = "SortKey", nullable = true, insertable = true, updatable = true, length = 10, precision = 0)
+    @Basic
+    public int getSortKey() {
+        return sortKey;
+    }
+
+    public void setSortKey(int sortKey) {
+        this.sortKey = sortKey;
+    }
 }

@@ -7,21 +7,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="03fdf521-209b-4654-a976-0dbf9d87148b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/RequestResult.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/RequestStatus.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/Action.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/Action.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ActionClass.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ActionClass.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/AddAction.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/AddAction.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/AddScreenAction.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/AddScreenAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/CancelButtonAction.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/CancelButtonAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ControllerHelper.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ControllerHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/DeleteAction.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/DeleteAction.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/EditIndexAction.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/EditIndexAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/EditScreenAction.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/EditScreenAction.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/UpdateScreenAction.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/UpdateScreenAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ViewImageAction.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ViewImageAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ViewPageAction.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ViewPageAction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/bean/ScreenType.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/bean/ScreenType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/bean/Screens.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/bean/Screens.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/WebHelper.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/WebHelper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/addScreen.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/addScreen.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/editIndex.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/editIndex.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/editScreen.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/editScreen.jsp" />
@@ -139,84 +134,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AddScreenAction.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/AddScreenAction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="0" selection-start="2098" selection-end="2164" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AddAction.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/AddAction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="69" selection-start="723" selection-end="723" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EditScreenAction.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/EditScreenAction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="0" selection-start="979" selection-end="979" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="EditIndexAction.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/EditIndexAction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="16" selection-start="1285" selection-end="1285" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RequestStatus.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/RequestStatus.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="0" selection-start="381" selection-end="381" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="editIndex.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/editIndex.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="106" selection-start="700" selection-end="770" vertical-scroll-proportion="-6.875">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UpdateScreenAction.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/UpdateScreenAction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="81" selection-start="1867" selection-end="1867" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="editScreen.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/editScreen.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="46" selection-start="3595" selection-end="3595" vertical-scroll-proportion="-9.375">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ControllerHelper.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ControllerHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="23" selection-start="878" selection-end="878" vertical-scroll-proportion="-0.8898305">
+            <state line="24" column="81" selection-start="826" selection-end="826" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -225,7 +146,81 @@
       <file leaf-file-name="addScreen.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/WEB-INF/addScreen.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="60" selection-start="1125" selection-end="1125" vertical-scroll-proportion="-9.375">
+            <state line="40" column="56" selection-start="1483" selection-end="1483" vertical-scroll-proportion="-4.375">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UpdateScreenAction.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/UpdateScreenAction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="0" selection-start="971" selection-end="1047" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActionClass.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ActionClass.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="27" column="34" selection-start="881" selection-end="881" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="editScreen.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/editScreen.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="86" selection-start="1590" selection-end="1590" vertical-scroll-proportion="-6.25">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ControllerHelper.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ControllerHelper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="28" column="23" selection-start="878" selection-end="878" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddScreenAction.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/AddScreenAction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="28" column="0" selection-start="1119" selection-end="1119" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WebHelper.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/WebHelper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="47" column="109" selection-start="1640" selection-end="1640" vertical-scroll-proportion="0.40677965">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Screens.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/bean/Screens.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="13" selection-start="387" selection-end="387" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="editIndex.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/editIndex.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="91" column="26" selection-start="3030" selection-end="3030" vertical-scroll-proportion="-8.125">
               <folding />
             </state>
           </provider>
@@ -241,22 +236,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/DeleteAction.java" />
-        <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/CancelButtonAction.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ViewImageAction.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ViewPageAction.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ManageRequestStatus.java" />
-        <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ActionClass.java" />
-        <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/AddScreenAction.java" />
-        <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/UpdateScreenAction.java" />
         <option value="$PROJECT_DIR$/src/hibernate.cfg.xml" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/editIndex.jsp" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/editScreen.jsp" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/addScreen.jsp" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/EditScreenAction.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/RequestStatus.java" />
-        <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/EditIndexAction.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ControllerHelper.java" />
+        <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/bean/Screens.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/editIndex.jsp" />
+        <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/EditIndexAction.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/addScreen.jsp" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/editScreen.jsp" />
+        <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ActionClass.java" />
+        <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/UpdateScreenAction.java" />
+        <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/AddScreenAction.java" />
+        <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/WebHelper.java" />
       </list>
     </option>
   </component>
@@ -512,16 +507,16 @@
       <recent name="co.uk.genonline.simpleweb.web" />
       <recent name="co.uk.genonline.simpleweb.model" />
     </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="co.uk.genonline.simpleweb.model.image" />
+    <key name="ImportMappingsDialog.RecentPackages">
+      <recent name="co.uk.genonline.simpleweb.model.bean" />
+      <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/web/WEB-INF" />
       <recent name="$PROJECT_DIR$/web" />
     </key>
-    <key name="ImportMappingsDialog.RecentPackages">
-      <recent name="co.uk.genonline.simpleweb.model.bean" />
-      <recent name="" />
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="co.uk.genonline.simpleweb.model.image" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.lda">
@@ -981,7 +976,11 @@
       <created>1348431151141</created>
       <updated>1348431151141</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="[#32] Lots of changes relating to this ticket.  See previous notes for details on changes.">
+      <created>1348558964102</created>
+      <updated>1348558964103</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1006,12 +1005,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="774" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.6967841" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32924962" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.6707504" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32924962" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31118315" sideWeight="0.20826952" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34035656" sideWeight="0.41653904" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959481" sideWeight="0.6707504" order="6" side_tool="false" content_ui="tabs" />
@@ -1077,7 +1076,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="This is a big commit as I haven't been committing as I go which I should have.  A number of tickets under the User Acceptance Testing Milestone are fixed here.  The code isn't working as I am still in the process of fixing the duplicate screen name issue." />
+    <option name="LAST_COMMIT_MESSAGE" value="[#36] Fairly basic solution  - just added a sort index column manually updated and sort editIndex and linkbars with it.  Was a relatively easy change - the hardest bit was remembering how to add a column to a database and then re-generated the JavaBean / hibernated code to encapsulate it." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1104,6 +1103,8 @@
     <MESSAGE value="[#24 state:resolved] Modified editIndex.jsp to remove option to delete a page.  This is in anticipation of going live and ensuring that pages aren't deleted by mistake.  Can us enabled flag to stop pages being displayed and where necessary pages can be deleted through direct database manipulation." />
     <MESSAGE value="[#19 state:resolved] As it turned out this was a different error from what I thought.  The creation of galleries wasn't in the code, there was just a single creation of the chambers gallery which I had put in for test purposes.  I fixed by changing the logic so that when trying to get a gallery for the first time it is created then.  This seems to work but will do more rigorous testing as part of full testing ticket." />
     <MESSAGE value="This is a big commit as I haven't been committing as I go which I should have.  A number of tickets under the User Acceptance Testing Milestone are fixed here.  The code isn't working as I am still in the process of fixing the duplicate screen name issue." />
+    <MESSAGE value="[#32] Lots of changes relating to this ticket.  See previous notes for details on changes." />
+    <MESSAGE value="[#36] Fairly basic solution  - just added a sort index column manually updated and sort editIndex and linkbars with it.  Was a relatively easy change - the hardest bit was remembering how to add a column to a database and then re-generated the JavaBean / hibernated code to encapsulate it." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1113,20 +1114,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/HibernateUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="297" selection-end="297" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/hibernate-commons-annotations-4.0.1.Final.jar!/org/hibernate/annotations/common/util/impl/Log.i18n.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/hibernate.cfg.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="0" selection-start="195" selection-end="195" vertical-scroll-proportion="0.0">
@@ -1141,37 +1128,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ActionClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="8" selection-start="1080" selection-end="1080" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/CancelButtonAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="13" selection-start="409" selection-end="409" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/editIndex.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="106" selection-start="700" selection-end="770" vertical-scroll-proportion="-6.875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/addScreen.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="60" selection-start="1125" selection-end="1125" vertical-scroll-proportion="-9.375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/AddScreenAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="0" selection-start="2098" selection-end="2164" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1190,13 +1149,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/editScreen.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="46" selection-start="3595" selection-end="3595" vertical-scroll-proportion="-9.375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/RequestStatus.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="0" selection-start="381" selection-end="381" vertical-scroll-proportion="0.0">
@@ -1204,25 +1156,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/EditIndexAction.java">
+    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/bean/Screens.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="16" selection-start="1285" selection-end="1285" vertical-scroll-proportion="0.0">
+        <state line="16" column="13" selection-start="387" selection-end="387" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/editIndex.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="91" column="26" selection-start="3030" selection-end="3030" vertical-scroll-proportion="-8.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/addScreen.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="56" selection-start="1483" selection-end="1483" vertical-scroll-proportion="-4.375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ControllerHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="23" selection-start="878" selection-end="878" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/editScreen.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="86" selection-start="1590" selection-end="1590" vertical-scroll-proportion="-6.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ActionClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="34" selection-start="881" selection-end="881" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/UpdateScreenAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="81" selection-start="1867" selection-end="1867" vertical-scroll-proportion="0.0">
+        <state line="29" column="0" selection-start="971" selection-end="1047" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ControllerHelper.java">
+    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/AddScreenAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="23" selection-start="878" selection-end="878" vertical-scroll-proportion="-0.8898305">
+        <state line="28" column="0" selection-start="1119" selection-end="1119" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/EditIndexAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="81" selection-start="826" selection-end="826" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/WebHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="109" selection-start="1640" selection-end="1640" vertical-scroll-proportion="0.40677965">
           <folding />
         </state>
       </provider>

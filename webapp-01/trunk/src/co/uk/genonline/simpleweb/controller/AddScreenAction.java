@@ -25,6 +25,7 @@ public class AddScreenAction extends ActionClass {
             logger.info(request.getParameter("screenContents"));
             data.setId(0);
             data.setName(screen);
+            data.setSortKey(Integer.parseInt(request.getParameter("sortKey")));
             boolean enabledChecked = request.getParameter("enabledFlag") == null ? false : request.getParameter("enabledFlag").equals("Enabled");
             boolean galleryChecked = request.getParameter("galleryFlag") == null ? false : request.getParameter("galleryFlag").equals("Enabled");
             data.setEnabledFlag(enabledChecked);

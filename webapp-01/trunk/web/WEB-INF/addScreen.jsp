@@ -33,6 +33,14 @@
                         <input type='text' name='name'>
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        <label>Sort Key:</label>
+                    </td>
+                    <td>
+                        <input type='text' name='sortKey'>
+                    </td>
+                </tr>
                 <tr><td>
                     <input type='hidden' name='oldScreenName'>
                 </td></tr>

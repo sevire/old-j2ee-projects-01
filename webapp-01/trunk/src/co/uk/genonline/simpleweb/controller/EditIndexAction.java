@@ -22,7 +22,7 @@ public class EditIndexAction extends ActionClass {
 
     public RequestResult perform() {
         Session session = factory.openSession();
-        String query = String.format("from Screens s order by screenType");
+        String query = String.format("from Screens s order by screenType, sortKey");
         logger.info("About to execute HQL query : " + query);
         java.util.List pages = session.createQuery(query).list();
         if (pages == null) {

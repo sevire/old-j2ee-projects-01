@@ -3,26 +3,22 @@
     <extra-name-characters>#@</extra-name-characters>
     <identifier-quote-string>`</identifier-quote-string>
     <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-    <jdbc-url>jdbc:mysql://localhost:3306/LDA_DEV</jdbc-url>
+    <jdbc-url>jdbc:mysql://localhost:3306/lda_dev</jdbc-url>
     <user-name>root</user-name>
-    <schema-pattern>LDA_DEV.*</schema-pattern>
+    <user-password>dfe5dfe9df9ddfebdfcbdffddfe9df9ddf9ddfe8</user-password>
+    <schema-pattern>lda_dev.*</schema-pattern>
+    <default-dialect>MySQL</default-dialect>
     <libraries>
       <library>
         <url>jar:///Library/Java/Extensions/Mysql/mysql-connector-java-5.1.20/mysql-connector-java-5.1.20-bin.jar!/</url>
       </library>
     </libraries>
-    <table name="quotes" schema="" catalog="LDA_DEV" type="TABLE">
-      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true" />
-      <column name="quoteText" sqlType="TEXT" length="65535" precision="0" nullable="true" jdbcType="-1" />
-      <column name="quoteSource" sqlType="CHAR" length="20" precision="0" nullable="true" jdbcType="1" />
-      <primary-key name="PRIMARY" columns="id" />
-    </table>
-    <table name="screen_type" schema="" catalog="LDA_DEV" type="TABLE">
+    <table name="Screen_type" schema="" catalog="lda_dev" type="TABLE">
       <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true" />
       <column name="category" sqlType="VARCHAR" length="45" precision="0" nullable="false" jdbcType="12" />
       <primary-key name="PRIMARY" columns="id" />
     </table>
-    <table name="screens" schema="" catalog="LDA_DEV" type="TABLE">
+    <table name="screens" schema="" catalog="lda_dev" type="TABLE">
       <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true" />
       <column name="parent_id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" def="MA==" />
       <column name="name" sqlType="CHAR" length="20" precision="0" nullable="true" jdbcType="1" />
@@ -34,7 +30,9 @@
       <column name="created" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
       <column name="modified" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93" />
       <column name="ScreenType" sqlType="VARCHAR" length="45" precision="0" nullable="false" jdbcType="12" />
+      <column name="SortKey" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4" />
       <primary-key name="PRIMARY" columns="id" />
+      <index name="BK_unique_name" unique="true" columns="name" />
       <index name="FK_index01" unique="false" columns="parent_id" />
     </table>
   </data-source>

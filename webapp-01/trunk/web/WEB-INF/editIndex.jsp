@@ -28,6 +28,9 @@
                     Name
                 </td>
                 <td>
+                    Sort Key
+                </td>
+                <td>
                     Short Title
                 </td>
                 <td>
@@ -50,6 +53,9 @@
                 <tr>
                     <td>
                         <core:out value="${row.name}" />
+                    </td>
+                    <td>
+                        <core:out value="${row.sortKey}" />
                     </td>
                     <td>
                         <core:out value="${row.screenTitleShort}" />
@@ -83,7 +89,7 @@
                 </tr>
             </core:forEach>
             <tr>
-            <td colspan="7"></td>
+            <td colspan="8"></td>
                 <td>
                     <a href="add">Add</a>
                  </td>

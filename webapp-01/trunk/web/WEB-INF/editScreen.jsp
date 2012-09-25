@@ -35,6 +35,14 @@
                 </tr>
                 <tr>
                     <td>
+                        <label>Sort Key:</label>
+                    </td>
+                    <td>
+                        <input type='text' name='sortKey' value="${helper.data.sortKey}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <label>Screen Title Short:</label>
                     </td>
                     <td>
