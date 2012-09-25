@@ -1,3 +1,4 @@
+<%@ page import="co.uk.genonline.simpleweb.controller.RequestStatus" %>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -19,8 +20,8 @@
 <div id='colMiddle'>
     <div>
         <table>
-            <tr class='statusRow ${statusType}'>
-                <td colspan="9">${statusMessage}</td>
+            <tr class='statusRow <%=((RequestStatus)session.getAttribute("requestStatus")).getStatusType()%>'>
+                <td colspan="9"><%=((RequestStatus)session.getAttribute("requestStatus")).getStatusMessage()%></td>
             </tr>
             <tr class='tableHeading'>
                 <td>

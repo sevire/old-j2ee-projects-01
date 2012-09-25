@@ -20,7 +20,7 @@ public class DeleteAction extends ActionClass {
         super(request, response, factory, data);
     }
 
-    public String perform() {
+    public RequestResult perform() {
         String screen = request.getParameter("screen");
 
         logger.info(String.format("Deleting screen <%s>", screen));
@@ -33,6 +33,6 @@ public class DeleteAction extends ActionClass {
         java.util.List pages = session.createQuery(query).list();
         session.delete(pages.get(0));
         session.flush();
-        return URLwithContext("/editIndex");
+        return new RequestResult(URLwithContext("/editIndex"), true);
     }
 }

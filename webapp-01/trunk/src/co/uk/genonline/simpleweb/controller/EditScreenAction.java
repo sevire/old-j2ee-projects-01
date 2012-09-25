@@ -23,11 +23,10 @@ public class EditScreenAction extends ActionClass {
         super(request, response, factory, data);
     }
 
-    public String perform() {
+    public RequestResult perform() {
         Session session = factory.openSession();
         Criteria criteria = session.createCriteria(Screens.class).add(Restrictions.eq("name", data.getName()));
-        //data = (Screens) criteria.uniqueResult();
         BeanUtils.copyProperties(criteria.uniqueResult(), data);
-        return jspLocation("editScreen.jsp");
+        return new RequestResult(jspLocation("editScreen.jsp"), false);
     }
 }

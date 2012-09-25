@@ -19,13 +19,13 @@ public class ViewImageAction extends ActionClass {
         super(request, response, factory, data);
     }
 
-    public String perform() {
+    public RequestResult perform() {
         String gallery = request.getParameter("gallery");
         String image = request.getParameter("image");
         String img = "galleries/" + gallery + "/" + request.getParameter("image");
         logger.debug(String.format("Displaying image for gallery <%s>, image <%s>, img = <%s>", gallery, image, img));
         request.setAttribute("gallery", gallery);
         request.setAttribute("image", img);
-        return jspLocation("viewImage.jsp");
+        return new RequestResult(jspLocation("viewImage.jsp"), false);
     }
 }

@@ -19,7 +19,7 @@ public class AddAction extends ActionClass {
         super(request, response, factory, data);
     }
 
-    public String perform() {
-        return jspLocation("addScreen.jsp");
+    public RequestResult perform() {
+        return new RequestResult(jspLocation("addScreen.jsp"), false);
     }
 }

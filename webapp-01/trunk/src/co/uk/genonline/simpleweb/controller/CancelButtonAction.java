@@ -19,7 +19,7 @@ public class CancelButtonAction extends ActionClass {
         super(request, response, factory, data);
     }
 
-    public String perform() {
-        return URLwithContext("/editIndex");
+    public RequestResult perform() {
+        return new RequestResult(URLwithContext("/editIndex"), true);
     }
 }

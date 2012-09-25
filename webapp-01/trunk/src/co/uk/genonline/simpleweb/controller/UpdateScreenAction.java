@@ -20,7 +20,7 @@ public class UpdateScreenAction extends ActionClass {
         super(request, response, factory, data);
     }
 
-    public String perform() {
+    public RequestResult perform() {
         String screen = request.getParameter("name");
         logger.info(String.format("Updating screen <%s>", screen));
         logger.info("Screen contents from form... ");
@@ -44,7 +44,13 @@ public class UpdateScreenAction extends ActionClass {
         logger.info("Contents = ");
         logger.info(data.getScreenContents());
         session.update(data);
-        session.flush();
-        return URLwithContext("/editIndex");
+        try {
+            session.flush();
+        } catch (Exception e) {
+            status.setStatusMessage(e.getMessage(), "error");
+            return new RequestResult(jspLocation("editScreen.jsp"), false);
+        }
+        status.setStatusMessage("Screen updated", "info");
+        return new RequestResult(URLwithContext("/editIndex"), true);
     }
 }

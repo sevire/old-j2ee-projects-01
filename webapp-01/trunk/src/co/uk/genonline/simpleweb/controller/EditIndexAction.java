@@ -20,22 +20,19 @@ public class EditIndexAction extends ActionClass {
         super(request, response, factory, data);
     }
 
-    public String perform() {
-        String statusType;
-        String statusMessage;
+    public RequestResult perform() {
         Session session = factory.openSession();
         String query = String.format("from Screens s order by screenType");
         logger.info("About to execute HQL query : " + query);
         java.util.List pages = session.createQuery(query).list();
         if (pages == null) {
-            statusType = "error";
-            statusMessage = "Error while getting page list";
+            status.setStatusMessage("Error while getting page list", "error");
         } else if (pages.isEmpty()) {
-            statusType = "warning";
-            statusMessage = "No pages currently set up - click 'add' to create new page";
+            status.setStatusMessage("No pages currently set up - click 'add' to create new page", "warning");
         } else {
-            statusType = "info";
-            statusMessage = "OK";
+            if (status.isMessageDisplayed()) {
+                status.resetStatusMessage();
+            }
         }
         for (Object s : pages) {
             String contents = ((Screens)s).getScreenContents();
@@ -44,6 +41,6 @@ public class EditIndexAction extends ActionClass {
         request.setAttribute("editList", pages);
         request.setAttribute("statusType", request.getSession().getAttribute("statusType"));
         request.setAttribute("statusMessage", request.getSession().getAttribute("statusMessage"));
-        return jspLocation("editIndex.jsp");
+        return new RequestResult(jspLocation("editIndex.jsp"), false);
     }
 }

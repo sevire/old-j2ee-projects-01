@@ -23,7 +23,7 @@ public class ViewPageAction extends ActionClass {
         super(request, response, factory, data);
     }
 
-    public String perform() {
+    public RequestResult perform() {
         MarkdownProcessor markdownDecoder = new MarkdownProcessor();
         Session session = factory.openSession();
         String query = String.format("from Screens s where s.name = '%s'", data.getName());
@@ -41,7 +41,7 @@ public class ViewPageAction extends ActionClass {
             logger.warn(String.format("View page: retrieved <%d> pages for screen <%s>, should be 1",
                     pages.size(), data.getName()));
             response.setStatus(404);
-            return jspLocation("error.jsp");
+            return new RequestResult(jspLocation("error.jsp"), false);
         }
 
         if (pages.size() > 0) {
@@ -67,10 +67,10 @@ public class ViewPageAction extends ActionClass {
             } else {
                 logger.info(String.format("Screen disabled, treating like non-existent page <%s>", ((Screens) pages.get(0)).isEnabledFlag()));
                 response.setStatus(404);
-                return jspLocation("error.jsp");
+                return new RequestResult(jspLocation("error.jsp"),false);
             }
         }
-        return jspLocation("screen.jsp");
+        return new RequestResult(jspLocation("screen.jsp"), false);
 
     }
 }

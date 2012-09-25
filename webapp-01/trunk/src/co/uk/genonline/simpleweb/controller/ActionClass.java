@@ -21,6 +21,7 @@ abstract class ActionClass implements Action {
     HttpServletResponse response;
     SessionFactory factory;
     Screens data;
+    RequestStatus status;
 
     public ActionClass(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, Screens data) {
         logger = Logger.getLogger(this.getClass().getName());
@@ -31,6 +32,8 @@ abstract class ActionClass implements Action {
         this.response = response;
         this.factory = factory;
         this.data = data;
+
+        status = (RequestStatus) this.request.getSession().getAttribute("requestStatus");
     }
 
     public ActionClass() {}
@@ -41,15 +44,5 @@ abstract class ActionClass implements Action {
 
     protected String URLwithContext(String URL) {
         return request.getServletContext().getContextPath() + URL;
-    }
-
-    protected void resetStatusMessage() {
-        request.getSession().setAttribute("statusMessage", "");
-        request.getSession().setAttribute("statusType", "none");
-    }
-
-    protected void setStatusMessage(String message, String type) {
-        request.getSession().setAttribute("statusMessage", message);
-        request.getSession().setAttribute("statusType", type);
     }
 }

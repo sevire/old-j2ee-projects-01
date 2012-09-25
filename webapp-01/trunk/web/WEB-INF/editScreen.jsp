@@ -1,3 +1,4 @@
+<%@ page import="co.uk.genonline.simpleweb.controller.RequestStatus" %>
 <%--
   Created by IntelliJ IDEA.
   User: thomassecondary
@@ -20,9 +21,9 @@
         <label for="editScreen">Screen Details</label>
         <form id="editScreen" method="post" action='Controller.do'>
             <table>
-                <tr class='statusRow ${statusType}'>
-                    <td colspan="2">${statusMessage}</td>
-                </tr>
+                <tr class='statusRow <%=((RequestStatus)session.getAttribute("requestStatus")).getStatusType()%>'>
+                                  <td colspan="2"><%=((RequestStatus)session.getAttribute("requestStatus")).getStatusMessage()%></td>
+                              </tr>
                 <col class='label'/>
                 <tr>
                     <td>
