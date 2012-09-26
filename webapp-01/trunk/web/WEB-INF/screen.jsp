@@ -22,8 +22,8 @@
 <div id='colMiddle'>
     <div class='header'>
         <ul><li class='headerLink'>${homePage}</li></ul>
-        ${chambersLinkBar}
         ${mistressLinkBar}
+        ${chambersLinkBar}
         <ul><li class='headerLink'><a href="http://groups.yahoo.com/group/lucifersdarkangel/">YAHOO!&nbsp;GROUP</a></li></ul>
     </div>
     <div id="pageText">

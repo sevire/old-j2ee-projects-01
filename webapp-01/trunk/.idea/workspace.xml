@@ -8,7 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="03fdf521-209b-4654-a976-0dbf9d87148b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/main.css" afterPath="$PROJECT_DIR$/web/css/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/screen.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/screen.jsp" />
     </list>
     <ignored path="ManchesterGoddesses(java).iws" />
     <ignored path=".idea/workspace.xml" />
@@ -197,19 +197,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="main.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="426" selection-end="426" vertical-scroll-proportion="0.73913044">
+            <state line="17" column="0" selection-start="426" selection-end="426" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="screen.jsp" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="screen.jsp" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/WEB-INF/screen.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+            <state line="36" column="45" selection-start="1086" selection-end="1086" vertical-scroll-proportion="0.5616883">
               <folding />
             </state>
           </provider>
@@ -225,7 +225,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ViewPageAction.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ManageRequestStatus.java" />
         <option value="$PROJECT_DIR$/src/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/EditScreenAction.java" />
@@ -241,6 +240,7 @@
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/AddScreenAction.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/WebHelper.java" />
         <option value="$PROJECT_DIR$/web/css/main.css" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/screen.jsp" />
       </list>
     </option>
   </component>
@@ -929,7 +929,11 @@
       <created>1348612290102</created>
       <updated>1348612290102</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="[#44 state:retest] Easy fix to main.css.  I had copied across the css from live site but had changed markup so that the class headerLink was an attribute of the `li` element not the `a` element.  Just changed the specifier to take this into account.">
+      <created>1348641915101</created>
+      <updated>1348641915101</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1025,7 +1029,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="[#36] Fairly basic solution  - just added a sort index column manually updated and sort editIndex and linkbars with it.  Was a relatively easy change - the hardest bit was remembering how to add a column to a database and then re-generated the JavaBean / hibernated code to encapsulate it." />
+    <option name="LAST_COMMIT_MESSAGE" value="[#44 state:retest] Easy fix to main.css.  I had copied across the css from live site but had changed markup so that the class headerLink was an attribute of the `li` element not the `a` element.  Just changed the specifier to take this into account." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1054,6 +1058,7 @@
     <MESSAGE value="This is a big commit as I haven't been committing as I go which I should have.  A number of tickets under the User Acceptance Testing Milestone are fixed here.  The code isn't working as I am still in the process of fixing the duplicate screen name issue." />
     <MESSAGE value="[#32] Lots of changes relating to this ticket.  See previous notes for details on changes." />
     <MESSAGE value="[#36] Fairly basic solution  - just added a sort index column manually updated and sort editIndex and linkbars with it.  Was a relatively easy change - the hardest bit was remembering how to add a column to a database and then re-generated the JavaBean / hibernated code to encapsulate it." />
+    <MESSAGE value="[#44 state:retest] Easy fix to main.css.  I had copied across the css from live site but had changed markup so that the class headerLink was an attribute of the `li` element not the `a` element.  Just changed the specifier to take this into account." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1163,16 +1168,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/screen.jsp">
+    <entry file="file://$PROJECT_DIR$/web/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+        <state line="17" column="0" selection-start="426" selection-end="426" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/css/main.css">
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/screen.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="426" selection-end="426" vertical-scroll-proportion="0.73913044">
+        <state line="36" column="45" selection-start="1086" selection-end="1086" vertical-scroll-proportion="0.5616883">
           <folding />
         </state>
       </provider>
