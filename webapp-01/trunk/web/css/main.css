@@ -6,12 +6,16 @@
             font-family: Verdana, Arial, Helvetica, sans-serif;
         }
         
-        .headerLink
+        li.headerLink a
         {
             color: #FFFFFF;
             font-weight: bold;
             font-family: "Times New Roman", serif;
             font-size: 80%;
+        }
+
+        li.headerLink a:visited {
+            color: #ff9a95;
         }
         
         div#bannerText {

@@ -7,19 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="03fdf521-209b-4654-a976-0dbf9d87148b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ActionClass.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ActionClass.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/AddScreenAction.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/AddScreenAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/EditIndexAction.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/EditIndexAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/UpdateScreenAction.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/UpdateScreenAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/bean/ScreenType.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/bean/ScreenType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/bean/Screens.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/bean/Screens.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/WebHelper.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/WebHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/addScreen.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/addScreen.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/editIndex.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/editIndex.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/editScreen.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/editScreen.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/main.css" afterPath="$PROJECT_DIR$/web/css/main.css" />
     </list>
     <ignored path="ManchesterGoddesses(java).iws" />
     <ignored path=".idea/workspace.xml" />
@@ -199,28 +188,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WebHelper.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="WebHelper.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/WebHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="109" selection-start="1640" selection-end="1640" vertical-scroll-proportion="0.40677965">
+            <state line="47" column="109" selection-start="1640" selection-end="1640" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Screens.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/bean/Screens.java">
+      <file leaf-file-name="main.css" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="13" selection-start="387" selection-end="387" vertical-scroll-proportion="0.0">
+            <state line="17" column="0" selection-start="426" selection-end="426" vertical-scroll-proportion="0.73913044">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="editIndex.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/editIndex.jsp">
+      <file leaf-file-name="screen.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/screen.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="26" selection-start="3030" selection-end="3030" vertical-scroll-proportion="-8.125">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
@@ -236,7 +225,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ViewImageAction.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ViewPageAction.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ManageRequestStatus.java" />
         <option value="$PROJECT_DIR$/src/hibernate.cfg.xml" />
@@ -252,6 +240,7 @@
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/UpdateScreenAction.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/AddScreenAction.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/WebHelper.java" />
+        <option value="$PROJECT_DIR$/web/css/main.css" />
       </list>
     </option>
   </component>
@@ -364,47 +353,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp-01" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp-01(trunk)" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="simpleweb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="webapp-01" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp-01(trunk)" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="simpleweb" />
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -419,14 +372,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="simpleweb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -980,7 +925,11 @@
       <created>1348558964102</created>
       <updated>1348558964103</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="[#36] Fairly basic solution  - just added a sort index column manually updated and sort editIndex and linkbars with it.  Was a relatively easy change - the hardest bit was remembering how to add a column to a database and then re-generated the JavaBean / hibernated code to encapsulate it.">
+      <created>1348612290102</created>
+      <updated>1348612290102</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1114,20 +1063,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/hibernate.cfg.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="195" selection-end="195" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/hibernate-core-4.1.1.Final.jar!/org/hibernate/Session.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="17" selection-start="155" selection-end="155" vertical-scroll-proportion="-2.4">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/CancelButtonAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="13" selection-start="409" selection-end="409" vertical-scroll-proportion="0.0">
@@ -1223,7 +1158,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/WebHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="109" selection-start="1640" selection-end="1640" vertical-scroll-proportion="0.40677965">
+        <state line="47" column="109" selection-start="1640" selection-end="1640" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/screen.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="0" selection-start="426" selection-end="426" vertical-scroll-proportion="0.73913044">
           <folding />
         </state>
       </provider>
