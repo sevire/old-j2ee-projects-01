@@ -93,29 +93,34 @@ public class Gallery {
             if (!helper.getGalleryFullPathFile(galleryName).isDirectory()) {
                 logger.error(String.format("Gallery path for <%s> isn't a directory, can't generate gallery", helper.getGalleryFullPathFile(galleryName)));
             } else {
-                if (!helper.getThumbnailDirFullPathFile(galleryName).isDirectory()) {
-                    logger.error(String.format("Thumbnail path for <%s> doesn't exist, try to create", helper.getGalleryFullPathFile(galleryName)));
-                    if (!helper.getThumbnailDirFullPathFile(galleryName).mkdir()) {
-                        logger.error(String.format("Couldn't create thumbnail folder - abandon Gallery!"));
-                        return html; // Need to ensure no html is generated up to this point
-                    }
-                }
                 String[] extensions = {"jpg", "png"};
                 FileFilter filter = new ImageFileFilter(extensions);
                 File list[] = helper.getGalleryFullPathFile(galleryName).listFiles(filter);
+                logger.info(String.format("%d images for gallery <%s>", list.length, galleryName));
+                if (list.length <= 0) {
+                    logger.warn(String.format("No images for gallery <%s>, not creating", galleryName));
+                } else {
+                    if (!helper.getThumbnailDirFullPathFile(galleryName).isDirectory()) {
+                        logger.error(String.format("Thumbnail path for <%s> doesn't exist, try to create", helper.getGalleryFullPathFile(galleryName)));
+                        if (!helper.getThumbnailDirFullPathFile(galleryName).mkdir()) {
+                            logger.error(String.format("Couldn't create thumbnail folder - abandon Gallery!"));
+                            return html; // Need to ensure no html is generated up to this point
+                        }
+                    }
 
-                html = String.format("<table class='gallery'>%n");
-                imagesAdded = 0;
+                    html = String.format("<table class='gallery'>%n");
+                    imagesAdded = 0;
 
-                for (File file : list) {
-                    logger.info(String.format("Processing file <%s> within gallery <%s>", file, galleryName));
-                    File imageFile = getGalleryImageFile(file);
-                    File thumbnailFile = getGalleryThumbnailImageFile(file);
-                    generateThumbnail(imageFile, thumbnailFile, false);
-                    addImageToHTML(file.getName());
+                    for (File file : list) {
+                        logger.info(String.format("Processing file <%s> within gallery <%s>", file, galleryName));
+                        File imageFile = getGalleryImageFile(file);
+                        File thumbnailFile = getGalleryThumbnailImageFile(file);
+                        generateThumbnail(imageFile, thumbnailFile, false);
+                        addImageToHTML(file.getName());
+                    }
+
+                    html += String.format("</table>%n");
                 }
-
-                html += String.format("</table>%n");
             }
         }
         logger.debug("html = \n"+html);

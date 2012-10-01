@@ -8,7 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="03fdf521-209b-4654-a976-0dbf9d87148b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/screen.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/screen.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/Gallery.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/Gallery.java" />
     </list>
     <ignored path="ManchesterGoddesses(java).iws" />
     <ignored path=".idea/workspace.xml" />
@@ -185,7 +185,7 @@
       <file leaf-file-name="Gallery.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/Gallery.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="97" column="25" selection-start="4091" selection-end="4091" vertical-scroll-proportion="-0.55851066">
+            <state line="109" column="0" selection-start="4904" selection-end="4904" vertical-scroll-proportion="1.7154255">
               <folding />
             </state>
           </provider>
@@ -224,8 +224,8 @@
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/WebHelper.java" />
         <option value="$PROJECT_DIR$/web/css/main.css" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/GalleryHelper.java" />
-        <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/Gallery.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/screen.jsp" />
+        <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/Gallery.java" />
       </list>
     </option>
   </component>
@@ -1044,7 +1044,11 @@
       <created>1349073892129</created>
       <updated>1349073892129</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="[#31] Use Case 2 : Gallery enabled but no gallery folder.  `screen.jsp` didn't check for null value of &quot;galleryHTML&quot;.  Fixed.">
+      <created>1349074348101</created>
+      <updated>1349074348101</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1140,7 +1144,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="[#31] Use Case 1 (Gallery Flag not Enabled).  Tested.  Fixed problem that gallery tag was part of template so existed even when Gallery not enabled." />
+    <option name="LAST_COMMIT_MESSAGE" value="[#31] Use Case 2 : Gallery enabled but no gallery folder.  `screen.jsp` didn't check for null value of &quot;galleryHTML&quot;.  Fixed." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1172,6 +1176,7 @@
     <MESSAGE value="[#44 state:retest] Easy fix to main.css.  I had copied across the css from live site but had changed markup so that the class headerLink was an attribute of the `li` element not the `a` element.  Just changed the specifier to take this into account." />
     <MESSAGE value="[#51 state:resolved] That was an easy one! Just swap round the two calls to the linkbar array in screen.jsp." />
     <MESSAGE value="[#31] Use Case 1 (Gallery Flag not Enabled).  Tested.  Fixed problem that gallery tag was part of template so existed even when Gallery not enabled." />
+    <MESSAGE value="[#31] Use Case 2 : Gallery enabled but no gallery folder.  `screen.jsp` didn't check for null value of &quot;galleryHTML&quot;.  Fixed." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1270,7 +1275,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/Gallery.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="25" selection-start="4091" selection-end="4091" vertical-scroll-proportion="-0.55851066">
+        <state line="109" column="0" selection-start="4904" selection-end="4904" vertical-scroll-proportion="1.7154255">
           <folding />
         </state>
       </provider>
