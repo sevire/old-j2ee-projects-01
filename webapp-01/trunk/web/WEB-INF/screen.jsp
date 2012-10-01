@@ -30,7 +30,7 @@
         <h3>${helper.data.screenTitleLong}</h3>
         ${helper.data.screenContents}
     </div>
-        <% if (!request.getAttribute("galleryHTML").equals("")) {%>
+        <% if (!(request.getAttribute("galleryHTML") == null || request.getAttribute("galleryHTML").equals(""))) {%>
         <div id='gallery'>
             ${galleryHTML}
         </div>
