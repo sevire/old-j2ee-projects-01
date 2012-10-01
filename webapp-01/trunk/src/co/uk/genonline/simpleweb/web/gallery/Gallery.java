@@ -1,5 +1,6 @@
 package co.uk.genonline.simpleweb.web.gallery;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
@@ -25,13 +26,17 @@ public class Gallery {
     private String html;
     private int imagesAdded = 0;
     private Logger logger;
+    private boolean forceGallery; // Determines whether to re-generate gallery even if exists
+    private boolean forceThumbnails ; // Determines whether to re-generate thumbnails even if they exist
 
-    Gallery(GalleryHelper helper, String galleryName) {
+    Gallery(GalleryHelper helper, String galleryName, boolean forceGallery, boolean forceThumbnail) {
         logger = Logger.getLogger(this.getClass().getName());
         logger.setLevel(Level.ALL);
 
         this.helper = helper;
         this.galleryName = galleryName;
+        this.forceGallery = forceGallery;
+        this.forceThumbnails = forceThumbnail;
         html = null;
     }
 
@@ -88,8 +93,7 @@ public class Gallery {
     }
 
     public String getHTML() {
-        boolean forceHTML = true; // True to force HTML when when running in debugger
-        if (forceHTML || html == null) {
+        if (forceGallery || html == null) {
             if (!helper.getGalleryFullPathFile(galleryName).isDirectory()) {
                 logger.error(String.format("Gallery path for <%s> isn't a directory, can't generate gallery", helper.getGalleryFullPathFile(galleryName)));
             } else {
@@ -100,6 +104,16 @@ public class Gallery {
                 if (list.length <= 0) {
                     logger.warn(String.format("No images for gallery <%s>, not creating", galleryName));
                 } else {
+                    if (forceThumbnails && helper.getThumbnailDirFullPathFile(galleryName).isDirectory()) {
+                        try {
+                            logger.error(String.format("Force deleting thumbnail folder for <%s>", galleryName));
+                            FileUtils.deleteDirectory(helper.getThumbnailDirFullPathFile(galleryName));
+                        } catch (IOException e) {
+                            logger.error(String.format("Couldn't delete thumbnail folder", galleryName));
+                        }
+                    }
+                    // May have deleted thumbnail folder or it may have not been created - so check.
+
                     if (!helper.getThumbnailDirFullPathFile(galleryName).isDirectory()) {
                         logger.error(String.format("Thumbnail path for <%s> doesn't exist, try to create", helper.getGalleryFullPathFile(galleryName)));
                         if (!helper.getThumbnailDirFullPathFile(galleryName).mkdir()) {

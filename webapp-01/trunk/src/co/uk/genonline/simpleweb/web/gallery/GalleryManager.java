@@ -41,7 +41,7 @@ public class GalleryManager {
     }
 
     public void addGallery(String galleryName) {
-        galleries.put(galleryName, new Gallery(helper, galleryName));
+        galleries.put(galleryName, new Gallery(helper, galleryName, true, true));
     }
 
     public Gallery getGallery(String galleryName) {
