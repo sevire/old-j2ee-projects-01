@@ -93,6 +93,13 @@ public class Gallery {
             if (!helper.getGalleryFullPathFile(galleryName).isDirectory()) {
                 logger.error(String.format("Gallery path for <%s> isn't a directory, can't generate gallery", helper.getGalleryFullPathFile(galleryName)));
             } else {
+                if (!helper.getThumbnailDirFullPathFile(galleryName).isDirectory()) {
+                    logger.error(String.format("Thumbnail path for <%s> doesn't exist, try to create", helper.getGalleryFullPathFile(galleryName)));
+                    if (!helper.getThumbnailDirFullPathFile(galleryName).mkdir()) {
+                        logger.error(String.format("Couldn't create thumbnail folder - abandon Gallery!"));
+                        return html; // Need to ensure no html is generated up to this point
+                    }
+                }
                 String[] extensions = {"jpg", "png"};
                 FileFilter filter = new ImageFileFilter(extensions);
                 File list[] = helper.getGalleryFullPathFile(galleryName).listFiles(filter);

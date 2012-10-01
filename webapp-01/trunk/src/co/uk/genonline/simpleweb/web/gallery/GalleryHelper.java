@@ -12,6 +12,7 @@ import java.io.File;
 
 public class GalleryHelper {
     File galleryRootFullPathFile; // Full path to parent gallery root folder for file i/o operations
+    File galleryThumbnailFullPathFile;
     private String galleryRootRelPath; // Path from web root to parent gallery root (e.g. gallery)
     private String thumbnailRelPath; // Path from a gallery's folder to its thumbnail folder (e.g. thumbnail)
 
@@ -29,6 +30,7 @@ public class GalleryHelper {
                          int maxWidth,
                          int numGalleryColumns) {
         this.galleryRootFullPathFile = new File(webRootFullPath + File.separator + galleryRootRelPath);
+        this.galleryThumbnailFullPathFile = new File(webRootFullPath + File.separator + thumbnailRelPath);
         this.contextPath = contextPath;
         this.galleryRootRelPath = galleryRootRelPath;
         this.thumbnailRelPath = thumbnailRelPath;
@@ -47,6 +49,10 @@ public class GalleryHelper {
 
     File getGalleryFullPathFile(String galleryName) {
         return new File(galleryRootFullPathFile, File.separator + galleryName);
+    }
+
+    File getThumbnailDirFullPathFile(String galleryName) {
+        return new File(getGalleryFullPathFile(galleryName), File.separator + thumbnailRelPath);
     }
 
     public int getMaxWidth() {

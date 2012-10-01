@@ -12,7 +12,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <title>Lucifer's Dark Angel - ${helper.data.screenTitleLong}</title>
     <link rel="stylesheet" href="css/main.css" type="text/css" media="all" >
-</head>
+    <link rel="icon" type="image/png" href="favicon.png"></head>
 
 <body id='${helper.data.name}'>
 <div id='colLeft'>
@@ -30,9 +30,11 @@
         <h3>${helper.data.screenTitleLong}</h3>
         ${helper.data.screenContents}
     </div>
+        <% if (!request.getAttribute("galleryHTML").equals("")) {%>
         <div id='gallery'>
             ${galleryHTML}
         </div>
+        <% } %>
 </div>
 <div id='footer'>
 </div>
