@@ -106,7 +106,7 @@ public class Gallery {
                 } else {
                     if (forceThumbnails && helper.getThumbnailDirFullPathFile(galleryName).isDirectory()) {
                         try {
-                            logger.error(String.format("Force deleting thumbnail folder for <%s>", galleryName));
+                            logger.info(String.format("Force deleting thumbnail folder for <%s>", galleryName));
                             FileUtils.deleteDirectory(helper.getThumbnailDirFullPathFile(galleryName));
                         } catch (IOException e) {
                             logger.error(String.format("Couldn't delete thumbnail folder", galleryName));
