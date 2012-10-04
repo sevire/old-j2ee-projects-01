@@ -200,6 +200,12 @@
             margin-right : auto;
         }
 
+        div#image img {
+            max-width: 800px;
+            display: block;
+            margin: 10px auto;
+        }
+
         div#editForm {
             width: 500px;
         }

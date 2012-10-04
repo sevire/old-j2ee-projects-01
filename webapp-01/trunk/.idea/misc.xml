@@ -168,26 +168,6 @@
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnBranchConfigurationManager">
-    <option name="myConfigurationMap">
-      <map>
-        <entry key="$PROJECT_DIR$">
-          <value>
-            <SvnBranchConfiguration>
-              <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com:443/j2ee-projects/webapp-01/trunk" />
-              <option name="userinfoInUrl" value="true" />
-            </SvnBranchConfiguration>
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/.idea">
-          <value>
-            <SvnBranchConfiguration>
-              <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com:443/j2ee-projects/webapp-01/trunk/.idea" />
-              <option name="userinfoInUrl" value="true" />
-            </SvnBranchConfiguration>
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="mySupportsUserInfoFilter" value="true" />
   </component>
   <component name="WebServicesPlugin" addRequiredLibraries="true" />
