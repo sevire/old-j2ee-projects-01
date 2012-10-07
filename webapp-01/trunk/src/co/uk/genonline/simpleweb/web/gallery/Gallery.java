@@ -40,7 +40,7 @@ public class Gallery {
         html = null;
     }
 
-    public void generateThumbnail(File image, File thumbnail, boolean force) {
+    public boolean generateThumbnail(File image, File thumbnail, boolean force) {
         if (!force && thumbnail.isFile()) {
             logger.info(String.format("Thumbnail for <%s> exists, nothing to do", thumbnail));
         } else {
@@ -53,37 +53,44 @@ public class Gallery {
             } catch (IOException e) {
                 logger.error("Error reading image");
                 e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-                return;
+                return false;
             }
 
-            int height = bufferedImage.getHeight();
-            int width = bufferedImage.getWidth();
-            float widthScaleFactor = helper.getMaxWidth() / (float)width;
-            float heightScaleFactor = helper.getMaxHeight() / (float)height;
+            if (bufferedImage == null) {
+                logger.warn(String.format("Couldn't create thumbnail for image <%s>, not valid image perhaps", image.getName()));
+                return false;
+            } else {
+                int height = bufferedImage.getHeight();
+                int width = bufferedImage.getWidth();
+                float widthScaleFactor = helper.getMaxWidth() / (float)width;
+                float heightScaleFactor = helper.getMaxHeight() / (float)height;
 
-            float scaleFactor = Math.min(widthScaleFactor, heightScaleFactor);
+                float scaleFactor = Math.min(widthScaleFactor, heightScaleFactor);
 
-            thumbnailImage = getScaledInstance(bufferedImage, (int) (width * scaleFactor), (int) (height * scaleFactor), RenderingHints.VALUE_INTERPOLATION_BICUBIC, true);
-            logger.info(String.format("thumbnailImage is <%s>", thumbnailImage));
-            try {
-                thumbnail.createNewFile();
-            } catch (IOException e) {
-                logger.error("Error creating file for thumbnail");
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-                return;
-            }
-            logger.info(String.format("About to write thumbnail file <%s>", thumbnail));
-            logger.info(String.format("(File) thumbnail is <%s>", thumbnail));
-            try {
-                ImageIO.write(thumbnailImage, "jpg", thumbnail);
-                thumbnailImage.flush();
-            } catch (IOException e) {
-                logger.error("Error writing thumbnail");
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-                return;
+                thumbnailImage = getScaledInstance(bufferedImage, (int) (width * scaleFactor), (int) (height * scaleFactor), RenderingHints.VALUE_INTERPOLATION_BICUBIC, true);
+                logger.info(String.format("thumbnailImage is <%s>", thumbnailImage));
+                try {
+                    thumbnail.createNewFile();
+                } catch (IOException e) {
+                    logger.error("Error creating file for thumbnail");
+                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                    return false;
+                }
+                logger.info(String.format("About to write thumbnail file <%s>", thumbnail));
+                logger.info(String.format("(File) thumbnail is <%s>", thumbnail));
+                try {
+                    ImageIO.write(thumbnailImage, "jpg", thumbnail);
+                    thumbnailImage.flush();
+                } catch (IOException e) {
+                    logger.error("Error writing thumbnail");
+                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                    return false;
+                }
             }
         }
+        return true;
     }
+
     private File getGalleryImageFile(File imageFile) {
         return new File(helper.getGalleryFullPathFile(galleryName), imageFile.getName());
     }
@@ -129,8 +136,9 @@ public class Gallery {
                         logger.info(String.format("Processing file <%s> within gallery <%s>", file, galleryName));
                         File imageFile = getGalleryImageFile(file);
                         File thumbnailFile = getGalleryThumbnailImageFile(file);
-                        generateThumbnail(imageFile, thumbnailFile, false);
-                        addImageToHTML(file.getName());
+                        if (generateThumbnail(imageFile, thumbnailFile, false)) {
+                            addImageToHTML(file.getName());
+                        }
                     }
 
                     html += String.format("</table>%n");
