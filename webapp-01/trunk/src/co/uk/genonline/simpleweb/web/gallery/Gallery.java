@@ -224,7 +224,9 @@ public class Gallery {
             h = targetHeight;
         }
 
+        int iterationCount = 1;
         do {
+            logger.debug(String.format("Iterations = %d", iterationCount++));
             if (higherQuality && w > targetWidth) {
                 w /= 2;
                 if (w < targetWidth) {

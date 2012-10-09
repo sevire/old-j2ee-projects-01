@@ -61,4 +61,8 @@ public class WebHelper {
         logger.info(String.format("Generating home page = <%s>", homePage));
         return String.format("<a href='view?screen=%s'>Home</a>", homePage);
     }
+
+    public String getHomePage() {
+        return request.getServletContext().getInitParameter("homePage");
+    }
 }

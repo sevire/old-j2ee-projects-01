@@ -2,6 +2,7 @@ package co.uk.genonline.simpleweb.controller;
 
 import co.uk.genonline.simpleweb.model.bean.Screens;
 import co.uk.genonline.simpleweb.web.SessionData;
+import co.uk.genonline.simpleweb.web.WebHelper;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
@@ -85,8 +86,12 @@ public class ControllerHelper extends HelperBase {
             } else {
                 pageNotFound = true;
             }
-        } else if (command.equals("/view")) {
+        } else if (command.equals("/view") || command.equals("/")) {
             status.resetStatusMessage();
+            if (data.getName() == null || data.getName().equals("")) {
+                WebHelper webHelper = new WebHelper(request, response, factory);
+                data.setName(webHelper.getHomePage());
+            }
             logger.info("view: screen is " + data.getName());
             Action action = new ViewPageAction(request, response, factory, data);
             result = action.perform();
