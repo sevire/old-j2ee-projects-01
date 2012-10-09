@@ -43,7 +43,7 @@ public class ContextListener implements ServletContextListener {
 
         logger.debug("Saving gallery root = " + galleryRoot);
 
-        event.getServletContext().setAttribute("Galleries", new GalleryManager(event.getServletContext().getContextPath(), event.getServletContext().getRealPath("/"), galleryRoot));
+        event.getServletContext().setAttribute("Galleries", new GalleryManager(event.getServletContext()));
 
         // Initialise session level variable for status message and status type used in JSPs to display error messages etc.
 

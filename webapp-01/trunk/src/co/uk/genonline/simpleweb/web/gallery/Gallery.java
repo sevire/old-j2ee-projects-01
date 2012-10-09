@@ -26,17 +26,14 @@ public class Gallery {
     private String html;
     private int imagesAdded = 0;
     private Logger logger;
-    private boolean forceGallery; // Determines whether to re-generate gallery even if exists
-    private boolean forceThumbnails ; // Determines whether to re-generate thumbnails even if they exist
 
-    Gallery(GalleryHelper helper, String galleryName, boolean forceGallery, boolean forceThumbnail) {
+    Gallery(GalleryHelper helper, String galleryName) {
         logger = Logger.getLogger(this.getClass().getName());
         logger.setLevel(Level.ALL);
 
         this.helper = helper;
         this.galleryName = galleryName;
-        this.forceGallery = forceGallery;
-        this.forceThumbnails = forceThumbnail;
+
         html = null;
     }
 
@@ -62,8 +59,8 @@ public class Gallery {
             } else {
                 int height = bufferedImage.getHeight();
                 int width = bufferedImage.getWidth();
-                float widthScaleFactor = helper.getMaxWidth() / (float)width;
-                float heightScaleFactor = helper.getMaxHeight() / (float)height;
+                float widthScaleFactor = helper.getMaxThumbnailWidth() / (float)width;
+                float heightScaleFactor = helper.getMaxThumbnailHeight() / (float)height;
 
                 float scaleFactor = Math.min(widthScaleFactor, heightScaleFactor);
 
@@ -100,7 +97,7 @@ public class Gallery {
     }
 
     public String getHTML() {
-        if (forceGallery || html == null) {
+        if (helper.isForceGallery() || html == null) {
             if (!helper.getGalleryFullPathFile(galleryName).isDirectory()) {
                 logger.error(String.format("Gallery path for <%s> isn't a directory, can't generate gallery", helper.getGalleryFullPathFile(galleryName)));
             } else {
@@ -111,7 +108,7 @@ public class Gallery {
                 if (list.length <= 0) {
                     logger.warn(String.format("No images for gallery <%s>, not creating", galleryName));
                 } else {
-                    if (forceThumbnails && helper.getThumbnailDirFullPathFile(galleryName).isDirectory()) {
+                    if (helper.isForceThumbnails() && helper.getThumbnailDirFullPathFile(galleryName).isDirectory()) {
                         try {
                             logger.info(String.format("Force deleting thumbnail folder for <%s>", galleryName));
                             FileUtils.deleteDirectory(helper.getThumbnailDirFullPathFile(galleryName));

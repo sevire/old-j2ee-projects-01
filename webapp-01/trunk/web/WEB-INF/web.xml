@@ -23,15 +23,19 @@
     </context-param>
     <context-param>
         <param-name>numGalleryColumns</param-name>
-        <param-value>2</param-value>
+        <param-value>4</param-value>
+    </context-param>
+    <context-param>
+        <param-name>thumbnailRelPath</param-name>
+        <param-value>thumbnails</param-value>
     </context-param>
     <context-param>
         <param-name>maxThumbnailWidth</param-name>
-        <param-value>130</param-value>
+        <param-value>500</param-value>
     </context-param>
     <context-param>
         <param-name>maxThumbnailHeight</param-name>
-        <param-value>130</param-value>
+        <param-value>500</param-value>
     </context-param>
     <context-param>
         <param-name>maxImageWidth</param-name>
@@ -40,6 +44,14 @@
     <context-param>
         <param-name>maxImageHeight</param-name>
         <param-value>800</param-value>
+    </context-param>
+    <context-param>
+        <param-name>forceGallery</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+        <param-name>forceThumbnail</param-name>
+        <param-value>true</param-value>
     </context-param>
 
     <welcome-file-list>

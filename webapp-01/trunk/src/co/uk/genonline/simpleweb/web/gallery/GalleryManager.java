@@ -1,5 +1,6 @@
 package co.uk.genonline.simpleweb.web.gallery;
 
+import javax.servlet.ServletContext;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,9 +13,11 @@ import java.util.Map;
  * To change this template use File | Settings | File Templates.
  */
 public class GalleryManager {
+/*
     private static final String THUMBNAIL_RELPATH = "thumbnails";
     private static final int THUMBNAIL_MAX_DIM = 130;
     private static final int GALLERY_COLUMNS = 4;
+*/
 
 
     private GalleryHelper helper;
@@ -29,19 +32,13 @@ public class GalleryManager {
     private String galleryRoot;
 */
 
-    public GalleryManager(String contextPath, String webRoot, String galleryRelPath) {
-        helper = new GalleryHelper(new File(webRoot),
-                             contextPath,
-                             galleryRelPath,
-                             THUMBNAIL_RELPATH,
-                             THUMBNAIL_MAX_DIM,
-                             THUMBNAIL_MAX_DIM,
-                             GALLERY_COLUMNS);
+    public GalleryManager(ServletContext context) {
+        helper = new GalleryHelper(context);
         galleries = new HashMap<String, Gallery>();
     }
 
     public void addGallery(String galleryName) {
-        galleries.put(galleryName, new Gallery(helper, galleryName, true, true));
+        galleries.put(galleryName, new Gallery(helper, galleryName));
     }
 
     public Gallery getGallery(String galleryName) {
