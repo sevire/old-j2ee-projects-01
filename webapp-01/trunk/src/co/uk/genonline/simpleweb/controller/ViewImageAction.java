@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,9 +21,11 @@ public class ViewImageAction extends ActionClass {
     }
 
     public RequestResult perform() {
+        String separator = File.separator;
+        String galleryRoot = (String) request.getServletContext().getInitParameter("galleryRoot");
         String gallery = request.getParameter("gallery");
         String image = request.getParameter("image");
-        String img = "galleries/" + gallery + "/" + request.getParameter("image");
+        String img = galleryRoot + separator + gallery + separator + request.getParameter("image");
         logger.debug(String.format("Displaying image for gallery <%s>, image <%s>, img = <%s>", gallery, image, img));
         request.setAttribute("gallery", gallery);
         request.setAttribute("image", img);

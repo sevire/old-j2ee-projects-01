@@ -15,11 +15,11 @@
     </error-page>
     <context-param>
         <param-name>homePage</param-name>
-        <param-value>lucina</param-value>
+        <param-value>hos</param-value>
     </context-param>
     <context-param>
         <param-name>galleryRoot</param-name>
-        <param-value>galleries</param-value>
+        <param-value>gallery</param-value>
     </context-param>
     <context-param>
         <param-name>numGalleryColumns</param-name>
