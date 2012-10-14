@@ -29,7 +29,7 @@ public class Gallery {
 
     Gallery(GalleryHelper helper, String galleryName) {
         logger = Logger.getLogger(this.getClass().getName());
-        logger.setLevel(Level.ALL);
+        logger.setLevel(Level.toLevel(helper.getContext().getInitParameter("loggingLevel")));
 
         this.helper = helper;
         this.galleryName = galleryName;
@@ -43,7 +43,7 @@ public class Gallery {
         } else {
             BufferedImage bufferedImage;
             BufferedImage thumbnailImage;
-            logger.info(String.format("About to read image for resizing to thumbnail <%s>", image));
+            logger.debug(String.format("About to read image for resizing to thumbnail <%s>", image));
 
             try {
                 bufferedImage = ImageIO.read(image);
@@ -65,7 +65,7 @@ public class Gallery {
                 float scaleFactor = Math.min(widthScaleFactor, heightScaleFactor);
 
                 thumbnailImage = getScaledInstance(bufferedImage, (int) (width * scaleFactor), (int) (height * scaleFactor), RenderingHints.VALUE_INTERPOLATION_BICUBIC, true);
-                logger.info(String.format("thumbnailImage is <%s>", thumbnailImage));
+                logger.debug(String.format("thumbnailImage is <%s>", thumbnailImage));
                 try {
                     thumbnail.createNewFile();
                 } catch (IOException e) {
@@ -73,8 +73,8 @@ public class Gallery {
                     e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                     return false;
                 }
-                logger.info(String.format("About to write thumbnail file <%s>", thumbnail));
-                logger.info(String.format("(File) thumbnail is <%s>", thumbnail));
+                logger.debug(String.format("About to write thumbnail file <%s>", thumbnail));
+                logger.debug(String.format("(File) thumbnail is <%s>", thumbnail));
                 try {
                     ImageIO.write(thumbnailImage, "jpg", thumbnail);
                     thumbnailImage.flush();
@@ -130,7 +130,7 @@ public class Gallery {
                     imagesAdded = 0;
 
                     for (File file : list) {
-                        logger.info(String.format("Processing file <%s> within gallery <%s>", file, galleryName));
+                        logger.debug(String.format("Processing file <%s> within gallery <%s>", file, galleryName));
                         File imageFile = getGalleryImageFile(file);
                         File thumbnailFile = getGalleryThumbnailImageFile(file);
                         if (generateThumbnail(imageFile, thumbnailFile, false)) {

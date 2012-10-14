@@ -25,7 +25,7 @@ public abstract class HelperBase {
         this.request = request;
         this.response = response;
         logger = Logger.getLogger("ControllerHelper");
-        logger.setLevel(Level.ALL);
+        logger.setLevel(Level.toLevel(request.getServletContext().getInitParameter("loggingLevel")));
     }
 
     public abstract void copyFromSession(Object helper);

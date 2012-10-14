@@ -30,7 +30,7 @@ public class UpdateScreenAction extends ActionClass {
 
         boolean checked = request.getParameter("enabledFlag") == null ? false : request.getParameter("enabledFlag").equals("Enabled");
 
-        logger.info("Enabled flag is: " + checked);
+        logger.debug("Enabled flag is: " + checked);
         boolean enabledChecked = request.getParameter("enabledFlag") == null ? false : request.getParameter("enabledFlag").equals("Enabled");
         boolean galleryChecked = request.getParameter("galleryFlag") == null ? false : request.getParameter("galleryFlag").equals("Enabled");
         data.setEnabledFlag(enabledChecked);
@@ -42,8 +42,8 @@ public class UpdateScreenAction extends ActionClass {
 
         Session session = factory.openSession();
         logger.info(String.format("About to update data, id is <%d>", data.getId()));
-        logger.info("Contents = ");
-        logger.info(data.getScreenContents());
+        logger.debug("Contents = ");
+        logger.debug(data.getScreenContents());
         session.update(data);
         try {
             session.flush();

@@ -23,7 +23,7 @@
     </context-param>
     <context-param>
         <param-name>numGalleryColumns</param-name>
-        <param-value>4</param-value>
+        <param-value>6</param-value>
     </context-param>
     <context-param>
         <param-name>thumbnailRelPath</param-name>
@@ -31,11 +31,11 @@
     </context-param>
     <context-param>
         <param-name>maxThumbnailWidth</param-name>
-        <param-value>500</param-value>
+        <param-value>70</param-value>
     </context-param>
     <context-param>
         <param-name>maxThumbnailHeight</param-name>
-        <param-value>500</param-value>
+        <param-value>70</param-value>
     </context-param>
     <context-param>
         <param-name>maxImageWidth</param-name>
@@ -53,6 +53,10 @@
         <param-name>forceThumbnail</param-name>
         <param-value>true</param-value>
     </context-param>
+    <context-param>
+        <param-name>loggingLevel</param-name>
+        <param-value>info</param-value>
+    </context-param>
 
     <welcome-file-list>
         <welcome-file>view?screen=lucina</welcome-file>
@@ -60,6 +64,7 @@
     <servlet>
         <servlet-name>Controller</servlet-name>
         <servlet-class>co.uk.genonline.simpleweb.controller.Controller</servlet-class>
+        <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>

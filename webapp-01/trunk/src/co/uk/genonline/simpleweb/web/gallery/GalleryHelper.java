@@ -36,7 +36,7 @@ public class GalleryHelper {
 
     public GalleryHelper(ServletContext context) {
         logger = Logger.getLogger(this.getClass().getName());
-        logger.setLevel(Level.ALL);
+        logger.setLevel(Level.toLevel(context.getInitParameter("loggingLevel")));
 
         this.context = context;
         contextPath = this.context.getContextPath();

@@ -23,7 +23,7 @@ public class EditIndexAction extends ActionClass {
     public RequestResult perform() {
         Session session = factory.openSession();
         String query = String.format("from Screens s order by screenType, sortKey");
-        logger.info("About to execute HQL query : " + query);
+        logger.debug("About to execute HQL query : " + query);
         java.util.List pages = session.createQuery(query).list();
         if (pages == null) {
             status.setStatusMessage("Error while getting page list", "error");

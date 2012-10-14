@@ -32,8 +32,10 @@ public class ViewPageAction extends ActionClass {
         request.setAttribute("chambersLinkBar", helper.generateLinkBarCategory("Chambers"));
         request.setAttribute("mistressLinkBar", helper.generateLinkBarCategory("Mistress"));
         request.setAttribute("homePage", helper.generateHomeLink());
+        request.setAttribute("maxImgWidth", request.getServletContext().getInitParameter("maxThumbnailWidth"));
+        request.setAttribute("maxImgHeight", request.getServletContext().getInitParameter("maxThumbnailHeight"));
 
-        logger.info("About to execute HQL query : " + query);
+        logger.debug("About to execute HQL query : " + query);
 
         java.util.List pages = session.createQuery(query).list();
 
@@ -46,11 +48,11 @@ public class ViewPageAction extends ActionClass {
 
         if (pages.size() > 0) {
             Screens screen = (Screens) pages.get(0);
-            logger.info("About to parse page with Markdown");
+            logger.debug("About to parse page with Markdown");
             String pageText = screen.getScreenContents();
-            logger.info("Markdown Input text is " + pageText.substring(0, Math.min(39, pageText.length()))+"...");
+            logger.debug("Markdown Input text is " + pageText.substring(0, Math.min(39, pageText.length()))+"...");
             String HTML = markdownDecoder.markdown(pageText);
-            logger.info("Markdown Output HTML is " + HTML.substring(0, Math.min(39, HTML.length()))+"...");
+            logger.debug("Markdown Output HTML is " + HTML.substring(0, Math.min(39, HTML.length()))+"...");
             data.setScreenContents(HTML);
             data.setScreenTitleLong(screen.getScreenTitleLong());
             data.setScreenTitleShort(screen.getScreenTitleShort());

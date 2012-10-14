@@ -32,7 +32,7 @@ public class ControllerHelper extends HelperBase {
 
         //System.out.println("getLogger");
         logger = Logger.getLogger("ControllerHelper");
-        logger.setLevel(Level.ALL);
+        logger.setLevel(Level.toLevel(request.getServletContext().getInitParameter("loggingLevel")));
         logger.info("Logger initiated - " + logger.getName());
 
         data = new Screens();
@@ -68,7 +68,7 @@ public class ControllerHelper extends HelperBase {
         pageNotFound = false;
         String command = request.getServletPath();
 
-        logger.info("Servlet path is " + command);
+        logger.debug("Servlet path is " + command);
         data.setName(request.getParameter("screen"));
 
         RequestResult result = null;

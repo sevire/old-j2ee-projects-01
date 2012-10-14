@@ -25,8 +25,8 @@ abstract class ActionClass implements Action {
 
     public ActionClass(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, Screens data) {
         logger = Logger.getLogger(this.getClass().getName());
-        logger.setLevel(Level.ALL);
-        logger.info("Logger initiated - " + logger.getName());
+        logger.setLevel(Level.toLevel(request.getServletContext().getInitParameter("loggingLevel")));
+        logger.debug("Logger initiated - " + logger.getName());
 
         this.request = request;
         this.response = response;

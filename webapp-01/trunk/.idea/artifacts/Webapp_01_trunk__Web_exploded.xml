@@ -15,6 +15,7 @@
           <element id="library" level="application" name="commons-io-2" />
           <element id="library" level="application" name="mysql-connector-java-5.1" />
           <element id="library" level="application" name="markdownj-1.0.2b4-0.3.0" />
+          <element id="library" level="application" name="slf4j-1.7" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="Webapp-01(trunk)/javaeeApplication/javaEEApplication" />

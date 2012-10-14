@@ -29,6 +29,7 @@ public class ViewImageAction extends ActionClass {
         logger.debug(String.format("Displaying image for gallery <%s>, image <%s>, img = <%s>", gallery, image, img));
         request.setAttribute("gallery", gallery);
         request.setAttribute("image", img);
+        request.setAttribute("maxWidth", request.getServletContext().getInitParameter("maxImageWidth"));
         return new RequestResult(jspLocation("viewImage.jsp"), false);
     }
 }

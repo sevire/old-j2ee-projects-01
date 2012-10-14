@@ -12,7 +12,20 @@
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <title>Lucifer's Dark Angel - ${helper.data.screenTitleLong}</title>
     <link rel="stylesheet" href="css/main.css" type="text/css" media="all" >
-    <link rel="icon" type="image/png" href="favicon.png"></head>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        div#gallery img {
+            max-width: ${maxImgWidth}px;
+            max-height: ${maxImgHeight}px;
+        }
+
+        table.gallery td {
+            height: ${maxImgHeight+10}px;
+            width: ${maxImgWidth+10}px;
+        }
+
+    </style>
+</head>
 
 <body id='${helper.data.name}'>
 <div id='colLeft'>

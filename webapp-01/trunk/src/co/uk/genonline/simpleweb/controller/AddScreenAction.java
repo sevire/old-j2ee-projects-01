@@ -21,8 +21,8 @@ public class AddScreenAction extends ActionClass {
             status.setStatusMessage("Screen name cannot be blank", "error");
             return new RequestResult(jspLocation("addScreen.jsp"), false);
         } else {
-            logger.info("Screen contents from form... ");
-            logger.info(request.getParameter("screenContents"));
+            logger.debug("Screen contents from form... ");
+            logger.debug(request.getParameter("screenContents"));
             data.setId(0);
             data.setName(screen);
             data.setSortKey(Integer.parseInt(request.getParameter("sortKey")));
@@ -36,9 +36,9 @@ public class AddScreenAction extends ActionClass {
             data.setScreenType(request.getParameter("screenType"));
 
             Session session = factory.openSession();
-            logger.info(String.format("About to save data"));
-            logger.info("Contents = ");
-            logger.info(data.getScreenContents());
+            logger.debug(String.format("About to save data"));
+            logger.debug("Contents = ");
+            logger.debug(data.getScreenContents());
             session.save(data);
             status.resetStatusMessage();
             try {

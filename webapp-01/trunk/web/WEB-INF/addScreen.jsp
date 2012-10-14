@@ -12,6 +12,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <title>Lucifer's Dark Angel - Add Screen</title>
     <link rel="stylesheet" href="css/main.css" type="text/css" media="all" >
+    <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body id='Edit'>
 <div id='colLeft'></div>

@@ -26,16 +26,24 @@ public class ContextListener implements ServletContextListener {
     }
 
     public void contextInitialized(ServletContextEvent event) {
+        Level level;
+
+        level = Level.toLevel(event.getServletContext().getInitParameter("loggingLevel"));
+        if (level == null) {
+            logger.setLevel(Level.ALL);
+        } else {
+            logger.setLevel(level);
+        }
         FileAppender appender = getAppender(event, logPath);
-        initLogger(null,appender,Level.ALL);
+        initLogger(null,appender,level);
         String contextPath = event.getServletContext().getContextPath();
 
         logger.info(String.format("Context invoked, path = %s", contextPath));
-        logger.info("Getting session factory...");
+        logger.debug("Getting session factory...");
 
         SessionFactory factory = HibernateUtil.getSessionFactory();
 
-        logger.info(String.format("Saving session factory in context attribute"));
+        logger.debug(String.format("Saving session factory in context attribute"));
         event.getServletContext().setAttribute("sessionFactory", factory);
 
         logger.info("Creating and saving Gallery Manager in context attribute");

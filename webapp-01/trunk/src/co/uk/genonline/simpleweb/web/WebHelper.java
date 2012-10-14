@@ -26,7 +26,7 @@ public class WebHelper {
                             SessionFactory factory) {
 
         logger = Logger.getLogger("ControllerHelper");
-        logger.setLevel(Level.ALL);
+        logger.setLevel(Level.toLevel(request.getServletContext().getInitParameter("loggingLevel")));
         logger.info("Logger initiated - " + logger.getName());
         this.request = request;
         this.response = response;
@@ -46,7 +46,7 @@ public class WebHelper {
         String html = "";
         Session session = factory.openSession();
         String query = String.format("from Screens s where s.screenType = '%s' and s.enabledFlag = true order by sortKey", category);
-        logger.info("About to execute HQL query : " + query);
+        logger.debug("About to execute HQL query : " + query);
         java.util.List pages = session.createQuery(query).list();
         for (Object o : pages) {
             Screens screen = (Screens) o;

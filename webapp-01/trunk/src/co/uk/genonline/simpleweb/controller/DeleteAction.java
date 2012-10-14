@@ -27,7 +27,7 @@ public class DeleteAction extends ActionClass {
 
         String query = String.format("from Screens s where s.name = '%s'", screen);
 
-        logger.info("About to execute HQL query : " + query);
+        logger.debug("About to execute HQL query : " + query);
 
         Session session = factory.openSession();
         java.util.List pages = session.createQuery(query).list();

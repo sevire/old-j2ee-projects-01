@@ -13,11 +13,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <title>Lucifer's Dark Angel - Edit Index</title>
     <link rel="stylesheet" href="css/main.css" type="text/css" media="all" >
+    <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body id='editIndex'>
 <div id='colLeft'></div>
 <div id='colRight'></div>
 <div id='colMiddle'>
+    <h1>Lucifer's Dark Angel - Website Maintenance Screen</h1>
     <div>
         <table>
             <tr class='statusRow <%=((RequestStatus)session.getAttribute("requestStatus")).getStatusType()%>'>

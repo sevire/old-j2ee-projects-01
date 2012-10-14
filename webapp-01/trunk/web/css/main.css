@@ -6,16 +6,21 @@
             font-family: Verdana, Arial, Helvetica, sans-serif;
         }
         
-        li.headerLink a
+        body#editIndex td a
         {
+            color: #c72125;
+            font-weight: bold;
+        }
+
+        li.headerLink a {
             color: #FFFFFF;
             font-weight: bold;
             font-family: "Times New Roman", serif;
             font-size: 80%;
         }
 
-        li.headerLink a:visited {
-            color: #ff9a95;
+        li.headerLink a:visited, body#editIndex td a:visited {
+            color: #c72125;
         }
         
         div#bannerText {
@@ -144,20 +149,20 @@
             height: 250px;
         }
         
-        div#pageText h1, div#pageText h2, div#pageText h3 {
+        h1, h2, h3 {
             font-family: sans-serif;
             color: #D20000;
         }
         
-        div#pageText h1 {
+        h1 {
             font-size: 1.3em;
         }
         
-        div#pageText h2 {
+        h2 {
             font-size: 1.2em;
         }
         
-        div#pageText h3 {
+        h3 {
             font-size: 1.1em;
         }
         
@@ -183,10 +188,11 @@
         }
         
         table.gallery td {
-            height: 120px;
-            width: 120px;
+            /*height: 120px;
+            width: 120px;*/
             /*background: #222;*/
-            background: black;
+            background: #3c090a;
+            border: #ff9a95 solid 1px;
         }
         
         table.gallery td a {
@@ -198,6 +204,7 @@
             display: block;
             margin-left: auto;
             margin-right : auto;
+            padding: 5px 5px;
         }
 
         div#image img {
@@ -252,3 +259,4 @@
         table tr.tableHeading td {
             color: red;
         }
+
