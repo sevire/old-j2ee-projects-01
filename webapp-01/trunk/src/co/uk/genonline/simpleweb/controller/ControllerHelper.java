@@ -1,9 +1,8 @@
 package co.uk.genonline.simpleweb.controller;
 
+import co.uk.genonline.simpleweb.controller.actions.*;
 import co.uk.genonline.simpleweb.model.bean.Screens;
-import co.uk.genonline.simpleweb.web.SessionData;
 import co.uk.genonline.simpleweb.web.WebHelper;
-import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 
@@ -32,7 +31,7 @@ public class ControllerHelper extends HelperBase {
 
         //System.out.println("getLogger");
         logger = Logger.getLogger("ControllerHelper");
-        logger.setLevel(Level.toLevel(request.getServletContext().getInitParameter("loggingLevel")));
+        //logger.setLevel(Level.toLevel(request.getServletContext().getInitParameter("loggingLevel")));
         logger.info("Logger initiated - " + logger.getName());
 
         data = new Screens();

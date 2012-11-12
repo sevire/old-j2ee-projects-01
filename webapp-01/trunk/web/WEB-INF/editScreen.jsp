@@ -20,7 +20,7 @@
 <div id="'colMiddle">
     <div id="editForm">
         <label for="editScreen">Screen Details</label>
-        <form id="editScreen" method="post" action='Controller.do'>
+        <form id="editScreen" name="editScreen" method="post" action='Controller.do'>
             <table>
                 <tr class='statusRow <%=((RequestStatus)session.getAttribute("requestStatus")).getStatusType()%>'>
                                   <td colspan="2"><%=((RequestStatus)session.getAttribute("requestStatus")).getStatusMessage()%></td>

@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="lda">
+    <output-path>$PROJECT_DIR$/out/artifacts/lda</output-path>
+    <root id="archive" name="lda.war">
+      <element id="artifact" artifact-name="lda-exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$APPLICATION_HOME_DIR$/lib/junit-4.10.jar" />
+          <element id="library" level="application" name="HTML-Unit" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

@@ -1,6 +1,5 @@
 package co.uk.genonline.simpleweb.controller;
 
-import co.uk.genonline.simpleweb.web.SessionData;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -22,10 +21,13 @@ public abstract class HelperBase {
     Logger logger;
 
     public HelperBase(HttpServletRequest request, HttpServletResponse response) {
+        Level level;
         this.request = request;
         this.response = response;
         logger = Logger.getLogger("ControllerHelper");
-        logger.setLevel(Level.toLevel(request.getServletContext().getInitParameter("loggingLevel")));
+        //level = Level.toLevel(request.getServletContext().getInitParameter("loggingLevel"));
+        level = Level.INFO; // HTTPunit frig
+        logger.setLevel(level);
     }
 
     public abstract void copyFromSession(Object helper);

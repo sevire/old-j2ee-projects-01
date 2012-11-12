@@ -101,6 +101,7 @@ public class Gallery {
             if (!helper.getGalleryFullPathFile(galleryName).isDirectory()) {
                 logger.error(String.format("Gallery path for <%s> isn't a directory, can't generate gallery", helper.getGalleryFullPathFile(galleryName)));
             } else {
+                html = "";
                 String[] extensions = {"jpg", "png"};
                 FileFilter filter = new ImageFileFilter(extensions);
                 File list[] = helper.getGalleryFullPathFile(galleryName).listFiles(filter);

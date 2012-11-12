@@ -30,13 +30,13 @@ public class RequestStatus {
         resetStatusMessage();
     }
 
-    protected void resetStatusMessage() {
+    public void resetStatusMessage() {
         statusMessage = "";
         statusType = "none";
         messageDisplayed = false;
     }
 
-    protected void setStatusMessage(String message, String type) {
+    public void setStatusMessage(String message, String type) {
         statusMessage = message;
         statusType = type;
         messageDisplayed = false;

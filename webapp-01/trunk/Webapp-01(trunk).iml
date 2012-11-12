@@ -26,6 +26,13 @@
         </descriptors>
       </configuration>
     </facet>
+    <facet type="javaeeApplication" name="javaEEApplication2">
+      <configuration>
+        <descriptors>
+          <deploymentDescriptor name="application.xml" url="file://$MODULE_DIR$/src/META-INF/application.xml" />
+        </descriptors>
+      </configuration>
+    </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <content url="file://$MODULE_DIR$">
@@ -42,6 +49,16 @@
     <orderEntry type="library" name="Java EE 6-Java EE 6" level="application" />
     <orderEntry type="library" name="markdownj-1.0.2b4-0.3.0" level="application" />
     <orderEntry type="library" name="slf4j-1.7" level="application" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$APPLICATION_HOME_DIR$/lib/junit-4.10.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="HTML-Unit" level="application" />
   </component>
 </module>
 

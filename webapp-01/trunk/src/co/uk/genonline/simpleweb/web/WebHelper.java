@@ -1,11 +1,11 @@
 package co.uk.genonline.simpleweb.web;
 
 import co.uk.genonline.simpleweb.model.bean.Screens;
-import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -26,7 +26,7 @@ public class WebHelper {
                             SessionFactory factory) {
 
         logger = Logger.getLogger("ControllerHelper");
-        logger.setLevel(Level.toLevel(request.getServletContext().getInitParameter("loggingLevel")));
+//        logger.setLevel(Level.toLevel(request.getServletContext().getInitParameter("loggingLevel")));
         logger.info("Logger initiated - " + logger.getName());
         this.request = request;
         this.response = response;
@@ -57,7 +57,8 @@ public class WebHelper {
     }
 
     public String generateHomeLink() {
-        String homePage = request.getServletContext().getInitParameter("homePage");
+        ServletContext context = request.getServletContext();
+        String homePage = context.getInitParameter("homePage");
         logger.info(String.format("Generating home page = <%s>", homePage));
         return String.format("<a href='view?screen=%s'>Home</a>", homePage);
     }
