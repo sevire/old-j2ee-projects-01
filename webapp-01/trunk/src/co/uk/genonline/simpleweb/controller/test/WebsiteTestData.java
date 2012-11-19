@@ -9,8 +9,8 @@ import java.util.*;
  * Time: 10:50
  * To change this template use File | Settings | File Templates.
  */
-public class WebsiteData {
-    private static WebsiteData ourInstance = new WebsiteData();
+public class WebsiteTestData {
+    private static WebsiteTestData ourInstance = new WebsiteTestData();
 
         // Set up array with key data for each field relevant to requesting a page
     // The first column in the array is the html file used in the static version of the site
@@ -23,7 +23,8 @@ public class WebsiteData {
                     "",
                     "",
                     "",
-                    "No Gallery",
+                    "-1",
+                    "",
                     "",
                     ""},
                     {
@@ -35,7 +36,8 @@ public class WebsiteData {
                     "Princess Lucina", // 2 - (Mandatory) Short name, used in link text for J2EE version of site and as start point to generate other strings
                     "", // 3 - (Optional) Long name, used in <title> element in HTML version of site
                     "", // 4 - (Optional) Long name, J2EE version
-                    "No Gallery",   // Number of images in gallery - "No Gallery" means no gallery.
+                    "-1",   // Number of images in gallery - "-1" means No Gallery.
+                    "", // Set to 'No Page' if checking that page doesn't exist (useful to check that a delete has been propagated)
                     "", // Name of first gallery image on page
                     ""}, // Name of last gallery image on page
                 {
@@ -48,7 +50,8 @@ public class WebsiteData {
                     "Wish List",
                     "",
                     "",
-                    "No Gallery",
+                    "-1",
+                    "",
                     "",
                     ""},
                     {
@@ -61,6 +64,7 @@ public class WebsiteData {
                     "",
                     "",
                     "4",
+                    "",
                     "",
                     ""},
                     {
@@ -77,9 +81,10 @@ public class WebsiteData {
                     "",
                     "",
                     "Specialities",
+                    "Princess Lucina Specialities",
                     "",
+                    "-1",
                     "",
-                    "No Gallery",
                     "",
                     ""},
                     {
@@ -90,7 +95,8 @@ public class WebsiteData {
                     "Images",
                     "",
                     "",
-                    "No Gallery",
+                    "55",
+                    "",
                     "",
                     ""},
                     {
@@ -101,7 +107,8 @@ public class WebsiteData {
                     "Hall Of Shame",
                     "",
                     "",
-                    "No Gallery",
+                    "4",
+                    "",
                     "",
                     ""},
                     {
@@ -109,10 +116,11 @@ public class WebsiteData {
             put("musings", new String[][]{{
                     "",
                     "",
-                    "Musings",
+                    "Slave Musings",
                     "",
                     "",
-                    "No Gallery",
+                    "-1",
+                    "",
                     "",
                     ""},
                     {
@@ -121,9 +129,10 @@ public class WebsiteData {
                     "",
                     "",
                     "Contact",
+                    "How To Contact Princess Lucina",
                     "",
+                    "-1",
                     "",
-                    "No Gallery",
                     "",
                     ""},
                     {
@@ -134,7 +143,8 @@ public class WebsiteData {
                     "Links",
                     "",
                     "",
-                    "No Gallery",
+                    "-1",
+                    "",
                     "",
                     ""},
                     {
@@ -145,7 +155,8 @@ public class WebsiteData {
                     "More Images",
                     "",
                     "",
-                    "No Gallery",
+                    "63",
+                    "",
                     "",
                     ""},
                     {
@@ -153,10 +164,11 @@ public class WebsiteData {
             put("hunteress", new String[][]{{
                     "",
                     "",
-                    "Hunteress",
                     "The Hunteress",
                     "",
-                    "No Gallery",
+                    "",
+                    "-1",
+                    "",
                     "",
                     ""},
                     {
@@ -167,7 +179,8 @@ public class WebsiteData {
                     "Mistress Madox",
                     "",
                     "",
-                    "No Gallery",
+                    "-1",
+                    "",
                     "",
                     ""},
                     {
@@ -178,7 +191,8 @@ public class WebsiteData {
                     "Lady Zara",
                     "",
                     "",
-                    "No Gallery",
+                    "-1",
+                    "No Page",
                     "",
                     ""},
                     {
@@ -189,7 +203,8 @@ public class WebsiteData {
                     "Lady Toza Scarlet",
                     "",
                     "",
-                    "No Gallery",
+                    "-1",
+                    "",
                     "",
                     ""},
                     {
@@ -200,7 +215,8 @@ public class WebsiteData {
                     "Regina Scarlet",
                     "Mistress Regina Scarlet",
                     "",
-                    "No Gallery",
+                    "12",
+                    "",
                     "",
                     ""},
                     {
@@ -208,11 +224,58 @@ public class WebsiteData {
         }
     };
 
-    public static WebsiteData getInstance() {
+    public static WebsiteTestData getInstance() {
         return ourInstance;
     }
 
-    private WebsiteData() {
+    private WebsiteTestData() {
+    }
+
+    String getTestDataHtmlFilename(String screenName) {
+        /*
+        For HTML versions of the site, the file name for an HTML page is generated from the
+        short name by putting underscores where the spaces are.
+         */
+
+        String shortName = getTestDataScreenShortName(screenName);
+        return shortName.replace(" ", "_");
+    }
+
+    String getTestDataScreenShortName(String screenName) {
+    return getPageItem(screenName, TestDataIndex.SCREEN_SHORT_NAME.getIndex());
+}
+
+    String getTestDataScreenLongName(String screenName) {
+
+    String data = getPageItem(screenName, TestDataIndex.SCREEN_LONG_NAME.getIndex());
+    if (data.equals("")) {
+        return getTestDataScreenShortName(screenName);
+    } else {
+        return data;
+    }
+}
+    
+    int getNumGalleryImages(String screenName) {
+        return Integer.parseInt(getPageItem(screenName, TestDataIndex.NUM_GALLERY_IMAGES.getIndex()));
+    }
+
+    public boolean isConfigured(String screenName) {
+        String indicator = getPageItem(screenName, TestDataIndex.NO_PAGE_FLAG.getIndex());
+        if (indicator == null) {
+            return false;
+        } else if (indicator.equals("No Page")) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public String getNameFirstGalleryImage(String screenName) {
+        return getPageItem(screenName, TestDataIndex.GALLERY_IMAGE_FIRST_IMAGE_NAME.getIndex());
+    }
+
+    public String getNameLastGalleryImage(String screenName) {
+        return getPageItem(screenName, TestDataIndex.GALLERY_IMAGE_LAST_IMAGE_NAME.getIndex());
     }
 
     public String getPageItem(String screenName, int itemNumber) {
@@ -233,43 +296,39 @@ public class WebsiteData {
          automatically using the string for a link (which must be present in the data).
          */
 
-
         if (platform == WebsitePlatform.HTML) {
-            String fileName = getPageItem(screenName, TestDataIndex.HTML_FILE_NAME_FOR_SCREEN.getIndex());
-            if (fileName.equals("")) {
-                return generateHTMLFileName(getLinkName(WebsitePlatform.J2EE, screenName));
-            } else {
-                return fileName;
-            }
+            return getTestDataHtmlFilename(screenName);
         } else {
             return screenName; // J2EE version uses screenName to request page
         }
     }
 
     public String getLinkName(WebsitePlatform platform, String screenName) {
+        /*
+        Returns the string used within the link in the header of the page.  This will be the short name
+        but for HTML versions will be capitalised.
+         */
+
+        String data = getTestDataScreenShortName(screenName);
         if (platform == WebsitePlatform.HTML) {
-            String linkName = getPageItem(screenName, TestDataIndex.HTML_LINK_NAME.getIndex());
-            if (linkName.equals("")) {
-                return generateHTMLLinkName(getPageItem(screenName, TestDataIndex.J2EE_LINK_NAME.getIndex()));
-            } else {
-                return linkName;
-            }
+            return data.toUpperCase();
         } else {
-            return getPageItem(screenName, TestDataIndex.J2EE_LINK_NAME.getIndex());
+            return data;
         }
     }
 
     public String getPageTitle(WebsitePlatform platform, String screenName) {
         String pageTitle;
         if (platform == WebsitePlatform.HTML) {
-            pageTitle = getPageItem(screenName, TestDataIndex.HTML_PAGE_TITLE.getIndex());
+            /*
+            In the HTML version of the site, the <title> element is set to be the same as
+            the link text for that page, not a longer title. This will be the short name
+            in the test data.
+             */
+
+            return getTestDataScreenShortName(screenName);
         } else {
-            pageTitle = getPageItem(screenName, TestDataIndex.J2EE_PAGE_TITLE.getIndex());
-        }
-        if (pageTitle.equals("")) {
-            return getPageItem(screenName, TestDataIndex.J2EE_LINK_NAME.getIndex());
-        } else {
-            return pageTitle;
+            return getTestDataScreenLongName(screenName);
         }
     }
 
@@ -284,25 +343,7 @@ public class WebsiteData {
     }
 
     public boolean isGallery(String screenName) {
-        String galleryString = getPageItem(screenName, TestDataIndex.NUM_GALLERY_IMAGES.getIndex());
-        if (galleryString.equals("No Gallery")) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    public int numGalleryImages(String screenName) {
-        if (!isGallery(screenName)) {
-            return 0;
-        } else {
-            String galleryString = getPageItem(screenName, TestDataIndex.NUM_GALLERY_IMAGES.getIndex());
-            int numImages = Integer.parseInt(galleryString);
-            if (numImages < 0) {
-                numImages = 0;
-            }
-            return numImages;
-        }
+        return getNumGalleryImages(screenName) != -1;
     }
 
     String generateHTMLLinkName(String linkName) {

@@ -10,33 +10,32 @@ import org.junit.Test;
  * Time: 08:22
  * To change this template use File | Settings | File Templates.
  */
-public class HTTPHTMLTest_1 {
-    private static TestConfiguration configuration;
+public class HTTPHTMLTest_1 extends WebTest {
 
     @BeforeClass
     public static void setup() {
-        configuration = new TestConfiguration(ConfigurationName.STATIC_HTML_REMOTE_TEST_1);
+        testSetup(ConfigurationName.STATIC_HTML_REMOTE_TEST_1);
     }
 
     @Test
     public void splashTest() throws Exception {
-        TestHelper.getInstance().splashPageTest(configuration);
+        helper.splashPageTest();
     }
 
     @Test
     public void pageContentTest() throws Exception {
-        TestHelper.getInstance().pageContentTest(configuration);
+        helper.pageContentTest();
     }
 
     @Test
     public void linkTest() {
-        TestHelper.getInstance().linkTest(configuration);
+        helper.linkTest();
     }
 
     @Test
     public void galleryTest() {
         // Checks that pages do or don't have a gallery
-        TestHelper.getInstance().galleryTest(configuration);
+        helper.galleryTest();
     }
 
 

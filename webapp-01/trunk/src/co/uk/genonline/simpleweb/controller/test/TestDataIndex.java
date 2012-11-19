@@ -9,13 +9,14 @@ package co.uk.genonline.simpleweb.controller.test;
  */
 public enum TestDataIndex {
     HTML_FILE_NAME_FOR_SCREEN(0),
-    HTML_LINK_NAME(1),
-    J2EE_LINK_NAME(2),
-    HTML_PAGE_TITLE(3),
-    J2EE_PAGE_TITLE(4),
+    DUMMY1(1),
+    SCREEN_SHORT_NAME(2),
+    SCREEN_LONG_NAME(3),
+    DUMMY2(4),
     NUM_GALLERY_IMAGES(5),
-    GALLERY_IMAGE_FIRST_IMAGE_NAME(6),
-    GALLERY_IMAGE_LAST_IMAGE_NAME(7);
+    NO_PAGE_FLAG(6),
+    GALLERY_IMAGE_FIRST_IMAGE_NAME(7),
+    GALLERY_IMAGE_LAST_IMAGE_NAME(8);
 
     private final int index;
 
