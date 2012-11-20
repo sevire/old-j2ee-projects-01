@@ -58,7 +58,7 @@ public class TestHelper {
 
     void testWebsiteScreen(String screenName, String contentStrings[]) {
         // Tests that page exists and that the content is as expected or if indicated
-        // to be deleted in the test configuration, that it is not present.
+        // to be deleted in the testing configuration, that it is not present.
 
         String host = configuration.getHost();
         String longTitle = WebsiteTestData.getInstance().getPageTitle(configuration.getPlatform(), screenName);
@@ -141,66 +141,73 @@ public class TestHelper {
             }
         }
 
-        // Hard code expected number until test data is complete
+        // Hard code expected number until testing data is complete
         assertEquals("Wrong number of screens", 15, rows.size()-3-disabledCount);
 
         webClient.closeAllWindows();
     }
 
-    public void linkTest() {
-        // Checks that the header links are correct and the same on all pages
-
-            // Get two copies of the screen list, one for outer loop and one for inner
-            Set<String> outerScreens = WebsiteTestData.getInstance().getScreenList();
+    public void linkTestScreen(String screenName) {
+        if (WebsiteTestData.getInstance().isConfigured(screenName)) {
             Set<String> innerScreens = WebsiteTestData.getInstance().getScreenList();
-
-            for (String outerScreen : outerScreens) {
-                if (WebsiteTestData.getInstance().isConfigured(outerScreen)) {
-                    HtmlPage page = getScreen(outerScreen);
-                    HtmlAnchor element;
-                    String linkText;
-                    for (String innerScreen : innerScreens) {
-                        if (WebsiteTestData.getInstance().isConfigured(innerScreen)) {
-                            if (configuration.getPlatform() == WebsitePlatform.HTML) {
-                                linkText = WebsiteTestData.getInstance().getLinkName(configuration.getPlatform(), innerScreen);
-                            } else {
-                                linkText = WebsiteTestData.getInstance().getLinkName(configuration.getPlatform(), innerScreen);
-                            }
-                            try {
-                                element = page.getAnchorByText(linkText);
-                            } catch (Exception e) {
-                                element = null;
-                            }
-                            Assert.assertNotNull(String.format("Link for <%s> does not exist in <%s>",
-                                    linkText, outerScreen), element);
-                        }
+            HtmlPage page = getScreen(screenName);
+            HtmlAnchor element;
+            String linkText;
+            for (String innerScreen : innerScreens) {
+                if (WebsiteTestData.getInstance().isConfigured(innerScreen)) {
+                    if (configuration.getPlatform() == WebsitePlatform.HTML) {
+                        linkText = WebsiteTestData.getInstance().getLinkName(configuration.getPlatform(), innerScreen);
+                    } else {
+                        linkText = WebsiteTestData.getInstance().getLinkName(configuration.getPlatform(), innerScreen);
                     }
+                    try {
+                        element = page.getAnchorByText(linkText);
+                    } catch (Exception e) {
+                        element = null;
+                    }
+                    Assert.assertNotNull(String.format("Link for <%s> does not exist in <%s>",
+                            linkText, screenName), element);
                 }
             }
         }
+    }
+
+    public void linkTest() {
+        Set<String> outerScreens = WebsiteTestData.getInstance().getScreenList();
+
+        for (String outerScreen : outerScreens) {
+            if (WebsiteTestData.getInstance().isConfigured(outerScreen)) {
+                linkTestScreen(outerScreen);
+            }
+        }
+    }
+
+    public void galleryTestScreen(String screenName) {
+        HtmlPage page = getScreen(screenName);
+
+        // Get all table elements in page - should be one if gallery and none otherwise
+        DomNodeList<HtmlElement> galleryTable = page.getElementsByTagName("table");
+        int numGalleryElements = galleryTable.size();
+
+        assertFalse(String.format("Too many table elements in page <%s>", screenName), galleryTable.size() > 1);
+        assertFalse(String.format("Gallery present in none gallery page <%s>", screenName),
+                !WebsiteTestData.getInstance().isGallery(screenName) && numGalleryElements == 1) ;
+        assertFalse(String.format("No Gallery present when there should be one for <%s>", screenName),
+                WebsiteTestData.getInstance().isGallery(screenName) && numGalleryElements != 1);
+
+        if (WebsiteTestData.getInstance().isGallery(screenName)) {
+            HtmlElement galleryElement = (HtmlElement) galleryTable.item(0);
+            List<HtmlElement> imageElements = galleryElement.getHtmlElementsByTagName("img");
+            assertEquals(String.format("Wrong number of images in page <%s>", screenName),
+                    WebsiteTestData.getInstance().getNumGalleryImages(screenName), imageElements.size());
+        }
+    }
 
     public void galleryTest() {
         Set<String> screens = WebsiteTestData.getInstance().getScreenList();
 
         for (String screen : screens) {
-            HtmlPage page = getScreen(screen);
-
-            // Get all table elements in page - should be one if gallery and none otherwise
-            DomNodeList<HtmlElement> galleryTable = page.getElementsByTagName("table");
-            int numGalleryElements = galleryTable.size();
-
-            assertFalse(String.format("Too many table elements in page <%s>", screen), galleryTable.size() > 1);
-            assertFalse(String.format("Gallery present in none gallery page <%s>", screen),
-                    !WebsiteTestData.getInstance().isGallery(screen) && numGalleryElements == 1) ;
-            assertFalse(String.format("No Gallery present when there should be one for <%s>", screen),
-                    WebsiteTestData.getInstance().isGallery(screen) && numGalleryElements != 1);
-
-            if (WebsiteTestData.getInstance().isGallery(screen)) {
-                HtmlElement galleryElement = (HtmlElement) galleryTable.item(0);
-                List<HtmlElement> imageElements = galleryElement.getHtmlElementsByTagName("img");
-                assertEquals(String.format("Wrong number of images in page <%s>", screen),
-                        WebsiteTestData.getInstance().getNumGalleryImages(screen), imageElements.size());
-            }
+            galleryTestScreen(screen);
         }
     }
 
@@ -219,7 +226,7 @@ public class TestHelper {
         - Check that page is now correct.
          */
 
-        // Do this is a loop - first time to add text and test, second to remove and test.
+        // Do this is a loop - first time to add text and testing, second to remove and testing.
 
         HtmlPage page;
         HtmlPage responsePage;
