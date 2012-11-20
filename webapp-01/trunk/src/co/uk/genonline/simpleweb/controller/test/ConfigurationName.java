@@ -10,9 +10,9 @@ package co.uk.genonline.simpleweb.controller.test;
 public enum ConfigurationName {
     STATIC_HTML_LOCAL_DEV,
     STATIC_HTML_REMOTE_TEST_1,
-    STATIC_HTML_REMOTE_LIVE,
-    J2EE_LOCAL_DEV,
+    //STATIC_HTML_REMOTE_LIVE,
+    //J2EE_LOCAL_DEV,
     J2EE_LOCAL_TEST_1,
     J2EE_REMOTE_TEST_1,
-    J2EE_REMOTE_LIVE,
+    //J2EE_REMOTE_LIVE,
 }
