@@ -13,7 +13,7 @@ public class TestConfiguration {
     private String host = "";
 
     // In a live environment the splash page is by definition at the Domain URL, but may be
-    // different for a test environment so we will maintain a separate member.  If blank use domain.
+    // different for a testing environment so we will maintain a separate member.  If blank use domain.
 
     private String splashURL = "";
 
@@ -24,20 +24,24 @@ public class TestConfiguration {
                 domain = "http://localhost/~thomassecondary/lucifersdarkangel(trunk)/";
                 host = domain + "lda/";
             break;
-            case STATIC_HTML_REMOTE_TEST_1: // Current test environment on Man Goddesses server
+            case STATIC_HTML_REMOTE_TEST_1: // Current testing environment on Man Goddesses server
                 platform = WebsitePlatform.HTML;
                 domain = "http://manchestergoddesses.co.uk/lda-staging/"; // not really domain but required to make tests work
                 host = domain;
             break;
+/*
             case STATIC_HTML_REMOTE_LIVE: // Live system while still on static (s)html platform
                 platform = WebsitePlatform.HTML;
                 domain = "http://lucifersdarkangel.co.uk/";
                 host = domain + "lda/";
             break;
+*/
+/*
             case J2EE_LOCAL_DEV: // This refers to the environment set up in IDEA
                 platform = WebsitePlatform.J2EE;
                 domain = "http://localhost:8080/";
             break;
+*/
             case J2EE_LOCAL_TEST_1: // This refers to the local Tomcat server on the dev laptop.
                 platform = WebsitePlatform.J2EE;
                 domain = "http://localhost:8080/";
@@ -48,10 +52,12 @@ public class TestConfiguration {
                 domain = "http://31.193.143.174/";
                 host = domain + "lda/";
             break;
+/*
             case J2EE_REMOTE_LIVE: // This is the Oxxus environment once the domain servers point to it
                 platform = WebsitePlatform.J2EE;
                 domain = "http://lucifersdarkangel.co.uk/"; // This won't work until we go live
             break;
+*/
 
         }
     }
