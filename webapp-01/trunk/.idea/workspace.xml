@@ -9,12 +9,23 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="03fdf521-209b-4654-a976-0dbf9d87148b" name="Default" comment="">
+    <list readonly="true" id="03fdf521-209b-4654-a976-0dbf9d87148b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/support/TestHelper.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/support/TestHelper.java" />
+    </list>
+    <list id="05a90ff7-a3dc-4ff5-9703-a62d4bfc501b" name="Holding" comment="[#73] Still re-organising" />
+    <list id="d09a0bc6-4831-4aee-9deb-fbf878f5a259" name="Failed commit: Holding" comment="[#73] Still re-organising" />
+    <list id="98da4199-f1cd-448f-ab30-36bf0222942b" name="[#73] Revert deleted files!!" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/AdminTests.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/AllScreensTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/old/HTTPJ2EETest_1.java" />
+    </list>
+    <list default="true" id="b0f43e85-a8b7-428c-b3b9-41d9fa181c35" name="Revert: [#73] Still re-organising" comment="Revert: [#73] Commit after recovering deleted files during re-organisation">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/old/HTTPHTMLDev.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/old/HTTPHTMLTest_1.java" />
     </list>
     <ignored path="ManchesterGoddesses(java).iws" />
     <ignored path=".idea/workspace.xml" />
+    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="b0f43e85-a8b7-428c-b3b9-41d9fa181c35" time="1353486465525" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,15 +120,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AllScreensTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/AllScreensTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="26" selection-start="1134" selection-end="1134" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ActionClass.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/actions/ActionClass.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -127,19 +129,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdminTests.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/AdminTests.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="23" selection-start="239" selection-end="239" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="TestHelper.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/support/TestHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="238" column="35" selection-start="10059" selection-end="10059" vertical-scroll-proportion="2.840909">
+            <state line="22" column="19" selection-start="505" selection-end="505" vertical-scroll-proportion="0.4642857">
               <folding />
             </state>
           </provider>
@@ -149,42 +142,6 @@
         <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/support/WebsiteTestData.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="257" column="11" selection-start="8681" selection-end="8681" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HTTPJ2EETest_1.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/old/HTTPJ2EETest_1.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="18" selection-start="1080" selection-end="1080" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConfigurationName.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/support/ConfigurationName.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="6" selection-start="351" selection-end="351" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ScreenTestData.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/support/ScreenTestData.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="0" selection-start="256" selection-end="256" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestConfiguration.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/support/TestConfiguration.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="24" selection-start="2638" selection-end="2638" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -209,7 +166,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/TestHtmlPage.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/ScreenTestData.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/TestHelper.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/ConfigurationName.java" />
@@ -224,6 +180,7 @@
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/WebsiteTestData.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/WebTest.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/old/HTTPJ2EETest_1.java" />
+        <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/testing/support/TestHelper.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/support/TestHelper.java" />
       </list>
     </option>
@@ -606,8 +563,8 @@
       <module name="Webapp-01(trunk)" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="co.uk.genonline.simpleweb.controller.test.old" />
-      <option name="MAIN_CLASS_NAME" value="co.uk.genonline.simpleweb.controller.test.old.HTTPJ2EETest_1" />
+      <option name="PACKAGE_NAME" value="co.uk.genonline.simpleweb.controller.testing.old" />
+      <option name="MAIN_CLASS_NAME" value="co.uk.genonline.simpleweb.controller.test.HTTPJ2EETest_1" />
       <option name="METHOD_NAME" value="linkTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
@@ -634,8 +591,8 @@
       <module name="Webapp-01(trunk)" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="co.uk.genonline.simpleweb.controller.test.old" />
-      <option name="MAIN_CLASS_NAME" value="co.uk.genonline.simpleweb.controller.test.old.HTTPJ2EETest_1" />
+      <option name="PACKAGE_NAME" value="co.uk.genonline.simpleweb.controller.testing.old" />
+      <option name="MAIN_CLASS_NAME" value="co.uk.genonline.simpleweb.controller.test.HTTPJ2EETest_1" />
       <option name="METHOD_NAME" value="galleryTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
@@ -690,8 +647,8 @@
       <module name="Webapp-01(trunk)" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="co.uk.genonline.simpleweb.controller.test.old" />
-      <option name="MAIN_CLASS_NAME" value="co.uk.genonline.simpleweb.controller.test.old.HTTPJ2EETest_2" />
+      <option name="PACKAGE_NAME" value="co.uk.genonline.simpleweb.controller.testing.old" />
+      <option name="MAIN_CLASS_NAME" value="co.uk.genonline.simpleweb.controller.test.HTTPJ2EETest_2" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
@@ -718,7 +675,7 @@
       <module name="Webapp-01(trunk)" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="co.uk.genonline.simpleweb.controller.test" />
+      <option name="PACKAGE_NAME" value="co.uk.genonline.simpleweb.controller.testing" />
       <option name="MAIN_CLASS_NAME" value="co.uk.genonline.simpleweb.controller.test.AllScreensTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
@@ -998,8 +955,8 @@
       <module name="Webapp-01(trunk)" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" value="" />
-      <option name="PACKAGE_NAME" value="co.uk.genonline.simpleweb.controller.test.old" />
-      <option name="MAIN_CLASS_NAME" value="co.uk.genonline.simpleweb.controller.test.old.HTTPHTMLDev" />
+      <option name="PACKAGE_NAME" value="co.uk.genonline.simpleweb.controller.testing.old" />
+      <option name="MAIN_CLASS_NAME" value="co.uk.genonline.simpleweb.controller.test.HTTPHTMLDev" />
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="" />
@@ -1378,8 +1335,12 @@
     <task active="true" id="Default" summary="Default task">
       <option name="associatedChangelistId" value="d0fe17d4-419f-4ee8-88f5-23eeb0291307" />
       <changelist id="03fdf521-209b-4654-a976-0dbf9d87148b" name="Default" comment="" />
+      <changelist id="05a90ff7-a3dc-4ff5-9703-a62d4bfc501b" name="Holding" comment="" />
+      <changelist id="d09a0bc6-4831-4aee-9deb-fbf878f5a259" name="Failed commit: Holding" comment="[#73] Still re-organising" />
+      <changelist id="98da4199-f1cd-448f-ab30-36bf0222942b" name="[#73] Revert deleted files!!" comment="" />
+      <changelist id="b0f43e85-a8b7-428c-b3b9-41d9fa181c35" name="Revert: [#73] Still re-organising" comment="" />
       <created>1336416546550</created>
-      <updated>1353400072614</updated>
+      <updated>1353486265906</updated>
     </task>
     <task id="LOCAL-00001" summary="[#2] Enhancing functionality of edit page to include a heading line and first 40 characters of the text etc.  Not finished yet.">
       <created>1339571907164</created>
@@ -1545,7 +1506,43 @@
       <created>1353484245102</created>
       <updated>1353484245102</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="[#73] A bit of re-organisation, hopefully without confusing Subversion!">
+      <created>1353484339102</created>
+      <updated>1353484339102</updated>
+    </task>
+    <task id="LOCAL-00044" summary="[#73] Still re-organising">
+      <created>1353484972101</created>
+      <updated>1353484972101</updated>
+    </task>
+    <task id="LOCAL-00045" summary="[#73] Still re-organising">
+      <created>1353485123102</created>
+      <updated>1353485123102</updated>
+    </task>
+    <task id="LOCAL-00046" summary="[#73] Still re-organising">
+      <created>1353485185102</created>
+      <updated>1353485185102</updated>
+    </task>
+    <task id="LOCAL-00047" summary="[#73] Still re-organising">
+      <created>1353485207102</created>
+      <updated>1353485207102</updated>
+    </task>
+    <task id="LOCAL-00048" summary="[#73] Still re-organising">
+      <created>1353485231101</created>
+      <updated>1353485231101</updated>
+    </task>
+    <task id="LOCAL-00049" summary="[#73] Still re-organising">
+      <created>1353485256101</created>
+      <updated>1353485256101</updated>
+    </task>
+    <task id="LOCAL-00050" summary="[#73] Still re-organising">
+      <created>1353485890102</created>
+      <updated>1353485890102</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Revert: [#73] Commit after recovering deleted files during re-organisation">
+      <created>1353486448102</created>
+      <updated>1353486448103</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1573,11 +1570,12 @@
     <editor active="false" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.6707504" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23124042" sideWeight="0.3665955" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29555896" sideWeight="0.3665955" order="4" side_tool="false" content_ui="tabs" x="0" y="22" width="1280" height="774" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34035656" sideWeight="0.41653904" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="JavaEE:App" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31633466" sideWeight="0.20980091" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32771823" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959481" sideWeight="0.6707504" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20907618" sideWeight="0.6830015" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.50382847" sideWeight="0.65688366" order="11" side_tool="false" content_ui="tabs" />
@@ -1592,7 +1590,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24230146" sideWeight="0.36600307" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39951378" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.6707504" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24149108" sideWeight="0.76875955" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24149108" sideWeight="0.7044411" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27105665" sideWeight="0.92155814" order="7" side_tool="false" content_ui="tabs" x="1284" y="334" width="1874" height="437" />
       <window_info id="CSS Styles" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Repositories" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.32900834" sideWeight="0.49573106" order="15" side_tool="false" content_ui="tabs" />
@@ -1600,7 +1598,6 @@
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32771823" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hibernate Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39969373" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1642,7 +1639,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="[#73] A bit of re-organisation, hopefully without confusing Subversion!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Revert: [#73] Commit after recovering deleted files during re-organisation" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1666,6 +1663,8 @@
     <MESSAGE value="[#73] A bit of cleaning up after working out how to do parameterised tests - moving packages around a bit." />
     <MESSAGE value="[#73] Subversion problems after renaming folder - trying to fix!" />
     <MESSAGE value="[#73] A bit of re-organisation, hopefully without confusing Subversion!" />
+    <MESSAGE value="[#73] Still re-organising" />
+    <MESSAGE value="Revert: [#73] Commit after recovering deleted files during re-organisation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1675,24 +1674,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/old/HTTPJ2EETest_2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="26" selection-start="930" selection-end="930" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/old/HTTPHTMLTest_1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="496" selection-end="496" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="13" selection-start="562" selection-end="562" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/old/HTTPHTMLDev.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="0" selection-start="841" selection-end="841" vertical-scroll-proportion="2.086207" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ControllerHelper.java">
@@ -1707,42 +1691,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/AdminTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="23" selection-start="239" selection-end="239" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/support/ConfigurationName.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="6" selection-start="351" selection-end="351" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/support/ScreenTestData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="256" selection-end="256" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/support/TestConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="24" selection-start="2638" selection-end="2638" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/actions/ActionClass.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="19" selection-start="514" selection-end="514" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/AllScreensTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="26" selection-start="1134" selection-end="1134" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1761,16 +1712,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/old/HTTPJ2EETest_1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="18" selection-start="1080" selection-end="1080" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/support/TestHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="238" column="35" selection-start="10059" selection-end="10059" vertical-scroll-proportion="2.840909">
+        <state line="22" column="19" selection-start="505" selection-end="505" vertical-scroll-proportion="0.4642857">
           <folding />
         </state>
       </provider>
