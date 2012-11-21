@@ -1,7 +1,6 @@
 package co.uk.genonline.simpleweb.controller.test.old;
 
 import co.uk.genonline.simpleweb.controller.test.support.ConfigurationName;
-import co.uk.genonline.simpleweb.controller.test.WebTest;
 import org.junit.BeforeClass;
 import org.junit.Test;
 

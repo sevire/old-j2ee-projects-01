@@ -1,8 +1,5 @@
 package co.uk.genonline.simpleweb.controller.test.support;
 
-import co.uk.genonline.simpleweb.controller.test.TestHtmlPage;
-import co.uk.genonline.simpleweb.controller.test.WebsitePlatform;
-import co.uk.genonline.simpleweb.controller.test.WebsiteTestData;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.*;
 import org.junit.Assert;
@@ -59,7 +56,7 @@ public class TestHelper {
         }
     }
 
-    void testWebsiteScreen(String screenName, String contentStrings[]) {
+    public void testWebsiteScreen(String screenName, String contentStrings[]) {
         // Tests that page exists and that the content is as expected or if indicated
         // to be deleted in the testing configuration, that it is not present.
 
@@ -278,7 +275,7 @@ public class TestHelper {
 
     }
 
-    void pageEditTest() {
+    public void pageEditTest() {
         updatePage(configuration, "lucina");
     }
 

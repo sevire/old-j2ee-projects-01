@@ -1,4 +1,4 @@
-package co.uk.genonline.simpleweb.controller.test;
+package co.uk.genonline.simpleweb.controller.test.support;
 
 import com.gargoylesoftware.htmlunit.WebResponse;
 import com.gargoylesoftware.htmlunit.WebWindow;

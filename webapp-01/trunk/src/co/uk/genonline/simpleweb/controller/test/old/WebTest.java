@@ -1,4 +1,4 @@
-package co.uk.genonline.simpleweb.controller.test;
+package co.uk.genonline.simpleweb.controller.test.old;
 
 import co.uk.genonline.simpleweb.controller.test.support.ConfigurationName;
 import co.uk.genonline.simpleweb.controller.test.support.TestHelper;
@@ -13,7 +13,7 @@ import co.uk.genonline.simpleweb.controller.test.support.TestHelper;
 public abstract class WebTest {
     static TestHelper helper;
 
-    static void testSetup(ConfigurationName cfg) {
+    public static void testSetup(ConfigurationName cfg) {
         helper = new TestHelper(cfg);
     }
 }

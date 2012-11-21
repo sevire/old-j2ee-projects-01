@@ -1,6 +1,4 @@
-package co.uk.genonline.simpleweb.controller.test;
-
-import co.uk.genonline.simpleweb.controller.test.support.TestDataIndex;
+package co.uk.genonline.simpleweb.controller.test.support;
 
 import java.util.*;
 
@@ -233,7 +231,7 @@ public class WebsiteTestData {
     private WebsiteTestData() {
     }
 
-    String getTestDataHtmlFilename(String screenName) {
+    public String getTestDataHtmlFilename(String screenName) {
         /*
         For HTML versions of the site, the file name for an HTML page is generated from the
         short name by putting underscores where the spaces are.
@@ -257,7 +255,7 @@ public class WebsiteTestData {
     }
 }
     
-    int getNumGalleryImages(String screenName) {
+    public int getNumGalleryImages(String screenName) {
         return Integer.parseInt(getPageItem(screenName, TestDataIndex.NUM_GALLERY_IMAGES.getIndex()));
     }
 
