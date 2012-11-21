@@ -9,23 +9,13 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list readonly="true" id="03fdf521-209b-4654-a976-0dbf9d87148b" name="Default" comment="">
+    <list readonly="true" id="03fdf521-209b-4654-a976-0dbf9d87148b" name="Default" comment="" />
+    <list default="true" id="c8e4a150-be68-4196-b5f8-e205d37a3a33" name="Revert: [#73] Still re-organising" comment="Revert: [#73] Still re-organising">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
-    <list id="05a90ff7-a3dc-4ff5-9703-a62d4bfc501b" name="Holding" comment="[#73] Still re-organising" />
-    <list id="d09a0bc6-4831-4aee-9deb-fbf878f5a259" name="Failed commit: Holding" comment="[#73] Still re-organising" />
-    <list id="98da4199-f1cd-448f-ab30-36bf0222942b" name="[#73] Revert deleted files!!" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/AdminTests.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/AllScreensTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/old/HTTPJ2EETest_1.java" />
-    </list>
-    <list default="true" id="b0f43e85-a8b7-428c-b3b9-41d9fa181c35" name="Revert: [#73] Still re-organising" comment="Revert: [#73] Commit after recovering deleted files during re-organisation">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/old/HTTPHTMLDev.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/old/HTTPHTMLTest_1.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/OtherRequestTests.java" afterPath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/OtherRequestTests.java" />
     </list>
     <ignored path="ManchesterGoddesses(java).iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="b0f43e85-a8b7-428c-b3b9-41d9fa181c35" time="1353486465525" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +56,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/support/TestHelper.java" line="241" class="co.uk.genonline.simpleweb.controller.test.TestHelper" package="co.uk.genonline.simpleweb.controller.test">
+      <breakpoint url="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/support/TestHelper.java" line="241" class="co.uk.genonline.simpleweb.controller.test.support.TestHelper" package="co.uk.genonline.simpleweb.controller.test.support">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -129,10 +119,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestHelper.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="TestHelper.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/support/TestHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="19" selection-start="505" selection-end="505" vertical-scroll-proportion="0.4642857">
+            <state line="22" column="19" selection-start="505" selection-end="505" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AllScreensTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/AllScreensTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="13" selection-start="715" selection-end="715" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OtherRequestTests.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/OtherRequestTests.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="15" selection-start="1171" selection-end="1171" vertical-scroll-proportion="0.92214113">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdminTests.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/AdminTests.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="13" selection-start="229" selection-end="229" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -171,7 +188,6 @@
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/ConfigurationName.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/TestConfiguration.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/OtherTests.java" />
-        <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/OtherRequestTests.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/oldtests/WebTest.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/testing/oldtests/HTTPHTMLDev.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/testing/HTTPHTMLDev.java" />
@@ -182,6 +198,7 @@
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/old/HTTPJ2EETest_1.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/testing/support/TestHelper.java" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/support/TestHelper.java" />
+        <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/OtherRequestTests.java" />
       </list>
     </option>
   </component>
@@ -234,22 +251,26 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="PackagesPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="webapp-02" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Webapp-01(trunk)" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -480,14 +501,14 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
-    <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
+    <property name="MemberChooser.sorted" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/Library/Caches/IntelliJIdea11/tomcat/LDA-01_(1)_webapp-02_2/work/Catalina/localhost/_/org/apache/jsp/WEB_002dINF" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
+    <property name="FullScreen" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="GoToFile.includeJavaFiles" value="false" />
@@ -552,35 +573,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration default="false" name="HTTPJ2EETest_1.linkTest" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="co.uk.genonline.simpleweb.controller.testing.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="Webapp-01(trunk)" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="co.uk.genonline.simpleweb.controller.testing.old" />
-      <option name="MAIN_CLASS_NAME" value="co.uk.genonline.simpleweb.controller.test.HTTPJ2EETest_1" />
-      <option name="METHOD_NAME" value="linkTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.OtherRequestTests">
     <configuration default="false" name="HTTPJ2EETest_1.galleryTest" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" runner="idea">
         <pattern>
@@ -693,6 +686,34 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
+    <configuration default="false" name="OtherRequestTests" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="co.uk.genonline.simpleweb.controller.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="Webapp-01(trunk)" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="co.uk.genonline.simpleweb.controller.test" />
+      <option name="MAIN_CLASS_NAME" value="co.uk.genonline.simpleweb.controller.test.OtherRequestTests" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -702,25 +723,6 @@
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-        <option name="PhingTarget" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
         <option name="Maven.BeforeRunTask" enabled="false" />
         <option name="PhingTarget" enabled="false" />
       </method>
@@ -758,6 +760,25 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+        <option name="PhingTarget" enabled="false" />
+      </method>
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
@@ -784,17 +805,6 @@
         <option name="engineId" value="embedded" />
         <option name="fileUrl" />
       </JSRemoteDebuggerConfigurationSettings>
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
-      <JSDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSDebuggerConfigurationSettings>
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
@@ -828,37 +838,14 @@
         <option name="PhingTarget" enabled="false" />
       </method>
     </configuration>
-    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote">
-      <option name="LOCAL" value="false" />
-      <deployment />
-      <server-settings>
-        <data>
-          <option name="transportHostId" />
-        </data>
-      </server-settings>
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="57518" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="false" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
+      <JSDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSDebuggerConfigurationSettings>
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
-      <option name="VM_PARAMETERS" value="" />
-      <option name="USER_CFG_CLASS" />
-      <option name="CONTEXT_PROVIDER" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
@@ -922,6 +909,40 @@
           <option name="PROGRAM_PARAMETERS" value="" />
         </SHUTDOWN>
       </ConfigurationWrapper>
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote">
+      <option name="LOCAL" value="false" />
+      <deployment />
+      <server-settings>
+        <data>
+          <option name="transportHostId" />
+        </data>
+      </server-settings>
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="57518" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
@@ -1271,17 +1292,17 @@
       </method>
     </configuration>
     <list size="11">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.LDA" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.LDA Test" />
-      <item index="2" class="java.lang.String" itemvalue="Tomcat Server.lda" />
-      <item index="3" class="java.lang.String" itemvalue="Tomcat Server.lda-debug" />
-      <item index="4" class="java.lang.String" itemvalue="Tomcat Server.LDA-01" />
-      <item index="5" class="java.lang.String" itemvalue="Tomcat Server.LDA-01 (1)" />
-      <item index="6" class="java.lang.String" itemvalue="JUnit.HTTPJ2EETest_1.linkTest" />
-      <item index="7" class="java.lang.String" itemvalue="JUnit.HTTPJ2EETest_1.galleryTest" />
-      <item index="8" class="java.lang.String" itemvalue="JUnit.co.uk.genonline.simpleweb.controller.testing in Webapp-01(trunk)" />
-      <item index="9" class="java.lang.String" itemvalue="JUnit.HTTPJ2EETest_2" />
-      <item index="10" class="java.lang.String" itemvalue="JUnit.AllScreensTest" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.HTTPJ2EETest_1.galleryTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.co.uk.genonline.simpleweb.controller.testing in Webapp-01(trunk)" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.HTTPJ2EETest_2" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.AllScreensTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.OtherRequestTests" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.LDA" />
+      <item index="6" class="java.lang.String" itemvalue="JUnit.LDA Test" />
+      <item index="7" class="java.lang.String" itemvalue="Tomcat Server.lda" />
+      <item index="8" class="java.lang.String" itemvalue="Tomcat Server.lda-debug" />
+      <item index="9" class="java.lang.String" itemvalue="Tomcat Server.LDA-01" />
+      <item index="10" class="java.lang.String" itemvalue="Tomcat Server.LDA-01 (1)" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -1320,6 +1341,14 @@
           <option name="myVcsRoot" value="$PROJECT_DIR$/.idea" />
           <option name="myCopyRoot" value="$PROJECT_DIR$/.idea" />
         </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="$PROJECT_DIR$" />
+          <option name="myCopyRoot" value="$PROJECT_DIR$/web/gallery" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="$PROJECT_DIR$" />
+          <option name="myCopyRoot" value="$PROJECT_DIR$/web/gallery/viduitas" />
+        </SvnCopyRootSimple>
       </list>
     </option>
     <option name="myMoreRealMappingRoots">
@@ -1328,6 +1357,14 @@
           <option name="myVcsRoot" value="$PROJECT_DIR$" />
           <option name="myCopyRoot" value="$PROJECT_DIR$" />
         </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="$PROJECT_DIR$" />
+          <option name="myCopyRoot" value="$PROJECT_DIR$/web/gallery" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="$PROJECT_DIR$" />
+          <option name="myCopyRoot" value="$PROJECT_DIR$/web/gallery/viduitas" />
+        </SvnCopyRootSimple>
       </list>
     </option>
   </component>
@@ -1335,12 +1372,9 @@
     <task active="true" id="Default" summary="Default task">
       <option name="associatedChangelistId" value="d0fe17d4-419f-4ee8-88f5-23eeb0291307" />
       <changelist id="03fdf521-209b-4654-a976-0dbf9d87148b" name="Default" comment="" />
-      <changelist id="05a90ff7-a3dc-4ff5-9703-a62d4bfc501b" name="Holding" comment="" />
-      <changelist id="d09a0bc6-4831-4aee-9deb-fbf878f5a259" name="Failed commit: Holding" comment="[#73] Still re-organising" />
-      <changelist id="98da4199-f1cd-448f-ab30-36bf0222942b" name="[#73] Revert deleted files!!" comment="" />
-      <changelist id="b0f43e85-a8b7-428c-b3b9-41d9fa181c35" name="Revert: [#73] Still re-organising" comment="" />
+      <changelist id="c8e4a150-be68-4196-b5f8-e205d37a3a33" name="Revert: [#73] Still re-organising" comment="" />
       <created>1336416546550</created>
-      <updated>1353486265906</updated>
+      <updated>1353486938014</updated>
     </task>
     <task id="LOCAL-00001" summary="[#2] Enhancing functionality of edit page to include a heading line and first 40 characters of the text etc.  Not finished yet.">
       <created>1339571907164</created>
@@ -1542,7 +1576,23 @@
       <created>1353486448102</created>
       <updated>1353486448103</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Revert: [#73] Commit after recovering deleted files during re-organisation">
+      <created>1353486675103</created>
+      <updated>1353486675103</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Revert: [#73] Commit after recovering deleted files during re-organisation">
+      <created>1353486747102</created>
+      <updated>1353486747102</updated>
+    </task>
+    <task id="LOCAL-00056" summary="[#73] Revert deleted files!!">
+      <created>1353486768101</created>
+      <updated>1353486768102</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Revert: [#73] Still re-organising">
+      <created>1353487025101</created>
+      <updated>1353487025102</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1575,7 +1625,6 @@
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34035656" sideWeight="0.41653904" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="JavaEE:App" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31633466" sideWeight="0.20980091" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32771823" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959481" sideWeight="0.6707504" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20907618" sideWeight="0.6830015" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.50382847" sideWeight="0.65688366" order="11" side_tool="false" content_ui="tabs" />
@@ -1584,21 +1633,22 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32771823" sideWeight="0.38900748" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959481" sideWeight="0.21745789" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24230146" sideWeight="0.36600307" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39951378" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.6707504" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24149108" sideWeight="0.7044411" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27105665" sideWeight="0.92155814" order="7" side_tool="false" content_ui="tabs" x="1284" y="334" width="1874" height="437" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24068071" sideWeight="0.7044411" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43657818" sideWeight="0.92155814" order="7" side_tool="false" content_ui="tabs" x="1284" y="334" width="1874" height="437" />
       <window_info id="CSS Styles" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Repositories" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.32900834" sideWeight="0.49573106" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="combo" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32771823" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hibernate Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32771823" sideWeight="0.38900748" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39969373" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1639,7 +1689,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Revert: [#73] Commit after recovering deleted files during re-organisation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Revert: [#73] Still re-organising" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1665,6 +1715,8 @@
     <MESSAGE value="[#73] A bit of re-organisation, hopefully without confusing Subversion!" />
     <MESSAGE value="[#73] Still re-organising" />
     <MESSAGE value="Revert: [#73] Commit after recovering deleted files during re-organisation" />
+    <MESSAGE value="[#73] Revert deleted files!!" />
+    <MESSAGE value="Revert: [#73] Still re-organising" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1684,37 +1736,39 @@
         <state line="21" column="13" selection-start="651" selection-end="651" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/support/OtherRequestTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="5" selection-start="731" selection-end="731" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/actions/ActionClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="19" selection-start="514" selection-end="514" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/support/WebsiteTestData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="257" column="11" selection-start="8681" selection-end="8681" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/old/WebTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="11" selection-start="440" selection-end="440" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="17" column="19" selection-start="514" selection-end="514" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/support/TestHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="19" selection-start="505" selection-end="505" vertical-scroll-proportion="0.4642857">
+        <state line="22" column="19" selection-start="505" selection-end="505" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/AllScreensTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="13" selection-start="715" selection-end="715" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/AdminTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="13" selection-start="229" selection-end="229" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/support/WebsiteTestData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="257" column="11" selection-start="8681" selection-end="8681" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/old/WebTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="11" selection-start="440" selection-end="440" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/OtherRequestTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="15" selection-start="1171" selection-end="1171" vertical-scroll-proportion="0.92214113">
           <folding />
         </state>
       </provider>

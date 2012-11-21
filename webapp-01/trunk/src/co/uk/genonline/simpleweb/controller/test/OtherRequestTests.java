@@ -3,6 +3,7 @@ package co.uk.genonline.simpleweb.controller.test;
 import co.uk.genonline.simpleweb.controller.test.support.ConfigurationName;
 import co.uk.genonline.simpleweb.controller.test.support.TestHelper;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.Collection;
  * Time: 07:36
  * To change this template use File | Settings | File Templates.
  */
+@RunWith(Parameterized.class)
 public class OtherRequestTests {
     ConfigurationName configurationName;
     TestHelper testHelper;
