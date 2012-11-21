@@ -1,5 +1,8 @@
 package co.uk.genonline.simpleweb.controller.test;
 
+import co.uk.genonline.simpleweb.controller.test.support.ConfigurationName;
+import co.uk.genonline.simpleweb.controller.test.support.TestHelper;
+
 /**
  * Created with IntelliJ IDEA.
  * User: thomassecondary

@@ -1,5 +1,8 @@
-package co.uk.genonline.simpleweb.controller.test;
+package co.uk.genonline.simpleweb.controller.test.support;
 
+import co.uk.genonline.simpleweb.controller.test.TestHtmlPage;
+import co.uk.genonline.simpleweb.controller.test.WebsitePlatform;
+import co.uk.genonline.simpleweb.controller.test.WebsiteTestData;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.*;
 import org.junit.Assert;

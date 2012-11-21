@@ -1,4 +1,6 @@
-package co.uk.genonline.simpleweb.controller.test;
+package co.uk.genonline.simpleweb.controller.test.support;
+
+import co.uk.genonline.simpleweb.controller.test.WebsitePlatform;
 
 /**
  * Created with IntelliJ IDEA.

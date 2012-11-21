@@ -1,5 +1,7 @@
 package co.uk.genonline.simpleweb.controller.test;
 
+import co.uk.genonline.simpleweb.controller.test.support.ConfigurationName;
+import co.uk.genonline.simpleweb.controller.test.support.TestHelper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
