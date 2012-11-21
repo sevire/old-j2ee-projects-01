@@ -1,4 +1,4 @@
-package co.uk.genonline.simpleweb.controller.test;
+package co.uk.genonline.simpleweb.controller.testing;
 
 /**
  * Created with IntelliJ IDEA.
