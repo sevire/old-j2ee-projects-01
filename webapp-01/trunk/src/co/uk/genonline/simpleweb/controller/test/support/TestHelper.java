@@ -270,9 +270,7 @@ public class TestHelper {
                     testWebsiteScreen(screenName, WebsiteTestData.getInstance().getContentStrings(screenName));
                 }
             }
-
         }
-
     }
 
     public void pageEditTest() {
