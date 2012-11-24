@@ -29,6 +29,10 @@ public class TestHelper {
         webClient.setThrowExceptionOnFailingStatusCode(false);
     }
 
+    public TestConfiguration getConfiguration() {
+        return configuration;
+    }
+
     HtmlPage getRequest(String requestString) {
         /*
          Get response for a general request within the website, depending upon configuration.
@@ -44,12 +48,17 @@ public class TestHelper {
     }
 
     HtmlPage getScreen(String screenName) {
+        /*
+         Get response for one of the content screens (not admin screens) which are configured
+         within the WebsiteTestData
+         */
         return getRequest(getScreenRequestString(configuration.getPlatform(), screenName));
     }
 
     void testWebsitePage(HtmlPage page, String contentStrings[]) {
-        // Requests a page using the supplied request string and then checks the returned page for
-        // the strings supplied.
+    /*
+     Checks whether a given HTML page contains all the strings provided
+     */
 
         for (int i=0; i<contentStrings.length; i++) {
             assertTrue(String.format("Page does not contain text <%s>", contentStrings[i]), page.asText().contains(contentStrings[i]));
@@ -67,12 +76,13 @@ public class TestHelper {
 
         if (WebsiteTestData.getInstance().isConfigured(screenName)) {
             assertNotNull(String.format("Screen <%s> does not exist at <%s>", screenName, host), page);
-            assertEquals(String.format("Page not found <%s> for screen <%s> at <%s>", WebsiteTestData.getInstance().getTestDataHtmlFilename(screenName), screenName, host),
+            assertEquals(String.format("Page not found <%s> for screen <%s> at <%s>",
+                    WebsiteTestData.getInstance().getTestDataHtmlFilename(screenName), screenName, host),
                     200, page.getWebResponse().getStatusCode());
             assertEquals(String.format("Title incorrect for <%s> at <%s>", screenName, host), String.format("Lucifer's Dark Angel - %s", longTitle), page.getTitleText());
             testWebsitePage(page, contentStrings);
         } else {
-            assertEquals(String.format("Page not found for screen <%s> at <%s>", screenName, host),
+            assertEquals(String.format("Disabled screen found: screen <%s> at <%s>", screenName, host),
                     404, page.getWebResponse().getStatusCode());
         }
     }
@@ -93,25 +103,18 @@ public class TestHelper {
         return request;
     }
 
-    public void pageContentTest() {
-        Set<String> screens = WebsiteTestData.getInstance().getScreenList();
-
-        for (String screen : screens) {
-            testWebsiteScreen(screen, WebsiteTestData.getInstance().getContentStrings(screen));
-        }
-    }
-
     public void splashPageTest() throws Exception {
         String splashURL = configuration.getSplashURL();
 
-        HtmlPage page = webClient.getPage(splashURL);
+        TestHtmlPage page = new TestHtmlPage(getRequest(splashURL));
         assertNotNull(String.format("No splash page received at <%s>", splashURL), page);
         assertEquals(String.format("Title incorrect for splash page at ,<%s>", splashURL),
-                "Lucifer's Dark Angel - Princess Lucina of Manchester", page.getTitleText());
+                "Lucifer's Dark Angel - Princess Lucina of Manchester", page.getPage().getTitleText());
 
         String contentStrings[] = WebsiteTestData.getInstance().getContentStrings("splash");
         for (String contentString : contentStrings) {
-            assertTrue(String.format("Page does not contain text <%s>", contentString), page.asText().contains(contentString));
+            assertTrue(String.format("Page does not contain text <%s>", contentString),
+                    page.getPage().asText().contains(contentString));
         }
     }
 
@@ -119,9 +122,9 @@ public class TestHelper {
         WebClient webClient = new WebClient();
         String host = configuration.getHost();
 
-        TestHtmlPage page = new TestHtmlPage((HtmlPage)webClient.getPage(host + "editIndex"));
-        assertEquals("Lucifer's Dark Angel - Edit Index", page.getPage().getTitleText());
+        TestHtmlPage page = new TestHtmlPage(getRequest("editIndex"));
 
+        assertEquals("Lucifer's Dark Angel - Edit Index", page.getPage().getTitleText());
         assertEquals(String.format("Body id not correct"), ((TestHtmlPage)page).getBodyId(), "editIndex");
 
         DomNodeList<HtmlElement> table = page.getPage().getElementsByTagName("table");
@@ -172,16 +175,6 @@ public class TestHelper {
         }
     }
 
-    public void linkTest() {
-        Set<String> outerScreens = WebsiteTestData.getInstance().getScreenList();
-
-        for (String outerScreen : outerScreens) {
-            if (WebsiteTestData.getInstance().isConfigured(outerScreen)) {
-                linkTestScreen(outerScreen);
-            }
-        }
-    }
-
     public void galleryTestScreen(String screenName) {
         HtmlPage page = getScreen(screenName);
 
@@ -203,15 +196,7 @@ public class TestHelper {
         }
     }
 
-    public void galleryTest() {
-        Set<String> screens = WebsiteTestData.getInstance().getScreenList();
-
-        for (String screen : screens) {
-            galleryTestScreen(screen);
-        }
-    }
-
-    void updatePage(TestConfiguration configuration, String screenName) {
+    public void updatePage(String screenName) {
         String screenTestString[] = {"Testing xxx"};
         String editIndexTestString[] = {"Lucifer's Dark Angel - Website Maintenance Screen"};
 
@@ -274,14 +259,6 @@ public class TestHelper {
     }
 
     public void pageEditTest() {
-        updatePage(configuration, "lucina");
-    }
-
-    public TestConfiguration getConfiguration() {
-        return configuration;
-    }
-
-    public void setConfiguration(TestConfiguration configuration) {
-        this.configuration = configuration;
+        updatePage("lucina");
     }
 }

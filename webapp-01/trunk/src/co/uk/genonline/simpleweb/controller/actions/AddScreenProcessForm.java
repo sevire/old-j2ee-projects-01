@@ -7,9 +7,9 @@ import org.hibernate.SessionFactory;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class AddScreenAction extends ActionClass {
+public class AddScreenProcessForm extends ActionClass {
 
-    public AddScreenAction(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, Screens data) {
+    public AddScreenProcessForm(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, Screens data) {
         super(request, response, factory, data);
     }
 

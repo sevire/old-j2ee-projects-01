@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletResponse;
  * Time: 08:09
  * To change this template use File | Settings | File Templates.
  */
-public class AddAction extends ActionClass {
+public class AddScreenDisplayForm extends ActionClass {
 
-    public AddAction(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, Screens data) {
+    public AddScreenDisplayForm(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, Screens data) {
         super(request, response, factory, data);
     }
 

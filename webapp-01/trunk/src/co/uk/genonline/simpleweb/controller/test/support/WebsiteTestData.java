@@ -10,6 +10,17 @@ import java.util.*;
  * To change this template use File | Settings | File Templates.
  */
 public class WebsiteTestData {
+    private static final String TEST_DATA_UPDATE_PAGE_SCREEN = "lucina";
+    private static final String TEST_DATA_ENABLE_PAGE_SCREEN = "lucina";
+
+    public static String getUpdatePageScreen() {
+        return TEST_DATA_UPDATE_PAGE_SCREEN;
+    }
+
+    public static String getEnablePageScreen() {
+        return TEST_DATA_ENABLE_PAGE_SCREEN;
+    }
+
     private static WebsiteTestData ourInstance = new WebsiteTestData();
 
         // Set up array with key data for each field relevant to requesting a page
@@ -230,6 +241,8 @@ public class WebsiteTestData {
 
     private WebsiteTestData() {
     }
+
+
 
     public String getTestDataHtmlFilename(String screenName) {
         /*

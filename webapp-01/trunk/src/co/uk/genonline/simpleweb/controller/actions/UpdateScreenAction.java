@@ -26,7 +26,13 @@ public class UpdateScreenAction extends ActionClass {
         logger.debug("Screen contents from form... ");
         logger.debug(request.getParameter("screenContents"));
         data.setName(screen);
-        data.setSortKey(Integer.parseInt(request.getParameter("sortKey")));
+
+        try {
+            data.setSortKey(Integer.parseInt(request.getParameter("sortKey")));
+        } catch (Exception e) {
+            logger.warn("Invalid sort key entered, using 100", e);
+            data.setSortKey(100);
+        }
 
         boolean checked = request.getParameter("enabledFlag") == null ? false : request.getParameter("enabledFlag").equals("Enabled");
 

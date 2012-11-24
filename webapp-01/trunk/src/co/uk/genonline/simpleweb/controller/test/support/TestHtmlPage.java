@@ -34,10 +34,6 @@ public class TestHtmlPage {
         return page;
     }
 
-    public void setPage(HtmlPage page) {
-        this.page = page;
-    }
-
     public String getBodyId() {
         HtmlElement bodyElement = (HtmlElement)page.getElementsByTagName("body").item(0);
         return bodyElement.getAttribute("id");

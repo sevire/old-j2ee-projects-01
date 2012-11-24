@@ -77,7 +77,7 @@ public class ControllerHelper extends HelperBase {
                 Action action = new UpdateScreenAction(request,response, factory, data);
                 result = action.perform();
             } else if (request.getParameter("addButton") != null) {
-                Action action = new AddScreenAction(request,response, factory, data);
+                Action action = new AddScreenProcessForm(request,response, factory, data);
                 result = action.perform();
             } else if (request.getParameter("cancelButton") != null) {
                 Action action = new CancelButtonAction(request,response, factory, data);
@@ -102,7 +102,7 @@ public class ControllerHelper extends HelperBase {
         } else if (command.equals("/add")) {
             status.resetStatusMessage();
             logger.info("add: screen is " + data.getName());
-            Action action = new AddAction(request,response, factory, data);
+            Action action = new AddScreenDisplayForm(request,response, factory, data);
             result = action.perform();
         } else if (command.equals("/editIndex")) {
             status.resetStatusMessage();
