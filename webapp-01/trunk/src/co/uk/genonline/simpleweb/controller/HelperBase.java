@@ -33,6 +33,12 @@ public abstract class HelperBase {
     public abstract void copyFromSession(Object helper);
 
     public void addHelperToSession(String name, SessionData state) {
+        /*
+         * If the session already has an attribute for a helper object <name> then there is data already stored for
+         * this session so copy data from that into this session.
+         *
+         * Then replace any stored session (if there was one) with this (current helper).
+         */
         if (SessionData.READ == state) {
             Object sessionObj = request.getSession().getAttribute(name);
             if (sessionObj != null) {

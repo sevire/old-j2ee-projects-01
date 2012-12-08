@@ -30,14 +30,14 @@ public class Controller extends HttpServlet {
             throws ServletException, IOException {
         ControllerHelper helper = new ControllerHelper(request, response, (SessionFactory)(getServletConfig().getServletContext().getAttribute("sessionFactory")));
         logger.info("doPost called, request = " + request.getRequestURI());
-        helper.doPost();
+        helper.processRequest();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
         ControllerHelper helper = new ControllerHelper(request, response, (SessionFactory)(getServletConfig().getServletContext().getAttribute("sessionFactory")));
         logger.info("doGet called, request = " + request.getRequestURI());
-        helper.doGet();
+        helper.processRequest();
     }
 
     public void init() {

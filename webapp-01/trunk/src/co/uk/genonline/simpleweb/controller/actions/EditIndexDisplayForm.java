@@ -14,9 +14,9 @@ import javax.servlet.http.HttpServletResponse;
  * Time: 08:09
  * To change this template use File | Settings | File Templates.
  */
-public class EditIndexAction extends ActionClass {
+public class EditIndexDisplayForm extends ActionClass {
 
-    public EditIndexAction(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, Screens data) {
+    public EditIndexDisplayForm(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, Screens data) {
         super(request, response, factory, data);
     }
 

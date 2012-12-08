@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="war" name="lda">
-    <output-path>$PROJECT_DIR$/out/artifacts/lda</output-path>
+  <artifact type="war" build-on-make="true" name="lda">
+    <output-path>/usr/local/apache-tomcat-7.0.14/webapps</output-path>
     <root id="archive" name="lda.war">
       <element id="artifact" artifact-name="lda-exploded" />
       <element id="directory" name="WEB-INF">

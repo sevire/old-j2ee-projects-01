@@ -56,11 +56,7 @@ public class Screens {
     @Column(name = "ScreenTitleLong", nullable = true, insertable = true, updatable = true, length = 50, precision = 0)
     @Basic
     public String getScreenTitleLong() {
-        if (screenTitleLong.equals("")) {
-            return getScreenTitleShort();
-        } else {
-            return screenTitleLong;
-        }
+        return screenTitleLong;
     }
 
     public void setScreenTitleLong(String screenTitleLong) {
@@ -72,11 +68,7 @@ public class Screens {
     @Column(name = "ScreenTitleShort", nullable = true, insertable = true, updatable = true, length = 20, precision = 0)
     @Basic
     public String getScreenTitleShort() {
-        if (screenTitleShort.equals("")) {
-            return getName();
-        } else {
-            return screenTitleShort;
-        }
+        return screenTitleShort;
     }
 
     public void setScreenTitleShort(String screenTitleShort) {

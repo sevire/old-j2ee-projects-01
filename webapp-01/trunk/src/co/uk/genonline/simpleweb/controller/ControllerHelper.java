@@ -20,7 +20,10 @@ import java.io.IOException;
  * To change this template use File | Settings | File Templates.
  */
 public class ControllerHelper extends HelperBase {
+    // Data which is persisted between sessions via copyFromSessionObj
     protected Screens data;
+
+    // Data not persisted between sessions.
     Logger logger;
     SessionFactory factory;
     boolean pageNotFound;
@@ -29,26 +32,16 @@ public class ControllerHelper extends HelperBase {
                             SessionFactory factory) {
         super(request, response);
 
-        //System.out.println("getLogger");
         logger = Logger.getLogger("ControllerHelper");
-        //logger.setLevel(Level.toLevel(request.getServletContext().getInitParameter("loggingLevel")));
         logger.info("Logger initiated - " + logger.getName());
 
         data = new Screens();
         this.factory = factory;
-
     }
 
+    // Method used to expose data to JSPs
     public Object getData() {
         return data;
-    }
-
-    protected void doPost() throws ServletException, IOException {
-        processRequest();
-    }
-
-    protected void doGet() throws IOException, ServletException {
-        processRequest();
     }
 
     protected void processRequest() throws IOException, ServletException {
@@ -74,13 +67,13 @@ public class ControllerHelper extends HelperBase {
 
         if (command.equals("/Controller.do")) {
             if (request.getParameter("updateButton") != null) {
-                Action action = new UpdateScreenAction(request,response, factory, data);
+                Action action = new EditScreenProcessForm(request,response, factory, data);
                 result = action.perform();
             } else if (request.getParameter("addButton") != null) {
                 Action action = new AddScreenProcessForm(request,response, factory, data);
                 result = action.perform();
             } else if (request.getParameter("cancelButton") != null) {
-                Action action = new CancelButtonAction(request,response, factory, data);
+                Action action = new CancelAction(request,response, factory, data);
                 result = action.perform();
             } else {
                 pageNotFound = true;
@@ -92,12 +85,12 @@ public class ControllerHelper extends HelperBase {
                 data.setName(webHelper.getHomePage());
             }
             logger.info("view: screen is " + data.getName());
-            Action action = new ViewPageAction(request, response, factory, data);
+            Action action = new ViewScreen(request, response, factory, data);
             result = action.perform();
         } else if (command.equals("/edit")) {
             status.resetStatusMessage();
             logger.info("edit: screen is " + data.getName());
-            Action action = new EditScreenAction(request,response, factory, data);
+            Action action = new EditScreenDisplayForm(request,response, factory, data);
             result = action.perform();
         } else if (command.equals("/add")) {
             status.resetStatusMessage();
@@ -107,17 +100,17 @@ public class ControllerHelper extends HelperBase {
         } else if (command.equals("/editIndex")) {
             status.resetStatusMessage();
             logger.info("editIndex");
-            Action action = new EditIndexAction(request,response, factory, data);
+            Action action = new EditIndexDisplayForm(request,response, factory, data);
             result = action.perform();
         } else if (command.equals("/delete")) {
             status.resetStatusMessage();
             logger.info("delete: screen is " + data.getName());
-            Action action = new DeleteAction(request,response, factory, data);
+            Action action = new DeleteScreen(request,response, factory, data);
             result = action.perform();
         } else if (command.equals("/viewImage")) {
             status.resetStatusMessage();
             logger.info("Gallery View");
-            Action action = new ViewImageAction(request,response, factory, data);
+            Action action = new ViewImage(request,response, factory, data);
             result = action.perform();
         } else {
             pageNotFound = true;

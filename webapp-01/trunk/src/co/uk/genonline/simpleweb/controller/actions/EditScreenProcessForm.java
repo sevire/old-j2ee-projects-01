@@ -14,9 +14,9 @@ import javax.servlet.http.HttpServletResponse;
  * Time: 08:09
  * To change this template use File | Settings | File Templates.
  */
-public class UpdateScreenAction extends ActionClass {
+public class EditScreenProcessForm extends ActionClass {
 
-    public UpdateScreenAction(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, Screens data) {
+    public EditScreenProcessForm(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, Screens data) {
         super(request, response, factory, data);
     }
 
@@ -25,6 +25,7 @@ public class UpdateScreenAction extends ActionClass {
         logger.info(String.format("Updating screen <%s>", screen));
         logger.debug("Screen contents from form... ");
         logger.debug(request.getParameter("screenContents"));
+
         data.setName(screen);
 
         try {

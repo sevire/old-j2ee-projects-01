@@ -14,9 +14,9 @@ import java.io.File;
  * Time: 08:09
  * To change this template use File | Settings | File Templates.
  */
-public class ViewImageAction extends ActionClass {
+public class ViewImage extends ActionClass {
 
-    public ViewImageAction(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, Screens data) {
+    public ViewImage(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, Screens data) {
         super(request, response, factory, data);
     }
 
