@@ -20,6 +20,7 @@ public class CancelAction extends ActionClass {
     }
 
     public RequestResult perform() {
+        status.setStatusMessage("Action cancelled", "info");
         return new RequestResult(URLwithContext("/editIndex"), true);
     }
 }

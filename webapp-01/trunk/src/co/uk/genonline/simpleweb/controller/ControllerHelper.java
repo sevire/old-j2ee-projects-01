@@ -3,7 +3,7 @@ package co.uk.genonline.simpleweb.controller;
 import co.uk.genonline.simpleweb.controller.actions.*;
 import co.uk.genonline.simpleweb.model.bean.Screens;
 import co.uk.genonline.simpleweb.web.WebHelper;
-import org.apache.log4j.Logger;
+import org.apache.log4j.Level;
 import org.hibernate.SessionFactory;
 
 import javax.servlet.RequestDispatcher;
@@ -21,10 +21,10 @@ import java.io.IOException;
  */
 public class ControllerHelper extends HelperBase {
     // Data which is persisted between sessions via copyFromSessionObj
-    protected Screens data;
+    Screens data;
+    //boolean addFlag = false; // Used to expose addFlag to JSPs (via getAddFlag() method) to allow common jsp for add or edit screen.
 
     // Data not persisted between sessions.
-    Logger logger;
     SessionFactory factory;
     boolean pageNotFound;
 
@@ -32,17 +32,25 @@ public class ControllerHelper extends HelperBase {
                             SessionFactory factory) {
         super(request, response);
 
-        logger = Logger.getLogger("ControllerHelper");
-        logger.info("Logger initiated - " + logger.getName());
+        logger.setLevel(Level.DEBUG);
+        logger.info("Logger initiated");
 
         data = new Screens();
+        logger.info("Initialised data, = <%s>", data.toString());
         this.factory = factory;
     }
 
     // Method used to expose data to JSPs
     public Object getData() {
+        logger.info("Returning (Screens)'data' = <%s>", data.toString());
         return data;
     }
+
+/*
+    public boolean getAddFlag() {
+        return addFlag;
+    }
+*/
 
     protected void processRequest() throws IOException, ServletException {
         RequestStatus status;
@@ -52,10 +60,11 @@ public class ControllerHelper extends HelperBase {
         // RequestStatus instance needs to be maintained at session level
 
         if (request.getSession().getAttribute("requestStatus") == null) {
+            logger.info("Request status was null, session is : " + request.getSession());
             request.getSession().setAttribute("requestStatus", new RequestStatus());
         }
         status = (RequestStatus) request.getSession().getAttribute("requestStatus");
-        status.setStatusMessage("I don't think I will ever see this!", "warning");
+        logger.info("Controller process request initialisation, status = " + status);
 
         pageNotFound = false;
         String command = request.getServletPath();
@@ -67,13 +76,13 @@ public class ControllerHelper extends HelperBase {
 
         if (command.equals("/Controller.do")) {
             if (request.getParameter("updateButton") != null) {
-                Action action = new EditScreenProcessForm(request,response, factory, data);
+                Action action = new EditScreenProcessForm(request, response, factory, data);
                 result = action.perform();
             } else if (request.getParameter("addButton") != null) {
-                Action action = new AddScreenProcessForm(request,response, factory, data);
+                Action action = new AddScreenProcessForm(request, response, factory, data);
                 result = action.perform();
             } else if (request.getParameter("cancelButton") != null) {
-                Action action = new CancelAction(request,response, factory, data);
+                Action action = new CancelAction(request, response, factory, data);
                 result = action.perform();
             } else {
                 pageNotFound = true;
@@ -94,11 +103,11 @@ public class ControllerHelper extends HelperBase {
             result = action.perform();
         } else if (command.equals("/add")) {
             status.resetStatusMessage();
-            logger.info("add: screen is " + data.getName());
+            logger.info("add:");
             Action action = new AddScreenDisplayForm(request,response, factory, data);
             result = action.perform();
         } else if (command.equals("/editIndex")) {
-            status.resetStatusMessage();
+            //status.resetStatusMessage();
             logger.info("editIndex");
             Action action = new EditIndexDisplayForm(request,response, factory, data);
             result = action.perform();
@@ -132,6 +141,8 @@ public class ControllerHelper extends HelperBase {
     public void copyFromSession(Object sessionHelper) {
         if (sessionHelper.getClass() == this.getClass()) {
             data = ((ControllerHelper)sessionHelper).data;
+            //addFlag = ((ControllerHelper)sessionHelper).addFlag;
+            logger.info("Copying data from session = <%s>", data.toString());
         }
     }
 }

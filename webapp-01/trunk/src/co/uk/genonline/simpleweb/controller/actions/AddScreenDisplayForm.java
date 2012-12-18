@@ -13,13 +13,13 @@ import javax.servlet.http.HttpServletResponse;
  * Time: 08:09
  * To change this template use File | Settings | File Templates.
  */
-public class AddScreenDisplayForm extends ActionClass {
+public class AddScreenDisplayForm extends UpdateScreenDisplayForm {
 
     public AddScreenDisplayForm(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, Screens data) {
         super(request, response, factory, data);
     }
 
     public RequestResult perform() {
-        return new RequestResult(jspLocation("addScreen.jsp"), false);
+        return displayScreenForm(true);
     }
 }

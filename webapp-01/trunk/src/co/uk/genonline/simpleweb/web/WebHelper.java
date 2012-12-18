@@ -1,9 +1,12 @@
 package co.uk.genonline.simpleweb.web;
 
+import co.uk.genonline.simpleweb.controller.WebLogger;
 import co.uk.genonline.simpleweb.model.bean.Screens;
-import org.apache.log4j.Logger;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.BeanUtils;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  * To change this template use File | Settings | File Templates.
  */
 public class WebHelper {
-    Logger logger;
+    WebLogger logger;
     SessionFactory factory;
     HttpServletRequest request;
     HttpServletResponse response;
@@ -25,9 +28,9 @@ public class WebHelper {
     public WebHelper(HttpServletRequest request, HttpServletResponse response,
                             SessionFactory factory) {
 
-        logger = Logger.getLogger("ControllerHelper");
+        logger = new WebLogger(request);
 //        logger.setLevel(Level.toLevel(request.getServletContext().getInitParameter("loggingLevel")));
-        logger.info("Logger initiated - " + logger.getName());
+        logger.info("Logger initiated");
         this.request = request;
         this.response = response;
         this.factory = factory;
@@ -65,5 +68,15 @@ public class WebHelper {
 
     public String getHomePage() {
         return request.getServletContext().getInitParameter("homePage");
+    }
+
+    public void getScreenIntoBean(Screens screen, String screenName) {
+        Session session = factory.openSession();
+        Criteria criteria = session.createCriteria(Screens.class).add(Restrictions.eq("name", screenName));
+        BeanUtils.copyProperties(criteria.uniqueResult(), screen);
+    }
+
+    public void getRequestIntoBean(HttpServletRequest request, Screens screen) {
+        BeanUtils.copyProperties(request, screen);
     }
 }

@@ -1,7 +1,6 @@
 package co.uk.genonline.simpleweb.controller;
 
 import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 
 import javax.servlet.ServletContext;
@@ -19,25 +18,21 @@ import java.io.IOException;
  * To change this template use File | Settings | File Templates.
  */
 public class Controller extends HttpServlet {
-    protected Logger logger;
+    protected WebLogger logger = new WebLogger();
 
     public Controller() {
-        logger = Logger.getLogger("Controller");
+        super();
         logger.setLevel(Level.ALL);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ControllerHelper helper = new ControllerHelper(request, response, (SessionFactory)(getServletConfig().getServletContext().getAttribute("sessionFactory")));
-        logger.info("doPost called, request = " + request.getRequestURI());
-        helper.processRequest();
+        processRequest(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-        ControllerHelper helper = new ControllerHelper(request, response, (SessionFactory)(getServletConfig().getServletContext().getAttribute("sessionFactory")));
-        logger.info("doGet called, request = " + request.getRequestURI());
-        helper.processRequest();
+        processRequest(request, response);
     }
 
     public void init() {
@@ -55,9 +50,17 @@ public class Controller extends HttpServlet {
                     logger.warn("Invalid logging level, setting to ALL");
                 } else {
                     logger.setLevel(level);
-                    logger.info("logging level set to" + level);
+                    logger.info("logging level set to " + level);
                 }
             }
         }
+    }
+
+    void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        logger.setSession(request);
+        String callType = request.getMethod();
+        ControllerHelper helper = new ControllerHelper(request, response, (SessionFactory)(getServletConfig().getServletContext().getAttribute("sessionFactory")));
+        logger.info("%s : request = %s", callType, request.getRequestURI());
+        helper.processRequest();
     }
 }

@@ -41,4 +41,8 @@ public class RequestStatus {
         statusType = type;
         messageDisplayed = false;
     }
+
+    public String toString() {
+        return statusType + " : " + statusMessage;
+    }
 }

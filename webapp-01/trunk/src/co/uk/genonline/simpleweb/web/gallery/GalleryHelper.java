@@ -1,7 +1,7 @@
 package co.uk.genonline.simpleweb.web.gallery;
 
+import co.uk.genonline.simpleweb.controller.WebLogger;
 import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
 
 import javax.servlet.ServletContext;
 import java.io.File;
@@ -15,7 +15,7 @@ import java.io.File;
  */
 
 public class GalleryHelper {
-    Logger logger;
+    WebLogger logger = new WebLogger();
 
     ServletContext context;
     String webRootFullPath;
@@ -35,7 +35,6 @@ public class GalleryHelper {
     int numGalleryColumns;
 
     public GalleryHelper(ServletContext context) {
-        logger = Logger.getLogger(this.getClass().getName());
         logger.setLevel(Level.toLevel(context.getInitParameter("loggingLevel")));
 
         this.context = context;

@@ -1,8 +1,8 @@
 package co.uk.genonline.simpleweb.controller.actions;
 
 import co.uk.genonline.simpleweb.controller.RequestStatus;
+import co.uk.genonline.simpleweb.controller.WebLogger;
 import co.uk.genonline.simpleweb.model.bean.Screens;
-import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  * To change this template use File | Settings | File Templates.
  */
 abstract class ActionClass implements Action {
-    Logger logger;
+    WebLogger logger = new WebLogger();
     HttpServletRequest request;
     HttpServletResponse response;
     SessionFactory factory;
@@ -24,14 +24,13 @@ abstract class ActionClass implements Action {
     RequestStatus status;
 
     public ActionClass(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, Screens data) {
-        logger = Logger.getLogger(this.getClass().getName());
 //        logger.setLevel(Level.toLevel(request.getServletContext().getInitParameter("loggingLevel")));
-        logger.debug("Logger initiated - " + logger.getName());
-
         this.request = request;
         this.response = response;
         this.factory = factory;
         this.data = data;
+
+        logger.info("Initialised data = <%s>", data.toString());
 
         status = (RequestStatus) this.request.getSession().getAttribute("requestStatus");
     }

@@ -1,8 +1,8 @@
 package co.uk.genonline.simpleweb.web.gallery;
 
+import co.uk.genonline.simpleweb.controller.WebLogger;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -25,10 +25,9 @@ public class Gallery {
 
     private String html;
     private int imagesAdded = 0;
-    private Logger logger;
+    private WebLogger logger = new WebLogger();
 
     Gallery(GalleryHelper helper, String galleryName) {
-        logger = Logger.getLogger(this.getClass().getName());
         logger.setLevel(Level.toLevel(helper.getContext().getInitParameter("loggingLevel")));
 
         this.helper = helper;

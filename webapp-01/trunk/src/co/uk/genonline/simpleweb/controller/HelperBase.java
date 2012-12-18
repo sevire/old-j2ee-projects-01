@@ -2,7 +2,6 @@ package co.uk.genonline.simpleweb.controller;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,15 +17,16 @@ import java.lang.reflect.InvocationTargetException;
 public abstract class HelperBase {
     protected HttpServletRequest request;
     protected HttpServletResponse response;
-    Logger logger;
+    WebLogger logger = new WebLogger();
 
     public HelperBase(HttpServletRequest request, HttpServletResponse response) {
+        super();
         Level level;
         this.request = request;
         this.response = response;
-        logger = Logger.getLogger("ControllerHelper");
-        //level = Level.toLevel(request.getServletContext().getInitParameter("loggingLevel"));
-        level = Level.INFO; // HTTPunit frig
+        logger.setSession(request);
+        level = Level.toLevel(request.getServletContext().getInitParameter("loggingLevel"));
+        //level = Level.INFO; // HTTPunit frig
         logger.setLevel(level);
     }
 
@@ -52,10 +52,10 @@ public abstract class HelperBase {
         try {
             BeanUtils.populate(data, request.getParameterMap());
         } catch (IllegalAccessException e) {
-            logger.error("Populate - Illegal Access", e);
+            logger.error("Populate - Illegal Access", e.getMessage());
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (InvocationTargetException e) {
-            logger.error("Populate - Invocation Target", e);
+            logger.error("Populate - Invocation Target", e.getMessage());
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
     }
