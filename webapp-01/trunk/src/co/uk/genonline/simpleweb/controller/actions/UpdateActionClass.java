@@ -45,28 +45,15 @@ public abstract class UpdateActionClass extends ActionClass {
         } else {
             String sortKey = request.getParameter("sortKey").trim();
             try {
-                Integer sortKeyInt = Integer.parseInt(sortKey);
-                data.setSortKey(Integer.parseInt(sortKey));
+                int sortKeyInt = Integer.parseInt(sortKey);
+                data.setSortKey(sortKeyInt);
             } catch (java.lang.NumberFormatException e) {
                 status.setStatusMessage("Invalid value for sort key, must be numeric", "error");
                 errorFlag = true;
             }
             if (!errorFlag) {
 
-                boolean checked = request.getParameter("enabledFlag") == null ? false : request.getParameter("enabledFlag").equals("Enabled");
-
-                logger.debug("Enabled flag is: " + checked);
-                boolean enabledChecked = request.getParameter("enabledFlag") == null ? false : request.getParameter("enabledFlag").equals("Enabled");
-                boolean galleryChecked = request.getParameter("galleryFlag") == null ? false : request.getParameter("galleryFlag").equals("Enabled");
-
-                data.setName(request.getParameter("name"));
-                data.setEnabledFlag(enabledChecked);
-                data.setGalleryFlag(galleryChecked);
-                data.setScreenContents(request.getParameter("screenContents"));
-                data.setScreenTitleLong(request.getParameter("screenTitleLong"));
-                data.setScreenTitleShort(request.getParameter("screenTitleShort"));
-                data.setScreenType(request.getParameter("screenType"));
-
+                webHelper.getRequestIntoBean(request, data);
                 Session session = factory.openSession();
                 logger.info(String.format("About to update data, id is <%d>", data.getId()));
                 logger.debug("Contents = ");

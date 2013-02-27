@@ -1,6 +1,6 @@
 package co.uk.genonline.simpleweb.controller.test;
 
-import co.uk.genonline.simpleweb.controller.test.support.ConfigurationName;
+import co.uk.genonline.simpleweb.controller.test.support.TestConfiguration;
 import co.uk.genonline.simpleweb.controller.test.support.TestHelper;
 import co.uk.genonline.simpleweb.controller.test.support.WebsiteTestData;
 import org.junit.Test;
@@ -24,14 +24,12 @@ import static org.junit.runners.Parameterized.Parameters;
 @RunWith(Parameterized.class)
 public class AllScreensTest {
 
-    ConfigurationName configurationName;
     String screenName;
     TestHelper testHelper;
 
-    public AllScreensTest(ConfigurationName configurationName, String screenName) {
-        this.configurationName = configurationName;
+    public AllScreensTest(TestConfiguration testConfiguration, String screenName) {
         this.screenName = screenName;
-        testHelper = new TestHelper(configurationName);
+        testHelper = new TestHelper(testConfiguration);
     }
 
     @Test
@@ -59,9 +57,9 @@ public class AllScreensTest {
         Collection<Object[]> data = new ArrayList<Object[]>();
         Set<String> screenList = WebsiteTestData.getInstance().getScreenList();
 
-        for (ConfigurationName configurationName : ConfigurationName.values()) {
+        for (TestConfiguration testConfiguration : TestConfiguration.enumValues()) {
             for (String screen : screenList) {
-                Object parameterSet[] = new Object[] {configurationName, screen};
+                Object parameterSet[] = new Object[] {testConfiguration, screen};
                 data.add(parameterSet);
             }
         }

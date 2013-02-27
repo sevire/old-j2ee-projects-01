@@ -22,6 +22,7 @@ public class ScreenBeanManager {
 
     public void initialiseBean() {
         screenBean.setEnabledFlag(true);
+        screenBean.setGalleryFlag(false);
         screenBean.setScreenContents("");
         screenBean.setName("");
         screenBean.setScreenTitleLong("");

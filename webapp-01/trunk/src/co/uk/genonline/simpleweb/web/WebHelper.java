@@ -6,7 +6,6 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.BeanUtils;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -73,10 +72,35 @@ public class WebHelper {
     public void getScreenIntoBean(Screens screen, String screenName) {
         Session session = factory.openSession();
         Criteria criteria = session.createCriteria(Screens.class).add(Restrictions.eq("name", screenName));
-        BeanUtils.copyProperties(criteria.uniqueResult(), screen);
+        Screens dbBean = (Screens) criteria.uniqueResult();
+ 
+        screen.setName(dbBean.getName());
+        screen.setEnabledFlag(dbBean.isEnabledFlag());
+        screen.setGalleryFlag(dbBean.isGalleryFlag());
+        screen.setScreenContents(dbBean.getScreenContents());
+        screen.setScreenTitleLong(dbBean.getScreenTitleLong());
+        screen.setScreenTitleShort(dbBean.getScreenTitleShort());
+        screen.setScreenType(dbBean.getScreenType());
+        screen.setId(dbBean.getId());
     }
 
     public void getRequestIntoBean(HttpServletRequest request, Screens screen) {
-        BeanUtils.copyProperties(request, screen);
+        /**
+         * I think this should use standard BeanUtil methods (populateBean) or similar but I can't find a way to do this quickly
+         * so will take a less elegant approach for now.
+         */
+        boolean checked = request.getParameter("enabledFlag") == null ? false : request.getParameter("enabledFlag").equals("Enabled");
+
+        boolean enabledChecked = request.getParameter("enabledFlag") == null ? false : request.getParameter("enabledFlag").equals("Enabled");
+        boolean galleryChecked = request.getParameter("galleryFlag") == null ? false : request.getParameter("galleryFlag").equals("Enabled");
+
+        screen.setName(request.getParameter("name"));
+        screen.setEnabledFlag(enabledChecked);
+        screen.setGalleryFlag(galleryChecked);
+        screen.setScreenContents(request.getParameter("screenContents"));
+        screen.setScreenTitleLong(request.getParameter("screenTitleLong"));
+        screen.setScreenTitleShort(request.getParameter("screenTitleShort"));
+        screen.setScreenType(request.getParameter("screenType"));
     }
 }
+ 

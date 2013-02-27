@@ -133,7 +133,7 @@ public class Gallery {
                         logger.debug(String.format("Processing file <%s> within gallery <%s>", file, galleryName));
                         File imageFile = getGalleryImageFile(file);
                         File thumbnailFile = getGalleryThumbnailImageFile(file);
-                        if (generateThumbnail(imageFile, thumbnailFile, false)) {
+                        if (generateThumbnail(imageFile, thumbnailFile, helper.isForceThumbnails())) {
                             addImageToHTML(file.getName());
                         }
                     }

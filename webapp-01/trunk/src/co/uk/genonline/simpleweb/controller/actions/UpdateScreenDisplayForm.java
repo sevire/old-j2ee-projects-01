@@ -38,16 +38,15 @@ public abstract class UpdateScreenDisplayForm extends ActionClass {
         if (addFlag) {
             ScreenBeanManager manager = new ScreenBeanManager(data);
             manager.initialiseBean();
-            loggingName = "add";
             request.setAttribute("addFlag", true);
+            logger.info(String.format("Adding screen"));
         } else {
             WebHelper webHelper = new WebHelper(request, response, factory);
             webHelper.getScreenIntoBean(data, data.getName());
-            loggingName = "edit";
             request.setAttribute("addFlag", false);
+            logger.info(String.format("Editing screen <%s>", data.getName()));
         }
         screenJsp = "updateScreen.jsp";
-        logger.info(String.format("%sing Screen %s", loggingName, data.getName()));
         return new RequestResult(jspLocation(screenJsp), false);
     }
 }

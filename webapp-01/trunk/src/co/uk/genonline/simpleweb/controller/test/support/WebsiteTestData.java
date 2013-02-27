@@ -66,7 +66,9 @@ public class WebsiteTestData {
                     "",
                     ""},
                     {
-                            "Make Me smile and become one of My favoured slaves by surprising Me with a gift"
+                            "Make Me smile and become one of My favoured slaves by surprising Me with a gift",
+                            "My favourite perfumes are anything by Dior Poison, or John Paul Gautier. I adore cosmetics by Christian Dior and Yves" +
+                                    " St Laurent. But I will allow you the privilege of choosing, if you feel capable."
                     }});
             put("viduitas", new String[][]{{
                     "",
@@ -99,6 +101,8 @@ public class WebsiteTestData {
                     "",
                     ""},
                     {
+                            "I want to put myself absolutely at your mercy for good or evil without any condition, without any limit to your power.",
+                            "NOTE - I will NOT participate in sessions with those under the influence of alcohol or recreational drugs."
                     }});
             put("images", new String[][]{{
                     "",
@@ -123,6 +127,7 @@ public class WebsiteTestData {
                     "",
                     ""},
                     {
+                            "This is where I publically humiliate my naughtiest slaves...",
                     }});
             put("musings", new String[][]{{
                     "",
@@ -135,6 +140,8 @@ public class WebsiteTestData {
                     "",
                     ""},
                     {
+                            "Slave Musings",
+                            "Your loyal slave phil"
                     }});
             put("contact", new String[][]{{
                     "",
@@ -147,6 +154,8 @@ public class WebsiteTestData {
                     "",
                     ""},
                     {
+                            "Firstly, some notes on slave etiquette",
+                            "You can find a map of my location in central Manchester here."
                     }});
             put("links", new String[][]{{
                     "",
@@ -159,6 +168,7 @@ public class WebsiteTestData {
                     "",
                     ""},
                     {
+                            "To exchange links, please email your banner here.",
                     }});
             put("moreimages", new String[][]{{
                     "",
@@ -183,6 +193,10 @@ public class WebsiteTestData {
                     "",
                     ""},
                     {
+                            "Whilst I am best known for My skills in regards to Corporal Punishment, I do enjoy many " +
+                                    "BDSM activities which you will see when you visit my main website.",
+                            "If you want to find out more about Me and My style of domination or apply " +
+                                    "to visit me then click the link to my Main Website."
                     }});
             put("madox", new String[][]{{
                     "",
@@ -195,6 +209,8 @@ public class WebsiteTestData {
                     "",
                     ""},
                     {
+                            "I am a naturally dominant business woman in my personal life who takes delight in being sadistic in a controlled manner as a Mistress.",
+                            "My main rules are arrive on time and be clean!"
                     }});
             put("zara", new String[][]{{
                     "",
@@ -202,11 +218,13 @@ public class WebsiteTestData {
                     "Lady Zara",
                     "",
                     "",
-                    "-1",
-                    "No Page",
+                    "8",
+                    "",
                     "",
                     ""},
                     {
+                            "Sophisticated, beautiful and cruel. I am the kind of lady that will revel in making you beg for mercy.",
+                            "Bookings can also be via Princess Lucina on 07719 415496."
                     }});
             put("tozascarlet", new String[][]{{
                     "",
@@ -219,6 +237,8 @@ public class WebsiteTestData {
                     "",
                     ""},
                     {
+                            "I have no desire to stomp around shouting abuse at you.",
+                            "To read more go to my Main Website"
                     }});
             put("reginascarlet", new String[][]{{
                     "",
@@ -231,6 +251,8 @@ public class WebsiteTestData {
                     "",
                     ""},
                     {
+                            "I am beautiful and elegant, with porcelain skin and long red hair.",
+                            "Remember: be punctual, respectful and clean."
                     }});
         }
     };

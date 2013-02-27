@@ -101,7 +101,7 @@ ${helper.data.screenContents}
                     </td>
                 </tr>
                 <tr><td>
-                    <input type='submit' name=<%=addFlag ? "'addButton'" : "'updateButton'" %> value='Update'>
+                    <input type='submit' name=<%=addFlag ? "'addButton'" : "'updateButton'" %> value=<%=addFlag ? "'Add'" : "'Update'"%>>
                 </td></tr>
                 <tr><td>
                     <input type='submit' name='cancelButton' value='Cancel'>

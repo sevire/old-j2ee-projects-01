@@ -7,70 +7,71 @@ package co.uk.genonline.simpleweb.controller.test.support;
  * Time: 18:07
  * To change this template use File | Settings | File Templates.
  */
-public class TestConfiguration {
+public enum TestConfiguration {
+    STATIC_HTML_LOCAL_DEV(
+            false,
+            WebsitePlatform.HTML,
+            "http://localhost/~thomassecondary/lucifersdarkangel(trunk)/",
+            "lda/"),
+    STATIC_HTML_REMOTE_TEST_1(
+            false,
+            WebsitePlatform.HTML,
+            "http://manchestergoddesses.co.uk/lda-staging/", // not really domain but required to make tests work
+            ""),
+    STATIC_HTML_REMOTE_LIVE(
+            false,
+            WebsitePlatform.HTML,
+            "http://lucifersdarkangel.co.uk/",
+            "lda/"),
+    J2EE_LOCAL_DEV(
+            false,
+            WebsitePlatform.J2EE,
+            "http://localhost:8080/",
+            ""),
+    J2EE_LOCAL_TEST_1(
+            false,
+            WebsitePlatform.J2EE,
+            "http://localhost:8080/",
+            "lda/"),
+    J2EE_REMOTE_TEST_1(
+            true,
+            WebsitePlatform.J2EE,
+            "http://31.193.143.174/",
+            "lda/"),
+    J2EE_REMOTE_LIVE(
+            false,
+            WebsitePlatform.J2EE,
+            "http://lucifersdarkangel.co.uk/",
+            "lda/"); // This won't work until we go live
+
+    private boolean enabledFlag;
     private WebsitePlatform platform;
     private String domain;
-    private String host = "";
+    private String host;
+    private static int numEnabledValues = -1;
 
     // In a live environment the splash page is by definition at the Domain URL, but may be
     // different for a testing environment so we will maintain a separate member.  If blank use domain.
 
     private String splashURL = "";
 
-    TestConfiguration(ConfigurationName configurationName) {
-        switch(configurationName) {
-            case STATIC_HTML_LOCAL_DEV: // Current development environment in Sites on laptop
-                platform = WebsitePlatform.HTML;
-                domain = "http://localhost/~thomassecondary/lucifersdarkangel(trunk)/";
-                host = domain + "lda/";
-            break;
-            case STATIC_HTML_REMOTE_TEST_1: // Current testing environment on Man Goddesses server
-                platform = WebsitePlatform.HTML;
-                domain = "http://manchestergoddesses.co.uk/lda-staging/"; // not really domain but required to make tests work
-                host = domain;
-            break;
-/*
-            case STATIC_HTML_REMOTE_LIVE: // Live system while still on static (s)html platform
-                platform = WebsitePlatform.HTML;
-                domain = "http://lucifersdarkangel.co.uk/";
-                host = domain + "lda/";
-            break;
-*/
-/*
-            case J2EE_LOCAL_DEV: // This refers to the environment set up in IDEA
-                platform = WebsitePlatform.J2EE;
-                domain = "http://localhost:8080/";
-            break;
-*/
-            case J2EE_LOCAL_TEST_1: // This refers to the local Tomcat server on the dev laptop.
-                platform = WebsitePlatform.J2EE;
-                domain = "http://localhost:8080/";
-                host = domain + "lda/";
-            break;
-            case J2EE_REMOTE_TEST_1: // This is the Oxxus environment with the IP address
-                platform = WebsitePlatform.J2EE;
-                domain = "http://31.193.143.174/";
-                host = domain + "lda/";
-            break;
-/*
-            case J2EE_REMOTE_LIVE: // This is the Oxxus environment once the domain servers point to it
-                platform = WebsitePlatform.J2EE;
-                domain = "http://lucifersdarkangel.co.uk/"; // This won't work until we go live
-            break;
-*/
-
-        }
+    TestConfiguration(boolean enabledFlag, WebsitePlatform platform, String domain, String host) {
+        this.enabledFlag = enabledFlag;
+        this.platform = platform;
+        this.domain = domain;
+        this.host = host.equals("") ? domain : domain + host;
     }
+
+    boolean isEnabledFlag() {
+        return enabledFlag;
+    }
+
     public WebsitePlatform getPlatform() {
         return platform;
     }
 
     public String getHost() {
-        if (host.equals("")) {
-            return domain;
-        } else {
-            return host;
-        }
+        return host;
     }
 
     public String getDomain() {
@@ -83,5 +84,34 @@ public class TestConfiguration {
         } else {
             return splashURL;
         }
+    }
+
+    public String toString() {
+        return getPlatform() +  " : " + getHost();
+        //String abc = values();
+    }
+
+    public static int getNumEnabledValues() {
+        if (numEnabledValues == -1) {
+            numEnabledValues = 0;
+            for (TestConfiguration value : values()) {
+                if (value.isEnabledFlag()) {
+                    numEnabledValues++;
+                }
+            }
+        }
+        return numEnabledValues;
+    }
+
+    public static TestConfiguration[] enumValues() {
+        TestConfiguration[] enumValues = new TestConfiguration[getNumEnabledValues()];
+
+        int i = 0;
+        for (TestConfiguration value : values()) {
+            if (value.isEnabledFlag()) {
+                enumValues[i++] = value;
+            }
+        }
+        return enumValues;
     }
 }

@@ -1,6 +1,6 @@
 package co.uk.genonline.simpleweb.controller.test;
 
-import co.uk.genonline.simpleweb.controller.test.support.ConfigurationName;
+import co.uk.genonline.simpleweb.controller.test.support.TestConfiguration;
 import co.uk.genonline.simpleweb.controller.test.support.TestHelper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,12 +18,10 @@ import java.util.Collection;
  */
 @RunWith(Parameterized.class)
 public class OtherRequestTests {
-    ConfigurationName configurationName;
     TestHelper testHelper;
 
-    public OtherRequestTests(ConfigurationName configurationName) {
-        this.configurationName = configurationName;
-        testHelper = new TestHelper(configurationName);
+    public OtherRequestTests(TestConfiguration testConfiguration) {
+        testHelper = new TestHelper(testConfiguration);
     }
 
     @Test
@@ -40,8 +38,8 @@ public class OtherRequestTests {
 
         Collection<Object[]> data = new ArrayList<Object[]>();
 
-        for (ConfigurationName configurationName : ConfigurationName.values()) {
-            Object parameterSet[] = new Object[] {configurationName};
+        for (TestConfiguration testConfiguration : TestConfiguration.enumValues()) {
+            Object parameterSet[] = new Object[] {testConfiguration};
             data.add(parameterSet);
         }
         return data;

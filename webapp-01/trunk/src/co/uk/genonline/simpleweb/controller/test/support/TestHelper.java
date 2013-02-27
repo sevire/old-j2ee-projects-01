@@ -23,8 +23,8 @@ public class TestHelper {
     private TestConfiguration configuration = null;
     private WebClient webClient = null;
 
-    public TestHelper(ConfigurationName configurationName) {
-        this.configuration = new TestConfiguration(configurationName);
+    public TestHelper(TestConfiguration testConfiguration) {
+        this.configuration = testConfiguration;
         webClient = new WebClient();
         webClient.setThrowExceptionOnFailingStatusCode(false);
     }
@@ -61,7 +61,7 @@ public class TestHelper {
      */
 
         for (int i=0; i<contentStrings.length; i++) {
-            assertTrue(String.format("Page does not contain text <%s>", contentStrings[i]), page.asText().contains(contentStrings[i]));
+            assertTrue(assertMessage(String.format("%s, Page does not contain text <%s>", configuration, contentStrings[i])), page.asText().contains(contentStrings[i]));
         }
     }
 
@@ -75,14 +75,14 @@ public class TestHelper {
         HtmlPage page = getScreen(screenName);
 
         if (WebsiteTestData.getInstance().isConfigured(screenName)) {
-            assertNotNull(String.format("Screen <%s> does not exist at <%s>", screenName, host), page);
-            assertEquals(String.format("Page not found <%s> for screen <%s> at <%s>",
-                    WebsiteTestData.getInstance().getTestDataHtmlFilename(screenName), screenName, host),
+            assertNotNull(assertMessage(String.format("Screen <%s> does not exist at <%s>", screenName, host)), page);
+            assertEquals(assertMessage(String.format("Page not found <%s> for screen <%s> at <%s>",
+                    WebsiteTestData.getInstance().getTestDataHtmlFilename(screenName), screenName, host)),
                     200, page.getWebResponse().getStatusCode());
-            assertEquals(String.format("Title incorrect for <%s> at <%s>", screenName, host), String.format("Lucifer's Dark Angel - %s", longTitle), page.getTitleText());
+            assertEquals(assertMessage(String.format("Title incorrect for <%s> at <%s>", screenName, host)), String.format("Lucifer's Dark Angel - %s", longTitle), page.getTitleText());
             testWebsitePage(page, contentStrings);
         } else {
-            assertEquals(String.format("Disabled screen found: screen <%s> at <%s>", screenName, host),
+            assertEquals(assertMessage(String.format("Disabled screen found: screen <%s> at <%s>", screenName, host)),
                     404, page.getWebResponse().getStatusCode());
         }
     }
@@ -107,13 +107,13 @@ public class TestHelper {
         String splashURL = configuration.getSplashURL();
 
         TestHtmlPage page = new TestHtmlPage(getRequest(splashURL));
-        assertNotNull(String.format("No splash page received at <%s>", splashURL), page);
-        assertEquals(String.format("Title incorrect for splash page at ,<%s>", splashURL),
+        assertNotNull(assertMessage(String.format("No splash page received at <%s>", splashURL)), page);
+        assertEquals(assertMessage(String.format("Title incorrect for splash page at <%s>", splashURL)),
                 "Lucifer's Dark Angel - Princess Lucina of Manchester", page.getPage().getTitleText());
 
         String contentStrings[] = WebsiteTestData.getInstance().getContentStrings("splash");
         for (String contentString : contentStrings) {
-            assertTrue(String.format("Page does not contain text <%s>", contentString),
+            assertTrue(assertMessage(String.format("Page does not contain text <%s>", contentString)),
                     page.getPage().asText().contains(contentString));
         }
     }
@@ -124,11 +124,11 @@ public class TestHelper {
 
         TestHtmlPage page = new TestHtmlPage(getRequest("editIndex"));
 
-        assertEquals("Lucifer's Dark Angel - Edit Index", page.getPage().getTitleText());
-        assertEquals(String.format("Body id not correct"), ((TestHtmlPage)page).getBodyId(), "editIndex");
+        assertEquals(assertMessage("Title Incorrect for Edit Index page"), "Lucifer's Dark Angel - Edit Index", page.getPage().getTitleText());
+        assertEquals(assertMessage(String.format("Body id not correct")), ((TestHtmlPage)page).getBodyId(), "editIndex");
 
         DomNodeList<HtmlElement> table = page.getPage().getElementsByTagName("table");
-        assertEquals("Too many table elements", 1, table.size());
+        assertEquals(assertMessage("Too many table elements"), 1, table.size());
 
         List<HtmlElement> rows = ((HtmlElement) table.item(0)).getHtmlElementsByTagName("tr");
         int disabledCount = 0;
@@ -145,7 +145,7 @@ public class TestHelper {
         }
 
         // Hard code expected number until testing data is complete
-        assertEquals("Wrong number of screens", 15, rows.size()-3-disabledCount);
+        assertEquals(assertMessage(String.format("%s, Wrong number of screens ", configuration)), 16, rows.size()-3-disabledCount);
 
         webClient.closeAllWindows();
     }
@@ -154,6 +154,7 @@ public class TestHelper {
         if (WebsiteTestData.getInstance().isConfigured(screenName)) {
             Set<String> innerScreens = WebsiteTestData.getInstance().getScreenList();
             HtmlPage page = getScreen(screenName);
+            assertEquals("Page " + screenName + " not found", 200, page.getWebResponse().getStatusCode());
             HtmlAnchor element;
             String linkText;
             for (String innerScreen : innerScreens) {
@@ -168,8 +169,8 @@ public class TestHelper {
                     } catch (Exception e) {
                         element = null;
                     }
-                    Assert.assertNotNull(String.format("Link for <%s> does not exist in <%s>",
-                            linkText, screenName), element);
+                    Assert.assertNotNull(assertMessage(String.format("Link for <%s> does not exist in <%s>",
+                            linkText, screenName)), element);
                 }
             }
         }
@@ -177,21 +178,22 @@ public class TestHelper {
 
     public void galleryTestScreen(String screenName) {
         HtmlPage page = getScreen(screenName);
+        assertEquals("Page " + screenName + " not found", 200, page.getWebResponse().getStatusCode());
 
         // Get all table elements in page - should be one if gallery and none otherwise
         DomNodeList<HtmlElement> galleryTable = page.getElementsByTagName("table");
         int numGalleryElements = galleryTable.size();
 
-        assertFalse(String.format("Too many table elements in page <%s>", screenName), galleryTable.size() > 1);
-        assertFalse(String.format("Gallery present in none gallery page <%s>", screenName),
+        assertFalse(assertMessage(String.format("Too many table elements in page <%s>", screenName)), galleryTable.size() > 1);
+        assertFalse(assertMessage(String.format("Gallery present in none gallery page <%s>", screenName)),
                 !WebsiteTestData.getInstance().isGallery(screenName) && numGalleryElements == 1) ;
-        assertFalse(String.format("No Gallery present when there should be one for <%s>", screenName),
+        assertFalse(assertMessage(String.format("No Gallery present when there should be one for <%s>", screenName)),
                 WebsiteTestData.getInstance().isGallery(screenName) && numGalleryElements != 1);
 
         if (WebsiteTestData.getInstance().isGallery(screenName)) {
             HtmlElement galleryElement = (HtmlElement) galleryTable.item(0);
             List<HtmlElement> imageElements = galleryElement.getHtmlElementsByTagName("img");
-            assertEquals(String.format("Wrong number of images in page <%s>", screenName),
+            assertEquals(assertMessage(String.format("Wrong number of images in page <%s>", screenName)),
                     WebsiteTestData.getInstance().getNumGalleryImages(screenName), imageElements.size());
         }
     }
@@ -256,6 +258,10 @@ public class TestHelper {
                 }
             }
         }
+    }
+
+    public String assertMessage(String message) {
+        return configuration + ", " + message;
     }
 
     public void pageEditTest() {
