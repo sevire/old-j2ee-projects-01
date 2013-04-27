@@ -10,6 +10,7 @@
     <property name="connection.password">OC7AaWC77B</property>
       <mapping class="co.uk.genonline.simpleweb.model.bean.Screens"/>
       <mapping class="co.uk.genonline.simpleweb.model.bean.ScreenType"/>
+      <mapping class="co.uk.genonline.simpleweb.model.bean.Configuration"/>
       <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
   </session-factory>

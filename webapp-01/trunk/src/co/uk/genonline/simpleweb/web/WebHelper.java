@@ -65,8 +65,18 @@ public class WebHelper {
         return String.format("<a href='view?screen=%s'>Home</a>", homePage);
     }
 
+    public String generateBlogLink() {
+        return "<a href='http://lucifersdarkangel.co.uk/lucina-blog'>Blog</a>";
+    }
+
     public String getHomePage() {
         return request.getServletContext().getInitParameter("homePage");
+    }
+
+    public String getScreenLink(String screenName) {
+        Screens screenData = new Screens();
+        getScreenIntoBean(screenData, screenName);
+        return String.format("<a href='view?screen=%s'>%s</a>", screenName, screenData.getScreenTitleShort());
     }
 
     public void getScreenIntoBean(Screens screen, String screenName) {

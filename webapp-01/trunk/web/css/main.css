@@ -1,5 +1,6 @@
         body {
             margin: 0;
+            /*background: black url("../site_images/FaceBackground-v01.jpg") center no-repeat;*/
             background: black;
             color: white;
             font-size: medium;
@@ -26,6 +27,10 @@
         div#bannerText {
             width: 500px;
             margin: 0 auto 20px auto;
+        }
+
+        div#bannerText img {
+            width: 500px;
         }
         
         div#bannerText h1, div#bannerText h2 {
@@ -55,7 +60,7 @@
         {
             margin: 20px auto 0 auto;
             width: 80%;
-            background-color: #330000;
+            /*background-color: #330000;*/
             text-align: center;
         }
         
@@ -68,6 +73,27 @@
             list-style: none;
             margin-left: 5px;
             display: inline;
+        }
+
+        div#pageText ul {
+            padding: 0;
+            margin: 0 20px 5px 20px;
+        }
+
+        div#pageText ul li {
+            list-style: none;
+            margin-left: 5px;
+        }
+
+        div#pageText ul li a {
+            color: #FFFFFF;
+            font-weight: bold;
+            font-family: "Times New Roman", serif;
+            font-size: 100%;
+        }
+
+        li.headerLink a:visited, body#editIndex td a:visited, div#pageText ul li a:visited {
+            color: #c72125;
         }
 
         div#colLeft, div#colRight {
@@ -88,52 +114,8 @@
          the page specific css hasn't been added
         */
         
-        div#colLeft  {background: url('../site_images/02l.jpg')}
-        div#colRight {background: url('../site_images/02r.jpg')}
-        
-        /* Set up different left and right images for different pages */
-
-        body[id="Edit"]             div#colLeft  {background: none}
-        body[id="Edit"]             div#colRight {background: none}
-
-        body[id="Home"]             div#colLeft  {background: url('../site_images/01l.jpg')}
-        body[id="Home"]             div#colRight {background: url('../site_images/01r.jpg')}
-
-        body[id="Lady Zara"]        div#colLeft  {background: url('../site_images/02l.jpg')}
-        body[id="Lady Zara"]        div#colRight {background: url('../site_images/02r.jpg')}
-
-        body[id="Mistress Madox"]   div#colLeft  {background: url('../site_images/03l.jpg')}
-        body[id="Mistress Madox"]   div#colRight {background: url('../site_images/03r.jpg')}
-
-        body[id="Hunteress"]        div#colLeft  {background: url('../site_images/04l.jpg')}
-        body[id="Hunteress"]        div#colRight {background: url('../site_images/04r.jpg')}
-
-        body[id="My_Facilities"]    div#colLeft  {background: url('../site_images/05l.jpg')}
-        body[id="My_Facilities"]    div#colRight {background: url('../site_images/05r.jpg')}
-
-        body[id="Specialities"]     div#colLeft  {background: url('../site_images/06l.jpg')}
-        body[id="Specialities"]     div#colRight {background: url('../site_images/06r.jpg')}
-
-        body[id="Images"]           div#colLeft  {background: url('../site_images/07l.jpg')}
-        body[id="Images"]           div#colRight {background: url('../site_images/07r.jpg')}
-
-        body[id="More Images"]      div#colLeft  {background: url('../site_images/08l.jpg')}
-        body[id="More Images"]      div#colRight {background: url('../site_images/08r.jpg')}
-
-        body[id="Hall Of Shame"]    div#colLeft  {background: url('../site_images/09l.jpg')}
-        body[id="Hall Of Shame"]    div#colRight {background: url('../site_images/09r.jpg')}
-
-        body[id="Slave Musings"]    div#colLeft  {background: url('../site_images/01l.jpg')}
-        body[id="Slave Musings"]    div#colRight {background: url('../site_images/01r.jpg')}
-
-        body[id="Wishlist"]         div#colLeft  {background: url('../site_images/02l.jpg')}
-        body[id="Wishlist"]         div#colRight {background: url('../site_images/02r.jpg')}
-
-        body[id="Contact"]          div#colLeft  {background: url('../site_images/03l.jpg')}
-        body[id="Contact"]          div#colRight {background: url('../site_images/03r.jpg')}
-
-        body[id="Links"]            div#colLeft  {background: url('../site_images/04l.jpg')}
-        body[id="Links"]            div#colRight {background: url('../site_images/04r.jpg')}
+        div#colLeft  {background: url('../site_images/wingsLeft.jpg')}
+        div#colRight {background: url('../site_images/wingsRight.jpg')}
 
         div#colMiddle {
             margin: 0 180px 0 180px;

@@ -15,7 +15,7 @@
     </error-page>
     <context-param>
         <param-name>homePage</param-name>
-        <param-value>hos</param-value>
+        <param-value>lucina</param-value>
     </context-param>
     <context-param>
         <param-name>galleryRoot</param-name>
@@ -47,7 +47,7 @@
     </context-param>
     <context-param>
         <param-name>forceGallery</param-name>
-        <param-value>true</param-value>
+        <param-value>false</param-value>
     </context-param>
     <context-param>
         <param-name>forceThumbnail</param-name>
@@ -56,6 +56,10 @@
     <context-param>
         <param-name>loggingLevel</param-name>
         <param-value>info</param-value>
+    </context-param>
+    <context-param>
+        <param-name>blogEnabled</param-name>
+        <param-value>true</param-value>
     </context-param>
 
     <servlet>

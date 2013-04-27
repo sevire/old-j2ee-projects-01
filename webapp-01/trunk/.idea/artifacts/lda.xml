@@ -7,6 +7,7 @@
         <element id="directory" name="lib">
           <element id="file-copy" path="$APPLICATION_HOME_DIR$/lib/junit-4.10.jar" />
           <element id="library" level="application" name="HTML-Unit" />
+          <element id="file-copy" path="/Library/Java/Extensions/TagLibrary/javax.servlet.jsp.jstl-1.2.1.jar" />
         </element>
       </element>
     </root>

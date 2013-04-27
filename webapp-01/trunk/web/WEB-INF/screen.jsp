@@ -34,14 +34,27 @@
 </div>
 <div id='colMiddle'>
     <div id='bannerText'>
+        <img alt="Lucifers Dark Angel - Princess Lucina" src="site_images/header-white-v01.png" />
+<%--
         <h1><span class='first'>L</span>ucifer's <span class='first'>D</span>ark <span class='first'>A</span>ngel</h1>
         <h2><span class='first'>P</span>rincess <span class='first'>L</span>ucina <span class='xfirst'>O</span>f <span class='first'>M</span>anchester</h2>
+--%>
     </div>
     <div class='header'>
-        <ul><li class='headerLink'>${homePage}</li></ul>
+        <ul>
+            <li class='headerLink'>${homePage}</li>
+            <core:if test='${blogLink != null}'>
+                <li class='headerLink'>${blogLink}</li>
+            </core:if>
+            <li class='headerLink'><core:out value="${mistressPageLink}" escapeXml="false"/></li>
+            <li class='headerLink'><a href="http://groups.yahoo.com/group/lucifersdarkangel/">Yahoo!&nbsp;Group</a></li>
+        </ul>
+<%--
         ${mistressLinkBar}
-        ${chambersLinkBar}
-        <ul><li class='headerLink'><a href="http://groups.yahoo.com/group/lucifersdarkangel/">YAHOO!&nbsp;GROUP</a></li></ul>
+--%>
+        <ul>
+        </ul>
+                ${chambersLinkBar}
     </div>
     <div id="pageText">
         <h3>${helper.data.screenTitleLong}</h3>

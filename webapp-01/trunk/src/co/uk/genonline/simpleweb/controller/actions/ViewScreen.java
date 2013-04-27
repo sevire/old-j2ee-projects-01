@@ -30,11 +30,15 @@ public class ViewScreen extends ActionClass {
         WebHelper helper = new WebHelper(request, response, factory);
 
         request.setAttribute("chambersLinkBar", helper.generateLinkBarCategory("Chambers"));
-        request.setAttribute("mistressLinkBar", helper.generateLinkBarCategory("Mistress"));
+        request.setAttribute("mistressPageLink", helper.getScreenLink("mistresses"));
         request.setAttribute("homePage", helper.generateHomeLink());
         request.setAttribute("maxImgWidth", request.getServletContext().getInitParameter("maxThumbnailWidth"));
         request.setAttribute("maxImgHeight", request.getServletContext().getInitParameter("maxThumbnailHeight"));
 
+        if (request.getServletContext().getInitParameter("blogEnabled").equals("true")) {
+            request.setAttribute("blogLink", helper.generateBlogLink());
+        } else
+            request.setAttribute("blogLink", null);
         logger.debug("About to execute HQL query : " + query);
 
         java.util.List pages = session.createQuery(query).list();
