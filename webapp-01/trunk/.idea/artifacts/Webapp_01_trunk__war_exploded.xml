@@ -1,8 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="lda-exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/lda_exploded</output-path>
+  <artifact type="exploded-war" name="Webapp-01(trunk):war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Webapp_01_trunk__war_exploded</output-path>
     <root id="root">
-      <element id="javaee-facet-resources" facet="Webapp-01(trunk)/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="Webapp-01(trunk)" />
@@ -11,8 +10,8 @@
           <element id="library" level="application" name="Hibernate" />
           <element id="library" level="application" name="spring-3.1.0" />
           <element id="library" level="application" name="apache-log4j-1.2" />
-          <element id="library" level="application" name="commons-beanutils-1.8" />
           <element id="library" level="application" name="commons-io-2" />
+          <element id="library" level="application" name="commons-beanutils-1.8" />
           <element id="library" level="application" name="mysql-connector-java-5.1" />
           <element id="library" level="application" name="markdownj-1.0.2b4-0.3.0" />
           <element id="library" level="application" name="slf4j-1.7" />
@@ -21,6 +20,7 @@
           <element id="file-copy" path="/Library/Java/Extensions/TagLibrary/javax.servlet.jsp.jstl-1.2.1.jar" />
         </element>
       </element>
+      <element id="javaee-facet-resources" facet="Webapp-01(trunk)/web/Web" />
       <element id="javaee-facet-resources" facet="Webapp-01(trunk)/javaeeApplication/javaEEApplication" />
     </root>
   </artifact>

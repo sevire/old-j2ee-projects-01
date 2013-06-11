@@ -55,7 +55,7 @@
     </context-param>
     <context-param>
         <param-name>loggingLevel</param-name>
-        <param-value>info</param-value>
+        <param-value>debug</param-value>
     </context-param>
     <context-param>
         <param-name>blogEnabled</param-name>

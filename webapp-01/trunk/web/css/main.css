@@ -1,7 +1,7 @@
         body {
             margin: 0;
-            /*background: black url("../site_images/FaceBackground-v01.jpg") center no-repeat;*/
-            background: black;
+            background: black url("../site_images/FaceBackground-v01.png") top center no-repeat;
+            /*background: black;*/
             color: white;
             font-size: medium;
             font-family: Verdana, Arial, Helvetica, sans-serif;
@@ -20,10 +20,6 @@
             font-size: 80%;
         }
 
-        li.headerLink a:visited, body#editIndex td a:visited {
-            color: #c72125;
-        }
-        
         div#bannerText {
             width: 500px;
             margin: 0 auto 20px auto;
@@ -93,7 +89,15 @@
         }
 
         li.headerLink a:visited, body#editIndex td a:visited, div#pageText ul li a:visited {
-            color: #c72125;
+            color: #ff9a95;
+        }
+
+        a {
+            color: purple;
+        }
+
+        a:visited {
+            color: #46b144;
         }
 
         div#colLeft, div#colRight {
@@ -118,7 +122,7 @@
         div#colRight {background: url('../site_images/wingsRight.jpg')}
 
         div#colMiddle {
-            margin: 0 180px 0 180px;
+            margin: 0 100px 0 100px;
         }
         
         div#pageText {

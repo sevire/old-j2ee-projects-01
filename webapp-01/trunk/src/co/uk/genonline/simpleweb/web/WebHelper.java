@@ -85,6 +85,7 @@ public class WebHelper {
         Screens dbBean = (Screens) criteria.uniqueResult();
  
         screen.setName(dbBean.getName());
+        screen.setSortKey(dbBean.getSortKey());
         screen.setEnabledFlag(dbBean.isEnabledFlag());
         screen.setGalleryFlag(dbBean.isGalleryFlag());
         screen.setScreenContents(dbBean.getScreenContents());

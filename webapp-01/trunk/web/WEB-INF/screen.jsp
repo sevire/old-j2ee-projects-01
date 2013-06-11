@@ -11,6 +11,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <title>Lucifer's Dark Angel - ${helper.data.screenTitleLong}</title>
+    <meta name="description" content="Looking for the most popular Mistress in Manchester? Then seek an audience with Princess Lucina, the most stunning and formidable Dominatrix in the North West.">
     <link rel="stylesheet" href="css/main.css" type="text/css" media="all" >
     <link rel="icon" type="image/png" href="favicon.png">
     <style>
@@ -28,6 +29,16 @@
 </head>
 
 <body id='${helper.data.name}'>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-40866431-1', 'lucifersdarkangel.co.uk');
+  ga('send', 'pageview');
+
+</script>
 <div id='colLeft'>
 </div>
 <div id='colRight'>
