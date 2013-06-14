@@ -89,6 +89,7 @@ public class WebHelper {
         screen.setEnabledFlag(dbBean.isEnabledFlag());
         screen.setGalleryFlag(dbBean.isGalleryFlag());
         screen.setScreenContents(dbBean.getScreenContents());
+        screen.setMetaDescription(dbBean.getMetaDescription());
         screen.setScreenTitleLong(dbBean.getScreenTitleLong());
         screen.setScreenTitleShort(dbBean.getScreenTitleShort());
         screen.setScreenType(dbBean.getScreenType());
@@ -100,8 +101,10 @@ public class WebHelper {
          * I think this should use standard BeanUtil methods (populateBean) or similar but I can't find a way to do this quickly
          * so will take a less elegant approach for now.
          */
+/*
         boolean checked = request.getParameter("enabledFlag") == null ? false : request.getParameter("enabledFlag").equals("Enabled");
 
+*/
         boolean enabledChecked = request.getParameter("enabledFlag") == null ? false : request.getParameter("enabledFlag").equals("Enabled");
         boolean galleryChecked = request.getParameter("galleryFlag") == null ? false : request.getParameter("galleryFlag").equals("Enabled");
 
@@ -109,6 +112,7 @@ public class WebHelper {
         screen.setEnabledFlag(enabledChecked);
         screen.setGalleryFlag(galleryChecked);
         screen.setScreenContents(request.getParameter("screenContents"));
+        screen.setMetaDescription(request.getParameter("metaDescription"));
         screen.setScreenTitleLong(request.getParameter("screenTitleLong"));
         screen.setScreenTitleShort(request.getParameter("screenTitleShort"));
         screen.setScreenType(request.getParameter("screenType"));

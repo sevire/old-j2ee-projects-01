@@ -92,10 +92,18 @@
                 </tr>
                 <tr>
                     <td>
-                <label>Screen Contents: </label>
+                        <label>Screen Contents: </label>
                     </td>
                     <td>
-                        <textarea rows="10" cols="60" name="screenContents" ></textarea>
+                        <textarea rows="10" cols="60" name="screenContents"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Meta Description: </label>
+                    </td>
+                    <td>
+                        <textarea rows="5" cols="60" name="screenContents"></textarea>
                     </td>
                 </tr>
                 <tr><td>

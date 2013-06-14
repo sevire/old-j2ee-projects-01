@@ -33,8 +33,7 @@ public abstract class UpdateActionClass extends ActionClass {
         String descriptor = addFlag ? "add" : "update";
         String screen = request.getParameter("name");
         logger.info(String.format(descriptor + "ing" + " screen <%s>", screen));
-        logger.debug("Screen contents from form... ");
-        logger.debug(request.getParameter("screenContents"));
+        logger.debug("Screen contents from form...\n%s", request.getParameter("screenContents"));
         boolean errorFlag = false;
         WebHelper webHelper = new WebHelper(request, response, factory);
 
@@ -56,8 +55,7 @@ public abstract class UpdateActionClass extends ActionClass {
                 webHelper.getRequestIntoBean(request, data);
                 Session session = factory.openSession();
                 logger.info(String.format("About to update data, id is <%d>", data.getId()));
-                logger.debug("Contents = ");
-                logger.debug(data.getScreenContents());
+                logger.debug("Contents = \n%s", data.getScreenContents());
                 if (addFlag) {
                     session.save(data);
                 } else {

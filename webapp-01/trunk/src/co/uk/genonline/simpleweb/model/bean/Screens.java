@@ -150,6 +150,8 @@ public class Screens {
         if (name != null ? !name.equals(screens.name) : screens.name != null) return false;
         if (screenContents != null ? !screenContents.equals(screens.screenContents) : screens.screenContents != null)
             return false;
+        if (metaDescription != null ? !metaDescription.equals(screens.metaDescription) : screens.metaDescription != null)
+            return false;
         if (screenTitleLong != null ? !screenTitleLong.equals(screens.screenTitleLong) : screens.screenTitleLong != null)
             return false;
         if (screenTitleShort != null ? !screenTitleShort.equals(screens.screenTitleShort) : screens.screenTitleShort != null)
@@ -167,6 +169,7 @@ public class Screens {
         result = 31 * result + (screenTitleLong != null ? screenTitleLong.hashCode() : 0);
         result = 31 * result + (screenTitleShort != null ? screenTitleShort.hashCode() : 0);
         result = 31 * result + (screenContents != null ? screenContents.hashCode() : 0);
+        result = 31 * result + (metaDescription != null ? metaDescription.hashCode() : 0);
         result = 31 * result + (enabledFlag ? 1 : 0);
         result = 31 * result + (created != null ? created.hashCode() : 0);
         result = 31 * result + (modified != null ? modified.hashCode() : 0);
@@ -196,5 +199,17 @@ public class Screens {
 
     public void setSortKey(int sortKey) {
         this.sortKey = sortKey;
+    }
+
+    private String metaDescription;
+
+    @Column(name = "MetaDescription", nullable = true, insertable = true, updatable = true, length = 65535, precision = 0)
+    @Basic
+    public String getMetaDescription() {
+        return metaDescription;
+    }
+
+    public void setMetaDescription(String metaDescription) {
+        this.metaDescription = metaDescription;
     }
 }

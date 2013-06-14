@@ -58,6 +58,7 @@ public class ViewScreen extends ActionClass {
             String HTML = markdownDecoder.markdown(pageText);
             logger.debug("Markdown Output HTML is " + HTML.substring(0, Math.min(39, HTML.length()))+"...");
             data.setScreenContents(HTML);
+            data.setMetaDescription(screen.getMetaDescription());
             data.setScreenTitleLong(screen.getScreenTitleLong());
             data.setScreenTitleShort(screen.getScreenTitleShort());
             if (screen.isEnabledFlag()) {

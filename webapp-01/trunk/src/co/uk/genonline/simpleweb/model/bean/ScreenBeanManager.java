@@ -24,6 +24,7 @@ public class ScreenBeanManager {
         screenBean.setEnabledFlag(true);
         screenBean.setGalleryFlag(false);
         screenBean.setScreenContents("");
+        screenBean.setMetaDescription("");
         screenBean.setName("");
         screenBean.setScreenTitleLong("");
         screenBean.setScreenTitleShort("");

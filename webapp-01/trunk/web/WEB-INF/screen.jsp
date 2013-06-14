@@ -11,7 +11,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <title>Lucifer's Dark Angel - ${helper.data.screenTitleLong}</title>
-    <meta name="description" content="Looking for the most popular Mistress in Manchester? Then seek an audience with Princess Lucina, the most stunning and formidable Dominatrix in the North West.">
+    <meta name="description" content="${helper.data.metaDescription}">
     <link rel="stylesheet" href="css/main.css" type="text/css" media="all" >
     <link rel="icon" type="image/png" href="favicon.png">
     <style>

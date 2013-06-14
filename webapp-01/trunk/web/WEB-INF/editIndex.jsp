@@ -48,7 +48,7 @@
                     Gallery?
                 </td>
                 <td>
-                    Text
+                    Page Content
                 </td>
             </tr>
             <core:forEach var="row" items="${editList}">

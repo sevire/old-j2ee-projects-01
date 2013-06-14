@@ -92,12 +92,18 @@
                 </tr>
                 <tr>
                     <td>
-                <label>Screen Contents: </label>
+                        <label>Screen Contents: </label>
                     </td>
                     <td>
-                <textarea rows="10" cols="60" name="screenContents" >
-${helper.data.screenContents}
-                </textarea>
+                        <textarea rows="10" cols="60" name="screenContents">${helper.data.screenContents}</textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Meta Description: </label>
+                    </td>
+                    <td>
+                        <textarea rows="4" cols="60" name="metaDescription">${helper.data.metaDescription}</textarea>
                     </td>
                 </tr>
                 <tr><td>
