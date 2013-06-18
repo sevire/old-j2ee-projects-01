@@ -1,6 +1,5 @@
 package co.uk.genonline.simpleweb.controller.actions;
 
-import co.uk.genonline.simpleweb.model.bean.Screens;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -16,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class DeleteScreen extends ActionClass {
 
-    public DeleteScreen(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, Screens data) {
+    public DeleteScreen(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
         super(request, response, factory, data);
     }
 

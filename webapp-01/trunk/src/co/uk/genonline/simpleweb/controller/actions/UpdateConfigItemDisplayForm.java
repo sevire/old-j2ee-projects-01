@@ -1,7 +1,6 @@
 package co.uk.genonline.simpleweb.controller.actions;
 
-import co.uk.genonline.simpleweb.model.bean.ScreenBeanManager;
-import co.uk.genonline.simpleweb.web.WebHelper;
+import co.uk.genonline.simpleweb.model.bean.ConfigItemBeanManager;
 import org.hibernate.SessionFactory;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,9 +15,9 @@ import javax.servlet.http.HttpServletResponse;
  * Common code for displaying a screen for adding or updating.  Allows encapusulation of logic
  * to display and process fields within the form, with specific logic for initialisation.
  */
-public abstract class UpdateScreenDisplayForm extends ActionClass {
+public abstract class UpdateConfigItemDisplayForm extends ActionClass {
 
-    UpdateScreenDisplayForm(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
+    UpdateConfigItemDisplayForm(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
         super(request, response, factory, data);
     }
 
@@ -31,21 +30,21 @@ public abstract class UpdateScreenDisplayForm extends ActionClass {
      *
      * @return
      */
-    RequestResult displayScreenForm(boolean addFlag) {
+    RequestResult displayConfigItemForm(boolean addFlag) {
         String loggingName;
-        String screenJsp;
+        String configJsp;
+        ConfigItemBeanManager manager = new ConfigItemBeanManager(configItems, factory);
         if (addFlag) {
-            ScreenBeanManager manager = new ScreenBeanManager(this.screen);
             manager.initialiseBean();
             request.setAttribute("addFlag", true);
-            logger.info(String.format("Adding screen"));
+            logger.info(String.format("Adding config item"));
         } else {
-            WebHelper webHelper = new WebHelper(request, response, factory);
-            webHelper.getScreenIntoBean(this.screen, this.screen.getName());
+            manager.getConfigItemIntoBean(configItems.getName());
             request.setAttribute("addFlag", false);
-            logger.info(String.format("Editing screen <%s>", this.screen.getName()));
+            request.setAttribute("configItem", configItems);
+            logger.info(String.format("Editing config item <%s>", configItems.getName()));
         }
-        screenJsp = "updateScreen.jsp";
-        return new RequestResult(jspLocation(screenJsp), false);
+        configJsp = "updateConfigItem.jsp";
+        return new RequestResult(jspLocation(configJsp), false);
     }
 }

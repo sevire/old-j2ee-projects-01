@@ -2,6 +2,7 @@ package co.uk.genonline.simpleweb.controller.actions;
 
 import co.uk.genonline.simpleweb.controller.RequestStatus;
 import co.uk.genonline.simpleweb.controller.WebLogger;
+import co.uk.genonline.simpleweb.model.bean.ConfigItems;
 import co.uk.genonline.simpleweb.model.bean.Screens;
 import org.hibernate.SessionFactory;
 
@@ -20,15 +21,17 @@ abstract class ActionClass implements Action {
     HttpServletRequest request;
     HttpServletResponse response;
     SessionFactory factory;
-    Screens data;
+    Screens screen; // ToDo: Should this really be here - this is a general purpose class?
+    ConfigItems configItems;
     RequestStatus status;
 
-    public ActionClass(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, Screens data) {
+    public ActionClass(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
 //        logger.setLevel(Level.toLevel(request.getServletContext().getInitParameter("loggingLevel")));
         this.request = request;
         this.response = response;
         this.factory = factory;
-        this.data = data;
+        this.screen = data.getScreen();
+        this.configItems = data.getConfigItems();
 
         logger.info("Initialised data = <%s>", data.toString());
 

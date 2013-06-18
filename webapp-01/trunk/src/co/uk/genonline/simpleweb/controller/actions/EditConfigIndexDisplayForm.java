@@ -1,6 +1,6 @@
 package co.uk.genonline.simpleweb.controller.actions;
 
-import co.uk.genonline.simpleweb.model.bean.Screens;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -14,33 +14,32 @@ import javax.servlet.http.HttpServletResponse;
  * Time: 08:09
  * To change this template use File | Settings | File Templates.
  */
-public class EditIndexDisplayForm extends ActionClass {
+public class EditConfigIndexDisplayForm extends ActionClass {
 
-    public EditIndexDisplayForm(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
+    public EditConfigIndexDisplayForm(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
         super(request, response, factory, data);
     }
 
     public RequestResult perform() {
         Session session = factory.openSession();
-        String query = String.format("from Screens s order by screenType, sortKey");
+        String query = String.format("from ConfigItems");
         logger.debug("About to execute HQL query : " + query);
-        java.util.List pages = session.createQuery(query).list();
-        if (pages == null) {
+        Query queryObject = session.createQuery(query);
+        java.util.List configItems = queryObject.list();
+        if (configItems == null) {
+            logger.debug("configItems is null");
             status.setStatusMessage("Error while getting page list", "error");
-        } else if (pages.isEmpty()) {
-            status.setStatusMessage("No pages currently set up - click 'add' to create new page", "warning");
+        } else if (configItems.isEmpty()) {
+            logger.debug("configItems is empty");
+            status.setStatusMessage("No config items currently set up - click 'add' to create new item", "info");
         } else {
             if (status.isMessageDisplayed()) {
                 status.resetStatusMessage();
             }
         }
-        for (Object s : pages) {
-            String contents = ((Screens)s).getScreenContents();
-            ((Screens)s).setScreenContents(contents.substring(0, Math.min(39, contents.length()))+"...");
-        }
-        request.setAttribute("editList", pages);
+        request.setAttribute("configItems", configItems);
         request.setAttribute("statusType", request.getSession().getAttribute("statusType"));
         request.setAttribute("statusMessage", request.getSession().getAttribute("statusMessage"));
-        return new RequestResult(jspLocation("editIndex.jsp"), false);
+        return new RequestResult(jspLocation("editConfigIndex.jsp"), false);
     }
 }

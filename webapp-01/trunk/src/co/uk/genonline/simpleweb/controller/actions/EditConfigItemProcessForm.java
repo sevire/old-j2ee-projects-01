@@ -12,13 +12,13 @@ import javax.servlet.http.HttpServletResponse;
  * Time: 08:09
  * To change this template use File | Settings | File Templates.
  */
-public class AddScreenDisplayForm extends UpdateScreenDisplayForm {
+public class EditConfigItemProcessForm extends UpdateConfigActionClass {
 
-    public AddScreenDisplayForm(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
+    public EditConfigItemProcessForm(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
         super(request, response, factory, data);
     }
 
     public RequestResult perform() {
-        return displayScreenForm(true);
+        return updateConfigItem(false);
     }
 }

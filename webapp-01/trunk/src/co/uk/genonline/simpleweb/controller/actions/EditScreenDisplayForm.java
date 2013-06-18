@@ -1,6 +1,5 @@
 package co.uk.genonline.simpleweb.controller.actions;
 
-import co.uk.genonline.simpleweb.model.bean.Screens;
 import org.hibernate.SessionFactory;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class EditScreenDisplayForm extends UpdateScreenDisplayForm {
 
-    public EditScreenDisplayForm(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, Screens data) {
+    public EditScreenDisplayForm(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
         super(request, response, factory, data);
     }
 

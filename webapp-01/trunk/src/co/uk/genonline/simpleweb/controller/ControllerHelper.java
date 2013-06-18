@@ -1,9 +1,9 @@
 package co.uk.genonline.simpleweb.controller;
 
 import co.uk.genonline.simpleweb.controller.actions.*;
+import co.uk.genonline.simpleweb.model.bean.ConfigItems;
 import co.uk.genonline.simpleweb.model.bean.Screens;
 import co.uk.genonline.simpleweb.web.WebHelper;
-import org.apache.log4j.Level;
 import org.hibernate.SessionFactory;
 
 import javax.servlet.RequestDispatcher;
@@ -21,7 +21,7 @@ import java.io.IOException;
  */
 public class ControllerHelper extends HelperBase {
     // Data which is persisted between sessions via copyFromSessionObj
-    Screens data;
+    ActionData data;
     //boolean addFlag = false; // Used to expose addFlag to JSPs (via getAddFlag() method) to allow common jsp for add or edit screen.
 
     // Data not persisted between sessions.
@@ -32,18 +32,18 @@ public class ControllerHelper extends HelperBase {
                             SessionFactory factory) {
         super(request, response);
 
-        logger.setLevel(Level.DEBUG);
+        //logger.setLevel(Level.DEBUG);
         logger.info("Logger initiated");
 
-        data = new Screens();
+        data = new ActionData(new Screens(), new ConfigItems());
         logger.info("Initialised data, = <%s>", data.toString());
         this.factory = factory;
     }
 
     // Method used to expose data to JSPs
     public Object getData() {
-        logger.info("Returning (Screens)'data' = <%s>", data.toString());
-        return data;
+        logger.info("Returning (ActionData)'data' = <%s>", data.toString());
+        return data.getScreen();
     }
 
 /*
@@ -70,7 +70,7 @@ public class ControllerHelper extends HelperBase {
         String command = request.getServletPath();
 
         logger.debug("Servlet path is " + command);
-        data.setName(request.getParameter("screen"));
+        data.getScreen().setName(request.getParameter("screen"));
 
         RequestResult result = null;
 
@@ -81,6 +81,12 @@ public class ControllerHelper extends HelperBase {
             } else if (request.getParameter("addButton") != null) {
                 Action action = new AddScreenProcessForm(request, response, factory, data);
                 result = action.perform();
+            } else if (request.getParameter("updateConfigButton") != null) {
+                Action action = new EditConfigItemProcessForm(request, response, factory, data);
+                result = action.perform();
+            } else if (request.getParameter("addConfigButton") != null) {
+                Action action = new AddConfigItemProcessForm(request, response, factory, data);
+                result = action.perform();
             } else if (request.getParameter("cancelButton") != null) {
                 Action action = new CancelAction(request, response, factory, data);
                 result = action.perform();
@@ -89,16 +95,16 @@ public class ControllerHelper extends HelperBase {
             }
         } else if (command.equals("/view") || command.equals("/")) {
             status.resetStatusMessage();
-            if (data.getName() == null || data.getName().equals("")) {
+            if (data.getScreen().getName() == null || data.getScreen().getName().equals("")) {
                 WebHelper webHelper = new WebHelper(request, response, factory);
-                data.setName(webHelper.getHomePage());
+                data.getScreen().setName(webHelper.getHomePage());
             }
-            logger.info("view: screen is " + data.getName());
+            logger.info("view: screen is " + data.getScreen().getName());
             Action action = new ViewScreen(request, response, factory, data);
             result = action.perform();
         } else if (command.equals("/edit")) {
             status.resetStatusMessage();
-            logger.info("edit: screen is " + data.getName());
+            logger.info("edit: screen is " + data.getScreen().getName());
             Action action = new EditScreenDisplayForm(request,response, factory, data);
             result = action.perform();
         } else if (command.equals("/add")) {
@@ -106,14 +112,24 @@ public class ControllerHelper extends HelperBase {
             logger.info("add:");
             Action action = new AddScreenDisplayForm(request,response, factory, data);
             result = action.perform();
+        } else if (command.equals("/addConfigItem")) {
+            status.resetStatusMessage();
+            logger.info("add config item:");
+            Action action = new AddConfigItemDisplayForm(request,response, factory, data);
+            result = action.perform();
         } else if (command.equals("/editIndex")) {
             //status.resetStatusMessage();
             logger.info("editIndex");
             Action action = new EditIndexDisplayForm(request,response, factory, data);
             result = action.perform();
+        } else if (command.equals("/editConfigIndex")) {
+            //status.resetStatusMessage();
+            logger.info("editConfigIndex");
+            Action action = new EditConfigIndexDisplayForm(request,response, factory, data);
+            result = action.perform();
         } else if (command.equals("/delete")) {
             status.resetStatusMessage();
-            logger.info("delete: screen is " + data.getName());
+            logger.info("delete: screen is " + data.getScreen().getName());
             Action action = new DeleteScreen(request,response, factory, data);
             result = action.perform();
         } else if (command.equals("/viewImage")) {

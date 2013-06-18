@@ -5,14 +5,14 @@ import org.hibernate.SessionFactory;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class AddScreenProcessForm extends UpdateActionClass {
+public class AddConfigItemProcessForm extends UpdateConfigActionClass {
 
-    public AddScreenProcessForm(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
+    public AddConfigItemProcessForm(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
         super(request, response, factory, data);
     }
 
     public RequestResult perform() {
-        return updateScreen(true);
+        return updateConfigItem(true);
     }
 }
 

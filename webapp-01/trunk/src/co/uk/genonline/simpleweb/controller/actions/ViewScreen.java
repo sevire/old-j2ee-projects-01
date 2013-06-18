@@ -19,14 +19,14 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ViewScreen extends ActionClass {
 
-    public ViewScreen(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, Screens data) {
+    public ViewScreen(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
         super(request, response, factory, data);
     }
 
     public RequestResult perform() {
         MarkdownProcessor markdownDecoder = new MarkdownProcessor();
         Session session = factory.openSession();
-        String query = String.format("from Screens s where s.name = '%s'", data.getName());
+        String query = String.format("from Screens s where s.name = '%s'", this.screen.getName());
         WebHelper helper = new WebHelper(request, response, factory);
 
         request.setAttribute("chambersLinkBar", helper.generateLinkBarCategory("Chambers"));
@@ -45,7 +45,7 @@ public class ViewScreen extends ActionClass {
 
         if (pages.size() != 1) {
             logger.warn(String.format("View page: retrieved <%d> pages for screen <%s>, should be 1",
-                    pages.size(), data.getName()));
+                    pages.size(), this.screen.getName()));
             response.setStatus(404);
             return new RequestResult(jspLocation("error.jsp"), false);
         }
@@ -57,10 +57,10 @@ public class ViewScreen extends ActionClass {
             logger.debug("Markdown Input text is " + pageText.substring(0, Math.min(39, pageText.length()))+"...");
             String HTML = markdownDecoder.markdown(pageText);
             logger.debug("Markdown Output HTML is " + HTML.substring(0, Math.min(39, HTML.length()))+"...");
-            data.setScreenContents(HTML);
-            data.setMetaDescription(screen.getMetaDescription());
-            data.setScreenTitleLong(screen.getScreenTitleLong());
-            data.setScreenTitleShort(screen.getScreenTitleShort());
+            this.screen.setScreenContents(HTML);
+            this.screen.setMetaDescription(screen.getMetaDescription());
+            this.screen.setScreenTitleLong(screen.getScreenTitleLong());
+            this.screen.setScreenTitleShort(screen.getScreenTitleShort());
             if (screen.isEnabledFlag()) {
                 if (screen.isGalleryFlag()) {
                     logger.info("About to create gallery for the page");

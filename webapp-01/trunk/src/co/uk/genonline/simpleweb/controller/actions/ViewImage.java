@@ -1,6 +1,5 @@
 package co.uk.genonline.simpleweb.controller.actions;
 
-import co.uk.genonline.simpleweb.model.bean.Screens;
 import org.hibernate.SessionFactory;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +15,7 @@ import java.io.File;
  */
 public class ViewImage extends ActionClass {
 
-    public ViewImage(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, Screens data) {
+    public ViewImage(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
         super(request, response, factory, data);
     }
 

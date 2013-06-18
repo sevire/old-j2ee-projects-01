@@ -1,6 +1,7 @@
 package co.uk.genonline.simpleweb.model.bean;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -12,10 +13,10 @@ import javax.persistence.Id;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-public class Configuration {
+public class ConfigItems {
     private String name;
 
-    @javax.persistence.Column(name = "name", nullable = false, insertable = true, updatable = true, length = 50, precision = 0)
+    @Column(name = "name", nullable = false, insertable = true, updatable = true, length = 50, precision = 0)
     @Id
     public String getName() {
         return name;
@@ -27,7 +28,7 @@ public class Configuration {
 
     private String value;
 
-    @javax.persistence.Column(name = "value", nullable = true, insertable = true, updatable = true, length = 255, precision = 0)
+    @Column(name = "value", nullable = true, insertable = true, updatable = true, length = 255, precision = 0)
     @Basic
     public String getValue() {
         return value;
@@ -42,7 +43,7 @@ public class Configuration {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Configuration that = (Configuration) o;
+        ConfigItems that = (ConfigItems) o;
 
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (value != null ? !value.equals(that.value) : that.value != null) return false;
