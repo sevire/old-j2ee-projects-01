@@ -132,6 +132,11 @@ public class ControllerHelper extends HelperBase {
             logger.info("delete: screen is " + data.getScreen().getName());
             Action action = new DeleteScreen(request,response, factory, data);
             result = action.perform();
+        } else if (command.equals("/deleteConfig")) {
+            status.resetStatusMessage();
+            logger.info("delete config item: name is " + data.getConfigItems().getName());
+            Action action = new DeleteConfigItem(request,response, factory, data);
+            result = action.perform();
         } else if (command.equals("/viewImage")) {
             status.resetStatusMessage();
             logger.info("Gallery View");
