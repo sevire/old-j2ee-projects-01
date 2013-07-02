@@ -4,11 +4,11 @@ import co.uk.genonline.simpleweb.model.bean.Screens;
 import co.uk.genonline.simpleweb.web.WebHelper;
 import co.uk.genonline.simpleweb.web.gallery.GalleryManager;
 import com.petebevin.markdown.MarkdownProcessor;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -25,54 +25,55 @@ public class ViewScreen extends ActionClass {
 
     public RequestResult perform() {
         MarkdownProcessor markdownDecoder = new MarkdownProcessor();
-        Session session = factory.openSession();
-        String query = String.format("from Screens s where s.name = '%s'", this.screen.getName());
-        WebHelper helper = new WebHelper(request, response, factory);
+        WebHelper webHelper = new WebHelper(request, response);
+        Screens screenRecord;
 
-        request.setAttribute("chambersLinkBar", helper.generateLinkBarCategory("Chambers"));
-        request.setAttribute("mistressPageLink", helper.getScreenLink("mistresses"));
-        request.setAttribute("homePage", helper.generateHomeLink());
+        status.resetStatusMessage();
+        if (screen.getName() == null || screen.getName().equals("")) {
+            screen.setName(webHelper.getHomePage());
+        }
+        logger.info("view: screen is " + screen.getName());
+        List<Screens> pages = screenBeanManager.getCategoryScreens("Chambers");
+        request.setAttribute("chambersLinkBar", webHelper.generateLinkBarCategory("Chambers"));
+        request.setAttribute("mistressPageLink", webHelper.getScreenLink("mistresses", screenBeanManager.getShortName("mistresses")));
+        request.setAttribute("homePage", webHelper.generateHomeLink());
         request.setAttribute("maxImgWidth", request.getServletContext().getInitParameter("maxThumbnailWidth"));
         request.setAttribute("maxImgHeight", request.getServletContext().getInitParameter("maxThumbnailHeight"));
 
         if (request.getServletContext().getInitParameter("blogEnabled").equals("true")) {
-            request.setAttribute("blogLink", helper.generateBlogLink());
-        } else
+            request.setAttribute("blogLink", webHelper.generateBlogLink());
+        } else {
             request.setAttribute("blogLink", null);
-        logger.debug("About to execute HQL query : " + query);
-
-        java.util.List pages = session.createQuery(query).list();
-
-        if (pages.size() != 1) {
-            logger.warn(String.format("View page: retrieved <%d> pages for screen <%s>, should be 1",
-                    pages.size(), this.screen.getName()));
-            response.setStatus(404);
-            return new RequestResult(jspLocation("error.jsp"), false);
         }
 
-        if (pages.size() > 0) {
-            Screens screen = (Screens) pages.get(0);
+        screenRecord = screenBeanManager.getScreen(screen.getName());
+
+        if (screenRecord == null) {
+            logger.warn(String.format("View page: Couldn't retrieve page <%s>", this.screen.getName()));
+            response.setStatus(404);
+            return new RequestResult(jspLocation("error.jsp"), false);
+        } else {
             logger.debug("About to parse page with Markdown");
-            String pageText = screen.getScreenContents();
+            String pageText = screenRecord.getScreenContents();
             logger.debug("Markdown Input text is " + pageText.substring(0, Math.min(39, pageText.length()))+"...");
             String HTML = markdownDecoder.markdown(pageText);
             logger.debug("Markdown Output HTML is " + HTML.substring(0, Math.min(39, HTML.length()))+"...");
             this.screen.setScreenContents(HTML);
-            this.screen.setMetaDescription(screen.getMetaDescription());
-            this.screen.setScreenTitleLong(screen.getScreenTitleLong());
-            this.screen.setScreenTitleShort(screen.getScreenTitleShort());
-            if (screen.isEnabledFlag()) {
-                if (screen.isGalleryFlag()) {
+            this.screen.setMetaDescription(screenRecord.getMetaDescription());
+            this.screen.setScreenTitleLong(screenRecord.getScreenTitleLong());
+            this.screen.setScreenTitleShort(screenRecord.getScreenTitleShort());
+            if (screenRecord.isEnabledFlag()) {
+                if (screenRecord.isGalleryFlag()) {
                     logger.info("About to create gallery for the page");
                     GalleryManager manager = (GalleryManager)request.getServletContext().getAttribute("Galleries");
                     logger.debug("manager = " + manager);
-                    request.setAttribute("galleryHTML", (manager.getGallery(screen.getName())).getHTML());
+                    request.setAttribute("galleryHTML", (manager.getGallery(screenRecord.getName())).getHTML());
                 } else {
-                    logger.debug("This page is not a gallery: " + screen.getName());
+                    logger.debug("This page is not a gallery: " + screenRecord.getName());
                     request.setAttribute("galleryHTML", "");
                 }
             } else {
-                logger.info(String.format("Screen disabled, treating like non-existent page <%s>", ((Screens) pages.get(0)).isEnabledFlag()));
+                logger.info(String.format("Screen disabled, treating like non-existent page <%s>", screenRecord.getName()));
                 response.setStatus(404);
                 return new RequestResult(jspLocation("error.jsp"),false);
             }

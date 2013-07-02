@@ -3,7 +3,6 @@ package co.uk.genonline.simpleweb.controller;
 import co.uk.genonline.simpleweb.controller.actions.*;
 import co.uk.genonline.simpleweb.model.bean.ConfigItems;
 import co.uk.genonline.simpleweb.model.bean.Screens;
-import co.uk.genonline.simpleweb.web.WebHelper;
 import org.hibernate.SessionFactory;
 
 import javax.servlet.RequestDispatcher;
@@ -20,19 +19,32 @@ import java.io.IOException;
  * To change this template use File | Settings | File Templates.
  */
 public class ControllerHelper extends HelperBase {
-    // Data which is persisted between sessions via copyFromSessionObj
+    /**
+     * The helper object adds this field (and possibly others) to the session to allow certain information
+     * to be persisted between requests for the same session. <code>data</code> will be used to store
+     * JavaBeans for screen and configuration data.
+     *
+     * The helper object also contains logic to process the request coming from the Controller.
+     *
+     * ToDo: This almost certainly needs refactoring to encapsulate out the long string of conditionals
+     *
+     * Here is the sequence of events for dealing with a request:
+     *
+     * - Controller receives the request as a GET or POST
+     * - Controller passes request (and response) to Controller Helper via processRequest method
+     * - Controller also passes a SessionFactory object (factory) to helper.  This was initialised
+     *   by the ContextListener object at context (application) startup.
+     * - processRequest method deals with all requests and returns either a jsp to forward the request to
+     *   or a url to send back as a re-direct to the client (browser).
+     */
     ActionData data;
-    //boolean addFlag = false; // Used to expose addFlag to JSPs (via getAddFlag() method) to allow common jsp for add or edit screen.
 
-    // Data not persisted between sessions.
     SessionFactory factory;
-    boolean pageNotFound;
 
     public ControllerHelper(HttpServletRequest request, HttpServletResponse response,
                             SessionFactory factory) {
         super(request, response);
 
-        //logger.setLevel(Level.DEBUG);
         logger.info("Logger initiated");
 
         data = new ActionData(new Screens(), new ConfigItems());
@@ -40,129 +52,72 @@ public class ControllerHelper extends HelperBase {
         this.factory = factory;
     }
 
-    // Method used to expose data to JSPs
+    /**
+     * Used to expose <code>data</code> object to jsps.  Since I added the ConfigItem to the ActionData class
+     * (which is what <code>data</code> is declared as, I am re-coding this only to return the <code>screens</code>
+     * object so that the screen.jsp continues to work.  Will probably have to re-visit.
+     *
+     * ToDo: Come back and check whether getData should do something different.
+     * @return
+     */
     public Object getData() {
-        logger.info("Returning (ActionData)'data' = <%s>", data.toString());
+        logger.info("Returning screens part of 'data' = <%s>", data.getScreen().toString());
         return data.getScreen();
     }
 
-/*
-    public boolean getAddFlag() {
-        return addFlag;
-    }
-*/
-
+    /**
+     * General method which processes both get and post requests from Controller.
+     *
+     * - Calls <code>addHelperToSession</code> to recover data from previous request
+     *   if there is any.
+     * - Manages RequestStatus object which stores a status and associated message to be displayed
+     *   in the browser as part of the response.
+     * - Extracts URL from request and uses it to decide which Action sub-class to instantiate.
+     * - NOTE: Should almost certainly be replacing this with a factory method for the Action class
+     *   or similar.
+     *
+     * @throws IOException
+     * @throws ServletException
+     */
     protected void processRequest() throws IOException, ServletException {
         RequestStatus status;
 
         addHelperToSession("helper", SessionData.READ);
 
-        // RequestStatus instance needs to be maintained at session level
-
-        if (request.getSession().getAttribute("requestStatus") == null) {
-            logger.info("Request status was null, session is : " + request.getSession());
-            request.getSession().setAttribute("requestStatus", new RequestStatus());
-        }
-        status = (RequestStatus) request.getSession().getAttribute("requestStatus");
-        logger.info("Controller process request initialisation, status = " + status);
-
-        pageNotFound = false;
-        String command = request.getServletPath();
-
-        logger.debug("Servlet path is " + command);
         data.getScreen().setName(request.getParameter("screen"));
 
         RequestResult result = null;
 
-        if (command.equals("/Controller.do")) {
-            if (request.getParameter("updateButton") != null) {
-                Action action = new EditScreenProcessForm(request, response, factory, data);
-                result = action.perform();
-            } else if (request.getParameter("addButton") != null) {
-                Action action = new AddScreenProcessForm(request, response, factory, data);
-                result = action.perform();
-            } else if (request.getParameter("updateConfigButton") != null) {
-                Action action = new EditConfigItemProcessForm(request, response, factory, data);
-                result = action.perform();
-            } else if (request.getParameter("addConfigButton") != null) {
-                Action action = new AddConfigItemProcessForm(request, response, factory, data);
-                result = action.perform();
-            } else if (request.getParameter("cancelButton") != null) {
-                Action action = new CancelAction(request, response, factory, data);
-                result = action.perform();
+        Action action = Action.createAction(request, response, factory, data);
+        if (action != null) {
+            result = action.perform();
+            if (result.isRedirectFlag()) {
+                logger.info("Redirecting to " + result.getNextRequest());
+                response.sendRedirect(result.getNextRequest());
             } else {
-                pageNotFound = true;
+                logger.info("Forwarding to " + result.getNextRequest());
+                RequestDispatcher dispatcher = request.getRequestDispatcher(result.getNextRequest());
+                dispatcher.forward(request, response);
             }
-        } else if (command.equals("/view") || command.equals("/")) {
-            status.resetStatusMessage();
-            if (data.getScreen().getName() == null || data.getScreen().getName().equals("")) {
-                WebHelper webHelper = new WebHelper(request, response, factory);
-                data.getScreen().setName(webHelper.getHomePage());
-            }
-            logger.info("view: screen is " + data.getScreen().getName());
-            Action action = new ViewScreen(request, response, factory, data);
-            result = action.perform();
-        } else if (command.equals("/edit")) {
-            status.resetStatusMessage();
-            logger.info("edit: screen is " + data.getScreen().getName());
-            Action action = new EditScreenDisplayForm(request,response, factory, data);
-            result = action.perform();
-        } else if (command.equals("/add")) {
-            status.resetStatusMessage();
-            logger.info("add:");
-            Action action = new AddScreenDisplayForm(request,response, factory, data);
-            result = action.perform();
-        } else if (command.equals("/addConfigItem")) {
-            status.resetStatusMessage();
-            logger.info("add config item:");
-            Action action = new AddConfigItemDisplayForm(request,response, factory, data);
-            result = action.perform();
-        } else if (command.equals("/editIndex")) {
-            //status.resetStatusMessage();
-            logger.info("editIndex");
-            Action action = new EditIndexDisplayForm(request,response, factory, data);
-            result = action.perform();
-        } else if (command.equals("/editConfigIndex")) {
-            //status.resetStatusMessage();
-            logger.info("editConfigIndex");
-            Action action = new EditConfigIndexDisplayForm(request,response, factory, data);
-            result = action.perform();
-        } else if (command.equals("/delete")) {
-            status.resetStatusMessage();
-            logger.info("delete: screen is " + data.getScreen().getName());
-            Action action = new DeleteScreen(request,response, factory, data);
-            result = action.perform();
-        } else if (command.equals("/deleteConfig")) {
-            status.resetStatusMessage();
-            logger.info("delete config item: name is " + data.getConfigItems().getName());
-            Action action = new DeleteConfigItem(request,response, factory, data);
-            result = action.perform();
-        } else if (command.equals("/viewImage")) {
-            status.resetStatusMessage();
-            logger.info("Gallery View");
-            Action action = new ViewImage(request,response, factory, data);
-            result = action.perform();
         } else {
-            pageNotFound = true;
-        }
-
-        if (pageNotFound || result == null) {
-            logger.error(String.format("processRequest: Didn't recognise request <%s>, display error page", command));
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
-        } else if (result.isRedirectFlag()) {
-            logger.info("Redirecting to " + result.getNextRequest());
-            response.sendRedirect(result.getNextRequest());
-        } else {
-            logger.info("Forwarding to " + result.getNextRequest());
-            RequestDispatcher dispatcher = request.getRequestDispatcher(result.getNextRequest());
-            dispatcher.forward(request, response);
         }
     }
 
+    /**
+     * If this is not the first request within this session, then there will (probably) be a copy of a previous
+     * ControllerHelper object stored within the sessions (HttpSession).
+     *
+     * The sessionHelper passed in should be the same class as 'this'.  If that is the case then any data which needs
+     * to be persisted between session is read from the stored helper and used to populate the equivalent fields within
+     * this helper.  In practice all the persisted data is in the data field (ActionData) because (at the time of
+     * writing) I just need to store one bean or another in there (Screen or ConfigItem).
+     *
+     * @param sessionHelper
+     */
     public void copyFromSession(Object sessionHelper) {
         if (sessionHelper.getClass() == this.getClass()) {
             data = ((ControllerHelper)sessionHelper).data;
-            //addFlag = ((ControllerHelper)sessionHelper).addFlag;
             logger.info("Copying data from session = <%s>", data.toString());
         }
     }

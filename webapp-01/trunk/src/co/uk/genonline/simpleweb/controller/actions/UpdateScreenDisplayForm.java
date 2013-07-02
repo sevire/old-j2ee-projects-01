@@ -1,7 +1,6 @@
 package co.uk.genonline.simpleweb.controller.actions;
 
 import co.uk.genonline.simpleweb.model.bean.ScreenBeanManager;
-import co.uk.genonline.simpleweb.web.WebHelper;
 import org.hibernate.SessionFactory;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,15 +34,15 @@ public abstract class UpdateScreenDisplayForm extends ActionClass {
         String loggingName;
         String screenJsp;
         if (addFlag) {
-            ScreenBeanManager manager = new ScreenBeanManager(this.screen);
-            manager.initialiseBean();
+            screenBeanManager.initialiseBean(screen);
             request.setAttribute("addFlag", true);
             logger.info(String.format("Adding screen"));
         } else {
-            WebHelper webHelper = new WebHelper(request, response, factory);
-            webHelper.getScreenIntoBean(this.screen, this.screen.getName());
+            ScreenBeanManager beanManager = new ScreenBeanManager(factory);
+            beanManager.getScreen(screen.getName());
+            screenBeanManager.getScreenIntoBean(screen, screen.getName());
             request.setAttribute("addFlag", false);
-            logger.info(String.format("Editing screen <%s>", this.screen.getName()));
+            logger.info(String.format("Editing screen <%s>", screen.getName()));
         }
         screenJsp = "updateScreen.jsp";
         return new RequestResult(jspLocation(screenJsp), false);

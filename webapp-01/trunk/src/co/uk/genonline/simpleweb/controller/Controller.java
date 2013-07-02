@@ -11,30 +11,60 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created with IntelliJ IDEA.
- * User: thomassecondary
- * Date: 14/05/2012
- * Time: 08:06
- * To change this template use File | Settings | File Templates.
+ * Controller for the website.  All requests are routed through this class.
+ *
+ * It may be appropriate to split this into two or more controllers, but at the moment it isn't clear
+ * whether this is going to make things better - possibly having a separate controller for admin may be
+ * appropriate as I could put different security around it.
+ *
  */
 public class Controller extends HttpServlet {
     protected WebLogger logger = new WebLogger();
 
+    /**
+     * Calls parent constructor and initialises logger level in advance of reading in from configuration
+     * data.
+     */
     public Controller() {
         super();
         logger.setLevel(Level.ALL);
     }
 
+    /**
+     * Mandated method used to process any request sent using POST method.  In practice this method
+     * will always call processRequest which is a common method for any request.  This avoids having to
+     * repeat code or move code around if I change the request method.
+     *
+     * @param request Standard request object supplied from container
+     * @param response Standard response object supplied to container
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
+    /**
+     *
+     * Mandated method used to process any request sent using POST method.  In practice this method
+     * will always call processRequest which is a common method for any request.  This avoids having to
+     * repeat code or move code around if I change the request method.
+     *
+     * @param request Standard request object supplied from container
+     * @param response Standard response object supplied to container
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
         processRequest(request, response);
     }
 
+    /**
+     * Called once container has completed initialisation.  Initialisation code for the application
+     * should be in here not in the constructor as that would be too early in the start up process.
+     */
     public void init() {
         ServletContext context = getServletContext();
         Level level = Level.ALL;
@@ -56,6 +86,15 @@ public class Controller extends HttpServlet {
         }
     }
 
+    /**
+     * Called by both doGet and doPost - generic method to process any request. Creates instance of ControllerHelper.
+     * Passes SessionFactory instance into helper which is then used to access sessions for database access.
+     *
+     * @param request
+     * @param response
+     * @throws IOException
+     * @throws ServletException
+     */
     void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         logger.setSession(request);
         String callType = request.getMethod();

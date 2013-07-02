@@ -41,7 +41,7 @@ public abstract class UpdateConfigActionClass extends ActionClass {
             status.setStatusMessage("Name field must be populated", "error");
             errorFlag = true;
         } else {
-            configItemBeanManager.getRequestIntoBean(request);
+            configItemBeanManager.getRequestIntoBean(request, configItems);
             Session session = factory.openSession();
             logger.info(String.format("About to update config item data, name is <%s>, value is <%s>", name, this.configItems.getValue()));
             Transaction transaction = session.beginTransaction();
@@ -64,11 +64,11 @@ public abstract class UpdateConfigActionClass extends ActionClass {
             if (addFlag) {
                 logger.info("Re-displaying add config item screen");
                 request.setAttribute("addFlag", true);
-                configItemBeanManager.getRequestIntoBean(request);
+                configItemBeanManager.getRequestIntoBean(request, configItems);
             } else {
                 logger.info("Re-displaying update config item screen");
                 request.setAttribute("addFlag", false);
-                configItemBeanManager.getRequestIntoBean(request);
+                configItemBeanManager.getRequestIntoBean(request, configItems);
                 //webHelper.getScreenIntoBean(data, data.getName());
             }
             return new RequestResult(jspLocation("updateConfigItem.jsp"), false);

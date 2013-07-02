@@ -34,7 +34,7 @@ public abstract class UpdateActionClass extends ActionClass {
         logger.info(String.format(descriptor + "ing" + " screen <%s>", screen));
         logger.debug("Screen contents from form...\n%s", request.getParameter("screenContents"));
         boolean errorFlag = false;
-        WebHelper webHelper = new WebHelper(request, response, factory);
+        WebHelper webHelper = new WebHelper(request, response);
 
         if (screen.equals("")) {
             logger.info("Screen added/updated with blank name field - rejected");
@@ -51,7 +51,7 @@ public abstract class UpdateActionClass extends ActionClass {
             }
             if (!errorFlag) {
 
-                webHelper.getRequestIntoBean(request, this.screen);
+                screenBeanManager.getRequestIntoBean(request, this.screen);
                 Session session = factory.openSession();
                 logger.info(String.format("About to update data, id is <%d>", this.screen.getId()));
                 logger.debug("Contents = \n%s", this.screen.getScreenContents());
@@ -73,11 +73,11 @@ public abstract class UpdateActionClass extends ActionClass {
             if (addFlag) {
                 logger.info("Re-displaying add screen");
                 request.setAttribute("addFlag", true);
-                webHelper.getRequestIntoBean(request, this.screen);
+                screenBeanManager.getRequestIntoBean(request, this.screen);
             } else {
                 logger.info("Re-displaying update screen");
                 request.setAttribute("addFlag", false);
-                webHelper.getRequestIntoBean(request, this.screen);
+                screenBeanManager.getRequestIntoBean(request, this.screen);
                 //webHelper.getScreenIntoBean(data, data.getName());
             }
             return new RequestResult(jspLocation("updateScreen.jsp"), false);

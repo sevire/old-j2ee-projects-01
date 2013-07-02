@@ -11,7 +11,8 @@ import java.io.File;
  * User: thomassecondary
  * Date: 15/07/2012
  * Time: 09:49
- * To change this template use File | Settings | File Templates.
+ *
+ * Includes a number of utility methods which support the creation and management of galleries for the website.
  */
 
 public class GalleryHelper {

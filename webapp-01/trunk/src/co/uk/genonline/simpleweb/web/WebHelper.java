@@ -1,6 +1,7 @@
 package co.uk.genonline.simpleweb.web;
 
 import co.uk.genonline.simpleweb.controller.WebLogger;
+import co.uk.genonline.simpleweb.model.bean.ScreenBeanManager;
 import co.uk.genonline.simpleweb.model.bean.Screens;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -24,15 +25,14 @@ public class WebHelper {
     HttpServletRequest request;
     HttpServletResponse response;
 
-    public WebHelper(HttpServletRequest request, HttpServletResponse response,
-                            SessionFactory factory) {
+    public WebHelper(HttpServletRequest request, HttpServletResponse response) {
 
         logger = new WebLogger(request);
 //        logger.setLevel(Level.toLevel(request.getServletContext().getInitParameter("loggingLevel")));
         logger.info("Logger initiated");
         this.request = request;
         this.response = response;
-        this.factory = factory;
+        this.factory = (SessionFactory)request.getServletContext().getAttribute("sessionFactory");
     }
 
     public String generateScreenLink(String name, String screenTitleShort) {
@@ -45,11 +45,9 @@ public class WebHelper {
     }
 
     public String generateLinkBarCategory(String category) {
+        ScreenBeanManager beanManager = new ScreenBeanManager(factory);
+        java.util.List pages = beanManager.getCategoryScreens(category);
         String html = "";
-        Session session = factory.openSession();
-        String query = String.format("from Screens s where s.screenType = '%s' and s.enabledFlag = true order by sortKey", category);
-        logger.debug("About to execute HQL query : " + query);
-        java.util.List pages = session.createQuery(query).list();
         for (Object o : pages) {
             Screens screen = (Screens) o;
             html += generateLinkBarItem(screen.getName(), screen.getScreenTitleShort()) ;
@@ -73,7 +71,7 @@ public class WebHelper {
         return request.getServletContext().getInitParameter("homePage");
     }
 
-    public String getScreenLink(String screenName) {
+    public String getScreenLink(String screenName, String linkName) {
         Screens screenData = new Screens();
         getScreenIntoBean(screenData, screenName);
         return String.format("<a href='view?screen=%s'>%s</a>", screenName, screenData.getScreenTitleShort());

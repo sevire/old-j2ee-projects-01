@@ -24,17 +24,17 @@ public enum TestConfiguration {
             "http://lucifersdarkangel.co.uk/",
             "lda/"),
     J2EE_LOCAL_DEV(
-            false,
+            true,
             WebsitePlatform.J2EE,
             "http://localhost:8080/",
-            ""),
+            "lda/"),
     J2EE_LOCAL_TEST_1(
             false,
             WebsitePlatform.J2EE,
             "http://localhost:8080/",
             "lda/"),
     J2EE_REMOTE_TEST_1(
-            true,
+            false,
             WebsitePlatform.J2EE,
             "http://31.193.143.174/",
             "lda/"),

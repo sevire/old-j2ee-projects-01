@@ -145,7 +145,7 @@ public class TestHelper {
         }
 
         // Hard code expected number until testing data is complete
-        assertEquals(assertMessage(String.format("%s, Wrong number of screens ", configuration)), 16, rows.size()-3-disabledCount);
+        assertEquals(assertMessage(String.format("%s, Wrong number of screens ", configuration)), 17, rows.size()-3-disabledCount);
 
         webClient.closeAllWindows();
     }

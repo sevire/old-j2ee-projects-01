@@ -13,12 +13,6 @@ import java.util.Map;
  * To change this template use File | Settings | File Templates.
  */
 public class GalleryManager {
-/*
-    private static final String THUMBNAIL_RELPATH = "thumbnails";
-    private static final int THUMBNAIL_MAX_DIM = 130;
-    private static final int GALLERY_COLUMNS = 4;
-*/
-
 
     private GalleryHelper helper;
 
@@ -26,11 +20,6 @@ public class GalleryManager {
 
     private File galleryFullPathFile; // Used in IO operations
     private String galleryRelPath; // Used for references in HTML (<a> and <img>)
-
-/*
-    private String webRootFullPath;
-    private String galleryRoot;
-*/
 
     public GalleryManager(ServletContext context) {
         helper = new GalleryHelper(context);

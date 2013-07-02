@@ -1,18 +1,15 @@
 package co.uk.genonline.simpleweb.controller.actions;
 
 import co.uk.genonline.simpleweb.model.bean.Screens;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
- * User: thomassecondary
- * Date: 07/08/2012
- * Time: 08:09
- * To change this template use File | Settings | File Templates.
+ * Sub-class of ActionClass with responsibility for preparing data in order to display the edit index screen.
+ * This screen displays a row for each screen showing the key information with links to edit a screen or add a new screen.
  */
 public class EditIndexDisplayForm extends ActionClass {
 
@@ -20,25 +17,29 @@ public class EditIndexDisplayForm extends ActionClass {
         super(request, response, factory, data);
     }
 
+    /**
+     * The main method of the ActionClass class of which this class is a sub-class.
+     * @return Name of next command (e.g. jsp file or url) and whether to forward (jsp) or re-direct (url).
+     */
     public RequestResult perform() {
-        Session session = factory.openSession();
-        String query = String.format("from Screens s order by screenType, sortKey");
-        logger.debug("About to execute HQL query : " + query);
-        java.util.List pages = session.createQuery(query).list();
-        if (pages == null) {
+        // ToDo: Need to encapsulate database access better.
+
+        List screenList = screenBeanManager.getAllScreens();
+
+        if (screenList == null) {
             status.setStatusMessage("Error while getting page list", "error");
-        } else if (pages.isEmpty()) {
+        } else if (screenList.isEmpty()) {
             status.setStatusMessage("No pages currently set up - click 'add' to create new page", "warning");
         } else {
             if (status.isMessageDisplayed()) {
                 status.resetStatusMessage();
             }
+            for (Object s : screenList) {
+                String contents = ((Screens)s).getScreenContents();
+                ((Screens)s).setScreenContents(contents.substring(0, Math.min(39, contents.length()))+"...");
+            }
         }
-        for (Object s : pages) {
-            String contents = ((Screens)s).getScreenContents();
-            ((Screens)s).setScreenContents(contents.substring(0, Math.min(39, contents.length()))+"...");
-        }
-        request.setAttribute("editList", pages);
+        request.setAttribute("editList", screenList);
         request.setAttribute("statusType", request.getSession().getAttribute("statusType"));
         request.setAttribute("statusMessage", request.getSession().getAttribute("statusMessage"));
         return new RequestResult(jspLocation("editIndex.jsp"), false);

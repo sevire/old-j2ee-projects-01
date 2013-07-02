@@ -2,13 +2,23 @@ package co.uk.genonline.simpleweb.controller;
 
 /**
  * Created with IntelliJ IDEA.
- * User: thomassecondary
- * Date: 24/09/2012
- * Time: 12:21
- * To change this template use File | Settings | File Templates.
+ * @User: thomassecondary
+ * @Date: 24/09/2012
+ * @Time: 12:21
+ *
+ * Object used for management of status information, including a status message, across sessions.
+ * For example, if a screen is added, the next action will be to re-display the editIndex page.  This will be
+ * a new request but the editIndex page should include the message that the new screen was added successfully.  In
+ * order to do that the status has to be maintained at session level.
  */
 public class RequestStatus {
     String statusMessage;
+
+    /**
+     * Used to indicate the severity of the message. Strictly speaking should be Enum but is String for now.
+     * Values are 'info', 'warning', 'error'.  Used within editIndex.jsp as class of status message element which
+     * is picked up by css to generate a different colour for different status types.
+     */
     String statusType;
     boolean messageDisplayed; // Used to indicate whether a message has been displayed yet
 
@@ -26,7 +36,7 @@ public class RequestStatus {
         return statusType;
     }
 
-    RequestStatus() {
+    public RequestStatus() {
         resetStatusMessage();
     }
 

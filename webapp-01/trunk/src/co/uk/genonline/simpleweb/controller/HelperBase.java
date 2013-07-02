@@ -32,13 +32,28 @@ public abstract class HelperBase {
 
     public abstract void copyFromSession(Object helper);
 
+    /**
+     * The helper object (ControllerHelper) is stored in the HttpSession between requests to allow data to be
+     * persisted throughout a session.  This is key to the correct operation of the application.  The EE framework
+     * does all the work of identifying when a request is part of an existing session - all the application
+     * developer needs to do is to ensure that the appropriate data is stored in the session object so that it is there
+     * for the next action within this session.
+     *
+     * So the addHelper method carries out the following:
+     *
+     * <ul>
+     * <li>Checks state (SessionData).</li>
+     * <li>If state is READ then data from the previous request should be persisted into
+     *   this request. This is carried out through the call to copyFromSession.</li>
+     * <li>If state is IGNORE then data from previous request will be ignored (and effectively lost).</li>
+     * <li>Then this helper will be added to the HttpSession object in place of the previous helper.  This is
+     *   to persist data for the next request.</li>
+     * </ul>
+     *
+     * @param name The name to use when reading the object
+     * @param state READ = Retain data from previous request, IGNORE don't pull in data across requests
+     */
     public void addHelperToSession(String name, SessionData state) {
-        /*
-         * If the session already has an attribute for a helper object <name> then there is data already stored for
-         * this session so copy data from that into this session.
-         *
-         * Then replace any stored session (if there was one) with this (current helper).
-         */
         if (SessionData.READ == state) {
             Object sessionObj = request.getSession().getAttribute(name);
             if (sessionObj != null) {
@@ -48,17 +63,6 @@ public abstract class HelperBase {
         request.getSession().setAttribute(name, this);
     }
 
-    public void fillBeanFromRequest(Object data) {
-        try {
-            BeanUtils.populate(data, request.getParameterMap());
-        } catch (IllegalAccessException e) {
-            logger.error("Populate - Illegal Access", e.getMessage());
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (InvocationTargetException e) {
-            logger.error("Populate - Invocation Target", e.getMessage());
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
-    }
 
 
 }

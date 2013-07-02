@@ -24,9 +24,17 @@ public class ConfigItemBeanManager {
     ConfigItems configBean;
     SessionFactory factory;
 
+    public ConfigItemBeanManager(SessionFactory factory) {
+        this.factory = factory;
+    }
+
     public ConfigItemBeanManager(ConfigItems configBean, SessionFactory factory) {
         this.configBean = configBean;
         this.factory = factory;
+    }
+
+    public void setBean(ConfigItems configBean) {
+        this.configBean = configBean;
     }
 
     public void initialiseBean() {
@@ -43,7 +51,7 @@ public class ConfigItemBeanManager {
         configBean.setValue(dbBean.getValue());
     }
 
-    public void getRequestIntoBean(HttpServletRequest request) {
+    public void getRequestIntoBean(HttpServletRequest request, ConfigItems configBean) {
         /**
          * I think this should use standard BeanUtil methods (populateBean) or similar but I can't find a way to do this quickly
          * so will take a less elegant approach for now.
@@ -52,5 +60,4 @@ public class ConfigItemBeanManager {
         configBean.setName(request.getParameter("name"));
         configBean.setValue(request.getParameter("value"));
     }
-
 }
