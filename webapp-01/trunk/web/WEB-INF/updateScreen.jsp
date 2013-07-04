@@ -77,7 +77,7 @@
                         <label>Enabled?:</label>
                     </td>
                     <td>
-                        <input type="checkbox" name="enabledFlag" value="Enabled"${helper.data.enabledFlag ? " checked" : ""}>
+                        <input type="checkbox" name="enabledFlag" value="true"${helper.data.enabledFlag ? " checked" : ""}>
                     </td>
                 </tr>
                 <tr>
@@ -87,7 +87,7 @@
                         </label>
                     </td>
                     <td>
-                        <input type="checkbox" name="galleryFlag" value="Enabled"${helper.data.galleryFlag ? " checked" : ""}>
+                        <input type="checkbox" name="galleryFlag" value="true"${helper.data.galleryFlag ? " checked" : ""}>
                     </td>
                 </tr>
                 <tr>

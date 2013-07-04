@@ -46,7 +46,7 @@ public class ViewScreen extends ActionClass {
             request.setAttribute("blogLink", null);
         }
 
-        screenRecord = screenBeanManager.getScreen(screen.getName());
+        screenRecord = screenBeanManager.getScreen(screen);
 
         if (screenRecord == null) {
             logger.warn(String.format("View page: Couldn't retrieve page <%s>", this.screen.getName()));

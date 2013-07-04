@@ -1,6 +1,5 @@
 package co.uk.genonline.simpleweb.controller.actions;
 
-import co.uk.genonline.simpleweb.web.WebHelper;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -30,11 +29,10 @@ public abstract class UpdateActionClass extends ActionClass {
      */
     RequestResult updateScreen(boolean addFlag) {
         String descriptor = addFlag ? "add" : "update";
-        String screen = request.getParameter("name");
-        logger.info(String.format(descriptor + "ing" + " screen <%s>", screen));
+        String screenName = request.getParameter("name");
+        logger.info(String.format(descriptor + "ing" + " screen <%s>", screenName));
         logger.debug("Screen contents from form...\n%s", request.getParameter("screenContents"));
         boolean errorFlag = false;
-        WebHelper webHelper = new WebHelper(request, response);
 
         if (screen.equals("")) {
             logger.info("Screen added/updated with blank name field - rejected");
@@ -44,21 +42,21 @@ public abstract class UpdateActionClass extends ActionClass {
             String sortKey = request.getParameter("sortKey").trim();
             try {
                 int sortKeyInt = Integer.parseInt(sortKey);
-                this.screen.setSortKey(sortKeyInt);
+                screen.setSortKey(sortKeyInt);
             } catch (java.lang.NumberFormatException e) {
                 status.setStatusMessage("Invalid value for sort key, must be numeric", "error");
                 errorFlag = true;
             }
             if (!errorFlag) {
 
-                screenBeanManager.getRequestIntoBean(request, this.screen);
+                screenBeanManager.getRequestIntoScreenBean(request, screen);
                 Session session = factory.openSession();
-                logger.info(String.format("About to update data, id is <%d>", this.screen.getId()));
-                logger.debug("Contents = \n%s", this.screen.getScreenContents());
+                logger.info(String.format("About to update data, id is <%d>", screen.getId()));
+                logger.debug("Contents = \n%s", screen.getScreenContents());
                 if (addFlag) {
-                    session.save(this.screen);
+                    session.save(screen);
                 } else {
-                    session.update(this.screen);
+                    session.update(screen);
                 }
                 try {
                     session.flush();
@@ -73,12 +71,11 @@ public abstract class UpdateActionClass extends ActionClass {
             if (addFlag) {
                 logger.info("Re-displaying add screen");
                 request.setAttribute("addFlag", true);
-                screenBeanManager.getRequestIntoBean(request, this.screen);
+                screenBeanManager.getRequestIntoScreenBean(request, screen);
             } else {
                 logger.info("Re-displaying update screen");
                 request.setAttribute("addFlag", false);
-                screenBeanManager.getRequestIntoBean(request, this.screen);
-                //webHelper.getScreenIntoBean(data, data.getName());
+                screenBeanManager.getRequestIntoScreenBean(request, screen);
             }
             return new RequestResult(jspLocation("updateScreen.jsp"), false);
         } else {
