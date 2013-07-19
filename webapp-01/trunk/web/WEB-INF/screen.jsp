@@ -10,8 +10,8 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-    <title>Lucifer's Dark Angel - ${helper.data.screenTitleLong}</title>
-    <meta name="description" content="${helper.data.metaDescription}">
+    <title>Lucifer's Dark Angel - ${helper.screen.screenTitleLong}</title>
+    <meta name="description" content="${helper.screen.metaDescription}">
     <link rel="stylesheet" href="css/main.css" type="text/css" media="all" >
     <link rel="icon" type="image/png" href="favicon.png">
     <style>
@@ -28,7 +28,7 @@
     </style>
 </head>
 
-<body id='${helper.data.name}'>
+<body id='${helper.screen.name}'>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -68,8 +68,8 @@
                 ${chambersLinkBar}
     </div>
     <div id="pageText">
-        <h3>${helper.data.screenTitleLong}</h3>
-        ${helper.data.screenContents}
+        <h3>${helper.screen.screenTitleLong}</h3>
+        ${helper.screen.screenContents}
     </div>
         <% if (!(request.getAttribute("galleryHTML") == null || request.getAttribute("galleryHTML").equals(""))) {%>
         <div id='gallery'>

@@ -22,7 +22,8 @@ public abstract class Action {
     }
     public abstract RequestResult perform();
 
-    public static Action createAction(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
+    public static Action createAction(HttpServletRequest request, HttpServletResponse response,
+                                      SessionFactory factory, ActionData data) {
         WebLogger logger = new WebLogger();
         RequestStatus status;
         String command = request.getServletPath();

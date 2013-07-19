@@ -13,7 +13,7 @@
     <% Boolean addFlagObject = (Boolean) request.getAttribute("addFlag");%>
     <% boolean addFlag = addFlagObject;%>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-    <title>Lucifer's Dark Angel - <%= addFlag ? "Add" : "Edit"%> : ${helper.data.screenTitleLong}</title>
+    <title>Lucifer's Dark Angel - <%= addFlag ? "Add" : "Edit"%> : ${helper.screen.screenTitleLong}</title>
     <link rel="stylesheet" href="css/main.css" type="text/css" media="all" >
     <link rel="icon" type="image/png" href="favicon.png">
 </head>
@@ -34,7 +34,7 @@
                         <label>Name:</label>
                     </td>
                     <td>
-                        <input type='text' name='name' value="${helper.data.name}" />
+                        <input type='text' name='name' value="${helper.screen.name}" />
                     </td>
                 </tr>
                 <tr>
@@ -42,7 +42,7 @@
                         <label>Sort Key:</label>
                     </td>
                     <td>
-                        <input type='text' name='sortKey' value="${helper.data.sortKey}" />
+                        <input type='text' name='sortKey' value="${helper.screen.sortKey}" />
                     </td>
                 </tr>
                 <tr>
@@ -50,7 +50,7 @@
                         <label>Screen Title Short:</label>
                     </td>
                     <td>
-                        <input type='text' name='screenTitleShort' value="${helper.data.screenTitleShort}">
+                        <input type='text' name='screenTitleShort' value="${helper.screen.screenTitleShort}">
                     </td>
                 </tr>
                 <tr>
@@ -58,7 +58,7 @@
                         <label>Screen Title Long:</label>
                     </td>
                     <td>
-                        <input type='text' name='screenTitleLong' value="${helper.data.screenTitleLong}">
+                        <input type='text' name='screenTitleLong' value="${helper.screen.screenTitleLong}">
                     </td>
                 </tr>
                 <tr>
@@ -67,8 +67,8 @@
                     </td>
                     <td>
                         <select name='screenType'>
-                            <option${helper.data.screenType == 'Mistress' ? " selected='selected'" : ""}>Mistress</option>
-                            <option${helper.data.screenType == 'Chambers' ? " selected='selected'" : ""}>Chambers</option>
+                            <option${helper.screen.screenType == 'Mistress' ? " selected='selected'" : ""}>Mistress</option>
+                            <option${helper.screen.screenType == 'Chambers' ? " selected='selected'" : ""}>Chambers</option>
                         </select>
                     </td>
                 </tr>
@@ -77,7 +77,7 @@
                         <label>Enabled?:</label>
                     </td>
                     <td>
-                        <input type="checkbox" name="enabledFlag" value="true"${helper.data.enabledFlag ? " checked" : ""}>
+                        <input type="checkbox" name="enabledFlag" value="true"${helper.screen.enabledFlag ? " checked" : ""}>
                     </td>
                 </tr>
                 <tr>
@@ -87,7 +87,7 @@
                         </label>
                     </td>
                     <td>
-                        <input type="checkbox" name="galleryFlag" value="true"${helper.data.galleryFlag ? " checked" : ""}>
+                        <input type="checkbox" name="galleryFlag" value="true"${helper.screen.galleryFlag ? " checked" : ""}>
                     </td>
                 </tr>
                 <tr>
@@ -95,7 +95,7 @@
                         <label>Screen Contents: </label>
                     </td>
                     <td>
-                        <textarea rows="10" cols="60" name="screenContents">${helper.data.screenContents}</textarea>
+                        <textarea rows="10" cols="60" name="screenContents">${helper.screen.screenContents}</textarea>
                     </td>
                 </tr>
                 <tr>
@@ -103,7 +103,7 @@
                         <label>Meta Description: </label>
                     </td>
                     <td>
-                        <textarea rows="4" cols="60" name="metaDescription">${helper.data.metaDescription}</textarea>
+                        <textarea rows="4" cols="60" name="metaDescription">${helper.screen.metaDescription}</textarea>
                     </td>
                 </tr>
                 <tr><td>

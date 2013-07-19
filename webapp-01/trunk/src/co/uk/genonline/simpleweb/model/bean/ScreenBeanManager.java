@@ -123,16 +123,23 @@ public class ScreenBeanManager {
         Map amendedMap = new HashMap();
         amendedMap.putAll(requestMap);
         if (amendedMap.get("enabledFlag") == null) {
+            logger.info("enabledFlag from request is <null>");
             amendedMap.put("enabledFlag", "false");
+        } else {
+            logger.info("enabledFlag from request is <%s>", amendedMap.get("enabledFlag").toString());
         }
         if (amendedMap.get("galleryFlag") == null) {
-            amendedMap.put("enabledFlag", "false");
+            logger.info("galleryFlag from request is <null>");
+            amendedMap.put("galleryFlag", "false");
+        } else {
+            logger.info("galleryFlag from request is <%s>", amendedMap.get("galleryFlag").toString());
         }
         fillBeanFromMap(screen, amendedMap);
     }
 
     public String getShortName(String screenName) {
         Screens screen = new Screens();
+        screen.setName(screenName);
         return getScreen(screen).getScreenTitleShort();
     }
 
@@ -159,5 +166,4 @@ public class ScreenBeanManager {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
     }
-
 }

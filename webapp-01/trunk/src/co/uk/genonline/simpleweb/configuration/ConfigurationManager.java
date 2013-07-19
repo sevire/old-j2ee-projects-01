@@ -1,20 +1,22 @@
 package co.uk.genonline.simpleweb.configuration;
 
+import java.util.Map;
+
 /**
  * Created with IntelliJ IDEA.
- * User: thomassecondary
- * Date: 19/06/2013
- * Time: 08:07
- * To change this template use File | Settings | File Templates.
+ * @User: thomassecondary
+ * @Date: 19/06/2013
+ * @Time: 08:07
+ *
+ * Manages several sets of configuration information.
  */
 public interface ConfigurationManager {
 
-    void addConfigItem(String configItemName);
+    void addConfigurationSet(String configItemName, ConfigurationItem configurationItem);
 
     void deleteConfigItem(String configItemName);
 
-    void getAllConfigItems();
+    Map getAllConfigItems();
 
-    String toString();
-
+    ConfigurationSet getConfigurationSet(String configurationSetName);
 }

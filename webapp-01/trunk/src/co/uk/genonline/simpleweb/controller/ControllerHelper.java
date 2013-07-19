@@ -16,28 +16,25 @@ import java.io.IOException;
  * User: thomassecondary
  * Date: 16/05/2012
  * Time: 07:38
- * To change this template use File | Settings | File Templates.
+ *
+ * Here is the sequence of events for dealing with a request:
+ *
+ * - Controller receives the request as a GET or POST
+ * - Controller passes request (and response) to Controller Helper via processRequest method
+ * - Controller also passes a SessionFactory object (factory) to helper.  This was initialised
+ *   by the ContextListener object at context (application) startup.
+ * - processRequest method deals with all requests and returns either a jsp to forward the request to
+ *   or a url to send back as a re-direct to the client (browser).
  */
+
 public class ControllerHelper extends HelperBase {
-    /**
-     * The helper object adds this field (and possibly others) to the session to allow certain information
-     * to be persisted between requests for the same session. <code>data</code> will be used to store
-     * JavaBeans for screen and configuration data.
-     *
-     * The helper object also contains logic to process the request coming from the Controller.
-     *
-     * ToDo: This almost certainly needs refactoring to encapsulate out the long string of conditionals
-     *
-     * Here is the sequence of events for dealing with a request:
-     *
-     * - Controller receives the request as a GET or POST
-     * - Controller passes request (and response) to Controller Helper via processRequest method
-     * - Controller also passes a SessionFactory object (factory) to helper.  This was initialised
-     *   by the ContextListener object at context (application) startup.
-     * - processRequest method deals with all requests and returns either a jsp to forward the request to
-     *   or a url to send back as a re-direct to the client (browser).
-     */
-    ActionData data;
+
+   /**
+    * The helper object adds this field (and possibly others) to the session to allow certain information
+    * to be persisted between requests for the same session. <code>data</code> will be used to store
+    * JavaBeans for screen and configuration data.
+    */
+    private ActionData sessionData;
 
     SessionFactory factory;
 
@@ -47,22 +44,29 @@ public class ControllerHelper extends HelperBase {
 
         logger.info("Logger initiated");
 
-        data = new ActionData(new Screens(), new ConfigItems());
-        logger.info("Initialised data, = <%s>", data.toString());
+        sessionData = new ActionData(new Screens(), new ConfigItems());
+        logger.info("Initialised data, = <%s>", sessionData.toString());
         this.factory = factory;
     }
 
     /**
-     * Used to expose <code>data</code> object to jsps.  Since I added the ConfigItem to the ActionData class
-     * (which is what <code>data</code> is declared as, I am re-coding this only to return the <code>screens</code>
-     * object so that the screen.jsp continues to work.  Will probably have to re-visit.
+     * Exposes sessionData.screens (Screens) to the jsp.
      *
-     * ToDo: Come back and check whether getData should do something different.
      * @return
      */
-    public Object getData() {
-        logger.info("Returning screens part of 'data' = <%s>", data.getScreen().toString());
-        return data.getScreen();
+    public Object getScreen() {
+        logger.info("Returning screens part of 'data' = <%s>", sessionData.getScreen().toString());
+        return sessionData.getScreen();
+    }
+
+    /**
+     * Exposes sessionData.configItems (ConfigItems) to the jsp.
+     *
+     * @return
+     */
+    public Object getConfigItems() {
+        logger.info("Returning config items part of 'data' = <%s>", sessionData.getConfigItems().toString());
+        return sessionData.getConfigItems();
     }
 
     /**
@@ -84,11 +88,11 @@ public class ControllerHelper extends HelperBase {
 
         addHelperToSession("helper", SessionData.READ);
 
-        data.getScreen().setName(request.getParameter("screen"));
+        sessionData.getScreen().setName(request.getParameter("screen"));
 
         RequestResult result = null;
 
-        Action action = Action.createAction(request, response, factory, data);
+        Action action = Action.createAction(request, response, factory, sessionData);
         if (action != null) {
             result = action.perform();
             if (result.isRedirectFlag()) {
@@ -117,8 +121,8 @@ public class ControllerHelper extends HelperBase {
      */
     public void copyFromSession(Object sessionHelper) {
         if (sessionHelper.getClass() == this.getClass()) {
-            data = ((ControllerHelper)sessionHelper).data;
-            logger.info("Copying data from session = <%s>", data.toString());
+            sessionData = ((ControllerHelper)sessionHelper).sessionData;
+            logger.info("Copying data from session = <%s>", sessionData.toString());
         }
     }
 }
