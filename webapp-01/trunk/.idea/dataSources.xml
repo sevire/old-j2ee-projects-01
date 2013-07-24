@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" compressed="false" hash="538486820" />
+  <component name="DataSourceManagerImpl" format="xml" hash="538486820">
+    <data-source source="LOCAL" name="Thomas2-mysql-01" product="MySQL" version="5.5.9" jdbc-version="4.0" driver-name="MySQL-AB JDBC Driver" driver-version="mysql-connector-java-5.1.20 ( Revision: tonci.grgin@oracle.com-20111003110438-qfydx066wsbydkbw )" uuid="8d125fae-6c44-40a5-8e9c-9a7bf6f5e59c">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/lda_dev</jdbc-url>
+      <user-name>root</user-name>
+      <user-password>dfe5dfe9df9ddfebdfcbdffddfe9df9ddf9ddfe8</user-password>
+      <schema-pattern>lda_dev.*</schema-pattern>
+      <default-dialect>MySQL</default-dialect>
+      <libraries>
+        <library>
+          <url>jar:///Library/Java/Extensions/Mysql/mysql-connector-java-5.1.20/mysql-connector-java-5.1.20-bin.jar!/</url>
+        </library>
+      </libraries>
+    </data-source>
+  </component>
 </project>
 
