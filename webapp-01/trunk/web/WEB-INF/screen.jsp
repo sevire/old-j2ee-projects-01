@@ -54,10 +54,10 @@
     <div class='header'>
         <ul>
             <li class='headerLink'>${homePage}</li>
-            <core:if test='${blogLink != null}'>
+            <%--<core:if test='${blogLink != null}'>--%>
                 <li class='headerLink'>${blogLink}</li>
-            </core:if>
-            <li class='headerLink'><core:out value="${mistressPageLink}" escapeXml="false"/></li>
+            <%--</core:if>--%>
+            <%--<li class='headerLink'><core:out value="${mistressPageLink}" escapeXml="false"/></li>--%>
             <li class='headerLink'><a href="http://groups.yahoo.com/group/lucifersdarkangel/">Yahoo!&nbsp;Group</a></li>
         </ul>
 <%--

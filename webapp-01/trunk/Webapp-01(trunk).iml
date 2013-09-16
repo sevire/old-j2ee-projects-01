@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
   <component name="FacetManager">
-    <facet type="hibernate" name="Hibernate">
+    <facet type="javaeeApplication" name="javaEEApplication">
       <configuration>
-        <datasource-map>
-          <unit-entry name="hibernate.cfg.xml" value="8d125fae-6c44-40a5-8e9c-9a7bf6f5e59c" />
-        </datasource-map>
-        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/hibernate.cfg.xml" />
+        <descriptors>
+          <deploymentDescriptor name="application.xml" url="file://$MODULE_DIR$/META-INF/application.xml" />
+        </descriptors>
       </configuration>
     </facet>
     <facet type="web" name="Web">
@@ -19,11 +18,9 @@
         </webroots>
       </configuration>
     </facet>
-    <facet type="javaeeApplication" name="javaEEApplication">
+    <facet type="hibernate" name="Hibernate">
       <configuration>
-        <descriptors>
-          <deploymentDescriptor name="application.xml" url="file://$MODULE_DIR$/META-INF/application.xml" />
-        </descriptors>
+        <datasource-map />
       </configuration>
     </facet>
   </component>
@@ -33,10 +30,22 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$APPLICATION_HOME_DIR$/lib/junit-4.10.jar!/" />
+          <root url="jar:///Library/Java/Extensions/htmlunit-2.2-hudson-9.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="markdownj-1.0.2b4-0.3.0" level="project" />
+    <orderEntry type="library" name="log4j-1.2.17" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar:///Library/Java/Extensions/commons-beanutils-1.8.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -45,13 +54,28 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar:///Library/Java/Extensions/TagLibrary/javax.servlet.jsp.jstl-1.2.1.jar!/" />
+          <root url="jar:///Library/Java/Extensions/spring-1.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="Extensions" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar:///Library/Java/Extensions/htmlunit-1.9.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="htmlunit-2.10" level="project" />
+    <orderEntry type="library" name="commons-logging-1.1.3" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-5.1.26-bin" level="project" />
+    <orderEntry type="library" name="hibernate-4.2.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Tomcat 7.0" level="application_server_libraries" />
+    <orderEntry type="library" name="junit-4.7" level="project" />
+    <orderEntry type="library" name="apacheds-all-1.5.5 18.35.28" level="project" />
   </component>
 </module>
 
