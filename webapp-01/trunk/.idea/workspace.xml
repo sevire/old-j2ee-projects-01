@@ -7,91 +7,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="03fdf521-209b-4654-a976-0dbf9d87148b" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/test" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/META-INF/application.xml" afterPath="$PROJECT_DIR$/webapp/META-INF/application.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/WebappModule-01.iml" afterPath="$PROJECT_DIR$/webapp/WebappModule-01.iml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/configuration/ConfigItem.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigItem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/configuration/Configuration.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/Configuration.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/configuration/ConfigurationItem.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigurationItem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/configuration/ConfigurationManager.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigurationManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/configuration/ConfigurationSet.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigurationSet.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/configuration/HomePage.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/HomePage.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/configuration/NumGalleryColumns.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/NumGalleryColumns.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/configuration/configManager.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/configManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ContextListener.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/ContextListener.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/Controller.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/Controller.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ControllerHelper.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/ControllerHelper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/HelperBase.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/HelperBase.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/RequestStatus.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/RequestStatus.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/SessionData.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/SessionData.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/WebLogger.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/WebLogger.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/actions/Action.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/Action.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/actions/ActionClass.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/ActionClass.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/actions/ActionData.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/ActionData.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/actions/AddConfigItemDisplayForm.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/AddConfigItemDisplayForm.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/actions/AddConfigItemProcessForm.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/AddConfigItemProcessForm.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/actions/AddScreenDisplayForm.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/AddScreenDisplayForm.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/actions/AddScreenProcessForm.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/AddScreenProcessForm.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/actions/CancelAction.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/CancelAction.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/actions/DeleteConfigItem.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/DeleteConfigItem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/actions/DeleteScreen.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/DeleteScreen.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/actions/EditConfigIndexDisplayForm.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/EditConfigIndexDisplayForm.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/actions/EditConfigItemProcessForm.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/EditConfigItemProcessForm.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/actions/EditIndexDisplayForm.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/EditIndexDisplayForm.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/actions/EditScreenDisplayForm.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/EditScreenDisplayForm.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/actions/EditScreenProcessForm.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/EditScreenProcessForm.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/actions/RequestResult.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/RequestResult.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/actions/UpdateActionClass.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/UpdateActionClass.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/actions/UpdateConfigActionClass.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/UpdateConfigActionClass.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/actions/UpdateConfigItemDisplayForm.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/UpdateConfigItemDisplayForm.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/actions/UpdateScreenDisplayForm.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/UpdateScreenDisplayForm.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/actions/ViewImage.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/ViewImage.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/actions/ViewScreen.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/ViewScreen.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/HibernateUtil.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/model/HibernateUtil.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/ScreensDisplay.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/model/ScreensDisplay.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/bean/ConfigItemBeanManager.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/model/bean/ConfigItemBeanManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/bean/ConfigItems.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/model/bean/ConfigItems.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/bean/ScreenBeanManager.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/model/bean/ScreenBeanManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/bean/ScreenType.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/model/bean/ScreenType.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/bean/Screens.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/model/bean/Screens.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/configuration/ConfigurationManager.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/model/configuration/ConfigurationManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/WebHelper.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/web/WebHelper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/Gallery.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/web/gallery/Gallery.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/GalleryHelper.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/web/gallery/GalleryHelper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/GalleryManager.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/web/gallery/GalleryManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/ImageFileFilter.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/web/gallery/ImageFileFilter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/webapp/hibernate.cfg.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/log4j.properties" afterPath="$PROJECT_DIR$/webapp/log4j.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Webapp-01(trunk).iml" afterPath="$PROJECT_DIR$/Webapp-01(trunk).iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webtest/WebTest.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webtest/src/AdminTests.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webtest/src/AllScreensTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webtest/src/OtherRequestTests.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webtest/src/support/ScreenTestData.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webtest/src/support/TestConfiguration.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webtest/src/support/TestDataIndex.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webtest/src/support/TestHelper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webtest/src/support/TestHtmlPage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webtest/src/support/WebsitePlatform.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webtest/src/support/WebsiteTestData.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webtest/src" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webtest/src/support" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/webtest" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Webapp-01(trunk).iml" afterPath="$PROJECT_DIR$/WebApp.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webapp/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/webapp/hibernate.cfg.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/lda_exp.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/lda_exp.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/lda_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/lda_war.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/META-INF" afterPath="$PROJECT_DIR$/webapp/META-INF" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/actions" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/bean" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/model/bean" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co" afterPath="$PROJECT_DIR$/webapp/co" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/configuration" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/configuration" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/model/configuration" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/web/gallery" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/model" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src" afterPath="$PROJECT_DIR$/webapp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk" afterPath="$PROJECT_DIR$/webapp/co/uk" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/web" />
     </list>
     <ignored path="ManchesterGoddesses(java).iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/index.html" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1376820880030" ignored="false" />
     <file path="/mistress.html" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1375651330067" ignored="false" />
     <file path="$PROJECT_DIR$/web2/WEB-INF/web.xml" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1376244936957" ignored="false" />
-    <file path="/TestHelper.java" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1380452539998" ignored="false" />
+    <file path="/TestHelper.java" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1380649169557" ignored="false" />
     <file path="/WebLogger.java" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1380450637256" ignored="false" />
-    <file path="/fragment.java" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1377112686046" ignored="false" />
-    <file path="/Dummy.txt" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1380561793809" ignored="false" />
-    <file path="/Thomas2-mysql-01" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1377951963616" ignored="false" />
+    <file path="/fragment.java" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1380562240089" ignored="false" />
+    <file path="/Dummy.txt" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1380561906533" ignored="false" />
+    <file path="/Thomas2-mysql-01" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1380612280006" ignored="false" />
     <file path="/a.sql" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1377952352195" ignored="false" />
     <file path="/editIndex.jsp" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1379157883096" ignored="false" />
     <file path="/screen.jsp" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1379610052677" ignored="false" />
+    <file path="/a.regexp" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1380612571931" ignored="false" />
+    <file path="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/webtest/WebTest.iml" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1380649550808" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,53 +78,6 @@
     <sortChildren value="true" />
   </component>
   <component name="DebuggerManager">
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/webtest/src/support/TestHelper.java" line="228" class="support.TestHelper" package="support">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/Controller.java" line="98" class="co.uk.genonline.simpleweb.controller.Controller" package="co.uk.genonline.simpleweb.controller">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/ContextListener.java" line="44" class="co.uk.genonline.simpleweb.controller.ContextListener" package="co.uk.genonline.simpleweb.controller">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -207,6 +114,38 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint url="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/Controller.java" line="98" class="co.uk.genonline.simpleweb.controller.Controller" package="co.uk.genonline.simpleweb.controller">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/ContextListener.java" line="44" class="co.uk.genonline.simpleweb.controller.ContextListener" package="co.uk.genonline.simpleweb.controller">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
@@ -217,37 +156,67 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ViewScreen.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/ViewScreen.java">
+      <file leaf-file-name="TestConfiguration.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/webtest/support/TestConfiguration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="0" selection-start="4068" selection-end="4068" vertical-scroll-proportion="0.0">
+            <state line="27" column="20" selection-start="867" selection-end="867" vertical-scroll-proportion="0.53928095">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="screen.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/screen.jsp">
+      <file leaf-file-name="Thomas2-mysql-01" pinned="false" current="false" current-in-tab="false">
+        <entry file="dbDummy://db-console:/a63a057c/8d125fae-6c44-40a5-8e9c-9a7bf6f5e59c/">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="0" selection-start="1418" selection-end="1418" vertical-scroll-proportion="0.0">
+            <state line="0" column="21" selection-start="21" selection-end="21" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hibernate.cfg.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/webapp/hibernate.cfg.xml">
+      <file leaf-file-name="lda_dev.Screens" pinned="false" current="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/a63a057c/8d125fae-6c44-40a5-8e9c-9a7bf6f5e59c/lda_dev..Screens">
+          <provider editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="configManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/configManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="424" selection-end="424" vertical-scroll-proportion="0.23346303">
+            <state line="11" column="13" selection-start="191" selection-end="191" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ControllerHelper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/ControllerHelper.java">
+      <file leaf-file-name="ConfigItem.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigItem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="108" column="0" selection-start="4082" selection-end="4082" vertical-scroll-proportion="0.0">
+            <state line="9" column="17" selection-start="231" selection-end="231" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ReflectiveCallable.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/Downloads/junit-4.10.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="40" selection-start="388" selection-end="388" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OtherRequestTests.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/webtest/OtherRequestTests.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="13" selection-start="389" selection-end="389" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -257,51 +226,6 @@
         <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="29" column="35" selection-start="1018" selection-end="1018" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServletRequest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../TomcatSource/java/javax/servlet/ServletRequest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="305" column="0" selection-start="13047" selection-end="13047" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RequestDispatcher.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../TomcatSource/java/javax/servlet/RequestDispatcher.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="280" column="76" selection-start="12524" selection-end="12524" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServletRequestWrapper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../TomcatSource/java/javax/servlet/ServletRequestWrapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="237" column="16" selection-start="6894" selection-end="6894" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WebLogger.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/WebLogger.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="0" selection-start="637" selection-end="637" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ContextListener.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/ContextListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="0" selection-start="1519" selection-end="1519" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -317,22 +241,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/web/WEB-INF/updateScreen.jsp" />
-        <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/web/gallery/Gallery.java" />
-        <option value="$PROJECT_DIR$/web/mistress.html" />
-        <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/test/support/TestHelper.java" />
         <option value="$PROJECT_DIR$/src/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/HibernateUtil.java" />
         <option value="$PROJECT_DIR$/web/index.html" />
-        <option value="dbtable:/a63a057c/8d125fae-6c44-40a5-8e9c-9a7bf6f5e59c/lda_dev..Screens" />
-        <option value="db-console:/a63a057c/8d125fae-6c44-40a5-8e9c-9a7bf6f5e59c/" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/ControllerHelper.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/editIndex.jsp" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/model/bean/ScreenBeanManager.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/co/uk/genonline/simpleweb/controller/WebLogger.java" />
-        <option value="$PROJECT_DIR$/webtest/src/support/TestHelper.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/screen.jsp" />
+        <option value="$PROJECT_DIR$/webapp/hibernate.cfg.xml" />
+        <option value="$PROJECT_DIR$/webtest/src/support/TestConfiguration.java" />
+        <option value="$PROJECT_DIR$/webtest/src/support/TestHelper.java" />
+        <option value="$PROJECT_DIR$/webtest/support/TestHelper.java" />
+        <option value="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/webtest/support/TestHelper.java" />
+        <option value="db-console:/a63a057c/8d125fae-6c44-40a5-8e9c-9a7bf6f5e59c/" />
+        <option value="dbtable:/a63a057c/8d125fae-6c44-40a5-8e9c-9a7bf6f5e59c/lda_dev..Screens" />
       </list>
     </option>
   </component>
@@ -406,6 +330,31 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Problems" />
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="WebTest">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="webapp/co/uk/genonline/simpleweb/webtest">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -414,19 +363,54 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Webapp-01(trunk)" />
+              <option name="myItemId" value="WebApp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
           </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Problems" />
-        <subPane subId="Project Files">
           <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp-02" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="META-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp-02" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="co.uk.genonline.simpleweb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp-02" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="co.uk.genonline.simpleweb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -521,6 +505,38 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp-02" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp-01(trunk)" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp-02" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp-01(trunk)" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="site_images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -541,11 +557,11 @@
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="FullScreen" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.35118306" />
     <property name="Downloaded.Files.Path" value="$PROJECT_DIR$/lib" />
+    <property name="options.splitter.details.proportions" value="0.35118306" />
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="Persistence.ERD.SimpleMode" value="false" />
     <property name="options.lastSelected" value="editor.preferences.appearance" />
+    <property name="Persistence.ERD.SimpleMode" value="false" />
     <property name="project.structure.side.proportion" value="0.35588974" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="findjar.last.used.dir" value="/Library/Java/Extensions" />
@@ -553,7 +569,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth1" value="74" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth0" value="72" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth3" value="72" />
     <property name="OverrideImplement.combined" value="true" />
@@ -568,7 +584,7 @@
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder2" value="2" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder5" value="5" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder4" value="4" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/javax.servlet.jsp.jstl-api-1.2.1.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/webapp" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
@@ -579,14 +595,14 @@
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder4" value="4" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder1" value="1" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder2" value="2" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder0" value="0" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="Persistence.ERD.MergeInherited" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -613,133 +629,22 @@
       <recent name="co.uk.genonline.simpleweb.web" />
       <recent name="co.uk.genonline.simpleweb.model" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="co.uk.genonline.simpleweb.model.image" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/webtest" />
+      <recent name="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb" />
+      <recent name="$PROJECT_DIR$/webtest" />
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/web/WEB-INF" />
+    </key>
     <key name="ImportMappingsDialog.RecentPackages">
       <recent name="co.uk.genonline.simpleweb.model.bean" />
       <recent name="" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/web/WEB-INF" />
-      <recent name="$PROJECT_DIR$/web" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="co.uk.genonline.simpleweb.model.image" />
-    </key>
   </component>
-  <component name="RestoreUpdateTree">
-    <UpdateInfo date="Moments ago" ActionInfo="_Update">
-      <UpdatedFiles>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated from server" />
-          <option name="myStatusName" value="Changed on server" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CHANGED_ON_SERVER" />
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Updated" />
-            <option name="myStatusName" value="Changed" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="UPDATED" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Created" />
-            <option name="myStatusName" value="Created" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="CREATED" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Deleted" />
-            <option name="myStatusName" value="Deleted" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="true" />
-            <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Restored" />
-            <option name="myStatusName" value="Will be restored" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="RESTORED" />
-            <PATH vcs="svn" revision="92">$PROJECT_DIR$/lib/javax.servlet.jsp.jar</PATH>
-            <PATH vcs="svn" revision="92">$PROJECT_DIR$/lib/javax.servlet.jsp.jstl.jar</PATH>
-          </FILE-GROUP>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Modified" />
-          <option name="myStatusName" value="Modified" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MODIFIED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Skipped" />
-          <option name="myStatusName" value="Skipped" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="SKIPPED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with conflicts" />
-          <option name="myStatusName" value="Will be merged with conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_CONFLICTS" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with tree conflicts" />
-          <option name="myStatusName" value="Merged with tree conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with property conflicts" />
-          <option name="myStatusName" value="Will be merged with property conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged" />
-          <option name="myStatusName" value="Will be merged" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Not in repository" />
-          <option name="myStatusName" value="Not in repository" />
-          <option name="mySupportsDeletion" value="true" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UNKNOWN" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Locally added" />
-          <option name="myStatusName" value="Locally added" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="LOCALLY_ADDED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Locally removed" />
-          <option name="myStatusName" value="Locally removed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="LOCALLY_REMOVED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Switched" />
-          <option name="myStatusName" value="Switched" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="SWITCHED" />
-        </FILE-GROUP>
-      </UpdatedFiles>
-    </UpdateInfo>
-  </component>
-  <component name="RunManager" selected="Tomcat Server.lda">
+  <component name="RunManager" selected="JUnit.AllScreensTest">
     <configuration default="false" name="AdminTests" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" runner="idea">
         <pattern>
@@ -754,34 +659,6 @@
       <option name="MAIN_CLASS_NAME" value="AdminTests" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="OtherRequestTests.splashTest" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="co.uk.genonline.simpleweb.controller.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="WebTest" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="OtherRequestTests" />
-      <option name="METHOD_NAME" value="splashTest" />
-      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -866,25 +743,41 @@
       <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
+    <configuration default="false" name="OtherRequestTests" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" runner="idea" />
+      <module name="WebTest" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="OtherRequestTests" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -915,6 +808,19 @@
       <listeners />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
@@ -935,13 +841,6 @@
         <option name="engineId" value="embedded" />
         <option name="fileUrl" />
       </JSRemoteDebuggerConfigurationSettings>
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Local" singleton="true">
-      <JSDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSDebuggerConfigurationSettings>
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -965,30 +864,11 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote">
-      <option name="LOCAL" value="false" />
-      <deployment />
-      <server-settings>
-        <data>
-          <option name="transportHostId" />
-        </data>
-      </server-settings>
-      <predefined_log_file id="Tomcat" enabled="true" />
-      <predefined_log_file id="TOMCAT_LOCALHOST_LOG_ID" enabled="true" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="57518" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="false" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
-      <option name="VM_PARAMETERS" value="" />
-      <option name="USER_CFG_CLASS" />
-      <option name="CONTEXT_PROVIDER" />
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Local" singleton="true">
+      <JSDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSDebuggerConfigurationSettings>
       <method />
     </configuration>
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7">
@@ -1051,6 +931,32 @@
           <option name="PROGRAM_PARAMETERS" value="" />
         </SHUTDOWN>
       </ConfigurationWrapper>
+      <method />
+    </configuration>
+    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
+      <method />
+    </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote">
+      <option name="LOCAL" value="false" />
+      <deployment />
+      <server-settings>
+        <data>
+          <option name="transportHostId" />
+        </data>
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="TOMCAT_LOCALHOST_LOG_ID" enabled="true" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="57518" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
     <configuration default="false" name="LDA" type="JUnit" factoryName="JUnit">
@@ -1186,11 +1092,18 @@
       <item index="1" class="java.lang.String" itemvalue="JUnit.LDA Test" />
       <item index="2" class="java.lang.String" itemvalue="Tomcat Server.lda" />
       <item index="3" class="java.lang.String" itemvalue="JUnit.AdminTests" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.OtherRequestTests.splashTest" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.AdminTests.editIndexTest" />
-      <item index="6" class="java.lang.String" itemvalue="JUnit.AllScreensTest" />
-      <item index="7" class="java.lang.String" itemvalue="Query Language Console.Default" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.AdminTests.editIndexTest" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.AllScreensTest" />
+      <item index="6" class="java.lang.String" itemvalue="Query Language Console.Default" />
+      <item index="7" class="java.lang.String" itemvalue="JUnit.OtherRequestTests" />
     </list>
+    <recent_temporary>
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.AllScreensTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.OtherRequestTests" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.AdminTests" />
+      </list>
+    </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
       <Port>5050</Port>
@@ -1226,10 +1139,6 @@
         <SvnCopyRootSimple>
           <option name="myVcsRoot" value="$PROJECT_DIR$/.idea" />
           <option name="myCopyRoot" value="$PROJECT_DIR$/.idea" />
-        </SvnCopyRootSimple>
-        <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="$PROJECT_DIR$/webtest" />
-          <option name="myCopyRoot" value="$PROJECT_DIR$/webtest" />
         </SvnCopyRootSimple>
       </list>
     </option>
@@ -1536,7 +1445,11 @@
       <created>1380561520104</created>
       <updated>1380561520105</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="Renamed main app source code to webapp - results in a lot of files being moved between old and new folder in subversion.  See [#133].">
+      <created>1380561939103</created>
+      <updated>1380561939103</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1563,9 +1476,9 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29551122" sideWeight="0.3665955" order="4" side_tool="false" content_ui="tabs" x="0" y="22" width="1280" height="774" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29551122" sideWeight="0.3665955" order="4" side_tool="false" content_ui="tabs" x="0" y="22" width="1280" height="774" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.6708229" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25829217" sideWeight="0.2468828" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.258967" sideWeight="0.1820449" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="JavaEE:App" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.258967" sideWeight="0.2468828" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.6708229" order="3" side_tool="false" content_ui="tabs" />
@@ -1585,11 +1498,11 @@
       <window_info id="Commander" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39775562" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.6707504" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917705" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.258967" sideWeight="0.70448875" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.258967" sideWeight="0.6733167" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33167082" sideWeight="0.6693679" order="7" side_tool="false" content_ui="tabs" x="1284" y="334" width="1874" height="437" />
       <window_info id="CSS Styles" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.6676876" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="SVN Repositories" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.32924962" sideWeight="0.49573106" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.6676876" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917705" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.6676876" order="5" side_tool="false" content_ui="tabs" />
@@ -1691,88 +1604,14 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/model/bean/ScreenBeanManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="23" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/web/gallery/Gallery.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="28" selection-start="131" selection-end="131" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Downloads/htmlunit-2.12/lib/htmlunit-2.12.jar!/com/gargoylesoftware/htmlunit/html/HtmlElement.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="22" selection-start="186" selection-end="186" vertical-scroll-proportion="-3.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webtest/src/support/TestHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="66" selection-start="752" selection-end="752" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Downloads/apache-log4j-1-1.2.17/log4j-1.2.17.jar!/org/apache/log4j/Level.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="159" selection-end="159" vertical-scroll-proportion="0.16629712" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
-      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleGeneralEditorProvider">
-        <state />
-      </provider>
-      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorReferencesProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="91" selection-start="545" selection-end="545" vertical-scroll-proportion="21.11111">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../TomcatSource/java/javax/servlet/ServletRequestWrapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="237" column="16" selection-start="6894" selection-end="6894" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../TomcatSource/java/javax/servlet/ServletRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="305" column="0" selection-start="13047" selection-end="13047" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../TomcatSource/java/javax/servlet/RequestDispatcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="280" column="76" selection-start="12524" selection-end="12524" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/WebLogger.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="637" selection-end="637" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="22" column="0" selection-start="637" selection-end="637" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/screen.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="0" selection-start="1418" selection-end="1418" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="43" column="0" selection-start="1418" selection-end="1418" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/ContextListener.java">
@@ -1784,14 +1623,79 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/ViewScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="0" selection-start="4068" selection-end="4068" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="80" column="0" selection-start="4068" selection-end="4068" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/ControllerHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="0" selection-start="4082" selection-end="4082" vertical-scroll-proportion="0.0">
+        <state line="108" column="0" selection-start="4082" selection-end="4082" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Downloads/junit-4.10.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="40" selection-start="388" selection-end="388" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/webtest/OtherRequestTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="13" selection-start="389" selection-end="389" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="17" selection-start="231" selection-end="231" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/configManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="13" selection-start="191" selection-end="191" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/webtest/support/TestHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="67" selection-start="252" selection-end="252" vertical-scroll-proportion="-1.5650407" />
+      </provider>
+    </entry>
+    <entry file="dbDummy://db-console:/a63a057c/8d125fae-6c44-40a5-8e9c-9a7bf6f5e59c/">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="21" selection-start="21" selection-end="21" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/a63a057c/8d125fae-6c44-40a5-8e9c-9a7bf6f5e59c/lda_dev..Screens">
+      <provider editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/webtest/AllScreensTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="43" selection-start="887" selection-end="887" vertical-scroll-proportion="0.24101198" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/hibernate.cfg.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="28" selection-start="1056" selection-end="1056" vertical-scroll-proportion="0.35952064">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/webtest/support/TestConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="20" selection-start="867" selection-end="867" vertical-scroll-proportion="0.53928095">
           <folding />
         </state>
       </provider>
@@ -1803,13 +1707,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/hibernate.cfg.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="424" selection-end="424" vertical-scroll-proportion="0.23346303">
-          <folding />
-        </state>
-      </provider>
-    </entry>
   </component>
   <component name="masterDetails">
     <states>
@@ -1817,10 +1714,10 @@
         <settings>
           <artifact-editor>
             <show-content>
-              <type id="javaee-facet-resources" />
-              <type id="library" />
               <type id="artifact" />
               <type id="jpa-descriptors" />
+              <type id="library" />
+              <type id="javaee-facet-resources" />
             </show-content>
           </artifact-editor>
           <last-edited>lda-exp</last-edited>
@@ -1841,7 +1738,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>javaEEApplication (Webapp-01(trunk))|JavaEE Application</last-edited>
+          <last-edited>Hibernate</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1877,11 +1774,12 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>Webapp-01(trunk)</last-edited>
+          <last-edited>WebApp</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.35588974" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

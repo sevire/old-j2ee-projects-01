@@ -8,7 +8,11 @@
     <user-name>root</user-name>
     <schema-pattern>lda_dev.*</schema-pattern>
     <default-dialect>MySQL</default-dialect>
-    <libraries/>
+    <libraries>
+      <library>
+        <url>file://$USER_HOME$/Downloads/mysql-connector-java-5-1.1.26/mysql-connector-java-5.1.26-bin.jar</url>
+      </library>
+    </libraries>
     <schema name="" catalog="lda_dev"/>
     <table name="Screen_type" schema="" catalog="lda_dev" type="TABLE">
       <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>

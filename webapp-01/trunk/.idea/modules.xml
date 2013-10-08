@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/webtest/WebTest.iml" filepath="$PROJECT_DIR$/webtest/WebTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Webapp-01(trunk).iml" filepath="$PROJECT_DIR$/Webapp-01(trunk).iml" />
+      <module fileurl="file://$PROJECT_DIR$/WebApp.iml" filepath="$PROJECT_DIR$/WebApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/webtest/WebTest.iml" filepath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/webtest/WebTest.iml" />
     </modules>
   </component>
 </project>
