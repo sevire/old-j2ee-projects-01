@@ -99,6 +99,7 @@ public class Controller extends HttpServlet {
         logger.setSession(request);
         String callType = request.getMethod();
         ControllerHelper helper = new ControllerHelper(request, response, (SessionFactory)(getServletConfig().getServletContext().getAttribute("sessionFactory")));
+//        ControllerHelper helper = new ControllerHelper(request, response);
         logger.info("%s : request = %s", callType, request.getRequestURI());
         helper.processRequest();
     }

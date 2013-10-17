@@ -125,4 +125,8 @@ public class ControllerHelper extends HelperBase {
             logger.info("Copying data from session = <%s>", sessionData.toString());
         }
     }
+
+    public String toString() {
+        return request.getRequestURL().toString();
+    }
 }

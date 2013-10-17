@@ -6,6 +6,7 @@
     <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
     <jdbc-url>jdbc:mysql://localhost:3306/lda_dev</jdbc-url>
     <user-name>root</user-name>
+    <user-password>dfe5dfe9df9ddfebdfcbdffddfe9df9ddf9ddfe8</user-password>
     <schema-pattern>lda_dev.*</schema-pattern>
     <default-dialect>MySQL</default-dialect>
     <libraries>

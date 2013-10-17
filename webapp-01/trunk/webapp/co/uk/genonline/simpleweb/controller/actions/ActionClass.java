@@ -31,7 +31,7 @@ abstract class ActionClass extends Action {
 //        logger.setLevel(Level.toLevel(request.getServletContext().getInitParameter("loggingLevel")));
         this.request = request;
         this.response = response;
-        this.factory = factory;
+        this.factory = (SessionFactory)request.getServletContext().getAttribute("sessionFactory");
         this.screen = data.getScreen();
         this.configItems = data.getConfigItems();
         this.screenBeanManager = new ScreenBeanManager(factory);

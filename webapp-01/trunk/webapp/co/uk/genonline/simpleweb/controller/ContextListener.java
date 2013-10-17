@@ -25,6 +25,7 @@ public class ContextListener implements ServletContextListener {
     private static final String logPath = "/WEB-INF/logs/error.log";
 
     public ContextListener() {
+        System.out.format("ContextListener started (before logging)\n");
         logger = Logger.getLogger("Context");
         logger.setLevel(Level.ALL);
     }
@@ -32,6 +33,7 @@ public class ContextListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent event) {
         Level level;
 
+        System.out.format("contextInitialized called - is logging working?\n");
         level = Level.toLevel(event.getServletContext().getInitParameter("loggingLevel"));
         if (level == null) {
             logger.setLevel(Level.ALL);
@@ -42,10 +44,11 @@ public class ContextListener implements ServletContextListener {
         initLogger(null,appender,level);
         String contextPath = event.getServletContext().getContextPath();
 
-        logger.info(String.format("Context invoked, path = %s", contextPath));
+        logger.info(String.format("ContextListener invoked, path = %s", contextPath));
 
         logger.debug("Getting session factory...");
         SessionFactory factory = HibernateUtil.getSessionFactory();
+        System.out.format("Result of getSessionFactory is %s\n", factory);
 
         logger.debug(String.format("Saving session factory in context attribute"));
         event.getServletContext().setAttribute("sessionFactory", factory);

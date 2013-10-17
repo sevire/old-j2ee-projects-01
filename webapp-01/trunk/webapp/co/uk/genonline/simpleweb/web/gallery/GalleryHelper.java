@@ -37,6 +37,7 @@ public class GalleryHelper {
 
     public GalleryHelper(ServletContext context) {
         logger.setLevel(Level.toLevel(context.getInitParameter("loggingLevel")));
+        logger.debug("GalleryHelper: Constructor Started");
 
         this.context = context;
         contextPath = this.context.getContextPath();
@@ -63,6 +64,7 @@ public class GalleryHelper {
             logger.warn(String.format("Invalid value for 'numGalleryColumns' (%s), setting to 4", this.numGalleryColumns));
             numGalleryColumns = 4;
         }
+        logger.debug("GalleryHelper: Constructor Complete");
     }
 
     public String getGalleryRootRelPath() {

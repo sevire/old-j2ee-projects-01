@@ -1,5 +1,6 @@
 package co.uk.genonline.simpleweb.controller.actions;
 
+import co.uk.genonline.simpleweb.controller.screendata.MistressScreenData;
 import co.uk.genonline.simpleweb.model.bean.Screens;
 import co.uk.genonline.simpleweb.web.WebHelper;
 import co.uk.genonline.simpleweb.web.gallery.GalleryManager;
@@ -8,7 +9,6 @@ import org.hibernate.SessionFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -27,18 +27,27 @@ public class ViewScreen extends ActionClass {
         MarkdownProcessor markdownDecoder = new MarkdownProcessor();
         WebHelper webHelper = new WebHelper(request, response);
         Screens screenRecord;
+        MistressScreenData screenData = new MistressScreenData();
 
         status.resetStatusMessage();
         if (screen.getName() == null || screen.getName().equals("")) {
             screen.setName(webHelper.getHomePage());
         }
         logger.info("view: screen is " + screen.getName());
-        List<Screens> pages = screenBeanManager.getCategoryScreens("Chambers");
+//        List<Screens> pages = screenBeanManager.getCategoryScreens("Chambers");
+
+        screenData.setChambersLinkBar(webHelper.generateLinkBarCategory("Chambers"));
+        screenData.setMistressPageLink(webHelper.getScreenLink("mistresses", screenBeanManager.getShortName("mistresses")));
+        screenData.setHomePage(webHelper.generateHomeLink());
+        screenData.setMaxThumbnailWidth(request.getServletContext().getInitParameter("maxThumbnailWidth"));
+        screenData.setMaxThumbnailHeight(request.getServletContext().getInitParameter("maxThumbnailHeight"));
+
+
         request.setAttribute("chambersLinkBar", webHelper.generateLinkBarCategory("Chambers"));
         request.setAttribute("mistressPageLink", webHelper.getScreenLink("mistresses", screenBeanManager.getShortName("mistresses")));
         request.setAttribute("homePage", webHelper.generateHomeLink());
-        request.setAttribute("maxImgWidth", request.getServletContext().getInitParameter("maxThumbnailWidth"));
-        request.setAttribute("maxImgHeight", request.getServletContext().getInitParameter("maxThumbnailHeight"));
+        request.setAttribute("maxThumbnailWidth", request.getServletContext().getInitParameter("maxThumbnailWidth"));
+        request.setAttribute("maxThumbnailHeight", request.getServletContext().getInitParameter("maxThumbnailHeight"));
 
         if (request.getServletContext().getInitParameter("blogEnabled").equals("true")) {
             request.setAttribute("blogLink", webHelper.generateBlogLink());
@@ -67,10 +76,10 @@ public class ViewScreen extends ActionClass {
                     logger.info("About to create gallery for the page");
                     GalleryManager manager = (GalleryManager)request.getServletContext().getAttribute("Galleries");
                     logger.debug("manager = " + manager);
-                    request.setAttribute("galleryHTML", (manager.getGallery(screenRecord.getName())).getHTML());
+                    screenData.setGalleryHtml(((manager.getGallery(screenRecord.getName())).getHTML()));
                 } else {
                     logger.debug("This page is not a gallery: " + screenRecord.getName());
-                    request.setAttribute("galleryHTML", "");
+                    screenData.setGalleryHtml("");
                 }
             } else {
                 logger.info(String.format("Screen disabled, treating like non-existent page <%s>", screenRecord.getName()));
@@ -78,7 +87,8 @@ public class ViewScreen extends ActionClass {
                 return new RequestResult(jspLocation("error.jsp"),false);
             }
         }
-        return new RequestResult(jspLocation("screen.jsp"), false);
+        request.setAttribute("mistressScreenData", screenData);
+        return new RequestResult(jspLocation(screenData.getJSPname()), false);
 
     }
 }
