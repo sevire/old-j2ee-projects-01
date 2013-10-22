@@ -26,6 +26,7 @@ abstract class ActionClass extends Action {
     RequestStatus status;
     ConfigItems configItems;
     ScreenBeanManager screenBeanManager;
+    ActionData data;
 
     public ActionClass(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
 //        logger.setLevel(Level.toLevel(request.getServletContext().getInitParameter("loggingLevel")));
@@ -33,6 +34,7 @@ abstract class ActionClass extends Action {
         this.response = response;
         this.factory = (SessionFactory)request.getServletContext().getAttribute("sessionFactory");
         this.screen = data.getScreen();
+        this.data = data;
         this.configItems = data.getConfigItems();
         this.screenBeanManager = new ScreenBeanManager(factory);
 
@@ -43,11 +45,4 @@ abstract class ActionClass extends Action {
 
     public ActionClass() {}
 
-    protected String jspLocation(String page) {
-        return "WEB-INF/" + page;
-    }
-
-    protected String URLwithContext(String URL) {
-        return request.getServletContext().getContextPath() + URL;
-    }
 }

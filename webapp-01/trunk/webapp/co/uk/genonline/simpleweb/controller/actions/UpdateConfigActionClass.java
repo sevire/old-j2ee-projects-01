@@ -71,10 +71,10 @@ public abstract class UpdateConfigActionClass extends ActionClass {
                 configItemBeanManager.getRequestIntoBean(request, configItems);
                 //webHelper.getScreenIntoBean(data, data.getName());
             }
-            return new RequestResult(jspLocation("updateConfigItem.jsp"), false);
+            return new RequestResult(request, "updateConfigItem.jsp", false);
         } else {
             status.setStatusMessage("Config item " + (addFlag ? "added" : "updated"), "info");
-            return new RequestResult(URLwithContext("/editConfigIndex"), true);
+            return new RequestResult(request, "/editConfigIndex", true);
         }
     }
 }

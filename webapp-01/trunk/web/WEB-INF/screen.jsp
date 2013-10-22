@@ -6,6 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <link rel="stylesheet" href="css/main.css" type="text/css" media="all">
     <link rel="icon" type="image/png" href="favicon.png">
+    <title>Lucifer's Dark Angel - ${helper.screen.screenTitleLong}</title>
 </head>
 
 <body id='${helper.screen.name}'>
@@ -32,11 +33,11 @@
             --%>
             <ul>
             </ul>
-            ${chambersLinkBar}
+            ${mistressScreenData.chambersLinkBar}
         </div>
         <div id="pageText">
-            <h3>${helper.screen.screenTitleLong}</h3>
-            ${helper.screen.screenContents}
+            <h3>${mistressScreenData.screen.screenTitleLong}</h3>
+            ${mistressScreenData.screen.screenContents}
         </div>
         <core:if test='${(mistressScreenData.galleryHtml != null) && (mistressScreenData.galleryHtml != "")}'>
             <div id='gallery'>

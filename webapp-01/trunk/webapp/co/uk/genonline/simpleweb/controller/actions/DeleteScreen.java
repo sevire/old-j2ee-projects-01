@@ -32,6 +32,6 @@ public class DeleteScreen extends ActionClass {
         java.util.List pages = session.createQuery(query).list();
         session.delete(pages.get(0));
         session.flush();
-        return new RequestResult(URLwithContext("/editIndex"), true);
+        return new RequestResult(request, "/editIndex", true);
     }
 }

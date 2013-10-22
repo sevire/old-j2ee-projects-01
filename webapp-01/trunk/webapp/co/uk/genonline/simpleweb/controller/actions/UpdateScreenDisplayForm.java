@@ -39,6 +39,6 @@ public abstract class UpdateScreenDisplayForm extends ActionClass {
             logger.info(String.format("Editing screen <%s>", screen.getName()));
         }
         screenJsp = "updateScreen.jsp";
-        return new RequestResult(jspLocation(screenJsp), false);
+        return new RequestResult(request, screenJsp, false);
     }
 }

@@ -77,10 +77,10 @@ public abstract class UpdateActionClass extends ActionClass {
                 request.setAttribute("addFlag", false);
                 screenBeanManager.getRequestIntoScreenBean(request, screen);
             }
-            return new RequestResult(jspLocation("updateScreen.jsp"), false);
+            return new RequestResult(request, "updateScreen.jsp", false);
         } else {
             status.setStatusMessage("Screen " + (addFlag ? "added" : "updated"), "info");
-            return new RequestResult(URLwithContext("/editIndex"), true);
+            return new RequestResult(request, "/editIndex", true);
         }
     }
 }

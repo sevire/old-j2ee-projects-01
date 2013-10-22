@@ -42,6 +42,6 @@ public class EditIndexDisplayForm extends ActionClass {
         request.setAttribute("editList", screenList);
         request.setAttribute("statusType", request.getSession().getAttribute("statusType"));
         request.setAttribute("statusMessage", request.getSession().getAttribute("statusMessage"));
-        return new RequestResult(jspLocation("editIndex.jsp"), false);
+        return new RequestResult(request, "editIndex.jsp", false);
     }
 }

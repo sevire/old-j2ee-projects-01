@@ -40,6 +40,6 @@ public class EditConfigIndexDisplayForm extends ActionClass {
         request.setAttribute("configItems", configItems);
         request.setAttribute("statusType", request.getSession().getAttribute("statusType"));
         request.setAttribute("statusMessage", request.getSession().getAttribute("statusMessage"));
-        return new RequestResult(jspLocation("editConfigIndex.jsp"), false);
+        return new RequestResult(request, "editConfigIndex.jsp", false);
     }
 }

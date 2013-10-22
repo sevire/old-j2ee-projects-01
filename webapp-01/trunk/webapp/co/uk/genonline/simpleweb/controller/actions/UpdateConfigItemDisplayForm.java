@@ -45,6 +45,6 @@ public abstract class UpdateConfigItemDisplayForm extends ActionClass {
             logger.info(String.format("Editing config item <%s>", configItems.getName()));
         }
         configJsp = "updateConfigItem.jsp";
-        return new RequestResult(jspLocation(configJsp), false);
+        return new RequestResult(request, configJsp, false);
     }
 }

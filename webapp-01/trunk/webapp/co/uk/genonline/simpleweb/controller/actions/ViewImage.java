@@ -29,6 +29,6 @@ public class ViewImage extends ActionClass {
         request.setAttribute("gallery", gallery);
         request.setAttribute("image", img);
         request.setAttribute("maxWidth", request.getServletContext().getInitParameter("maxImageWidth"));
-        return new RequestResult(jspLocation("viewImage.jsp"), false);
+        return new RequestResult(request, "viewImage.jsp", false);
     }
 }
