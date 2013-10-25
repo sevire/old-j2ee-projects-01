@@ -1,5 +1,7 @@
 package co.uk.genonline.simpleweb.controller.screendata;
 
+import co.uk.genonline.simpleweb.controller.WebLogger;
+
 /**
  * Created with IntelliJ IDEA.
  * User: thomassecondary
@@ -9,8 +11,12 @@ package co.uk.genonline.simpleweb.controller.screendata;
  */
 public class ScreenDataFactory {
     public static ScreenData getScreenData(String screenType) {
-        if (screenType.equals("mistress")) {
-            return new MistressScreenData();
+        WebLogger logger = new WebLogger();
+        logger.debug(String.format("Instantiating ScreenData for type <%s>", screenType));
+        if (screenType.equals("mistress-01")) {
+            return new Mistress01ScreenData();
+        } else if (screenType.equals("mistress-02")) {
+            return new Mistress02ScreenData();
         } else {
             return new DefaultScreenData();
         }

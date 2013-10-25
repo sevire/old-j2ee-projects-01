@@ -23,7 +23,7 @@
     <div>
         <table>
             <tr class='statusRow <%=((RequestStatus)session.getAttribute("requestStatus")).getStatusType()%>'>
-                <td colspan="9"><%=((RequestStatus)session.getAttribute("requestStatus")).getStatusMessage()%></td>
+                <td colspan="11"><%=((RequestStatus)session.getAttribute("requestStatus")).getStatusMessage()%></td>
             </tr>
             <tr class='tableHeading'>
                 <td>
@@ -40,6 +40,9 @@
                 </td>
                 <td>
                     Screen Type
+                </td>
+                <td>
+                    Screen  Display Type
                 </td>
                 <td>
                     Enabled?
@@ -67,6 +70,9 @@
                     </td>
                     <td>
                         <c:out value="${row.screenType}" />
+                    </td>
+                    <td>
+                        <c:out value="${row.screenDisplayType}" />
                     </td>
                     <td>
                         <c:out value="${row.enabledFlag ? 'Yes' : 'No'}" />

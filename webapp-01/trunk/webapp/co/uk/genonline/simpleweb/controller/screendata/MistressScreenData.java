@@ -5,7 +5,7 @@ import co.uk.genonline.simpleweb.controller.WebLogger;
 import co.uk.genonline.simpleweb.controller.actions.ActionData;
 import co.uk.genonline.simpleweb.controller.actions.RequestResult;
 import co.uk.genonline.simpleweb.model.bean.ScreenBeanManager;
-import co.uk.genonline.simpleweb.model.bean.Screens;
+import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
 import co.uk.genonline.simpleweb.web.WebHelper;
 import co.uk.genonline.simpleweb.web.gallery.GalleryManager;
 import com.petebevin.markdown.MarkdownProcessor;
@@ -30,7 +30,7 @@ public class MistressScreenData implements ScreenData {
     private String maxThumbnailHeight;
     private String blogLink;
     private String galleryHtml;
-    private Screens screen;
+    private ScreensEntity screen;
 
     public String getHomePage() {
         return homePage;
@@ -58,7 +58,7 @@ public class MistressScreenData implements ScreenData {
 
 
     public String getJSPname() {
-        return "screen.jsp";
+        return "";  // Need to extend for each jsp used
     }
 
     public RequestResult setScreenData(HttpServletRequest request,
@@ -67,7 +67,7 @@ public class MistressScreenData implements ScreenData {
                                        ActionData data) {
         MarkdownProcessor markdownDecoder = new MarkdownProcessor();
         WebHelper webHelper = new WebHelper(request, response);
-        Screens screenRecord;
+        ScreensEntity screenRecord;
         setScreen(data.getScreen());
         RequestStatus status = (RequestStatus) request.getSession().getAttribute("requestStatus");
 
@@ -103,8 +103,8 @@ public class MistressScreenData implements ScreenData {
             getScreen().setMetaDescription(screenRecord.getMetaDescription());
             getScreen().setScreenTitleLong(screenRecord.getScreenTitleLong());
             getScreen().setScreenTitleShort(screenRecord.getScreenTitleShort());
-            if (screenRecord.isEnabledFlag()) {
-                if (screenRecord.isGalleryFlag()) {
+            if (screenRecord.getEnabledFlag()) {
+                if (screenRecord.getGalleryFlag()) {
                     logger.info("About to create gallery for the page");
                     GalleryManager manager = (GalleryManager)request.getServletContext().getAttribute("Galleries");
                     logger.debug("manager = " + manager);
@@ -113,7 +113,7 @@ public class MistressScreenData implements ScreenData {
                     logger.debug("This page is not a gallery: " + screenRecord.getName());
                     setGalleryHtml("");
                 }
-                return new RequestResult(request, "screen.jsp", false);
+                return new RequestResult(request, getJSPname(), false);
             } else {
                 logger.info(String.format("Screen disabled, treating like non-existent page <%s>", screenRecord.getName()));
                 response.setStatus(404);
@@ -154,11 +154,11 @@ public class MistressScreenData implements ScreenData {
         return galleryHtml;
     }
 
-    public Screens getScreen() {
+    public ScreensEntity getScreen() {
         return screen;
     }
 
-    public void setScreen(Screens screen) {
+    public void setScreen(ScreensEntity screen) {
         this.screen = screen;
     }
 }

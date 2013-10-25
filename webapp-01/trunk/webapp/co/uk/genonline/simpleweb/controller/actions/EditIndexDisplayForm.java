@@ -1,6 +1,6 @@
 package co.uk.genonline.simpleweb.controller.actions;
 
-import co.uk.genonline.simpleweb.model.bean.Screens;
+import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
 import org.hibernate.SessionFactory;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,8 +35,8 @@ public class EditIndexDisplayForm extends ActionClass {
                 status.resetStatusMessage();
             }
             for (Object s : screenList) {
-                String contents = ((Screens)s).getScreenContents();
-                ((Screens)s).setScreenContents(contents.substring(0, Math.min(39, contents.length()))+"...");
+                String contents = ((ScreensEntity)s).getScreenContents();
+                ((ScreensEntity)s).setScreenContents(contents.substring(0, Math.min(39, contents.length()))+"...");
             }
         }
         request.setAttribute("editList", screenList);

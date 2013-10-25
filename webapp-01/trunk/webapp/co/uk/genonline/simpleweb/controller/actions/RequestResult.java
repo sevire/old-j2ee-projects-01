@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
  * To change this template use File | Settings | File Templates.
  */
 public class RequestResult {
-    String nextRequest;
-    boolean redirectFlag;
-    HttpServletRequest request;
+    private final String nextRequest;
+    private final boolean redirectFlag;
+    private final HttpServletRequest request;
 
     public RequestResult(HttpServletRequest request, String nextRequest, boolean redirectFlag) {
         this.request = request;
@@ -32,11 +32,11 @@ public class RequestResult {
         return nextRequest;
     }
 
-    protected String jspLocation(String page) {
+    String jspLocation(String page) {
         return "WEB-INF/" + page;
     }
 
-    protected String URLwithContext(String URL) {
+    String URLwithContext(String URL) {
         return request.getServletContext().getContextPath() + URL;
     }
 

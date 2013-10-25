@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  * Common code for displaying a screen for adding or updating.  Allows encapusulation of logic
  * to display and process fields within the form, with specific logic for initialisation.
  */
-public abstract class UpdateConfigItemDisplayForm extends ActionClass {
+abstract class UpdateConfigItemDisplayForm extends ActionClass {
 
     UpdateConfigItemDisplayForm(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
         super(request, response, factory, data);

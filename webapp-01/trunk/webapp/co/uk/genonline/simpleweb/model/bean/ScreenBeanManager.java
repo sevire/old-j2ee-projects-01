@@ -28,7 +28,7 @@ import java.util.Map;
  * practice I only need to worry about Screens.
  */
 public class ScreenBeanManager {
-    Screens screenBean;
+    ScreensEntity screenBean;
     SessionFactory factory;
     WebLogger logger = new WebLogger();
 
@@ -37,26 +37,26 @@ public class ScreenBeanManager {
         this.factory = factory;
     }
 
-    public List<Screens> getAllScreens() {
+    public List<ScreensEntity> getAllScreens() {
         Session session = factory.openSession();
-        String query = String.format("from Screens s order by screenType, sortKey");
+        String query = String.format("from ScreensEntity s order by screenType, sortKey");
         logger.debug("About to execute HQL query : " + query);
         java.util.List pages = session.createQuery(query).list();
         return pages;
     }
 
-    public List<Screens> getCategoryScreens(String category) {
+    public List<ScreensEntity> getCategoryScreens(String category) {
         Session session = factory.openSession();
-        String query = String.format("from Screens s where s.screenType = '%s' and s.enabledFlag = true order by sortKey", category);
+        String query = String.format("from ScreensEntity s where s.screenType = '%s' and s.enabledFlag = true order by sortKey", category);
         logger.debug("About to execute HQL query : " + query);
         java.util.List pages = session.createQuery(query).list();
         return pages;
     }
 
-    public Screens getScreen(Screens screen) {
+    public ScreensEntity getScreen(ScreensEntity screen) {
         Session session = factory.openSession();
-        Criteria criteria = session.createCriteria(Screens.class).add(Restrictions.eq("name", screen.getName()));
-        Screens dbBean = (Screens) criteria.uniqueResult();
+        Criteria criteria = session.createCriteria(ScreensEntity.class).add(Restrictions.eq("name", screen.getName()));
+        ScreensEntity dbBean = (ScreensEntity) criteria.uniqueResult();
 
         // I am setting the timestamp fields to avoid an error in the CopyProperties method.
         // ToDo: Do something better with these timestamp fields here!
@@ -72,7 +72,7 @@ public class ScreenBeanManager {
         return dbBean;
     }
 
-    public void initialiseBean(Screens screen) {
+    public void initialiseBean(ScreensEntity screen) {
         screenBean = screen;
         screenBean.setEnabledFlag(true);
         screenBean.setGalleryFlag(false);
@@ -82,29 +82,31 @@ public class ScreenBeanManager {
         screenBean.setScreenTitleLong("");
         screenBean.setScreenTitleShort("");
         screenBean.setScreenType("Mistress");
+        screenBean.setScreenDisplayType("");
         screenBean.setSortKey(100);
 
         screenBean.setId(0);
     }
-    public void getScreenIntoBean(Screens screen, String screenName) {
+    public void getScreenIntoBean(ScreensEntity screen, String screenName) {
         Session session = factory.openSession();
-        Criteria criteria = session.createCriteria(Screens.class).add(Restrictions.eq("name", screenName));
-        Screens dbBean = (Screens) criteria.uniqueResult();
+        Criteria criteria = session.createCriteria(ScreensEntity.class).add(Restrictions.eq("name", screenName));
+        ScreensEntity dbBean = (ScreensEntity) criteria.uniqueResult();
 
         screen.setName(dbBean.getName());
         screen.setSortKey(dbBean.getSortKey());
-        screen.setEnabledFlag(dbBean.isEnabledFlag());
-        screen.setGalleryFlag(dbBean.isGalleryFlag());
+        screen.setEnabledFlag(dbBean.getEnabledFlag());
+        screen.setGalleryFlag(dbBean.getGalleryFlag());
         screen.setScreenContents(dbBean.getScreenContents());
         screen.setMetaDescription(dbBean.getMetaDescription());
         screen.setScreenTitleLong(dbBean.getScreenTitleLong());
         screen.setScreenTitleShort(dbBean.getScreenTitleShort());
         screen.setScreenType(dbBean.getScreenType());
+        screen.setScreenDisplayType(dbBean.getScreenDisplayType());
         screen.setId(dbBean.getId());
     }
 
     /**
-     * This method is effectively a layer between the request object and the Screens JavaBean.  The reason it is
+     * This method is effectively a layer between the request object and the ScreensEntity JavaBean.  The reason it is
      * required is because the request object does not represent the value of a checkbox in a way which will be
      * interpreted correctly by BeanUtils.populate(), which requires "true" or "false".  This method assumes that
      * the value assigned to a checkbox is "true" if checked (this requires the HTML form to be set up correctly,
@@ -114,9 +116,9 @@ public class ScreenBeanManager {
      * had to write field specific code.
      *
      * @param request HttpServletRequest object passed from EE container
-     * @param screen Screens JavaBean to be populated.
+     * @param screen ScreensEntity JavaBean to be populated.
      */
-    public void getRequestIntoScreenBean(HttpServletRequest request, Screens screen) {
+    public void getRequestIntoScreenBean(HttpServletRequest request, ScreensEntity screen) {
 
         Map requestMap = request.getParameterMap();
         Map amendedMap = new HashMap();
@@ -137,7 +139,7 @@ public class ScreenBeanManager {
     }
 
     public String getShortName(String screenName) {
-        Screens screen = new Screens();
+        ScreensEntity screen = new ScreensEntity();
         screen.setName(screenName);
         return getScreen(screen).getScreenTitleShort();
     }

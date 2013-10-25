@@ -1,7 +1,7 @@
 package co.uk.genonline.simpleweb.controller.actions;
 
 import co.uk.genonline.simpleweb.model.bean.ConfigItems;
-import co.uk.genonline.simpleweb.model.bean.Screens;
+import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,10 +12,10 @@ import co.uk.genonline.simpleweb.model.bean.Screens;
  * Encapsulates data objects used by the application (e.g. Screen, ConfigItems)
  */
 public class ActionData {
-    ConfigItems configItems;
-    Screens screen;
+    private final ConfigItems configItems;
+    private final ScreensEntity screen;
 
-    public ActionData(Screens screen) {
+    public ActionData(ScreensEntity screen) {
         this.screen = screen;
         this.configItems = null;
     }
@@ -25,12 +25,12 @@ public class ActionData {
         this.configItems = configItems;
     }
 
-    public ActionData(Screens screen, ConfigItems configItems) {
+    public ActionData(ScreensEntity screen, ConfigItems configItems) {
         this.screen = screen;
         this.configItems = configItems;
     }
 
-    public Screens getScreen() {
+    public ScreensEntity getScreen() {
         return screen;
     }
 

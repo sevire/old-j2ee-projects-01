@@ -14,7 +14,7 @@ import java.sql.Timestamp;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-public class Screens {
+public class Screensx {
     private int id;
 
     @Column(name = "id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
@@ -140,7 +140,7 @@ public class Screens {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Screens screens = (Screens) o;
+        Screensx screens = (Screensx) o;
 
         if (enabledFlag != screens.enabledFlag) return false;
         if (id != screens.id) return false;

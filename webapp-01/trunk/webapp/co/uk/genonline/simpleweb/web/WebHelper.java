@@ -2,7 +2,7 @@ package co.uk.genonline.simpleweb.web;
 
 import co.uk.genonline.simpleweb.controller.WebLogger;
 import co.uk.genonline.simpleweb.model.bean.ScreenBeanManager;
-import co.uk.genonline.simpleweb.model.bean.Screens;
+import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -49,7 +49,7 @@ public class WebHelper {
         java.util.List pages = beanManager.getCategoryScreens(category);
         String html = "";
         for (Object o : pages) {
-            Screens screen = (Screens) o;
+            ScreensEntity screen = (ScreensEntity) o;
             html += generateLinkBarItem(screen.getName(), screen.getScreenTitleShort()) ;
         }
         html = "<ul>" + html + "</ul>";
@@ -72,20 +72,20 @@ public class WebHelper {
     }
 
     public String getScreenLink(String screenName, String linkName) {
-        Screens screenData = new Screens();
+        ScreensEntity screenData = new ScreensEntity();
         getScreenIntoBean(screenData, screenName);
         return String.format("<a href='view?screen=%s'>%s</a>", screenName, screenData.getScreenTitleShort());
     }
 
-    public void getScreenIntoBean(Screens screen, String screenName) {
+    public void getScreenIntoBean(ScreensEntity screen, String screenName) {
         Session session = factory.openSession();
-        Criteria criteria = session.createCriteria(Screens.class).add(Restrictions.eq("name", screenName));
-        Screens dbBean = (Screens) criteria.uniqueResult();
+        Criteria criteria = session.createCriteria(ScreensEntity.class).add(Restrictions.eq("name", screenName));
+        ScreensEntity dbBean = (ScreensEntity) criteria.uniqueResult();
  
         screen.setName(dbBean.getName());
         screen.setSortKey(dbBean.getSortKey());
-        screen.setEnabledFlag(dbBean.isEnabledFlag());
-        screen.setGalleryFlag(dbBean.isGalleryFlag());
+        screen.setEnabledFlag(dbBean.getEnabledFlag());
+        screen.setGalleryFlag(dbBean.getGalleryFlag());
         screen.setScreenContents(dbBean.getScreenContents());
         screen.setMetaDescription(dbBean.getMetaDescription());
         screen.setScreenTitleLong(dbBean.getScreenTitleLong());
@@ -94,7 +94,7 @@ public class WebHelper {
         screen.setId(dbBean.getId());
     }
 
-    public void getRequestIntoBean(HttpServletRequest request, Screens screen) {
+    public void getRequestIntoBean(HttpServletRequest request, ScreensEntity screen) {
         /**
          * I think this should use standard BeanUtil methods (populateBean) or similar but I can't find a way to do this quickly
          * so will take a less elegant approach for now.

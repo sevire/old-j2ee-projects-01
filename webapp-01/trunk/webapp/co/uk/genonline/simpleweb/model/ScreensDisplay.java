@@ -1,6 +1,6 @@
 package co.uk.genonline.simpleweb.model;
 
-import co.uk.genonline.simpleweb.model.bean.Screens;
+import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
 
 /**
  * Created with IntelliJ IDEA.
@@ -10,9 +10,9 @@ import co.uk.genonline.simpleweb.model.bean.Screens;
  * Allows what is displayed to vary from what is in the database (e.g. blank long name replaced by short name)
  */
 public class ScreensDisplay {
-    private Screens screen;
+    private ScreensEntity screen;
 
-    ScreensDisplay(Screens screen) {
+    ScreensDisplay(ScreensEntity screen) {
         this.screen = screen;
     }
 

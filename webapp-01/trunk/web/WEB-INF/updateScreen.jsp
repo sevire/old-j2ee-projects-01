@@ -74,6 +74,14 @@
                 </tr>
                 <tr>
                     <td>
+                        <label>Screen Display Type:</label>
+                    </td>
+                    <td>
+                        <input type='text' name='screenDisplayType' value="${helper.screen.screenDisplayType}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <label>Enabled?:</label>
                     </td>
                     <td>

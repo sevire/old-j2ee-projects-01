@@ -4,7 +4,7 @@ import co.uk.genonline.simpleweb.controller.RequestStatus;
 import co.uk.genonline.simpleweb.controller.WebLogger;
 import co.uk.genonline.simpleweb.model.bean.ConfigItems;
 import co.uk.genonline.simpleweb.model.bean.ScreenBeanManager;
-import co.uk.genonline.simpleweb.model.bean.Screens;
+import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
 import org.hibernate.SessionFactory;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,17 +18,17 @@ import javax.servlet.http.HttpServletResponse;
  * To change this template use File | Settings | File Templates.
  */
 abstract class ActionClass extends Action {
-    WebLogger logger = new WebLogger();
+    final WebLogger logger = new WebLogger();
     HttpServletRequest request;
     HttpServletResponse response;
     SessionFactory factory;
-    Screens screen; // ToDo: Should this really be here - this is a general purpose class?
+    ScreensEntity screen; // ToDo: Should this really be here - this is a general purpose class?
     RequestStatus status;
     ConfigItems configItems;
     ScreenBeanManager screenBeanManager;
     ActionData data;
 
-    public ActionClass(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
+    ActionClass(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
 //        logger.setLevel(Level.toLevel(request.getServletContext().getInitParameter("loggingLevel")));
         this.request = request;
         this.response = response;
@@ -43,6 +43,6 @@ abstract class ActionClass extends Action {
         status = (RequestStatus) this.request.getSession().getAttribute("requestStatus");
     }
 
-    public ActionClass() {}
+    ActionClass() {}
 
 }

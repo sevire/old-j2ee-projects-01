@@ -21,12 +21,15 @@ public class ViewScreen extends ActionClass {
     }
 
     public RequestResult perform() {
-        String screenType = "mistress";
+        String screenType = data.getScreen().getScreenDisplayType();
+        if (screenType == null || screenType.equals("")) {
+            screenType = "mistress-01";
+        }
         ScreenData screenData = ScreenDataFactory.getScreenData(screenType);
 
         RequestResult result = screenData.setScreenData(request, response, screenBeanManager, data);
 
-        request.setAttribute(screenType + "ScreenData", screenData);
+        request.setAttribute("screenData", screenData);
         return result;
     }
 }

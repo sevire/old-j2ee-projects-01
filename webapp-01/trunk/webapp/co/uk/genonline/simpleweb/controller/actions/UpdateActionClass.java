@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
  * update a screen.  Created in order to replace duplicate code fragment between add screen and update
  * screen.
  */
-public abstract class UpdateActionClass extends ActionClass {
-    public UpdateActionClass(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
+abstract class UpdateActionClass extends ActionClass {
+    UpdateActionClass(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
         super(request, response, factory, data);
     }
 

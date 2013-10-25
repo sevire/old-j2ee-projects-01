@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public abstract class Action {
 
-    public Action() {
+    Action() {
         WebLogger logger = new WebLogger();
         logger.info("Instantiating Action sub-class <%s>", this.getClass().getName());
     }
