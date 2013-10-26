@@ -21,19 +21,19 @@ import javax.servlet.http.HttpServletRequest;
  * ToDo Make a generic version of xxxBeanManager or find a more general way of solving the problem.
   */
 public class ConfigItemBeanManager {
-    ConfigItems configBean;
+    ConfigurationEntity configBean;
     SessionFactory factory;
 
     public ConfigItemBeanManager(SessionFactory factory) {
         this.factory = factory;
     }
 
-    public ConfigItemBeanManager(ConfigItems configBean, SessionFactory factory) {
+    public ConfigItemBeanManager(ConfigurationEntity configBean, SessionFactory factory) {
         this.configBean = configBean;
         this.factory = factory;
     }
 
-    public void setBean(ConfigItems configBean) {
+    public void setBean(ConfigurationEntity configBean) {
         this.configBean = configBean;
     }
 
@@ -44,14 +44,14 @@ public class ConfigItemBeanManager {
 
     public void getConfigItemIntoBean(String name) {
         Session session = factory.openSession();
-        Criteria criteria = session.createCriteria(ConfigItems.class).add(Restrictions.eq("name", name));
-        ConfigItems dbBean = (ConfigItems) criteria.uniqueResult();
+        Criteria criteria = session.createCriteria(ConfigurationEntity.class).add(Restrictions.eq("name", name));
+        ConfigurationEntity dbBean = (ConfigurationEntity) criteria.uniqueResult();
 
         configBean.setName(dbBean.getName());
         configBean.setValue(dbBean.getValue());
     }
 
-    public void getRequestIntoBean(HttpServletRequest request, ConfigItems configBean) {
+    public void getRequestIntoBean(HttpServletRequest request, ConfigurationEntity configBean) {
         /**
          * I think this should use standard BeanUtil methods (populateBean) or similar but I can't find a way to do this quickly
          * so will take a less elegant approach for now.

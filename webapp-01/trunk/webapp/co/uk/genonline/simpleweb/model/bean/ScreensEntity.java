@@ -1,8 +1,6 @@
 package co.uk.genonline.simpleweb.model.bean;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
@@ -12,7 +10,7 @@ import java.sql.Timestamp;
  * Time: 17:31
  * To change this template use File | Settings | File Templates.
  */
-@javax.persistence.Table(name = "Screens", schema = "", catalog = "lda_dev")
+@Table(name = "Screens", schema = "", catalog = "lda_dev")
 @Entity
 public class ScreensEntity {
     private int id;
@@ -30,7 +28,7 @@ public class ScreensEntity {
     private Integer sortKey;
     private String screenDisplayType;
 
-    @javax.persistence.Column(name = "id")
+    @Column(name = "id")
     @Id
     public int getId() {
         return id;
@@ -40,7 +38,7 @@ public class ScreensEntity {
         this.id = id;
     }
 
-    @javax.persistence.Column(name = "parent_id")
+    @Column(name = "parent_id")
     @Basic
     public int getParentId() {
         return parentId;
@@ -50,7 +48,7 @@ public class ScreensEntity {
         this.parentId = parentId;
     }
 
-    @javax.persistence.Column(name = "name")
+    @Column(name = "name")
     @Basic
     public String getName() {
         return name;
@@ -60,7 +58,7 @@ public class ScreensEntity {
         this.name = name;
     }
 
-    @javax.persistence.Column(name = "ScreenTitleLong")
+    @Column(name = "ScreenTitleLong")
     @Basic
     public String getScreenTitleLong() {
         return screenTitleLong;
@@ -70,7 +68,7 @@ public class ScreensEntity {
         this.screenTitleLong = screenTitleLong;
     }
 
-    @javax.persistence.Column(name = "ScreenTitleShort")
+    @Column(name = "ScreenTitleShort")
     @Basic
     public String getScreenTitleShort() {
         return screenTitleShort;
@@ -80,7 +78,7 @@ public class ScreensEntity {
         this.screenTitleShort = screenTitleShort;
     }
 
-    @javax.persistence.Column(name = "ScreenContents")
+    @Column(name = "ScreenContents")
     @Basic
     public String getScreenContents() {
         return screenContents;
@@ -90,7 +88,7 @@ public class ScreensEntity {
         this.screenContents = screenContents;
     }
 
-    @javax.persistence.Column(name = "MetaDescription")
+    @Column(name = "MetaDescription")
     @Basic
     public String getMetaDescription() {
         return metaDescription;
@@ -100,7 +98,7 @@ public class ScreensEntity {
         this.metaDescription = metaDescription;
     }
 
-    @javax.persistence.Column(name = "EnabledFlag")
+    @Column(name = "EnabledFlag")
     @Basic
     public Boolean getEnabledFlag() {
         return enabledFlag;
@@ -110,7 +108,7 @@ public class ScreensEntity {
         this.enabledFlag = enabledFlag;
     }
 
-    @javax.persistence.Column(name = "GalleryFlag")
+    @Column(name = "GalleryFlag")
     @Basic
     public Boolean getGalleryFlag() {
         return galleryFlag;
@@ -120,7 +118,7 @@ public class ScreensEntity {
         this.galleryFlag = galleryFlag;
     }
 
-    @javax.persistence.Column(name = "created")
+    @Column(name = "created")
     @Basic
     public Timestamp getCreated() {
         return created;
@@ -130,7 +128,7 @@ public class ScreensEntity {
         this.created = created;
     }
 
-    @javax.persistence.Column(name = "modified")
+    @Column(name = "modified")
     @Basic
     public Timestamp getModified() {
         return modified;
@@ -140,7 +138,7 @@ public class ScreensEntity {
         this.modified = modified;
     }
 
-    @javax.persistence.Column(name = "ScreenType")
+    @Column(name = "ScreenType")
     @Basic
     public String getScreenType() {
         return screenType;
@@ -150,7 +148,7 @@ public class ScreensEntity {
         this.screenType = screenType;
     }
 
-    @javax.persistence.Column(name = "SortKey")
+    @Column(name = "SortKey")
     @Basic
     public Integer getSortKey() {
         return sortKey;
@@ -160,7 +158,7 @@ public class ScreensEntity {
         this.sortKey = sortKey;
     }
 
-    @javax.persistence.Column(name = "ScreenDisplayType")
+    @Column(name = "ScreenDisplayType")
     @Basic
     public String getScreenDisplayType() {
         return screenDisplayType;

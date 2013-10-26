@@ -2,7 +2,7 @@ package co.uk.genonline.simpleweb.controller.actions;
 
 import co.uk.genonline.simpleweb.controller.RequestStatus;
 import co.uk.genonline.simpleweb.controller.WebLogger;
-import co.uk.genonline.simpleweb.model.bean.ConfigItems;
+import co.uk.genonline.simpleweb.model.bean.ConfigurationEntity;
 import co.uk.genonline.simpleweb.model.bean.ScreenBeanManager;
 import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
 import org.hibernate.SessionFactory;
@@ -24,7 +24,7 @@ abstract class ActionClass extends Action {
     SessionFactory factory;
     ScreensEntity screen; // ToDo: Should this really be here - this is a general purpose class?
     RequestStatus status;
-    ConfigItems configItems;
+    ConfigurationEntity configItems;
     ScreenBeanManager screenBeanManager;
     ActionData data;
 

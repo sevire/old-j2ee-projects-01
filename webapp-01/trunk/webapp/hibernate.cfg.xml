@@ -12,9 +12,10 @@
         <property name="show_sql">true</property>
         <!--<mapping class="co.uk.genonline.simpleweb.model.bean.Screens"/>-->
         <mapping class="co.uk.genonline.simpleweb.model.bean.ScreenType"/>
-        <mapping class="co.uk.genonline.simpleweb.model.bean.ConfigItems"/>
+        <!--<mapping class="co.uk.genonline.simpleweb.model.bean.ConfigItems"/>-->
         <mapping class="co.uk.genonline.simpleweb.model.bean.ScreenTypeEntity"/>
         <mapping class="co.uk.genonline.simpleweb.model.bean.ScreensEntity" />
+        <mapping class="co.uk.genonline.simpleweb.model.bean.ConfigurationEntity"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->

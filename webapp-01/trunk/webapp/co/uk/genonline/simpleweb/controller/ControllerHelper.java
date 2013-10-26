@@ -1,7 +1,7 @@
 package co.uk.genonline.simpleweb.controller;
 
 import co.uk.genonline.simpleweb.controller.actions.*;
-import co.uk.genonline.simpleweb.model.bean.ConfigItems;
+import co.uk.genonline.simpleweb.model.bean.ConfigurationEntity;
 import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
 import org.hibernate.SessionFactory;
 
@@ -44,7 +44,7 @@ public class ControllerHelper extends HelperBase {
 
         logger.info("Logger initiated");
 
-        sessionData = new ActionData(new ScreensEntity(), new ConfigItems());
+        sessionData = new ActionData(new ScreensEntity(), new ConfigurationEntity());
         logger.info("Initialised data, = <%s>", sessionData.toString());
         this.factory = factory;
     }

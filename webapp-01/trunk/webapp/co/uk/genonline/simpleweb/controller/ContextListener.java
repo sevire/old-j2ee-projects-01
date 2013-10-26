@@ -4,7 +4,7 @@ import co.uk.genonline.simpleweb.configuration.ConfigurationManager;
 import co.uk.genonline.simpleweb.configuration.ConfigurationSet;
 import co.uk.genonline.simpleweb.configuration.configManager;
 import co.uk.genonline.simpleweb.model.HibernateUtil;
-import co.uk.genonline.simpleweb.model.bean.ConfigItems;
+import co.uk.genonline.simpleweb.model.bean.ConfigurationEntity;
 import co.uk.genonline.simpleweb.web.gallery.GalleryManager;
 import org.apache.log4j.*;
 import org.hibernate.SessionFactory;
@@ -63,7 +63,7 @@ public class ContextListener implements ServletContextListener {
 
         ConfigurationManager configurationManager = new configManager();
         ConfigurationSet configurationSet = configurationManager.getConfigurationSet("liveConfiguration");
-        event.getServletContext().setAttribute("Configuration", new ConfigItems());
+        event.getServletContext().setAttribute("Configuration", new ConfigurationEntity());
 
         // Initialise session level variable for status message and status type used in JSPs to display error messages etc.
 

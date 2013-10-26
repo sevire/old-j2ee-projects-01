@@ -22,13 +22,13 @@ public class EditConfigIndexDisplayForm extends ActionClass {
 
     public RequestResult perform() {
         Session session = factory.openSession();
-        String query = String.format("from ConfigItems");
+        String query = String.format("from ConfigurationEntity");
         logger.debug("About to execute HQL query : " + query);
         Query queryObject = session.createQuery(query);
         java.util.List configItems = queryObject.list();
         if (configItems == null) {
             logger.debug("configItems is null");
-            status.setStatusMessage("Error while getting page list", "error");
+            status.setStatusMessage("Error while getting configuration item list", "error");
         } else if (configItems.isEmpty()) {
             logger.debug("configItems is empty");
             status.setStatusMessage("No config items currently set up - click 'add' to create new item", "info");

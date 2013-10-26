@@ -42,10 +42,10 @@
                         <core:out value="${row.value}" />
                     </td>
                     <td>
-                        <a href="editConfig?name=${row.name}">Edit</a>
+                        <a href="editConfigItem?name=${row.name}">Edit</a>
                     </td>
                     <td>
-                        <a href="deleteConfig?name=${row.name}">Delete</a>
+                        <a href="deleteConfigItem?name=${row.name}">Delete</a>
                     </td>
                 </tr>
             </core:forEach>

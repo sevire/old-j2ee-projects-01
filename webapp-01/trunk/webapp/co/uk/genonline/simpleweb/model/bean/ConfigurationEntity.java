@@ -1,22 +1,23 @@
 package co.uk.genonline.simpleweb.model.bean;
 
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
  * Created with IntelliJ IDEA.
  * User: thomassecondary
- * Date: 01/04/2013
- * Time: 11:50
+ * Date: 26/10/2013
+ * Time: 13:00
  * To change this template use File | Settings | File Templates.
  */
+@javax.persistence.Table(name = "Configuration", schema = "", catalog = "lda_dev")
 @Entity
-public class ConfigItems {
+public class ConfigurationEntity {
     private String name;
+    private String value;
 
-    @Column(name = "name", nullable = false, insertable = true, updatable = true, length = 50, precision = 0)
+    @javax.persistence.Column(name = "name")
     @Id
     public String getName() {
         return name;
@@ -26,9 +27,7 @@ public class ConfigItems {
         this.name = name;
     }
 
-    private String value;
-
-    @Column(name = "value", nullable = true, insertable = true, updatable = true, length = 255, precision = 0)
+    @javax.persistence.Column(name = "value")
     @Basic
     public String getValue() {
         return value;
@@ -43,7 +42,7 @@ public class ConfigItems {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ConfigItems that = (ConfigItems) o;
+        ConfigurationEntity that = (ConfigurationEntity) o;
 
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (value != null ? !value.equals(that.value) : that.value != null) return false;

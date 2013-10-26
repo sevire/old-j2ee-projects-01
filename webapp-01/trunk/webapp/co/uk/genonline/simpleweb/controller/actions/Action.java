@@ -68,6 +68,9 @@ public abstract class Action {
         } else if (command.equals("/add")) {
             status.resetStatusMessage();
             action = new AddScreenDisplayForm(request, response, factory, data);
+        } else if (command.equals("/editConfigItem")) {
+            status.resetStatusMessage();
+            action = new EditConfigItemDisplayForm(request, response, factory, data);
         } else if (command.equals("/addConfigItem")) {
             status.resetStatusMessage();
             action = new AddConfigItemDisplayForm(request, response, factory, data);
@@ -78,7 +81,7 @@ public abstract class Action {
         } else if (command.equals("/delete")) {
             status.resetStatusMessage();
             action = new DeleteScreen(request, response, factory, data);
-        } else if (command.equals("/deleteConfig")) {
+        } else if (command.equals("/deleteConfigItem")) {
             status.resetStatusMessage();
             action = new DeleteConfigItem(request, response, factory, data);
         } else if (command.equals("/viewImage")) {

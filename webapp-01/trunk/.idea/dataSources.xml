@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="186744316">
+  <component name="DataSourceManagerImpl" format="xml" hash="3599601377">
     <data-source source="LOCAL" name="Thomas2-mysql-01" product="MySQL" version="5.6.13" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.26 ( Revision: ${bzr.revision-id} )" uuid="8d125fae-6c44-40a5-8e9c-9a7bf6f5e59c">
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
@@ -13,17 +13,6 @@
       <libraries>
         <library>
           <url>file://$USER_HOME$/Downloads/mysql-connector-java-5-1.1.26/mysql-connector-java-5.1.26-bin.jar</url>
-        </library>
-      </libraries>
-    </data-source>
-    <data-source source="LOCAL" name="hibernate.cfg.xml" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="6177da2a-3cf6-4772-9151-a0f7e46b0ddf">
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/lda_dev</jdbc-url>
-      <user-name>root</user-name>
-      <user-password>dfe5dfe9df9ddfebdfcbdffddfe9df9ddf9ddfe8</user-password>
-      <libraries>
-        <library>
-          <url>jar://$USER_HOME$/Downloads/mysql-connector-java-5-1.1.26/mysql-connector-java-5.1.26-bin.jar!/</url>
         </library>
       </libraries>
     </data-source>
