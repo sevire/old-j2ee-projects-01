@@ -1,6 +1,12 @@
 package co.uk.genonline.simpleweb.configuration;
 
-import java.util.ArrayList;
+import co.uk.genonline.simpleweb.controller.WebLogger;
+import co.uk.genonline.simpleweb.model.bean.ConfigItemBeanManager;
+import co.uk.genonline.simpleweb.model.bean.ConfigurationEntity;
+import org.hibernate.SessionFactory;
+
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -12,15 +18,42 @@ import java.util.Map;
  * To change this template use File | Settings | File Templates.
  */
 public class Configuration implements ConfigurationManager {
-    List<Object> configurationItems = new ArrayList<Object>();
+    WebLogger logger = new WebLogger();
+    Map<String, ConfigurationItem> configurationItems = new HashMap<String, ConfigurationItem>();
+    List<Object> configurationRecords;
 
-    Configuration() {
+    public Configuration(SessionFactory factory) {
+        ConfigItemBeanManager configBeanManager = new ConfigItemBeanManager(factory);
 
+        configurationRecords = configBeanManager.readConfigItems(factory);
+        logger.debug(String.format("<%d> configuration records read", configurationRecords.size()));
+        ConfigurationEntity record;
+        String name;
+        String value;
+        Iterator<Object> iterator = configurationRecords.iterator();
+        while (iterator.hasNext()) {
+            record = (ConfigurationEntity)iterator.next();
+            name = record.getName();
+            value = record.getValue();
+            logger.debug(String.format("Next configuration record is: name = <%s>, value = <%s>", name, value));
+            if (name.equals("homePage")) {
+                addConfigItem(new HomePage(value));
+            } else if (name.equals("numGalleryColumns")) {
+                addConfigItem(new NumGalleryColumns(value));
+            } else if (name.equals("maxThumbnailHeight")) {
+                addConfigItem(new MaxThumbnailHeight(value));
+            } else if (name.equals("maxThumbnailWidth")) {
+                addConfigItem(new MaxThumbnailWidth(value));
+            }
+        }
     }
 
+    public void addConfigItem(ConfigurationItem item) {
+        configurationItems.put(item.getName(), item);
+    }
 
-    public void addConfigItem(String configItemName) {
-        //To change body of implemented methods use File | Settings | File Templates.
+    public ConfigurationItem getConfigurationItem(String name) {
+        return configurationItems.get(name);
     }
 
     public void addConfigurationSet(String configItemName, ConfigurationItem configurationItem) {

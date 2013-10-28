@@ -1,5 +1,7 @@
-package co.uk.genonline.simpleweb.controller.actions;
+package co.uk.genonline.simpleweb.controller.actions.configactions;
 
+import co.uk.genonline.simpleweb.controller.actions.ActionData;
+import co.uk.genonline.simpleweb.controller.actions.RequestResult;
 import co.uk.genonline.simpleweb.model.bean.ConfigItemBeanManager;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,11 +16,9 @@ import javax.servlet.http.HttpServletResponse;
  * Date: 10/12/2012
  * Time: 22:20
  *
- * This is an extension to ActionClass which includes a common method to be used by ActionClasses which
- * update a screen.  Created in order to replace duplicate code fragment between add screen and update
- * screen.
+ * ToDo: Update comment after re-factoring
  */
-abstract class UpdateConfigActionClass extends ActionClass {
+abstract class UpdateConfigActionClass extends ConfigurationAction {
     UpdateConfigActionClass(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
         super(request, response, factory, data);
     }

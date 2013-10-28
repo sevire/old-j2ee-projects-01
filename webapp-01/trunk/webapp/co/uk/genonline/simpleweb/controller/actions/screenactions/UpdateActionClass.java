@@ -1,5 +1,7 @@
-package co.uk.genonline.simpleweb.controller.actions;
+package co.uk.genonline.simpleweb.controller.actions.screenactions;
 
+import co.uk.genonline.simpleweb.controller.actions.ActionData;
+import co.uk.genonline.simpleweb.controller.actions.RequestResult;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -12,11 +14,8 @@ import javax.servlet.http.HttpServletResponse;
  * Date: 10/12/2012
  * Time: 22:20
  *
- * This is an extension to ActionClass which includes a common method to be used by ActionClasses which
- * update a screen.  Created in order to replace duplicate code fragment between add screen and update
- * screen.
  */
-abstract class UpdateActionClass extends ActionClass {
+abstract class UpdateActionClass extends ScreenAction {
     UpdateActionClass(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
         super(request, response, factory, data);
     }

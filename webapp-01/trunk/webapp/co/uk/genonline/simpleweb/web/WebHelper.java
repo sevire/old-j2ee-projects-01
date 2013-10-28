@@ -1,5 +1,7 @@
 package co.uk.genonline.simpleweb.web;
 
+import co.uk.genonline.simpleweb.configuration.Configuration;
+import co.uk.genonline.simpleweb.configuration.HomePage;
 import co.uk.genonline.simpleweb.controller.WebLogger;
 import co.uk.genonline.simpleweb.model.bean.ScreenBeanManager;
 import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
@@ -8,7 +10,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,6 +25,7 @@ public class WebHelper {
     SessionFactory factory;
     HttpServletRequest request;
     HttpServletResponse response;
+    Configuration configuration;
 
     public WebHelper(HttpServletRequest request, HttpServletResponse response) {
 
@@ -33,6 +35,7 @@ public class WebHelper {
         this.request = request;
         this.response = response;
         this.factory = (SessionFactory)request.getServletContext().getAttribute("sessionFactory");
+        this.configuration = (Configuration)(request.getServletContext().getAttribute("configuration"));
     }
 
     public String generateScreenLink(String name, String screenTitleShort) {
@@ -57,8 +60,8 @@ public class WebHelper {
     }
 
     public String generateHomeLink() {
-        ServletContext context = request.getServletContext();
-        String homePage = context.getInitParameter("homePage");
+        HomePage homePageItem = (HomePage)configuration.getConfigurationItem("homePage");
+        String homePage = homePageItem.getStringValue();
         logger.info(String.format("Generating home page = <%s>", homePage));
         return String.format("<a href='view?screen=%s'>Home</a>", homePage);
     }

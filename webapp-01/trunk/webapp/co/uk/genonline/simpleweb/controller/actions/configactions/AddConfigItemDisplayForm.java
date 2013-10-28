@@ -1,5 +1,7 @@
-package co.uk.genonline.simpleweb.controller.actions;
+package co.uk.genonline.simpleweb.controller.actions.configactions;
 
+import co.uk.genonline.simpleweb.controller.actions.ActionData;
+import co.uk.genonline.simpleweb.controller.actions.RequestResult;
 import org.hibernate.SessionFactory;
 
 import javax.servlet.http.HttpServletRequest;

@@ -1,8 +1,8 @@
-package co.uk.genonline.simpleweb.controller.actions;
+package co.uk.genonline.simpleweb.controller.actions.screenactions;
 
 import co.uk.genonline.simpleweb.controller.RequestStatus;
-import co.uk.genonline.simpleweb.controller.WebLogger;
-import co.uk.genonline.simpleweb.model.bean.ConfigurationEntity;
+import co.uk.genonline.simpleweb.controller.actions.Action;
+import co.uk.genonline.simpleweb.controller.actions.ActionData;
 import co.uk.genonline.simpleweb.model.bean.ScreenBeanManager;
 import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
 import org.hibernate.SessionFactory;
@@ -13,36 +13,29 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Created with IntelliJ IDEA.
  * User: thomassecondary
- * Date: 07/08/2012
- * Time: 08:19
+ * Date: 26/10/2013
+ * Time: 15:43
  * To change this template use File | Settings | File Templates.
  */
-abstract class ActionClass extends Action {
-    final WebLogger logger = new WebLogger();
+public abstract class ScreenAction extends Action {
     HttpServletRequest request;
     HttpServletResponse response;
-    SessionFactory factory;
-    ScreensEntity screen; // ToDo: Should this really be here - this is a general purpose class?
-    RequestStatus status;
-    ConfigurationEntity configItems;
-    ScreenBeanManager screenBeanManager;
     ActionData data;
+    SessionFactory factory;
+    ScreensEntity screen;
+    RequestStatus status;
+    ScreenBeanManager screenBeanManager;
 
-    ActionClass(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
-//        logger.setLevel(Level.toLevel(request.getServletContext().getInitParameter("loggingLevel")));
+    ScreenAction(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
+        super();
         this.request = request;
         this.response = response;
+        this.data = data;
         this.factory = (SessionFactory)request.getServletContext().getAttribute("sessionFactory");
         this.screen = data.getScreen();
-        this.data = data;
-        this.configItems = data.getConfigItems();
+        screen.setName(request.getParameter("screen"));
         this.screenBeanManager = new ScreenBeanManager(factory);
-
-        logger.info("Initialised data = <%s>", data.toString());
-
         status = (RequestStatus) this.request.getSession().getAttribute("requestStatus");
     }
-
-    ActionClass() {}
 
 }

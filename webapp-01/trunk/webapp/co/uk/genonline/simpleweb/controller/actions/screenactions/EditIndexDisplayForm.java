@@ -1,5 +1,7 @@
-package co.uk.genonline.simpleweb.controller.actions;
+package co.uk.genonline.simpleweb.controller.actions.screenactions;
 
+import co.uk.genonline.simpleweb.controller.actions.ActionData;
+import co.uk.genonline.simpleweb.controller.actions.RequestResult;
 import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
 import org.hibernate.SessionFactory;
 
@@ -8,18 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
- * Sub-class of ActionClass with responsibility for preparing data in order to display the edit index screen.
- * This screen displays a row for each screen showing the key information with links to edit a screen or add a new screen.
  */
-public class EditIndexDisplayForm extends ActionClass {
+public class EditIndexDisplayForm extends ScreenAction {
 
     public EditIndexDisplayForm(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
         super(request, response, factory, data);
     }
 
     /**
-     * The main method of the ActionClass class of which this class is a sub-class.
-     * @return Name of next command (e.g. jsp file or url) and whether to forward (jsp) or re-direct (url).
      */
     public RequestResult perform() {
         // ToDo: Need to encapsulate database access better.

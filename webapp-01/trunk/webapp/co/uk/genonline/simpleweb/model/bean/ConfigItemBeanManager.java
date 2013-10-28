@@ -1,11 +1,13 @@
 package co.uk.genonline.simpleweb.model.bean;
 
+import co.uk.genonline.simpleweb.controller.WebLogger;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,6 +23,7 @@ import javax.servlet.http.HttpServletRequest;
  * ToDo Make a generic version of xxxBeanManager or find a more general way of solving the problem.
   */
 public class ConfigItemBeanManager {
+    WebLogger logger = new WebLogger();
     ConfigurationEntity configBean;
     SessionFactory factory;
 
@@ -40,6 +43,13 @@ public class ConfigItemBeanManager {
     public void initialiseBean() {
         configBean.setName("");
         configBean.setValue("");
+    }
+
+    public List<Object> readConfigItems(SessionFactory factory) {
+        Session session = factory.openSession();
+        String query = String.format("from ConfigurationEntity c order by name");
+        logger.debug("About to execute HQL query : " + query);
+        return session.createQuery(query).list();
     }
 
     public void getConfigItemIntoBean(String name) {

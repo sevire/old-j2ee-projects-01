@@ -1,10 +1,8 @@
 package co.uk.genonline.simpleweb.controller;
 
+import co.uk.genonline.simpleweb.configuration.Configuration;
 import co.uk.genonline.simpleweb.configuration.ConfigurationManager;
-import co.uk.genonline.simpleweb.configuration.ConfigurationSet;
-import co.uk.genonline.simpleweb.configuration.configManager;
 import co.uk.genonline.simpleweb.model.HibernateUtil;
-import co.uk.genonline.simpleweb.model.bean.ConfigurationEntity;
 import co.uk.genonline.simpleweb.web.gallery.GalleryManager;
 import org.apache.log4j.*;
 import org.hibernate.SessionFactory;
@@ -53,17 +51,16 @@ public class ContextListener implements ServletContextListener {
         logger.debug(String.format("Saving session factory in context attribute"));
         event.getServletContext().setAttribute("sessionFactory", factory);
 
+        logger.info("Creating and saving ConfigManager");
+
+        ConfigurationManager configurationManager = new Configuration(factory);
+        event.getServletContext().setAttribute("configuration", configurationManager);
+
         logger.info("Creating and saving Gallery Manager in context attribute");
         String galleryRoot = event.getServletContext().getInitParameter("galleryRoot");
 
         logger.info("Saving gallery root = " + galleryRoot);
         event.getServletContext().setAttribute("Galleries", new GalleryManager(event.getServletContext()));
-
-        logger.info("Creating and saving ConfigManager");
-
-        ConfigurationManager configurationManager = new configManager();
-        ConfigurationSet configurationSet = configurationManager.getConfigurationSet("liveConfiguration");
-        event.getServletContext().setAttribute("Configuration", new ConfigurationEntity());
 
         // Initialise session level variable for status message and status type used in JSPs to display error messages etc.
 

@@ -1,5 +1,7 @@
-package co.uk.genonline.simpleweb.controller.actions;
+package co.uk.genonline.simpleweb.controller.actions.screenactions;
 
+import co.uk.genonline.simpleweb.controller.actions.ActionData;
+import co.uk.genonline.simpleweb.controller.actions.RequestResult;
 import org.hibernate.SessionFactory;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +15,7 @@ import java.io.File;
  * Time: 08:09
  * To change this template use File | Settings | File Templates.
  */
-public class ViewImage extends ActionClass {
+public class ViewImage extends ScreenAction {
 
     public ViewImage(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
         super(request, response, factory, data);

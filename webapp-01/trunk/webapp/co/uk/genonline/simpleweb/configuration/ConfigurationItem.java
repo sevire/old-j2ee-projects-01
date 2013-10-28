@@ -8,11 +8,8 @@ package co.uk.genonline.simpleweb.configuration;
  * @Time: 11:32
  */
 public interface ConfigurationItem {
+    public String getName();
 
-    void setConfigItem(String stringValue);
-
-    void setConfigItem(int intValue);
-
-    // etc.
+    // Will need a getter which is type dependent - not sure best way of setting this up in interface
 
 }

@@ -49,7 +49,7 @@ public class ScreenBeanManager {
         Session session = factory.openSession();
         String query = String.format("from ScreensEntity s where s.screenType = '%s' and s.enabledFlag = true order by sortKey", category);
         logger.debug("About to execute HQL query : " + query);
-        java.util.List pages = session.createQuery(query).list();
+        List pages = session.createQuery(query).list();
         return pages;
     }
 

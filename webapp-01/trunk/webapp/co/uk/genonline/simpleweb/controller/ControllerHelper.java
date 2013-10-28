@@ -88,11 +88,9 @@ public class ControllerHelper extends HelperBase {
 
         addHelperToSession("helper", SessionData.READ);
 
-        sessionData.getScreen().setName(request.getParameter("screen"));
-
         RequestResult result = null;
 
-        Action action = Action.createAction(request, response, factory, sessionData);
+        Action action = ActionFactory.createAction(request, response, factory, sessionData);
         if (action != null) {
             result = action.perform();
             if (result.isRedirectFlag()) {

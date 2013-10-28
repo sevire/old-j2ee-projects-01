@@ -1,5 +1,9 @@
 package co.uk.genonline.simpleweb.web.gallery;
 
+import co.uk.genonline.simpleweb.configuration.Configuration;
+import co.uk.genonline.simpleweb.configuration.MaxThumbnailHeight;
+import co.uk.genonline.simpleweb.configuration.MaxThumbnailWidth;
+import co.uk.genonline.simpleweb.configuration.NumGalleryColumns;
 import co.uk.genonline.simpleweb.controller.WebLogger;
 import org.apache.log4j.Level;
 
@@ -19,6 +23,7 @@ public class GalleryHelper {
     WebLogger logger = new WebLogger();
 
     ServletContext context;
+    Configuration configuration;
     String webRootFullPath;
 
     private boolean forceGallery; // Determines whether to re-generate gallery even if exists
@@ -40,6 +45,7 @@ public class GalleryHelper {
         logger.debug("GalleryHelper: Constructor Started");
 
         this.context = context;
+        this.configuration = (Configuration)context.getAttribute("configuration");
         contextPath = this.context.getContextPath();
         webRootFullPath = this.context.getRealPath("/");
 
@@ -49,17 +55,17 @@ public class GalleryHelper {
         galleryRootFullPathFile = new File(webRootFullPath + File.separator + galleryRootRelPath);
         galleryThumbnailFullPathFile = new File(webRootFullPath + File.separator + thumbnailRelPath);
         thumbnailRelPath = this.context.getInitParameter("thumbnailRelPath");
-        maxThumbnailHeight = Integer.parseInt(this.context.getInitParameter("maxThumbnailHeight"));
+        maxThumbnailHeight = ((MaxThumbnailHeight)configuration.getConfigurationItem("maxThumbnailHeight")).get();
         if (maxThumbnailHeight <= 0) {
             logger.warn(String.format("Invalid value for 'maxHeight' (%s), setting to 100", this.maxThumbnailHeight));
             maxThumbnailHeight = 100;
         }
-        this.maxThumbnailWidth = Integer.parseInt(this.context.getInitParameter("maxThumbnailWidth"));
+        maxThumbnailWidth = ((MaxThumbnailWidth)configuration.getConfigurationItem("maxThumbnailWidth")).get();
         if (this.maxThumbnailWidth <= 0) {
             logger.warn(String.format("Invalid value for 'maxWidth' (%s), setting to 100", this.maxThumbnailWidth));
             maxThumbnailWidth = 100;
         }
-        this.numGalleryColumns = Integer.parseInt(context.getInitParameter("numGalleryColumns"));
+        this.numGalleryColumns = ((NumGalleryColumns)configuration.getConfigurationItem("numGalleryColumns")).get();
         if (this.numGalleryColumns <= 0) {
             logger.warn(String.format("Invalid value for 'numGalleryColumns' (%s), setting to 4", this.numGalleryColumns));
             numGalleryColumns = 4;

@@ -1,5 +1,7 @@
-package co.uk.genonline.simpleweb.controller.actions;
+package co.uk.genonline.simpleweb.controller.actions.screenactions;
 
+import co.uk.genonline.simpleweb.controller.actions.ActionData;
+import co.uk.genonline.simpleweb.controller.actions.RequestResult;
 import org.hibernate.SessionFactory;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  * Common code for displaying a screen for adding or updating.  Allows encapusulation of logic
  * to display and process fields within the form, with specific logic for initialisation.
  */
-abstract class UpdateScreenDisplayForm extends ActionClass {
+public abstract class UpdateScreenDisplayForm extends ScreenAction {
 
     UpdateScreenDisplayForm(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
         super(request, response, factory, data);

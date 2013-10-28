@@ -9,8 +9,8 @@ import java.util.Map;
  * @Date: 05/07/2013
  * @Time: 11:51
  */
-public class configManager implements ConfigurationManager {
-    public configManager() {
+public class ConfigurationManagerImplementation implements ConfigurationManager {
+    public ConfigurationManagerImplementation() {
     }
 
     public void addConfigItem(String configItemName, ConfigurationItem configurationItem) {
@@ -30,6 +30,10 @@ public class configManager implements ConfigurationManager {
     }
 
     public ConfigurationSet getConfigurationSet(String configurationSetName) {
+        // In first implementation there is only one configuration set - so return that!
+
+
+
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

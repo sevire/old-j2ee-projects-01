@@ -1,5 +1,7 @@
-package co.uk.genonline.simpleweb.controller.actions;
+package co.uk.genonline.simpleweb.controller.actions.configactions;
 
+import co.uk.genonline.simpleweb.controller.actions.ActionData;
+import co.uk.genonline.simpleweb.controller.actions.RequestResult;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  * Time: 08:09
  * To change this template use File | Settings | File Templates.
  */
-public class EditConfigIndexDisplayForm extends ActionClass {
+public class EditConfigIndexDisplayForm extends ConfigurationAction {
 
     public EditConfigIndexDisplayForm(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
         super(request, response, factory, data);
