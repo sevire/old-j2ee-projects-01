@@ -11,49 +11,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="03fdf521-209b-4654-a976-0dbf9d87148b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/configactions" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/screenactions" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/ActionFactory.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/configactions/ConfigurationAction.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigurationItemInt.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigurationItemText.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigurationSetImplementation.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/MaxThumbnailHeight.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/MaxThumbnailWidth.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/screenactions/ScreenAction.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/ActionClass.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/model/configuration/ConfigurationManager.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/configManager.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigurationManagerImplementation.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/AddConfigItemDisplayForm.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/configactions/AddConfigItemDisplayForm.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/AddConfigItemProcessForm.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/configactions/AddConfigItemProcessForm.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/AddScreenDisplayForm.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/screenactions/AddScreenDisplayForm.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/AddScreenProcessForm.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/screenactions/AddScreenProcessForm.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/CancelAction.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/screenactions/CancelAction.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/DeleteConfigItem.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/configactions/DeleteConfigItem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/DeleteScreen.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/screenactions/DeleteScreen.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/EditConfigIndexDisplayForm.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/configactions/EditConfigIndexDisplayForm.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/EditConfigItemDisplayForm.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/configactions/EditConfigItemDisplayForm.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/EditConfigItemProcessForm.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/configactions/EditConfigItemProcessForm.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/EditIndexDisplayForm.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/screenactions/EditIndexDisplayForm.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/EditScreenDisplayForm.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/screenactions/EditScreenDisplayForm.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/EditScreenProcessForm.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/screenactions/EditScreenProcessForm.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/UpdateActionClass.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/screenactions/UpdateActionClass.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/UpdateConfigActionClass.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/configactions/UpdateConfigActionClass.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/UpdateConfigItemDisplayForm.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/configactions/UpdateConfigItemDisplayForm.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/UpdateScreenDisplayForm.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/screenactions/UpdateScreenDisplayForm.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/ViewImage.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/screenactions/ViewImage.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/ViewScreen.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/screenactions/ViewScreen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/Action.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/actions/Action.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/model/bean/ConfigItemBeanManager.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/model/bean/ConfigItemBeanManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigurationItemBoolean.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ForceGallery.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ForceThumbnails.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/Configuration.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/Configuration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigurationItem.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigurationItem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/ContextListener.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/ContextListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/ControllerHelper.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/ControllerHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigurationItemInt.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigurationItemInt.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/web/gallery/GalleryHelper.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/web/gallery/GalleryHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/HomePage.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/HomePage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/NumGalleryColumns.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/NumGalleryColumns.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/model/bean/ScreenBeanManager.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/model/bean/ScreenBeanManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/web/WebHelper.java" afterPath="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/web/WebHelper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ManchesterGoddesses(java).iws" />
@@ -63,7 +26,7 @@
     <file path="$PROJECT_DIR$/web2/WEB-INF/web.xml" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1376244936957" ignored="false" />
     <file path="/TestHelper.java" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1382286593729" ignored="false" />
     <file path="/WebLogger.java" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1380450637256" ignored="false" />
-    <file path="/fragment.java" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1382947066357" ignored="false" />
+    <file path="/fragment.java" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1382965836350" ignored="false" />
     <file path="/Dummy.txt" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1382947296813" ignored="false" />
     <file path="/Thomas2-mysql-01" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1380612280006" ignored="false" />
     <file path="/a.sql" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1382788698041" ignored="false" />
@@ -81,7 +44,7 @@
     <file path="/ScreenData.java" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1382378993163" ignored="false" />
     <file path="/CommonScreenData.java" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1381661476551" ignored="false" />
     <file path="/ContextListener.java" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1382902296711" ignored="false" />
-    <file path="/GalleryHelper.java" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1382947184924" ignored="false" />
+    <file path="/GalleryHelper.java" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1382965823083" ignored="false" />
     <file path="/ControllerHelper.java" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1382801050142" ignored="false" />
     <file path="/Controller.java" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1381828870238" ignored="false" />
     <file path="/ActionClass.java" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1382798025281" ignored="false" />
@@ -121,10 +84,12 @@
     <file path="/ConfigurationItem.java" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1382885531419" ignored="false" />
     <file path="/HomePage.java" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1382945403870" ignored="false" />
     <file path="/NumGalleryColumns.java" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1382946558709" ignored="false" />
-    <file path="/Configuration.java" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1382947149225" ignored="false" />
+    <file path="/Configuration.java" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1382966073966" ignored="false" />
     <file path="/ConfigurationItemText.java" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1382945229710" ignored="false" />
-    <file path="/ConfigurationItemInt.java" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1382945895783" ignored="false" />
+    <file path="/ConfigurationItemInt.java" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1382966543849" ignored="false" />
     <file path="/MaxImageHeight.java" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1382946778062" ignored="false" />
+    <file path="/ConfigurationItemBoolean.java" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1382965589939" ignored="false" />
+    <file path="/ForceGallery.java" changelist="03fdf521-209b-4654-a976-0dbf9d87148b" time="1382965684222" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,11 +172,29 @@
       <file leaf-file-name="Configuration.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/Configuration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="40" selection-start="1779" selection-end="1779" vertical-scroll-proportion="0.0">
+            <state line="49" column="40" selection-start="2188" selection-end="2188" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#706#733#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConfigurationItemBoolean.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigurationItemBoolean.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="13" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ForceGallery.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ForceGallery.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="46" selection-start="260" selection-end="260" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -237,16 +220,7 @@
       <file leaf-file-name="ConfigurationItemText.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigurationItemText.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="33" selection-start="313" selection-end="313" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HomePage.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/HomePage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="0" selection-start="361" selection-end="361" vertical-scroll-proportion="0.0">
+            <state line="9" column="13" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -255,25 +229,7 @@
       <file leaf-file-name="ConfigurationItemInt.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigurationItemInt.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="4" selection-start="1152" selection-end="1152" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NumGalleryColumns.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/NumGalleryColumns.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="0" selection-start="572" selection-end="572" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GalleryManager.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/web/gallery/GalleryManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="13" selection-start="332" selection-end="332" vertical-scroll-proportion="0.0">
+            <state line="23" column="88" selection-start="653" selection-end="653" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -282,25 +238,25 @@
       <file leaf-file-name="GalleryHelper.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/web/gallery/GalleryHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="25" selection-start="2854" selection-end="2854" vertical-scroll-proportion="0.55925435">
+            <state line="49" column="0" selection-start="1865" selection-end="1865" vertical-scroll-proportion="0.70039946">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="web.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
-          <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorReferencesProvider">
-            <state />
-          </provider>
-          <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorProvider">
-            <state />
-          </provider>
-          <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleGeneralEditorProvider">
-            <state />
-          </provider>
+      <file leaf-file-name="ContextListener.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/ContextListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="11.666667">
+            <state line="20" column="13" selection-start="651" selection-end="651" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ForceThumbnails.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ForceThumbnails.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="31" selection-start="468" selection-end="468" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -316,21 +272,21 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigurationManagerImplementation.java" />
-        <option value="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigurationSetImplementation.java" />
-        <option value="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/model/bean/ScreenBeanManager.java" />
         <option value="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/model/bean/ConfigItemBeanManager.java" />
         <option value="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigurationItem.java" />
         <option value="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/web/WebHelper.java" />
         <option value="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/ContextListener.java" />
         <option value="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigurationItemText.java" />
         <option value="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/HomePage.java" />
-        <option value="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigurationItemInt.java" />
         <option value="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/NumGalleryColumns.java" />
         <option value="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/MaxImageHeight.java" />
         <option value="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/MaxThumbnailHeight.java" />
         <option value="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/MaxThumbnailWidth.java" />
+        <option value="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigurationItemBoolean.java" />
+        <option value="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ForceGallery.java" />
+        <option value="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ForceThumbnails.java" />
         <option value="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/Configuration.java" />
+        <option value="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigurationItemInt.java" />
         <option value="$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/web/gallery/GalleryHelper.java" />
       </list>
     </option>
@@ -1830,7 +1786,11 @@
       <created>1382797360106</created>
       <updated>1382797360107</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="[#96] Further progress on configuration.  Functionality is working now.  Just implementing individual config items.  I foresee another round of refactoring to tidy up a bit but is looking fairly good.">
+      <created>1382947343102</created>
+      <updated>1382947343103</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1985,27 +1945,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/model/bean/ConfigItemBeanManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="49" selection-start="1864" selection-end="1864" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/model/bean/ConfigurationEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="13" selection-start="410" selection-end="410" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar!/java/lang/Object.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="28" selection-start="539" selection-end="539" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/screendata/MistressScreenData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="13" selection-start="855" selection-end="855" vertical-scroll-proportion="0.0">
@@ -2018,13 +1957,6 @@
     <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/web/WebHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="38" column="0" selection-start="1346" selection-end="1451" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/ContextListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="0" selection-start="2221" selection-end="2221" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -2052,23 +1984,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigurationItemText.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="33" selection-start="313" selection-end="313" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/HomePage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="0" selection-start="361" selection-end="361" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigurationItemInt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="4" selection-start="1152" selection-end="1152" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -2094,9 +2012,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigurationItemText.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="13" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ForceThumbnails.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="31" selection-start="468" selection-end="468" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/controller/ContextListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="13" selection-start="651" selection-end="651" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigurationItemInt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="88" selection-start="653" selection-end="653" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/Configuration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="40" selection-start="1779" selection-end="1779" vertical-scroll-proportion="0.0">
+        <state line="49" column="40" selection-start="2188" selection-end="2188" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#706#733#0" expanded="true" />
@@ -2104,9 +2050,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ConfigurationItemBoolean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="13" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/configuration/ForceGallery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="46" selection-start="260" selection-end="260" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/webapp/co/uk/genonline/simpleweb/web/gallery/GalleryHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="25" selection-start="2854" selection-end="2854" vertical-scroll-proportion="0.55925435">
+        <state line="49" column="0" selection-start="1865" selection-end="1865" vertical-scroll-proportion="0.70039946">
           <folding />
         </state>
       </provider>

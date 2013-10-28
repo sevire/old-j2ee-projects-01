@@ -21,7 +21,7 @@ public class ConfigurationItemInt implements ConfigurationItem {
 
     ConfigurationItemInt(String value) {
         int convertedValue = 0;
-        logger.debug(String.format("Instantiating numGalleryColumns, string value is <%s>...", value));
+        logger.debug(String.format("Instantiating <%s>, string value is <%s>...", name, value));
 
         value.trim();
         try {

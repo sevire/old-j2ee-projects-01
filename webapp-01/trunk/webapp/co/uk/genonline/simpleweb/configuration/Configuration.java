@@ -44,6 +44,10 @@ public class Configuration implements ConfigurationManager {
                 addConfigItem(new MaxThumbnailHeight(value));
             } else if (name.equals("maxThumbnailWidth")) {
                 addConfigItem(new MaxThumbnailWidth(value));
+            } else if (name.equals("forceGallery")) {
+                addConfigItem(new ForceGallery(value));
+            } else if (name.equals("forceThumbnails")) {
+                addConfigItem(new ForceThumbnails(value));
             }
         }
     }

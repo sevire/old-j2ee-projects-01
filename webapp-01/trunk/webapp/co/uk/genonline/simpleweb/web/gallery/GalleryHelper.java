@@ -1,9 +1,6 @@
 package co.uk.genonline.simpleweb.web.gallery;
 
-import co.uk.genonline.simpleweb.configuration.Configuration;
-import co.uk.genonline.simpleweb.configuration.MaxThumbnailHeight;
-import co.uk.genonline.simpleweb.configuration.MaxThumbnailWidth;
-import co.uk.genonline.simpleweb.configuration.NumGalleryColumns;
+import co.uk.genonline.simpleweb.configuration.*;
 import co.uk.genonline.simpleweb.controller.WebLogger;
 import org.apache.log4j.Level;
 
@@ -49,8 +46,8 @@ public class GalleryHelper {
         contextPath = this.context.getContextPath();
         webRootFullPath = this.context.getRealPath("/");
 
-        forceGallery = this.context.getInitParameter("forceGallery").equals("true");
-        forceThumbnails = this.context.getInitParameter("forceThumbnail").equals("true");
+        forceGallery = ((ForceGallery)configuration.getConfigurationItem("forceGallery")).get();
+        forceThumbnails = ((ForceThumbnails)configuration.getConfigurationItem("forceThumbnails")).get();
         galleryRootRelPath = this.context.getInitParameter("galleryRoot");
         galleryRootFullPathFile = new File(webRootFullPath + File.separator + galleryRootRelPath);
         galleryThumbnailFullPathFile = new File(webRootFullPath + File.separator + thumbnailRelPath);
