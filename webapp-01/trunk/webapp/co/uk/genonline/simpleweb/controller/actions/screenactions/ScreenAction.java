@@ -18,15 +18,15 @@ import javax.servlet.http.HttpServletResponse;
  * To change this template use File | Settings | File Templates.
  */
 public abstract class ScreenAction extends Action {
-    HttpServletRequest request;
+    protected HttpServletRequest request;
     HttpServletResponse response;
     ActionData data;
     SessionFactory factory;
     ScreensEntity screen;
-    RequestStatus status;
+    protected RequestStatus status;
     ScreenBeanManager screenBeanManager;
 
-    ScreenAction(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
+    protected ScreenAction(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
         super();
         this.request = request;
         this.response = response;

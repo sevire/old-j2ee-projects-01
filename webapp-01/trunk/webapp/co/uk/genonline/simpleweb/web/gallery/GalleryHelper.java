@@ -1,6 +1,7 @@
 package co.uk.genonline.simpleweb.web.gallery;
 
-import co.uk.genonline.simpleweb.configuration.*;
+import co.uk.genonline.simpleweb.configuration.configitems.*;
+import co.uk.genonline.simpleweb.configuration.general.Configuration;
 import co.uk.genonline.simpleweb.controller.WebLogger;
 import org.apache.log4j.Level;
 

@@ -1,5 +1,6 @@
-package co.uk.genonline.simpleweb.configuration;
+package co.uk.genonline.simpleweb.configuration.general;
 
+import co.uk.genonline.simpleweb.configuration.configitems.*;
 import co.uk.genonline.simpleweb.controller.WebLogger;
 import co.uk.genonline.simpleweb.model.bean.ConfigItemBeanManager;
 import co.uk.genonline.simpleweb.model.bean.ConfigurationEntity;
@@ -48,6 +49,10 @@ public class Configuration implements ConfigurationManager {
                 addConfigItem(new ForceGallery(value));
             } else if (name.equals("forceThumbnails")) {
                 addConfigItem(new ForceThumbnails(value));
+            } else if (name.equals("blogEnabled")) {
+                addConfigItem(new BlogEnabled(value));
+            } else {
+                logger.debug(String.format("Configuration item name not recognised <%s>", name));
             }
         }
     }

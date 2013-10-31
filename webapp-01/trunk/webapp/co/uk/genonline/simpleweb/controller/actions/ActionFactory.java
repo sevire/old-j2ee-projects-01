@@ -51,6 +51,8 @@ public class ActionFactory {
                 action = new AddConfigItemProcessForm(request, response, factory, data);
             } else if (request.getParameter("cancelButton") != null) {
                 action = new CancelAction(request, response, factory, data);
+            } else if (request.getParameter("cancelConfigButton") != null) {
+                action = new CancelConfigAction(request, response, factory, data);
             } else {
                 logger.error(String.format("processRequest: Didn't recognise request <%s>, display error page", command));
                 return null; // ToDo: Is this the right place to put this?

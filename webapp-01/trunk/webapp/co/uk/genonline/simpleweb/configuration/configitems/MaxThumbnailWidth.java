@@ -1,4 +1,4 @@
-package co.uk.genonline.simpleweb.configuration;
+package co.uk.genonline.simpleweb.configuration.configitems;
 
 /**
  * Created with IntelliJ IDEA.
@@ -8,13 +8,18 @@ package co.uk.genonline.simpleweb.configuration;
  * To change this template use File | Settings | File Templates.
  */
 public class MaxThumbnailWidth extends ConfigurationItemInt {
+
     MaxThumbnailWidth(int value) {
         super(value);
-        name = "maxThumbnailWidth";
     }
 
-    MaxThumbnailWidth(String value) {
+    public MaxThumbnailWidth(String value) {
         super(value);
-        name = "maxThumbnailWidth";
     }
+
+    public String getName() {
+        return "maxThumbnailWidth";
+    }
+
+
 }

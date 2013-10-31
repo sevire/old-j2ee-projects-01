@@ -1,6 +1,6 @@
-package co.uk.genonline.simpleweb.configuration;
+package co.uk.genonline.simpleweb.configuration.configitems;
 
-import co.uk.genonline.simpleweb.controller.WebLogger;
+import co.uk.genonline.simpleweb.configuration.general.ConfigurationItem;
 
 /**
  * Created with IntelliJ IDEA.
@@ -9,19 +9,20 @@ import co.uk.genonline.simpleweb.controller.WebLogger;
  * Time: 08:28
  * To change this template use File | Settings | File Templates.
  */
-public class ConfigurationItemInt implements ConfigurationItem {
+public abstract class ConfigurationItemInt extends ConfigurationItem {
 
-    WebLogger logger = new WebLogger();
-    String name = "uninitialised";
     int value;
 
     ConfigurationItemInt(int value) {
+        super();
         set(value);
+        logger.debug(String.format("Instantiated value of <%s> is <%s>", getName(), getStringValue()));
     }
 
     ConfigurationItemInt(String value) {
+        super();
         int convertedValue = 0;
-        logger.debug(String.format("Instantiating <%s>, string value is <%s>...", name, value));
+        logger.debug(String.format("Instantiating <%s>, string value is <%s>...", getName(), value));
 
         value.trim();
         try {
@@ -32,6 +33,7 @@ public class ConfigurationItemInt implements ConfigurationItem {
             logger.debug(String.format("convertedValue not valid int (=<%s>), setting to <%d>", value, convertedValue));
             this.value = 0;
         }
+        logger.debug(String.format("Instantiated value of <%s> is <%s>", getName(), getStringValue()));
     }
 
     public int get() {
@@ -43,7 +45,7 @@ public class ConfigurationItemInt implements ConfigurationItem {
     }
 
     public String getName() {
-        return name;  //To change body of implemented methods use File | Settings | File Templates.
+        return "uninitialised int";  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     public String getStringValue() {

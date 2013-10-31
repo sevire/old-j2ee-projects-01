@@ -1,4 +1,6 @@
-package co.uk.genonline.simpleweb.configuration;
+package co.uk.genonline.simpleweb.configuration.configitems;
+
+import co.uk.genonline.simpleweb.configuration.general.ConfigurationItem;
 
 /**
  * Created with IntelliJ IDEA.
@@ -7,12 +9,13 @@ package co.uk.genonline.simpleweb.configuration;
  * Time: 08:13
  * To change this template use File | Settings | File Templates.
  */
-public class ConfigurationItemText implements ConfigurationItem {
-    String name =  "uninitialised";
+public class ConfigurationItemString extends ConfigurationItem {
     String value;
 
-    public ConfigurationItemText(String value) {
+    public ConfigurationItemString(String value) {
+        super();
         this.value = value; // No conversion or checking required so this is an easy one
+        logger.debug(String.format("Instantiated value of <%s> is <%s>", getName(), getStringValue()));
     }
 
     public String get() {
@@ -20,7 +23,7 @@ public class ConfigurationItemText implements ConfigurationItem {
     }
 
     public String getName() {
-        return name;  //To change body of implemented methods use File | Settings | File Templates.
+        return "uninitialised string";  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     public String getStringValue() {

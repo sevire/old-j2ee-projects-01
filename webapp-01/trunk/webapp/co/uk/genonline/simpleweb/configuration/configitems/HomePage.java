@@ -1,4 +1,4 @@
-package co.uk.genonline.simpleweb.configuration;
+package co.uk.genonline.simpleweb.configuration.configitems;
 
 /**
  * Created with IntelliJ IDEA.
@@ -7,9 +7,13 @@ package co.uk.genonline.simpleweb.configuration;
  * Time: 07:27
  * To change this template use File | Settings | File Templates.
  */
-public class HomePage extends ConfigurationItemText {
+public class HomePage extends ConfigurationItemString {
+
     public HomePage(String value) {
         super(value);
-        name = "homePage";
+    }
+
+    public String getName() {
+        return "homePage";
     }
 }

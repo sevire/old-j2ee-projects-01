@@ -1,5 +1,7 @@
 package co.uk.genonline.simpleweb.controller.screendata;
 
+import co.uk.genonline.simpleweb.configuration.configitems.BlogEnabled;
+import co.uk.genonline.simpleweb.configuration.general.Configuration;
 import co.uk.genonline.simpleweb.controller.RequestStatus;
 import co.uk.genonline.simpleweb.controller.WebLogger;
 import co.uk.genonline.simpleweb.controller.actions.ActionData;
@@ -10,6 +12,7 @@ import co.uk.genonline.simpleweb.web.WebHelper;
 import co.uk.genonline.simpleweb.web.gallery.GalleryManager;
 import com.petebevin.markdown.MarkdownProcessor;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -70,6 +73,9 @@ public class MistressScreenData implements ScreenData {
         ScreensEntity screenRecord;
         setScreen(data.getScreen());
         RequestStatus status = (RequestStatus) request.getSession().getAttribute("requestStatus");
+        ServletContext context = request.getServletContext();
+        Configuration configuration = (Configuration)context.getAttribute("configuration");
+        boolean blogEnabled;
 
         status.resetStatusMessage();
         if (getScreen().getName() == null || getScreen().getName().equals("")) {
@@ -81,10 +87,13 @@ public class MistressScreenData implements ScreenData {
         setHomePage(webHelper.generateHomeLink());
         setMaxThumbnailWidth(request.getServletContext().getInitParameter("maxThumbnailWidth"));
         setMaxThumbnailHeight(request.getServletContext().getInitParameter("maxThumbnailHeight"));
-        if (request.getServletContext().getInitParameter("blogEnabled").equals("true")) {
-            request.setAttribute("blogLink", webHelper.generateBlogLink());
+        blogEnabled = ((BlogEnabled)configuration.getConfigurationItem("blogEnabled")).get();
+        logger.debug(String.format("Value of 'blogEnabled' is %b", blogEnabled));
+
+        if (blogEnabled) {
+            setBlogLink(webHelper.generateBlogLink());
         } else {
-            request.setAttribute("blogLink", null);
+            setBlogLink(null);
         }
 
         screenRecord = screenBeanManager.getScreen(screen);

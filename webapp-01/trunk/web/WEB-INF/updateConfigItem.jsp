@@ -49,7 +49,7 @@
                     <input type='submit' name=<%=addFlag ? "'addConfigButton'" : "'updateConfigButton'" %> value=<%=addFlag ? "'Add'" : "'Update'"%>>
                 </td></tr>
                 <tr><td>
-                    <input type='submit' name='cancelButton' value='Cancel'>
+                    <input type='submit' name='cancelConfigButton' value='Cancel'>
                 </td></tr>
             </table>
         </form>

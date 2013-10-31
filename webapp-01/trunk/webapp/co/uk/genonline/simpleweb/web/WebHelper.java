@@ -1,7 +1,7 @@
 package co.uk.genonline.simpleweb.web;
 
-import co.uk.genonline.simpleweb.configuration.Configuration;
-import co.uk.genonline.simpleweb.configuration.HomePage;
+import co.uk.genonline.simpleweb.configuration.general.Configuration;
+import co.uk.genonline.simpleweb.configuration.configitems.HomePage;
 import co.uk.genonline.simpleweb.controller.WebLogger;
 import co.uk.genonline.simpleweb.model.bean.ScreenBeanManager;
 import co.uk.genonline.simpleweb.model.bean.ScreensEntity;

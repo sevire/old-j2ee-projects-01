@@ -105,7 +105,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>
-        <url-pattern>/deleteConfig</url-pattern>
+        <url-pattern>/deleteConfigItem</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>

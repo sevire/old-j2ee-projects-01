@@ -1,4 +1,4 @@
-package co.uk.genonline.simpleweb.configuration;
+package co.uk.genonline.simpleweb.configuration.configitems;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,11 +11,13 @@ public class ForceThumbnails extends ConfigurationItemBoolean {
 
     ForceThumbnails(boolean value) {
         super(value);
-        name = "forceThumbnails";
     }
 
-    ForceThumbnails(String value) {
+    public ForceThumbnails(String value) {
         super(value);
-        name = "forceThumbnails";
+    }
+
+    public String getName() {
+        return "forceThumbnails";
     }
 }

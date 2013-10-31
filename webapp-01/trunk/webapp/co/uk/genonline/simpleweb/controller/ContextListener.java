@@ -1,7 +1,7 @@
 package co.uk.genonline.simpleweb.controller;
 
-import co.uk.genonline.simpleweb.configuration.Configuration;
-import co.uk.genonline.simpleweb.configuration.ConfigurationManager;
+import co.uk.genonline.simpleweb.configuration.general.Configuration;
+import co.uk.genonline.simpleweb.configuration.general.ConfigurationManager;
 import co.uk.genonline.simpleweb.model.HibernateUtil;
 import co.uk.genonline.simpleweb.web.gallery.GalleryManager;
 import org.apache.log4j.*;

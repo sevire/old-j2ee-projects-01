@@ -1,4 +1,4 @@
-package co.uk.genonline.simpleweb.configuration;
+package co.uk.genonline.simpleweb.configuration.configitems;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,11 +11,13 @@ public class ForceGallery extends ConfigurationItemBoolean {
 
     ForceGallery(boolean value) {
         super(value);
-        name = "forceGallery";
     }
 
-    ForceGallery(String value) {
+    public ForceGallery(String value) {
         super(value);
-        name = "forceGallery";
+    }
+
+    public String getName() {
+        return "forceGallery";
     }
 }

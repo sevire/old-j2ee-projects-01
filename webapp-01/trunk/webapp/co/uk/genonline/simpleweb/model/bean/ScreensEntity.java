@@ -216,4 +216,8 @@ public class ScreensEntity {
         result = 31 * result + (screenDisplayType != null ? screenDisplayType.hashCode() : 0);
         return result;
     }
+
+    public String toString() {
+        return "ScreenEntity:" + name;
+    }
 }

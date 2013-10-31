@@ -27,7 +27,7 @@ public class DeleteConfigItem extends ConfigurationAction {
 
         logger.info(String.format("Deleting config item <%s>", configItems));
 
-        String query = String.format("from ConfigItems s where s.name = '%s'", name);
+        String query = String.format("from ConfigurationEntity c where c.name = '%s'", name);
 
         logger.debug("About to execute HQL query to delete config item : " + query);
 

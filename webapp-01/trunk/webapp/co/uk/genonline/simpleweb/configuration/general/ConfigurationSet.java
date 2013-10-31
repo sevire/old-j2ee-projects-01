@@ -1,4 +1,4 @@
-package co.uk.genonline.simpleweb.configuration;
+package co.uk.genonline.simpleweb.configuration.general;
 
 /**
  * Created with IntelliJ IDEA.

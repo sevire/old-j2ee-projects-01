@@ -1,8 +1,6 @@
 package co.uk.genonline.simpleweb.model.bean;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,13 +9,14 @@ import javax.persistence.Id;
  * Time: 13:00
  * To change this template use File | Settings | File Templates.
  */
-@javax.persistence.Table(name = "Configuration", schema = "", catalog = "lda_dev")
+@Table(name = "Configuration", schema = "", catalog = "lda_dev")
 @Entity
 public class ConfigurationEntity {
     private String name;
     private String value;
+    private int id;
 
-    @javax.persistence.Column(name = "name")
+    @Column(name = "name")
     @Id
     public String getName() {
         return name;
@@ -27,7 +26,7 @@ public class ConfigurationEntity {
         this.name = name;
     }
 
-    @javax.persistence.Column(name = "value")
+    @Column(name = "value")
     @Basic
     public String getValue() {
         return value;
@@ -55,5 +54,19 @@ public class ConfigurationEntity {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (value != null ? value.hashCode() : 0);
         return result;
+    }
+
+    public String toString() {
+        return "ScreenEntity:" + "name:" + name + "value:" + value;
+    }
+
+    @Column(name = "id")
+    @Basic
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
