@@ -2,7 +2,6 @@ package co.uk.genonline.simpleweb.web.gallery;
 
 import co.uk.genonline.simpleweb.controller.WebLogger;
 import org.apache.commons.io.FileUtils;
-import org.apache.log4j.Level;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -28,7 +27,6 @@ public class Gallery {
     private WebLogger logger = new WebLogger();
 
     Gallery(GalleryHelper helper, String galleryName) {
-        logger.setLevel(Level.toLevel(helper.getContext().getInitParameter("loggingLevel")));
 
         this.helper = helper;
         this.galleryName = galleryName;
@@ -126,7 +124,7 @@ public class Gallery {
                         }
                     }
 
-                    html = String.format("<table class='gallery'>%n");
+                    html = String.format("<ul class='gallery'>%n");
                     imagesAdded = 0;
 
                     for (File file : list) {
@@ -134,16 +132,35 @@ public class Gallery {
                         File imageFile = getGalleryImageFile(file);
                         File thumbnailFile = getGalleryThumbnailImageFile(file);
                         if (generateThumbnail(imageFile, thumbnailFile, helper.isForceThumbnails())) {
-                            addImageToHTML(file.getName());
+                            addLItoULelement(file.getName());
                         }
                     }
 
-                    html += String.format("</table>%n");
+                    html += String.format("</ul>%n");
                 }
             }
         }
         logger.debug("html = \n"+html);
         return html;
+    }
+
+    /**
+     * Adds a list element to the html String containing the gallery html.  May become a more general purpose
+     * html utlity method later on but for now it's quite specific for the purpose of creating a gallery.
+     *
+     * @param imageName
+     */
+    private void addLItoULelement(String imageName) {
+
+        String fs = File.separator;
+        String thumbPath = fs + galleryName + fs + helper.getThumbnailRelPath() + fs + imageName;
+        String imagePath = fs + galleryName + fs + imageName;
+        String thumbRelPath = getHTMLRelPath(thumbPath);
+        String imageRelPath = getHTMLRelPath(imagePath);
+        logger.trace(String.format("Image source is <%s>", imageRelPath));
+
+        String img = String.format("<img src='%s' data-large='%s' />%n", thumbRelPath, imageRelPath);
+        html += String.format("<li><a href='#'>%n%s%n</a></li>%n", img);
     }
 
     private void addImageToHTML(String imageName) {

@@ -1,11 +1,10 @@
 package co.uk.genonline.simpleweb.controller;
 
-import org.apache.commons.beanutils.BeanUtils;
+import co.uk.genonline.simpleweb.configuration.general.Configuration;
 import org.apache.log4j.Level;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.lang.reflect.InvocationTargetException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,16 +17,22 @@ public abstract class HelperBase {
     protected HttpServletRequest request;
     protected HttpServletResponse response;
     WebLogger logger = new WebLogger();
+    Configuration configuration;
 
     public HelperBase(HttpServletRequest request, HttpServletResponse response) {
         super();
+        this.request = request;
+        this.response = response;
+        logger.setSession(request);
+/*
         Level level;
         this.request = request;
         this.response = response;
         logger.setSession(request);
-        level = Level.toLevel(request.getServletContext().getInitParameter("loggingLevel"));
-        //level = Level.INFO; // HTTPunit frig
-        logger.setLevel(level);
+        configuration = (Configuration)request.getAttribute("configuration");
+        level = ((LoggingLevel)(configuration.getConfigurationItem("loggingLevel"))).get();
+*/
+        logger.setLevel(Level.DEBUG);
     }
 
     public abstract void copyFromSession(Object helper);

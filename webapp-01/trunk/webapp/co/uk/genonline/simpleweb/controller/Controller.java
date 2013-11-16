@@ -1,5 +1,7 @@
 package co.uk.genonline.simpleweb.controller;
 
+import co.uk.genonline.simpleweb.configuration.configitems.LoggingLevel;
+import co.uk.genonline.simpleweb.configuration.general.Configuration;
 import org.apache.log4j.Level;
 import org.hibernate.SessionFactory;
 
@@ -71,17 +73,12 @@ public class Controller extends HttpServlet {
         if (context == null) {
             logger.warn("null Context while setting logger level, setting to ALL");
         } else {
-            String levelString = context.getInitParameter("loggingLevel");
-            if (levelString == null) {
+            level = ((LoggingLevel)((Configuration)(context.getAttribute("configuration"))).getConfigurationItem("loggingLevel")).get();
+            if (level == null) {
                 logger.warn("'loggingLevel' not found while setting logger level, setting to ALL");
             } else {
-                level = Level.toLevel(levelString);
-                if (level == null) {
-                    logger.warn("Invalid logging level, setting to ALL");
-                } else {
-                    logger.setLevel(level);
-                    logger.info("logging level set to " + level);
-                }
+                logger.setLevel(level);
+                logger.info("logging level set to " + level);
             }
         }
     }

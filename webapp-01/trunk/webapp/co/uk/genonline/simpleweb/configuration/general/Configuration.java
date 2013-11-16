@@ -6,10 +6,7 @@ import co.uk.genonline.simpleweb.model.bean.ConfigItemBeanManager;
 import co.uk.genonline.simpleweb.model.bean.ConfigurationEntity;
 import org.hibernate.SessionFactory;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,12 +15,26 @@ import java.util.Map;
  * Time: 08:41
  * To change this template use File | Settings | File Templates.
  */
-public class Configuration implements ConfigurationManager {
+public class Configuration {
     WebLogger logger = new WebLogger();
     Map<String, ConfigurationItem> configurationItems = new HashMap<String, ConfigurationItem>();
     List<Object> configurationRecords;
+    SessionFactory factory;
 
     public Configuration(SessionFactory factory) {
+        this.factory = factory;
+        loadConfiguration();
+    }
+
+    public void addConfigItem(ConfigurationItem item) {
+        configurationItems.put(item.getName(), item);
+    }
+
+    public ConfigurationItem getConfigurationItem(String name) {
+        return configurationItems.get(name);
+    }
+
+    public void loadConfiguration() {
         ConfigItemBeanManager configBeanManager = new ConfigItemBeanManager(factory);
 
         configurationRecords = configBeanManager.readConfigItems(factory);
@@ -45,40 +56,43 @@ public class Configuration implements ConfigurationManager {
                 addConfigItem(new MaxThumbnailHeight(value));
             } else if (name.equals("maxThumbnailWidth")) {
                 addConfigItem(new MaxThumbnailWidth(value));
+            } else if (name.equals("maxImageWidth")) {
+                addConfigItem(new MaxImageWidth(value));
+            } else if (name.equals("maxImageHeight")) {
+                addConfigItem(new MaxImageHeight(value));
             } else if (name.equals("forceGallery")) {
                 addConfigItem(new ForceGallery(value));
             } else if (name.equals("forceThumbnails")) {
                 addConfigItem(new ForceThumbnails(value));
             } else if (name.equals("blogEnabled")) {
                 addConfigItem(new BlogEnabled(value));
+            } else if (name.equals("galleryRoot")) {
+                addConfigItem(new GalleryRoot(value));
+            } else if (name.equals("loggingLevel")) {
+                addConfigItem(new LoggingLevel(value));
+            } else if (name.equals("thumbnailRelPath")) {
+                addConfigItem(new ThumbnailRelPath(value));
             } else {
-                logger.debug(String.format("Configuration item name not recognised <%s>", name));
+                logger.warn(String.format("Configuration item name not recognised <%s>", name));
             }
         }
+        dumpAllItems();
     }
 
-    public void addConfigItem(ConfigurationItem item) {
-        configurationItems.put(item.getName(), item);
-    }
+    /**
+     * Just writes logging statements for each item for debugging purposes
+     */
+    public void dumpAllItems() {
+        String itemName;
+        ConfigurationItem item;
+        Set<String> keys = configurationItems.keySet();
+        Iterator<String> iterator = (Iterator<String>)keys.iterator();
 
-    public ConfigurationItem getConfigurationItem(String name) {
-        return configurationItems.get(name);
-    }
-
-    public void addConfigurationSet(String configItemName, ConfigurationItem configurationItem) {
-        //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    public void deleteConfigItem(String configItemName) {
-        //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    public Map getAllConfigItems() {
-        //To change body of implemented methods use File | Settings | File Templates.
-        return null;
-    }
-
-    public ConfigurationSet getConfigurationSet(String configurationSetName) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        logger.debug("Dumping configuration items...");
+        while (iterator.hasNext()) {
+            itemName = iterator.next();
+            item = getConfigurationItem(itemName);
+            logger.debug(String.format("Configuration item <%15s> : <%s>", itemName, item.toString()));
+        }
     }
 }

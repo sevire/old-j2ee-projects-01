@@ -85,11 +85,11 @@ public class MistressScreenData implements ScreenData {
         setChambersLinkBar(webHelper.generateLinkBarCategory("Chambers"));
         setMistressPageLink(webHelper.getScreenLink("mistresses", screenBeanManager.getShortName("mistresses")));
         setHomePage(webHelper.generateHomeLink());
-        setMaxThumbnailWidth(request.getServletContext().getInitParameter("maxThumbnailWidth"));
-        setMaxThumbnailHeight(request.getServletContext().getInitParameter("maxThumbnailHeight"));
+        setMaxThumbnailWidth(((configuration.getConfigurationItem("maxThumbnailWidth"))).getStringValue());
+        setMaxThumbnailHeight(((configuration.getConfigurationItem("maxThumbnailHeight"))).getStringValue());
+
         blogEnabled = ((BlogEnabled)configuration.getConfigurationItem("blogEnabled")).get();
         logger.debug(String.format("Value of 'blogEnabled' is %b", blogEnabled));
-
         if (blogEnabled) {
             setBlogLink(webHelper.generateBlogLink());
         } else {

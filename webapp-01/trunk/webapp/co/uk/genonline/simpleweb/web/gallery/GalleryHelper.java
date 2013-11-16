@@ -39,7 +39,6 @@ public class GalleryHelper {
     int numGalleryColumns;
 
     public GalleryHelper(ServletContext context) {
-        logger.setLevel(Level.toLevel(context.getInitParameter("loggingLevel")));
         logger.debug("GalleryHelper: Constructor Started");
 
         this.context = context;
@@ -49,10 +48,10 @@ public class GalleryHelper {
 
         forceGallery = ((ForceGallery)configuration.getConfigurationItem("forceGallery")).get();
         forceThumbnails = ((ForceThumbnails)configuration.getConfigurationItem("forceThumbnails")).get();
-        galleryRootRelPath = this.context.getInitParameter("galleryRoot");
+        galleryRootRelPath = ((GalleryRoot)configuration.getConfigurationItem("galleryRoot")).get();
         galleryRootFullPathFile = new File(webRootFullPath + File.separator + galleryRootRelPath);
         galleryThumbnailFullPathFile = new File(webRootFullPath + File.separator + thumbnailRelPath);
-        thumbnailRelPath = this.context.getInitParameter("thumbnailRelPath");
+        thumbnailRelPath = ((ThumbnailRelPath)configuration.getConfigurationItem("thumbnailRelPath")).get();
         maxThumbnailHeight = ((MaxThumbnailHeight)configuration.getConfigurationItem("maxThumbnailHeight")).get();
         if (maxThumbnailHeight <= 0) {
             logger.warn(String.format("Invalid value for 'maxHeight' (%s), setting to 100", this.maxThumbnailHeight));

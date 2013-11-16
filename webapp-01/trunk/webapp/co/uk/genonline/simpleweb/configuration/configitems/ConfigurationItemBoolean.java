@@ -35,4 +35,8 @@ public class ConfigurationItemBoolean extends ConfigurationItem {
     public String getStringValue() {
         return Boolean.toString(value);
     }
+
+    public String toString() {
+        return getStringValue();
+    }
 }

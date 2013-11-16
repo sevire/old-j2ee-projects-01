@@ -60,8 +60,7 @@ public class WebHelper {
     }
 
     public String generateHomeLink() {
-        HomePage homePageItem = (HomePage)configuration.getConfigurationItem("homePage");
-        String homePage = homePageItem.getStringValue();
+        String homePage = getHomePage();
         logger.info(String.format("Generating home page = <%s>", homePage));
         return String.format("<a href='view?screen=%s'>Home</a>", homePage);
     }
@@ -71,7 +70,7 @@ public class WebHelper {
     }
 
     public String getHomePage() {
-        return request.getServletContext().getInitParameter("homePage");
+        return ((HomePage)(configuration.getConfigurationItem("homePage"))).get();
     }
 
     public String getScreenLink(String screenName, String linkName) {

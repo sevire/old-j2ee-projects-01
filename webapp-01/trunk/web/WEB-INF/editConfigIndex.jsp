@@ -55,6 +55,12 @@
                     <a href="addConfigItem">Add</a>
                  </td>
             </tr>
+            <tr>
+                <td colspan="8"></td>
+                <td>
+                    <a href="reloadConfiguration">Reload Configuration</a>
+                </td>
+            </tr>
         </table>
     </div>
 </div>

@@ -1,7 +1,8 @@
 package co.uk.genonline.simpleweb.controller;
 
+import co.uk.genonline.simpleweb.configuration.configitems.GalleryRoot;
+import co.uk.genonline.simpleweb.configuration.configitems.LoggingLevel;
 import co.uk.genonline.simpleweb.configuration.general.Configuration;
-import co.uk.genonline.simpleweb.configuration.general.ConfigurationManager;
 import co.uk.genonline.simpleweb.model.HibernateUtil;
 import co.uk.genonline.simpleweb.web.gallery.GalleryManager;
 import org.apache.log4j.*;
@@ -32,12 +33,8 @@ public class ContextListener implements ServletContextListener {
         Level level;
 
         System.out.format("contextInitialized called - is logging working?\n");
-        level = Level.toLevel(event.getServletContext().getInitParameter("loggingLevel"));
-        if (level == null) {
-            logger.setLevel(Level.ALL);
-        } else {
-            logger.setLevel(level);
-        }
+        level = Level.DEBUG; // Initial value until we have read configuration.
+        logger.setLevel(Level.DEBUG);
         FileAppender appender = getAppender(event, logPath);
         initLogger(null,appender,level);
         String contextPath = event.getServletContext().getContextPath();
@@ -53,11 +50,19 @@ public class ContextListener implements ServletContextListener {
 
         logger.info("Creating and saving ConfigManager");
 
-        ConfigurationManager configurationManager = new Configuration(factory);
+        Configuration configurationManager = new Configuration(factory);
         event.getServletContext().setAttribute("configuration", configurationManager);
 
+        level = ((LoggingLevel)configurationManager.getConfigurationItem("loggingLevel")).get();
+        if (level == null) {
+            logger.setLevel(Level.ALL);
+        } else {
+            logger.setLevel(level);
+        }
+
+
         logger.info("Creating and saving Gallery Manager in context attribute");
-        String galleryRoot = event.getServletContext().getInitParameter("galleryRoot");
+        String galleryRoot = ((GalleryRoot)configurationManager.getConfigurationItem("galleryRoot")).get();
 
         logger.info("Saving gallery root = " + galleryRoot);
         event.getServletContext().setAttribute("Galleries", new GalleryManager(event.getServletContext()));

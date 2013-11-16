@@ -75,6 +75,8 @@ public class ActionFactory {
             action = new EditIndexDisplayForm(request, response, factory, data);
         } else if (command.equals("/editConfigIndex")) {
             action = new EditConfigIndexDisplayForm(request, response, factory, data);
+        } else if (command.equals("/reloadConfiguration")) {
+            action = new ReloadConfigAction(request, response, factory, data);
         } else if (command.equals("/delete")) {
             status.resetStatusMessage();
             action = new DeleteScreen(request, response, factory, data);

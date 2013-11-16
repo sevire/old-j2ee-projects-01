@@ -27,7 +27,7 @@
     </context-param>
     <context-param>
         <param-name>thumbnailRelPath</param-name>
-        <param-value>thumbnails</param-value>
+        <param-value>thumb</param-value>
     </context-param>
     <context-param>
         <param-name>maxThumbnailWidth</param-name>
@@ -94,6 +94,10 @@
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>
         <url-pattern>/editConfigItem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller</servlet-name>
+        <url-pattern>/reloadConfiguration</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>
