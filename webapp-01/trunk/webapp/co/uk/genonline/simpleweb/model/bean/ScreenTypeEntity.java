@@ -9,7 +9,7 @@ import javax.persistence.*;
  * Time: 17:31
  * To change this template use File | Settings | File Templates.
  */
-@Table(name = "Screen_type", schema = "", catalog = "lda_dev")
+@Table(name = "Screen_type", schema = "", catalog = "lda_v02")
 @Entity
 public class ScreenTypeEntity {
     private int id;

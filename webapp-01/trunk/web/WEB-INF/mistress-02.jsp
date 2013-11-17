@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <link rel="stylesheet" href="css/main.css" type="text/css" media="all">
     <link rel="icon" type="image/png" href="favicon.png">
-    <title>(mistress-02)Lucifer's Dark Angel - ${helper.screen.screenTitleLong}</title>
+    <title>Lucifer's Dark Angel - ${helper.screen.screenTitleLong}</title>
 </head>
 
 <body id='${helper.screen.name}'>

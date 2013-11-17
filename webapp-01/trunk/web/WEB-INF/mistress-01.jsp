@@ -5,7 +5,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <link rel="icon" type="image/png" href="favicon.png">
-    <title>(mistress-01)Lucifer's Dark Angel - ${helper.screen.screenTitleLong}</title>
+    <title>Lucifer's Dark Angel - ${helper.screen.screenTitleLong}</title>
     <link rel="shortcut icon" href="../favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="css/main.css" type="text/css" media="all">

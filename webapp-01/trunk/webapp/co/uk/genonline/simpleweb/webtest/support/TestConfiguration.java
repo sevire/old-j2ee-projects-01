@@ -24,7 +24,7 @@ public enum TestConfiguration {
             "http://lucifersdarkangel.co.uk/",
             "lda/"),
     J2EE_LOCAL_DEV(
-            true,
+            false,
             WebsitePlatform.J2EE,
             "http://localhost:8080/",
             "lda/"),
@@ -39,7 +39,7 @@ public enum TestConfiguration {
             "http://31.193.143.174/",
             "lda/"),
     J2EE_REMOTE_LIVE(
-            false,
+            true,
             WebsitePlatform.J2EE,
             "http://lucifersdarkangel.co.uk/",
             "lda/"); // This won't work until we go live
