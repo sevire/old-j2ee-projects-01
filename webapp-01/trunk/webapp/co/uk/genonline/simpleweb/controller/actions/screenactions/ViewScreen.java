@@ -4,6 +4,7 @@ import co.uk.genonline.simpleweb.controller.actions.ActionData;
 import co.uk.genonline.simpleweb.controller.actions.RequestResult;
 import co.uk.genonline.simpleweb.controller.screendata.ScreenData;
 import co.uk.genonline.simpleweb.controller.screendata.ScreenDataFactory;
+import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
 import org.hibernate.SessionFactory;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +24,11 @@ public class ViewScreen extends ScreenAction {
     }
 
     public RequestResult perform() {
-        String screenType = data.getScreen().getScreenDisplayType();
+        screen.setName(request.getParameter("screen"));
+        ScreensEntity screenRecord = screenBeanManager.getScreen(screen);
+        String screenType = screenRecord.getScreenDisplayType();
+
+        logger.debug(String.format("Screen = <%s>, display type = <%s>", data.getScreen().getName(), screenType));
         if (screenType == null || screenType.equals("")) {
             screenType = "mistress-01";
         }
