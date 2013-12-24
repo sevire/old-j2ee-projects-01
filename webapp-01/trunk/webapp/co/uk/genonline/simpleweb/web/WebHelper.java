@@ -66,7 +66,7 @@ public class WebHelper {
     }
 
     public String generateBlogLink() {
-        return "<a href='http://lucifersdarkangel.co.uk/lucina-blog'>Blog</a>";
+        return "<a href='http://manchestermistresslucina.blogspot.co.uk/'>Blog</a>";
     }
 
     public String getHomePage() {

@@ -11,7 +11,7 @@
     <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow&v1' rel='stylesheet' type='text/css' />
     <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css' />
     <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
-    <link rel="stylesheet" href="css/mistress-02.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/mistress-03.css" type="text/css" media="all">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="stylesheet" type="text/css" href="css/elastislide.css" />

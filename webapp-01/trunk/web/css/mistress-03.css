@@ -1,5 +1,5 @@
 body {
-    background: #b9b5b3;
+    background: url(../site_images/background-v06.png) top left #b9b5b3;
     font-family: 'Open Sans' Arial sans-serif;
     font-size: 80%;
 }
@@ -78,6 +78,7 @@ span.first {
 
 div#header {
     border-radius: 30px;
+    border: solid 1px #b21227;
     background-color: #000000;
     padding: 30px;
     text-align: center;

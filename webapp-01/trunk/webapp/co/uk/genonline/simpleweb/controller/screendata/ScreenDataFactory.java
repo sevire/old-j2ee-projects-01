@@ -17,6 +17,8 @@ public class ScreenDataFactory {
             return new Mistress01ScreenData();
         } else if (screenType.equals("mistress-02")) {
             return new Mistress02ScreenData();
+        } else if (screenType.equals("mistress-03")) {
+            return new Mistress03ScreenData();
         } else {
             return new DefaultScreenData();
         }
