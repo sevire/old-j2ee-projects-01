@@ -66,7 +66,7 @@
         </div>
     </div>
     <ul class='mainLinkBar'>
-        <li class='headerLink'>${screenData.homePage}</li>
+        <li class='headerLink'>${screenData.homePageLink}</li>
         <li class='headerLink'>${screenData.blogLink}</li>
         <li class='headerLink'><core:out value="${screenData.mistressPageLink}" escapeXml="false"/></li>
         <li class='headerLink'><a href="http://groups.yahoo.com/group/lucifersdarkangel/">Yahoo!&nbsp;Group</a></li>
@@ -103,7 +103,7 @@
 
     <div id="footer">
         <ul class='mainLinkBar'>
-            <li class='headerLink'>${screenData.homePage}</li>
+            <li class='headerLink'>${screenData.homePageLink}</li>
             <li class='headerLink'>${screenData.blogLink}</li>
             <li class='headerLink'><core:out value="${screenData.mistressPageLink}" escapeXml="false"/></li>
             <li class='headerLink'><a href="http://groups.yahoo.com/group/lucifersdarkangel/">Yahoo!&nbsp;Group</a></li>

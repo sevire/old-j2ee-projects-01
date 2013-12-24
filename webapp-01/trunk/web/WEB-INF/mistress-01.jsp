@@ -52,7 +52,7 @@
         </div>
         <div class='header'>
             <ul>
-                <li class='headerLink'>${screenData.homePage}</li>
+                <li class='headerLink'>${screenData.homePageLink}</li>
                 <core:if test='${screenData.blogLink != null}'>
                     <li class='headerLink'>${screenData.blogLink}</li>
                 </core:if>

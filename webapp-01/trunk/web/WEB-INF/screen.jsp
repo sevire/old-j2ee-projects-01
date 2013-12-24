@@ -51,7 +51,7 @@
         </div>
         <div class='header'>
             <ul>
-                <li class='headerLink'>${mistressScreenData.homePage}</li>
+                <li class='headerLink'>${mistressScreenData.homePageLink}</li>
                 <core:if test='${mistressScreenData.blogLink != null}'>
                     <li class='headerLink'>${mistressScreenData.blogLink}</li>
                 </core:if>

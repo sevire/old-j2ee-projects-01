@@ -1,6 +1,7 @@
 package co.uk.genonline.simpleweb.controller.screendata;
 
 import co.uk.genonline.simpleweb.configuration.configitems.BlogEnabled;
+import co.uk.genonline.simpleweb.configuration.configitems.HomePage;
 import co.uk.genonline.simpleweb.configuration.general.Configuration;
 import co.uk.genonline.simpleweb.controller.RequestStatus;
 import co.uk.genonline.simpleweb.controller.WebLogger;
@@ -28,41 +29,12 @@ public class MistressScreenData implements ScreenData {
     private WebLogger logger = new WebLogger();
     private String chambersLinkBar;
     private String mistressPageLink;
-    private String homePage;
+    private String homePageLink;
     private String maxThumbnailWidth;
     private String maxThumbnailHeight;
     private String blogLink;
     private String galleryHtml;
     private ScreensEntity screen;
-
-    public String getHomePage() {
-        return homePage;
-    }
-
-    public void setHomePage(String homePage) {
-        this.homePage = homePage;
-    }
-
-    public String getMaxThumbnailWidth() {
-        return maxThumbnailWidth;
-    }
-
-    public void setMaxThumbnailWidth(String maxImgWidth) {
-        this.maxThumbnailWidth = maxImgWidth;
-    }
-
-    public String getMaxThumbnailHeight() {
-        return maxThumbnailHeight;
-    }
-
-    public void setMaxThumbnailHeight(String maxImgHeight) {
-        this.maxThumbnailHeight = maxImgHeight;
-    }
-
-
-    public String getJSPname() {
-        return "";  // Need to extend for each jsp used
-    }
 
     public RequestResult setScreenData(HttpServletRequest request,
                                        HttpServletResponse response,
@@ -79,12 +51,12 @@ public class MistressScreenData implements ScreenData {
 
         status.resetStatusMessage();
         if (getScreen().getName() == null || getScreen().getName().equals("")) {
-            getScreen().setName(webHelper.getHomePage());
+            getScreen().setName(((HomePage) configuration.getConfigurationItem("homePage")).getStringValue());
         }
         logger.info("view: screen is " + getScreen().getName());
         setChambersLinkBar(webHelper.generateLinkBarCategory("Chambers"));
         setMistressPageLink(webHelper.getScreenLink("mistresses", screenBeanManager.getShortName("mistresses")));
-        setHomePage(webHelper.generateHomeLink());
+        setHomePageLink(webHelper.generateHomeLink());
         setMaxThumbnailWidth(((configuration.getConfigurationItem("maxThumbnailWidth"))).getStringValue());
         setMaxThumbnailHeight(((configuration.getConfigurationItem("maxThumbnailHeight"))).getStringValue());
 
@@ -129,6 +101,35 @@ public class MistressScreenData implements ScreenData {
                 return new RequestResult(request, "error.jsp", false);
             }
         }
+    }
+
+    public String getHomePageLink() {
+        return homePageLink;
+    }
+
+    public void setHomePageLink(String homePageLink) {
+        this.homePageLink = homePageLink;
+    }
+
+    public String getMaxThumbnailWidth() {
+        return maxThumbnailWidth;
+    }
+
+    public void setMaxThumbnailWidth(String maxImgWidth) {
+        this.maxThumbnailWidth = maxImgWidth;
+    }
+
+    public String getMaxThumbnailHeight() {
+        return maxThumbnailHeight;
+    }
+
+    public void setMaxThumbnailHeight(String maxImgHeight) {
+        this.maxThumbnailHeight = maxImgHeight;
+    }
+
+
+    public String getJSPname() {
+        return "";  // Need to extend for each jsp used
     }
 
     public void setChambersLinkBar(String linkBar) {

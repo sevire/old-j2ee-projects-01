@@ -1,7 +1,6 @@
 package co.uk.genonline.simpleweb.web;
 
 import co.uk.genonline.simpleweb.configuration.general.Configuration;
-import co.uk.genonline.simpleweb.configuration.configitems.HomePage;
 import co.uk.genonline.simpleweb.controller.WebLogger;
 import co.uk.genonline.simpleweb.model.bean.ScreenBeanManager;
 import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
@@ -60,7 +59,7 @@ public class WebHelper {
     }
 
     public String generateHomeLink() {
-        String homePage = getHomePage();
+        String homePage = configuration.getConfigurationItem("homePage").getStringValue();
         logger.info(String.format("Generating home page = <%s>", homePage));
         return String.format("<a href='view?screen=%s'>Home</a>", homePage);
     }
@@ -69,10 +68,12 @@ public class WebHelper {
         return "<a href='http://manchestermistresslucina.blogspot.co.uk/'>Blog</a>";
     }
 
+/*
     public String getHomePage() {
         return ((HomePage)(configuration.getConfigurationItem("homePage"))).get();
     }
 
+*/
     public String getScreenLink(String screenName, String linkName) {
         ScreensEntity screenData = new ScreensEntity();
         getScreenIntoBean(screenData, screenName);
