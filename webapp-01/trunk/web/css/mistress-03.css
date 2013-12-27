@@ -1,5 +1,5 @@
 body {
-    background: url(../site_images/background-v06.png) top left #b9b5b3;
+    background: url(../site_images/background-v07.png) top left #b9b5b3;
     font-family: 'Open Sans' Arial sans-serif;
     font-size: 80%;
 }
@@ -78,7 +78,7 @@ span.first {
 
 div#header {
     border-radius: 30px;
-    border: solid 1px #b21227;
+    /*border: solid 1px #b21227;*/
     background-color: #000000;
     padding: 30px;
     text-align: center;
@@ -176,7 +176,7 @@ ul.mainLinkBar {
 
 ul.mainLinkBar li {
     border-radius: 15px;
-    background-color: #b21227;
+    background-color: #ffffff;
     display: inline;
     padding: 5px 20px;
     margin-top: 15px;
@@ -187,11 +187,13 @@ ul.mainLinkBar li a {
 }
 
 ul.mainLinkBar li a:visited {
-    color: #000000;
+    /*color: #000000;*/
+    color: #8a8188;
 }
 
 ul.mainLinkBar li a:hover {
-    color: #8a8188;
+    /*color: #8a8188;*/
+    color: #e09cab;
 }
 
 div#leftColumn ul {
@@ -220,4 +222,10 @@ div#leftColumn ul li a:visited {
 
 div#leftColumn ul li a:hover {
     color: #e09cab;
+}
+
+div#pageText img.imageTop {
+    display: block;
+    width: 150px;
+    margin: 0 auto;
 }
