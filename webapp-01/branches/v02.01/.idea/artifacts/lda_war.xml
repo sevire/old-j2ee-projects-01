@@ -1,0 +1,15 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="lda-war">
+    <output-path>/usr/local/apache-tomcat-7.0.42/webapps</output-path>
+    <root id="archive" name="lda##012.war">
+      <element id="artifact" artifact-name="lda-exp" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="commons-logging-1.1.3" />
+          <element id="library" level="project" name="jstl-1.2.1" />
+          <element id="library" level="module" name="hibernate-4.2.2" module-name="WebApp" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
