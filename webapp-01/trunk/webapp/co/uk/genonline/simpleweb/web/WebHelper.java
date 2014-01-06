@@ -4,6 +4,7 @@ import co.uk.genonline.simpleweb.configuration.general.Configuration;
 import co.uk.genonline.simpleweb.controller.WebLogger;
 import co.uk.genonline.simpleweb.model.bean.ScreenBeanManager;
 import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
+import co.uk.genonline.simpleweb.web.gallery.ImageFileFilter;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,13 +12,20 @@ import org.hibernate.criterion.Restrictions;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileFilter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 /**
  * Created with IntelliJ IDEA.
  * User: thomassecondary
  * Date: 10/06/2012
  * Time: 09:36
- * To change this template use File | Settings | File Templates.
+ *
+ * Contains a number of utility methods for generating elements of a web page for the website.
  */
 public class WebHelper {
     WebLogger logger;
@@ -117,6 +125,43 @@ public class WebHelper {
         screen.setScreenTitleLong(request.getParameter("screenTitleLong"));
         screen.setScreenTitleShort(request.getParameter("screenTitleShort"));
         screen.setScreenType(request.getParameter("screenType"));
+    }
+
+    /**
+     * Created to allow the left and right header images to be selected at random but will become a more
+     * general purpose method for selecting images from a folder at random.
+     *
+     *
+     * @param imagePath
+     * @param numberOfImages
+     *
+     * @return
+     */
+    public List<String> selectRandomImage(String imagePath, int numberOfImages) {
+
+        List<String> outputImages = new ArrayList<String>();
+        String webRootFullPath = this.request.getServletContext().getRealPath("/");
+        File imagePathFile = new File(webRootFullPath + File.separator + imagePath);
+
+        // Set up to get listing of all image files within imagePath
+
+        String[] extensions = {"jpg", "png", "jpeg"};
+        FileFilter filter = new ImageFileFilter(extensions);
+        File inputImages[] = imagePathFile.listFiles(filter);
+        List<File> inputImageList = new ArrayList<File>(Arrays.asList(inputImages));
+
+        /**
+         * Iterate for each image file to be selected. Pick random file from those which are still in input array,
+         * then remove that file from input and move to output.
+         */
+        Random random = new Random();
+        int randomNum;
+        for (int i=0; i<numberOfImages; i++) {
+            randomNum = random.nextInt(inputImageList.size());
+            outputImages.add(inputImageList.get(randomNum).getName());
+            inputImageList.remove(randomNum);
+        }
+        return outputImages;
     }
 }
  

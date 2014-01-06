@@ -40,7 +40,7 @@
         </div>
     </script>
     <link rel="icon" type="image/png" href="favicon.png">
-    <title>Princess Lucina - ${helper.screen.screenTitleLong}</title>
+    <title>Princess Lucina - ${screenData.screen.screenTitleLong}</title>
 </head>
 
 <body id='${helper.screen.name}'>
@@ -53,7 +53,7 @@
             <p class='rightFloat'>Email me on <a href='mailto:princess_lucina@yahoo.co.uk'>princess_lucina@yahoo.co.uk</a></p>
         </div>
         <div id='leftImage' class='headerImage'>
-            <img height='250px' src='site_images/B61RedDress.png' />
+            <img height='250px' src='site_images/${screenData.headerImageLeft}' />
         </div>
         <div id='innerHeader'>
             <div id="banner">
@@ -62,7 +62,7 @@
             </div>
         </div>
         <div id='rightImage' class='headerImage'>
-            <img height='250px' src='site_images/B52.png' />
+            <img height='250px' src='site_images/${screenData.headerImageRight}' />
         </div>
     </div>
     <ul class='mainLinkBar'>

@@ -20,7 +20,7 @@ import java.io.IOException;
 public class Gallery {
 
     private String galleryName;
-    private GalleryHelper helper;
+    private GalleryHelper galleryHelper;
 
     private String html;
     private int imagesAdded = 0;
@@ -28,7 +28,7 @@ public class Gallery {
 
     Gallery(GalleryHelper helper, String galleryName) {
 
-        this.helper = helper;
+        this.galleryHelper = helper;
         this.galleryName = galleryName;
 
         html = null;
@@ -56,8 +56,8 @@ public class Gallery {
             } else {
                 int height = bufferedImage.getHeight();
                 int width = bufferedImage.getWidth();
-                float widthScaleFactor = helper.getMaxThumbnailWidth() / (float)width;
-                float heightScaleFactor = helper.getMaxThumbnailHeight() / (float)height;
+                float widthScaleFactor = galleryHelper.getMaxThumbnailWidth() / (float)width;
+                float heightScaleFactor = galleryHelper.getMaxThumbnailHeight() / (float)height;
 
                 float scaleFactor = Math.min(widthScaleFactor, heightScaleFactor);
 
@@ -86,39 +86,39 @@ public class Gallery {
     }
 
     private File getGalleryImageFile(File imageFile) {
-        return new File(helper.getGalleryFullPathFile(galleryName), imageFile.getName());
+        return new File(galleryHelper.getGalleryFullPathFile(galleryName), imageFile.getName());
     }
 
     private File getGalleryThumbnailImageFile(File imageFile) {
-        return new File(helper.getGalleryFullPathFile(galleryName),  helper.getThumbnailRelPath() + File.separator + imageFile.getName());
+        return new File(galleryHelper.getGalleryFullPathFile(galleryName),  galleryHelper.getThumbnailRelPath() + File.separator + imageFile.getName());
     }
 
     public String getHTML() {
-        if (helper.isForceGallery() || html == null) {
-            if (!helper.getGalleryFullPathFile(galleryName).isDirectory()) {
-                logger.error(String.format("Gallery path for <%s> isn't a directory, can't generate gallery", helper.getGalleryFullPathFile(galleryName)));
+        if (galleryHelper.isForceGallery() || html == null) {
+            if (!galleryHelper.getGalleryFullPathFile(galleryName).isDirectory()) {
+                logger.error(String.format("Gallery path for <%s> isn't a directory, can't generate gallery", galleryHelper.getGalleryFullPathFile(galleryName)));
             } else {
                 html = "";
                 String[] extensions = {"jpg", "png", "jpeg"};
                 FileFilter filter = new ImageFileFilter(extensions);
-                File list[] = helper.getGalleryFullPathFile(galleryName).listFiles(filter);
+                File list[] = galleryHelper.getGalleryFullPathFile(galleryName).listFiles(filter);
                 logger.info(String.format("%d images for gallery <%s>", list.length, galleryName));
                 if (list.length <= 0) {
                     logger.warn(String.format("No images for gallery <%s>, not creating", galleryName));
                 } else {
-                    if (helper.isForceThumbnails() && helper.getThumbnailDirFullPathFile(galleryName).isDirectory()) {
+                    if (galleryHelper.isForceThumbnails() && galleryHelper.getThumbnailDirFullPathFile(galleryName).isDirectory()) {
                         try {
                             logger.info(String.format("Force deleting thumbnail folder for <%s>", galleryName));
-                            FileUtils.deleteDirectory(helper.getThumbnailDirFullPathFile(galleryName));
+                            FileUtils.deleteDirectory(galleryHelper.getThumbnailDirFullPathFile(galleryName));
                         } catch (IOException e) {
                             logger.error(String.format("Couldn't delete thumbnail folder", galleryName));
                         }
                     }
                     // May have deleted thumbnail folder or it may have not been created - so check.
 
-                    if (!helper.getThumbnailDirFullPathFile(galleryName).isDirectory()) {
-                        logger.error(String.format("Thumbnail path for <%s> doesn't exist, try to create", helper.getGalleryFullPathFile(galleryName)));
-                        if (!helper.getThumbnailDirFullPathFile(galleryName).mkdir()) {
+                    if (!galleryHelper.getThumbnailDirFullPathFile(galleryName).isDirectory()) {
+                        logger.error(String.format("Thumbnail path for <%s> doesn't exist, try to create", galleryHelper.getGalleryFullPathFile(galleryName)));
+                        if (!galleryHelper.getThumbnailDirFullPathFile(galleryName).mkdir()) {
                             logger.error(String.format("Couldn't create thumbnail folder - abandon Gallery!"));
                             return html; // Need to ensure no html is generated up to this point
                         }
@@ -131,7 +131,7 @@ public class Gallery {
                         logger.debug(String.format("Processing file <%s> within gallery <%s>", file, galleryName));
                         File imageFile = getGalleryImageFile(file);
                         File thumbnailFile = getGalleryThumbnailImageFile(file);
-                        if (generateThumbnail(imageFile, thumbnailFile, helper.isForceThumbnails())) {
+                        if (generateThumbnail(imageFile, thumbnailFile, galleryHelper.isForceThumbnails())) {
                             addLItoULelement(file.getName());
                         }
                     }
@@ -153,7 +153,7 @@ public class Gallery {
     private void addLItoULelement(String imageName) {
 
         String fs = File.separator;
-        String thumbPath = fs + galleryName + fs + helper.getThumbnailRelPath() + fs + imageName;
+        String thumbPath = fs + galleryName + fs + galleryHelper.getThumbnailRelPath() + fs + imageName;
         String imagePath = fs + galleryName + fs + imageName;
         String thumbRelPath = getHTMLRelPath(thumbPath);
         String imageRelPath = getHTMLRelPath(imagePath);
@@ -164,7 +164,7 @@ public class Gallery {
     }
 
     private void addImageToHTML(String imageName) {
-        if (imagesAdded % helper.getNumGalleryColumns() == 0) {
+        if (imagesAdded % galleryHelper.getNumGalleryColumns() == 0) {
             // Last row is full so starting new row
             // Begin by terminating previous row, but only if there is one
 
@@ -176,21 +176,21 @@ public class Gallery {
 
         // add this image as td element
 
-        String imgPath = galleryName + File.separator + helper.getThumbnailRelPath() + File.separator + imageName;
+        String imgPath = galleryName + File.separator + galleryHelper.getThumbnailRelPath() + File.separator + imageName;
         String imgSrc = getHTMLRelPath(imgPath);
         logger.trace(String.format("Image source is <%s>", imgSrc));
 
         String img = String.format("<img src='%s' />%n", imgSrc);
 
         String anchor = String.format("<a href='%s/viewImage?gallery=%s&image=%s'>%s</a>%n",
-                helper.getContextPath(), galleryName, imageName, img);
+                galleryHelper.getContextPath(), galleryName, imageName, img);
 
         html += String.format("<td>%n%s</td>%n", anchor);
         imagesAdded++;
     }
 
     private String getHTMLRelPath(String path) {
-        return helper.getGalleryRootRelPath() + File.separator + path;
+        return galleryHelper.getGalleryRootRelPath() + File.separator + path;
     }
 
     /**

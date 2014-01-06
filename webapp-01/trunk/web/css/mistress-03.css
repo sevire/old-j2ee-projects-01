@@ -102,6 +102,11 @@ div.headerImage {
     margin-top: 10px;
 }
 
+div.headerImage img {
+    max-width: 200px;
+    max-height: 250px;
+}
+
 div#leftImage {
     float: left;
 }
