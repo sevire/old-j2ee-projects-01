@@ -1,5 +1,5 @@
 body {
-    background: url(../site_images/background-v07.png) top left #b9b5b3;
+    background: url(../site_images/background-v06.png) top left #b9b5b3;
     font-family: 'Open Sans' Arial sans-serif;
     font-size: 80%;
 }
@@ -170,6 +170,14 @@ div#content {
 div#footer {
     clear:both;
     text-align:center;
+}
+
+div#contact {
+    clear: both;
+    background: black;
+    color: #3f3f3f;
+    font-size: 50%;
+    text-align: center;
 }
 
 ul.mainLinkBar {
