@@ -11,8 +11,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="03fdf521-209b-4654-a976-0dbf9d87148b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/site_images/sarahjessica.jpg" afterPath="$PROJECT_DIR$/web/site_images/sarahjessica.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/deployment.xml" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/mistress.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/site_images/header_images/B44-cropped.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/site_images/header_images/B61BlueDress.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/site_images/header_images/B61PurpleDress.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/site_images/header_images/PLHomepage01v01.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ManchesterGoddesses(java).iws" />
@@ -1146,7 +1149,7 @@
       <workItem from="1395681952555" duration="69000" />
       <workItem from="1395906850474" duration="7311000" />
       <workItem from="1396297447812" duration="110000" />
-      <workItem from="1396386069337" duration="5140000" />
+      <workItem from="1396386069337" duration="5376000" />
     </task>
     <task id="LOCAL-00001" summary="[#2] Enhancing functionality of edit page to include a heading line and first 40 characters of the text etc.  Not finished yet.">
       <created>1339571907164</created>
@@ -1524,11 +1527,15 @@
       <created>1396297549111</created>
       <updated>1396297549111</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL-00099" summary="[#188] Changes to ensure dev website reflects live after emergency changes.">
+      <created>1396635865105</created>
+      <updated>1396635865105</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103204000" />
+    <option name="totallyTimeSpent" value="103440000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1651,7 +1658,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Committing after creating an application which actually runs.  See [#131]" />
     <MESSAGE value="Committing after creating an application which actually runs (after adding the moved testing files)  See [#131]" />
     <MESSAGE value="Renamed main app source code to webapp - results in a lot of files being moved between old and new folder in subversion.  See [#133]." />
     <MESSAGE value="Commit after changes to get app working and consistent with current live.  [#136]" />
@@ -1676,7 +1682,8 @@
     <MESSAGE value="First attempt at creating a branch.  Am using this for significant re-factoring of app around cleaner design and web service approach (should help to make website more Ajaxy!)" />
     <MESSAGE value="[#163] Changes to allow left and right header images to change randomly based on a set of images stored in a named folder.  Change complete and basic testing complete." />
     <MESSAGE value="Various changes - again I haven't structured them well.  Included test of video files." />
-    <option name="LAST_COMMIT_MESSAGE" value="Various changes - again I haven't structured them well.  Included test of video files." />
+    <MESSAGE value="[#188] Changes to ensure dev website reflects live after emergency changes." />
+    <option name="LAST_COMMIT_MESSAGE" value="[#188] Changes to ensure dev website reflects live after emergency changes." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
