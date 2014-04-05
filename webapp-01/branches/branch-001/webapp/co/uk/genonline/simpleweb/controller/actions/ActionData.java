@@ -9,6 +9,9 @@ import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
  * Date: 17/06/2013
  * Time: 08:24
  *
+ * This class is used to store everything which needs to be persisted between requests for a session.  Will be stored
+ * as a parameter within the HttpSession variable and retrieved for each new request relating to that session.
+ *
  * Encapsulates data objects used by the application (e.g. Screen, ConfigItems)
  */
 public class ActionData {

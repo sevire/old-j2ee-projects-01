@@ -140,8 +140,7 @@
             <SvnBranchConfiguration>
               <option name="branchUrls">
                 <list>
-                  <option value="https://tbg01.svn.beanstalkapp.com:443/j2ee-projects/webapp-01/branches" />
-                  <option value="https://tbg01.svn.beanstalkapp.com:443/j2ee-projects/webapp-01/tags" />
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/branches/v02.01" />
                 </list>
               </option>
               <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com:443/j2ee-projects/webapp-01/trunk" />

@@ -15,6 +15,15 @@ import java.io.IOException;
 /**
  * Controller for the website.  All requests are routed through this class.
  *
+ * Here is the sequence of events for dealing with a request:
+ *
+ * - Controller receives the request as a GET or POST
+ * - Controller passes request (and response) to Controller Helper via processRequest method
+ * - Controller also passes a SessionFactory object (factory) to helper.  This was initialised
+ *   by the ContextListener object at context (application) startup.
+ * - processRequest method deals with all requests and returns either a jsp to forward the request to
+ *   or a url to send back as a re-direct to the client (browser).
+ *
  * It may be appropriate to split this into two or more controllers, but at the moment it isn't clear
  * whether this is going to make things better - possibly having a separate controller for admin may be
  * appropriate as I could put different security around it.
@@ -49,7 +58,7 @@ public class Controller extends HttpServlet {
 
     /**
      *
-     * Mandated method used to process any request sent using POST method.  In practice this method
+     * Mandated method used to process any request sent using GET method.  In practice this method
      * will always call processRequest which is a common method for any request.  This avoids having to
      * repeat code or move code around if I change the request method.
      *

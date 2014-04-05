@@ -7,7 +7,13 @@ import co.uk.genonline.simpleweb.controller.WebLogger;
  * User: thomassecondary
  * Date: 07/08/2012
  * Time: 08:02
- * To change this template use File | Settings | File Templates.
+ *
+ * Supertype used within Controller (ControllerHelper) to process incoming requests. Each request will need
+ * a sub-type of this class.  The appropriate sub-type of Action is selected by ActionFactory on the
+ * incoming request.
+ *
+ * The `perform()` method
+ * is the abstr
  */
 public abstract class Action {
 
