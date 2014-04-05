@@ -14,9 +14,9 @@ import java.util.Map;
  */
 public class GalleryManager {
 
-    private GalleryHelper helper;
+    private final GalleryHelper helper;
 
-    private Map<String, Gallery> galleries;
+    private final Map<String, Gallery> galleries;
 
     private File galleryFullPathFile; // Used in IO operations
     private String galleryRelPath; // Used for references in HTML (<a> and <img>)
@@ -26,7 +26,7 @@ public class GalleryManager {
         galleries = new HashMap<String, Gallery>();
     }
 
-    public void addGallery(String galleryName) {
+    void addGallery(String galleryName) {
         galleries.put(galleryName, new Gallery(helper, galleryName));
     }
 

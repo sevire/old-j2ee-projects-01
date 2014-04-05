@@ -12,15 +12,15 @@ package co.uk.genonline.simpleweb.controller;
  * order to do that the status has to be maintained at session level.
  */
 public class RequestStatus {
-    String statusMessage;
+    private String statusMessage;
 
     /**
      * Used to indicate the severity of the message. Strictly speaking should be Enum but is String for now.
      * Values are 'info', 'warning', 'error'.  Used within editIndex.jsp as class of status message element which
      * is picked up by css to generate a different colour for different status types.
      */
-    String statusType;
-    boolean messageDisplayed; // Used to indicate whether a message has been displayed yet
+    private String statusType;
+    private boolean messageDisplayed; // Used to indicate whether a message has been displayed yet
 
     public boolean isMessageDisplayed() {
         return messageDisplayed;

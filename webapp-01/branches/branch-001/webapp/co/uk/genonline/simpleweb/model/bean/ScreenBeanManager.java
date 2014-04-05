@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Timestamp;
 import java.util.HashMap;
@@ -28,29 +29,27 @@ import java.util.Map;
  * practice I only need to worry about Screens.
  */
 public class ScreenBeanManager {
-    ScreensEntity screenBean;
-    SessionFactory factory;
-    WebLogger logger = new WebLogger();
+    private ScreensEntity screenBean;
+    private final SessionFactory factory;
+    private final WebLogger logger = new WebLogger();
 
     public ScreenBeanManager(SessionFactory factory) {
         //this.screenBean = screenBean;
         this.factory = factory;
     }
 
-    public List<ScreensEntity> getAllScreens() {
+    public List getAllScreens() {
         Session session = factory.openSession();
         String query = String.format("from ScreensEntity s order by screenType, sortKey");
         logger.debug("About to execute HQL query : " + query);
-        java.util.List pages = session.createQuery(query).list();
-        return pages;
+        return session.createQuery(query).list();
     }
 
-    public List<ScreensEntity> getCategoryScreens(String category) {
+    public List getCategoryScreens(String category) {
         Session session = factory.openSession();
         String query = String.format("from ScreensEntity s where s.screenType = '%s' and s.enabledFlag = true order by sortKey", category);
         logger.debug("About to execute HQL query : " + query);
-        List pages = session.createQuery(query).list();
-        return pages;
+        return session.createQuery(query).list();
     }
 
     public ScreensEntity getScreen(ScreensEntity screen) {
@@ -120,16 +119,16 @@ public class ScreenBeanManager {
      */
     public void getRequestIntoScreenBean(HttpServletRequest request, ScreensEntity screen) {
 
-        Map requestMap = request.getParameterMap();
-        Map amendedMap = new HashMap();
+        Map<String, String[]> requestMap = request.getParameterMap();
+        Map<String,Serializable> amendedMap = new HashMap<String, Serializable>();
         amendedMap.putAll(requestMap);
-        if (amendedMap.get("enabledFlag") == null) {
+        if (null == amendedMap.get("enabledFlag")) {
             logger.info("enabledFlag from request is <null>");
             amendedMap.put("enabledFlag", "false");
         } else {
             logger.info("enabledFlag from request is <%s>", amendedMap.get("enabledFlag").toString());
         }
-        if (amendedMap.get("galleryFlag") == null) {
+        if (null == amendedMap.get("galleryFlag")) {
             logger.info("galleryFlag from request is <null>");
             amendedMap.put("galleryFlag", "false");
         } else {
@@ -156,7 +155,7 @@ public class ScreenBeanManager {
      * @param data
      * @param parameterMap
      */
-    public void fillBeanFromMap(Object data, Map parameterMap) {
+    void fillBeanFromMap(Object data, Map<String, Serializable> parameterMap) {
         try {
             BeanUtils.populate(data, parameterMap);
         } catch (IllegalAccessException e) {

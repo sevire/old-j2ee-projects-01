@@ -12,9 +12,9 @@ import org.apache.log4j.Level;
  * To change this template use File | Settings | File Templates.
  */
 public class ConfigurationItemLevel extends ConfigurationItem {
-    Level value;
+    private final Level value;
 
-    public ConfigurationItemLevel(String value) {
+    ConfigurationItemLevel(String value) {
         super();
         this.value = Level.toLevel(value);
         logger.debug(String.format("Instantiated value of <%s> is <%s>", getName(), getStringValue()));

@@ -10,14 +10,14 @@ import co.uk.genonline.simpleweb.controller.WebLogger;
  * @Time: 11:32
  */
 public abstract class ConfigurationItem {
-    protected WebLogger logger = new WebLogger();
+    protected final WebLogger logger = new WebLogger();
 
-    String value; // Note: value will be overridden in subclass depending upon type unless String
+    private String value; // Note: value will be overridden in subclass depending upon type unless String
 
     /**
      * Always have a constructor which takes a String value.  When sub-classing, add constructor for type of sub-class.
      *
-     * @param value
+     * @param value value of the ConfigurationItem.
      */
     public ConfigurationItem(String value) {
         this.value = value;
@@ -40,11 +40,11 @@ public abstract class ConfigurationItem {
      * In lowest level sub-class it will be the name of the config item.  In intermediate levels it may be set to the type
      * of the general purpose sub-class (such as int, bool etc).
      *
-     * @return
+     * @return Always returns "uninitialised" to help detect whether subclasses haven't overridden the constructor
      */
     public String getName() {
         return "uninitialised";
-    };
+    }
 
     // Type dependent getter needs to be added on sub-class
 

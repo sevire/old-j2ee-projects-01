@@ -11,7 +11,7 @@ import co.uk.genonline.simpleweb.configuration.general.ConfigurationItem;
  */
 public abstract class ConfigurationItemInt extends ConfigurationItem {
 
-    int value;
+    private int value;
 
     ConfigurationItemInt(int value) {
         super();
@@ -24,7 +24,7 @@ public abstract class ConfigurationItemInt extends ConfigurationItem {
         int convertedValue = 0;
         logger.debug(String.format("Instantiating <%s>, string value is <%s>...", getName(), value));
 
-        value.trim();
+        value = value.trim();
         try {
             convertedValue = Integer.parseInt(value);
             logger.debug(String.format("convertedValue is <%d>", convertedValue));

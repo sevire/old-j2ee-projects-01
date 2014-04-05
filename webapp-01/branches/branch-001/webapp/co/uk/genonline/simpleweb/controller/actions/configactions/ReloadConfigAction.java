@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  * To change this template use File | Settings | File Templates.
  */
 public class ReloadConfigAction extends Action {
-    HttpServletRequest request;
+    private final HttpServletRequest request;
     public ReloadConfigAction(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
         this.request = request;
     }

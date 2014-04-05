@@ -28,11 +28,11 @@ import java.util.Random;
  * Contains a number of utility methods for generating elements of a web page for the website.
  */
 public class WebHelper {
-    WebLogger logger;
-    SessionFactory factory;
-    HttpServletRequest request;
-    HttpServletResponse response;
-    Configuration configuration;
+    private final WebLogger logger;
+    private final SessionFactory factory;
+    private final HttpServletRequest request;
+    private final HttpServletResponse response;
+    private final Configuration configuration;
 
     public WebHelper(HttpServletRequest request, HttpServletResponse response) {
 
@@ -45,11 +45,11 @@ public class WebHelper {
         this.configuration = (Configuration)(request.getServletContext().getAttribute("configuration"));
     }
 
-    public String generateScreenLink(String name, String screenTitleShort) {
+    String generateScreenLink(String name, String screenTitleShort) {
         return String.format("<a href='view?screen=%s'>%s</a>",name, screenTitleShort);
     }
 
-    public String generateLinkBarItem(String name, String screenTitleShort) {
+    String generateLinkBarItem(String name, String screenTitleShort) {
         return String.format("<li class='headerLink'>%s</li>",
                 generateScreenLink(name, screenTitleShort));
     }
@@ -88,7 +88,7 @@ public class WebHelper {
         return String.format("<a href='view?screen=%s'>%s</a>", screenName, screenData.getScreenTitleShort());
     }
 
-    public void getScreenIntoBean(ScreensEntity screen, String screenName) {
+    void getScreenIntoBean(ScreensEntity screen, String screenName) {
         Session session = factory.openSession();
         Criteria criteria = session.createCriteria(ScreensEntity.class).add(Restrictions.eq("name", screenName));
         ScreensEntity dbBean = (ScreensEntity) criteria.uniqueResult();
@@ -114,8 +114,8 @@ public class WebHelper {
         boolean checked = request.getParameter("enabledFlag") == null ? false : request.getParameter("enabledFlag").equals("Enabled");
 
 */
-        boolean enabledChecked = request.getParameter("enabledFlag") == null ? false : request.getParameter("enabledFlag").equals("Enabled");
-        boolean galleryChecked = request.getParameter("galleryFlag") == null ? false : request.getParameter("galleryFlag").equals("Enabled");
+        boolean enabledChecked = request.getParameter("enabledFlag") != null && request.getParameter("enabledFlag").equals("Enabled");
+        boolean galleryChecked = request.getParameter("galleryFlag") != null && request.getParameter("galleryFlag").equals("Enabled");
 
         screen.setName(request.getParameter("name"));
         screen.setEnabledFlag(enabledChecked);

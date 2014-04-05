@@ -30,7 +30,7 @@ import java.io.IOException;
  *
  */
 public class Controller extends HttpServlet {
-    protected WebLogger logger = new WebLogger();
+    private final WebLogger logger = new WebLogger();
 
     /**
      * Calls parent constructor and initialises logger level in advance of reading in from configuration

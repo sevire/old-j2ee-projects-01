@@ -16,13 +16,13 @@ import javax.servlet.http.HttpServletResponse;
  * Time: 16:07
  * To change this template use File | Settings | File Templates.
  */
-public abstract class ConfigurationAction extends Action {
-    HttpServletRequest request;
-    HttpServletResponse response;
-    ActionData data;
-    SessionFactory factory;
-    ConfigurationEntity configItems;
-    RequestStatus status;
+abstract class ConfigurationAction extends Action {
+    final HttpServletRequest request;
+    private final HttpServletResponse response;
+    private final ActionData data;
+    final SessionFactory factory;
+    final ConfigurationEntity configItems;
+    final RequestStatus status;
 
     ConfigurationAction(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
         super();

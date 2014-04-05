@@ -11,7 +11,7 @@ import java.io.FileFilter;
  * To change this template use File | Settings | File Templates.
  */
 public class ImageFileFilter implements FileFilter {
-    String[] extensionList;
+    private final String[] extensionList;
 
     public ImageFileFilter(String[] extensionList) {
         this.extensionList = extensionList;

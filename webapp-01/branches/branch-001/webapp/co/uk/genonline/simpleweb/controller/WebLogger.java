@@ -16,10 +16,10 @@ import javax.servlet.http.HttpSession;
  * Logs more information about where message comes from, also removes need for initialisation
  */
 public class WebLogger {
-    StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
-    String loggerName = stackTraceElements[2].getClassName();
-    Logger logger;
-    String sessionInformation =  "(No Session) : ";
+    private final StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
+    private final String loggerName = stackTraceElements[2].getClassName();
+    private final Logger logger;
+    private String sessionInformation =  "(No Session) : ";
 
     public WebLogger() {
         logger = Logger.getLogger(loggerName);

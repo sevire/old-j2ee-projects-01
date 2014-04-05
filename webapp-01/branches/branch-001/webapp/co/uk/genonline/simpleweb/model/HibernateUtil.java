@@ -14,7 +14,7 @@ import org.hibernate.service.ServiceRegistryBuilder;
  * To change this template use File | Settings | File Templates.
  */
 public class HibernateUtil {
-    private static SessionFactory sessionFactory = buildSessionFactory();
+    private static final SessionFactory sessionFactory = buildSessionFactory();
     private static ServiceRegistry serviceRegistry;
 
     private static SessionFactory buildSessionFactory() {

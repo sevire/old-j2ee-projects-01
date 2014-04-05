@@ -3,7 +3,6 @@ package co.uk.genonline.simpleweb.web.gallery;
 import co.uk.genonline.simpleweb.configuration.configitems.*;
 import co.uk.genonline.simpleweb.configuration.general.Configuration;
 import co.uk.genonline.simpleweb.controller.WebLogger;
-import org.apache.log4j.Level;
 
 import javax.servlet.ServletContext;
 import java.io.File;
@@ -17,26 +16,26 @@ import java.io.File;
  * Includes a number of utility methods which support the creation and management of galleries for the website.
  */
 
-public class GalleryHelper {
-    WebLogger logger = new WebLogger();
+class GalleryHelper {
+    private final WebLogger logger = new WebLogger();
 
-    ServletContext context;
-    Configuration configuration;
-    String webRootFullPath;
+    private final ServletContext context;
+    private final Configuration configuration;
+    private final String webRootFullPath;
 
-    private boolean forceGallery; // Determines whether to re-generate gallery even if exists
-    private boolean forceThumbnails ; // Determines whether to re-generate thumbnails even if they exist
-    private String galleryRootRelPath; // Path from web root to parent gallery root (e.g. gallery)
+    private final boolean forceGallery; // Determines whether to re-generate gallery even if exists
+    private final boolean forceThumbnails ; // Determines whether to re-generate thumbnails even if they exist
+    private final String galleryRootRelPath; // Path from web root to parent gallery root (e.g. gallery)
     private String thumbnailRelPath; // Path from a gallery's folder to its thumbnail folder (e.g. thumbnail)
 
-    File galleryRootFullPathFile; // Full path to parent gallery root folder for file i/o operations
-    File galleryThumbnailFullPathFile;
+    private final File galleryRootFullPathFile; // Full path to parent gallery root folder for file i/o operations
+    private final File galleryThumbnailFullPathFile;
 
-    private String contextPath; // Used to help in constructing URLs for some links in gallery
+    private final String contextPath; // Used to help in constructing URLs for some links in gallery
 
-    int maxThumbnailWidth;
-    int maxThumbnailHeight;
-    int numGalleryColumns;
+    private int maxThumbnailWidth;
+    private int maxThumbnailHeight;
+    private int numGalleryColumns;
 
     public GalleryHelper(ServletContext context) {
         logger.debug("GalleryHelper: Constructor Started");

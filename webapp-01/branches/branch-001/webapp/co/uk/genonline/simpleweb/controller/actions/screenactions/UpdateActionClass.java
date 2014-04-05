@@ -33,7 +33,7 @@ abstract class UpdateActionClass extends ScreenAction {
         logger.debug("Screen contents from form...\n%s", request.getParameter("screenContents"));
         boolean errorFlag = false;
 
-        if (screen.equals("")) {
+        if (screen.getName().equals("")) {
             logger.info("Screen added/updated with blank name field - rejected");
             status.setStatusMessage("Name field must be populated", "error");
             errorFlag = true;

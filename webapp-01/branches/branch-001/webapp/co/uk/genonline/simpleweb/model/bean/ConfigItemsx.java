@@ -13,7 +13,7 @@ import javax.persistence.Id;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-public class ConfigItemsx {
+class ConfigItemsx {
     private String name;
 
     @Column(name = "name", nullable = false, insertable = true, updatable = true, length = 50, precision = 0)
@@ -46,9 +46,8 @@ public class ConfigItemsx {
         ConfigItemsx that = (ConfigItemsx) o;
 
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (value != null ? !value.equals(that.value) : that.value != null) return false;
+        return !(value != null ? !value.equals(that.value) : that.value != null);
 
-        return true;
     }
 
     @Override

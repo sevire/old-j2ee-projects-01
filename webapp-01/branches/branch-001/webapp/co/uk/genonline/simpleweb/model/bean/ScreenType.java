@@ -44,9 +44,8 @@ public class ScreenType {
         ScreenType that = (ScreenType) o;
 
         if (id != that.id) return false;
-        if (category != null ? !category.equals(that.category) : that.category != null) return false;
+        return !(category != null ? !category.equals(that.category) : that.category != null);
 
-        return true;
     }
 
     @Override

@@ -10,7 +10,7 @@ import co.uk.genonline.simpleweb.configuration.general.ConfigurationItem;
  * To change this template use File | Settings | File Templates.
  */
 public class ConfigurationItemBoolean extends ConfigurationItem {
-    boolean value;
+    private final boolean value;
 
     ConfigurationItemBoolean(boolean value) {
         super();

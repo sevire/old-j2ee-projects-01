@@ -14,7 +14,7 @@ import java.sql.Timestamp;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-public class Screensx {
+class Screensx {
     private int id;
 
     @Column(name = "id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)

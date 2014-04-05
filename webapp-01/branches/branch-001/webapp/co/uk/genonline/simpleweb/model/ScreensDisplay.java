@@ -9,18 +9,18 @@ import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
  * Time: 14:27
  * Allows what is displayed to vary from what is in the database (e.g. blank long name replaced by short name)
  */
-public class ScreensDisplay {
-    private ScreensEntity screen;
+class ScreensDisplay {
+    private final ScreensEntity screen;
 
     ScreensDisplay(ScreensEntity screen) {
         this.screen = screen;
     }
 
-    public String getName() {
+    String getName() {
         return screen.getName();
     }
 
-    public String getScreenTitleShort() {
+    String getScreenTitleShort() {
         String shortTitle = screen.getScreenTitleShort();
         if (shortTitle == null || shortTitle.equals("")) {
             return getName();

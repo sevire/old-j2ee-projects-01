@@ -23,9 +23,9 @@ import java.util.List;
  * ToDo Make a generic version of xxxBeanManager or find a more general way of solving the problem.
   */
 public class ConfigItemBeanManager {
-    WebLogger logger = new WebLogger();
-    ConfigurationEntity configBean;
-    SessionFactory factory;
+    private final WebLogger logger = new WebLogger();
+    private ConfigurationEntity configBean;
+    private final SessionFactory factory;
 
     public ConfigItemBeanManager(SessionFactory factory) {
         this.factory = factory;
@@ -45,7 +45,7 @@ public class ConfigItemBeanManager {
         configBean.setValue("");
     }
 
-    public List<Object> readConfigItems(SessionFactory factory) {
+    public List readConfigItems(SessionFactory factory) {
         Session session = factory.openSession();
         String query = String.format("from ConfigurationEntity c order by name");
         logger.debug("About to execute HQL query : " + query);

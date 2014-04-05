@@ -8,6 +8,6 @@ package co.uk.genonline.simpleweb.controller.screendata;
  *
  * At this point just just use specific ScreenData class as default.  May do something different later.
  */
-public class DefaultScreenData extends Mistress01ScreenData {
+class DefaultScreenData extends Mistress01ScreenData {
 
 }

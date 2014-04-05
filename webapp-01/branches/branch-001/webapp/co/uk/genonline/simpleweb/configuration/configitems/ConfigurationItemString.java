@@ -10,9 +10,9 @@ import co.uk.genonline.simpleweb.configuration.general.ConfigurationItem;
  * To change this template use File | Settings | File Templates.
  */
 public class ConfigurationItemString extends ConfigurationItem {
-    String value;
+    private final String value;
 
-    public ConfigurationItemString(String value) {
+    ConfigurationItemString(String value) {
         super();
         this.value = value; // No conversion or checking required so this is an easy one
         logger.debug(String.format("Instantiated value of <%s> is <%s>", getName(), getStringValue()));

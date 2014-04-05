@@ -19,12 +19,12 @@ import java.io.IOException;
  */
 public class Gallery {
 
-    private String galleryName;
-    private GalleryHelper galleryHelper;
+    private final String galleryName;
+    private final GalleryHelper galleryHelper;
 
     private String html;
     private int imagesAdded = 0;
-    private WebLogger logger = new WebLogger();
+    private final WebLogger logger = new WebLogger();
 
     Gallery(GalleryHelper helper, String galleryName) {
 
@@ -34,7 +34,7 @@ public class Gallery {
         html = null;
     }
 
-    public boolean generateThumbnail(File image, File thumbnail, boolean force) {
+    boolean generateThumbnail(File image, File thumbnail, boolean force) {
         if (!force && thumbnail.isFile()) {
             logger.info(String.format("Thumbnail for <%s> exists, nothing to do", thumbnail));
         } else {
@@ -111,7 +111,7 @@ public class Gallery {
                             logger.info(String.format("Force deleting thumbnail folder for <%s>", galleryName));
                             FileUtils.deleteDirectory(galleryHelper.getThumbnailDirFullPathFile(galleryName));
                         } catch (IOException e) {
-                            logger.error(String.format("Couldn't delete thumbnail folder", galleryName));
+                            logger.error(String.format("Couldn't delete thumbnail folder for gallery <%s>", galleryName));
                         }
                     }
                     // May have deleted thumbnail folder or it may have not been created - so check.
@@ -215,15 +215,15 @@ public class Gallery {
  *    the {@code BILINEAR} hint is specified)
  * @return a scaled version of the original {@code BufferedImage}
  */
-    public BufferedImage getScaledInstance(BufferedImage img,
-                                           int targetWidth,
-                                           int targetHeight,
-                                           Object hint,
-                                           boolean higherQuality)
+    BufferedImage getScaledInstance(BufferedImage img,
+                                    int targetWidth,
+                                    int targetHeight,
+                                    Object hint,
+                                    boolean higherQuality)
     {
         int type = (img.getTransparency() == Transparency.OPAQUE) ?
             BufferedImage.TYPE_INT_RGB : BufferedImage.TYPE_INT_ARGB;
-        BufferedImage ret = (BufferedImage)img;
+        BufferedImage ret = img;
         int w, h;
         if (higherQuality) {
             // Use multi-step technique: start with original size, then

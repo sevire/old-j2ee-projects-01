@@ -16,17 +16,17 @@ import java.util.*;
  * To change this template use File | Settings | File Templates.
  */
 public class Configuration {
-    WebLogger logger = new WebLogger();
-    Map<String, ConfigurationItem> configurationItems = new HashMap<String, ConfigurationItem>();
-    List<Object> configurationRecords;
-    SessionFactory factory;
+    private final WebLogger logger = new WebLogger();
+    private final Map<String, ConfigurationItem> configurationItems = new HashMap<String, ConfigurationItem>();
+    private List configurationRecords;
+    private final SessionFactory factory;
 
     public Configuration(SessionFactory factory) {
         this.factory = factory;
         loadConfiguration();
     }
 
-    public void addConfigItem(ConfigurationItem item) {
+    void addConfigItem(ConfigurationItem item) {
         configurationItems.put(item.getName(), item);
     }
 
@@ -42,9 +42,8 @@ public class Configuration {
         ConfigurationEntity record;
         String name;
         String value;
-        Iterator<Object> iterator = configurationRecords.iterator();
-        while (iterator.hasNext()) {
-            record = (ConfigurationEntity)iterator.next();
+        for (Object configurationRecord : configurationRecords) {
+            record = (ConfigurationEntity) configurationRecord;
             name = record.getName();
             value = record.getValue();
             logger.debug(String.format("Next configuration record is: name = <%s>, value = <%s>", name, value));
@@ -82,11 +81,11 @@ public class Configuration {
     /**
      * Just writes logging statements for each item for debugging purposes
      */
-    public void dumpAllItems() {
+    void dumpAllItems() {
         String itemName;
         ConfigurationItem item;
         Set<String> keys = configurationItems.keySet();
-        Iterator<String> iterator = (Iterator<String>)keys.iterator();
+        Iterator<String> iterator = keys.iterator();
 
         logger.debug("Dumping configuration items...");
         while (iterator.hasNext()) {

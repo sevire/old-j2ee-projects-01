@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2597381402">
+  <component name="DataSourceManagerImpl" format="xml" hash="1082622195">
     <data-source source="LOCAL" name="Thomas2-mysql-01" uuid="8d125fae-6c44-40a5-8e9c-9a7bf6f5e59c">
       <driver-ref>mysql</driver-ref>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/lda_dev</jdbc-url>
       <user-name>root</user-name>
       <user-password>dfe5dfe9df9ddfebdfcbdffddfe9df9ddf9ddfe8</user-password>
-      <schema-pattern>lda_dev.*</schema-pattern>
+      <schema-pattern>lda_dev.* lda_v02.*</schema-pattern>
       <default-dialect>MySQL</default-dialect>
       <libraries>
         <library>

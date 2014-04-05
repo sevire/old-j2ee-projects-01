@@ -1,11 +1,5 @@
 package co.uk.genonline.simpleweb.controller;
 
-import co.uk.genonline.simpleweb.configuration.general.Configuration;
-import org.apache.log4j.Level;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 /**
  * Created with IntelliJ IDEA.
  * User: thomassecondary
