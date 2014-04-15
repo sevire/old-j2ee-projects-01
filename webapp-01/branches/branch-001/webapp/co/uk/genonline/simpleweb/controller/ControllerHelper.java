@@ -164,6 +164,6 @@ public class ControllerHelper {
     }
 
     public String toString() {
-        return request.getRequestURL().toString();
+        return String.format("Helper Data: %s", request.getRequestURL().toString());
     }
 }

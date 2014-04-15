@@ -24,7 +24,12 @@ public class ViewScreen extends ScreenAction {
     }
 
     public RequestResult perform() {
-        screen.setName(request.getParameter("screen"));
+        String screenName = request.getParameter("screen");
+        screen.setName(screenName);
+
+        // Update session attribute so visible from Manager App
+        request.getSession().setAttribute("requestDetails", String.format("Screen: %s", screenName)); // #189
+
         ScreensEntity screenRecord = screenBeanManager.getScreen(screen);
         String screenType = screenRecord.getScreenDisplayType();
 
