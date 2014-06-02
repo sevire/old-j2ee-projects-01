@@ -26,7 +26,7 @@ if [ -z "$1" ]
 then
     echo "You must supply the name of the gallery"
 else
-	for file in "$ftpindir"/*.{gif,jpg,png}
+	for file in "$ftpindir"/*.{gif,jpg,png,GIF,JPG,PNG}
 	do
 		mv $file "$__WEBAPP__/gallery/$1"
 	done
