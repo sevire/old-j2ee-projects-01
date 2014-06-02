@@ -4,9 +4,7 @@
     <root id="archive" name="lda##016.war">
       <element id="artifact" artifact-name="lda-exp" />
       <element id="directory" name="WEB-INF">
-        <element id="directory" name="lib">
-          <element id="library" level="module" name="hibernate-4.2.2" module-name="WebApp" />
-        </element>
+        <element id="directory" name="lib" />
       </element>
     </root>
   </artifact>
