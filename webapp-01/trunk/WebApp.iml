@@ -16,15 +16,13 @@
         <webroots>
           <root url="file://$MODULE_DIR$/web" relative="/" />
         </webroots>
-        <sourceRoots>
-          <root url="file://$MODULE_DIR$/src" />
-        </sourceRoots>
+        <sourceRoots />
       </configuration>
     </facet>
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="hibernate.cfg.xml" value="8d125fae-6c44-40a5-8e9c-9a7bf6f5e59c" />
+          <unit-entry name="hibernate.cfg.xml" value="48c5c4d8-fb17-4d32-adee-12b391fa3da6" />
         </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/webapp/hibernate.cfg.xml" />
@@ -39,32 +37,20 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 7.0" level="application_server_libraries" />
-    <orderEntry type="module-library">
-      <library name="hibernate-4.2.2" type="hibernate">
-        <properties version="4.2.2" />
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/hibernate-core-4.2.2.Final.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/hibernate-jpa-2.0-api-1.0.1.Final.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/hibernate-commons-annotations-4.0.2.Final.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/antlr-2.7.7.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/dom4j-1.6.1.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/javassist-3.15.0-GA.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/jboss-logging-3.1.0.GA.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/jboss-transaction-api_1.1_spec-1.0.1.Final.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
     <orderEntry type="library" name="commons-beanutils" level="project" />
-    <orderEntry type="library" name="commons-io-2.4-javadoc" level="project" />
-    <orderEntry type="library" name="commons-logging-1.1" level="project" />
     <orderEntry type="library" name="hibernate" level="project" />
     <orderEntry type="library" name="jstl" level="project" />
     <orderEntry type="library" name="apache-log4j-1-1.2" level="project" />
     <orderEntry type="library" name="markdownj-1.0.2b4-0.3.0" level="project" />
     <orderEntry type="library" name="mysql-connector-java-5-1.1" level="project" />
     <orderEntry type="library" name="junit-4.10" level="project" />
+    <orderEntry type="library" name="commons-logging-1.1" level="project" />
+    <orderEntry type="library" name="javax.transaction" level="project" />
+    <orderEntry type="library" name="jboss-logging" level="project" />
+    <orderEntry type="library" name="dom4j-1.6" level="project" />
+    <orderEntry type="library" name="commons-io-2" level="project" />
+    <orderEntry type="library" name="javassist-3.15.0-GA" level="project" />
+    <orderEntry type="library" name="antlr-2.7.7" level="project" />
   </component>
 </module>
 
