@@ -145,8 +145,7 @@ public class WebHelper {
 
         // Set up to get listing of all image files within imagePath
 
-        String[] extensions = {"jpg", "png", "jpeg"};
-        FileFilter filter = new ImageFileFilter(extensions);
+        FileFilter filter = new ImageFileFilter(new String[]{"jpg", "png", "jpeg"});
         File inputImages[] = imagePathFile.listFiles(filter);
         List<File> inputImageList = new ArrayList<File>(Arrays.asList(inputImages));
 

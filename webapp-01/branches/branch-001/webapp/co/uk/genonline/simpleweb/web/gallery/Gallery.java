@@ -15,8 +15,13 @@ import java.io.IOException;
  * User: thomassecondary
  * Date: 01/07/2012
  * Time: 17:59
- * To change this template use File | Settings | File Templates.
- */
+ *
+ * Class which manages a web gallery. Provides a set of utility functions to allow manipulation of the gallery
+ * and to serve up the gallery images within an HTML construct for inclusion in a page.  A gallery is defined by
+ * a name which refers to a specific folder.  All the images within the folder are in the gallery.  sub-folders of
+ * a gallery are not included in the gallery (and this is a good way of moving images in and out of the gallery
+ * quickly)
+  */
 public class Gallery {
 
     private final String galleryName;
@@ -26,6 +31,11 @@ public class Gallery {
     private int imagesAdded = 0;
     private final WebLogger logger = new WebLogger();
 
+    /**
+     *
+     * @param helper
+     * @param galleryName
+     */
     Gallery(GalleryHelper helper, String galleryName) {
 
         this.galleryHelper = helper;
