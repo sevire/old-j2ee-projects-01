@@ -20,13 +20,16 @@ import java.io.IOException;
  * To change this template use File | Settings | File Templates.
  */
 public class ContextListener implements ServletContextListener {
-    Logger logger;
+    private WebLogger logger = new WebLogger();
     private static final String logPath = "/WEB-INF/logs/error.log";
 
     public ContextListener() {
         System.out.format("ContextListener started (before logging)\n");
+/*
         logger = Logger.getLogger("Context");
         logger.setLevel(Level.ALL);
+        logger.info(String.format("Logger initialised - this is the first message"));
+*/
     }
 
     public void contextInitialized(ServletContextEvent event) {
