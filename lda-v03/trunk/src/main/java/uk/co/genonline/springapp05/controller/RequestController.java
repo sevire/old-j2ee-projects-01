@@ -1,12 +1,14 @@
 package uk.co.genonline.springapp05.controller;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import uk.co.genonline.springapp05.model.DbAccessTrial;
 import uk.co.genonline.springapp05.model.MistressEntity;
 
@@ -17,15 +19,17 @@ import uk.co.genonline.springapp05.model.MistressEntity;
 @Controller
 @RequestMapping("/")
 public class RequestController {
+    Logger logger = Logger.getLogger("");
     @Autowired
     SessionFactory sessionFactory;
 
     @RequestMapping(value="mistress/{mistressName}", method=RequestMethod.GET)
-    public String mistressRequest(@RequestParam String mistressName, Model model) {
+    public String mistressRequest(@PathVariable String mistressName, Model model) {
+        logger.log(Level.INFO, "Testing logging - in mistressRequest");
         DbAccessTrial data = new DbAccessTrial(sessionFactory);
         MistressEntity mistress = data.getMistressData(mistressName);
 
         model.addAttribute("data", mistress.getMistressContent());
-        return "WEB-INF/mistress.jsp";
+        return "mistress";
     }
 }

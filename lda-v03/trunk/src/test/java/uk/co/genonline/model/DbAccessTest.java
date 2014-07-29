@@ -16,7 +16,7 @@ import uk.co.genonline.springapp05.model.MistressEntity;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("file:src/main/resources/springconfig.xml")
+@ContextConfiguration("file:web/WEB-INF/dispatcherServlet-servlet.xml")
 public class DbAccessTest {
     @Autowired
     SessionFactory sessionFactory;
