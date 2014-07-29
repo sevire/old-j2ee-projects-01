@@ -8,9 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>${data}</title>
+    <title>${mistressData.mistressLongName}</title>
 </head>
 <body>
+${mistressData.mistressContent}
 
 </body>
 </html>

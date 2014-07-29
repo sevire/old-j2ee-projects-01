@@ -16,7 +16,7 @@ import uk.co.genonline.springapp05.model.MistressEntity;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("file:../../../../../../../web/WEB-INF/applicationContext.xml")
+@ContextConfiguration("file:web/WEB-INF/applicationContext.xml")
 public class DbAccessTest {
     @Autowired
     SessionFactory sessionFactory;
@@ -31,7 +31,8 @@ public class DbAccessTest {
         DbAccessTrial access = new DbAccessTrial(sessionFactory);
         MistressEntity data;
         data = access.getMistressData("lucina");
-        Assert.assertEquals("Wrong data", "Princess Lucina", data.getMistressLongName());
+        Assert.assertEquals("Long name incorrect", "Princess Lucina", data.getMistressLongName());
+        Assert.assertEquals("Short name incorrect", "Princess Lucina", data.getMistressShortName());
     }
 
 }

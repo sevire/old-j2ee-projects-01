@@ -29,7 +29,7 @@ public class RequestController {
         DbAccessTrial data = new DbAccessTrial(sessionFactory);
         MistressEntity mistress = data.getMistressData(mistressName);
 
-        model.addAttribute("data", mistress.getMistressLongName());
+        model.addAttribute("mistressData", mistress);
         return "mistress";
     }
 }
