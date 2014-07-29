@@ -5,7 +5,7 @@ import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,12 +24,12 @@ public class RequestController {
     SessionFactory sessionFactory;
 
     @RequestMapping(value="mistress/{mistressName}", method=RequestMethod.GET)
-    public String mistressRequest(@PathVariable String mistressName, Model model) {
-        logger.log(Level.INFO, "Testing logging - in mistressRequest");
+    public String mistressRequest(@PathVariable String mistressName, ModelMap model) {
+        logger.log(Level.INFO, String.format("Parsing mistress request for {%s}",mistressName));
         DbAccessTrial data = new DbAccessTrial(sessionFactory);
         MistressEntity mistress = data.getMistressData(mistressName);
 
-        model.addAttribute("data", mistress.getMistressContent());
+        model.addAttribute("data", mistress.getMistressLongName());
         return "mistress";
     }
 }

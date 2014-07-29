@@ -34,7 +34,7 @@
         <property name="password" value="OC7AaWC77B" />
     </bean>
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF /"/>
+        <property name="prefix" value="/WEB-INF/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
     <context:component-scan base-package="uk.co.genonline.springapp05.controller" />
