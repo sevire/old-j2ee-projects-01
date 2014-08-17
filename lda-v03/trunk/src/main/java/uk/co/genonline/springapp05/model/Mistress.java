@@ -6,7 +6,6 @@ package uk.co.genonline.springapp05.model;
  * Example: If the long name isn't specified, then the short name should be returned.  This allows the user to avoid
  * having to enter the same data twice or more if the two names aren't distinct.
  *
- * Not sure whether this should be a sub-class or not.  Will start off with it being one as so much is common.
  */
 public class Mistress {
     MistressEntity mistressEntity;
@@ -14,18 +13,33 @@ public class Mistress {
     public Mistress(MistressEntity mistressEntity) {
         this.mistressEntity = mistressEntity;
     }
+
+    /**
+     * Just passes through the mistress name (primary key) field
+     *
+     * @return Mistress Name field.
+     */
     public String getMistressName() {
         return mistressEntity.getMistressName();
     }
 
+    /**
+     * Just passes through the content data with no change
+     * @return Mistress Content.
+     */
     public String getMistressContent() {
         return mistressEntity.getMistressContent();
     }
+
 
     public String getMistressContentType() {
         return mistressEntity.getMistressContentType();
     }
 
+    /**
+     * If the long name isn't populated, use the short name instead.
+     * @return
+     */
     public String getMistressLongName() {
         if (mistressEntity.getMistressLongName() == null || mistressEntity.getMistressLongName().isEmpty()) {
             return getMistressShortName();
@@ -40,5 +54,9 @@ public class Mistress {
         } else {
             return mistressEntity.getMistressShortName();
         }
+    }
+
+    public String toString() {
+        return String.format("Mistress: <name:%s> <shortname:%s> <longname:%s>", getMistressName(),getMistressShortName(),getMistressLongName());
     }
 }

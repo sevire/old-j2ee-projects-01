@@ -22,10 +22,23 @@ public class MistressManager {
     }
 
     public Mistress getMistressData(String mistressName) {
+        Mistress mistressData;
+        Session session;
+
         logger.log(Level.INFO, String.format("sessionFactory is <%s>", sessionFactory));
-        Session session = sessionFactory.openSession();
-        Mistress mistressData = new Mistress((MistressEntity) session.get(MistressEntity.class, mistressName));
+        session = sessionFactory.openSession();
+
+        MistressEntity entityData = (MistressEntity) session.get(MistressEntity.class, mistressName);
+        if (entityData == null) {
+            mistressData = null;
+        } else {
+            mistressData = new Mistress((MistressEntity) session.get(MistressEntity.class, mistressName));
+        }
         session.close();
         return mistressData;
+    }
+
+    public String toString() {
+        return String.format("MistressManager: <SessionFactory: %s> <Mistress: %s>", sessionFactory, mistress);
     }
 }
