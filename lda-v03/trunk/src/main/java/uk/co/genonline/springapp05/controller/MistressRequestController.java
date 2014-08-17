@@ -39,7 +39,7 @@ public class MistressRequestController {
 
         mistressData = mistressManager.getMistressData(mistressName);
         if (mistressData == null) {
-            throw new FileNotFoundException();
+            throw new FileNotFoundException(String.format("Mistress %s not found",mistressName));
         } else {
             modelAndView.getModelMap().addAttribute("mistressData", mistressData);
             modelAndView.setViewName("mistress");
@@ -49,8 +49,9 @@ public class MistressRequestController {
 
     @ExceptionHandler(value=FileNotFoundException.class)
     public ModelAndView handleFileNotFound(FileNotFoundException ex) {
-        ModelAndView modelAndView = new ModelAndView("404");
-        modelAndView.addObject(ex);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("pagenotfound");
+        modelAndView.getModelMap().addAttribute("message",ex.getMessage());
         return modelAndView;
     }
 
