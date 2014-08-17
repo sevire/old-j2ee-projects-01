@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="spring-test-05:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/spring_test_05_war_exploded</output-path>
+  <artifact type="exploded-war" name="lda_v03">
+    <output-path>$PROJECT_DIR$/out/artifacts/lda_v03</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -38,6 +38,7 @@
           <element id="library" level="project" name="Maven: junit:junit:4.11" />
           <element id="library" level="project" name="Maven: org.hamcrest:hamcrest-core:1.3" />
         </element>
+        <element id="dir-copy" path="$PROJECT_DIR$/src/main/resources/META-INF/spring" />
       </element>
       <element id="javaee-facet-resources" facet="spring-test-05/web/Web" />
     </root>
