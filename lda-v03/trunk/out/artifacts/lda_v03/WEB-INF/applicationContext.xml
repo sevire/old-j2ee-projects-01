@@ -19,7 +19,7 @@
         </property>
         <property name="annotatedClasses">
             <list>
-                <value>uk.co.genonline.springapp05.model.MistressEntity</value>
+                <value>uk.co.genonline.ldav03.model.MistressEntity</value>
             </list>
 
         </property>
@@ -31,13 +31,13 @@
         <property name="username" value="root" />
         <property name="password" value="OC7AaWC77B" />
     </bean>
-    <bean id="mistressEntity" class="uk.co.genonline.springapp05.model.MistressEntity" />
-    <bean id="mistress" class="uk.co.genonline.springapp05.model.Mistress">
+    <bean id="mistressEntity" class="uk.co.genonline.ldav03.model.MistressEntity" />
+    <bean id="mistress" class="uk.co.genonline.ldav03.model.Mistress">
         <constructor-arg ref="mistressEntity" />
     </bean>
-    <bean id="mistressManager" class="uk.co.genonline.springapp05.model.MistressManager">
+    <bean id="mistressManager" class="uk.co.genonline.ldav03.model.MistressManager">
         <constructor-arg ref="mistress" />
     </bean>
-    <context:component-scan base-package="uk.co.genonline.springapp05.model" />
+    <context:component-scan base-package="uk.co.genonline.ldav03.model" />
 
 </beans>
