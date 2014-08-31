@@ -7,63 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="7240e0c0-073a-4386-bd19-3efeecb28228" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/web/js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_0_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_0_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_0_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_lang_commons_lang_2_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__markdown4j_markdown4j_2_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/controller/MistressRequestController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/web/js/injectContent.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/web/WEB-INF/jsp/mistress-01-displaytype.jsp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/springapp05/controller/MistressRequestController.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/controller/MistressRestController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/springapp05/controller/package-info.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/controller/package-info.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/springapp05/model/Mistress.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Mistress.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/springapp05/model/MistressEntity.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/MistressEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/springapp05/model/MistressManager.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/MistressManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/springapp05/model/package-info.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/package-info.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/uk/co/genonline/springapp05/controller/MistressRequestTest.java" afterPath="$PROJECT_DIR$/src/test/java/uk/co/genonline/ldav03/controller/MistressRequestTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/uk/co/genonline/springapp05/controller/MistressTestHelper.java" afterPath="$PROJECT_DIR$/src/test/java/uk/co/genonline/ldav03/controller/MistressTestHelper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/uk/co/genonline/springapp05/model/MistressTest.java" afterPath="$PROJECT_DIR$/src/test/java/uk/co/genonline/ldav03/model/MistressTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/model/DbAccessTest.html" afterPath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/model/DbAccessTest.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/model/Mistress.html" afterPath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/model/Mistress.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/model/MistressEntity.html" afterPath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/model/MistressEntity.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/model/MistressManager.html" afterPath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/model/MistressManager.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/controller/MistressRequestController.html" afterPath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/controller/MistressRequestController.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/allclasses-frame.html" afterPath="$PROJECT_DIR$/documents/javadoc/allclasses-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/allclasses-noframe.html" afterPath="$PROJECT_DIR$/documents/javadoc/allclasses-noframe.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/META-INF/spring/applicationContext.xml" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/spring/applicationContext.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/WEB-INF/dispatcher-servlet.xml" afterPath="$PROJECT_DIR$/src/main/web/WEB-INF/dispatcher-servlet.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/index-files/index-1.html" afterPath="$PROJECT_DIR$/documents/javadoc/index-files/index-1.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/index-files/index-2.html" afterPath="$PROJECT_DIR$/documents/javadoc/index-files/index-2.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/index-files/index-3.html" afterPath="$PROJECT_DIR$/documents/javadoc/index-files/index-3.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/index-files/index-4.html" afterPath="$PROJECT_DIR$/documents/javadoc/index-files/index-4.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/index-files/index-5.html" afterPath="$PROJECT_DIR$/documents/javadoc/index-files/index-5.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/index-files/index-6.html" afterPath="$PROJECT_DIR$/documents/javadoc/index-files/index-6.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/index-files/index-7.html" afterPath="$PROJECT_DIR$/documents/javadoc/index-files/index-7.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/index-files/index-8.html" afterPath="$PROJECT_DIR$/documents/javadoc/index-files/index-8.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/lda_v03.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/lda_v03.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/overview-frame.html" afterPath="$PROJECT_DIR$/documents/javadoc/overview-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/overview-summary.html" afterPath="$PROJECT_DIR$/documents/javadoc/overview-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/overview-tree.html" afterPath="$PROJECT_DIR$/documents/javadoc/overview-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/controller/package-frame.html" afterPath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/controller/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/model/package-frame.html" afterPath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/model/package-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/controller/package-summary.html" afterPath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/controller/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/model/package-summary.html" afterPath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/model/package-summary.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/controller/package-tree.html" afterPath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/controller/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/model/package-tree.html" afterPath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/model/package-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/serialized-form.html" afterPath="$PROJECT_DIR$/documents/javadoc/serialized-form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spring-test-05.iml" afterPath="$PROJECT_DIR$/spring-test-05.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/web/WEB-INF/web.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/web/js/injectContent.js" afterPath="$PROJECT_DIR$/src/main/web/js/injectContent.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/springapp05/controller" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/controller" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/uk/co/genonline/springapp05/controller" afterPath="$PROJECT_DIR$/src/test/java/uk/co/genonline/ldav03/controller" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/springapp05/model" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/uk/co/genonline/springapp05/model" afterPath="$PROJECT_DIR$/src/test/java/uk/co/genonline/ldav03/model" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/springapp05" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/uk/co/genonline/springapp05" afterPath="$PROJECT_DIR$/src/test/java/uk/co/genonline/ldav03" />
     </list>
     <list id="ad4d880c-ad27-4139-82f0-40c41408d79e" name="Failed commit: Default" comment="[#1] Committing in parts as there is a problem.  Changes to get tests working.  Have added 404 handling too.  Info on config files in [#2]." />
     <ignored path="lda-v03-trunk.iws" />
@@ -120,8 +65,8 @@
       <file leaf-file-name="injectContent.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/web/js/injectContent.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.24640657" vertical-offset="0" max-vertical-offset="487">
-              <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
+            <state vertical-scroll-proportion="0.523614" vertical-offset="0" max-vertical-offset="487">
+              <caret line="17" column="44" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -1070,7 +1015,7 @@
       <workItem from="1406625355563" duration="37730000" />
       <workItem from="1407689065816" duration="750000" />
       <workItem from="1407827234596" duration="37321000" />
-      <workItem from="1409122314026" duration="7773000" />
+      <workItem from="1409122314026" duration="8255000" />
     </task>
     <task id="LOCAL-00001" summary="Quick commit to protect agains IDEA deleting a load of files when I change the Hibernate config (long story!).">
       <created>1405865423038</created>
@@ -1124,7 +1069,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96931000" />
+    <option name="totallyTimeSpent" value="97413000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1148,7 +1093,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="820" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28062677" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964234" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1165,7 +1110,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23361823" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23361823" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1716,8 +1661,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/web/js/injectContent.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24640657" vertical-offset="0" max-vertical-offset="487">
-          <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
+        <state vertical-scroll-proportion="0.523614" vertical-offset="0" max-vertical-offset="487">
+          <caret line="17" column="44" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
           <folding />
         </state>
       </provider>

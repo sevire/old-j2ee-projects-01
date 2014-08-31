@@ -6,7 +6,7 @@ $(document).ready(function() {
         url: "/mistress/get/lucina.json",
         accepts: "application/json",
         success: function( data ) {
-            $("#status").attr("class", "error");
+            $("#status").attr("class", "info");
             $("#status").html("Success");
             $("#sContent").html( data.mistressContentDecoded );
         },
