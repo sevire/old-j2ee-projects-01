@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"file:src/main/web/WEB-INF/dispatcher-servlet.xml", "file:src/main/resources/META-INF/spring/applicationContext.xml"})
+@ContextConfiguration({"file:src/main/webapp/WEB-INF/dispatcher-servlet.xml", "file:../../../../../../../main/resources/META-INF/applicationContext.xml"})
 public class MistressTest {
     @Autowired
     SessionFactory sessionFactory;

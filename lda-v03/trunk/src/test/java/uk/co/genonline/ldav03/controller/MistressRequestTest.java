@@ -9,6 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.web.context.WebApplicationContext;
 import uk.co.genonline.ldav03.model.Mistress;
 
@@ -19,7 +20,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration({"file:src/main/web/WEB-INF/dispatcher-servlet.xml", "file:src/main/resources/META-INF/spring/applicationContext.xml"})
+@ContextConfiguration({"file:src/main/webapp/WEB-INF/dispatcher-servlet.xml", "file:src/main/webapp/WEB-INF/applicationContext.xml"})
 public class MistressRequestTest {
     private MockMvc mockMvc;
 
@@ -32,31 +33,37 @@ public class MistressRequestTest {
     }
 
     @Test
-    public void testValidRequests   () throws Exception {
+    public void testRequests   () throws Exception {
         MistressTestHelper testHelper = new MistressTestHelper();
         Mistress mistressData;
         MvcResult result;
+        ResultActions resultActions;
 
         result = mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("mistress"))
+                .andExpect(view().name("mistress-01-displaytype"))
                 .andReturn();
 
+/*
         mistressData = (Mistress)result.getModelAndView().getModel().get("mistressData");
         testHelper.checkMistressRecord(mistressData, "lucina", "Princess Lucina", "Princess Lucina");
+*/
 
-        result = mockMvc.perform(get("/mistress/lucina"))
+        result = mockMvc.perform(get("/mistressview/lucina"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("mistress"))
+                .andExpect(view().name("mistress-01-displaytype"))
                 .andReturn();
 
+/*
         mistressData = (Mistress)result.getModelAndView().getModel().get("mistressData");
         testHelper.checkMistressRecord(mistressData, "lucina", "Princess Lucina", "Princess Lucina");
+*/
 
-        result = mockMvc.perform(get("/mistress/xlucina"))
+        result = mockMvc.perform(get("/mistressview/xlucina"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("404"))
+                .andExpect(view().name("pagenotfound"))
                 .andReturn();
 
+        resultActions = mockMvc.perform(get("/invalidurl"));
     }
 }

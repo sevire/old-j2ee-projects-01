@@ -35,6 +35,8 @@ public class MistressRestController {
         }
     }
 
+    @RequestMapping(value="")
+
     @ExceptionHandler(value=FileNotFoundException.class)
     public ModelAndView handleFileNotFound(FileNotFoundException ex) {
         ModelAndView modelAndView = new ModelAndView();
