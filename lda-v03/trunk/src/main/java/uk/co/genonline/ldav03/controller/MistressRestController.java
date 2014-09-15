@@ -35,10 +35,9 @@ public class MistressRestController {
         }
     }
 
-    @RequestMapping(value="")
-
     @ExceptionHandler(value=FileNotFoundException.class)
     public ModelAndView handleFileNotFound(FileNotFoundException ex) {
+        logger.warn(ex.getMessage());
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("pagenotfound");
         modelAndView.getModelMap().addAttribute("message", ex.getMessage());

@@ -5,35 +5,74 @@ import org.apache.log4j.Logger;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.HandlerMapping;
+import org.springframework.web.util.UriTemplate;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Map;
 
 /**
  * Created by thomassecondary on 31/08/2014.
+ *
+ * Controller to serve REST style image requests.
+ *
  */
+
 @RestController
-@RequestMapping(value="/galleryimage")
 public class ImageRestController {
+    static final String IMAGE_URL_BASE = "/galleryimage";
+    static final String BASE_PATH = "/Users/thomassecondary/Documents/Princess/Website/webgalleries";
+
     Logger logger = Logger.getLogger("");
 
     ImageRestController() {
         logger.setLevel(Level.ALL);
     }
 
-    public static final String BASE_PATH = "/Users/thomassecondary/Documents/Princess/Website/webgalleries";
 
-    @RequestMapping(value = "{galleryName}/{fileName:.+}" , method = RequestMethod.GET)
-    public ResponseEntity<FileSystemResource> getFile(@PathVariable String galleryName, @PathVariable String fileName) {
-        logger.info(String.format("Processing request for gallery <%s>, image <%s>", galleryName, fileName));
-        String fullPath = BASE_PATH + File.separator + galleryName;
-        FileSystemResource resource = new FileSystemResource(new File(fullPath, fileName));
-        logger.debug(String.format("Full path <%s>", resource.getPath()));
+    @RequestMapping(value=IMAGE_URL_BASE + "/**", method = RequestMethod.GET)
+    public ResponseEntity<FileSystemResource> getFile(HttpServletRequest request) throws FileNotFoundException {
+        String path;
+        String fullPath;
 
+        logger.info(String.format("Processing galleryimage request, parsing..."));
+
+        String URL = (String) request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
+        logger.debug(String.format("...URL to parse is <%s>", URL));
+
+        UriTemplate template = new UriTemplate(IMAGE_URL_BASE + File.separator + "{path}");
+        boolean isTemplateMatched = template.matches(URL);
+
+        if(isTemplateMatched) {
+            Map<String, String> matchTemplate;
+            matchTemplate = template.match(URL);
+            path = matchTemplate.get("path");
+        } else {
+            throw new FileNotFoundException("Path to image not recognised");
+        }
+        FileSystemResource resource = new FileSystemResource(new File(BASE_PATH, path));
+        logger.debug(String.format("resource = <%s>", resource));
+        if (!resource.exists()) {
+            throw new FileNotFoundException("File not found for " + resource.getPath());
+        } else {
+            logger.debug(String.format("Full path <%s>", resource.getPath()));
+        }
         ResponseEntity<FileSystemResource> responseEntity = new ResponseEntity<FileSystemResource>(resource, HttpStatus.OK);
         return responseEntity;
     }
+
+    @ExceptionHandler(value=FileNotFoundException.class)
+    public ResponseEntity<FileSystemResource> handleFileNotFound(FileNotFoundException ex) {
+        logger.warn(String.format("FileNotFound exception thrown: <%s>", ex.getMessage()));
+        ResponseEntity<FileSystemResource> responseEntity = new ResponseEntity<FileSystemResource>(HttpStatus.NOT_FOUND);
+        return responseEntity;
+    }
+
+
 }
