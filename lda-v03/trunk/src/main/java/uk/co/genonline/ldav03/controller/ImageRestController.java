@@ -5,10 +5,7 @@ import org.apache.log4j.Logger;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.util.UriTemplate;
 
@@ -41,10 +38,10 @@ public class ImageRestController {
         String path;
         String fullPath;
 
-        logger.info(String.format("Processing galleryimage request, parsing..."));
+        logger.info(String.format("Processing galleryimage request, parsing."));
 
         String URL = (String) request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
-        logger.debug(String.format("...URL to parse is <%s>", URL));
+        logger.debug(String.format("URL to parse is <%s>", URL));
 
         UriTemplate template = new UriTemplate(IMAGE_URL_BASE + File.separator + "{path}");
         boolean isTemplateMatched = template.matches(URL);
@@ -67,11 +64,14 @@ public class ImageRestController {
         return responseEntity;
     }
 
+    @ResponseStatus(value=HttpStatus.NOT_FOUND, reason="Image resource not found")
     @ExceptionHandler(value=FileNotFoundException.class)
-    public ResponseEntity<FileSystemResource> handleFileNotFound(FileNotFoundException ex) {
+    public void handleFileNotFound() {
+/*
         logger.warn(String.format("FileNotFound exception thrown: <%s>", ex.getMessage()));
         ResponseEntity<FileSystemResource> responseEntity = new ResponseEntity<FileSystemResource>(HttpStatus.NOT_FOUND);
         return responseEntity;
+*/
     }
 
 

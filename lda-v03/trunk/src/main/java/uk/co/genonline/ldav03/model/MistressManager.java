@@ -41,4 +41,20 @@ public class MistressManager {
     public String toString() {
         return String.format("MistressManager: <SessionFactory: %s> <Mistress: %s>", sessionFactory, mistress);
     }
+
+    public void addMistressData(MistressEntity mistressEntity) {
+        logger.info("STUB: Add data for new Mistress");
+        Mistress mistress = new Mistress(mistressEntity);
+        logger.info(String.format("Mistress Data = <%s>", mistress));
+
+        Session session;
+
+        logger.log(Level.INFO, String.format("sessionFactory is <%s>", sessionFactory));
+        session = sessionFactory.openSession();
+
+        session.saveOrUpdate(mistressEntity);
+        session.flush();
+        session.close();
+
+    }
 }

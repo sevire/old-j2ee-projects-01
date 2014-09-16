@@ -19,6 +19,14 @@ public class Mistress {
     }
 
     /**
+     *
+     * @return
+     */
+    public MistressEntity getMistressEntity() {
+        return mistressEntity;
+    }
+
+    /**
      * Just passes through the mistress name (primary key) field
      *
      * @return Mistress Name field.
