@@ -26,7 +26,7 @@ public class MistressEntity implements Serializable {
     }
 
     @Basic
-    @Column(name = "MistressContent", nullable = false, insertable = true, updatable = true, length = 2147483647)
+    @Column(name = "MistressContent", nullable = true, insertable = true, updatable = true, length = 2147483647)
     public String getMistressContent() {
         return mistressContent;
     }
@@ -36,7 +36,7 @@ public class MistressEntity implements Serializable {
     }
 
     @Basic
-    @Column(name = "MistressLongName", nullable = false, insertable = true, updatable = true, length = 50)
+    @Column(name = "MistressLongName", nullable = true, insertable = true, updatable = true, length = 50)
     public String getMistressLongName() {
         return mistressLongName;
     }
@@ -46,7 +46,7 @@ public class MistressEntity implements Serializable {
     }
 
     @Basic
-    @Column(name = "MistressShortName", nullable = false, insertable = true, updatable = true, length = 50)
+    @Column(name = "MistressShortName", nullable = true, insertable = true, updatable = true, length = 50)
     public String getMistressShortName() {
         return mistressShortName;
     }
@@ -56,7 +56,7 @@ public class MistressEntity implements Serializable {
     }
 
     @Basic
-    @Column(name = "MistressContentType", nullable = false, insertable = true, updatable = true, length = 20)
+    @Column(name = "MistressContentType", nullable = true, insertable = true, updatable = true, length = 20)
     public String getMistressContentType() {
         return mistressContentType;
     }

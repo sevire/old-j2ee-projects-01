@@ -8,8 +8,9 @@
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="connection.username">root</property>
     <property name="connection.password">OC7AaWC77B</property>
-    <mapping class="uk.co.genonline.ldav03.model.MistressEntity"/>
-    <!-- DB schema will be updated if needed -->
+      <mapping class="uk.co.genonline.ldav03.model.MistressEntity"/>
+      <mapping class="uk.co.genonline.ldav03.model.UserEntity"/>
+      <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
   </session-factory>
 </hibernate-configuration>

@@ -32,7 +32,6 @@ public class ImageRestController {
         logger.setLevel(Level.ALL);
     }
 
-
     @RequestMapping(value=IMAGE_URL_BASE + "/**", method = RequestMethod.GET)
     public ResponseEntity<FileSystemResource> getFile(HttpServletRequest request) throws FileNotFoundException {
         String path;
@@ -67,12 +66,5 @@ public class ImageRestController {
     @ResponseStatus(value=HttpStatus.NOT_FOUND, reason="Image resource not found")
     @ExceptionHandler(value=FileNotFoundException.class)
     public void handleFileNotFound() {
-/*
-        logger.warn(String.format("FileNotFound exception thrown: <%s>", ex.getMessage()));
-        ResponseEntity<FileSystemResource> responseEntity = new ResponseEntity<FileSystemResource>(HttpStatus.NOT_FOUND);
-        return responseEntity;
-*/
     }
-
-
 }

@@ -36,7 +36,6 @@
         <constructor-arg ref="mistressEntity" />
     </bean>
     <bean id="mistressManager" class="uk.co.genonline.ldav03.model.MistressManager">
-        <constructor-arg ref="mistress" />
     </bean>
     <context:component-scan base-package="uk.co.genonline.ldav03.model" />
 

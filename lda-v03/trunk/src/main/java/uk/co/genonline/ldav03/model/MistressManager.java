@@ -8,18 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
+ *
  */
 public class MistressManager {
     Logger logger = Logger.getLogger("");
 
     @Autowired
     SessionFactory sessionFactory;
-
-    Mistress mistress;
-
-    MistressManager(Mistress mistress) {
-        this.mistress = mistress;
-    }
 
     public Mistress getMistressData(String mistressName) {
         Mistress mistressData;
@@ -32,14 +27,10 @@ public class MistressManager {
         if (entityData == null) {
             mistressData = null;
         } else {
-            mistressData = new Mistress((MistressEntity) session.get(MistressEntity.class, mistressName));
+            mistressData = new Mistress(entityData);
         }
         session.close();
         return mistressData;
-    }
-
-    public String toString() {
-        return String.format("MistressManager: <SessionFactory: %s> <Mistress: %s>", sessionFactory, mistress);
     }
 
     public void addMistressData(MistressEntity mistressEntity) {
