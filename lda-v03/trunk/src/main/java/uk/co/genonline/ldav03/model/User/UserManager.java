@@ -1,10 +1,11 @@
-package uk.co.genonline.ldav03.model;
+package uk.co.genonline.ldav03.model.User;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import uk.co.genonline.ldav03.model.EntityManager;
 
 import java.io.Serializable;
 

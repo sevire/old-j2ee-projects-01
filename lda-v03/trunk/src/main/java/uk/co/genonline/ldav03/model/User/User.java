@@ -1,4 +1,4 @@
-package uk.co.genonline.ldav03.model;
+package uk.co.genonline.ldav03.model.User;
 
 /**
  * Created by thomassecondary on 17/09/2014.

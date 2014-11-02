@@ -7,8 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import uk.co.genonline.ldav03.model.MistressEntity;
-import uk.co.genonline.ldav03.model.MistressManager;
+import uk.co.genonline.ldav03.model.Mistress.MistressEntity;
+import uk.co.genonline.ldav03.model.Mistress.MistressManager;
 
 /**
  * Created by thomassecondary on 15/09/2014.

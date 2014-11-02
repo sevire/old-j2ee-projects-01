@@ -1,4 +1,4 @@
-package uk.co.genonline.ldav03.model;
+package uk.co.genonline.ldav03.model.User;
 
 import javax.persistence.*;
 import java.io.Serializable;

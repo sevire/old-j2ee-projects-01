@@ -9,6 +9,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import uk.co.genonline.ldav03.model.Mistress.Mistress;
+import uk.co.genonline.ldav03.model.Mistress.MistressEntity;
 
 /**
  * Created by thomassecondary on 20/07/2014.

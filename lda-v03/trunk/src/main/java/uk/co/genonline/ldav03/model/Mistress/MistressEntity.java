@@ -1,4 +1,4 @@
-package uk.co.genonline.ldav03.model;
+package uk.co.genonline.ldav03.model.Mistress;
 
 import javax.persistence.*;
 import java.io.Serializable;

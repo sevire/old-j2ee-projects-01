@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import uk.co.genonline.ldav03.model.Mistress;
-import uk.co.genonline.ldav03.model.MistressManager;
+import uk.co.genonline.ldav03.model.Mistress.Mistress;
+import uk.co.genonline.ldav03.model.Mistress.MistressManager;
 
 import java.io.FileNotFoundException;
 
@@ -19,7 +19,7 @@ import java.io.FileNotFoundException;
  */
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/mistressView")
 public class MistressRequestController {
     Logger logger = Logger.getLogger("");
 
@@ -31,7 +31,7 @@ public class MistressRequestController {
         return mistressRequest("lucina", modelAndView);
     }
 
-    @RequestMapping(value="/mistressview/{mistressName}", method=RequestMethod.GET)
+    @RequestMapping(value="/{mistressName}", method=RequestMethod.GET)
     public ModelAndView mistressRequest(@PathVariable String mistressName, ModelAndView modelAndView) throws FileNotFoundException {
         Mistress mistressData;
 
@@ -41,7 +41,8 @@ public class MistressRequestController {
         if (mistressData == null) {
             throw new FileNotFoundException(String.format("Mistress %s not found",mistressName));
         } else {
-            modelAndView.setViewName("mistress-01-displaytype");
+            modelAndView.getModel().put("mistressData", mistressData);
+            modelAndView.setViewName("mistress-02-displaytype");
             return modelAndView;
         }
     }

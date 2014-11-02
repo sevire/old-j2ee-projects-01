@@ -2,12 +2,14 @@ package uk.co.genonline.ldav03.controller;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.util.UriTemplate;
+import uk.co.genonline.ldav03.model.Gallery.GalleryPathManagement;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -23,16 +25,17 @@ import java.util.Map;
 
 @RestController
 public class ImageRestController {
-    static final String IMAGE_URL_BASE = "/galleryimage";
-    static final String BASE_PATH = "/Users/thomassecondary/Documents/Princess/Website/webgalleries";
 
     Logger logger = Logger.getLogger("");
+
+    @Autowired
+    GalleryPathManagement galleryPathManagement;
 
     ImageRestController() {
         logger.setLevel(Level.ALL);
     }
 
-    @RequestMapping(value=IMAGE_URL_BASE + "/**", method = RequestMethod.GET)
+    @RequestMapping(value= GalleryPathManagement.IMAGE_URL_BASE + "/**", method = RequestMethod.GET)
     public ResponseEntity<FileSystemResource> getFile(HttpServletRequest request) throws FileNotFoundException {
         String path;
         String fullPath;
@@ -42,7 +45,7 @@ public class ImageRestController {
         String URL = (String) request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
         logger.debug(String.format("URL to parse is <%s>", URL));
 
-        UriTemplate template = new UriTemplate(IMAGE_URL_BASE + File.separator + "{path}");
+        UriTemplate template = new UriTemplate(GalleryPathManagement.IMAGE_URL_BASE + File.separator + "{path}");
         boolean isTemplateMatched = template.matches(URL);
 
         if(isTemplateMatched) {
@@ -52,7 +55,7 @@ public class ImageRestController {
         } else {
             throw new FileNotFoundException("Path to image not recognised");
         }
-        FileSystemResource resource = new FileSystemResource(new File(BASE_PATH, path));
+        FileSystemResource resource = new FileSystemResource(new File(GalleryPathManagement.BASE_PATH, path));
         logger.debug(String.format("resource = <%s>", resource));
         if (!resource.exists()) {
             throw new FileNotFoundException("File not found for " + resource.getPath());
