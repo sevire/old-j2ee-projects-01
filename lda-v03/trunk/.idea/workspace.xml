@@ -6,54 +6,10 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="7240e0c0-073a-4386-bd19-3efeecb28228" name="Default" comment="[#9] There is a lot to commit here - should have done it in smaller chunks.  Have started using Pivotal Tracker and this is the commit after the first sprint but includes lot of the other changes recently implemented around the new approach.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Chamber" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Gallery" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Mistress" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Testimonial" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/User" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/web" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Chamber/ChamberInformation.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Chamber/ChamberInformationEntity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Chamber/ChamberInformationManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/controller/ChamberRequestController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Gallery/Gallery.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Gallery/GalleryImageManagement.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Gallery/GalleryPathManagement.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Gallery/Html.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Gallery/ImageFileFilter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_coobird_thumbnailator_0_4_7.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Testimonial/Testimonial.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Testimonial/TestimonialEntity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Testimonial/TestimonialManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/controller/TestimonialRequestController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Gallery/ThumbnailConfiguration.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Gallery/ThumbnailManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/chamber-01-displaytype.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documents/lighthouse-artifacts/lighthouse-create-tickets.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/testimonial-01-displaytype.jsp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Mistress.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Mistress/Mistress.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/MistressEntity.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Mistress/MistressEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/MistressManager.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Mistress/MistressManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/User.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/User/User.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/UserEntity.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/User/UserEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/UserManager.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/User/UserManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/mistress.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/mistress-02-displaytype.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/controller/ImageRestController.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/controller/ImageRestController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/model/Mistress.html" afterPath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/model/Mistress.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/model/MistressEntity.html" afterPath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/model/MistressEntity.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/model/MistressManager.html" afterPath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/model/MistressManager.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/controller/MistressRequestController.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/controller/MistressRequestController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/uk/co/genonline/ldav03/controller/MistressRequestTest.java" afterPath="$PROJECT_DIR$/src/test/java/uk/co/genonline/ldav03/controller/MistressRequestTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/controller/MistressRestController.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/controller/MistressRestController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/uk/co/genonline/ldav03/model/MistressTest.java" afterPath="$PROJECT_DIR$/src/test/java/uk/co/genonline/ldav03/model/MistressTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/uk/co/genonline/ldav03/controller/MistressTestHelper.java" afterPath="$PROJECT_DIR$/src/test/java/uk/co/genonline/ldav03/controller/MistressTestHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/controller/MistressUpdateController.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/controller/MistressUpdateController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/serialized-form.html" afterPath="$PROJECT_DIR$/documents/javadoc/serialized-form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spring-test-05.iml" afterPath="$PROJECT_DIR$/spring-test-05.iml" />
+    <list default="true" readonly="true" id="7240e0c0-073a-4386-bd19-3efeecb28228" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documents/SiteStructure.oo3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_4_0_6_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/documents/SiteStructure.oo3/contents.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="lda-v03-trunk.iws" />
@@ -1151,7 +1107,7 @@
       <workItem from="1409122314026" duration="23403000" />
       <workItem from="1410082638278" duration="11553000" />
       <workItem from="1410112407515" duration="54474000" />
-      <workItem from="1412355597620" duration="60029000" />
+      <workItem from="1412355597620" duration="60126000" />
     </task>
     <task id="LOCAL-00001" summary="Quick commit to protect agains IDEA deleting a load of files when I change the Hibernate config (long story!).">
       <created>1405865423038</created>
@@ -1221,11 +1177,15 @@
       <created>1413355673024</created>
       <updated>1413355673024</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="[#9] There is a lot to commit here - should have done it in smaller chunks.  Have started using Pivotal Tracker and this is the commit after the first sprint but includes lot of the other changes recently implemented around the new approach.">
+      <created>1414934146031</created>
+      <updated>1414934146031</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="238617000" />
+    <option name="totallyTimeSpent" value="238714000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
