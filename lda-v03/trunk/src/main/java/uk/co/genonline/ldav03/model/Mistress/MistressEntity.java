@@ -14,6 +14,7 @@ public class MistressEntity implements Serializable {
     private String mistressLongName;
     private String mistressShortName;
     private String mistressContentType;
+    private byte galleryFlag;
 
     @Id
     @Column(name = "MistressName", nullable = false, insertable = true, updatable = true, length = 20)
@@ -93,5 +94,15 @@ public class MistressEntity implements Serializable {
         result = 31 * result + (mistressShortName != null ? mistressShortName.hashCode() : 0);
         result = 31 * result + (mistressContentType != null ? mistressContentType.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "galleryFlag", nullable = false, insertable = true, updatable = true)
+    public byte getGalleryFlag() {
+        return galleryFlag;
+    }
+
+    public void setGalleryFlag(byte galleryFlag) {
+        this.galleryFlag = galleryFlag;
     }
 }

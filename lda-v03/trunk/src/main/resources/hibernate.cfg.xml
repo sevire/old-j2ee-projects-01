@@ -10,7 +10,7 @@
     <property name="connection.password">OC7AaWC77B</property>
       <mapping class="uk.co.genonline.ldav03.model.Mistress.MistressEntity"/>
       <mapping class="uk.co.genonline.ldav03.model.User.UserEntity"/>
-      <mapping class="uk.co.genonline.ldav03.model.Chamber.ChamberInformationEntity"/>
+      <mapping class="uk.co.genonline.ldav03.model.chamber.ChamberInformationEntity"/>
       <mapping class="uk.co.genonline.ldav03.model.Testimonial.TestimonialEntity"/>
       <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->

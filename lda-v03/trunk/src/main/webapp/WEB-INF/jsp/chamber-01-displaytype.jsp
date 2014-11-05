@@ -16,7 +16,7 @@
             ${chamberInformationData.chamberInformationContentDecoded}
         </div>
         <div>
-            ${gallery.html}
+            ${gallery}
         </div>
     </div>
 

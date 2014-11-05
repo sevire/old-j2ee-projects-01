@@ -11,7 +11,16 @@
     <title>${mistressData.mistressLongName}</title>
 </head>
 <body>
-${mistressData.mistressContentDecoded}
-
+<div id="content">
+    <div>
+        ${mistressData.mistressContentDecoded}
+    </div>
+    <div>
+        ${gallery}
+    </div>
+    <div>
+        ${mistressNavbar}
+    </div>
+</div>
 </body>
 </html>

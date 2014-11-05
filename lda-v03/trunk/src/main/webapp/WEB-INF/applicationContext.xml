@@ -20,7 +20,7 @@
         <property name="annotatedClasses">
             <list>
                 <value>uk.co.genonline.ldav03.model.Mistress.MistressEntity</value>
-                <value>uk.co.genonline.ldav03.model.Chamber.ChamberInformationEntity</value>
+                <value>uk.co.genonline.ldav03.model.chamber.ChamberInformationEntity</value>
                 <value>uk.co.genonline.ldav03.model.Testimonial.TestimonialEntity</value>
             </list>
 
@@ -38,8 +38,9 @@
         <constructor-arg ref="mistressEntity" />
     </bean>
     <bean id="mistressManager" class="uk.co.genonline.ldav03.model.Mistress.MistressManager"></bean>
-    <bean id="ChamberInformationManager" class="uk.co.genonline.ldav03.model.Chamber.ChamberInformationManager"></bean>
+    <bean id="ChamberInformationManager" class="uk.co.genonline.ldav03.model.chamber.ChamberInformationManager"></bean>
     <bean id="EntityInformationManager" class="uk.co.genonline.ldav03.model.Testimonial.TestimonialManager"></bean>
+    <bean id="GalleryImageManagement" class="uk.co.genonline.ldav03.model.Gallery.GalleryImageManagement"></bean>
     <bean id="GalleryPathManagement" class="uk.co.genonline.ldav03.model.Gallery.GalleryPathManagement"></bean>
     <context:component-scan base-package="uk.co.genonline.ldav03.model" />
 

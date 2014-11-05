@@ -81,6 +81,10 @@ public class Mistress {
         }
     }
 
+    public boolean isGalleryFlag() {
+        return mistressEntity.getGalleryFlag() != 0;
+    }
+
     public String toString() {
         return String.format("Mistress: <name:%s> <shortname:%s> <longname:%s>", getMistressName(),getMistressShortName(),getMistressLongName());
     }
