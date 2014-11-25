@@ -8,22 +8,30 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>${mistressData.linkData.longName}</title>
+    <title>${data.linkData.longName}</title>
 </head>
-<body id="${mistressData.linkData.name}">
+<body id="${data.linkData.name}">
 <div id="wrapper">
     <div id="header">
         ${topLinkbar}
     </div>
     <div id="sidebar1">
-        ${mistressNavbar}
+        ${siblingNavbar}
     </div>
     <div>
         ${testimonialLinkbar}
     </div>
     <div id="content1">
-        <h1>${mistressData.linkData.longName}</h1>
-        ${mistressData.mistressContentDecoded}
+        <h1>${data.linkData.longName}</h1>
+        ${data.mistressContentDecoded}
+        <br />
+        <table id="contactInformation" cols="2">
+            <tr><td>Telephone:</td><td>${data.mistressTelephoneNumber}</td></tr>
+            <tr><td>Email:</td><td>${data.mistressEmailAddress}</td></tr>
+            <tr><td>Twitter:</td><td>${data.mistressTwitterUserName}</td></tr>
+            <tr><td>Website:</td><td>${data.mistressWebsiteAddress}</td></tr>
+            </tr>
+        </table>
     </div>
     <div id="content2">
         <div id="gallery">

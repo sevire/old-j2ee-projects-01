@@ -81,6 +81,22 @@ public class Mistress implements PageData {
         return mistressEntity.getGalleryFlag() != 0;
     }
 
+    public String getMistressTwitterUserName() {
+        return mistressEntity.getMistressTwitterUserName();
+    }
+
+    public String getMistressWebsiteAddress() {
+        return mistressEntity.getMistressWebsiteAddress();
+    }
+
+    public String getMistressEmailAddress() {
+        return mistressEntity.getMistressEmailAddress();
+    }
+
+    public String getMistressTelephoneNumber() {
+        return mistressEntity.getMistressTelephoneNumber();
+    }
+
     public String toString() {
         return String.format("Mistress: <name:%s> <shortname:%s> <longname:%s>", getMistressName(), linkData.getShortName(), linkData.getLongName());
     }

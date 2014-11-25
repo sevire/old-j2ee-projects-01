@@ -61,7 +61,7 @@ public class MistressController {
             }
             String mistressLinkBar = mistressManager.getMistressLinkbarHtml(mistressName);
             String associatedTestimonialsLinkBar = mistressManager.getTestimonialLinkbarHtml();
-            modelAndView.getModel().put("sibling    Navbar", mistressLinkBar);
+            modelAndView.getModel().put("siblingNavbar", mistressLinkBar);
             modelAndView.getModel().put("testimonialLinkbar", associatedTestimonialsLinkBar);
             modelAndView.getModel().put("topLinkbar", topLinks.getTopLinkbar());
             modelAndView.setViewName("mistress-02-displaytype");

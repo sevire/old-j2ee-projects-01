@@ -16,6 +16,10 @@ public class MistressEntity {
     private String mistressContentType;
     private byte galleryFlag;
     private Collection<TestimonialEntity> testimonialsByMistressName;
+    private String mistressEmailAddress;
+    private String mistressWebsiteAddress;
+    private String mistressTwitterUserName;
+    private String mistressTelephoneNumber;
 
     @Id
     @Column(name = "mistressName", nullable = false, insertable = true, updatable = true, length = 20)
@@ -116,5 +120,45 @@ public class MistressEntity {
 
     public void setTestimonialsByMistressName(Collection<TestimonialEntity> testimonialsByMistressName) {
         this.testimonialsByMistressName = testimonialsByMistressName;
+    }
+
+    @Basic
+    @Column(name = "mistressEmailAddress", nullable = true, insertable = true, updatable = true, length = 40)
+    public String getMistressEmailAddress() {
+        return mistressEmailAddress;
+    }
+
+    public void setMistressEmailAddress(String mistressEmailAddress) {
+        this.mistressEmailAddress = mistressEmailAddress;
+    }
+
+    @Basic
+    @Column(name = "mistressWebsiteAddress", nullable = true, insertable = true, updatable = true, length = 40)
+    public String getMistressWebsiteAddress() {
+        return mistressWebsiteAddress;
+    }
+
+    public void setMistressWebsiteAddress(String mistressWebsiteAddress) {
+        this.mistressWebsiteAddress = mistressWebsiteAddress;
+    }
+
+    @Basic
+    @Column(name = "mistressTwitterUserName", nullable = true, insertable = true, updatable = true, length = 20)
+    public String getMistressTwitterUserName() {
+        return mistressTwitterUserName;
+    }
+
+    public void setMistressTwitterUserName(String mistressTwitterUserName) {
+        this.mistressTwitterUserName = mistressTwitterUserName;
+    }
+
+    @Basic
+    @Column(name = "mistressTelephoneNumber", nullable = true, insertable = true, updatable = true, length = 20)
+    public String getMistressTelephoneNumber() {
+        return mistressTelephoneNumber;
+    }
+
+    public void setMistressTelephoneNumber(String mistressTelephoneNumber) {
+        this.mistressTelephoneNumber = mistressTelephoneNumber;
     }
 }
