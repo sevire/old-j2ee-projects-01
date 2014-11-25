@@ -110,5 +110,11 @@
             <artifactId>thumbnailator</artifactId>
             <version>[0.4, 0.5)</version>
         </dependency>
+        <dependency>
+            <groupId>io.wcm</groupId>
+            <artifactId>io.wcm.testing.junit-commons</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+
     </dependencies>
 </project>

@@ -1,5 +1,7 @@
 package uk.co.genonline.ldav03.model.User;
 
+import uk.co.genonline.ldav03.model.entities.UserEntity;
+
 /**
  * Created by thomassecondary on 17/09/2014.
  */

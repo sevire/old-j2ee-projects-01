@@ -36,10 +36,10 @@
 <a href="javascript:updatePage()">UPDATE PAGE</a>
 
 <div id="container">
-    <img src="/galleryimage/courtney/A05.jpg" />
     <p id="status" class="info"/>
-    <div id="sContent" />
-    <img src="/galleryimage/courtney/SID_2860-Edit.jpg" />
+    <div id="sContent">
+        ${mistressEntity.mistressContent}
+    </div>
 </div>
 
 </body>

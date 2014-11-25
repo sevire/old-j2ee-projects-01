@@ -1,4 +1,4 @@
-package uk.co.genonline.ldav03.controller;
+package uk.co.genonline.ldav03.controller.chamber;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -9,40 +9,62 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import uk.co.genonline.ldav03.model.Gallery.Gallery;
 import uk.co.genonline.ldav03.model.chamber.ChamberInformation;
 import uk.co.genonline.ldav03.model.chamber.ChamberInformationManager;
-import uk.co.genonline.ldav03.model.Gallery.Gallery;
+import uk.co.genonline.ldav03.web.TopLinks;
 
 import java.io.FileNotFoundException;
+
+import static uk.co.genonline.ldav03.controller.UrlMapping.CHAMBER_CLASS_URL_MAPPING;
+import static uk.co.genonline.ldav03.controller.UrlMapping.VIEW_URL_MAPPING;
 
 /**
  * Created by thomassecondary on 20/07/2014.
  */
 
 @Controller
-@RequestMapping("/chamberView")
-public class ChamberRequestController {
+@RequestMapping(CHAMBER_CLASS_URL_MAPPING)
+public class ChamberController {
     Logger logger = Logger.getLogger("");
 
     @Autowired
     ChamberInformationManager chamberInformationManager;
 
-    @RequestMapping(value="/{chamberInformationName}", method=RequestMethod.GET)
-    public ModelAndView chamberRequest(@PathVariable String chamberInformationName, ModelAndView modelAndView) throws FileNotFoundException {
+    @Autowired
+    TopLinks topLinks;
+
+    @RequestMapping(method=RequestMethod.GET)
+    public ModelAndView defaultRequest(ModelAndView modelAndView) throws FileNotFoundException {
+
+        return chamberViewRequest("facilities", modelAndView);
+    }
+
+    @RequestMapping(value=VIEW_URL_MAPPING, method=RequestMethod.GET)
+    public ModelAndView defaultViewRequest(ModelAndView modelAndView) throws FileNotFoundException {
+
+        return chamberViewRequest("facilities", modelAndView);
+    }
+
+    @RequestMapping(value=VIEW_URL_MAPPING + "/{chamberInformationName}", method=RequestMethod.GET)
+    public ModelAndView chamberViewRequest(@PathVariable String chamberInformationName, ModelAndView modelAndView) throws FileNotFoundException {
         ChamberInformation chamberInformation;
 
-        logger.log(Level.INFO, String.format("Parsing chamber request for {%s}", chamberInformationName));
+        logger.log(Level.TRACE, String.format("Parsing chamber request for {%s}", chamberInformationName));
 
         chamberInformation = chamberInformationManager.getChamberInformationData(chamberInformationName);
         if (chamberInformation == null) {
-            throw new FileNotFoundException(String.format("chamber %s not found",chamberInformationName));
+            throw new FileNotFoundException(String.format("Chamber %s not found",chamberInformationName));
         } else {
+            modelAndView.getModel().put("data", chamberInformation);
             if (chamberInformation.isGalleryFlag()) {
                 String galleryHtml = new Gallery(chamberInformationName).getHtml();
                 modelAndView.getModel().put("gallery", galleryHtml);
             }
-            modelAndView.getModel().put("chamberInformationData", chamberInformation);
+            String chamberLinkBar = chamberInformationManager.getChamberLinkbarHtml(chamberInformationName);
+            modelAndView.getModel().put("siblingNavbar", chamberLinkBar);
             modelAndView.setViewName("chamber-01-displaytype");
+            modelAndView.getModel().put("topLinkbar", topLinks.getTopLinkbar());
             return modelAndView;
         }
     }

@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import uk.co.genonline.ldav03.model.EntityManager;
+import uk.co.genonline.ldav03.model.entities.UserEntity;
 
 import java.io.Serializable;
 

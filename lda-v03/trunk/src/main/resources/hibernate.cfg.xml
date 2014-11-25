@@ -6,13 +6,11 @@
   <session-factory>
     <property name="connection.url">jdbc:mysql://localhost:3306/lda_v03_01</property>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="connection.username">root</property>
-    <property name="connection.password">OC7AaWC77B</property>
-      <mapping class="uk.co.genonline.ldav03.model.Mistress.MistressEntity"/>
-      <mapping class="uk.co.genonline.ldav03.model.User.UserEntity"/>
-      <mapping class="uk.co.genonline.ldav03.model.chamber.ChamberInformationEntity"/>
-      <mapping class="uk.co.genonline.ldav03.model.Testimonial.TestimonialEntity"/>
-      <!-- DB schema will be updated if needed -->
+    <mapping class="uk.co.genonline.ldav03.model.entities.MistressEntity"/>
+      <mapping class="uk.co.genonline.ldav03.model.entities.UserEntity"/>
+      <mapping class="uk.co.genonline.ldav03.model.entities.ChamberInformationEntity"/>
+      <mapping class="uk.co.genonline.ldav03.model.entities.TestimonialEntity"/>
+    <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
   </session-factory>
 </hibernate-configuration>

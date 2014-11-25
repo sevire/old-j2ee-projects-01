@@ -1,4 +1,4 @@
-package uk.co.genonline.ldav03.controller;
+package uk.co.genonline.ldav03.controller.mistress;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -27,7 +27,7 @@ public class MistressRestController {
 
         logger.log(Level.INFO, String.format("Parsing mistress REST service request for {%s}",mistressName));
 
-        mistressData = mistressManager.getMistressData(mistressName);
+        mistressData = mistressManager.getMistressRecordByName(mistressName);
         if (mistressData == null) {
             throw new FileNotFoundException(String.format("Mistress %s not found",mistressName));
         } else {

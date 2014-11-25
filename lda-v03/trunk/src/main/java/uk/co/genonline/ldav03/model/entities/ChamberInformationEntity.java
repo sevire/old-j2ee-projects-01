@@ -1,9 +1,9 @@
-package uk.co.genonline.ldav03.model.chamber;
+package uk.co.genonline.ldav03.model.entities;
 
 import javax.persistence.*;
 
 /**
- * Created by thomassecondary on 26/10/2014.
+ * Created by thomassecondary on 07/11/2014.
  */
 @Entity
 @Table(name = "ChamberInformation", schema = "", catalog = "lda_v03_01")
@@ -12,10 +12,10 @@ public class ChamberInformationEntity {
     private String chamberInformationContent;
     private String chamberInformationLongName;
     private String chamberInformationShortName;
-    private byte galleryFlag;
+    private Byte galleryFlag;
 
     @Id
-    @Column(name = "ChamberInformationName", nullable = false, insertable = true, updatable = true, length = 20)
+    @Column(name = "chamberInformationName", nullable = false, insertable = true, updatable = true, length = 20)
     public String getChamberInformationName() {
         return chamberInformationName;
     }
@@ -25,7 +25,7 @@ public class ChamberInformationEntity {
     }
 
     @Basic
-    @Column(name = "ChamberInformationContent", nullable = false, insertable = true, updatable = true, length = 2147483647)
+    @Column(name = "chamberInformationContent", nullable = true, insertable = true, updatable = true, length = 2147483647)
     public String getChamberInformationContent() {
         return chamberInformationContent;
     }
@@ -35,7 +35,7 @@ public class ChamberInformationEntity {
     }
 
     @Basic
-    @Column(name = "ChamberInformationLongName", nullable = true, insertable = true, updatable = true, length = 50)
+    @Column(name = "chamberInformationLongName", nullable = true, insertable = true, updatable = true, length = 50)
     public String getChamberInformationLongName() {
         return chamberInformationLongName;
     }
@@ -45,13 +45,23 @@ public class ChamberInformationEntity {
     }
 
     @Basic
-    @Column(name = "ChamberInformationShortName", nullable = false, insertable = true, updatable = true, length = 50)
+    @Column(name = "chamberInformationShortName", nullable = true, insertable = true, updatable = true, length = 50)
     public String getChamberInformationShortName() {
         return chamberInformationShortName;
     }
 
     public void setChamberInformationShortName(String chamberInformationShortName) {
         this.chamberInformationShortName = chamberInformationShortName;
+    }
+
+    @Basic
+    @Column(name = "galleryFlag", nullable = true, insertable = true, updatable = true)
+    public Byte getGalleryFlag() {
+        return galleryFlag;
+    }
+
+    public void setGalleryFlag(Byte galleryFlag) {
+        this.galleryFlag = galleryFlag;
     }
 
     @Override
@@ -69,6 +79,7 @@ public class ChamberInformationEntity {
             return false;
         if (chamberInformationShortName != null ? !chamberInformationShortName.equals(that.chamberInformationShortName) : that.chamberInformationShortName != null)
             return false;
+        if (galleryFlag != null ? !galleryFlag.equals(that.galleryFlag) : that.galleryFlag != null) return false;
 
         return true;
     }
@@ -79,16 +90,7 @@ public class ChamberInformationEntity {
         result = 31 * result + (chamberInformationContent != null ? chamberInformationContent.hashCode() : 0);
         result = 31 * result + (chamberInformationLongName != null ? chamberInformationLongName.hashCode() : 0);
         result = 31 * result + (chamberInformationShortName != null ? chamberInformationShortName.hashCode() : 0);
+        result = 31 * result + (galleryFlag != null ? galleryFlag.hashCode() : 0);
         return result;
-    }
-
-    @Basic
-    @Column(name = "galleryFlag", nullable = true, insertable = true, updatable = true)
-    public byte getGalleryFlag() {
-        return galleryFlag;
-    }
-
-    public void setGalleryFlag(byte galleryFlag) {
-        this.galleryFlag = galleryFlag;
     }
 }

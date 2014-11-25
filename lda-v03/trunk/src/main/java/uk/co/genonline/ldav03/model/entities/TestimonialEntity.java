@@ -1,9 +1,9 @@
-package uk.co.genonline.ldav03.model.Testimonial;
+package uk.co.genonline.ldav03.model.entities;
 
 import javax.persistence.*;
 
 /**
- * Created by thomassecondary on 27/10/2014.
+ * Created by thomassecondary on 07/11/2014.
  */
 @Entity
 @Table(name = "Testimonial", schema = "", catalog = "lda_v03_01")
@@ -14,9 +14,15 @@ public class TestimonialEntity {
     private String testimonialContent;
     private String testimonialLongName;
     private String testimonialShortName;
+    private String mistressName;
+    private MistressEntity mistressByMistressName;
+
+    public void setTestimonialSortKey(Integer testimonialSortKey) {
+        this.testimonialSortKey = testimonialSortKey;
+    }
 
     @Id
-    @Column(name = "TestimonialName", nullable = false, insertable = true, updatable = true, length = 20)
+    @Column(name = "testimonialName", nullable = false, insertable = true, updatable = true, length = 20)
     public String getTestimonialName() {
         return testimonialName;
     }
@@ -26,7 +32,7 @@ public class TestimonialEntity {
     }
 
     @Basic
-    @Column(name = "TestimonialSlaveName", nullable = false, insertable = true, updatable = true, length = 50)
+    @Column(name = "testimonialSlaveName", nullable = true, insertable = true, updatable = true, length = 50)
     public String getTestimonialSlaveName() {
         return testimonialSlaveName;
     }
@@ -36,7 +42,7 @@ public class TestimonialEntity {
     }
 
     @Basic
-    @Column(name = "TestimonialSortKey", nullable = false, insertable = true, updatable = true)
+    @Column(name = "testimonialSortKey", nullable = true, insertable = true, updatable = true)
     public int getTestimonialSortKey() {
         return testimonialSortKey;
     }
@@ -46,7 +52,7 @@ public class TestimonialEntity {
     }
 
     @Basic
-    @Column(name = "TestimonialContent", nullable = false, insertable = true, updatable = true, length = 2147483647)
+    @Column(name = "testimonialContent", nullable = true, insertable = true, updatable = true, length = 2147483647)
     public String getTestimonialContent() {
         return testimonialContent;
     }
@@ -56,7 +62,7 @@ public class TestimonialEntity {
     }
 
     @Basic
-    @Column(name = "TestimonialLongName", nullable = false, insertable = true, updatable = true, length = 50)
+    @Column(name = "testimonialLongName", nullable = true, insertable = true, updatable = true, length = 50)
     public String getTestimonialLongName() {
         return testimonialLongName;
     }
@@ -66,13 +72,23 @@ public class TestimonialEntity {
     }
 
     @Basic
-    @Column(name = "TestimonialShortName", nullable = false, insertable = true, updatable = true, length = 50)
+    @Column(name = "testimonialShortName", nullable = true, insertable = true, updatable = true, length = 50)
     public String getTestimonialShortName() {
         return testimonialShortName;
     }
 
     public void setTestimonialShortName(String testimonialShortName) {
         this.testimonialShortName = testimonialShortName;
+    }
+
+    @Basic
+    @Column(name = "mistressName", nullable = true, insertable = true, updatable = true, length = 20)
+    public String getMistressName() {
+        return mistressName;
+    }
+
+    public void setMistressName(String mistressName) {
+        this.mistressName = mistressName;
     }
 
     @Override
@@ -83,6 +99,7 @@ public class TestimonialEntity {
         TestimonialEntity that = (TestimonialEntity) o;
 
         if (testimonialSortKey != that.testimonialSortKey) return false;
+        if (mistressName != null ? !mistressName.equals(that.mistressName) : that.mistressName != null) return false;
         if (testimonialContent != null ? !testimonialContent.equals(that.testimonialContent) : that.testimonialContent != null)
             return false;
         if (testimonialLongName != null ? !testimonialLongName.equals(that.testimonialLongName) : that.testimonialLongName != null)
@@ -105,6 +122,17 @@ public class TestimonialEntity {
         result = 31 * result + (testimonialContent != null ? testimonialContent.hashCode() : 0);
         result = 31 * result + (testimonialLongName != null ? testimonialLongName.hashCode() : 0);
         result = 31 * result + (testimonialShortName != null ? testimonialShortName.hashCode() : 0);
+        result = 31 * result + (mistressName != null ? mistressName.hashCode() : 0);
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "mistressName", referencedColumnName = "mistressName", insertable=false, updatable = false)
+    public MistressEntity getMistressByMistressName() {
+        return mistressByMistressName;
+    }
+
+    public void setMistressByMistressName(MistressEntity mistressByMistressName) {
+        this.mistressByMistressName = mistressByMistressName;
     }
 }

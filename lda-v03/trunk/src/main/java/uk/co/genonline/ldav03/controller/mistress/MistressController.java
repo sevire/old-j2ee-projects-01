@@ -1,4 +1,4 @@
-package uk.co.genonline.ldav03.controller;
+package uk.co.genonline.ldav03.controller.mistress;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import uk.co.genonline.ldav03.model.Gallery.Gallery;
 import uk.co.genonline.ldav03.model.Mistress.Mistress;
-import uk.co.genonline.ldav03.model.Mistress.MistressEntity;
 import uk.co.genonline.ldav03.model.Mistress.MistressManager;
+import uk.co.genonline.ldav03.model.entities.MistressEntity;
+import uk.co.genonline.ldav03.web.TopLinks;
 
 import java.io.FileNotFoundException;
 
@@ -28,29 +29,43 @@ public class MistressController {
     @Autowired
     MistressManager mistressManager;
 
-    @RequestMapping(method=RequestMethod.GET)
-    public ModelAndView defaultRequest(ModelAndView modelAndView) throws FileNotFoundException {
-        return mistressRequest("lucina", modelAndView);
+    @Autowired
+    TopLinks topLinks;
+
+    @RequestMapping(value=VIEW_URL_MAPPING, method=RequestMethod.GET)
+    public ModelAndView defaultViewRequest(ModelAndView modelAndView) throws FileNotFoundException {
+        // ToDo: Need non hard-coded way of defining default pages - flag in database or specific record in configuration
+        return mistressViewRequest("lucina", modelAndView);
     }
 
-    @RequestMapping(value=MISTRESS_VIEW_URL_MAPPING + "/{mistressName}", method=RequestMethod.GET)
-    public ModelAndView mistressRequest(@PathVariable String mistressName, ModelAndView modelAndView) throws FileNotFoundException {
+    @RequestMapping(method=RequestMethod.GET)
+    public ModelAndView defaultRequest(ModelAndView modelAndView) throws FileNotFoundException {
+        // ToDo: Need non hard-coded way of defining default pages - flag in database or specific record in configuration
+        return mistressViewRequest("lucina", modelAndView);
+    }
+
+    @RequestMapping(value=VIEW_URL_MAPPING + "/{mistressName}", method=RequestMethod.GET)
+    public ModelAndView mistressViewRequest(@PathVariable String mistressName, ModelAndView modelAndView) throws FileNotFoundException {
         Mistress mistressData;
 
         logger.log(Level.INFO, String.format("Parsing mistress request for {%s}",mistressName));
 
-        mistressData = mistressManager.getMistressData(mistressName);
+        mistressData = mistressManager.getMistressRecordByNameWithTestimonials(mistressName);
         if (mistressData == null) {
-            throw new FileNotFoundException(String.format("Mistress %s not found",mistressName));
+            throw new FileNotFoundException(String.format("Mistress %s not found", mistressName));
         } else {
-            modelAndView.getModel().put("mistressData", mistressData);
+            modelAndView.getModel().put("data", mistressData);
             if (mistressData.isGalleryFlag()) {
                 String galleryHtml = new Gallery(mistressName).getHtml();
                 modelAndView.getModel().put("gallery", galleryHtml == null ? "" : galleryHtml);
             }
-            String mistressLinkBar = mistressManager.getMistressLinkbarHtml();
-            modelAndView.getModel().put("mistressNavbar", mistressLinkBar);
+            String mistressLinkBar = mistressManager.getMistressLinkbarHtml(mistressName);
+            String associatedTestimonialsLinkBar = mistressManager.getTestimonialLinkbarHtml();
+            modelAndView.getModel().put("sibling    Navbar", mistressLinkBar);
+            modelAndView.getModel().put("testimonialLinkbar", associatedTestimonialsLinkBar);
+            modelAndView.getModel().put("topLinkbar", topLinks.getTopLinkbar());
             modelAndView.setViewName("mistress-02-displaytype");
+
             return modelAndView;
         }
     }
@@ -63,16 +78,16 @@ public class MistressController {
         return modelAndView;
     }
 
-    @RequestMapping(value="/mistressadd", method=RequestMethod.GET)
+    @RequestMapping(value=ADD_URL_MAPPING, method=RequestMethod.GET)
     public String mistressAddForm(Model model) {
-        MistressEntity mistressEntity = mistressManager.getMistressData("lucina").getMistressEntity();
+        MistressEntity mistressEntity = mistressManager.getMistressRecordByName("lucina").getMistressEntity();
         logger.debug(String.format("mistressEntity:mistressName = <%s>", mistressEntity.getMistressName()));
 
         model.addAttribute("mistressEntity", mistressEntity);
         return "mistress-update-01-displaytype";
     }
 
-    @RequestMapping(value="/mistressadd", method=RequestMethod.POST)
+    @RequestMapping(value=ADD_URL_MAPPING, method=RequestMethod.POST)
     public String mistressProcessUpdate(@ModelAttribute MistressEntity mistressEntity, Model model) {
         mistressManager.addMistressData(mistressEntity);
         model.addAttribute("mistressEntity", mistressEntity);

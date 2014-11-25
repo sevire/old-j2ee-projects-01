@@ -8,10 +8,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>${testimonialData.testimonialLongName}</title>
+    <title>${testimonialData.linkData.longName}</title>
 </head>
-<body>
-${testimonialData.testimonialContentDecoded}
+<body id="${testimonialData.linkData.name}">
+<div id="wrapper">
+    <div id="header">
+        ${topLinkbar}
+    </div>
+    <div id="sidebar1">
+        ${testimonialLinkbar}
+    </div>
+    <div id="content1">
+        <h1>${testimonialData.linkData.longName}</h1>
+        ${testimonialData.testimonialContentDecoded}
+    </div>
+</div>
+
 
 </body>
 </html>

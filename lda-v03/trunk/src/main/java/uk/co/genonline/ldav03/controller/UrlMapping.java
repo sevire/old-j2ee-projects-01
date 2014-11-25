@@ -6,7 +6,25 @@ package uk.co.genonline.ldav03.controller;
 public class UrlMapping {
     private UrlMapping() {}
 
+    /**
+     * Define constants to help centralise management of URLs.  Not a perfect solution but better than naked String
+     * constants everywhere.
+     *
+     * Approach taken is:
+     * - URLs will have the general form (/{entity}/{action}/{entityKey}
+     *   e.g. To view a Mistress page - /mistress/view/lucina
+     *
+     * - I will have a constant for each entity
+     * - I will have a constant for each action
+     * - I will see how it goes and come back if this isn't simple enough.
+     */
+
     public static final String MISTRESS_CLASS_URL_MAPPING = "/mistress";
-    public static final String MISTRESS_VIEW_URL_MAPPING = "/view";
-    public static final String TESTIMONIAL_CLASS_URL_MAPPING = "/DUMMMY";
+    public static final String TESTIMONIAL_CLASS_URL_MAPPING = "/testimonial";
+    public static final String CHAMBER_CLASS_URL_MAPPING = "/chamber";
+
+    public static final String VIEW_URL_MAPPING = "/view";
+    public static final String ADD_URL_MAPPING = "/add";
+
+    // ToDo: Remove trailing slash (sometimes a leading slash, never a trailing slash).
 }

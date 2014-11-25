@@ -1,6 +1,10 @@
 package uk.co.genonline.ldav03.model.Testimonial;
 
 import org.markdown4j.Markdown4jProcessor;
+import uk.co.genonline.ldav03.controller.UrlMapping;
+import uk.co.genonline.ldav03.model.PageData;
+import uk.co.genonline.ldav03.model.entities.TestimonialEntity;
+import uk.co.genonline.ldav03.web.LinkData;
 
 import java.io.IOException;
 
@@ -15,11 +19,22 @@ import java.io.IOException;
  * - Add method getTestimonialContentDecoded to parse using Markdown.
  *
  */
-public class Testimonial {
+public class Testimonial implements PageData {
     TestimonialEntity testimonialEntity;
+    LinkData linkData;
+
+    private Testimonial() {
+        // Dummy default constructor to stop instantiating without setting entity.
+        //ToDo: Check whether this is the right way to do this (I think I am making this commutable)
+    }
 
     public Testimonial(TestimonialEntity testimonialEntity) {
         this.testimonialEntity = testimonialEntity;
+        linkData = new LinkData(testimonialEntity.getTestimonialName(), testimonialEntity.getTestimonialShortName(), testimonialEntity.getTestimonialLongName(), UrlMapping.TESTIMONIAL_CLASS_URL_MAPPING);
+    }
+
+    public LinkData getLinkData() {
+        return linkData;
     }
 
     public String getTestimonialName() {
@@ -48,21 +63,5 @@ public class Testimonial {
             e.printStackTrace();
         }
         return outputHTML;
-    }
-
-    public String getTestimonialLongName() {
-        if (testimonialEntity.getTestimonialLongName() == null || testimonialEntity.getTestimonialLongName().isEmpty()) {
-            return getTestimonialShortName();
-        } else {
-            return testimonialEntity.getTestimonialLongName();
-        }
-    }
-
-    public String getTestimonialShortName() {
-        if (testimonialEntity.getTestimonialShortName() == null || testimonialEntity.getTestimonialShortName().isEmpty()) {
-            return getTestimonialName();
-        } else {
-            return testimonialEntity.getTestimonialShortName();
-        }
     }
 }

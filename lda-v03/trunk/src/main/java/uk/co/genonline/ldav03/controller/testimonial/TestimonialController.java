@@ -1,4 +1,4 @@
-package uk.co.genonline.ldav03.controller;
+package uk.co.genonline.ldav03.controller.testimonial;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import uk.co.genonline.ldav03.model.Testimonial.Testimonial;
 import uk.co.genonline.ldav03.model.Testimonial.TestimonialManager;
+import uk.co.genonline.ldav03.web.TopLinks;
 
 import java.io.FileNotFoundException;
 
@@ -19,14 +20,17 @@ import java.io.FileNotFoundException;
  */
 
 @Controller
-@RequestMapping("/testimonialView")
-public class TestimonialRequestController {
+@RequestMapping("/testimonial")
+public class TestimonialController {
     Logger logger = Logger.getLogger("");
 
     @Autowired
     TestimonialManager testimonialManager;
 
-    @RequestMapping(value="/{testimonialName}", method=RequestMethod.GET)
+    @Autowired
+    TopLinks topLinks;
+
+    @RequestMapping(value="/view/{testimonialName}", method=RequestMethod.GET)
     public ModelAndView testimonialRequest(@PathVariable String testimonialName, ModelAndView modelAndView) throws FileNotFoundException {
         Testimonial testimonial;
 
@@ -36,7 +40,10 @@ public class TestimonialRequestController {
         if (testimonial == null) {
             throw new FileNotFoundException(String.format("Testimonial %s not found", testimonialName));
         } else {
-            modelAndView.getModel().put("testimonialData", testimonial);
+            String testimonialLinkBar = testimonialManager.getTestimonialLinkbarHtml(testimonialName);
+            modelAndView.getModel().put("data", testimonial);
+            modelAndView.getModel().put("topLinkbar", topLinks.getTopLinkbar());
+            modelAndView.getModel().put("siblingLinkbar", testimonialLinkBar);
             modelAndView.setViewName("testimonial-01-displaytype");
             return modelAndView;
         }
@@ -51,6 +58,6 @@ public class TestimonialRequestController {
     }
 
     public String toString() {
-        return String.format("TestimonialRequestController: <TestimonialManager-%s>", testimonialManager);
+        return String.format("TestimonialController: <TestimonialManager-%s>", testimonialManager);
     }
 }

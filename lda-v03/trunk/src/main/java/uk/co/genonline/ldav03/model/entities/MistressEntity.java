@@ -1,23 +1,24 @@
-package uk.co.genonline.ldav03.model.Mistress;
+package uk.co.genonline.ldav03.model.entities;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import java.util.Collection;
 
 /**
- * Created by thomassecondary on 19/07/2014.
+ *
  */
 @Entity
 @Table(name = "Mistress", schema = "", catalog = "lda_v03_01")
-public class MistressEntity implements Serializable {
+public class MistressEntity {
     private String mistressName;
     private String mistressContent;
     private String mistressLongName;
     private String mistressShortName;
     private String mistressContentType;
     private byte galleryFlag;
+    private Collection<TestimonialEntity> testimonialsByMistressName;
 
     @Id
-    @Column(name = "MistressName", nullable = false, insertable = true, updatable = true, length = 20)
+    @Column(name = "mistressName", nullable = false, insertable = true, updatable = true, length = 20)
     public String getMistressName() {
         return mistressName;
     }
@@ -27,7 +28,7 @@ public class MistressEntity implements Serializable {
     }
 
     @Basic
-    @Column(name = "MistressContent", nullable = true, insertable = true, updatable = true, length = 2147483647)
+    @Column(name = "mistressContent", nullable = true, insertable = true, updatable = true, length = 2147483647)
     public String getMistressContent() {
         return mistressContent;
     }
@@ -37,7 +38,7 @@ public class MistressEntity implements Serializable {
     }
 
     @Basic
-    @Column(name = "MistressLongName", nullable = true, insertable = true, updatable = true, length = 50)
+    @Column(name = "mistressLongName", nullable = true, insertable = true, updatable = true, length = 50)
     public String getMistressLongName() {
         return mistressLongName;
     }
@@ -47,7 +48,7 @@ public class MistressEntity implements Serializable {
     }
 
     @Basic
-    @Column(name = "MistressShortName", nullable = true, insertable = true, updatable = true, length = 50)
+    @Column(name = "mistressShortName", nullable = true, insertable = true, updatable = true, length = 50)
     public String getMistressShortName() {
         return mistressShortName;
     }
@@ -57,13 +58,23 @@ public class MistressEntity implements Serializable {
     }
 
     @Basic
-    @Column(name = "MistressContentType", nullable = true, insertable = true, updatable = true, length = 20)
+    @Column(name = "mistressContentType", nullable = true, insertable = true, updatable = true, length = 20)
     public String getMistressContentType() {
         return mistressContentType;
     }
 
     public void setMistressContentType(String mistressContentType) {
         this.mistressContentType = mistressContentType;
+    }
+
+    @Basic
+    @Column(name = "galleryFlag", nullable = false, insertable = true, updatable = true)
+    public byte getGalleryFlag() {
+        return galleryFlag;
+    }
+
+    public void setGalleryFlag(byte galleryFlag) {
+        this.galleryFlag = galleryFlag;
     }
 
     @Override
@@ -73,6 +84,7 @@ public class MistressEntity implements Serializable {
 
         MistressEntity that = (MistressEntity) o;
 
+        if (galleryFlag != that.galleryFlag) return false;
         if (mistressContent != null ? !mistressContent.equals(that.mistressContent) : that.mistressContent != null)
             return false;
         if (mistressContentType != null ? !mistressContentType.equals(that.mistressContentType) : that.mistressContentType != null)
@@ -93,16 +105,16 @@ public class MistressEntity implements Serializable {
         result = 31 * result + (mistressLongName != null ? mistressLongName.hashCode() : 0);
         result = 31 * result + (mistressShortName != null ? mistressShortName.hashCode() : 0);
         result = 31 * result + (mistressContentType != null ? mistressContentType.hashCode() : 0);
+        result = 31 * result + (int) galleryFlag;
         return result;
     }
 
-    @Basic
-    @Column(name = "galleryFlag", nullable = false, insertable = true, updatable = true)
-    public byte getGalleryFlag() {
-        return galleryFlag;
+    @OneToMany(mappedBy = "mistressByMistressName")
+    public Collection<TestimonialEntity> getTestimonialsByMistressName() {
+        return testimonialsByMistressName;
     }
 
-    public void setGalleryFlag(byte galleryFlag) {
-        this.galleryFlag = galleryFlag;
+    public void setTestimonialsByMistressName(Collection<TestimonialEntity> testimonialsByMistressName) {
+        this.testimonialsByMistressName = testimonialsByMistressName;
     }
 }

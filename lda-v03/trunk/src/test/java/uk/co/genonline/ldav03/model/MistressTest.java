@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import uk.co.genonline.ldav03.model.Mistress.Mistress;
-import uk.co.genonline.ldav03.model.Mistress.MistressEntity;
+import uk.co.genonline.ldav03.model.entities.MistressEntity;
 
 /**
  * Created by thomassecondary on 20/07/2014.
@@ -32,8 +32,8 @@ public class MistressTest {
     @Test
     public void readTest() {
         data = new Mistress((MistressEntity) session.get(MistressEntity.class, "lucina"));
-        Assert.assertEquals("Long name incorrect", "Princess Lucina", data.getMistressLongName());
-        Assert.assertEquals("Short name incorrect", "Princess Lucina", data.getMistressShortName());
+        Assert.assertEquals("Long name incorrect", "Princess Lucina", data.getLinkData().getLongName());
+        Assert.assertEquals("Short name incorrect", "Princess Lucina", data.getLinkData().getLongName());
     }
 
 }

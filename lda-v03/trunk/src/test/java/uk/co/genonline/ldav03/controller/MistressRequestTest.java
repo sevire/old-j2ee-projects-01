@@ -18,6 +18,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
+/**
+ * Tests all URL combinations including invalid to confirm that right result is obtained.  In particular:
+ * - Checks that the status is as expected, particularly for Page Not Found etc.
+ * - Checks that the view is as expected.
+ */
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration({"file:src/main/webapp/WEB-INF/dispatcher-servlet.xml", "file:src/main/webapp/WEB-INF/applicationContext.xml"})
@@ -41,7 +47,7 @@ public class MistressRequestTest {
 
         result = mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("mistress-01-displaytype"))
+                .andExpect(view().name("index"))
                 .andReturn();
 
 /*
@@ -49,9 +55,9 @@ public class MistressRequestTest {
         testHelper.checkMistressRecord(mistressData, "lucina", "Princess Lucina", "Princess Lucina");
 */
 
-        result = mockMvc.perform(get("/mistressview/lucina"))
+        result = mockMvc.perform(get("/mistress/view/lucina"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("mistress-01-displaytype"))
+                .andExpect(view().name("mistress-02-displaytype"))
                 .andReturn();
 
 /*
@@ -59,7 +65,7 @@ public class MistressRequestTest {
         testHelper.checkMistressRecord(mistressData, "lucina", "Princess Lucina", "Princess Lucina");
 */
 
-        result = mockMvc.perform(get("/mistressview/xlucina"))
+        result = mockMvc.perform(get("/mistress/view/xlucina"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("pagenotfound"))
                 .andReturn();

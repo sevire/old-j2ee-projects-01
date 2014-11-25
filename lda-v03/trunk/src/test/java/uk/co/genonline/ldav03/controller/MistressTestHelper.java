@@ -10,7 +10,7 @@ public class MistressTestHelper {
 
     public void checkMistressRecord(Mistress mistressData, String name, String shortName, String longName) {
         Assert.assertEquals("Unexpected name", name, mistressData.getMistressName());
-        Assert.assertEquals("Unexpected Short Name", shortName, mistressData.getMistressShortName());
-        Assert.assertEquals("Unexpected Long Name", longName, mistressData.getMistressLongName());
+        Assert.assertEquals("Unexpected Short Name", shortName, mistressData.getLinkData().getShortName());
+        Assert.assertEquals("Unexpected Long Name", longName, mistressData.getLinkData().getLongName());
     }
 }

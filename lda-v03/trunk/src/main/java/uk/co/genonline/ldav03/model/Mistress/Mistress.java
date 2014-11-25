@@ -1,22 +1,38 @@
 package uk.co.genonline.ldav03.model.Mistress;
 
 import org.markdown4j.Markdown4jProcessor;
+import uk.co.genonline.ldav03.controller.UrlMapping;
+import uk.co.genonline.ldav03.model.PageData;
+import uk.co.genonline.ldav03.model.Testimonial.Testimonial;
+import uk.co.genonline.ldav03.model.entities.MistressEntity;
+import uk.co.genonline.ldav03.model.entities.TestimonialEntity;
+import uk.co.genonline.ldav03.web.LinkData;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
- * Acts as a wrapper for the MistressEntity class, in order to allow some pre-processing of requests.
+ * The reason for this class is to keep auto-generated classes distinct from those which have been hand-written.
+ * I am not sure whether this is strictly required - as far as I can see the generation of entity classes does not
+ * overwrite any changes which have been made - however I expect that occasionally I will want to re-generate the entity
+ * classes from scratch and this is a clean way of allowing that.
  *
- * The MistressEntity class is automatically generated from the DB Schema so it is cleaner if it isn't modified.
- * The Mistress class allows more sophisticated operations such as returning the short name as the long name if the
- * long name isn't populated (This allows a user to populate the minimum number of fields).
- *
+ * I want to add some processing around access to certain fields, such as name, shortName, longName because of the rules
+ * I want to implement that allows fields to be left blank if they are the same as another (e.g. if longName is blank, use
+ * shortName).
  */
-public class Mistress {
+public class Mistress implements PageData {
     MistressEntity mistressEntity;
+    LinkData linkData;
 
     public Mistress(MistressEntity mistressEntity) {
         this.mistressEntity = mistressEntity;
+        this.linkData = new LinkData(mistressEntity.getMistressName(), mistressEntity.getMistressShortName(), mistressEntity.getMistressLongName(), UrlMapping.MISTRESS_CLASS_URL_MAPPING);
+    }
+
+    public LinkData getLinkData() {
+        return linkData;
     }
 
     /**
@@ -61,31 +77,26 @@ public class Mistress {
         return mistressEntity.getMistressContentType();
     }
 
-    /**
-     * If the long name isn't populated, use the short name instead.
-     * @return
-     */
-    public String getMistressLongName() {
-        if (mistressEntity.getMistressLongName() == null || mistressEntity.getMistressLongName().isEmpty()) {
-            return getMistressShortName();
-        } else {
-            return mistressEntity.getMistressLongName();
-        }
-    }
-
-    public String getMistressShortName() {
-        if (mistressEntity.getMistressShortName() == null || mistressEntity.getMistressShortName().isEmpty()) {
-            return getMistressName();
-        } else {
-            return mistressEntity.getMistressShortName();
-        }
-    }
-
     public boolean isGalleryFlag() {
         return mistressEntity.getGalleryFlag() != 0;
     }
 
     public String toString() {
-        return String.format("Mistress: <name:%s> <shortname:%s> <longname:%s>", getMistressName(),getMistressShortName(),getMistressLongName());
+        return String.format("Mistress: <name:%s> <shortname:%s> <longname:%s>", getMistressName(), linkData.getShortName(), linkData.getLongName());
     }
+
+    public Collection<Testimonial> getTestimonialsByMistressName() {
+        Collection<Testimonial> testimonials = new ArrayList<Testimonial>();
+        Collection<TestimonialEntity> testimonialEntities = mistressEntity.getTestimonialsByMistressName();
+
+        for (TestimonialEntity entity : testimonialEntities) {
+            testimonials.add(new Testimonial(entity));
+        }
+        return testimonials;
+    }
+
+    public void setTestimonialsByMistressName(Collection<TestimonialEntity> testimonialsByMistressName) {
+        mistressEntity.setTestimonialsByMistressName(testimonialsByMistressName);
+    }
+
 }

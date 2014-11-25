@@ -1,4 +1,4 @@
-package uk.co.genonline.ldav03.controller;
+package uk.co.genonline.ldav03.controller.image;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
