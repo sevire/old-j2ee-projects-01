@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.FileNotFoundException;
 
 /**
@@ -39,12 +38,12 @@ public class DefaultController {
         return modelAndView;
     }
 
-    @RequestMapping(value="/**", method=RequestMethod.GET)
+/*    @RequestMapping(value="*//**", method=RequestMethod.GET)
     public ModelAndView unMappedRequest(HttpServletRequest request, ModelAndView modelAndView)  {
         modelAndView.setViewName("pagenotfound");
         String requestUrl = request.getRequestURI().toString();
         logger.trace(String.format("Unrecognised request, page not found for <%s>", requestUrl));
         modelAndView.getModelMap().addAttribute("message", "Page %s not found");
         return modelAndView;
-    }
+    }*/
 }
