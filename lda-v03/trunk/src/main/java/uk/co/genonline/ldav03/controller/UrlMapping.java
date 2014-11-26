@@ -25,6 +25,4 @@ public class UrlMapping {
 
     public static final String VIEW_URL_MAPPING = "/view";
     public static final String ADD_URL_MAPPING = "/add";
-
-    // ToDo: Remove trailing slash (sometimes a leading slash, never a trailing slash).
 }

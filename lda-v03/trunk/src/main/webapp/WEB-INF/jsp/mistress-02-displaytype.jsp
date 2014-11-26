@@ -9,6 +9,8 @@
 <html>
 <head>
     <title>${data.linkData.longName}</title>
+    <link rel="stylesheet" href="/css/general.css" type="text/css" media="all">
+    <script src="/js/injectContent.js"></script>
 </head>
 <body id="${data.linkData.name}">
 <div id="wrapper">
