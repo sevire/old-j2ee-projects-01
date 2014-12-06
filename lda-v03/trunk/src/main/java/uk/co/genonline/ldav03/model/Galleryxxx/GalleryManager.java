@@ -1,4 +1,4 @@
-package uk.co.genonline.ldav03.model.Gallery;
+package uk.co.genonline.ldav03.model.Galleryxxx;
 
 /**
  * Defines operations required to manage a set of folders representing galleries,

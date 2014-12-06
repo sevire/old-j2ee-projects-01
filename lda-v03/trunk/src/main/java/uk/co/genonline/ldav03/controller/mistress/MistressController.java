@@ -7,9 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import uk.co.genonline.ldav03.model.Gallery.Gallery;
-import uk.co.genonline.ldav03.model.Mistress.Mistress;
-import uk.co.genonline.ldav03.model.Mistress.MistressManager;
+import uk.co.genonline.ldav03.model.Galleryxxx.Gallery;
+import uk.co.genonline.ldav03.model.Mistressxxx.Mistress;
+import uk.co.genonline.ldav03.model.Mistressxxx.MistressManager;
 import uk.co.genonline.ldav03.model.entities.MistressEntity;
 import uk.co.genonline.ldav03.web.TopLinks;
 

@@ -1,4 +1,4 @@
-package uk.co.genonline.ldav03.model.Testimonial;
+package uk.co.genonline.ldav03.model.Testimonialxxx;
 
 import org.markdown4j.Markdown4jProcessor;
 import uk.co.genonline.ldav03.controller.UrlMapping;

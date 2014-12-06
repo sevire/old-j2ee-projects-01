@@ -1,9 +1,9 @@
-package uk.co.genonline.ldav03.model.Mistress;
+package uk.co.genonline.ldav03.model.Mistressxxx;
 
 import org.markdown4j.Markdown4jProcessor;
 import uk.co.genonline.ldav03.controller.UrlMapping;
 import uk.co.genonline.ldav03.model.PageData;
-import uk.co.genonline.ldav03.model.Testimonial.Testimonial;
+import uk.co.genonline.ldav03.model.Testimonialxxx.Testimonial;
 import uk.co.genonline.ldav03.model.entities.MistressEntity;
 import uk.co.genonline.ldav03.model.entities.TestimonialEntity;
 import uk.co.genonline.ldav03.web.LinkData;

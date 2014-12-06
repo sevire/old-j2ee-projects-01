@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import uk.co.genonline.ldav03.model.Gallery.Gallery;
+import uk.co.genonline.ldav03.model.Galleryxxx.Gallery;
 import uk.co.genonline.ldav03.model.chamber.ChamberInformation;
 import uk.co.genonline.ldav03.model.chamber.ChamberInformationManager;
 import uk.co.genonline.ldav03.web.TopLinks;

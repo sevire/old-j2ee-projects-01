@@ -1,4 +1,4 @@
-package uk.co.genonline.ldav03.model.Gallery;
+package uk.co.genonline.ldav03.model.Galleryxxx;
 
 /**
  * Makes available key information which drives the creation of thumbnails for gallery images

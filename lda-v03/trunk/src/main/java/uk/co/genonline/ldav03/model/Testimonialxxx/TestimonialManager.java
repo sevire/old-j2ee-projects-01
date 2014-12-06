@@ -1,4 +1,4 @@
-package uk.co.genonline.ldav03.model.Testimonial;
+package uk.co.genonline.ldav03.model.Testimonialxxx;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;

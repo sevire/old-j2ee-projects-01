@@ -5,8 +5,8 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import uk.co.genonline.ldav03.model.Mistress.Mistress;
-import uk.co.genonline.ldav03.model.Mistress.MistressManager;
+import uk.co.genonline.ldav03.model.Mistressxxx.Mistress;
+import uk.co.genonline.ldav03.model.Mistressxxx.MistressManager;
 
 import java.io.FileNotFoundException;
 

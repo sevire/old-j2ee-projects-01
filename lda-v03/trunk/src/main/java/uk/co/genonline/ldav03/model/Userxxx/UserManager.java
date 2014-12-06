@@ -1,4 +1,4 @@
-package uk.co.genonline.ldav03.model.User;
+package uk.co.genonline.ldav03.model.Userxxx;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;

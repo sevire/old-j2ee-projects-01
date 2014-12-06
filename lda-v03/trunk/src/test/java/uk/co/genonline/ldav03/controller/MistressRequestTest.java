@@ -11,7 +11,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.web.context.WebApplicationContext;
-import uk.co.genonline.ldav03.model.Mistress.Mistress;
+import uk.co.genonline.ldav03.model.Mistressxxx.Mistress;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -47,7 +47,7 @@ public class MistressRequestTest {
 
         result = mockMvc.perform(get("/"))
                 .andExpect(status().isMovedPermanently())
-                .andExpect(view().name((String)null))
+                .andExpect(view().name((String) null))
                 .andReturn();
 
 /*

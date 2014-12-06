@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.util.UriTemplate;
-import uk.co.genonline.ldav03.model.Gallery.GalleryPathManagement;
+import uk.co.genonline.ldav03.model.Galleryxxx.GalleryPathManagement;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
