@@ -1,3 +1,93 @@
-div {
-    background: red;
+body {
+    background: darkslategray;
+    padding: 5px 0;
 }
+
+div#container {
+    background-color: greenyellow;
+    margin: 0 auto;
+}
+
+div#topNav {
+    background: green;
+}
+
+div#topNav ul {
+    background-color: pink;
+    width: 80%;
+    margin: 0 auto;
+}
+
+div#topNav ul li {
+    background-color: purple;
+    list-style: none;
+    margin: 0 5px 5px 5px;
+    width: 100%;
+}
+
+div#topNav ul li a img {
+    vertical-align: middle;
+    width: 90px;
+}
+
+div#topNav ul li a h1 {
+    font-family: 'Trebuchet MS', 'Myriad Pro', Arial, sans-serif, Sans-serif;
+    background-color: red;
+    display: inline;
+    font-size: 4em;
+    line-height: 1em;
+    vertical-align: middle;
+    width: 85%;
+}
+
+a {
+    width: 100%;
+    display: block;
+    background-color: cadetblue;
+    text-decoration: none;
+    margin: 0 auto;
+}
+
+div#content1 {
+    background-color: coral;
+    width: 80%;
+    margin: 0 auto;
+}
+
+article {
+    background-color: deeppink;
+}
+
+@media (min-width: 1242px) {
+    div#topNav ul {
+        overflow: hidden;
+    }
+
+    div#topNav ul li {
+        width: 18%;
+        float: left;
+        margin: 0;
+        padding: 1%;
+    }
+
+    div#topNav ul li a h1 {
+        width: 95%;
+        height: 1.3em;
+        line-height: 1.3em;
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 70%;
+        padding: 5px 0;
+    }
+    div#topNav ul li a img {
+        width: 60%;
+        display: block;
+        margin: 0 auto;
+    }
+    div#topNav ul {
+        width: 30%;
+    }
+}
+
+

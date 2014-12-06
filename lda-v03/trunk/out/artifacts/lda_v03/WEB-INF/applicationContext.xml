@@ -24,6 +24,7 @@
                 <value>uk.co.genonline.ldav03.model.entities.MistressEntity</value>
                 <value>uk.co.genonline.ldav03.model.entities.ChamberInformationEntity</value>
                 <value>uk.co.genonline.ldav03.model.entities.TestimonialEntity</value>
+                <value>uk.co.genonline.ldav03.model.entities.LinksEntity</value>
             </list>
 
         </property>
@@ -45,6 +46,8 @@
     <bean id="galleryImageManagement" class="uk.co.genonline.ldav03.model.Gallery.GalleryImageManagement"/>
     <bean id="galleryPathManagement" class="uk.co.genonline.ldav03.model.Gallery.GalleryPathManagement"/>
     <bean id="topLinks" class="uk.co.genonline.ldav03.web.TopLinks"/>
+    <bean id = "html" class="uk.co.genonline.ldav03.web.Html" />
+    <bean id = "linksManager" class = "uk.co.genonline.ldav03.model.links.LinksManager" />
     <context:component-scan base-package="uk.co.genonline.ldav03.model" />
 
 </beans>

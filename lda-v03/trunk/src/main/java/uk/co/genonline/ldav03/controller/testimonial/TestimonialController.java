@@ -15,6 +15,10 @@ import uk.co.genonline.ldav03.web.TopLinks;
 
 import java.io.FileNotFoundException;
 
+import static uk.co.genonline.ldav03.controller.UrlMapping.TESTIMONIALS_HOME_PAGE_URL;
+import static uk.co.genonline.ldav03.controller.UrlMapping.TESTIMONIALS_HOME_PAGE_VALUE;
+import static uk.co.genonline.ldav03.controller.UrlMapping.VIEW_URL_MAPPING;
+
 /**
  * Created by thomassecondary on 20/07/2014.
  */
@@ -29,6 +33,18 @@ public class TestimonialController {
 
     @Autowired
     TopLinks topLinks;
+
+    @RequestMapping(value=VIEW_URL_MAPPING, method=RequestMethod.GET)
+    public ModelAndView defaultViewRequest(ModelAndView modelAndView) throws FileNotFoundException {
+
+        return testimonialRequest(TESTIMONIALS_HOME_PAGE_VALUE, modelAndView);
+    }
+
+    @RequestMapping(value=VIEW_URL_MAPPING + "/" + TESTIMONIALS_HOME_PAGE_URL, method=RequestMethod.GET)
+    public ModelAndView homeViewRequest(ModelAndView modelAndView) throws FileNotFoundException {
+
+        return defaultViewRequest(modelAndView);
+    }
 
     @RequestMapping(value="/view/{testimonialName}", method=RequestMethod.GET)
     public ModelAndView testimonialRequest(@PathVariable String testimonialName, ModelAndView modelAndView) throws FileNotFoundException {

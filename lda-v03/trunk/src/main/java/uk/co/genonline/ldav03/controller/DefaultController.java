@@ -23,7 +23,7 @@ public class DefaultController {
     @RequestMapping(value="/", method=RequestMethod.GET)
     public ModelAndView defaultRequest(ModelAndView modelAndView) throws FileNotFoundException {
         logger.trace(String.format("Empty request, redirecting to index page"));
-        RedirectView redirectView = new RedirectView("/index");
+        RedirectView redirectView = new RedirectView("/" + UrlMapping.INDEX_PAGE_URL);
         redirectView.setStatusCode(HttpStatus.MOVED_PERMANENTLY);
         modelAndView.setView(redirectView);
         return modelAndView;
@@ -38,12 +38,15 @@ public class DefaultController {
         return modelAndView;
     }
 
-/*    @RequestMapping(value="*//**", method=RequestMethod.GET)
+/*
+    @RequestMapping(value="*/
+/**", method=RequestMethod.GET)
     public ModelAndView unMappedRequest(HttpServletRequest request, ModelAndView modelAndView)  {
         modelAndView.setViewName("pagenotfound");
         String requestUrl = request.getRequestURI().toString();
         logger.trace(String.format("Unrecognised request, page not found for <%s>", requestUrl));
         modelAndView.getModelMap().addAttribute("message", "Page %s not found");
         return modelAndView;
-    }*/
+    }
+*/
 }

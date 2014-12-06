@@ -54,10 +54,8 @@ public class TestimonialManager {
             return null;
         } else {
             Html htmlObject = new Html();
-            String baseUrl = UrlMapping.TESTIMONIAL_CLASS_URL_MAPPING + UrlMapping.VIEW_URL_MAPPING;
-
             logger.trace(String.format("getTestimonialLinkbarHTML: Calling constructNavBar()"));
-            return htmlObject.constructNavBar(baseUrl, "navBar", "", testimonialLinkData, thisTestimonial);
+            return htmlObject.constructNavBar("navBar", "", testimonialLinkData, thisTestimonial);
         }
     }
 
@@ -73,7 +71,7 @@ public class TestimonialManager {
         // Need to move data to LinkData object to ensure proper access to correct longName (in particular).
 
         for (Object[] entry : testimonialEntityFieldList) {
-            linkData.add(new LinkData(entry[0], entry[1], entry[2], UrlMapping.TESTIMONIAL_CLASS_URL_MAPPING));
+            linkData.add(new LinkData(entry[0], entry[1], entry[2], "/" + UrlMapping.TESTIMONIAL_CLASS_URL_MAPPING));
         }
         return linkData;
     }

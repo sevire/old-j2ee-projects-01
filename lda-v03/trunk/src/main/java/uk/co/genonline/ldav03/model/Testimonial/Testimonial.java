@@ -30,7 +30,7 @@ public class Testimonial implements PageData {
 
     public Testimonial(TestimonialEntity testimonialEntity) {
         this.testimonialEntity = testimonialEntity;
-        linkData = new LinkData(testimonialEntity.getTestimonialName(), testimonialEntity.getTestimonialShortName(), testimonialEntity.getTestimonialLongName(), UrlMapping.TESTIMONIAL_CLASS_URL_MAPPING);
+        linkData = new LinkData(testimonialEntity.getTestimonialName(), testimonialEntity.getTestimonialShortName(), testimonialEntity.getTestimonialLongName(), "/" + UrlMapping.TESTIMONIAL_CLASS_URL_MAPPING);
     }
 
     public LinkData getLinkData() {

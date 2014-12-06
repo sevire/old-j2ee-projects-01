@@ -54,10 +54,8 @@ public class ChamberInformationManager {
             return null;
         } else {
             Html htmlObject = new Html();
-            String baseUrl = UrlMapping.MISTRESS_CLASS_URL_MAPPING + UrlMapping.VIEW_URL_MAPPING;
-
             logger.trace(String.format("getChamberLinkbarHTML: Calling constructNavBar()"));
-            return htmlObject.constructNavBar(baseUrl, "navBar", "", chamberLinkData, thisChamber);
+            return htmlObject.constructNavBar("navBar", "", chamberLinkData, thisChamber);
         }
     }
 
@@ -73,7 +71,7 @@ public class ChamberInformationManager {
         // Need to move data to LinkData object to ensure proper access to correct longName (in particular).
 
         for (Object[] entry : chamberEntityFieldList) {
-            linkData.add(new LinkData(entry[0], entry[1], entry[2], UrlMapping.CHAMBER_CLASS_URL_MAPPING));
+            linkData.add(new LinkData(entry[0], entry[1], entry[2], "/" + UrlMapping.CHAMBER_CLASS_URL_MAPPING));
         }
         return linkData;
     }

@@ -9,14 +9,16 @@
 <html>
 <head>
     <title>${testimonialData.linkData.longName}</title>
+    <link rel="stylesheet" href="/css/reset.css" type="text/css" media="all">
+    <link rel="stylesheet" href="/css/general.css" type="text/css" media="all">
 </head>
 <body id="${testimonialData.linkData.name}">
-<div id="wrapper">
-    <div id="header">
+<div id="container">
+    <div id="topNav">
         ${topLinkbar}
     </div>
     <div id="sidebar1">
-        ${testimonialLinkbar}
+        ${siblingLinkbar}
     </div>
     <div id="content1">
         <h1>${testimonialData.linkData.longName}</h1>

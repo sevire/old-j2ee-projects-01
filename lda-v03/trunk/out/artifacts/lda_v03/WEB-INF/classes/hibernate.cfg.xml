@@ -10,6 +10,7 @@
       <mapping class="uk.co.genonline.ldav03.model.entities.UserEntity"/>
       <mapping class="uk.co.genonline.ldav03.model.entities.ChamberInformationEntity"/>
       <mapping class="uk.co.genonline.ldav03.model.entities.TestimonialEntity"/>
+    <mapping class="uk.co.genonline.ldav03.model.entities.LinksEntity"/>
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
   </session-factory>

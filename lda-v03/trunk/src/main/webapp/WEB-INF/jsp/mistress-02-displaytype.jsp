@@ -9,12 +9,12 @@
 <html>
 <head>
     <title>${data.linkData.longName}</title>
+    <link rel="stylesheet" href="/css/reset.css" type="text/css" media="all">
     <link rel="stylesheet" href="/css/general.css" type="text/css" media="all">
-    <script src="/js/injectContent.js"></script>
 </head>
 <body id="${data.linkData.name}">
-<div id="wrapper">
-    <div id="header">
+<div id="container">
+    <div id="topNav">
         ${topLinkbar}
     </div>
     <div id="sidebar1">

@@ -112,16 +112,13 @@ public class MistressManager {
             return null;
         } else {
             Html htmlObject = new Html();
-            String baseUrl = UrlMapping.MISTRESS_CLASS_URL_MAPPING + UrlMapping.VIEW_URL_MAPPING;
-
-            return htmlObject.constructNavBar(baseUrl, "navBar", "", mistressLinkData, thisName);
+            return htmlObject.constructNavBar("navBar", "mistressLinkbar", mistressLinkData, thisName);
         }
     }
 
     public String getTestimonialLinkbarHtml() {
         Html htmlObject = new Html();
-        String baseUrl = UrlMapping.TESTIMONIAL_CLASS_URL_MAPPING + UrlMapping.VIEW_URL_MAPPING;
-        return htmlObject.constructNavBar(baseUrl, "navBar", "", getTestimonialLinkbarData(), "");
+        return htmlObject.constructNavBar("navBar", "testimonialLinkbar", getTestimonialLinkbarData(), "");
     }
 
     private Collection<LinkData> getMistressLinkbarData() {
@@ -136,7 +133,7 @@ public class MistressManager {
         // Need to move data to LinkData object to ensure proper access to correct longName (in particular).
 
         for (Object[] entry : mistressEntityFieldList) {
-            linkData.add(new LinkData(entry[0], entry[1], entry[2], UrlMapping.MISTRESS_CLASS_URL_MAPPING));
+            linkData.add(new LinkData(entry[0], entry[1], entry[2], "/" + UrlMapping.MISTRESS_CLASS_URL_MAPPING));
         }
         return linkData;
     }

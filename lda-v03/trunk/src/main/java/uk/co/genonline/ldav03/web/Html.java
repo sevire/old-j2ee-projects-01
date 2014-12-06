@@ -79,6 +79,8 @@ public class Html {
         boolean first = true;
         boolean odd = true;
         Iterator<String> iterator = liContentValues.iterator();
+        logger.trace(String.format("ConstructUlElement: Id:[%s], Class:[%s], first:[%b], last:[%b], evenOdd:[%s]",
+                ulId, ulClass, firstClass, lastClass, evenOddClass));
 
         while (iterator.hasNext()) {
             String nextContentValue = iterator.next();
@@ -106,16 +108,15 @@ public class Html {
      *
      * Generates a Navigation Link Bar (UL/LI/A elements) where the base URL is the same for all links (siblings).
      *
-     * @param baseUrl String containing the base url to be used to generate hrefs within the anchor elements of the navbar
      * @param ulClazz
      * @param ulId
      * @param linkDataList
      * @param thisName
      * @return
      */
-    public String constructNavBar(String baseUrl, String ulClazz, String ulId, Collection<LinkData> linkDataList, String thisName) {
-        logger.trace(String.format("ConstructNavBar, baseUrl:%s, ulClazz:%s, ulId:%s, %d elements, current page:%s",
-                baseUrl, ulClazz, ulId, linkDataList.size(), thisName));
+    public String constructNavBar(String ulClazz, String ulId, Collection<LinkData> linkDataList, String thisName) {
+        logger.trace(String.format("ConstructNavBar, ulClazz:%s, ulId:%s, %d elements, current page:%s",
+                ulClazz, ulId, linkDataList.size(), thisName));
         List<String> liValues = new ArrayList<String>();
         for (LinkData linkData : linkDataList) {
             logger.trace(String.format("Processing linkData element %s", linkData));

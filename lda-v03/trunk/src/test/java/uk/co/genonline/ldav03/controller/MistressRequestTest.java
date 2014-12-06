@@ -46,8 +46,8 @@ public class MistressRequestTest {
         ResultActions resultActions;
 
         result = mockMvc.perform(get("/"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("index"))
+                .andExpect(status().isMovedPermanently())
+                .andExpect(view().name((String)null))
                 .andReturn();
 
 /*

@@ -32,16 +32,20 @@ public class MistressController {
     @Autowired
     TopLinks topLinks;
 
-    @RequestMapping(value=VIEW_URL_MAPPING, method=RequestMethod.GET)
-    public ModelAndView defaultViewRequest(ModelAndView modelAndView) throws FileNotFoundException {
-        // ToDo: Need non hard-coded way of defining default pages - flag in database or specific record in configuration
-        return mistressViewRequest("lucina", modelAndView);
-    }
-
     @RequestMapping(method=RequestMethod.GET)
     public ModelAndView defaultRequest(ModelAndView modelAndView) throws FileNotFoundException {
         // ToDo: Need non hard-coded way of defining default pages - flag in database or specific record in configuration
-        return mistressViewRequest("lucina", modelAndView);
+        return mistressViewRequest(MISTRESS_HOME_PAGE_VALUE, modelAndView);
+    }
+
+    @RequestMapping(value=VIEW_URL_MAPPING, method=RequestMethod.GET)
+    public ModelAndView defaultViewRequest(ModelAndView modelAndView) throws FileNotFoundException {
+        return mistressViewRequest(MISTRESS_HOME_PAGE_VALUE, modelAndView);
+    }
+
+    @RequestMapping(value=VIEW_URL_MAPPING + "/" + MISTRESS_HOME_PAGE_URL, method=RequestMethod.GET)
+    public ModelAndView homeViewRequest(ModelAndView modelAndView) throws FileNotFoundException {
+        return defaultViewRequest(modelAndView);
     }
 
     @RequestMapping(value=VIEW_URL_MAPPING + "/{mistressName}", method=RequestMethod.GET)

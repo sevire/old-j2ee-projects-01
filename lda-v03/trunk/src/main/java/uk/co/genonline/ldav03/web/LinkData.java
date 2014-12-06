@@ -2,8 +2,6 @@ package uk.co.genonline.ldav03.web;
 
 import uk.co.genonline.ldav03.controller.UrlMapping;
 
-import java.io.File;
-
 /**
  * Carries out common processing required for all entities to create HTML strings for references to a given entity.
  *
@@ -84,7 +82,7 @@ public final class LinkData {
      * @return String containing HTML for anchorElement
      */
     public String getHref() {
-        return getBaseUrl() + UrlMapping.VIEW_URL_MAPPING + File.separator + getName();
+        return getBaseUrl() + "/" + UrlMapping.VIEW_URL_MAPPING + "/" + getName();
     }
 
     public String toString() {
