@@ -34,14 +34,14 @@
         <property name="password" value="OC7AaWC77B" />
     </bean>
     <bean id="mistressEntity" class="uk.co.genonline.ldav03.model.entities.MistressEntity" />
-    <bean id="mistress" class="uk.co.genonline.ldav03.model.Mistressxxx.Mistress">
+    <bean id="mistress" class="uk.co.genonline.ldav03.model.mistress.Mistress">
         <constructor-arg ref="mistressEntity" />
     </bean>
-    <bean id="mistressManager" class="uk.co.genonline.ldav03.model.Mistressxxx.MistressManager"/>
-    <bean id="testimonialManager" class="uk.co.genonline.ldav03.model.Testimonialxxx.TestimonialManager"/>
+    <bean id="mistressManager" class="uk.co.genonline.ldav03.model.mistress.MistressManager"/>
+    <bean id="testimonialManager" class="uk.co.genonline.ldav03.model.testimonial.TestimonialManager"/>
     <bean id="chamberInformationManager" class="uk.co.genonline.ldav03.model.chamber.ChamberInformationManager"/>
-    <bean id="galleryImageManagement" class="uk.co.genonline.ldav03.model.Galleryxxx.GalleryImageManagement"/>
-    <bean id="galleryPathManagement" class="uk.co.genonline.ldav03.model.Galleryxxx.GalleryPathManagement"/>
+    <bean id="galleryImageManagement" class="uk.co.genonline.ldav03.model.gallery.GalleryImageManagement"/>
+    <bean id="galleryPathManagement" class="uk.co.genonline.ldav03.model.gallery.GalleryPathManagement"/>
     <bean id="topLinks" class="uk.co.genonline.ldav03.web.TopLinks"/>
     <context:component-scan base-package="uk.co.genonline.ldav03.model" />
 

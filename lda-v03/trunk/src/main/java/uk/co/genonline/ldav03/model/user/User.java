@@ -1,4 +1,4 @@
-package uk.co.genonline.ldav03.model.Userxxx;
+package uk.co.genonline.ldav03.model.user;
 
 import uk.co.genonline.ldav03.model.entities.UserEntity;
 

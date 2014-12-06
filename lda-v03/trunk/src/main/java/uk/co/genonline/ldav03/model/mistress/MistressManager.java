@@ -1,4 +1,4 @@
-package uk.co.genonline.ldav03.model.Mistressxxx;
+package uk.co.genonline.ldav03.model.mistress;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -8,7 +8,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import uk.co.genonline.ldav03.controller.UrlMapping;
 import uk.co.genonline.ldav03.web.LinkData;
-import uk.co.genonline.ldav03.model.Testimonialxxx.Testimonial;
+import uk.co.genonline.ldav03.model.testimonial.Testimonial;
 import uk.co.genonline.ldav03.model.entities.MistressEntity;
 import uk.co.genonline.ldav03.web.Html;
 

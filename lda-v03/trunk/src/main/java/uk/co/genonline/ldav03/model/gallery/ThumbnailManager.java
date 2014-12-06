@@ -1,4 +1,4 @@
-package uk.co.genonline.ldav03.model.Galleryxxx;
+package uk.co.genonline.ldav03.model.gallery;
 
 import net.coobird.thumbnailator.Thumbnailator;
 import org.apache.log4j.Logger;

@@ -6,25 +6,23 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="7240e0c0-073a-4386-bd19-3efeecb28228" name="Default" comment="[#12] Am removing uppercase letters from package names.  Because of previous problems where subversion (or filesystem - I'm never sure which) doesn't distinguish between upper and lowercase I am having to rename to something else and then back to the non-lowercase version.  This is step one.">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Gallery/Gallery.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Galleryxxx/Gallery.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Gallery/GalleryImageManagement.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Galleryxxx/GalleryImageManagement.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Gallery/GalleryManager.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Galleryxxx/GalleryManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Gallery/GalleryPathManagement.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Galleryxxx/GalleryPathManagement.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Gallery/ImageFileFilter.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Galleryxxx/ImageFileFilter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Gallery/ThumbnailConfiguration.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Galleryxxx/ThumbnailConfiguration.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Gallery/ThumbnailManager.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Galleryxxx/ThumbnailManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Mistress/Mistress.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Mistressxxx/Mistress.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Mistress/MistressManager.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Mistressxxx/MistressManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Testimonial/Testimonial.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Testimonialxxx/Testimonial.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Testimonial/TestimonialManager.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Testimonialxxx/TestimonialManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/User/User.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Userxxx/User.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/User/UserManager.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Userxxx/UserManager.java" />
+    <list default="true" readonly="true" id="7240e0c0-073a-4386-bd19-3efeecb28228" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Galleryxxx/Gallery.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/gallery/Gallery.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Galleryxxx/GalleryImageManagement.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/gallery/GalleryImageManagement.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Galleryxxx/GalleryManager.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/gallery/GalleryManager.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Galleryxxx/GalleryPathManagement.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/gallery/GalleryPathManagement.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Galleryxxx/ImageFileFilter.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/gallery/ImageFileFilter.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Galleryxxx/ThumbnailConfiguration.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/gallery/ThumbnailConfiguration.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Galleryxxx/ThumbnailManager.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/gallery/ThumbnailManager.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Mistressxxx/Mistress.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/mistress/Mistress.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Mistressxxx/MistressManager.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/mistress/MistressManager.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Testimonialxxx/Testimonial.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/testimonial/Testimonial.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Testimonialxxx/TestimonialManager.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/testimonial/TestimonialManager.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Userxxx/User.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/user/User.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Userxxx/UserManager.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/user/UserManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/controller/chamber/ChamberController.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/controller/chamber/ChamberController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/controller/image/ImageRestController.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/controller/image/ImageRestController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/model/Mistress.html" afterPath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/model/Mistress.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/controller/mistress/MistressController.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/controller/mistress/MistressController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/model/MistressManager.html" afterPath="$PROJECT_DIR$/documents/javadoc/uk/co/genonline/springapp05/model/MistressManager.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/uk/co/genonline/ldav03/controller/MistressRequestTest.java" afterPath="$PROJECT_DIR$/src/test/java/uk/co/genonline/ldav03/controller/MistressRequestTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/controller/mistress/MistressRestController.java" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/controller/mistress/MistressRestController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/uk/co/genonline/ldav03/model/MistressTest.java" afterPath="$PROJECT_DIR$/src/test/java/uk/co/genonline/ldav03/model/MistressTest.java" />
@@ -35,10 +33,10 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/resources/applicationContext.xml" afterPath="$PROJECT_DIR$/src/test/resources/applicationContext.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/lda_v03/WEB-INF/classes/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/out/artifacts/lda_v03/WEB-INF/classes/hibernate.cfg.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Gallery" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Galleryxxx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Mistress" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Mistressxxx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Testimonial" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Testimonialxxx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/User" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Userxxx" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Galleryxxx" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/gallery" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Mistressxxx" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/mistress" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Testimonialxxx" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/testimonial" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Userxxx" afterPath="$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/user" />
     </list>
     <ignored path="lda-v03-trunk.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -165,27 +163,27 @@
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="MistressManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Mistressxxx/MistressManager.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/mistress/MistressManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="1938" max-vertical-offset="2550">
               <caret line="145" column="44" selection-start-line="145" selection-start-column="44" selection-end-line="145" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4900#4910#0" expanded="true" />
-                <element signature="e#5646#5656#0" expanded="true" />
+                <element signature="e#4894#4904#0" expanded="true" />
+                <element signature="e#5640#5650#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Testimonial.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Testimonialxxx/Testimonial.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/testimonial/Testimonial.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="213" max-vertical-offset="885">
               <caret line="32" column="167" selection-start-line="32" selection-start-column="167" selection-end-line="32" selection-end-column="167" />
               <folding>
-                <element signature="e#1585#1586#0" expanded="true" />
-                <element signature="e#1616#1617#0" expanded="true" />
+                <element signature="e#1582#1583#0" expanded="true" />
+                <element signature="e#1613#1614#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -202,7 +200,7 @@
         </entry>
       </file>
       <file leaf-file-name="Gallery.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Galleryxxx/Gallery.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/gallery/Gallery.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1560">
               <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
@@ -212,7 +210,7 @@
         </entry>
       </file>
       <file leaf-file-name="GalleryImageManagement.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Galleryxxx/GalleryImageManagement.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/gallery/GalleryImageManagement.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555">
               <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
@@ -232,7 +230,7 @@
         </entry>
       </file>
       <file leaf-file-name="GalleryManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Galleryxxx/GalleryManager.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/gallery/GalleryManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
               <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
@@ -810,7 +808,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Mistressxxx" />
+              <option name="myItemId" value="mistress" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -878,7 +876,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Galleryxxx" />
+              <option name="myItemId" value="gallery" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2020,7 +2018,7 @@
       <workItem from="1410112407515" duration="54474000" />
       <workItem from="1412355597620" duration="98247000" />
       <workItem from="1415283614422" duration="2654000" />
-      <workItem from="1415373036334" duration="122886000" />
+      <workItem from="1415373036334" duration="123033000" />
     </task>
     <task id="LOCAL-00001" summary="Quick commit to protect agains IDEA deleting a load of files when I change the Hibernate config (long story!).">
       <created>1405865423038</created>
@@ -2172,11 +2170,17 @@
       <option name="project" value="LOCAL" />
       <updated>1417888795029</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="[#12] Am removing uppercase letters from package names.  Because of previous problems where subversion (or filesystem - I'm never sure which) doesn't distinguish between upper and lowercase I am having to rename to something else and then back to the non-lowercase version.  This is step one.">
+      <created>1417889219031</created>
+      <option name="number" value="00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1417889219031</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="402375000" />
+    <option name="totallyTimeSpent" value="402522000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2204,7 +2208,7 @@
     <layout>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2934473" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2934473" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26967096" sideWeight="0.5647059" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23462088" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2217,7 +2221,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32768363" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32627118" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26967096" sideWeight="0.43529412" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26967096" sideWeight="0.43529412" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3945869" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="0" y="22" width="1440" height="824" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -2690,17 +2694,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Testimonialxxx/TestimonialManager.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/testimonial/TestimonialManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="603" max-vertical-offset="1305">
           <caret line="76" column="64" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
           <folding>
-            <element signature="e#2658#2668#0" expanded="true" />
+            <element signature="e#2655#2665#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Mistressxxx/Mistress.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/mistress/Mistress.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="963" max-vertical-offset="1410">
           <caret line="105" column="88" selection-start-line="105" selection-start-column="88" selection-end-line="105" selection-end-column="88" />
@@ -2728,25 +2732,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Mistressxxx/MistressManager.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/mistress/MistressManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1938" max-vertical-offset="2550">
           <caret line="145" column="44" selection-start-line="145" selection-start-column="44" selection-end-line="145" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4900#4910#0" expanded="true" />
-            <element signature="e#5646#5656#0" expanded="true" />
+            <element signature="e#4894#4904#0" expanded="true" />
+            <element signature="e#5640#5650#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Testimonialxxx/Testimonial.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/testimonial/Testimonial.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="213" max-vertical-offset="885">
           <caret line="32" column="167" selection-start-line="32" selection-start-column="167" selection-end-line="32" selection-end-column="167" />
           <folding>
-            <element signature="e#1585#1586#0" expanded="true" />
-            <element signature="e#1616#1617#0" expanded="true" />
+            <element signature="e#1582#1583#0" expanded="true" />
+            <element signature="e#1613#1614#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2775,7 +2779,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Galleryxxx/GalleryManager.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/gallery/GalleryManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
           <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
@@ -2783,7 +2787,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Galleryxxx/Gallery.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/gallery/Gallery.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1560">
           <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
@@ -2791,7 +2795,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/Galleryxxx/GalleryImageManagement.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/uk/co/genonline/ldav03/model/gallery/GalleryImageManagement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />

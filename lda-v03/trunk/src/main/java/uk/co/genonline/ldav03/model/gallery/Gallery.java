@@ -1,4 +1,4 @@
-package uk.co.genonline.ldav03.model.Galleryxxx;
+package uk.co.genonline.ldav03.model.gallery;
 
 import org.apache.log4j.Logger;
 import uk.co.genonline.ldav03.web.Html;

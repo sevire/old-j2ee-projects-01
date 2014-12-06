@@ -1,7 +1,7 @@
 package uk.co.genonline.ldav03.controller;
 
 import org.junit.Assert;
-import uk.co.genonline.ldav03.model.Mistressxxx.Mistress;
+import uk.co.genonline.ldav03.model.mistress.Mistress;
 
 /**
  * Created by thomassecondary on 03/08/2014.

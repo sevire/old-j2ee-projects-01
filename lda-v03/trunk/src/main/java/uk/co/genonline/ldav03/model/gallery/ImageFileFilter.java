@@ -1,4 +1,4 @@
-package uk.co.genonline.ldav03.model.Galleryxxx;
+package uk.co.genonline.ldav03.model.gallery;
 
 import java.io.File;
 import java.io.FileFilter;
