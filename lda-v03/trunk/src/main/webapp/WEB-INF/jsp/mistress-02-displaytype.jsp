@@ -11,9 +11,17 @@
     <title>${data.linkData.longName}</title>
     <link rel="stylesheet" href="/css/reset.css" type="text/css" media="all">
     <link rel="stylesheet" href="/css/general.css" type="text/css" media="all">
+    <link rel="stylesheet" href="/css/slicknav.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/js/jquery.slicknav.js" ></script>
 </head>
 <body id="${data.linkData.name}">
 <div id="container">
+    <%@include file="header.jsp" %>
+<%--
+
+
+
     <div id="topNav">
         ${topLinkbar}
     </div>
@@ -40,6 +48,6 @@
             ${gallery}
         </div>
     </div>
-</div>
+</div>--%>
 </body>
 </html>

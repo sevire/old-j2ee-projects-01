@@ -1,2 +1,15 @@
-uk.co.genonline.springapp05.controller
-uk.co.genonline.springapp05.model
+uk.co.genonline.ldav03.controller
+uk.co.genonline.ldav03.controller.chamber
+uk.co.genonline.ldav03.controller.image
+uk.co.genonline.ldav03.controller.links
+uk.co.genonline.ldav03.controller.mistress
+uk.co.genonline.ldav03.controller.testimonial
+uk.co.genonline.ldav03.model
+uk.co.genonline.ldav03.model.chamber
+uk.co.genonline.ldav03.model.entities
+uk.co.genonline.ldav03.model.gallery
+uk.co.genonline.ldav03.model.links
+uk.co.genonline.ldav03.model.mistress
+uk.co.genonline.ldav03.model.testimonial
+uk.co.genonline.ldav03.model.user
+uk.co.genonline.ldav03.web

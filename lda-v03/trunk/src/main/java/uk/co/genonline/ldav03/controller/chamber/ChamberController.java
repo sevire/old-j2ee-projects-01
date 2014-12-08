@@ -19,7 +19,12 @@ import java.io.FileNotFoundException;
 import static uk.co.genonline.ldav03.controller.UrlMapping.*;
 
 /**
- * Created by thomassecondary on 20/07/2014.
+ * Handles URLs of the form /chambers/*.  This includes the following:
+ *
+ * <li>/chambers
+ * <li>/chambers/view
+ * <li>/chambers/view/chamberHome
+ * <li>/chambers/view/{chamberName}
  */
 
 @Controller
