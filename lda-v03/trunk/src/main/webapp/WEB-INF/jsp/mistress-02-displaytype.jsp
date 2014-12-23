@@ -10,15 +10,64 @@
 <head>
     <title>${data.linkData.longName}</title>
     <link rel="stylesheet" href="/css/reset.css" type="text/css" media="all">
-    <link rel="stylesheet" href="/css/general.css" type="text/css" media="all">
-    <link rel="stylesheet" href="/css/slicknav.css" />
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="/js/jquery.slicknav.js" ></script>
+    <link rel="stylesheet" href="/css/main.css" type="text/css" media="all">
+    <link rel="stylesheet" href="/css/flexnav.css" type="text/css" />
+
+    <script type="text/javascript" src="/js/jquery-1.11.1.js" ></script>
+    <script type="text/javascript" src="/js/jquery.flexnav.min.js" ></script>
 </head>
 <body id="${data.linkData.name}">
 <div id="container">
-    <%@include file="header.jsp" %>
-<%--
+    <div id="header">
+           <div id="headerImage">
+             <%--<img src="/images/siteimages/header-01.png" />--%>
+           </div>
+        <div id="mobileTopNav" class="menu-button">MENU</div>
+        <div id="topNav" class="clearfix">
+            <ul id="menu1" class="flexnav clearfix" data-breakpoint="800">
+                <li><a href="#">Top Menu 1</a>
+                    <ul>
+                        <li><a href="#">Item 1</a></li>
+                        <li><a href="#">Item 2</a></li>
+                        <li><a href="#">Item 3</a></li>
+                        <li><a href="#">Item 4</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Top Menu 2</a>
+                    <ul>
+                        <li><a href="#">Item 5</a></li>
+                        <li><a href="#">Item 6</a></li>
+                        <li><a href="#">Item 7</a></li>
+                        <li><a href="#">Item 8</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Top Menu 3</a>
+                    <ul>
+                        <li><a href="#">Item 9</a></li>
+                        <li><a href="#">Item 10</a></li>
+                        <li><a href="#">Item 11</a></li>
+                        <li><a href="#">Item 12</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Top Menu 4</a>
+                    <ul>
+                        <li><a href="#">Item 13</a></li>
+                        <li><a href="#">Item 14</a></li>
+                        <li><a href="#">Item 15</a></li>
+                        <li><a href="#">Item 16</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Links</a>
+                    <ul>
+                        <li><a href="#">Item 17</a></li>
+                        <li><a href="#">Item 18</a></li>
+                        <li><a href="#">Item 19</a></li>
+                        <li><a href="#">Item 20</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div><%--
 
 
 
@@ -47,7 +96,10 @@
         <div id="gallery">
             ${gallery}
         </div>
-    </div>
-</div>--%>
+    </div>--%>
+</div>
+<script>
+$(".flexnav").flexNav();
+</script>
 </body>
 </html>

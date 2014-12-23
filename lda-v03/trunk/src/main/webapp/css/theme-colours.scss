@@ -1,0 +1,28 @@
+$testmode: true;
+
+// Structural element colours
+$body-background-color: if($testmode, yellow, black);
+$container-background-color: if($testmode, darken(yellow, 10%), white);
+$header-background-color: if($testmode, darken(yellow, 20%), black);
+$headerImage-background-color: if($testmode, darken(yellow, 30%), red);
+
+$content-background-color: if($testmode, blue, blue);
+
+$navicon-color: if($testmode, red, red);
+$menu-button-color: if($testmode, purple, purple);
+
+$flexnav-li-background-color: if($testmode, green, green);
+$flexnav-a-background-color: if($testmode, pink, pink);
+
+$flexnav-a-font-color: if($testmode, orange, orange);
+
+$flexnav-a-border-bottom: if($testmode, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15));
+$flexnav-menu-button-border-bottom: if($testmode, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15));
+$flexnav-a-borderleft: if($testmode, #ff7122, #ff7122);
+$flexnav-oldie-a-border-left-color: if($testmode, #ac3e58, #ac3e58);
+
+$flexnav-1nested-a-background-color: if($testmode, maroon, maroon);
+$flexnav-2nested-a-background-color: if($testmode, darkblue, darkblue);
+$flexnav-3nested-a-background-color: if($testmode, darkgreen, darkgreen);
+$flexnav-touch-button-background-color: if($testmode, rgba(0, 0, 0, 0.075), rgba(0, 0, 0, 0.075));
+$flexnav-menu-button-background-color: if($testmode, yellow, yellow);

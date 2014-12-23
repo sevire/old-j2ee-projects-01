@@ -1,0 +1,49 @@
+@import "theme-colours.scss";
+
+body {
+  background: $body-background-color;
+  @if $testmode {
+    padding: 5px 5px;
+  }
+}
+
+div#container {
+  background-color: $container-background-color;
+  margin: 0 auto;
+  @if $testmode {
+    width: 95%;
+    height: 95%;
+  }
+}
+
+div#header {
+  background-color: $header-background-color;
+  margin: 0 auto;
+  height: 200px;
+  @if $testmode {
+    width: 95%;
+  }
+}
+
+.clearfix:after {
+  content: ".";
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+div#headerImage {
+  background-color: $headerImage-background-color;
+  height: 150px;
+  margin: 0 auto;
+  @if $testmode {
+    width: 95%;
+    height: 95%;
+  }
+}
+
+
+
+
+

@@ -1,0 +1,15 @@
+/*
+Variables to be used within flexnav.css.  I have modified flexnav.css to use these variables to make it easier to make changes.
+*/
+
+$num-toplevel-menus: 5;
+$toplevel-menu-width: 100% / $num-toplevel-menus;
+$touch-button-width: 50px;
+$touch-button-height: $touch-button-width;
+$toplevel-menu-height: $touch-button-width;
+
+body {
+  font-family: 'Trebuchet MS', 'Myriad Pro', Arial, sans-serif, Sans-serif;
+}
+
+$flexnav-menu-a-padding: 17px;

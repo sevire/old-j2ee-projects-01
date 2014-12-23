@@ -55,6 +55,7 @@
         </element>
       </element>
       <element id="javaee-facet-resources" facet="ldamainapp/web/Web" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/main.css" />
     </root>
   </artifact>
 </component>
