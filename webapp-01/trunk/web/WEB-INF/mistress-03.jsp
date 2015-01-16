@@ -87,6 +87,9 @@
 
     <div id="leftColumn">
         ${screenData.chambersLinkBar}
+        ${screenData.mistressLinkBar}
+        ${screenData.testimonialLinkBar}
+        ${screenData.galleryLinkBar}
     </div>
 
     <div id="content">

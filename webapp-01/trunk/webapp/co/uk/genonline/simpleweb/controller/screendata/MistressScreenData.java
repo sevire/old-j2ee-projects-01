@@ -29,6 +29,9 @@ public class MistressScreenData implements ScreenData {
 
     private WebLogger logger = new WebLogger();
     private String chambersLinkBar;
+    private String mistressLinkBar;
+    private String testimonialLinkBar;
+    private String galleryLinkBar;
     private String mistressPageLink;
     private String homePageLink;
     private String maxThumbnailWidth;
@@ -38,6 +41,9 @@ public class MistressScreenData implements ScreenData {
     private ScreensEntity screen;
     private String headerImageLeft;
     private String headerImageRight;
+
+    /* WebHelper class helps with formatting HTML elements to be passed to page */
+    private WebHelper webHelper;
 
     /**
      * Sets up all data to be passed to jsp file for any screen which has a display type which maps to this class
@@ -68,8 +74,7 @@ public class MistressScreenData implements ScreenData {
         RequestStatus status = (RequestStatus) request.getSession().getAttribute("requestStatus");
         status.resetStatusMessage();
 
-        /* WebHelper class helps with formatting HTML elements to be passed to page */
-        WebHelper webHelper = new WebHelper(request, response);
+        webHelper = new WebHelper(request, response);
 
         /**
          * Make sure that the Screen member is the same object as that from the session data otherwise will be
@@ -116,7 +121,10 @@ public class MistressScreenData implements ScreenData {
             } else {
                 setBlogLink(null);
             }
-            setChambersLinkBar(webHelper.generateLinkBarCategory("Chambers"));
+            setCategoryLinkBar("Chambers");
+            setCategoryLinkBar("Mistress");
+            setCategoryLinkBar("Testimonial");
+            setCategoryLinkBar("Gallery");
             setMistressPageLink(webHelper.getScreenLink("mistresses", screenBeanManager.getShortName("mistresses")));
             setHomePageLink(webHelper.generateHomeLink());
             setMaxThumbnailWidth(((configuration.getConfigurationItem("maxThumbnailWidth"))).getStringValue());
@@ -184,12 +192,37 @@ public class MistressScreenData implements ScreenData {
         this.chambersLinkBar = linkBar;
     }
 
+    public void setCategoryLinkBar(String categoryName) {
+        String linkBar = webHelper.generateLinkBarCategory(categoryName);
+        if (categoryName.equals("Mistress")) {
+            mistressLinkBar = linkBar;
+        } else if (categoryName.equals("Chambers")) {
+            chambersLinkBar = linkBar;
+        } else if (categoryName.equals("Testimonial")) {
+            testimonialLinkBar = linkBar;
+        } else if (categoryName.equals("Gallery")) {
+            galleryLinkBar = linkBar;
+        }
+    }
+
     public void setMistressPageLink(String link) {
         this.mistressPageLink = link;
     }
 
     public String getChambersLinkBar() {
         return chambersLinkBar;
+    }
+
+    public String getMistressLinkBar() {
+        return mistressLinkBar;
+    }
+
+    public String getTestimonialLinkBar() {
+        return testimonialLinkBar;
+    }
+
+    public String getGalleryLinkBar() {
+        return galleryLinkBar;
     }
 
     public String getMistressPageLink() {
