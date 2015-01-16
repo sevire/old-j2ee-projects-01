@@ -2,6 +2,7 @@
 # This script copies a file of the form lda##???.war
 # - From the ftp_in folder
 # - To the webapps folder on the live server
+# $1 : Version number of webapp.  If not specified use current default from set-constants.
 
 ######################################################
 # Common script pre-amble
@@ -22,4 +23,11 @@ __WEBAPP__=/var/tomcat7/webapps/lda##"$war_version"
 # End Of Common script pre-amble
 ######################################################
 
-mv "$ftpindir"/lda##$war_version.war "$webappdir"
+if [ -z "$1" ]
+then
+    version=$war_version
+else
+	version=$1
+fi
+
+mv "$ftpindir"/lda##$version "$webappdir"

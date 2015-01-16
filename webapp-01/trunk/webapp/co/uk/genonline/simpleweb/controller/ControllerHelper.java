@@ -26,7 +26,6 @@ import java.io.IOException;
  *
  * All the session data is stored in a single object of type ActionData
  *
- * TODO: Rename ActionData to SessionData but can't until IDEA bug fixed with unresponsive dialogs.
  * TODO: Make sure the helper only carries out these functions.
  */
 

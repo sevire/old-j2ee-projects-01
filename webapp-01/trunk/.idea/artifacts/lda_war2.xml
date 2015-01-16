@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="lda-war2">
+    <output-path>$PROJECT_DIR$/out/artifacts/lda_war2</output-path>
+    <root id="archive" name="lda##01.16.02a.war">
+      <element id="artifact" artifact-name="lda-exp" />
+    </root>
+  </artifact>
+</component>

@@ -1,11 +1,13 @@
+@import "_css-mode.scss";
+
 body {
-    background: url(../site_images/background-v06.png) top left #b9b5b3;
-    font-family: 'Open Sans' Arial sans-serif;
+    background:  url(../site_images/background-v06.png) top left #b9b5b3;
+    font-family: 'Open Sans', Arial, sans-serif;
     font-size: 80%;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Times New Roman" serif;
+    font-family: "Times New Roman", serif;
     font-weight: bold;
     text-align: left;
     color: #b21227;
@@ -13,6 +15,7 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
     padding: 5px 0;
+    color: black;
 }
 
 h1 {
@@ -55,7 +58,7 @@ div#container {
 }
 
 div#banner h1, div#banner h2 {
-    font-family: 'Tangerine' cursive;
+    font-family: "Tangerine", cursive;
     clear: both;
     background: transparent;
     color: white;
@@ -241,4 +244,65 @@ div#pageText img.imageTop {
     display: block;
     width: 150px;
     margin: 0 auto;
+}
+
+div#pageText blockquote {
+    border-radius: 10px;
+    font-style: italic;
+    background: #b21227;
+    color: white;
+    margin: 10px 20px;
+    padding: 10px;
+}
+
+div#pageText ul li {
+    list-style-type: square;
+    list-style-position: outside;
+    margin-left: 18px;
+}
+
+@if $public {
+    body {
+        background: #b9b5b3;
+    }
+
+    div.headerImage {
+        background: green;
+    }
+
+    div.headerImage img {
+        display: none;
+    }
+
+    div#banner h1, div#banner h2 {
+        color: #363636;
+    }
+
+    div#contactDetails a, div#contactDetails p {
+        color: #363636;
+    }
+
+    div#contactDetails a:hover {
+        color: #525021;
+    }
+
+    div#contactDetails a:visited {
+        color: #52151d;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: #ffc3c0;
+    }
+
+    p {
+        color: #cccccc;
+    }
+
+    div#pageText blockquote {
+        background: #b21227;
+
+        p {
+            color: #cf152d;
+        }
+    }
 }

@@ -17,7 +17,9 @@ import java.io.IOException;
  * User: thomassecondary
  * Date: 12/05/2012
  * Time: 19:00
- * To change this template use File | Settings | File Templates.
+ *
+ * Class used to process changes of conttext state.  The methods are called by the container on change of state
+ * of context (.e.g contextInitialised).
  */
 public class ContextListener implements ServletContextListener {
     private WebLogger logger = new WebLogger();
@@ -35,10 +37,12 @@ public class ContextListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent event) {
         Level level;
 
-        System.out.format("contextInitialized called - is logging working?\n");
+        System.out.format("BeforeLogging:contextInitialized called - is logging working?\n");
         level = Level.DEBUG; // Initial value until we have read configuration.
         logger.setLevel(Level.DEBUG);
+        System.out.format("BeforeLogging:contextInitialized before getAppender\n");
         FileAppender appender = getAppender(event, logPath);
+        System.out.format("BeforeLogging:contextInitialized before initLogger\n");
         initLogger(null,appender,level);
         String contextPath = event.getServletContext().getContextPath();
 
@@ -81,26 +85,35 @@ public class ContextListener implements ServletContextListener {
     }
 
     private FileAppender getAppender(ServletContextEvent event, String fileName) {
+        System.out.format("BeforeLogging:getAppender: file = %s\n", fileName);
         RollingFileAppender appender = null;
         try {
+            System.out.format("BeforeLogging:getAppender: Start of try\n");
+            System.out.format("BeforeLogging:getAppender: before new RollingFileAppender\n");
             appender = new RollingFileAppender(
                     new PatternLayout("%-5p %c %t%n%29d - %m%n"),
                     event.getServletContext().getRealPath(fileName), true
             );
+            System.out.format("BeforeLogging:getAppender: after new RollingFileAppender\n");
             appender.setMaxBackupIndex(5);
             appender.setMaxFileSize("1MB");
+            System.out.format("BeforeLogging:getAppender: End of try\n");
         } catch (IOException e) {
+            System.out.format("BeforeLogging:getAppender: Start of catch\n");
             System.out.println(
                     "Could not create appender for "
-                    + fileName + ":"
-                    + e.getMessage()
+                            + fileName + ":"
+                            + e.getMessage()
             );
+            System.out.format("BeforeLogging:getAppender: End of catch\n");
         }
+        System.out.format("BeforeLogging:getAppender: End\n", fileName);
         return appender;
     }
 
     private void initLogger(String name, FileAppender appender, Level level) {
         Logger logger;
+        System.out.format("BeforeLogging:initLogger: Entering \n");
         if (name == null) {
             logger = Logger.getRootLogger();
 
@@ -110,5 +123,6 @@ public class ContextListener implements ServletContextListener {
         logger.setLevel(level);
         logger.addAppender(appender);
         logger.info("Starting " + logger.getName());
+        System.out.format("BeforeLogging:initLogger: Leaving \n");
     }
 }
