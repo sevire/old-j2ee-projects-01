@@ -39,7 +39,7 @@ public class ScreenBeanManager {
 
     public List<ScreensEntity> getAllScreens() {
         Session session = factory.openSession();
-        String query = String.format("from ScreensEntity s order by screenType, sortKey");
+        String query = String.format("from ScreensEntity s order by enabledFlag desc, screenType, sortKey");
         logger.debug("About to execute HQL query : " + query);
         java.util.List pages = session.createQuery(query).list();
         return pages;

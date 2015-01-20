@@ -76,19 +76,38 @@
         <div id='rightImage' class='headerImage'>
             <img height='250px' src='site_images/header_images/${screenData.headerImageRight}' />
         </div>
+        <ul class='mainLinkBar'>
+<%--
+            <li class='headerLink home'><img src="site_images/home.png"/>${screenData.homePageLink}</li>
+            <li class='headerLink blog'><img src="site_images/Blog_Icon.png"/>${screenData.blogLink}</li>
+--%>
+
+            <li class='headerLink home'>
+                <a href="http://localhost:8080/lda/view?screen=lucina" title="My home page"><img src="site_images/home.png"/></a>
+            </li>
+            <li class='headerLink blog'>
+                <a href="http://manchestermistresslucina.blogspot.co.uk" title="Read my blog"><img src="site_images/Blog_Icon.png"/></a>
+            </li>
+            <li class='headerLink yahoo'>
+                <a href="http://groups.yahoo.com/group/lucifersdarkangel" title="My Yahoo group"><img src="site_images/yahoo.png"/></a>
+            </li>
+            <li class='headerLink twitter'>
+                <a href="https://twitter.com/intent/user?screen_name=Lucina_Princess" title="Follow me on Twitter"><img src="site_images/twitter-icon-80.png"/></a>
+            </li>
+        </ul>
     </div>
-    <ul class='mainLinkBar'>
-        <li class='headerLink'>${screenData.homePageLink}</li>
-        <li class='headerLink'>${screenData.blogLink}</li>
-        <li class='headerLink'><core:out value="${screenData.mistressPageLink}" escapeXml="false"/></li>
-        <li class='headerLink'><a href="http://groups.yahoo.com/group/lucifersdarkangel/">Yahoo!&nbsp;Group</a></li>
-    </ul>
 
 
-    <div id="leftColumn">
+    <div id="leftColumn" class="sideColumn">
+        <h1 class="linkBarHeading">My Chambers</h1>
         ${screenData.chambersLinkBar}
+        <h1 class="linkBarHeading">Other Mistresses</h1>
         ${screenData.mistressLinkBar}
+    </div>
+    <div id="rightColumn" class="sideColumn">
+        <h1 class="linkBarHeading">My Slaves</h1>
         ${screenData.testimonialLinkBar}
+        <h1 class="linkBarHeading">Galleries</h1>
         ${screenData.galleryLinkBar}
     </div>
 

@@ -16,8 +16,8 @@
     <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body id='editIndex'>
-<div id='colLeft'></div>
-<div id='colRight'></div>
+<%--<div id='colLeft'></div>
+<div id='colRight'></div>--%>
 <div id='colMiddle'>
     <h1>Lucifer's Dark Angel - Website Maintenance Screen</h1>
     <div>
@@ -27,10 +27,16 @@
             </tr>
             <tr class='tableHeading'>
                 <td>
-                    Name
+                    Enabled?
+                </td>
+                <td>
+                    Screen Type
                 </td>
                 <td>
                     Sort Key
+                </td>
+                <td>
+                    Name
                 </td>
                 <td>
                     Short Title
@@ -39,13 +45,7 @@
                     Long Title
                 </td>
                 <td>
-                    Screen Type
-                </td>
-                <td>
                     Screen  Display Type
-                </td>
-                <td>
-                    Enabled?
                 </td>
                 <td>
                     Gallery?
@@ -57,10 +57,16 @@
             <c:forEach var="row" items="${editList}">
                 <tr>
                     <td>
-                        <c:out value="${row.name}" />
+                        <c:out value="${row.enabledFlag ? 'Yes' : 'No'}" />
+                    </td>
+                    <td>
+                        <c:out value="${row.screenType}" />
                     </td>
                     <td>
                         <c:out value="${row.sortKey}" />
+                    </td>
+                    <td>
+                        <c:out value="${row.name}" />
                     </td>
                     <td>
                         <c:out value="${row.screenTitleShort}" />
@@ -69,13 +75,7 @@
                         <c:out value="${row.screenTitleLong}" />
                     </td>
                     <td>
-                        <c:out value="${row.screenType}" />
-                    </td>
-                    <td>
                         <c:out value="${row.screenDisplayType}" />
-                    </td>
-                    <td>
-                        <c:out value="${row.enabledFlag ? 'Yes' : 'No'}" />
                     </td>
                     <td>
                         <c:out value="${row.galleryFlag ? 'Yes' : 'No'}" />

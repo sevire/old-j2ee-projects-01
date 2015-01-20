@@ -22,7 +22,7 @@
 <div id='colRight'></div>
 <div id='colMiddle'>
     <div id='editForm'>
-        <label for="updateScreen">Screen Details</label>
+        <label for="updateScreen">Screen Details : ${helper.screen.name} (${helper.screen.screenTitleLong})</label>
         <form id="updateScreen" name="editScreen" method="post" action='Controller.do'>
             <table>
                 <tr class='statusRow <%=((RequestStatus)session.getAttribute("requestStatus")).getStatusType()%>'>
@@ -69,8 +69,9 @@
                         <select name='screenType'>
                             <option${helper.screen.screenType == 'Mistress' ? " selected='selected'" : ""}>Mistress</option>
                             <option${helper.screen.screenType == 'Chambers' ? " selected='selected'" : ""}>Chambers</option>
-                            <option${helper.screen.screenType == 'Chambers' ? " selected='selected'" : ""}>Gallery</option>
-                            <option${helper.screen.screenType == 'Chambers' ? " selected='selected'" : ""}>Testimonial</option>
+                            <option${helper.screen.screenType == 'Gallery' ? " selected='selected'" : ""}>Gallery</option>
+                            <option${helper.screen.screenType == 'Testimonial' ? " selected='selected'" : ""}>Testimonial</option>
+                            <option${helper.screen.screenType == '' ? " selected='selected'" : ""}></option>
                         </select>
                     </td>
                 </tr>
@@ -105,7 +106,7 @@
                         <label>Screen Contents: </label>
                     </td>
                     <td>
-                        <textarea rows="10" cols="60" name="screenContents">${helper.screen.screenContents}</textarea>
+                        <textarea rows="30" cols="60" name="screenContents">${helper.screen.screenContents}</textarea>
                     </td>
                 </tr>
                 <tr>
