@@ -19,13 +19,22 @@
 <%--<div id='colLeft'></div>
 <div id='colRight'></div>--%>
 <div id='colMiddle'>
-    <h1>Lucifer's Dark Angel - Website Maintenance Screen</h1>
+    <h1>xxx Lucifer's Dark Angel - Website Maintenance Screen</h1>
     <div>
         <table>
             <tr class='statusRow <%=((RequestStatus)session.getAttribute("requestStatus")).getStatusType()%>'>
                 <td colspan="11"><%=((RequestStatus)session.getAttribute("requestStatus")).getStatusMessage()%></td>
             </tr>
             <tr class='tableHeading'>
+                <td>
+                    Edit
+                </td>
+                <td>
+                    Delete
+                </td>
+                <td>
+                    View
+                </td>
                 <td>
                     Enabled?
                 </td>
@@ -57,6 +66,15 @@
             <c:forEach var="row" items="${editList}">
                 <tr>
                     <td>
+                        <a href="edit?screen=${row.name}">Edit</a>
+                    </td>
+                    <td>
+                        <a href="delete?screen=${row.name}">Delete</a>
+                    </td>
+                    <td>
+                        <a href="view?screen=${row.name}">View</a>
+                    </td>
+                    <td>
                         <c:out value="${row.enabledFlag ? 'Yes' : 'No'}" />
                     </td>
                     <td>
@@ -82,17 +100,6 @@
                     </td>
                     <td>
                         <c:out value="${row.screenContents}" />
-                    </td>
-                    <td>
-                        <a href="edit?screen=${row.name}">Edit</a>
-                    </td>
-<%--
-                    <td>
-                        <a href="delete?screen=${row.name}">Delete</a>
-                    </td>
---%>
-                    <td>
-                        <a href="view?screen=${row.name}">View</a>
                     </td>
                 </tr>
             </c:forEach>

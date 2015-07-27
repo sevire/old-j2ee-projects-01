@@ -67,6 +67,7 @@
                     </td>
                     <td>
                         <select name='screenType'>
+                            <option${helper.screen.screenType == 'Lucina' ? " selected='selected'" : ""}>Lucina</option>
                             <option${helper.screen.screenType == 'Mistress' ? " selected='selected'" : ""}>Mistress</option>
                             <option${helper.screen.screenType == 'Chambers' ? " selected='selected'" : ""}>Chambers</option>
                             <option${helper.screen.screenType == 'Gallery' ? " selected='selected'" : ""}>Gallery</option>
