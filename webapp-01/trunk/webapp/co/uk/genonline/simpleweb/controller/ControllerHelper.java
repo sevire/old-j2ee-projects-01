@@ -38,7 +38,7 @@ public class ControllerHelper {
     /**
      * Stores all data for session and makes it available to the JSPs through getters.
      */
-    private ActionData sessionData;
+    private ActionData actionData;
 
     SessionFactory factory;
 
@@ -53,23 +53,23 @@ public class ControllerHelper {
     }
 
     /**
-     * Exposes sessionData.screens (Screens) to the jsp.
+     * Exposes actionData.screens (Screens) to the jsp.
      *
      * @return
      */
     public Object getScreen() {
-        logger.info("Returning screens part of 'data' = <%s>", sessionData.getScreen().toString());
-        return sessionData.getScreen();
+        logger.info("Returning screens part of 'data' = <%s>", actionData.getScreen().toString());
+        return actionData.getScreen();
     }
 
     /**
-     * Exposes sessionData.configItems (ConfigItems) to the jsp.
+     * Exposes actionData.configItems (ConfigItems) to the jsp.
      *
      * @return
      */
     public Object getConfigItems() {
-        logger.info("Returning config items part of 'data' = <%s>", sessionData.getConfigItems().toString());
-        return sessionData.getConfigItems();
+        logger.info("Returning config items part of 'data' = <%s>", actionData.getConfigItems().toString());
+        return actionData.getConfigItems();
     }
 
     /**
@@ -82,13 +82,13 @@ public class ControllerHelper {
      * @throws IOException
      * @throws ServletException
      */
-    protected void processRequest() throws IOException, ServletException {
+    public void processRequest() throws IOException, ServletException {
 
         addHelperToSession("helper", SessionData.READ);
 
-        RequestResult result = null;
+        RequestResult result;
 
-        Action action = ActionFactory.createAction(request, response, factory, sessionData);
+        Action action = ActionFactory.createAction(request, response, factory, actionData);
         if (action != null) {
             result = action.perform();
             if (result.isRedirectFlag()) {
@@ -133,13 +133,13 @@ public class ControllerHelper {
             }
         }
         /**
-         * If either we are not persisting session or there was a problem with the sessionData object in the retrieved
-         * helper, then there will be no object assigned to sessionData, so create one before we replace the retrieved
+         * If either we are not persisting session or there was a problem with the actionData object in the retrieved
+         * helper, then there will be no object assigned to actionData, so create one before we replace the retrieved
          * (previous) helper with this one.
          */
-        if (sessionData == null) {
-            sessionData = new ActionData(new ScreensEntity(), new ConfigurationEntity());
-            logger.info("Initialised sessionData, = <%s>", sessionData.toString());
+        if (actionData == null) {
+            actionData = new ActionData(new ScreensEntity(), new ConfigurationEntity());
+            logger.info("Initialised actionData, = <%s>", actionData.toString());
         }
         request.getSession().setAttribute(name, this);
     }
@@ -157,8 +157,8 @@ public class ControllerHelper {
      */
     public void copyFromSession(Object sessionHelper) {
         if (sessionHelper.getClass() == this.getClass()) {
-            sessionData = ((ControllerHelper)sessionHelper).sessionData;
-            logger.info("Copying data from session = <%s>", sessionData.toString());
+            actionData = ((ControllerHelper)sessionHelper).actionData;
+            logger.info("Copying data from session = <%s>", actionData.toString());
         }
     }
 

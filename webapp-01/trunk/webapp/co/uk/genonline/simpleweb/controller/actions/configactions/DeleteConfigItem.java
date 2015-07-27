@@ -36,6 +36,7 @@ public class DeleteConfigItem extends ConfigurationAction {
         java.util.List configItems = session.createQuery(query).list();
         session.delete(configItems.get(0));
         transaction.commit();
+        session.close();
         return new RequestResult(request, "/editConfigIndex", true);
     }
 }

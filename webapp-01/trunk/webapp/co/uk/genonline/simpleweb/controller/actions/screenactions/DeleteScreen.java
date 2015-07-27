@@ -22,18 +22,16 @@ public class DeleteScreen extends ScreenAction {
     }
 
     public RequestResult perform() {
-        String screen = request.getParameter("screen");
 
         logger.info(String.format("Deleting screen <%s>", screen));
 
-        String query = String.format("from Screens s where s.name = '%s'", screen);
-
-        logger.debug("About to execute HQL query : " + query);
+        screen.setName(request.getParameter("screen"));
+        screenBeanManager.getScreen(screen);
 
         Session session = factory.openSession();
-        java.util.List pages = session.createQuery(query).list();
-        session.delete(pages.get(0));
+        session.delete(screen);
         session.flush();
+        session.close();
         return new RequestResult(request, "/editIndex", true);
     }
 }

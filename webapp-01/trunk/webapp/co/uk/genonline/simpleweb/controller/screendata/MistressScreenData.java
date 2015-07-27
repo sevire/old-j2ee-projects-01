@@ -10,7 +10,8 @@ import co.uk.genonline.simpleweb.controller.actions.RequestResult;
 import co.uk.genonline.simpleweb.model.bean.ScreenBeanManager;
 import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
 import co.uk.genonline.simpleweb.web.WebHelper;
-import co.uk.genonline.simpleweb.web.gallery.GalleryManager;
+import co.uk.genonline.simpleweb.web.gallery.Gallery;
+import co.uk.genonline.simpleweb.web.gallery.GalleryManagerDefault;
 import com.petebevin.markdown.MarkdownProcessor;
 
 import javax.servlet.ServletContext;
@@ -29,6 +30,7 @@ public class MistressScreenData implements ScreenData {
 
     private WebLogger logger = new WebLogger();
     private String chambersLinkBar;
+    private String lucinaLinkBar;
     private String mistressLinkBar;
     private String testimonialLinkBar;
     private String galleryLinkBar;
@@ -54,10 +56,10 @@ public class MistressScreenData implements ScreenData {
      *     <li>General data, such as linkbars, home screen link etc</li>
      *     <li>Gallery html if this is a gallery screen</li>
      * </ul>
-     * @param request
-     * @param response
+     * @param request ToDo: Only need this to get access to context. Probably not the best way.
+     * @param response ToDo: Not sure this is needed here at all.
      * @param screenBeanManager
-     * @param data
+     * @param sessionData
      * @return
      */
     public RequestResult setScreenData(HttpServletRequest request,
@@ -68,7 +70,8 @@ public class MistressScreenData implements ScreenData {
         ServletContext context = request.getServletContext();
         Configuration configuration = (Configuration)context.getAttribute("configuration");
 
-        /* RequestStatus used to display any errors or status messages on screen. Main use is for admin screens.
+        /**
+         * RequestStatus used to display any errors or status messages on screen. Main use is for admin screens.
          * Not used here
          */
         RequestStatus status = (RequestStatus) request.getSession().getAttribute("requestStatus");
@@ -88,67 +91,73 @@ public class MistressScreenData implements ScreenData {
         }
         logger.info("view: screen is " + getScreen().getName());
 
-        ScreensEntity screenRecord = screenBeanManager.getScreen(screen);
-
+        ScreensEntity screenRecord = screenBeanManager.getScreen(screen);  // openSession() Invocation #2
         if (screenRecord == null) {
             logger.warn(String.format("View page: Couldn't retrieve page <%s>", getScreen().getName()));
             response.setStatus(404);
             return new RequestResult(request, "error.jsp", false);
         } else {
-
+            if (screenRecord.getEnabledFlag()) {
             /* Set up Screen contents */
-            MarkdownProcessor markdownDecoder = new MarkdownProcessor();
+                MarkdownProcessor markdownDecoder = new MarkdownProcessor();
 
-            logger.debug("About to parse page with Markdown");
-            String pageText = screenRecord.getScreenContents();
+                logger.debug("About to parse page with Markdown");
+                String pageText = screenRecord.getScreenContents();
 
-            logger.debug("Markdown Input text is " + pageText.substring(0, Math.min(39, pageText.length()))+"...");
-            String HTML = markdownDecoder.markdown(pageText);
+                logger.debug("Markdown Input text is " + pageText.substring(0, Math.min(39, pageText.length())) + "...");
+                String HTML = markdownDecoder.markdown(pageText);
 
-            logger.debug("Markdown Output HTML is " + HTML.substring(0, Math.min(39, HTML.length()))+"...");
-            getScreen().setScreenContents(HTML);
+                logger.debug("Markdown Output HTML is " + HTML.substring(0, Math.min(39, HTML.length())) + "...");
+                screen.setScreenContents(HTML);
 
             /* Set up other Screen related data */
-            screen.setMetaDescription(screenRecord.getMetaDescription());
-            screen.setScreenTitleLong(screenRecord.getScreenTitleLong());
-            screen.setScreenTitleShort(screenRecord.getScreenTitleShort());
+                screen.setMetaDescription(screenRecord.getMetaDescription());
+                screen.setScreenTitleLong(screenRecord.getScreenTitleLong());
+                screen.setScreenTitleShort(screenRecord.getScreenTitleShort());
 
             /* Set up other data that JSP will need */
-            boolean blogEnabled = ((BlogEnabled)configuration.getConfigurationItem("blogEnabled")).get();
-            logger.debug(String.format("Value of 'blogEnabled' is %b", blogEnabled));
-            if (blogEnabled) {
-                setBlogLink(webHelper.generateBlogLink());
-            } else {
-                setBlogLink(null);
-            }
-            setCategoryLinkBar("Chambers");
-            setCategoryLinkBar("Mistress");
-            setCategoryLinkBar("Testimonial");
-            setCategoryLinkBar("Gallery");
-            setMistressPageLink(webHelper.getScreenLink("mistresses", screenBeanManager.getShortName("mistresses")));
-            setHomePageLink(webHelper.generateHomeLink());
-            setMaxThumbnailWidth(((configuration.getConfigurationItem("maxThumbnailWidth"))).getStringValue());
-            setMaxThumbnailHeight(((configuration.getConfigurationItem("maxThumbnailHeight"))).getStringValue());
+                boolean blogEnabled = ((BlogEnabled) configuration.getConfigurationItem("blogEnabled")).get();
+                logger.debug(String.format("Value of 'blogEnabled' is %b", blogEnabled));
+                if (blogEnabled) {
+                    setBlogLink(webHelper.generateBlogLink());
+                } else {
+                    setBlogLink(null);
+                }
+                setCategoryLinkBar("Lucina"); // openSession() Invocation #3
+                setCategoryLinkBar("Chambers"); // openSession() Invocation #4
+                setCategoryLinkBar("Mistress"); // openSession() Invocation #5
+                setCategoryLinkBar("Testimonial"); // openSession() Invocation #6
+                setCategoryLinkBar("Gallery"); // openSession() Invocation #7
+
+                // openSession() Invocation #8
+                setMistressPageLink(webHelper.getScreenLink("mistresses", screenBeanManager.getShortName("mistresses")));
+                setHomePageLink(webHelper.generateHomeLink());
+                setMaxThumbnailWidth(((configuration.getConfigurationItem("maxThumbnailWidth"))).getStringValue());
+                setMaxThumbnailHeight(((configuration.getConfigurationItem("maxThumbnailHeight"))).getStringValue());
 
             /* Set up Screen Images for header (this should be in a common place!). For now hard code left
                and right images.  Will replace with random selection later. */
 
-            List<String> headerImages = webHelper.selectRandomImage("site_images/header_images", 2);
+                List<String> headerImages = webHelper.selectRandomImage("site_images/header_images", 2);
 
-            setHeaderImageLeft(headerImages.get(0));
-            setHeaderImageRight(headerImages.get(1));
+                setHeaderImageLeft(headerImages.get(0));
+                setHeaderImageRight(headerImages.get(1));
 
             /* Set up Gallery if appropriate */
-            if (screenRecord.getGalleryFlag()) {
-                logger.info("About to create gallery for the page");
-                GalleryManager manager = (GalleryManager)request.getServletContext().getAttribute("Galleries");
-                logger.debug("manager = " + manager);
-                setGalleryHtml(((manager.getGallery(screenRecord.getName())).getHTML()));
-            } else {
-                logger.debug("This page is not a gallery: " + screenRecord.getName());
-                setGalleryHtml("");
-            }
-            if (screenRecord.getEnabledFlag()) {
+                if (screenRecord.getGalleryFlag()) {
+                    logger.info("About to create gallery for page <%s>", screenRecord.getName());
+                    GalleryManagerDefault manager = (GalleryManagerDefault) request.getServletContext().getAttribute("Galleries");
+                    logger.debug("manager = " + manager);
+                    Gallery gallery = manager.getGallery(screenRecord.getName());
+                    if (gallery == null) {
+                        logger.error("Couldn't retrieve gallery for <%s>, setting blank gallery", screenRecord.getName());
+                    } else {
+                        setGalleryHtml(gallery.getHtml(false));
+                    }
+                } else {
+                    logger.trace("This page is not a gallery: " + screenRecord.getName());
+                    setGalleryHtml("");
+                }
                 // TODO: Move this test earlier to avoid wasted effort on disabled screen.
                 return new RequestResult(request, getJSPname(), false);
             } else {
@@ -196,6 +205,8 @@ public class MistressScreenData implements ScreenData {
         String linkBar = webHelper.generateLinkBarCategory(categoryName);
         if (categoryName.equals("Mistress")) {
             mistressLinkBar = linkBar;
+        } else if (categoryName.equals("Lucina")) {
+            lucinaLinkBar = linkBar;
         } else if (categoryName.equals("Chambers")) {
             chambersLinkBar = linkBar;
         } else if (categoryName.equals("Testimonial")) {
@@ -207,6 +218,10 @@ public class MistressScreenData implements ScreenData {
 
     public void setMistressPageLink(String link) {
         this.mistressPageLink = link;
+    }
+
+    public String getLucinaLinkBar() {
+        return lucinaLinkBar;
     }
 
     public String getChambersLinkBar() {

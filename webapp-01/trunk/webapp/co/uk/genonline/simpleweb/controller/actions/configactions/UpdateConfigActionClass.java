@@ -59,6 +59,11 @@ abstract class UpdateConfigActionClass extends ConfigurationAction {
                 transaction.rollback();
                 errorFlag = true;
             }
+            finally {
+                if (session.isOpen()) {
+                    session.close();
+                }
+            }
         }
         if (errorFlag) {
             if (addFlag) {

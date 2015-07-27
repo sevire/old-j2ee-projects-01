@@ -1,19 +1,20 @@
 package co.uk.genonline.simpleweb.controller;
 
-import co.uk.genonline.simpleweb.configuration.configitems.GalleryRoot;
-import co.uk.genonline.simpleweb.configuration.configitems.LoggingLevel;
+import co.uk.genonline.simpleweb.configuration.configitems.*;
 import co.uk.genonline.simpleweb.configuration.general.Configuration;
 import co.uk.genonline.simpleweb.model.HibernateUtil;
-import co.uk.genonline.simpleweb.web.gallery.GalleryManager;
+import co.uk.genonline.simpleweb.web.gallery.*;
 import org.apache.log4j.*;
 import org.hibernate.SessionFactory;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import java.io.File;
 import java.io.IOException;
 
 /**
- * Created with IntelliJ IDEA.
+ * Created with Intelli J IDEA.
  * User: thomassecondary
  * Date: 12/05/2012
  * Time: 19:00
@@ -24,6 +25,8 @@ import java.io.IOException;
 public class ContextListener implements ServletContextListener {
     private WebLogger logger = new WebLogger();
     private static final String logPath = "/WEB-INF/logs/error.log";
+    private ServletContext context;
+    private Configuration configurationManager;
 
     public ContextListener() {
         System.out.format("ContextListener started (before logging)\n");
@@ -36,6 +39,8 @@ public class ContextListener implements ServletContextListener {
 
     public void contextInitialized(ServletContextEvent event) {
         Level level;
+
+        context = event.getServletContext();
 
         System.out.format("BeforeLogging:contextInitialized called - is logging working?\n");
         level = Level.DEBUG; // Initial value until we have read configuration.
@@ -50,6 +55,7 @@ public class ContextListener implements ServletContextListener {
 
         logger.debug("Getting session factory...");
         SessionFactory factory = HibernateUtil.getSessionFactory();
+        factory.getStatistics().setStatisticsEnabled(true);
         System.out.format("Result of getSessionFactory is %s\n", factory);
 
         logger.debug(String.format("Saving session factory in context attribute"));
@@ -57,7 +63,7 @@ public class ContextListener implements ServletContextListener {
 
         logger.info("Creating and saving ConfigManager");
 
-        Configuration configurationManager = new Configuration(factory);
+        configurationManager = new Configuration(factory);
         event.getServletContext().setAttribute("configuration", configurationManager);
 
         level = ((LoggingLevel)configurationManager.getConfigurationItem("loggingLevel")).get();
@@ -67,12 +73,7 @@ public class ContextListener implements ServletContextListener {
             logger.setLevel(level);
         }
 
-
-        logger.info("Creating and saving Gallery Manager in context attribute");
-        String galleryRoot = ((GalleryRoot)configurationManager.getConfigurationItem("galleryRoot")).get();
-
-        logger.info("Saving gallery root = " + galleryRoot);
-        event.getServletContext().setAttribute("Galleries", new GalleryManager(event.getServletContext()));
+        initialiseGallery();
 
         // Initialise session level variable for status message and status type used in JSPs to display error messages etc.
 
@@ -81,7 +82,10 @@ public class ContextListener implements ServletContextListener {
     }
 
     public void contextDestroyed(ServletContextEvent event) {
-            ((SessionFactory)(event.getServletContext().getAttribute("sessionFactory"))).close();
+        SessionFactory sessionFactory = (SessionFactory)event.getServletContext().getAttribute("sessionFactory");
+        long sessionCount = sessionFactory.getStatistics().getConnectCount();
+        logger.trace(String.format("contextDestroyed: Number of connections is <%d>", sessionCount));
+        sessionFactory.close();
     }
 
     private FileAppender getAppender(ServletContextEvent event, String fileName) {
@@ -116,7 +120,6 @@ public class ContextListener implements ServletContextListener {
         System.out.format("BeforeLogging:initLogger: Entering \n");
         if (name == null) {
             logger = Logger.getRootLogger();
-
         } else {
             logger = Logger.getLogger(name);
         }
@@ -124,5 +127,42 @@ public class ContextListener implements ServletContextListener {
         logger.addAppender(appender);
         logger.info("Starting " + logger.getName());
         System.out.format("BeforeLogging:initLogger: Leaving \n");
+    }
+
+    private void initialiseGallery() {
+        int maxThumbnailHeight = ((MaxThumbnailHeight)configurationManager.getConfigurationItem("maxThumbnailHeight")).get();
+        if (maxThumbnailHeight <= 0) {
+            logger.warn(String.format("Invalid value for 'maxHeight' (%s), setting to 100", maxThumbnailHeight));
+            maxThumbnailHeight = 100;
+        }
+        int maxThumbnailWidth = ((MaxThumbnailWidth)configurationManager.getConfigurationItem("maxThumbnailWidth")).get();
+        if (maxThumbnailWidth <= 0) {
+            logger.warn(String.format("Invalid value for 'maxWidth' (%s), setting to 100", maxThumbnailWidth));
+            maxThumbnailWidth = 100;
+        }
+
+        String webRootFullPath = this.context.getRealPath("/");
+        String galleryRootRelPath = ((GalleryRoot)configurationManager.getConfigurationItem("galleryRoot")).get();
+        File galleryRootFullPathFile = new File(webRootFullPath + File.separator + galleryRootRelPath);
+        String thumbnailRelPath = ((ThumbnailRelPath)configurationManager.getConfigurationItem("thumbnailRelPath")).get();
+        String[] imageExtensionList = {"jpg", "jpeg", "png"};
+
+        GalleryManagerConfiguration galleryManagerConfiguration = new GalleryManagerConfigurationDefault(
+                galleryRootFullPathFile,
+                galleryRootRelPath,
+                thumbnailRelPath,
+                maxThumbnailHeight,
+                maxThumbnailWidth,
+                imageExtensionList);
+
+        ThumbnailManager thumbnailManager = new ThumbnailManagerDefault(galleryManagerConfiguration);
+
+        logger.info("Creating and saving Gallery Manager in context attribute");
+
+        GalleryManager galleryManager = new GalleryManagerDefault(
+                galleryManagerConfiguration,
+                thumbnailManager,
+                new GalleryCarouselHtmlGenerator(galleryManagerConfiguration));
+        context.setAttribute("Galleries",galleryManager);
     }
 }

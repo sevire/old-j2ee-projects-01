@@ -9,7 +9,7 @@ import org.hibernate.criterion.Restrictions;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.InvocationTargetException;
-import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,32 +42,35 @@ public class ScreenBeanManager {
         String query = String.format("from ScreensEntity s order by enabledFlag desc, screenType, sortKey");
         logger.debug("About to execute HQL query : " + query);
         java.util.List pages = session.createQuery(query).list();
+        session.close();
         return pages;
     }
 
     public List<ScreensEntity> getCategoryScreens(String category) {
         Session session = factory.openSession();
+
         String query = String.format("from ScreensEntity s where s.screenType = '%s' and s.enabledFlag = true order by sortKey", category);
         logger.debug("About to execute HQL query : " + query);
         List pages = session.createQuery(query).list();
+        session.close();
         return pages;
     }
 
     public ScreensEntity getScreen(ScreensEntity screen) {
-        Session session = factory.openSession();
+        Session session = factory.openSession(); // Open Session #1
+
         Criteria criteria = session.createCriteria(ScreensEntity.class).add(Restrictions.eq("name", screen.getName()));
         ScreensEntity dbBean = (ScreensEntity) criteria.uniqueResult();
+        session.close();
 
-        // I am setting the timestamp fields to avoid an error in the CopyProperties method.
-        // ToDo: Do something better with these timestamp fields here!
-        dbBean.setCreated(new Timestamp(0));
-        dbBean.setModified(new Timestamp(0));
-        try {
-            BeanUtils.copyProperties(screen, dbBean);
-        } catch (IllegalAccessException e) {
-            logger.fatal("Fatal error while moving Screen properties : " + e.getMessage());
-        } catch (InvocationTargetException e) {
-            logger.fatal("Fatal error while moving Screen properties : " + e.getMessage());
+        if (dbBean != null) {
+            try {
+                BeanUtils.copyProperties(screen, dbBean);
+            } catch (IllegalAccessException e) {
+                logger.fatal("Fatal error while moving Screen properties : " + e.getMessage());
+            } catch (InvocationTargetException e) {
+                logger.fatal("Fatal error while moving Screen properties : " + e.getMessage());
+            }
         }
         return dbBean;
     }
@@ -89,8 +92,10 @@ public class ScreenBeanManager {
     }
     public void getScreenIntoBean(ScreensEntity screen, String screenName) {
         Session session = factory.openSession();
+
         Criteria criteria = session.createCriteria(ScreensEntity.class).add(Restrictions.eq("name", screenName));
         ScreensEntity dbBean = (ScreensEntity) criteria.uniqueResult();
+        session.close();
 
         screen.setName(dbBean.getName());
         screen.setSortKey(dbBean.getSortKey());
@@ -136,6 +141,10 @@ public class ScreenBeanManager {
             logger.info("galleryFlag from request is <%s>", amendedMap.get("galleryFlag").toString());
         }
         fillBeanFromMap(screen, amendedMap);
+        // ToDo: Work out right way to solve Timestamp crashing problem
+        java.sql.Timestamp timeStamp = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
+        screen.setCreated(timeStamp);
+        screen.setModified(timeStamp);
     }
 
     public String getShortName(String screenName) {

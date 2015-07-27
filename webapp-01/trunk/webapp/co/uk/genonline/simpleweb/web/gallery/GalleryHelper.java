@@ -3,7 +3,6 @@ package co.uk.genonline.simpleweb.web.gallery;
 import co.uk.genonline.simpleweb.configuration.configitems.*;
 import co.uk.genonline.simpleweb.configuration.general.Configuration;
 import co.uk.genonline.simpleweb.controller.WebLogger;
-import org.apache.log4j.Level;
 
 import javax.servlet.ServletContext;
 import java.io.File;
@@ -18,6 +17,7 @@ import java.io.File;
  */
 
 public class GalleryHelper {
+
     WebLogger logger = new WebLogger();
 
     ServletContext context;

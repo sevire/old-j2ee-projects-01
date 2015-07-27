@@ -92,6 +92,7 @@ public class WebHelper {
         Session session = factory.openSession();
         Criteria criteria = session.createCriteria(ScreensEntity.class).add(Restrictions.eq("name", screenName));
         ScreensEntity dbBean = (ScreensEntity) criteria.uniqueResult();
+        session.close();
  
         screen.setName(dbBean.getName());
         screen.setSortKey(dbBean.getSortKey());

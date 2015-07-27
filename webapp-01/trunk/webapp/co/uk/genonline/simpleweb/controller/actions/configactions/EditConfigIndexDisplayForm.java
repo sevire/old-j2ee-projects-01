@@ -28,6 +28,7 @@ public class EditConfigIndexDisplayForm extends ConfigurationAction {
         logger.debug("About to execute HQL query : " + query);
         Query queryObject = session.createQuery(query);
         java.util.List configItems = queryObject.list();
+        session.close();
         if (configItems == null) {
             logger.debug("configItems is null");
             status.setStatusMessage("Error while getting configuration item list", "error");

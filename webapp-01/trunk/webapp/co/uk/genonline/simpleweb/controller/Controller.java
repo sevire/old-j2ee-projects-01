@@ -104,8 +104,8 @@ public class Controller extends HttpServlet {
     void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         logger.setSession(request);
         String callType = request.getMethod();
-        ControllerHelper helper = new ControllerHelper(request, response, (SessionFactory)(getServletConfig().getServletContext().getAttribute("sessionFactory")));
-//        ControllerHelper helper = new ControllerHelper(request, response);
+        SessionFactory factory = (SessionFactory)(getServletConfig().getServletContext().getAttribute("sessionFactory"));
+        ControllerHelper helper = new ControllerHelper(request, response, factory);
         logger.info("%s : request = %s", callType, request.getRequestURI());
         helper.processRequest();
     }

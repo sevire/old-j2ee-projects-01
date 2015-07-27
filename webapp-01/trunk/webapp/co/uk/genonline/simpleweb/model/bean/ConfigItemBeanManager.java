@@ -49,13 +49,16 @@ public class ConfigItemBeanManager {
         Session session = factory.openSession();
         String query = String.format("from ConfigurationEntity c order by name");
         logger.debug("About to execute HQL query : " + query);
-        return session.createQuery(query).list();
+        List<Object> configItems =  session.createQuery(query).list();
+        session.close();
+        return configItems;
     }
 
     public void getConfigItemIntoBean(String name) {
         Session session = factory.openSession();
         Criteria criteria = session.createCriteria(ConfigurationEntity.class).add(Restrictions.eq("name", name));
         ConfigurationEntity dbBean = (ConfigurationEntity) criteria.uniqueResult();
+        session.close();
 
         configBean.setName(dbBean.getName());
         configBean.setValue(dbBean.getValue());

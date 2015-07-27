@@ -64,6 +64,11 @@ abstract class UpdateActionClass extends ScreenAction {
                     logger.info("Error saving data : %s", e.getMessage());
                     errorFlag = true;
                 }
+                finally {
+                    if (session.isOpen()) {
+                        session.close();
+                    }
+                }
             }
         }
         if (errorFlag) {
