@@ -1,0 +1,141 @@
+STATEMENT OF PROBLEM
+--------------------
+
+If I request a screen on the website and then refresh continually, eventually I get a
+stack trace with a root cause error of:
+
+    Data source rejected establishment of connection,  message from server:
+                                                                    "Too many connections"
+    
+Typically the number of times I need to refresh before the error happens is 15-20.
+
+
+QUESTIONS / MORE INFORMATION
+----------------------------
+
+1. Is it an exact number of times before the error occurs?
+2. Is time a factor?
+
+THOUGHTS AND COMMENTS ON QUESTIONS
+----------------------------------
+
+1. Is it an exact number of times before the error occurs?
+
+Test 01: Try 10 times in a row by restarting the web app and then refreshing the same page
+         at the same rate (refresh the page as soon as the previous refresh has 
+         completed).
+      
+         Results
+         -------
+      
+         +-----------------------------------------------------------+
+         | No. | Num       | Num     |                               |
+         |	   | Refreshes | Seconds |                               |
+         |-----+-----------+---------+-------------------------------|
+         | 1   | 25        |         |                               |
+         | 2   | 18        |         |                               |
+         | 3   | 16        | 33      |                               |
+         | 4   | 18        | 28      |                               |
+         | 5   | 17        | 25      |                               |
+         | 6   | 18        | 77      | Not sure I counted properly!  |
+         | 7   | 18        | 22      |                               |
+         | 8   | 17        | 27      |                               |
+         | 9   | 18        | 21      |                               |
+         | 10  | 18        | 23      |                               |
+         +-----------------------------------------------------------+
+      
+2. Is time a factor?
+
+Test 02: Leave a fixed amount of time between refreshes and see whether the length of this
+         gap influences how many refreshes are required before crashing.
+      
+         Note: Sometimes the app delays for a long time before refreshing, which is 
+               probably not related to the problem (e.g. other things happening on the
+               laptop are taking resources).  For this reason I will record the intended
+               gap, the total number of refreshes and the total elapsed time.
+            
+         Results
+         -------
+      
+         +-----------------------------------------------------------+
+         | No. | Refresh | Num       | Num     | Comments            |
+         |	   | Gap     | Refreshes | Seconds |                     |
+         |-----+---------+-----------+---------+---------------------|
+         | 1   | 5       | 22        | 1:45    |                     |
+         | 2   | 10      |           |         | Aborted: see note 1.|
+         +-----------------------------------------------------------+
+      
+        Notes 1: After having a couple of goes at this there were a couple of refreshes
+                 which didn't complete and so this would have distorted the results so
+                 I didn't include them.  It's not clear whether the non-completion of the
+                 refresh is a bug or just to do with resource conflicts within the laptop.
+                 I'm currently taking the view that it is not related.
+                 
+                 I decided that it an equally valid test would be to refresh the page
+                 before it had completed the previous refresh.  One would expect the 
+                 problem to occur as long as the code which opens the session has been
+                 called.
+               
+Test 03: After re-starting the app, refresh the page and allow it to complete.  Then 
+         refresh the page over and over again leaving just a second between refreshes so 
+         that the processing of the page will have started.
+         
+         Results
+         -------
+         
+         After doing this about 5 times, each time the number of refreshes was between 17
+         and 19.
+
+OBSERVATIONS AND CONCLUSIONS SO FAR
+-----------------------------------
+
+    OBSERVATIONS
+    ------------
+
+1.  It looks like the number of refreshes is pretty constant but not completely constant.
+    This is a bit confusing as it suggests it's not quite as simple as specific lines of
+    code opening a session and the session not being closed properly.
+    
+2.  By checking the number of connections statistic within MySQL (which means number of
+    times a connection has been made, not number of open connections!) after each refresh,
+    I have come to the following conclusions:
+    
+    - The number of connections made for normal refresh of a page is 9.
+    - After 18 refreshes, 146 connections have been made.
+    - After 18 refreshes, the next connection causes an error.
+    - After the error, 148 connections have been made.
+    - The maximum number of open connections allowed is 151.
+    - I think it may effectively be 150 as one of these is reserved for root, although
+      (probably quite wrongly) I use root as my user within the app.
+    - It looks like perhaps at the end of startup, 4 or 5 connections are open.  Then 
+      after refreshing a page 17 times the number of open connections is 144 which is 
+      within 9 of the limit, so the next refresh causes the error.
+      
+      CONCLUSIONS
+      -----------
+      
+      If this theory is correct, on every refresh there are 9 connections left open.
+      That's probably all of them (but I need to check).  That looks like I have
+      introduced a bug as I am fairly sure this problem hasn't been there in the past.
+      Somehow I must have done something which has stopped the connections being closed.
+      It may be that I have misunderstood how connections get closed and so made a change
+      which I didn't think I would make any difference - incorrectly.
+      
+NEXT STEPS
+----------
+
+1. Try to find where the 9 connections come from during a refresh.  See whether there are
+   more than 9 (which may mean that some are being closed properly).
+   
+2. Try to find which connections are being opened before the first page is refreshed.
+   This is probably the Configuration table read at start up.
+   
+3. If I can make the maths add up then I will pretty much know where the connections are
+   being opened and not closed and that will be a very strong pointer in the right 
+   direction.
+
+4. In parallel I should just look through the code again in the light of new information 
+   and look for ways in which I could have misunderstood or where errors may occur.
+   
+5. Possibly look at how I can re-factor to one session per request (have partially done
+   this I think).
