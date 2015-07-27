@@ -60,24 +60,28 @@ a:hover {
 
 div#container {
   max-width: 960px;
-  margin: 30px auto 10px auto;
+  min-width: 320px; // Stops layout breaking for very small form factor phones
+  margin: 0 auto 10px auto;
 }
 
 div#banner h1, div#banner h2 {
   font-family: "Tangerine", cursive;
-  clear: both;
+//  clear: both;
   background: transparent;
   color: white;
   text-align: center;
-  font-weight: normal;
+//  font-weight: normal;
 }
+
+div#banner {
+  background: black;
+}
+
 
 div#banner h1 {
-  font-size: 350%;
-}
-
-div#banner h2 {
-  font-size: 250%;
+  font-size: 20px;
+  height: 30px;
+  vertical-align: middle;
 }
 
 span.first {
@@ -86,14 +90,12 @@ span.first {
 
 
 div#header {
-  border-radius: 30px;
-  /*border: solid 1px #b21227;*/
-  background-color: #000000;
-  padding: 30px;
+  border-radius: 5px;
+  padding: 5px;
   text-align: center;
-  width: 900px;
-  height: 160px;
-  margin: 0 auto 20px auto;
+  width: auto;
+  background: black;
+  font-size: 25%;
 }
 
 div#header * {
@@ -101,31 +103,30 @@ div#header * {
 
 div#innerHeader {
   background: transparent;
-  width: 750px;
   float: left;
 }
 
-div.headerImage {
-  width: 75px;
-  height: 115px;
+div.header-image {
+  width: 15%;
+  display: inline-block;
   background-color: transparent;
+  vertical-align: top;
 }
 
-div.headerImage img {
+div.header-image img {
   max-width: 75px;
-  max-height: 115px;
+//  max-height: 115px;
 }
 
 div#leftImage {
-  float: left;
+//  float: left;
 }
 
 div#rightImage {
-  float: right;
+//  float: right;
 }
 
 div#upperHeader {
-  width: 900px;
   float: left;
   background: transparent;
 }
@@ -163,26 +164,37 @@ div#upperHeader p.rightFloat {
   text-align: right;
 }
 
+div.contact {
+  padding-left: 5px;
+  margin-bottom: 3px;
+  text-align: left;
+  height: 30px;
+  background-color: #ffffff;
+}
+
 div.contact img {
   max-height: 16px;
   vertical-align: middle;
 }
 
-div.contact p,
-  //div.contact>p.contact>a
-{
-  /*
-    line-height: 16px;
-  */
-  font-size: 14px !important;
+div.contact p {
+  padding-left: 5px;
   display: inline-block;
   vertical-align: middle;
-}
+  color: #cf152d;
+  font-size: 12px;
 
-div.contact {
-  display: inline-block;
-  width: 300px;
-  line-height: 23px;
+  a {
+    color: #cf152d;
+  }
+
+  a:visited {
+    color: #720711;
+  }
+
+  a:hover {
+    color: #fc5c39;
+  }
 }
 
 div.contact.left {
@@ -208,11 +220,9 @@ div#rightColumn {
 div#content {
   border-radius: 30px;
   padding: 50px 10px;
-  margin-bottom: 10px;
+  margin: 5px auto 10px auto;
   background-color: #ffffff;
-  max-width: 620px;
   min-height: 310px;
-  float:left;
 }
 
 div#footer {
@@ -230,25 +240,22 @@ div#footer {
 
 ul.mainLinkBar {
   text-align: center;
-  margin-left: 30px;
-  width: 240px;
-  float: left;
+  width: 160px;
+  display: inline-block;
 }
 
 ul.mainLinkBar li {
   border-radius: 15px;
   background-color: transparent;
-  display: block;
-  padding: 5px 10px;
+  display: inline-block;
+  padding: 5px 5px;
   line-height: 30px;
-  float: left;
-  width: 40px;
 }
 
 ul.mainLinkBar li img {
   display: block;
   margin: 0 auto;
-  width: 30px;
+  width: 20px;
 }
 
 ul.mainLinkBar li a {
@@ -353,6 +360,39 @@ div#pageText ul li {
   list-style: square outside;
   margin-left: 18px;
 }
+
+$break-large: 800px;
+
+@media (min-width: $break-large) {
+  div#content {
+    padding-top: 30px;
+    margin-top: 50px;
+  }
+  div#banner h1 {
+    font-size: 40px;
+    height: 60px;
+  }
+
+  ul.mainLinkBar {
+    margin-top: 50px;
+    width: 250px;
+
+    li img {
+      width: 50px;
+
+    }
+  }
+
+  div.contact {
+    width: 47%;
+    display: inline-block;
+  }
+
+  div#contact-email {
+    text-align: right;
+  }
+}
+
 
 
 /*

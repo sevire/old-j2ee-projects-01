@@ -1,0 +1,17 @@
+/* Overrides styles in flexNav for this site.  Preferable to modifying flexnav.css directly so I don't have to re-apply if I
+   update flexnav later
+ */
+
+.flexnav li a {
+  color: #e5e5e5;
+  background: #b21227;
+}
+
+
+@media (min-width: 800px) {
+    .flexnav li {
+        width: 25%;
+    }
+
+
+}

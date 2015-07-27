@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": ";;;AAIA,aAAc;EACZ,KAAK,EAAE,OAAO;EACd,UAAU,EAAE,OAAO;;AAIrB,yBAA0B;EACtB,WAAY;IACR,KAAK,EAAE,GAAG",
+"sources": ["flexnavoverride.scss"],
+"names": [],
+"file": "flexnavoverride.css"
+}
