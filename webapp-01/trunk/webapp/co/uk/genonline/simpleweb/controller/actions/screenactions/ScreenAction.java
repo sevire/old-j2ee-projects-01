@@ -37,5 +37,4 @@ public abstract class ScreenAction extends Action {
         this.screenBeanManager = new ScreenBeanManager(factory);
         status = (RequestStatus) this.request.getSession().getAttribute("requestStatus");
     }
-
 }
