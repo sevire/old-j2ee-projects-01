@@ -177,11 +177,6 @@ div#footer {
   font-size: 50%;
   text-align: center; }
 
-ul.mainLinkBar {
-  text-align: center;
-  width: 160px;
-  display: inline-block; }
-
 ul.mainLinkBar li {
   border-radius: 15px;
   background-color: transparent;
@@ -189,10 +184,15 @@ ul.mainLinkBar li {
   padding: 5px 5px;
   line-height: 30px; }
 
-ul.mainLinkBar li img {
-  display: block;
-  margin: 0 auto;
-  width: 20px; }
+ul.mainLinkBar {
+  text-align: center;
+  width: 210px;
+  display: inline-block;
+  margin-top: 50px; }
+  ul.mainLinkBar li img {
+    width: 40px;
+    display: block;
+    margin: 0 auto; }
 
 ul.mainLinkBar li a {
   color: #b21227; }
@@ -282,18 +282,17 @@ div#pageText ul li {
     font-size: 40px;
     height: 60px; }
 
-  ul.mainLinkBar {
-    margin-top: 50px;
-    width: 250px; }
-    ul.mainLinkBar li img {
-      width: 50px; }
-
   div.contact {
     width: 47%;
     display: inline-block; }
 
   div#contact-email {
-    text-align: right; } }
+    text-align: right; }
+
+  ul.mainLinkBar {
+    width: 250px; }
+    ul.mainLinkBar li img {
+      width: 50px; } }
 /*
 @if $public {
   body {

@@ -2,16 +2,29 @@
    update flexnav later
  */
 
-.flexnav li a {
-  color: #e5e5e5;
-  background: #b21227;
+.menu-button {
+  background: white;
+  color: #b21227;
 }
 
+.flexnav .touch-button .navicon {
+  color: white;
+}
+
+.menu-button .touch-button .navicon {
+  color: #b21227;
+}
+
+.flexnav li ul li a {
+  background: white;
+  color: #b21227;
+}
+
+.flexnav li a {
+  color: #e5e5e5;
+  background: #b21227; }
 
 @media (min-width: 800px) {
-    .flexnav li {
-        width: 25%;
-    }
-
-
+  .flexnav li {
+    width: 25%; }
 }

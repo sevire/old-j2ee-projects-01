@@ -10,7 +10,7 @@ import java.sql.Timestamp;
  * Time: 17:31
  * To change this template use File | Settings | File Templates.
  */
-@Table(name = "Screens", schema = "", catalog = "lda_v02")
+@Table(name = "Screens", schema = "") // ToDo Suppress inclusion of catalog when generating entity class (hard codes db name)
 @Entity
 public class ScreensEntity {
     private int id;
@@ -29,6 +29,7 @@ public class ScreensEntity {
     private String screenDisplayType;
 
     @Column(name = "id")
+    @GeneratedValue
     @Id
     public int getId() {
         return id;
@@ -180,18 +181,13 @@ public class ScreensEntity {
         if (created != null ? !created.equals(that.created) : that.created != null) return false;
         if (enabledFlag != null ? !enabledFlag.equals(that.enabledFlag) : that.enabledFlag != null) return false;
         if (galleryFlag != null ? !galleryFlag.equals(that.galleryFlag) : that.galleryFlag != null) return false;
-        if (metaDescription != null ? !metaDescription.equals(that.metaDescription) : that.metaDescription != null)
-            return false;
+        if (metaDescription != null ? !metaDescription.equals(that.metaDescription) : that.metaDescription != null) return false;
         if (modified != null ? !modified.equals(that.modified) : that.modified != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (screenContents != null ? !screenContents.equals(that.screenContents) : that.screenContents != null)
-            return false;
-        if (screenDisplayType != null ? !screenDisplayType.equals(that.screenDisplayType) : that.screenDisplayType != null)
-            return false;
-        if (screenTitleLong != null ? !screenTitleLong.equals(that.screenTitleLong) : that.screenTitleLong != null)
-            return false;
-        if (screenTitleShort != null ? !screenTitleShort.equals(that.screenTitleShort) : that.screenTitleShort != null)
-            return false;
+        if (screenContents != null ? !screenContents.equals(that.screenContents) : that.screenContents != null) return false;
+        if (screenDisplayType != null ? !screenDisplayType.equals(that.screenDisplayType) : that.screenDisplayType != null) return false;
+        if (screenTitleLong != null ? !screenTitleLong.equals(that.screenTitleLong) : that.screenTitleLong != null) return false;
+        if (screenTitleShort != null ? !screenTitleShort.equals(that.screenTitleShort) : that.screenTitleShort != null) return false;
         if (screenType != null ? !screenType.equals(that.screenType) : that.screenType != null) return false;
         if (sortKey != null ? !sortKey.equals(that.sortKey) : that.sortKey != null) return false;
 
@@ -217,7 +213,17 @@ public class ScreensEntity {
         return result;
     }
 
+/*
     public String toString() {
-        return "ScreenEntity:" + name;
+        int contentLength = getScreenContents().length();
+        String included = contentLength > 10 ? getScreenContents().substring(0,9) : getScreenContents();
+
+        return String.format("ScreensEntity::id:%d, name:%s, short:%s, long:%s, text:<%s>",
+                getId(),
+                getName(),
+                getScreenTitleShort(),
+                getScreenTitleLong(),
+                included);
     }
+*/
 }

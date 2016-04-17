@@ -64,7 +64,7 @@
                 </td>
             </tr>
             <c:forEach var="row" items="${editList}">
-                <tr>
+                <tr <c:if test="${!row.enabledFlag}">class='rowDisabled'</c:if>>
                     <td>
                         <a href="edit?screen=${row.name}">Edit</a>
                     </td>

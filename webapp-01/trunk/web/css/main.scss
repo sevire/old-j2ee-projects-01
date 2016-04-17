@@ -14,7 +14,32 @@ body#editIndex {
 }
 
 body#editIndex td a {
-  color: #0d2cdb;
+  color: #890e99;
+  font-weight: bold;
+}
+
+body#editIndex td a:visited {
+  color: #890e99;
+}
+
+body#editIndex tr.rowDisabled td {
+  color: #505050;
+
+  a {
+    color: #b913cf;
+  }
+}
+
+body#editIndex table td {
+  font-size: .75em;
+}
+
+body#editIndex table tr.tableHeading {
+  border-bottom: solid #1429db 1px;
+}
+
+body#editIndex table tr.tableHeading td {
+  color: #2f338c;
   font-weight: bold;
 }
 
@@ -92,7 +117,7 @@ div#pageText ul li a {
   font-size: 100%;
 }
 
-li.headerLink a:visited, body#editIndex td a:visited, div#pageText ul li a:visited {
+li.headerLink a:visited, div#pageText ul li a:visited {
   color: #8683db;
 }
 
@@ -234,16 +259,4 @@ table tr.statusRow.warning {
   color: #5d3317;
 }
 
-body#editIndex table td {
-  font-size: .75em;
-}
-
-body#editIndex table tr.tableHeading {
-  border-bottom: solid #1429db 1px;
-}
-
-body#editIndex table tr.tableHeading td {
-  color: #2f338c;
-  font-weight: bold;
-}
 

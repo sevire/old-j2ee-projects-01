@@ -1,6 +1,6 @@
 package co.uk.genonline.simpleweb.controller.actions.screenactions;
 
-import co.uk.genonline.simpleweb.controller.actions.ActionData;
+import co.uk.genonline.simpleweb.controller.actions.SessionData;
 import co.uk.genonline.simpleweb.controller.actions.RequestResult;
 import co.uk.genonline.simpleweb.controller.screendata.ScreenData;
 import co.uk.genonline.simpleweb.controller.screendata.ScreenDataFactory;
@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ViewScreen extends ScreenAction {
 
-    public ViewScreen(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
+    public ViewScreen(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, SessionData data) {
         super(request, response, factory, data);
     }
 

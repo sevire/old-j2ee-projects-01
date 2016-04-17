@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
  * To change this template use File | Settings | File Templates.
  */
 public class RequestResult {
-    private final String nextRequest;
-    private final boolean redirectFlag;
-    private final HttpServletRequest request;
+    private String nextRequest;
+    private boolean redirectFlag;
+    private HttpServletRequest request;
 
     public RequestResult(HttpServletRequest request, String nextRequest, boolean redirectFlag) {
         this.request = request;

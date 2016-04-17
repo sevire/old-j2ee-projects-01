@@ -2,7 +2,7 @@ package co.uk.genonline.simpleweb.controller.actions.screenactions;
 
 import co.uk.genonline.simpleweb.controller.RequestStatus;
 import co.uk.genonline.simpleweb.controller.actions.Action;
-import co.uk.genonline.simpleweb.controller.actions.ActionData;
+import co.uk.genonline.simpleweb.controller.actions.SessionData;
 import co.uk.genonline.simpleweb.model.bean.ScreenBeanManager;
 import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
 import org.hibernate.SessionFactory;
@@ -20,13 +20,13 @@ import javax.servlet.http.HttpServletResponse;
 public abstract class ScreenAction extends Action {
     protected HttpServletRequest request;
     HttpServletResponse response;
-    ActionData data;
+    SessionData data;
     SessionFactory factory;
     ScreensEntity screen;
     protected RequestStatus status;
     ScreenBeanManager screenBeanManager;
 
-    protected ScreenAction(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
+    protected ScreenAction(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, SessionData data) {
         super();
         this.request = request;
         this.response = response;

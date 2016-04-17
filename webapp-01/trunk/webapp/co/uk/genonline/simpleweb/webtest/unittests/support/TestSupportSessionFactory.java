@@ -14,7 +14,7 @@ import static org.junit.Assert.assertTrue;
  * Created by thomassecondary on 15/05/15.
  */
 public class TestSupportSessionFactory {
-    static File hibernateConfig = new File("/Users/thomassecondary/Projects/webapp-01(trunk)/webapp/hibernate.cfg.xml");
+    static File hibernateConfig = new File("/Users/thomassecondary/Projects/webapp-01(trunk)/webapp/co/uk/genonline/simpleweb/webtest/hibernate.cfg.xml");
     static SessionFactory factory;
 
     public SessionFactory getSessionFactory() {
@@ -26,19 +26,15 @@ public class TestSupportSessionFactory {
         configuration.configure(hibernateConfig);
 
         ServiceRegistryBuilder builder = new ServiceRegistryBuilder();
-        ServiceRegistry serviceRegistry;
+        builder.applySettings(configuration.getProperties());
+        ServiceRegistry serviceRegistry = builder.buildServiceRegistry();
 
-        builder = builder.applySettings(configuration.getProperties());
         assertNotNull(builder);
 
-        serviceRegistry = builder.buildServiceRegistry();
         assertNotNull(serviceRegistry);
 
         factory = configuration.buildSessionFactory(serviceRegistry);
         assertNotNull(factory);
-
-        factory.getStatistics().setStatisticsEnabled(true);
-        assertTrue(factory.getStatistics().isStatisticsEnabled());
 
         return factory;
     }

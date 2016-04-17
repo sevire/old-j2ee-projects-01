@@ -2,7 +2,7 @@ package co.uk.genonline.simpleweb.controller.actions.configactions;
 
 import co.uk.genonline.simpleweb.controller.RequestStatus;
 import co.uk.genonline.simpleweb.controller.actions.Action;
-import co.uk.genonline.simpleweb.controller.actions.ActionData;
+import co.uk.genonline.simpleweb.controller.actions.SessionData;
 import co.uk.genonline.simpleweb.model.bean.ConfigurationEntity;
 import org.hibernate.SessionFactory;
 
@@ -19,12 +19,12 @@ import javax.servlet.http.HttpServletResponse;
 public abstract class ConfigurationAction extends Action {
     HttpServletRequest request;
     HttpServletResponse response;
-    ActionData data;
+    SessionData data;
     SessionFactory factory;
     ConfigurationEntity configItems;
     RequestStatus status;
 
-    ConfigurationAction(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
+    ConfigurationAction(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, SessionData data) {
         super();
         this.request = request;
         this.response = response;

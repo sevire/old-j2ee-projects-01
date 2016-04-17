@@ -150,7 +150,12 @@ public class ScreenBeanManager {
     public String getShortName(String screenName) {
         ScreensEntity screen = new ScreensEntity();
         screen.setName(screenName);
-        return getScreen(screen).getScreenTitleShort();
+        ScreensEntity returnScreen = getScreen(screen);
+        if (returnScreen != null) {
+            return returnScreen.getScreenTitleShort();
+        } else {
+            return null;
+        }
     }
 
     /**

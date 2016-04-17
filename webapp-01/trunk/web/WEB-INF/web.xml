@@ -116,6 +116,10 @@
         <servlet-name>Controller</servlet-name>
         <url-pattern>/viewImage</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller</servlet-name>
+        <url-pattern>/contactMe</url-pattern>
+    </servlet-mapping>
 <!--
     <servlet-mapping>
         <servlet-name>default</servlet-name>

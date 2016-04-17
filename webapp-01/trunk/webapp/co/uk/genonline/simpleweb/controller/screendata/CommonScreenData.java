@@ -1,6 +1,6 @@
 package co.uk.genonline.simpleweb.controller.screendata;
 
-import co.uk.genonline.simpleweb.controller.actions.ActionData;
+import co.uk.genonline.simpleweb.controller.actions.SessionData;
 import co.uk.genonline.simpleweb.controller.actions.RequestResult;
 import co.uk.genonline.simpleweb.model.bean.ScreenBeanManager;
 
@@ -22,7 +22,7 @@ public class CommonScreenData implements ScreenData {
         return null; // No JSP as this is part of a separate ScreenData object
     }
 
-    public RequestResult setScreenData(HttpServletRequest request, HttpServletResponse response, ScreenBeanManager screenBeanManager, ActionData data) {
+    public RequestResult setScreenData(HttpServletRequest request, HttpServletResponse response, ScreenBeanManager screenBeanManager, SessionData data) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 

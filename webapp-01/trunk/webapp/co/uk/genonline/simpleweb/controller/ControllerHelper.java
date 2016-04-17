@@ -38,7 +38,7 @@ public class ControllerHelper {
     /**
      * Stores all data for session and makes it available to the JSPs through getters.
      */
-    private ActionData actionData;
+    private co.uk.genonline.simpleweb.controller.actions.SessionData sessionData;
 
     SessionFactory factory;
 
@@ -58,8 +58,8 @@ public class ControllerHelper {
      * @return
      */
     public Object getScreen() {
-        logger.info("Returning screens part of 'data' = <%s>", actionData.getScreen().toString());
-        return actionData.getScreen();
+        logger.info("Returning screens part of 'data' = <%s>", sessionData.getScreen().toString());
+        return sessionData.getScreen();
     }
 
     /**
@@ -68,8 +68,8 @@ public class ControllerHelper {
      * @return
      */
     public Object getConfigItems() {
-        logger.info("Returning config items part of 'data' = <%s>", actionData.getConfigItems().toString());
-        return actionData.getConfigItems();
+        logger.info("Returning config items part of 'data' = <%s>", sessionData.getConfigItems().toString());
+        return sessionData.getConfigItems();
     }
 
     /**
@@ -84,11 +84,11 @@ public class ControllerHelper {
      */
     public void processRequest() throws IOException, ServletException {
 
-        addHelperToSession("helper", SessionData.READ);
+        addHelperToSession("helper", co.uk.genonline.simpleweb.controller.SessionData.READ);
 
         RequestResult result;
 
-        Action action = ActionFactory.createAction(request, response, factory, actionData);
+        Action action = ActionFactory.createAction(request, response, factory, sessionData);
         if (action != null) {
             result = action.perform();
             if (result.isRedirectFlag()) {
@@ -100,6 +100,7 @@ public class ControllerHelper {
                 dispatcher.forward(request, response);
             }
         } else {
+            logger.warn("Request %s not recognised", request.getRequestURI());
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
         }
     }
@@ -126,20 +127,20 @@ public class ControllerHelper {
      * @param state READ = Retain data from previous request, IGNORE don't pull in data across requests
      */
     public void addHelperToSession(String name, SessionData state) {
-        if (SessionData.READ == state) {
+        if (co.uk.genonline.simpleweb.controller.SessionData.READ == state) {
             Object sessionObj = request.getSession().getAttribute(name);
             if (sessionObj != null) {
                 copyFromSession(sessionObj);
             }
         }
         /**
-         * If either we are not persisting session or there was a problem with the actionData object in the retrieved
-         * helper, then there will be no object assigned to actionData, so create one before we replace the retrieved
+         * If either we are not persisting session or there was a problem with the sessionData object in the retrieved
+         * helper, then there will be no object assigned to sessionData, so create one before we replace the retrieved
          * (previous) helper with this one.
          */
-        if (actionData == null) {
-            actionData = new ActionData(new ScreensEntity(), new ConfigurationEntity());
-            logger.info("Initialised actionData, = <%s>", actionData.toString());
+        if (sessionData == null) {
+            sessionData = new co.uk.genonline.simpleweb.controller.actions.SessionData(new ScreensEntity(), new ConfigurationEntity());
+            logger.info("Initialised sessionData, = <%s>", sessionData.toString());
         }
         request.getSession().setAttribute(name, this);
     }
@@ -150,15 +151,15 @@ public class ControllerHelper {
      *
      * The sessionHelper passed in should be the same class as 'this'.  If that is the case then any data which needs
      * to be persisted between session is read from the stored helper and used to populate the equivalent fields within
-     * this helper.  In practice all the persisted data is in the data field (ActionData) because (at the time of
+     * this helper.  In practice all the persisted data is in the data field (sessionData) because (at the time of
      * writing) I just need to store one bean or another in there (Screen or ConfigItem).
      *
      * @param sessionHelper
      */
     public void copyFromSession(Object sessionHelper) {
         if (sessionHelper.getClass() == this.getClass()) {
-            actionData = ((ControllerHelper)sessionHelper).actionData;
-            logger.info("Copying data from session = <%s>", actionData.toString());
+            sessionData = ((ControllerHelper)sessionHelper).sessionData;
+            logger.info("Copying data from session = <%s>", sessionData.toString());
         }
     }
 

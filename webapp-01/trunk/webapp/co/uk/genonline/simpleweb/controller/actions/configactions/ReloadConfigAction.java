@@ -2,7 +2,7 @@ package co.uk.genonline.simpleweb.controller.actions.configactions;
 
 import co.uk.genonline.simpleweb.configuration.general.Configuration;
 import co.uk.genonline.simpleweb.controller.actions.Action;
-import co.uk.genonline.simpleweb.controller.actions.ActionData;
+import co.uk.genonline.simpleweb.controller.actions.SessionData;
 import co.uk.genonline.simpleweb.controller.actions.RequestResult;
 import org.hibernate.SessionFactory;
 
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ReloadConfigAction extends Action {
     HttpServletRequest request;
-    public ReloadConfigAction(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
+    public ReloadConfigAction(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, SessionData data) {
         this.request = request;
     }
 

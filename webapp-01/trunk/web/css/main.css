@@ -10,7 +10,25 @@ body#editIndex {
   min-width: 1350px; }
 
 body#editIndex td a {
-  color: #0d2cdb;
+  color: #890e99;
+  font-weight: bold; }
+
+body#editIndex td a:visited {
+  color: #890e99; }
+
+body#editIndex tr.rowDisabled td {
+  color: #505050; }
+  body#editIndex tr.rowDisabled td a {
+    color: #b913cf; }
+
+body#editIndex table td {
+  font-size: .75em; }
+
+body#editIndex table tr.tableHeading {
+  border-bottom: solid #1429db 1px; }
+
+body#editIndex table tr.tableHeading td {
+  color: #2f338c;
   font-weight: bold; }
 
 li.headerLink a {
@@ -74,7 +92,7 @@ div#pageText ul li a {
   font-family: "Times New Roman", serif;
   font-size: 100%; }
 
-li.headerLink a:visited, body#editIndex td a:visited, div#pageText ul li a:visited {
+li.headerLink a:visited, div#pageText ul li a:visited {
   color: #8683db; }
 
 a {
@@ -188,15 +206,3 @@ table tr.statusRow.error {
 table tr.statusRow.warning {
   background-color: #ff8e3a;
   color: #5d3317; }
-
-body#editIndex table td {
-  font-size: .75em; }
-
-body#editIndex table tr.tableHeading {
-  border-bottom: solid #1429db 1px; }
-
-body#editIndex table tr.tableHeading td {
-  color: #2f338c;
-  font-weight: bold; }
-
-/*# sourceMappingURL=main.css.map */

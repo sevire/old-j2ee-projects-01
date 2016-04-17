@@ -1,6 +1,6 @@
 package co.uk.genonline.simpleweb.controller.actions.configactions;
 
-import co.uk.genonline.simpleweb.controller.actions.ActionData;
+import co.uk.genonline.simpleweb.controller.actions.SessionData;
 import co.uk.genonline.simpleweb.controller.actions.RequestResult;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class DeleteConfigItem extends ConfigurationAction {
 
-    public DeleteConfigItem(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
+    public DeleteConfigItem(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, SessionData data) {
         super(request, response, factory, data);
     }
 

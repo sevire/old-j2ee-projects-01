@@ -4,7 +4,7 @@ import co.uk.genonline.simpleweb.configuration.configitems.BlogEnabled;
 import co.uk.genonline.simpleweb.configuration.general.Configuration;
 import co.uk.genonline.simpleweb.controller.ControllerHelper;
 import co.uk.genonline.simpleweb.controller.actions.Action;
-import co.uk.genonline.simpleweb.controller.actions.ActionData;
+import co.uk.genonline.simpleweb.controller.actions.SessionData;
 import co.uk.genonline.simpleweb.controller.actions.ActionFactory;
 import co.uk.genonline.simpleweb.controller.actions.screenactions.ViewScreen;
 import co.uk.genonline.simpleweb.model.bean.ConfigurationEntity;
@@ -106,7 +106,7 @@ public class ActionFactoryTest extends TestCase {
             MockHttpServletResponse response = new MockHttpServletResponse();
 
             // ToDo: Should have a default constructor which creates new ScreenEntity and ConfigurationEntity
-            ActionData data = new ActionData(new ScreensEntity(), new ConfigurationEntity());
+            SessionData data = new SessionData(new ScreensEntity(), new ConfigurationEntity());
 
             Action action = ActionFactory.createAction(request, response, factory, data);
 

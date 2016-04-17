@@ -1,6 +1,6 @@
 package co.uk.genonline.simpleweb.controller.actions.configactions;
 
-import co.uk.genonline.simpleweb.controller.actions.ActionData;
+import co.uk.genonline.simpleweb.controller.actions.SessionData;
 import co.uk.genonline.simpleweb.controller.actions.RequestResult;
 import co.uk.genonline.simpleweb.model.bean.ConfigItemBeanManager;
 import org.hibernate.Session;
@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  * ToDo: Update comment after re-factoring
  */
 abstract class UpdateConfigActionClass extends ConfigurationAction {
-    UpdateConfigActionClass(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
+    UpdateConfigActionClass(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, SessionData data) {
         super(request, response, factory, data);
     }
 

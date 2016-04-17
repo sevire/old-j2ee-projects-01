@@ -1,6 +1,6 @@
 package co.uk.genonline.simpleweb.controller.screendata;
 
-import co.uk.genonline.simpleweb.controller.actions.ActionData;
+import co.uk.genonline.simpleweb.controller.actions.SessionData;
 import co.uk.genonline.simpleweb.controller.actions.RequestResult;
 import co.uk.genonline.simpleweb.model.bean.ScreenBeanManager;
 
@@ -21,6 +21,6 @@ public interface ScreenData {
     public RequestResult setScreenData(HttpServletRequest request,
                                 HttpServletResponse response,
                                 ScreenBeanManager screenBeanManager,
-                                ActionData data
+                                SessionData data
     );
 }

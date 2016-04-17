@@ -62,7 +62,6 @@
         div#middle-header {
             display: inline-block;
             width: 68%;
-            /*background: #63ff37;*/
             vertical-align: top;;
         }
     </style>
@@ -94,7 +93,7 @@
             <div id="externalLinks">
                 <ul class='mainLinkBar'>
                     <li class='headerLink home'>
-                        <a href="http://localhost:8080/lda/view?screen=home" title="My home page"><img src="site_images/home.png"/></a>
+                        <a href="view?screen=lucina" title="My home page"><img src="site_images/home.png"/></a>
                     </li>
                     <li class='headerLink blog'>
                         <a href="http://manchestermistresslucina.blogspot.co.uk" title="Read my blog"><img src="site_images/Blog_Icon.png"/></a>
@@ -113,55 +112,6 @@
             <%--<img src="site_images/B44-cropped.png" />--%>
         </div>
     </div>
-
-
-
-
-
-
-
-<%--
-    <div id="header">
-        <div id='leftImage' class='headerImage'>
-            <img height='250px' src='site_images/header_images/${screenData.headerImageLeft}' />
-        </div>
-        <div id='innerHeader'>
-            <div id="banner">
-                <h1><span class='first'>P</span>rincess <span class='first'>L</span>ucina <span class='xfirst'>O</span>f <span class='first'>M</span>anchester</h1>
-                <h2><span class='first'>L</span>ucifer's <span class='first'>D</span>ark <span class='first'>A</span>ngel</h2>
-            </div>
-        </div>
-        <div id='rightImage' class='headerImage'>
-            <img height='250px' src='site_images/header_images/${screenData.headerImageRight}' />
-        </div>
-        <div class="contact left">
-            <img src="site_images/phone.png" />
-            <p class='leftFloat'>07719 415496</p>
-        </div>
-
-        <ul class='mainLinkBar'>
-            <li class='headerLink home'>
-                <a href="http://localhost:8080/lda/view?screen=home" title="My home page"><img src="site_images/home.png"/></a>
-            </li>
-            <li class='headerLink blog'>
-                <a href="http://manchestermistresslucina.blogspot.co.uk" title="Read my blog"><img src="site_images/Blog_Icon.png"/></a>
-            </li>
-            <li class='headerLink yahoo'>
-                <a href="http://groups.yahoo.com/group/lucifersdarkangel" title="My Yahoo group"><img src="site_images/yahoo.png"/></a>
-            </li>
-            <li class='headerLink twitter'>
-                <a href="https://twitter.com/intent/user?screen_name=Lucina_Princess" title="Follow me on Twitter"><img src="site_images/twitter-icon-80.png"/></a>
-            </li>
-        </ul>
-        <div class="contact right">
-            <p class='rightFloat'>
-                <a href='mailto:princess_lucina@yahoo.co.uk'>princess_lucina@yahoo.co.uk</a>
-            </p>
-            <img src="site_images/mail.png" />
-        </div>
-    </div>
---%>
-
     <div class="menu-button">Menu</div>
     <div id="mainNav">
         <ul class="flexnav" data-breakpoint="800">

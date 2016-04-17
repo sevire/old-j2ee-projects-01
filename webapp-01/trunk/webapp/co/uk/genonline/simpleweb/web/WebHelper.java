@@ -82,28 +82,54 @@ public class WebHelper {
     }
 
 */
-    public String getScreenLink(String screenName, String linkName) {
+    public String getScreenLink(String screenName) {
         ScreensEntity screenData = new ScreensEntity();
         getScreenIntoBean(screenData, screenName);
         return String.format("<a href='view?screen=%s'>%s</a>", screenName, screenData.getScreenTitleShort());
     }
 
+    /**
+     * Finds all the records in the database with a given category and creates a list of WebLinks which can then be used
+     * to create a linkbar or similar.
+     *
+     * @param category
+     * @return
+     */
+    public List<WebLink> getLinkRecords(String category) {
+        ScreenBeanManager beanManager = new ScreenBeanManager(factory);
+        java.util.List pages = beanManager.getCategoryScreens(category);
+        if (pages.size() > 0) {
+            List<WebLink> linkList = new ArrayList<WebLink>();
+            for (Object o : pages) {
+                ScreensEntity screen = (ScreensEntity) o;
+                linkList.add(new WebLink(String.format("view?screen=%s", screen.getName()), screen.getScreenTitleShort(), null));
+            }
+            return linkList;
+        } else {
+            return null;
+        }
+    }
+
     public void getScreenIntoBean(ScreensEntity screen, String screenName) {
-        Session session = factory.openSession();
-        Criteria criteria = session.createCriteria(ScreensEntity.class).add(Restrictions.eq("name", screenName));
-        ScreensEntity dbBean = (ScreensEntity) criteria.uniqueResult();
-        session.close();
- 
-        screen.setName(dbBean.getName());
-        screen.setSortKey(dbBean.getSortKey());
-        screen.setEnabledFlag(dbBean.getEnabledFlag());
-        screen.setGalleryFlag(dbBean.getGalleryFlag());
-        screen.setScreenContents(dbBean.getScreenContents());
-        screen.setMetaDescription(dbBean.getMetaDescription());
-        screen.setScreenTitleLong(dbBean.getScreenTitleLong());
-        screen.setScreenTitleShort(dbBean.getScreenTitleShort());
-        screen.setScreenType(dbBean.getScreenType());
-        screen.setId(dbBean.getId());
+        if (screen != null && screenName != null) {
+            Session session = factory.openSession();
+            Criteria criteria = session.createCriteria(ScreensEntity.class).add(Restrictions.eq("name", screenName));
+            ScreensEntity dbBean = (ScreensEntity) criteria.uniqueResult();
+            session.close();
+
+            if (dbBean != null) {
+                screen.setName(dbBean.getName());
+                screen.setSortKey(dbBean.getSortKey());
+                screen.setEnabledFlag(dbBean.getEnabledFlag());
+                screen.setGalleryFlag(dbBean.getGalleryFlag());
+                screen.setScreenContents(dbBean.getScreenContents());
+                screen.setMetaDescription(dbBean.getMetaDescription());
+                screen.setScreenTitleLong(dbBean.getScreenTitleLong());
+                screen.setScreenTitleShort(dbBean.getScreenTitleShort());
+                screen.setScreenType(dbBean.getScreenType());
+                screen.setId(dbBean.getId());
+            }
+        }
     }
 
     public void getRequestIntoBean(HttpServletRequest request, ScreensEntity screen) {
@@ -115,8 +141,8 @@ public class WebHelper {
         boolean checked = request.getParameter("enabledFlag") == null ? false : request.getParameter("enabledFlag").equals("Enabled");
 
 */
-        boolean enabledChecked = request.getParameter("enabledFlag") == null ? false : request.getParameter("enabledFlag").equals("Enabled");
-        boolean galleryChecked = request.getParameter("galleryFlag") == null ? false : request.getParameter("galleryFlag").equals("Enabled");
+        boolean enabledChecked = request.getParameter("enabledFlag") != null && request.getParameter("enabledFlag").equals("Enabled");
+        boolean galleryChecked = request.getParameter("galleryFlag") != null && request.getParameter("galleryFlag").equals("Enabled");
 
         screen.setName(request.getParameter("name"));
         screen.setEnabledFlag(enabledChecked);

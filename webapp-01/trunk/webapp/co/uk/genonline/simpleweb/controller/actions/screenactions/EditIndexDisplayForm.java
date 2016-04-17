@@ -1,6 +1,6 @@
 package co.uk.genonline.simpleweb.controller.actions.screenactions;
 
-import co.uk.genonline.simpleweb.controller.actions.ActionData;
+import co.uk.genonline.simpleweb.controller.actions.SessionData;
 import co.uk.genonline.simpleweb.controller.actions.RequestResult;
 import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
 import org.hibernate.SessionFactory;
@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class EditIndexDisplayForm extends ScreenAction {
 
-    public EditIndexDisplayForm(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, ActionData data) {
+    public EditIndexDisplayForm(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, SessionData data) {
         super(request, response, factory, data);
     }
 

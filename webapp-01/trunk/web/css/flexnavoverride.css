@@ -1,6 +1,20 @@
 /* Overrides styles in flexNav for this site.  Preferable to modifying flexnav.css directly so I don't have to re-apply if I
    update flexnav later
  */
+.menu-button {
+  background: white;
+  color: #b21227; }
+
+.flexnav .touch-button .navicon {
+  color: white; }
+
+.menu-button .touch-button .navicon {
+  color: #b21227; }
+
+.flexnav li ul li a {
+  background: white;
+  color: #b21227; }
+
 .flexnav li a {
   color: #e5e5e5;
   background: #b21227; }
