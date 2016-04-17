@@ -111,15 +111,15 @@ OBSERVATIONS AND CONCLUSIONS SO FAR
       after refreshing a page 17 times the number of open connections is 144 which is 
       within 9 of the limit, so the next refresh causes the error.
       
-      CONCLUSIONS
-      -----------
-      
-      If this theory is correct, on every refresh there are 9 connections left open.
-      That's probably all of them (but I need to check).  That looks like I have
-      introduced a bug as I am fairly sure this problem hasn't been there in the past.
-      Somehow I must have done something which has stopped the connections being closed.
-      It may be that I have misunderstood how connections get closed and so made a change
-      which I didn't think I would make any difference - incorrectly.
+    CONCLUSIONS
+    -----------
+    
+    If this theory is correct, on every refresh there are 9 connections left open.
+    That's probably all of them (but I need to check).  That looks like I have
+    introduced a bug as I am fairly sure this problem hasn't been there in the past.
+    Somehow I must have done something which has stopped the connections being closed.
+    It may be that I have misunderstood how connections get closed and so made a change
+    which I didn't think I would make any difference - incorrectly.
       
 NEXT STEPS
 ----------
@@ -139,3 +139,9 @@ NEXT STEPS
    
 5. Possibly look at how I can re-factor to one session per request (have partially done
    this I think).
+   
+NOTES AFTER NEXT STEPS
+----------------------
+
+1. Try to find where the 9 connections come from...
+
