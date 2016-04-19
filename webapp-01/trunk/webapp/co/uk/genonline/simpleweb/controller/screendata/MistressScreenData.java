@@ -62,7 +62,7 @@ public class MistressScreenData implements ScreenData {
         this.request = request;
         this.response = response;
 
-        context = request.getServletContext();
+        context = this.request.getServletContext();
         configuration = (Configuration)context.getAttribute("configuration");
 
         /**

@@ -30,11 +30,6 @@ public class ContextListener implements ServletContextListener {
 
     public ContextListener() {
         System.out.format("ContextListener started (before logging)\n");
-/*
-        logger = Logger.getLogger("Context");
-        logger.setLevel(Level.ALL);
-        logger.info(String.format("Logger initialised - this is the first message"));
-*/
     }
 
     public void contextInitialized(ServletContextEvent event) {
