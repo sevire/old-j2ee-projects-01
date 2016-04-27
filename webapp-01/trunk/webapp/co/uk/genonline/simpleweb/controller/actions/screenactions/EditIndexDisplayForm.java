@@ -20,7 +20,6 @@ public class EditIndexDisplayForm extends ScreenAction {
     /**
      */
     public RequestResult perform() {
-        // ToDo: Need to encapsulate database access better.
 
         List screenList = screenBeanManager.getAllScreens();
 

@@ -19,7 +19,7 @@ import java.io.IOException;
  * Date: 12/05/2012
  * Time: 19:00
  *
- * Class used to process changes of conttext state.  The methods are called by the container on change of state
+ * Class used to process changes of context state.  The methods are called by the container on change of state
  * of context (.e.g contextInitialised).
  */
 public class ContextListener implements ServletContextListener {

@@ -2,9 +2,8 @@ package co.uk.genonline.simpleweb.controller.actions;
 
 import co.uk.genonline.simpleweb.controller.RequestStatus;
 import co.uk.genonline.simpleweb.controller.WebLogger;
-import co.uk.genonline.simpleweb.controller.actions.screenactions.*;
 import co.uk.genonline.simpleweb.controller.actions.configactions.*;
-import co.uk.genonline.simpleweb.controller.actions.simpleactions.ContactMeDisplayFormAction;
+import co.uk.genonline.simpleweb.controller.actions.screenactions.*;
 import co.uk.genonline.simpleweb.controller.actions.simpleactions.ContactMeProcessForm;
 import org.hibernate.SessionFactory;
 
@@ -59,7 +58,7 @@ public class ActionFactory {
                 action = new ContactMeProcessForm(request, response, factory, data);
             } else {
                 logger.error(String.format("processRequest: Didn't recognise request <%s>, display error page", command));
-                return null; // ToDo: Is this the right place to put this?
+                return null;
             }
         } else if (command.equals("/view") || command.equals("/")) {
             action = new ViewScreen(request, response, factory, data);
@@ -90,9 +89,6 @@ public class ActionFactory {
         } else if (command.equals("/viewImage")) {
             status.resetStatusMessage();
             action = new ViewImage(request, response, factory, data);
-        } else if (command.equals("/contactMe")) {
-            status.resetStatusMessage();
-            action = new ContactMeDisplayFormAction(request, response, factory, data);
         }
         return action;
     }

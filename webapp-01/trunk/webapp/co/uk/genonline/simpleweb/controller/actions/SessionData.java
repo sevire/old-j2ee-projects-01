@@ -15,8 +15,9 @@ import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
  * Encapsulates data objects used by the application (e.g. Screen, ConfigItems)
  */
 public class SessionData {
-    private final ConfigurationEntity configItems;
+    private final ConfigurationEntity configItems; //ToDo: Review whether should be storing configuration data here or in context
     private final ScreensEntity screen;
+    private int requestCount = 0; // Use mainly for debugging to track requests for same session
 
     public SessionData(ScreensEntity screen) {
         this.screen = screen;
@@ -39,5 +40,17 @@ public class SessionData {
 
     public ConfigurationEntity getConfigItems() {
         return configItems;
+    }
+
+    public void incrementRequestCount() {
+        requestCount += 1;
+    }
+
+    public int getRequestCount() {
+        return requestCount;
+    }
+
+    public String toString() {
+        return String.format("SessionData: Request number = <%d>, Screen object = <%s>, screen name = <%s>", this.requestCount, screen.toString(), screen.getName());
     }
 }

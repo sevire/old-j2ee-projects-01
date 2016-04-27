@@ -101,7 +101,7 @@ public class ScreensEntityDecorator extends ScreensEntity {
      *
      * @return HTML produced from parsing Markdown markup.
      */
-    public String getScreenContentsHTML() {
+    public String getScreenContentsHtml() {
         MarkdownProcessor markdownDecoder = new MarkdownProcessor();
 
         logger.debug("About to parse page with Markdown");

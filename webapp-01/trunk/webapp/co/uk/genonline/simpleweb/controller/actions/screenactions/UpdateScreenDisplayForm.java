@@ -36,7 +36,7 @@ public abstract class UpdateScreenDisplayForm extends ScreenAction {
             request.setAttribute("addFlag", true);
             logger.info(String.format("Adding screen"));
         } else {
-            screenBeanManager.getScreen(screen);
+            screenBeanManager.getScreen(screen.getName());
             request.setAttribute("addFlag", false);
             logger.info(String.format("Editing screen <%s>", screen.getName()));
         }

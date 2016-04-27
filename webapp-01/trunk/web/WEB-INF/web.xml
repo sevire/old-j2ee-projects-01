@@ -14,6 +14,7 @@
         <error-code>404</error-code>
         <location>/WEB-INF/error.jsp</location>
     </error-page>
+<!--
     <context-param>
         <param-name>homePage</param-name>
         <param-value>lucina</param-value>
@@ -62,6 +63,7 @@
         <param-name>blogEnabled</param-name>
         <param-value>true</param-value>
     </context-param>
+-->
 
     <servlet>
         <servlet-name>Controller</servlet-name>

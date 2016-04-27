@@ -1,3 +1,4 @@
+<%@ page import="co.uk.genonline.simpleweb.controller.screendata.MistressScreenData" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="core" %>
 
 <!DOCTYPE html>
@@ -76,7 +77,7 @@
 
         </div>
         <div id="left-image" class="header-image">
-            <img src='site_images/header_images/${screenData.headerImageLeft}' />
+            <img src='site_images/header_images/${screenData.screenHeader.headerImageLeft}' />
         </div>
         <div id="middle-header">
             <div id="contact-phone" class="contact">
@@ -107,7 +108,7 @@
             </div>
         </div>
         <div id="right-image" class="header-image">
-            <img src='site_images/header_images/${screenData.headerImageRight}' />
+            <img src='site_images/header_images/${screenData.screenHeader.headerImageRight}' />
         </div>
     </div>
     <div class="menu-button">Menu</div>
@@ -115,30 +116,30 @@
         <ul class="flexnav" data-breakpoint="800">
             <li>
                 <a>Princess Lucina</a>
-                ${screenData.lucinaLinkBar}
+                <%=((MistressScreenData)request.getAttribute("screenData")).getScreenMenus().getMenu("lucinaLinkBar")%>
             </li>
             <li>
                 <a>My Facilities</a>
-                ${screenData.chambersLinkBar}
+                <%=((MistressScreenData)request.getAttribute("screenData")).getScreenMenus().getMenu("chambersLinkBar")%>
             </li>
             <li>
                 <a>Galleries</a>
-                ${screenData.galleryLinkBar}
+                <%=((MistressScreenData)request.getAttribute("screenData")).getScreenMenus().getMenu("galleryLinkBar")%>
             </li>
             <li>
                 <a>Testimonials</a>
-                ${screenData.testimonialLinkBar}
+                <%=((MistressScreenData)request.getAttribute("screenData")).getScreenMenus().getMenu("testimonialLinkBar")%>
             </li>
             <li>
                 <a>Other Mistresses</a>
-                ${screenData.mistressLinkBar}
+                <%=((MistressScreenData)request.getAttribute("screenData")).getScreenMenus().getMenu("mistressLinkBar")%>
             </li>
         </ul>
     </div>
         <div id="content">
         <div id="pageText">
-            <h1>${screenData.screen.screenTitleLong}</h1>
-            ${screenData.screen.screenContents}
+            <h1>${screenData.screenData.screensEntityDecorator.screenTitleLong}</h1>
+            ${screenData.screenData.screensEntityDecorator.screenContentsHtml}
             <div id="contact-area">
                 <form method="post" action="Controller.do">
                     <div class="fieldlabelpair">

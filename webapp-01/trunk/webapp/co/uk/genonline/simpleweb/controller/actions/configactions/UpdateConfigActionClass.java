@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
  * Date: 10/12/2012
  * Time: 22:20
  *
- * ToDo: Update comment after re-factoring
  */
 abstract class UpdateConfigActionClass extends ConfigurationAction {
     UpdateConfigActionClass(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, SessionData data) {

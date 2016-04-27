@@ -26,7 +26,7 @@ public class DeleteScreen extends ScreenAction {
         logger.info(String.format("Deleting screen <%s>", screen));
 
         screen.setName(request.getParameter("screen"));
-        screenBeanManager.getScreen(screen);
+        screenBeanManager.getScreen(screen.getName());
 
         Session session = factory.openSession();
         session.delete(screen);

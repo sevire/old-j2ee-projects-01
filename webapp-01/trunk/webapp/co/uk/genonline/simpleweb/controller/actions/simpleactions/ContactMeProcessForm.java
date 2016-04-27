@@ -52,6 +52,6 @@ public class ContactMeProcessForm extends SimpleAction {
                 toEmailAddresses,
                 "Contact Me Email From Website",
                 emailMessage);
-        return new RequestResult(request, "/contactMe", true);
+        return new RequestResult(request, "/view?screen=contactMe", true);
     }
 }

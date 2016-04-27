@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page import="co.uk.genonline.simpleweb.controller.RequestStatus" %>
 <%--
   Created by IntelliJ IDEA.
@@ -99,7 +100,9 @@
                         <c:out value="${row.galleryFlag ? 'Yes' : 'No'}" />
                     </td>
                     <td>
-                        <c:out value="${row.screenContents}" />
+                        <c:set var="content1" value="${row.screenContents}" />
+                        <c:set var="content2" value="${fn:substring(content1, 0, 20)}..." />
+                        <c:out value="${content2}" />
                     </td>
                 </tr>
             </c:forEach>

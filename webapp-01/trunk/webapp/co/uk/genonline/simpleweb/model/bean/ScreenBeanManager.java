@@ -9,10 +9,7 @@ import org.hibernate.criterion.Restrictions;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -28,54 +25,50 @@ import java.util.Map;
  * practice I only need to worry about Screens.
  */
 public class ScreenBeanManager {
-    ScreensEntity screenBean;
+    //ScreensEntity screenBean;
     SessionFactory factory;
     WebLogger logger = new WebLogger();
 
     public ScreenBeanManager(SessionFactory factory) {
-        //this.screenBean = screenBean;
         this.factory = factory;
     }
 
-    public List<ScreensEntity> getAllScreens() {
+    public List<ScreensEntityDecorator> getAllScreens() {
         Session session = factory.openSession();
         String query = String.format("from ScreensEntity s order by enabledFlag desc, screenType, sortKey");
         logger.debug("About to execute HQL query : " + query);
         java.util.List pages = session.createQuery(query).list();
         session.close();
-        return pages;
+        return decorateScreenList(pages);
     }
 
-    public List<ScreensEntity> getCategoryScreens(String category) {
+    public List<ScreensEntityDecorator> getCategoryScreens(String category) {
         Session session = factory.openSession();
 
         String query = String.format("from ScreensEntity s where s.screenType = '%s' and s.enabledFlag = true order by sortKey", category);
         logger.debug("About to execute HQL query : " + query);
         List pages = session.createQuery(query).list();
         session.close();
-        return pages;
+        return decorateScreenList(pages);
     }
 
-    public ScreensEntity getScreen(ScreensEntity screen) {
+    public ScreensEntityDecorator getScreen(String screenName) {
         Session session = factory.openSession(); // Open Session #1
 
-        Criteria criteria = session.createCriteria(ScreensEntity.class).add(Restrictions.eq("name", screen.getName()));
+        Criteria criteria = session.createCriteria(ScreensEntity.class).add(Restrictions.eq("name", screenName));
         ScreensEntity dbBean = (ScreensEntity) criteria.uniqueResult();
         session.close();
 
-        if (dbBean != null) {
-            try {
-                BeanUtils.copyProperties(screen, dbBean);
-            } catch (IllegalAccessException e) {
-                logger.fatal("Fatal error while moving Screen properties : " + e.getMessage());
-            } catch (InvocationTargetException e) {
-                logger.fatal("Fatal error while moving Screen properties : " + e.getMessage());
-            }
+        if (dbBean == null) {
+            return null;
+        } else {
+            return new ScreensEntityDecorator(dbBean);
         }
-        return dbBean;
     }
 
     public void initialiseBean(ScreensEntity screen) {
+        // ToDo Remove this code if superfluous (Can't remember what it is there for!!)
+/*
         screenBean = screen;
         screenBean.setEnabledFlag(true);
         screenBean.setGalleryFlag(false);
@@ -89,7 +82,22 @@ public class ScreenBeanManager {
         screenBean.setSortKey(100);
 
         screenBean.setId(0);
+*/
     }
+
+    public List<ScreensEntityDecorator> decorateScreenList(List screenList) {
+        List<ScreensEntityDecorator> decoratedScreenList = new ArrayList<ScreensEntityDecorator>();
+
+        for (Object screen : screenList) {
+            if (screen.getClass() == ScreensEntity.class) {
+                decoratedScreenList.add(new ScreensEntityDecorator((ScreensEntity)screen));
+            } else {
+                logger.error("Method decorateScreenList, object from Hibernate not ScreensEntity");
+            }
+        }
+        return decoratedScreenList;
+    }
+/*
     public void getScreenIntoBean(ScreensEntity screen, String screenName) {
         Session session = factory.openSession();
 
@@ -109,6 +117,7 @@ public class ScreenBeanManager {
         screen.setScreenDisplayType(dbBean.getScreenDisplayType());
         screen.setId(dbBean.getId());
     }
+*/
 
     /**
      * This method is effectively a layer between the request object and the ScreensEntity JavaBean.  The reason it is
@@ -145,17 +154,6 @@ public class ScreenBeanManager {
         java.sql.Timestamp timeStamp = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
         screen.setCreated(timeStamp);
         screen.setModified(timeStamp);
-    }
-
-    public String getShortName(String screenName) {
-        ScreensEntity screen = new ScreensEntity();
-        screen.setName(screenName);
-        ScreensEntity returnScreen = getScreen(screen);
-        if (returnScreen != null) {
-            return returnScreen.getScreenTitleShort();
-        } else {
-            return null;
-        }
     }
 
     /**

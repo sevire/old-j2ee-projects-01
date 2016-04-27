@@ -2,6 +2,7 @@ package co.uk.genonline.simpleweb.controller;
 
 import co.uk.genonline.simpleweb.configuration.general.Configuration;
 import co.uk.genonline.simpleweb.controller.actions.*;
+import co.uk.genonline.simpleweb.controller.actions.SessionData;
 import co.uk.genonline.simpleweb.model.bean.ConfigurationEntity;
 import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
 import org.apache.log4j.Level;
@@ -38,7 +39,7 @@ public class ControllerHelper {
     /**
      * Stores all data for session and makes it available to the JSPs through getters.
      */
-    private co.uk.genonline.simpleweb.controller.actions.SessionData sessionData;
+    private SessionData sessionData;
 
     SessionFactory factory;
 
@@ -53,26 +54,6 @@ public class ControllerHelper {
     }
 
     /**
-     * Exposes actionData.screens (Screens) to the jsp.
-     *
-     * @return
-     */
-    public Object getScreen() {
-        logger.info("Returning screens part of 'data' = <%s>", sessionData.getScreen().toString());
-        return sessionData.getScreen();
-    }
-
-    /**
-     * Exposes actionData.configItems (ConfigItems) to the jsp.
-     *
-     * @return
-     */
-    public Object getConfigItems() {
-        logger.info("Returning config items part of 'data' = <%s>", sessionData.getConfigItems().toString());
-        return sessionData.getConfigItems();
-    }
-
-    /**
      * General method which processes both get and post requests from Controller.  Serves a number of purposes:
      *
      * 1. Ensures that session data is persisted from last request
@@ -84,7 +65,7 @@ public class ControllerHelper {
      */
     public void processRequest() throws IOException, ServletException {
 
-        addHelperToSession("helper", co.uk.genonline.simpleweb.controller.SessionData.READ);
+        addPersistentDataToSession("sessionData");
 
         RequestResult result;
 
@@ -106,60 +87,36 @@ public class ControllerHelper {
     }
 
     /**
-     * The helper object (ControllerHelper) is stored in the HttpSession between requests to allow data to be
-     * persisted throughout a session.  This is key to the correct operation of the application.  The EE framework
-     * does all the work of identifying when a request is part of an existing session - all the application
-     * developer needs to do is to ensure that the appropriate data is stored in the session object so that it is there
-     * for the next action within this session.
+     * This method contains the logic which works out whether this request is part of a sequence of requests within a
+     * session and therefore extracts the data which needs to be persisted between requests in the session.
      *
-     * So the addHelper method carries out the following:
+     * It does this by:
+     * - Checking whether there is an object called "sessionData" within the Session object passed as part of the
+     *   request.
+     * - If there is, then it copies this object into the sessionData member variable for this class so it can be used
+     *   during the processing of the request.
+     * - If there isn't, then it creates a new SessionData object in sessionData and then stores this in the session so
+     *   it is persisted for the next request in the session (if there is one).
      *
-     * <ul>
-     * <li>Checks state (SessionData).</li>
-     * <li>If state is READ then data from the previous request should be persisted into
-     *   this request. This is carried out through the call to copyFromSession.</li>
-     * <li>If state is IGNORE then data from previous request will be ignored (and effectively lost).</li>
-     * <li>Then this helper will be added to the HttpSession object in place of the previous helper.  This is
-     *   to persist data for the next request and to make data available to JSPs through getters.</li>
-     * </ul>
+     * NOTE: As a general rule (in this webapp) requests which are just to display a screen only result in one request
+     *       within the session so the sessionData object isn't actually accessed.  Where there is a form which then
+     *       needs to be processed the form data will
      *
-     * @param name The name to use when reading the object
-     * @param state READ = Retain data from previous request, IGNORE don't pull in data across requests
+     * @param name
      */
-    public void addHelperToSession(String name, SessionData state) {
-        if (co.uk.genonline.simpleweb.controller.SessionData.READ == state) {
-            Object sessionObj = request.getSession().getAttribute(name);
-            if (sessionObj != null) {
-                copyFromSession(sessionObj);
+    public void addPersistentDataToSession(String name) {
+        SessionData sessionDataFromSession = (SessionData)request.getSession().getAttribute(name);
+        if (sessionDataFromSession != null) {
+            sessionData = sessionDataFromSession;
+            sessionData.incrementRequestCount();
+            logger.info("Multiple requests in session, copying session data = <%s>", sessionData.toString());
+        } else {
+            if (sessionData == null) {
+                sessionData = new SessionData(new ScreensEntity(), new ConfigurationEntity());
+                sessionData.incrementRequestCount();
+                logger.info("First request in session, initialising session data, = <%s>", sessionData.toString());
+                request.getSession().setAttribute(name, sessionData);
             }
-        }
-        /**
-         * If either we are not persisting session or there was a problem with the sessionData object in the retrieved
-         * helper, then there will be no object assigned to sessionData, so create one before we replace the retrieved
-         * (previous) helper with this one.
-         */
-        if (sessionData == null) {
-            sessionData = new co.uk.genonline.simpleweb.controller.actions.SessionData(new ScreensEntity(), new ConfigurationEntity());
-            logger.info("Initialised sessionData, = <%s>", sessionData.toString());
-        }
-        request.getSession().setAttribute(name, this);
-    }
-
-    /**
-     * If this is not the first request within this session, then there will (probably) be a copy of a previous
-     * ControllerHelper object stored within the session (HttpSession).
-     *
-     * The sessionHelper passed in should be the same class as 'this'.  If that is the case then any data which needs
-     * to be persisted between session is read from the stored helper and used to populate the equivalent fields within
-     * this helper.  In practice all the persisted data is in the data field (sessionData) because (at the time of
-     * writing) I just need to store one bean or another in there (Screen or ConfigItem).
-     *
-     * @param sessionHelper
-     */
-    public void copyFromSession(Object sessionHelper) {
-        if (sessionHelper.getClass() == this.getClass()) {
-            sessionData = ((ControllerHelper)sessionHelper).sessionData;
-            logger.info("Copying data from session = <%s>", sessionData.toString());
         }
     }
 

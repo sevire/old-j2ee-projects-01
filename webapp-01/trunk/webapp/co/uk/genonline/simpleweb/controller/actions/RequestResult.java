@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 public class RequestResult {
     private String nextRequest;
     private boolean redirectFlag;
-    private HttpServletRequest request;
+    private HttpServletRequest request; // ToDo: RequestResult - Check whether we need to pass in request as it's already held by caller.
 
     public RequestResult(HttpServletRequest request, String nextRequest, boolean redirectFlag) {
         this.request = request;

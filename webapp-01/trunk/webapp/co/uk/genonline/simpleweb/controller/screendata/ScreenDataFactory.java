@@ -13,7 +13,9 @@ public class ScreenDataFactory {
     public static ScreenData getScreenData(String screenType) {
         WebLogger logger = new WebLogger();
         logger.debug(String.format("Instantiating ScreenData for type <%s>", screenType));
-        if (screenType.equals("mistress-01")) {
+        if (screenType == null) {
+            return new Mistress05ScreenData(); // Default
+        } else if (screenType.equals("mistress-01")) {
             return new Mistress01ScreenData();
         } else if (screenType.equals("mistress-02")) {
             return new Mistress02ScreenData();
