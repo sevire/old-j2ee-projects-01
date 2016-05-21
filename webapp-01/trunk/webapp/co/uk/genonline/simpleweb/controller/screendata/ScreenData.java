@@ -1,8 +1,8 @@
 package co.uk.genonline.simpleweb.controller.screendata;
 
-import co.uk.genonline.simpleweb.controller.actions.SessionData;
+import co.uk.genonline.simpleweb.controller.SessionData;
 import co.uk.genonline.simpleweb.controller.actions.RequestResult;
-import co.uk.genonline.simpleweb.model.bean.ScreenBeanManager;
+import co.uk.genonline.simpleweb.model.bean.ScreensManager;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,13 +14,28 @@ import javax.servlet.http.HttpServletResponse;
  * Time: 17:10
  * To change this template use File | Settings | File Templates.
  */
-public interface ScreenData {
+public abstract class ScreenData {
+    String screenType;
 
-    public String getJSPname();
+    /**
+     * Make no argument constructor private as we don't want anyone instantiating ScreenData if
+     * without providing a screenType (it doesn't make any sense to do so).
+     */
+    private ScreenData() {
 
-    public RequestResult setScreenData(HttpServletRequest request,
+    }
+
+    public ScreenData(String screenType) {
+        this.screenType = screenType;
+    }
+
+    public String getJSPname() {
+        return this.screenType + ".jsp";
+    };
+
+    public abstract RequestResult setScreenData(HttpServletRequest request,
                                 HttpServletResponse response,
-                                ScreenBeanManager screenBeanManager,
+                                ScreensManager screensManager,
                                 SessionData data
     );
 }

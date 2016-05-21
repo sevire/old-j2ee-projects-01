@@ -14,25 +14,20 @@ public class ScreenDataFactory {
         WebLogger logger = new WebLogger();
         logger.debug(String.format("Instantiating ScreenData for type <%s>", screenType));
         if (screenType == null) {
-            return new Mistress05ScreenData(); // Default
-        } else if (screenType.equals("mistress-01")) {
-            return new Mistress01ScreenData();
-        } else if (screenType.equals("mistress-02")) {
-            return new Mistress02ScreenData();
-        } else if (screenType.equals("mistress-03")) {
-            return new Mistress03ScreenData();
-        } else if (screenType.equals("mistress-04")) {
-            return new Mistress04ScreenData();
-        } else if (screenType.equals("mistress-05")) {
-            return new Mistress05ScreenData();
-        } else if (screenType.equals("video-01")) {
-            return new Video01ScreenData();
+            return new MistressScreenData("mistress-05"); // Default
+        } else if (
+                screenType.equals("mistress-01") ||
+                screenType.equals("mistress-02") ||
+                screenType.equals("mistress-03") ||
+                screenType.equals("mistress-04") ||
+                screenType.equals("mistress-05") ) {
+            return new MistressScreenData(screenType);
         } else if (screenType.equals("contactMe")) {
-            return new ContactMeScreenData();
+            return new ContactMeScreenData(screenType);
         } else if (screenType.equals("mistress-index-01")) {
-            return new MistressIndexScreenData();
+            return new MistressIndexScreenData(screenType);
         } else {
-            return new DefaultScreenData();
+            return new DefaultScreenData("mistress-05");
         }
     }
 }

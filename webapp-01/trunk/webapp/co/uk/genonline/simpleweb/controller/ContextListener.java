@@ -54,8 +54,9 @@ public class ContextListener implements ServletContextListener {
         System.out.format("Result of getSessionFactory is %s\n", factory);
 
         logger.debug(String.format("Saving session factory in context attribute"));
-        event.getServletContext().setAttribute("sessionFactory", factory);
+        context.setAttribute("sessionFactory", factory);
 
+        logger.info(String.format("context = <%s>, sessionFactory stored in context = <%s>", context, factory));
         logger.info("Creating and saving ConfigManager");
 
         configurationManager = new Configuration(factory);

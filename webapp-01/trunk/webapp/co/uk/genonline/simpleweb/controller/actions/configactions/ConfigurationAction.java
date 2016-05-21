@@ -1,10 +1,8 @@
 package co.uk.genonline.simpleweb.controller.actions.configactions;
 
-import co.uk.genonline.simpleweb.controller.RequestStatus;
-import co.uk.genonline.simpleweb.controller.actions.Action;
-import co.uk.genonline.simpleweb.controller.actions.SessionData;
+import co.uk.genonline.simpleweb.controller.actions.DatabaseAction;
+import co.uk.genonline.simpleweb.model.bean.ConfigItemBeanManager;
 import co.uk.genonline.simpleweb.model.bean.ConfigurationEntity;
-import org.hibernate.SessionFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,23 +14,13 @@ import javax.servlet.http.HttpServletResponse;
  * Time: 16:07
  * To change this template use File | Settings | File Templates.
  */
-public abstract class ConfigurationAction extends Action {
-    HttpServletRequest request;
-    HttpServletResponse response;
-    SessionData data;
-    SessionFactory factory;
-    ConfigurationEntity configItems;
-    RequestStatus status;
+public abstract class ConfigurationAction extends DatabaseAction {
+    final ConfigItemBeanManager configItemBeanManager;
+    final ConfigurationEntity configItems = new ConfigurationEntity();
 
-    ConfigurationAction(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, SessionData data) {
-        super();
-        this.request = request;
-        this.response = response;
-        this.data = data;
-        this.factory = (SessionFactory)request.getServletContext().getAttribute("sessionFactory");
-        this.configItems = data.getConfigItems();
-        configItems.setName(request.getParameter("name"));
-        this.status = (RequestStatus) this.request.getSession().getAttribute("requestStatus");
+    ConfigurationAction(HttpServletRequest request, HttpServletResponse response) {
+        super(request, response);
+        this.configItemBeanManager = new ConfigItemBeanManager(configItems, factory);
 
     }
 }

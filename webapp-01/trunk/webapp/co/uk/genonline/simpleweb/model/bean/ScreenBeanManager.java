@@ -1,15 +1,13 @@
 package co.uk.genonline.simpleweb.model.bean;
 
 import co.uk.genonline.simpleweb.controller.WebLogger;
-import org.apache.commons.beanutils.BeanUtils;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 
-import javax.servlet.http.HttpServletRequest;
-import java.lang.reflect.InvocationTargetException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -25,7 +23,6 @@ import java.util.*;
  * practice I only need to worry about Screens.
  */
 public class ScreenBeanManager {
-    //ScreensEntity screenBean;
     SessionFactory factory;
     WebLogger logger = new WebLogger();
 
@@ -65,25 +62,76 @@ public class ScreenBeanManager {
             return new ScreensEntityDecorator(dbBean);
         }
     }
+    
+    public boolean saveScreen(ScreensEntity screen, boolean addFlag) {
+        Session session = factory.openSession();
+        boolean success = true;
 
-    public void initialiseBean(ScreensEntity screen) {
-        // ToDo Remove this code if superfluous (Can't remember what it is there for!!)
-/*
-        screenBean = screen;
-        screenBean.setEnabledFlag(true);
-        screenBean.setGalleryFlag(false);
-        screenBean.setScreenContents("");
-        screenBean.setMetaDescription("");
-        screenBean.setName("");
-        screenBean.setScreenTitleLong("");
-        screenBean.setScreenTitleShort("");
-        screenBean.setScreenType("Mistress");
-        screenBean.setScreenDisplayType("");
-        screenBean.setSortKey(100);
-
-        screenBean.setId(0);
-*/
+        logger.info(String.format("About to update screen, id is <%d>", screen.getId()));
+        logger.debug("Contents = \n%s", screen.getScreenContents());
+        if (addFlag) {
+            session.save(screen);
+        } else {
+            session.update(screen);
+        }
+        try {
+            session.flush();
+        } catch (Exception e) {
+            logger.info("Error saving data : %s", e.getMessage());
+            success = false;
+        }
+        finally {
+            if (session.isOpen()) {
+                session.close();
+            }
+        }
+        return success;
     }
+
+    public boolean deleteScreen(String screenName) {
+        ScreensEntityDecorator deleteScreen;
+        Session session = factory.openSession();
+        boolean success = true;
+
+        deleteScreen = getScreen(screenName);
+        session.delete(deleteScreen.getScreen());
+        try {
+            session.flush();
+        } catch (Exception e) {
+            logger.info("Error deleting screen <%s> : error : %s", screenName, e.getMessage());
+            success = false;
+        }
+        finally {
+            if (session.isOpen()) {
+                session.close();
+            }
+        }
+        return success;
+
+    }
+
+    /**
+     * Sets value of fields within a ScreensEntity bean to default values.  Used for example when adding a new screen
+     * to determine what values are set for the fields in the form on the add screen page.
+     *
+     * @param screen
+     */
+/*
+    public void initialiseBean(ScreensEntity screen) {
+        screen.setEnabledFlag(true);
+        screen.setGalleryFlag(false);
+        screen.setScreenContents("");
+        screen.setMetaDescription("");
+        screen.setName("");
+        screen.setScreenTitleLong("");
+        screen.setScreenTitleShort("");
+        screen.setScreenType("Mistress");
+        screen.setScreenDisplayType("");
+        screen.setSortKey(100);
+
+        screen.setId(0);
+    }
+*/
 
     public List<ScreensEntityDecorator> decorateScreenList(List screenList) {
         List<ScreensEntityDecorator> decoratedScreenList = new ArrayList<ScreensEntityDecorator>();
@@ -97,27 +145,6 @@ public class ScreenBeanManager {
         }
         return decoratedScreenList;
     }
-/*
-    public void getScreenIntoBean(ScreensEntity screen, String screenName) {
-        Session session = factory.openSession();
-
-        Criteria criteria = session.createCriteria(ScreensEntity.class).add(Restrictions.eq("name", screenName));
-        ScreensEntity dbBean = (ScreensEntity) criteria.uniqueResult();
-        session.close();
-
-        screen.setName(dbBean.getName());
-        screen.setSortKey(dbBean.getSortKey());
-        screen.setEnabledFlag(dbBean.getEnabledFlag());
-        screen.setGalleryFlag(dbBean.getGalleryFlag());
-        screen.setScreenContents(dbBean.getScreenContents());
-        screen.setMetaDescription(dbBean.getMetaDescription());
-        screen.setScreenTitleLong(dbBean.getScreenTitleLong());
-        screen.setScreenTitleShort(dbBean.getScreenTitleShort());
-        screen.setScreenType(dbBean.getScreenType());
-        screen.setScreenDisplayType(dbBean.getScreenDisplayType());
-        screen.setId(dbBean.getId());
-    }
-*/
 
     /**
      * This method is effectively a layer between the request object and the ScreensEntity JavaBean.  The reason it is
@@ -130,53 +157,24 @@ public class ScreenBeanManager {
      * had to write field specific code.
      *
      * @param request HttpServletRequest object passed from EE container
-     * @param screen ScreensEntity JavaBean to be populated.
+     * @param id      If the transaction is an update then we need to supply the id (primary key) we are updating.
+     *                -1 indicates don't update id, any positive integer indicates use this id.
      */
-    public void getRequestIntoScreenBean(HttpServletRequest request, ScreensEntity screen) {
+/*
+    public ScreensEntity moveRequestIntoScreenBean(HttpServletRequest request, int id) {
 
         Map requestMap = request.getParameterMap();
         Map amendedMap = new HashMap();
         amendedMap.putAll(requestMap);
-        if (amendedMap.get("enabledFlag") == null) {
-            logger.info("enabledFlag from request is <null>");
-            amendedMap.put("enabledFlag", "false");
-        } else {
-            logger.info("enabledFlag from request is <%s>", amendedMap.get("enabledFlag").toString());
-        }
-        if (amendedMap.get("galleryFlag") == null) {
-            logger.info("galleryFlag from request is <null>");
-            amendedMap.put("galleryFlag", "false");
-        } else {
-            logger.info("galleryFlag from request is <%s>", amendedMap.get("galleryFlag").toString());
-        }
-        fillBeanFromMap(screen, amendedMap);
-        // ToDo: Work out right way to solve Timestamp crashing problem
-        java.sql.Timestamp timeStamp = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
-        screen.setCreated(timeStamp);
-        screen.setModified(timeStamp);
-    }
 
-    /**
-     * Uses BeanUtils (populate) to transfer data from a Map to the appropriate bean.
-     *
-     * In order to work the values in the map must have names which are the same as the field names in the bean.
-     * The method has been designed to work with request.getParameterMap() in mind.
-     *
-     * Please note that if using request.getParameterMap() to generate the Map to pass into this method, that
-     * checkbox parameters in a request will need to be pre-processed so that the value is 'true' or 'false'.
-     *
-     * @param data
-     * @param parameterMap
-     */
-    public void fillBeanFromMap(Object data, Map parameterMap) {
-        try {
-            BeanUtils.populate(data, parameterMap);
-        } catch (IllegalAccessException e) {
-            logger.error("Populate - Illegal Access", e.getMessage());
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (InvocationTargetException e) {
-            logger.error("Populate - Invocation Target", e.getMessage());
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        ScreenRequestDecorator requestDecorator = new ScreenRequestDecorator();
+        ScreensEntity screen = new ScreensEntity();
+        requestDecorator.fillBeanFromMap(screen, amendedMap);
+
+        if (id >= 0) {
+            screen.setId(id);
         }
+        return screen;
     }
+*/
 }

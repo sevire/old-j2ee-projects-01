@@ -3,9 +3,7 @@ package co.uk.genonline.simpleweb.controller.actions.screenactions;
 import co.uk.genonline.simpleweb.configuration.configitems.GalleryRoot;
 import co.uk.genonline.simpleweb.configuration.configitems.MaxImageWidth;
 import co.uk.genonline.simpleweb.configuration.general.Configuration;
-import co.uk.genonline.simpleweb.controller.actions.SessionData;
 import co.uk.genonline.simpleweb.controller.actions.RequestResult;
-import org.hibernate.SessionFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,8 +18,8 @@ import java.io.File;
  */
 public class ViewImage extends ScreenAction {
 
-    public ViewImage(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, SessionData data) {
-        super(request, response, factory, data);
+    public ViewImage(HttpServletRequest request, HttpServletResponse response) {
+        super(request, response);
     }
 
     public RequestResult perform() {

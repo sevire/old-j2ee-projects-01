@@ -1,8 +1,7 @@
 package co.uk.genonline.simpleweb.controller.actions.screenactions;
 
-import co.uk.genonline.simpleweb.controller.actions.SessionData;
 import co.uk.genonline.simpleweb.controller.actions.RequestResult;
-import org.hibernate.SessionFactory;
+import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public abstract class UpdateScreenDisplayForm extends ScreenAction {
 
-    UpdateScreenDisplayForm(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, SessionData data) {
-        super(request, response, factory, data);
+    UpdateScreenDisplayForm(HttpServletRequest request, HttpServletResponse response) {
+        super(request, response);
     }
 
     /**
@@ -31,15 +30,20 @@ public abstract class UpdateScreenDisplayForm extends ScreenAction {
      */
     RequestResult displayScreenForm(boolean addFlag) {
         String screenJsp;
+        ScreensEntity screenRecord;
         if (addFlag) {
-            screenBeanManager.initialiseBean(screen);
-            request.setAttribute("addFlag", true);
+            screenRecord = new ScreensEntity();
+            screensManager.initialiseBean(screenRecord);
             logger.info(String.format("Adding screen"));
         } else {
-            screenBeanManager.getScreen(screen.getName());
-            request.setAttribute("addFlag", false);
-            logger.info(String.format("Editing screen <%s>", screen.getName()));
+            String screenName = request.getParameter("screen");
+            screenRecord = screensManager.getScreen(screenName, true);
+            sessionData.setScreen(screenRecord);
+            logger.info(String.format("Editing screen <%s>", screenRecord.getName()));
         }
+        sessionData.setScreen(screenRecord); // Replaces screen in session data so will be persisted
+        request.setAttribute("addFlag", addFlag);
+        request.setAttribute("screen", screenRecord);
         screenJsp = "updateScreen.jsp";
         return new RequestResult(request, screenJsp, false);
     }

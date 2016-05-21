@@ -4,6 +4,8 @@ import co.uk.genonline.simpleweb.controller.WebLogger;
 import com.petebevin.markdown.MarkdownProcessor;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Decorator for ScreensEntity which will allow operations on data within ScreensEntity without having to modify
@@ -22,40 +24,6 @@ public class ScreensEntityDecorator extends ScreensEntity {
 
     public ScreensEntityDecorator(ScreensEntity screen) {
         this.screen = screen;
-    }
-
-    public ScreensEntityDecorator(
-            int id,
-            int parentId,
-            String name,
-            String screenTitleLong,
-            String screenTitleShort,
-            String screenContents,
-            String metaDescription,
-            Boolean enabledFlag,
-            Boolean galleryFlag,
-            Timestamp created,
-            Timestamp modified,
-            String screenType,
-            Integer sortKey,
-            String screenDisplayType) {
-
-        screen = new ScreensEntity();
-
-        screen.setId(id);
-        screen.setName(name);
-        screen.setParentId(parentId);
-        screen.setScreenTitleLong(screenTitleLong);
-        screen.setScreenTitleShort(screenTitleShort);
-        screen.setScreenContents(screenContents);
-        screen.setMetaDescription(metaDescription);
-        screen.setEnabledFlag(enabledFlag);
-        screen.setGalleryFlag(galleryFlag);
-        screen.setCreated(created);
-        screen.setModified(modified);
-        screen.setScreenType(screenType);
-        screen.setSortKey(sortKey);
-        screen.setScreenDisplayType(screenDisplayType);
     }
 
     @Override
@@ -161,6 +129,19 @@ public class ScreensEntityDecorator extends ScreensEntity {
 
     public void setScreen(ScreensEntity screen) {
         this.screen = screen;
+    }
+
+    public static List<ScreensEntityDecorator> decorateScreenList(List screenList) {
+        List<ScreensEntityDecorator> decoratedScreenList = new ArrayList<ScreensEntityDecorator>();
+
+        for (Object screen : screenList) {
+            if (screen.getClass() == ScreensEntity.class) {
+                decoratedScreenList.add(new ScreensEntityDecorator((ScreensEntity)screen));
+            } else {
+                // logger.error("Method decorateScreenList, object from Hibernate not ScreensEntity");
+            }
+        }
+        return decoratedScreenList;
     }
 
     public String toString() {

@@ -1,9 +1,8 @@
 package co.uk.genonline.simpleweb.controller;
 
-import co.uk.genonline.simpleweb.configuration.general.Configuration;
-import co.uk.genonline.simpleweb.controller.actions.*;
-import co.uk.genonline.simpleweb.controller.actions.SessionData;
-import co.uk.genonline.simpleweb.model.bean.ConfigurationEntity;
+import co.uk.genonline.simpleweb.controller.actions.Action;
+import co.uk.genonline.simpleweb.controller.actions.ActionFactory;
+import co.uk.genonline.simpleweb.controller.actions.RequestResult;
 import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
 import org.apache.log4j.Level;
 import org.hibernate.SessionFactory;
@@ -20,6 +19,8 @@ import java.io.IOException;
  * Date: 16/05/2012
  * Time: 07:38
  *
+ *
+ * ToDo: ControllerHelper: Update comment as out of date
  * The Controller Helper is stored in the HttpSession object for this session and is used both to:
  *
  * - Persist data between requests within the same session where appropriate
@@ -34,7 +35,6 @@ public class ControllerHelper {
     protected HttpServletRequest request;
     protected HttpServletResponse response;
     WebLogger logger = new WebLogger();
-    Configuration configuration;
 
     /**
      * Stores all data for session and makes it available to the JSPs through getters.
@@ -65,11 +65,11 @@ public class ControllerHelper {
      */
     public void processRequest() throws IOException, ServletException {
 
-        addPersistentDataToSession("sessionData");
+        addPersistentDataToSession();
 
         RequestResult result;
 
-        Action action = ActionFactory.createAction(request, response, factory, sessionData);
+        Action action = ActionFactory.createAction(request, response);
         if (action != null) {
             result = action.perform();
             if (result.isRedirectFlag()) {
@@ -101,21 +101,20 @@ public class ControllerHelper {
      * NOTE: As a general rule (in this webapp) requests which are just to display a screen only result in one request
      *       within the session so the sessionData object isn't actually accessed.  Where there is a form which then
      *       needs to be processed the form data will
-     *
-     * @param name
      */
-    public void addPersistentDataToSession(String name) {
-        SessionData sessionDataFromSession = (SessionData)request.getSession().getAttribute(name);
+    public void addPersistentDataToSession() {
+        String sessionName = "sessionData";
+        SessionData sessionDataFromSession = (SessionData)request.getSession().getAttribute(sessionName);
         if (sessionDataFromSession != null) {
             sessionData = sessionDataFromSession;
             sessionData.incrementRequestCount();
             logger.info("Multiple requests in session, copying session data = <%s>", sessionData.toString());
         } else {
             if (sessionData == null) {
-                sessionData = new SessionData(new ScreensEntity(), new ConfigurationEntity());
+                sessionData = new SessionData(new ScreensEntity());
                 sessionData.incrementRequestCount();
                 logger.info("First request in session, initialising session data, = <%s>", sessionData.toString());
-                request.getSession().setAttribute(name, sessionData);
+                request.getSession().setAttribute(sessionName, sessionData);
             }
         }
     }

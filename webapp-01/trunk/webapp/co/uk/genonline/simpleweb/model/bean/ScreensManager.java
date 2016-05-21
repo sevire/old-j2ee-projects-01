@@ -15,14 +15,14 @@ public interface ScreensManager {
      * @param enabledOverride If not set only enabled screens returned. Set to override this.
      * @return ScreensEntity object filled with data for requested screen.  Null if screen doesn't exist (or error)
      */
-    public ScreensEntity getScreen(String screenName, boolean enabledOverride);
+    ScreensEntity getScreen(String screenName, boolean enabledOverride);
 
     /**
      * Takes ScreensEntity object and adds a record to the database for screen corresponding to the contained name.
      * @param screen ScreensEntity object populated with data to use to update database.
      * @return Returns true if screen successfully added. Returns false if screen already exists or there was an error.
      */
-    public boolean addScreen(ScreensEntity screen);
+    boolean addScreen(ScreensEntity screen);
 
     /**
      * Takes ScreensEntity object and updates a record to the database for screen corresponding to the contained name.
@@ -30,7 +30,7 @@ public interface ScreensManager {
      * @return Returns true if screen successfully updated. Returns false if screen doesn't already exist or there was
      *         an error.
      */
-    public boolean updateScreen(ScreensEntity screen);
+    boolean updateScreen(ScreensEntity screen);
 
     /**
      * Returns all the screens for a given screen type.  Screen type is used to distinguish between types of page and
@@ -40,7 +40,7 @@ public interface ScreensManager {
      * @param sortType Indicates the order in which the screens are to be returned.
      * @return
      */
-    public List<ScreensEntity> getScreensByType(String screenType, ScreensSortType sortType);
+    List<ScreensEntity> getScreensByType(String screenType, ScreensSortType sortType);
 
     /**
      * Variant without sortType as most of the time sort will be via sortKey to use in linkbars.
@@ -48,7 +48,7 @@ public interface ScreensManager {
      * @param screenType
      * @return
      */
-    public List<ScreensEntity> getScreensByType(String screenType);
+    List<ScreensEntity> getScreensByType(String screenType);
 
     /**
      * Extracts list of objects contain all enabled screens, or all screens if enabledOverride flag is set.
@@ -56,7 +56,7 @@ public interface ScreensManager {
      * @param sortType Determinse sort order of screens returned.
      * @return List of ScreensEntity objects.
      */
-    public List<ScreensEntity> getAllScreens(ScreensSortType sortType, boolean enabledOverride);
+    List<ScreensEntity> getAllScreens(ScreensSortType sortType, boolean enabledOverride);
 
     /** Extracts just the screen names of the enabled screens within the database, or all screens if enabledOverride
      * flag is set.
@@ -65,18 +65,25 @@ public interface ScreensManager {
      * @param enabledOverride If not set only returns enabled screens, otherwise all screens.
      * @return
      */
-    public List<String> getAllScreenNames(ScreensSortType sortType, boolean enabledOverride);
+    List<String> getAllScreenNames(ScreensSortType sortType, boolean enabledOverride);
 
-    public boolean deleteScreen(ScreensEntity screen);
+    boolean deleteScreen(ScreensEntity screen);
 
-    public boolean deleteScreen(String screenName);
+    boolean deleteScreen(String screenName);
 
-    public boolean deleteScreen(int id);
+    boolean deleteScreen(int id);
 
-    public Timestamp getScreenCreatedTimestamp(String screenNane);
+    Timestamp getScreenCreatedTimestamp(String screenNane);
 
-    public Timestamp setScreenModifiedTimestamp(String screenName);
+    Timestamp setScreenModifiedTimestamp(String screenName);
 
-    public boolean isScreenExist(String screenName);
+    boolean isScreenExist(String screenName);
 
+    /**
+     * Sets value of fields within a ScreensEntity bean to default values.  Used for example when adding a new screen
+     * to determine what values are set for the fields in the form on the add screen page.
+     *
+     * @param screen
+     */
+    void initialiseBean(ScreensEntity screen);
 }

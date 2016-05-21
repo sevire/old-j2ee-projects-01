@@ -1,11 +1,10 @@
 package co.uk.genonline.simpleweb.controller.actions.simpleactions;
 
+import co.uk.genonline.simpleweb.controller.actions.Action;
 import co.uk.genonline.simpleweb.controller.actions.RequestResult;
-import co.uk.genonline.simpleweb.controller.actions.SessionData;
 import co.uk.genonline.simpleweb.mail.SMTPAuthenticator;
 import co.uk.genonline.simpleweb.mail.SMTPDetails;
 import co.uk.genonline.simpleweb.mail.SendMail;
-import org.hibernate.SessionFactory;
 
 import javax.mail.Authenticator;
 import javax.servlet.http.HttpServletRequest;
@@ -17,9 +16,9 @@ import java.util.List;
 /**
  * Created by thomassecondary on 14/03/16.
  */
-public class ContactMeProcessForm extends SimpleAction {
-    public ContactMeProcessForm(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, SessionData data) {
-        super(request, response, factory, data);
+public class ContactMeProcessForm extends Action {
+    public ContactMeProcessForm(HttpServletRequest request, HttpServletResponse response) {
+        super(request, response);
     }
 
     @Override

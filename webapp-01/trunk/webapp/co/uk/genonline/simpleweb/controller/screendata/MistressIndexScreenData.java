@@ -1,11 +1,10 @@
 package co.uk.genonline.simpleweb.controller.screendata;
 
+import co.uk.genonline.simpleweb.controller.SessionData;
 import co.uk.genonline.simpleweb.controller.actions.RequestResult;
-import co.uk.genonline.simpleweb.controller.actions.SessionData;
 import co.uk.genonline.simpleweb.controller.screendata.displaybeans.ScreenMistressTableBean;
-import co.uk.genonline.simpleweb.model.bean.ScreenBeanManager;
 import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
-import co.uk.genonline.simpleweb.model.bean.ScreensEntityDecorator;
+import co.uk.genonline.simpleweb.model.bean.ScreensManager;
 import com.hp.gagawa.java.elements.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,9 +20,10 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class MistressIndexScreenData extends MistressScreenData {
-    private ScreenMistressTableBean screenMistressTable;
+    private ScreenMistressTableBean screenMistressTable = new ScreenMistressTableBean();
 
-    public void setMistressTable() {
+    public MistressIndexScreenData(String screenType) {
+        super(screenType);
     }
 
     /**
@@ -34,18 +34,18 @@ public class MistressIndexScreenData extends MistressScreenData {
      * code to create the MistressIndex table.  This still repeats code but not as badly as if I hadn't re-factored
      * MistressScreenData.  The next step would be to put more of this code in methods so I'm not repeating it.
      *
-     * @param request
-     * @param response
-     * @param screenBeanManager
-     * @param data
+     * @param request        Request object from Tomcat container
+     * @param response       Response object from Tomcat container
+     * @param screensManager Object used to access the Screens records in the database
+     * @param data           Data persisted within session between requests
      * @return
      */
     public RequestResult setScreenData(HttpServletRequest request,
                                        HttpServletResponse response,
-                                       ScreenBeanManager screenBeanManager,
+                                       ScreensManager screensManager,
                                        SessionData data
     ) {
-        init(request, response, screenBeanManager, data);
+        init(request, response, screensManager, data);
 
         if (screenRecord == null) {
             logger.warn(String.format("View page: Couldn't retrieve page <%s>", screenName));
@@ -73,7 +73,8 @@ public class MistressIndexScreenData extends MistressScreenData {
     }
 
     public void setScreenMistressTable() {
-        List<ScreensEntityDecorator> mistressScreens = screenBeanManager.getCategoryScreens("Mistress");
+        List<ScreensEntity> mistressScreens = screensManager.getScreensByType("Mistress");
+
         Table tableElement = new Table();
         tableElement.setCSSClass("mistressLinks");
         for (ScreensEntity screen : mistressScreens) {
@@ -100,9 +101,5 @@ public class MistressIndexScreenData extends MistressScreenData {
         }
         String Html = tableElement.write();
         screenMistressTable.setMistressTable(Html);
-    }
-
-    public String getJSPname() {
-        return "mistress-index-01.jsp";  // Need to extend for each jsp used
     }
 }

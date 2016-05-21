@@ -1,9 +1,8 @@
 package co.uk.genonline.simpleweb.controller.actions.screenactions;
 
-import co.uk.genonline.simpleweb.controller.actions.SessionData;
 import co.uk.genonline.simpleweb.controller.actions.RequestResult;
 import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
-import org.hibernate.SessionFactory;
+import co.uk.genonline.simpleweb.model.bean.ScreensSortType;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,15 +12,15 @@ import java.util.List;
  */
 public class EditIndexDisplayForm extends ScreenAction {
 
-    public EditIndexDisplayForm(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, SessionData data) {
-        super(request, response, factory, data);
+    public EditIndexDisplayForm(HttpServletRequest request, HttpServletResponse response) {
+        super(request, response);
     }
 
     /**
      */
     public RequestResult perform() {
 
-        List screenList = screenBeanManager.getAllScreens();
+        List screenList = screensManager.getAllScreens(ScreensSortType.ADMIN_SCREEN, true);
 
         if (screenList == null) {
             status.setStatusMessage("Error while getting page list", "error");

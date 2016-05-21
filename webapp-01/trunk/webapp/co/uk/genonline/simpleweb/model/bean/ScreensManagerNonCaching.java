@@ -38,7 +38,7 @@ public class ScreensManagerNonCaching implements ScreensManager {
     }
 
     public boolean addScreen(ScreensEntity screen) {
-        if (screen.getName() == null || screen.getName().isEmpty()) {
+        if (screen.getName() == null || screen.getName().equals("")) {
             logger.error("Attempt to add screen with null or empty screenName");
             return false;
         } else {
@@ -252,6 +252,22 @@ public class ScreensManagerNonCaching implements ScreensManager {
         }
         return count == 1;
     }
+
+    public void initialiseBean(ScreensEntity screen) {
+        screen.setEnabledFlag(true);
+        screen.setGalleryFlag(false);
+        screen.setScreenContents("");
+        screen.setMetaDescription("");
+        screen.setName("");
+        screen.setScreenTitleLong("");
+        screen.setScreenTitleShort("");
+        screen.setScreenType("Mistress");
+        screen.setScreenDisplayType("");
+        screen.setSortKey(100);
+
+        screen.setId(0);
+    }
+
 
     /**
      * NOTE: Main use is in testing and debugging.  Quite resource hungry so should be used in live code.

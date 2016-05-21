@@ -1,10 +1,8 @@
 package co.uk.genonline.simpleweb.controller.actions.configactions;
 
-import co.uk.genonline.simpleweb.controller.actions.SessionData;
 import co.uk.genonline.simpleweb.controller.actions.RequestResult;
 import co.uk.genonline.simpleweb.model.bean.ConfigItemBeanManager;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  */
 abstract class UpdateConfigActionClass extends ConfigurationAction {
-    UpdateConfigActionClass(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, SessionData data) {
-        super(request, response, factory, data);
+    UpdateConfigActionClass(HttpServletRequest request, HttpServletResponse response) {
+        super(request, response);
     }
 
     /**

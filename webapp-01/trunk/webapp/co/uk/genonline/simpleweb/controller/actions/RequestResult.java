@@ -7,13 +7,31 @@ import javax.servlet.http.HttpServletRequest;
  * User: thomassecondary
  * Date: 23/09/2012
  * Time: 21:36
- * To change this template use File | Settings | File Templates.
+ *
+ * Used to indicate to the controller what to do once a request has been processed.  The options are:
+ * - Forward control to a JSP.  This is typically used when the request is a link from another
+ *   page such as display a particular screen.  The controller will invoke the action implied
+ *   within the URL from the request and the action will then invoke a JSP to display the
+ *   results
+ * - Re-direct control to a new URL.  This is typically used once a transaction has been processed
+ *   and the intention is then to flow to another page on the browser (such as a screen updated
+ *   page).
+ *
  */
 public class RequestResult {
     private String nextRequest;
     private boolean redirectFlag;
-    private HttpServletRequest request; // ToDo: RequestResult - Check whether we need to pass in request as it's already held by caller.
+    private HttpServletRequest request;
 
+    /**
+     * The class is typically instantiated from an Action object (or sub-type) and this is the
+     * way the Action object indicates to the controller what should happen next.
+     *
+     * @param request Used to calculate the path of the URL to redirect to.  Could do this within the
+     *                Controller.  ToDo: Move redirect path calculation to Controller
+     * @param nextRequest
+     * @param redirectFlag
+     */
     public RequestResult(HttpServletRequest request, String nextRequest, boolean redirectFlag) {
         this.request = request;
         this.redirectFlag = redirectFlag;

@@ -12,9 +12,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-import org.springframework.mock.web.MockServletContext;
 import support.TestSupportLogger;
-import unittests.support.TestSupportSessionFactory;
+import unittests.support.TestSupport;
 
 import javax.servlet.ServletContext;
 
@@ -30,22 +29,11 @@ public class ControllerHelperTest extends TestCase {
     static private Configuration configurationManager;
     static private GalleryManager galleryManager;
 
-    private static final String contextBaseDir = "/Users/thomassecondary/Projects/webapp-01(trunk)/web";
-    private static final String contextBaseDirPrefix = "file:";
-
-     @BeforeClass
+    @BeforeClass
     public static void beforeAll() {
         TestSupportLogger.initLogger();
 
-        context = new MockServletContext(contextBaseDirPrefix + contextBaseDir, null);
-        assertNotNull(context);
-
-        String realPath = context.getRealPath("/");
-        assertEquals("/Users/thomassecondary/Projects/webapp-01(trunk)/web", realPath);
-
-        factory = new TestSupportSessionFactory().getSessionFactory();
-        context.setAttribute("sessionFactory", factory);
-        assertSame(factory, context.getAttribute("sessionFactory"));
+        context = TestSupport.getNewServletContext();
 
         configurationManager = new Configuration(factory);
         assertTrue(((BlogEnabled) (configurationManager.getConfigurationItem("blogEnabled"))).get());
@@ -94,7 +82,7 @@ public class ControllerHelperTest extends TestCase {
         assertEquals(200, status);
 
         String forwardUrl = response.getForwardedUrl();
-        assertEquals("WEB-INF/mistress-03.jsp", forwardUrl);
+        assertEquals("WEB-INF/mistress-04.jsp", forwardUrl);
     }
 
     public void testAddHelperToSession() throws Exception {

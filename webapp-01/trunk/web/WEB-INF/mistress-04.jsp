@@ -1,3 +1,4 @@
+<%@ page import="co.uk.genonline.simpleweb.controller.screendata.MistressScreenData" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="core" %>
 
 <!DOCTYPE html>
@@ -54,7 +55,7 @@
         </div>
     </script>
     <link rel="icon" type="image/png" href="favicon.png">
-    <title>Manchester Mistress Princess Lucina - ${screenData.screen.screenTitleLong}</title>
+    <title>Manchester Mistress Princess Lucina - ${screenData.screenData.screensEntityDecorator.screenTitleLong}</title>
     <style>
         div.header-image img {
             width: 100%;
@@ -67,7 +68,7 @@
     </style>
 </head>
 
-<body id='${helper.screen.name}'>
+<body id='${screenData.screenData.screensEntityDecorator.name}'>
 
 <div id="container">
     <div id="header">
@@ -77,7 +78,7 @@
         </div>
         <div id="left-image" class="header-image">
             <%--<img src="site_images/B44-cropped.png" />--%>
-            <img src='site_images/header_images/${screenData.headerImageLeft}' />
+            <img src='site_images/header_images/${screenData.screenHeader.headerImageLeft}' />
         </div>
         <div id="middle-header">
             <div id="contact-phone" class="contact">
@@ -108,7 +109,7 @@
             </div>
         </div>
         <div id="right-image" class="header-image">
-            <img src='site_images/header_images/${screenData.headerImageRight}' />
+            <img src='site_images/header_images/${screenData.screenHeader.headerImageRight}' />
             <%--<img src="site_images/B44-cropped.png" />--%>
         </div>
     </div>
@@ -117,28 +118,32 @@
         <ul class="flexnav" data-breakpoint="800">
             <li>
                 <a>Princess Lucina</a>
-                ${screenData.lucinaLinkBar}
+                <%=((MistressScreenData)request.getAttribute("screenData")).getScreenMenus().getMenu("lucinaLinkBar")%>
+            </li>
+            <li>
+                <a>My Facilities</a>
+                <%=((MistressScreenData)request.getAttribute("screenData")).getScreenMenus().getMenu("chambersLinkBar")%>
             </li>
             <li>
                 <a>Galleries</a>
-                ${screenData.galleryLinkBar}
+                <%=((MistressScreenData)request.getAttribute("screenData")).getScreenMenus().getMenu("galleryLinkBar")%>
             </li>
             <li>
                 <a>Testimonials</a>
-                ${screenData.testimonialLinkBar}
+                <%=((MistressScreenData)request.getAttribute("screenData")).getScreenMenus().getMenu("testimonialLinkBar")%>
             </li>
             <li>
                 <a>Other Mistresses</a>
-                ${screenData.mistressLinkBar}
+                <%=((MistressScreenData)request.getAttribute("screenData")).getScreenMenus().getMenu("mistressLinkBar")%>
             </li>
         </ul>
     </div>
     <div id="content">
         <div id="pageText">
-            <h1>${screenData.screen.screenTitleLong}</h1>
-            ${screenData.screen.screenContents}
+            <h1>${screenData.screenData.screensEntityDecorator.screenTitleLong}</h1>
+            ${screenData.screenData.screensEntityDecorator.screenContentsHtml}
         </div>
-        <core:if test='${(screenData.galleryHtml != null) && (screenData.galleryHtml != "")}'>
+        <core:if test='${(screenData.screenGallery.galleryData != null) && (screenDatascreenGallery.galleryData != "")}'>
             <div id="rg-gallery" class="rg-gallery">
                 <div class="rg-thumbs">
                     <!-- Elastislide Carousel Thumbnail Viewer -->
@@ -148,7 +153,7 @@
                             <span class="es-nav-next">Next</span>
                         </div>
                         <div class="es-carousel">
-                                ${screenData.galleryHtml}
+                                ${screenData.screenGallery.galleryData}
                         </div>
                     </div>
                     <!-- End Elastislide Carousel Thumbnail Viewer -->

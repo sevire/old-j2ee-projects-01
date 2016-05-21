@@ -3,12 +3,15 @@ package co.uk.genonline.simpleweb.controller.screendata;
 import co.uk.genonline.simpleweb.configuration.configitems.BlogEnabled;
 import co.uk.genonline.simpleweb.configuration.general.Configuration;
 import co.uk.genonline.simpleweb.controller.RequestStatus;
+import co.uk.genonline.simpleweb.controller.SessionData;
 import co.uk.genonline.simpleweb.controller.WebLogger;
 import co.uk.genonline.simpleweb.controller.actions.RequestResult;
-import co.uk.genonline.simpleweb.controller.actions.SessionData;
-import co.uk.genonline.simpleweb.controller.screendata.displaybeans.*;
-import co.uk.genonline.simpleweb.model.bean.ScreenBeanManager;
+import co.uk.genonline.simpleweb.controller.screendata.displaybeans.ScreenDataBean;
+import co.uk.genonline.simpleweb.controller.screendata.displaybeans.ScreenGalleryBean;
+import co.uk.genonline.simpleweb.controller.screendata.displaybeans.ScreenHeaderBean;
+import co.uk.genonline.simpleweb.controller.screendata.displaybeans.ScreenMenuBean;
 import co.uk.genonline.simpleweb.model.bean.ScreensEntityDecorator;
+import co.uk.genonline.simpleweb.model.bean.ScreensManager;
 import co.uk.genonline.simpleweb.web.WebHelper;
 import co.uk.genonline.simpleweb.web.gallery.Gallery;
 import co.uk.genonline.simpleweb.web.gallery.GalleryManagerDefault;
@@ -25,7 +28,7 @@ import java.util.List;
  * Time: 16:41
  * To change this template use File | Settings | File Templates.
  */
-public class MistressScreenData implements ScreenData {
+public class MistressScreenData extends ScreenData {
 
     // Member variables which will be accessed by JSP via getters and setters
 
@@ -39,7 +42,7 @@ public class MistressScreenData implements ScreenData {
     protected HttpServletRequest request;
 
     // Properties used by most methods to access data etc.
-    protected ScreenBeanManager screenBeanManager;
+    protected ScreensManager screensManager;
     protected ServletContext context;
     protected Configuration configuration;
     protected RequestStatus status;
@@ -51,13 +54,17 @@ public class MistressScreenData implements ScreenData {
 
     protected String screenName; // Used to store screenName extracted from ScreenEntity object within Session.
 
+    public MistressScreenData(String screenType) {
+        super(screenType);
+    }
+
     protected void init(HttpServletRequest request,
                               HttpServletResponse response,
-                              ScreenBeanManager screenBeanManager,
+                              ScreensManager screensManager,
                               SessionData sessionData) {
         this.request = request;
         this.response = response;
-        this.screenBeanManager = screenBeanManager;
+        this.screensManager = screensManager;
 
         context = this.request.getServletContext();
         configuration = (Configuration)context.getAttribute("configuration");
@@ -67,6 +74,7 @@ public class MistressScreenData implements ScreenData {
          * Not used here
          */
         status = (RequestStatus) request.getSession().getAttribute("requestStatus");
+
         status.resetStatusMessage();
 
         webHelper = new WebHelper(request, response);
@@ -83,7 +91,7 @@ public class MistressScreenData implements ScreenData {
         }
         logger.info("view: screen is " + screenName);
 
-        screenRecord = new ScreensEntityDecorator(screenBeanManager.getScreen(screenName));  // openSession() Invocation #2
+        screenRecord = new ScreensEntityDecorator(screensManager.getScreen(screenName, false));
 
     }
 
@@ -100,10 +108,10 @@ public class MistressScreenData implements ScreenData {
      */
     public RequestResult setScreenData(HttpServletRequest request,
                                        HttpServletResponse response,
-                                       ScreenBeanManager screenBeanManager,
+                                       ScreensManager screensManager,
                                        SessionData data
     ) {
-        init(request, response, screenBeanManager, data);
+        init(request, response, screensManager, data);
 
         if (screenRecord == null) {
             logger.warn(String.format("View page: Couldn't retrieve page <%s>", screenName));
@@ -183,9 +191,5 @@ public class MistressScreenData implements ScreenData {
             logger.trace("This page is not a gallery: " + screenRecord.getName());
             screenGallery.setGalleryData("");
         }
-    }
-
-    public String getJSPname() {
-        return "";  // Need to extend for each jsp used
     }
 }

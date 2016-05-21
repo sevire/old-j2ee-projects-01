@@ -27,6 +27,8 @@ public class ScreenRequestDecorator {
      * The following fields need transforming:
      * - enabledFlag
      * - galleryFlag
+     *
+     * ToDo Check that this is working as expected and clarify what I am trying to do here!
      */
     public ScreensEntity getScreen(Map requestMap, boolean setCreatedFlag) {
         Map amendedMap = new HashMap();

@@ -1,9 +1,6 @@
 package co.uk.genonline.simpleweb.controller.actions.configactions;
 
-import co.uk.genonline.simpleweb.controller.actions.SessionData;
 import co.uk.genonline.simpleweb.controller.actions.RequestResult;
-import co.uk.genonline.simpleweb.model.bean.ConfigItemBeanManager;
-import org.hibernate.SessionFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 abstract class UpdateConfigItemDisplayForm extends ConfigurationAction {
 
-    UpdateConfigItemDisplayForm(HttpServletRequest request, HttpServletResponse response, SessionFactory factory, SessionData data) {
-        super(request, response, factory, data);
+    UpdateConfigItemDisplayForm(HttpServletRequest request, HttpServletResponse response) {
+        super(request, response);
     }
 
     /**
@@ -33,20 +30,16 @@ abstract class UpdateConfigItemDisplayForm extends ConfigurationAction {
      * @return
      */
     RequestResult displayConfigItemForm(boolean addFlag) {
-        String loggingName;
-        String configJsp;
-        ConfigItemBeanManager manager = new ConfigItemBeanManager(configItems, factory);
         if (addFlag) {
-            manager.initialiseBean();
-            request.setAttribute("addFlag", true);
+            configItemBeanManager.initialiseBean();
             logger.info(String.format("Adding config item"));
         } else {
-            manager.getConfigItemIntoBean(configItems.getName());
-            request.setAttribute("addFlag", false);
+            String configItemName = request.getParameter("name");
+            configItemBeanManager.getConfigItemIntoBean(configItemName);
             request.setAttribute("configItem", configItems);
             logger.info(String.format("Editing config item <%s>", configItems.getName()));
         }
-        configJsp = "updateConfigItem.jsp";
-        return new RequestResult(request, configJsp, false);
+        request.setAttribute("addFlag", addFlag);
+        return new RequestResult(request, "updateConfigItem", false);
     }
 }

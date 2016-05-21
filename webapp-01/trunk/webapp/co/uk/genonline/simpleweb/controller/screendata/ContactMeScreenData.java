@@ -8,7 +8,7 @@ package co.uk.genonline.simpleweb.controller.screendata;
  * To change this template use File | Settings | File Templates.
  */
 public class ContactMeScreenData extends MistressScreenData {
-    public String getJSPname() {
-        return "contactMe.jsp";  // Need to extend for each jsp used
+    public ContactMeScreenData(String screenType) {
+        super(screenType);
     }
 }

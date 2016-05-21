@@ -20,7 +20,7 @@
 <%--<div id='colLeft'></div>
 <div id='colRight'></div>--%>
 <div id='colMiddle'>
-    <h1>xxx Lucifer's Dark Angel - Website Maintenance Screen</h1>
+    <h1>Lucifer's Dark Angel - Website Maintenance Screen</h1>
     <div>
         <table>
             <tr class='statusRow <%=((RequestStatus)session.getAttribute("requestStatus")).getStatusType()%>'>
