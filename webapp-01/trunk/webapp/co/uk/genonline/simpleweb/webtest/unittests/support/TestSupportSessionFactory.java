@@ -17,24 +17,26 @@ public class TestSupportSessionFactory {
     static File hibernateConfig = new File("/Users/thomassecondary/Projects/webapp-01(trunk)/webapp/co/uk/genonline/simpleweb/webtest/hibernate.cfg.xml");
     static SessionFactory factory;
 
-    public SessionFactory getSessionFactory() {
-        assertTrue(hibernateConfig.exists());
+    public static SessionFactory getSessionFactory() {
+        if (factory == null) {
+            assertTrue(hibernateConfig.exists());
 
-        Configuration configuration = new Configuration();
-        assertNotNull(configuration);
+            Configuration configuration = new Configuration();
+            assertNotNull(configuration);
 
-        configuration.configure(hibernateConfig);
+            configuration.configure(hibernateConfig);
 
-        ServiceRegistryBuilder builder = new ServiceRegistryBuilder();
-        builder.applySettings(configuration.getProperties());
-        ServiceRegistry serviceRegistry = builder.buildServiceRegistry();
+            ServiceRegistryBuilder builder = new ServiceRegistryBuilder();
+            builder.applySettings(configuration.getProperties());
+            ServiceRegistry serviceRegistry = builder.buildServiceRegistry();
 
-        assertNotNull(builder);
+            assertNotNull(builder);
 
-        assertNotNull(serviceRegistry);
+            assertNotNull(serviceRegistry);
 
-        factory = configuration.buildSessionFactory(serviceRegistry);
-        assertNotNull(factory);
+            factory = configuration.buildSessionFactory(serviceRegistry);
+            assertNotNull(factory);
+        }
 
         return factory;
     }

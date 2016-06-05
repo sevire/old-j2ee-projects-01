@@ -90,7 +90,7 @@ public class TestHelper {
             assertEquals(assertMessage(String.format("Page not found <%s> for screen <%s> at <%s>",
                     WebsiteTestData.getInstance().getTestDataHtmlFilename(screenName), screenName, host)),
                     200, page.getWebResponse().getStatusCode());
-            assertEquals(assertMessage(String.format("Title incorrect for <%s> at <%s>", screenName, host)), String.format("Lucifer's Dark Angel - %s", longTitle), page.getTitleText());
+            assertEquals(assertMessage(String.format("Title incorrect for <%s> at <%s>", screenName, host)), String.format("Manchester Mistress Princess Lucina - %s", longTitle), page.getTitleText());
             testWebsitePage(screenName, page, contentStrings);
         } else {
             assertEquals(assertMessage(String.format("Disabled screen found: screen <%s> at <%s>", screenName, host)),
@@ -133,7 +133,7 @@ public class TestHelper {
         TestHtmlPage page = new TestHtmlPage(getRequest("editIndex"));
 
         assertEquals(assertMessage("Title Incorrect for Edit Index page"), "Lucifer's Dark Angel - Edit Index", page.getPage().getTitleText());
-        assertEquals(assertMessage(String.format("Body id not correct")), ((TestHtmlPage)page).getBodyId(), "editIndex");
+        assertEquals(assertMessage(String.format("Body id not correct")), page.getBodyId(), "editIndex");
 
         DomNodeList<DomElement> table = page.getPage().getElementsByTagName("table");
         assertEquals(assertMessage("Too many table elements"), 1, table.size());
@@ -153,7 +153,7 @@ public class TestHelper {
         }
 
         // Hard code expected number until testing data is complete
-        assertEquals(assertMessage(String.format("%s, Wrong number of screens ", configuration)), 20, rows.size()-3-disabledCount);
+        assertEquals(assertMessage(String.format("%s, Wrong number of screens ", configuration)), 31, rows.size()-3-disabledCount);
 
         webClient.closeAllWindows();
     }

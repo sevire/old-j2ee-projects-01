@@ -1,16 +1,51 @@
 package unittests.support;
 
 import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
+import co.uk.genonline.simpleweb.model.bean.ScreensManager;
+import co.uk.genonline.simpleweb.model.bean.ScreensManagerNonCaching;
+import org.hibernate.SessionFactory;
 import org.junit.Assert;
 
 import java.sql.Timestamp;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Helps unit tests by providing variations of the ScreenEntity object
  */
 public class ScreensEntityTestSupport {
+    static SessionFactory factory = TestSupportSessionFactory.getSessionFactory();
+    static ScreensManager screensManager = new ScreensManagerNonCaching(factory);
+    static Integer[] disabledCases = {2,3,5,7,9,11};
 
-    public static ScreensEntity createScreen(
+    protected static Map<Integer, ScreensEntity> testScreenData = new HashMap<Integer, ScreensEntity>() {
+        {
+            // Set up 50 base records using a loop, then modify individual test cases to test different scenarios
+            for (int i=1; i<=50; i++) {
+                put(i, createScreen(-1, -1, "test-case-"+i, "", "Test Case " + i, "This is test case " + i, "Metadescription for test case "+i,
+                        true, false, new Timestamp(0), new Timestamp(0), "Mistress", 100, "mistress-05"));
+
+                if (Arrays.asList(disabledCases).contains(i)) {
+                    ScreensEntity screen = get(i);
+                    screen.setEnabledFlag(false);
+                }
+            }
+
+            // Make changes as required
+
+
+
+            // Now add to database
+
+            for (int i=1; i<=50; i++) {
+                screensManager.addScreen(get(i));
+            }
+        }
+    };
+
+
+        public static ScreensEntity createScreen(
             int id,
             int parentId,
             String name,
@@ -106,45 +141,10 @@ public class ScreensEntityTestSupport {
      * @return
      */
     public static ScreensEntity getTestCase(int caseNumber) {
-        ScreensEntity screen = null;
-        switch (caseNumber) {
-            case 1:
-                screen = createScreen(
-                        -1,
-                        0,
-                        "test-case-01",
-                        "The Test Case 1",
-                        "Test Case 1",
-                        "This is test case 1",
-                        "Metadata for test case 1",
-                        true,
-                        false,
-                        new Timestamp(0),
-                        new Timestamp(0),
-                        "Mistress",
-                        100,
-                        "mistress-05"
-                );
-            break;
-            case 2:
-                screen = createScreen(
-                        -1,
-                        0,
-                        "test-case-02",
-                        "The Test Case 2",
-                        "Test Case 2",
-                        "This is test case 2",
-                        "Metadata for test case 2",
-                        false,
-                        false,
-                        new Timestamp(0),
-                        new Timestamp(0),
-                        "Mistress",
-                        100,
-                        "mistress-04"
-                );
-                break;
-        }
-        return screen;
+        return testScreenData.get(caseNumber);
+    }
+
+    public static int getNumberOfTestCases() {
+        return testScreenData.size();
     }
 }

@@ -253,6 +253,11 @@ public class ScreensManagerNonCaching implements ScreensManager {
         return count == 1;
     }
 
+    /**
+     * Sets default values in a newly created ScreensEntity object.
+     *
+     * @param screen
+     */
     public void initialiseBean(ScreensEntity screen) {
         screen.setEnabledFlag(true);
         screen.setGalleryFlag(false);

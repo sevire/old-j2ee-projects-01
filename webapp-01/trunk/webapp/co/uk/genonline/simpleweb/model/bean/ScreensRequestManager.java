@@ -28,6 +28,20 @@ public class ScreensRequestManager {
         Map amendedMap = new HashMap();
         amendedMap.putAll(requestMap);
 
+        /**
+         * for enabledFlag and galleryFlag, if they weren't checked then they won't be included, so need to set them
+         * to ensure value isn't null in database or wrong value set.
+         */
+
+/*
+        if (amendedMap.get("enabledFlag") == null) {
+            amendedMap.put("enabledFlag", "false");
+        }
+        if (amendedMap.get("galleryFlag") == null) {
+            amendedMap.put("galleryFlag", "false");
+        }
+*/
+
         ScreenRequestDecorator requestDecorator = new ScreenRequestDecorator();
         ScreensEntity screen = new ScreensEntity();
         requestDecorator.fillBeanFromMap(screen, amendedMap);

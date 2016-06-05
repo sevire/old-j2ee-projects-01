@@ -39,7 +39,7 @@ abstract class UpdateScreenAction extends ScreenAction {
 
         logger.info(String.format(descriptor + "ing" + " screen <%s>", screenName));
         logger.debug("Screen contents from form...\n%s", request.getParameter("screenContents"));
-        boolean statusFlag = true;
+        boolean statusFlag;
 
         if (screenName.equals("")) {
             logger.info("Screen added/updated with blank name field - rejected");

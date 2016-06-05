@@ -55,6 +55,7 @@ public class WebHelper {
     }
 
     public String generateLinkBarCategory(String category) {
+        // ToDo: WebHelper - remove use of ScreenBeanManager
         ScreenBeanManager beanManager = new ScreenBeanManager(factory);
         java.util.List pages = beanManager.getCategoryScreens(category);
         String html = "";
@@ -95,6 +96,7 @@ public class WebHelper {
      * @param category
      * @return
      */
+    // ToDo: WebHelper getLinkRecords - Confirm whether can delete this.
     public List<WebLink> getLinkRecords(String category) {
         ScreenBeanManager beanManager = new ScreenBeanManager(factory);
         java.util.List pages = beanManager.getCategoryScreens(category);

@@ -36,6 +36,7 @@ public class EditIndexDisplayForm extends ScreenAction {
             }
         }
         request.setAttribute("editList", screenList);
+        // ToDo: EdIndDispForm: Check whether the status message logic is correct - why am I not using RequestResult status
         request.setAttribute("statusType", request.getSession().getAttribute("statusType"));
         request.setAttribute("statusMessage", request.getSession().getAttribute("statusMessage"));
         return new RequestResult(request, "editIndex.jsp", false);

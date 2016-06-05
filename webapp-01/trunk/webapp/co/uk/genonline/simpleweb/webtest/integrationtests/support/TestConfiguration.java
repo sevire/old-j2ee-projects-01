@@ -29,12 +29,13 @@ public enum TestConfiguration {
             true,
             WebsitePlatform.J2EE,
             "http://localhost:8080/",
-            "lda/"),
-    J2EE_REMOTE_LIVE(
+            "lda/");
+/*    J2EE_REMOTE_LIVE(
             false,
             WebsitePlatform.J2EE,
             "http://lucifersdarkangel.co.uk/",
             "lda/");
+*/
 
     private boolean enabledFlag;
     private WebsitePlatform platform;

@@ -143,7 +143,7 @@
             <h1>${screenData.screenData.screensEntityDecorator.screenTitleLong}</h1>
             ${screenData.screenData.screensEntityDecorator.screenContentsHtml}
         </div>
-        <core:if test='${(screenData.screenGallery.galleryData != null) && (screenDatascreenGallery.galleryData != "")}'>
+        <core:if test='${(screenData.screenGallery.galleryData != null) && (screenData.screenGallery.galleryData != "")}'>
             <div id="rg-gallery" class="rg-gallery">
                 <div class="rg-thumbs">
                     <!-- Elastislide Carousel Thumbnail Viewer -->

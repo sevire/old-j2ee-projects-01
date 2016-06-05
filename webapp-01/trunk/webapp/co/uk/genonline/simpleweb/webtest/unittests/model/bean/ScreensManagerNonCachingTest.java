@@ -1,49 +1,37 @@
 package unittests.model.bean;
 
 import co.uk.genonline.simpleweb.model.bean.*;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.BlockJUnit4ClassRunner;
 import support.TestSupportLogger;
 import unittests.support.ScreensEntityTestSupport;
+import unittests.support.TestSupport;
 import unittests.support.TestSupportSessionFactory;
 
 import java.util.List;
 
+@RunWith(value=BlockJUnit4ClassRunner.class)
 public class ScreensManagerNonCachingTest {
     private SessionFactory factory;
     ScreensManager manager;
-
-    /**
-     * Deletes all records from database before starting and after finishing. Ensures that tests can run after a failure without
-     * manual intervention.  Encapsulate in method to allow local instance of manager so that for main test
-     * a clean instance of manager is used.  Not sure this is strictly necessary or right but so far that is what I have
-     * decided to do.
-     */
-    private void testCleanup() {
-        System.out.println("Cleaning up...\n");
-
-        Session session = factory.getCurrentSession();
-        session.beginTransaction();
-        session.createQuery("delete from ScreensEntity").executeUpdate();
-        session.getTransaction().commit();
-    }
 
     @Before
     public void setUp() throws Exception {
         TestSupportLogger.initLogger();
         TestSupportSessionFactory supportSessionFactory = new TestSupportSessionFactory();
         this.factory = supportSessionFactory.getSessionFactory();
-        testCleanup();
+        TestSupport.clearDatabase(factory);
         manager = new ScreensManagerNonCaching(factory);
     }
 
     @After
     public void tearDown() throws Exception {
-        testCleanup();
+        TestSupport.clearDatabase(factory);
     }
 
     @Test

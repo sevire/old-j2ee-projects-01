@@ -49,6 +49,6 @@ public class SessionData {
     }
 
     public String toString() {
-        return String.format("SessionData: Session Cound: <%d>, Request number = <%d>, Screen object = <%s>, screen name = <%s>", sessionCount, this.requestCount, screen.toString(), screen.getName());
+        return String.format("SessionData: Session Cound: <%d>, Request number = <%d>, Screen object = <%s>", sessionCount, this.requestCount, screen);
     }
 }

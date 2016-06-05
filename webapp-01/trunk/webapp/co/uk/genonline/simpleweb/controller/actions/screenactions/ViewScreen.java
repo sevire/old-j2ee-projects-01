@@ -28,13 +28,13 @@ public class ViewScreen extends ScreenAction {
         String screenType;
 
         if (viewScreenName == null) {
-            response.setStatus(401);
+            response.setStatus(404);
             return new RequestResult(request, "error.jsp", false);
         } else {
             viewScreenRecord = screensManager.getScreen(viewScreenName, false);
             sessionData.setScreen(viewScreenRecord);
             if (viewScreenRecord == null) {
-                response.setStatus(401);
+                response.setStatus(404);
                 return new RequestResult(request, "error.jsp", false);
             } else {
                 screenType = viewScreenRecord.getScreenDisplayType();

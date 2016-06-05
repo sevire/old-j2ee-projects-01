@@ -1,5 +1,7 @@
 package unittests.support;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.mock.web.MockServletContext;
 import support.TestSupportLogger;
 
@@ -26,5 +28,20 @@ public class TestSupport {
 
 
         return context;
+    }
+
+    /**
+     * Deletes all records from database before starting and after finishing. Ensures that tests can run after a failure without
+     * manual intervention.  Encapsulate in method to allow local instance of manager so that for main test
+     * a clean instance of manager is used.  Not sure this is strictly necessary or right but so far that is what I have
+     * decided to do.
+     */
+    public static void clearDatabase(SessionFactory factory) {
+        System.out.println("Cleaning up...\n");
+
+        Session session = factory.getCurrentSession();
+        session.beginTransaction();
+        session.createQuery("delete from ScreensEntity").executeUpdate();
+        session.getTransaction().commit();
     }
 }
