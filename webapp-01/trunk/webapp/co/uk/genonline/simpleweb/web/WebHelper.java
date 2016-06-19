@@ -2,8 +2,7 @@ package co.uk.genonline.simpleweb.web;
 
 import co.uk.genonline.simpleweb.configuration.general.Configuration;
 import co.uk.genonline.simpleweb.controller.WebLogger;
-import co.uk.genonline.simpleweb.model.bean.ScreenBeanManager;
-import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
+import co.uk.genonline.simpleweb.model.bean.*;
 import co.uk.genonline.simpleweb.web.gallery.ImageFileFilter;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -56,11 +55,10 @@ public class WebHelper {
 
     public String generateLinkBarCategory(String category) {
         // ToDo: WebHelper - remove use of ScreenBeanManager
-        ScreenBeanManager beanManager = new ScreenBeanManager(factory);
-        java.util.List pages = beanManager.getCategoryScreens(category);
+        ScreensManager screensManager = new ScreensManagerNonCaching(factory);
+        List<ScreensEntity> screens = screensManager.getScreensByType(category, ScreensSortType.LINKBAR, false);
         String html = "";
-        for (Object o : pages) {
-            ScreensEntity screen = (ScreensEntity) o;
+        for (ScreensEntity screen : screens) {
             html += generateLinkBarItem(screen.getName(), screen.getScreenTitleShort()) ;
         }
         html = "<ul>" + html + "</ul>";
@@ -93,10 +91,11 @@ public class WebHelper {
      * Finds all the records in the database with a given category and creates a list of WebLinks which can then be used
      * to create a linkbar or similar.
      *
-     * @param category
+     * @param
      * @return
      */
     // ToDo: WebHelper getLinkRecords - Confirm whether can delete this.
+/*
     public List<WebLink> getLinkRecords(String category) {
         ScreenBeanManager beanManager = new ScreenBeanManager(factory);
         java.util.List pages = beanManager.getCategoryScreens(category);
@@ -111,6 +110,7 @@ public class WebHelper {
             return null;
         }
     }
+*/
 
     public void getScreenIntoBean(ScreensEntity screen, String screenName) {
         if (screen != null && screenName != null) {

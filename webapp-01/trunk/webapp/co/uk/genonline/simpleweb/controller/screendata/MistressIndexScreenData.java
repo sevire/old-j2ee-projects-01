@@ -73,7 +73,7 @@ public class MistressIndexScreenData extends MistressScreenData {
     }
 
     public void setScreenMistressTable() {
-        List<ScreensEntity> mistressScreens = screensManager.getScreensByType("Mistress");
+        List<ScreensEntity> mistressScreens = screensManager.getScreensByType("Mistress", false);
 
         Table tableElement = new Table();
         tableElement.setCSSClass("mistressLinks");

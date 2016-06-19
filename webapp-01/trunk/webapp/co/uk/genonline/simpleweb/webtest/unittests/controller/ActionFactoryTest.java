@@ -45,6 +45,7 @@ public class ActionFactoryTest extends TestCase {
          * Create new MockHttpRequest set up to reflect the needs of the test.
          */
         MockHttpServletRequest request = new MockHttpServletRequest(context);
+        request.getSession().setAttribute("sessionData", new SessionData(null));
 
         String queryString = parameterName + "=" + parameterValue;
 
@@ -78,7 +79,7 @@ public class ActionFactoryTest extends TestCase {
         String realPath = context.getRealPath("/");
         assertEquals("/Users/thomassecondary/Projects/webapp-01(trunk)/web", realPath);
 
-        factory = new TestSupportSessionFactory().getSessionFactory();
+        factory = TestSupportSessionFactory.getSessionFactory();
 
         context.setAttribute("sessionFactory", factory);
         assertSame(factory, context.getAttribute("sessionFactory"));

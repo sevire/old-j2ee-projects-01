@@ -120,10 +120,12 @@
                 <a>Princess Lucina</a>
                 <%=((MistressScreenData)request.getAttribute("screenData")).getScreenMenus().getMenu("lucinaLinkBar")%>
             </li>
+<%--
             <li>
                 <a>My Facilities</a>
                 <%=((MistressScreenData)request.getAttribute("screenData")).getScreenMenus().getMenu("chambersLinkBar")%>
             </li>
+--%>
             <li>
                 <a>Galleries</a>
                 <%=((MistressScreenData)request.getAttribute("screenData")).getScreenMenus().getMenu("galleryLinkBar")%>

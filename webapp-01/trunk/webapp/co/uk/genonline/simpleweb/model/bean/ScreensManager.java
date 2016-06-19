@@ -40,7 +40,7 @@ public interface ScreensManager {
      * @param sortType Indicates the order in which the screens are to be returned.
      * @return
      */
-    List<ScreensEntity> getScreensByType(String screenType, ScreensSortType sortType);
+    List<ScreensEntity> getScreensByType(String screenType, ScreensSortType sortType, boolean enabledOverride);
 
     /**
      * Variant without sortType as most of the time sort will be via sortKey to use in linkbars.
@@ -48,7 +48,7 @@ public interface ScreensManager {
      * @param screenType
      * @return
      */
-    List<ScreensEntity> getScreensByType(String screenType);
+    List<ScreensEntity> getScreensByType(String screenType, boolean enabledOverride);
 
     /**
      * Extracts list of objects contain all enabled screens, or all screens if enabledOverride flag is set.

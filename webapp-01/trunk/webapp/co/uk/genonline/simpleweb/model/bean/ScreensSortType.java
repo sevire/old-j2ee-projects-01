@@ -7,7 +7,8 @@ public enum ScreensSortType {
     DEFAULT(null),
     ADMIN_SCREEN("enabledFlag desc, screenType, sortKey, name"),
     LINKBAR("screenType, sortKey"),
-    NAME_ORDER("name");
+    NAME_ORDER("name"),
+    ENTRY_ORDER("id");
 
     private String sortClause;
 

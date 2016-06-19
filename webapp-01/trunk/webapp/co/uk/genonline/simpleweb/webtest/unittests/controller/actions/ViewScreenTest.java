@@ -11,6 +11,7 @@ import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
 import co.uk.genonline.simpleweb.model.bean.ScreensManager;
 import co.uk.genonline.simpleweb.model.bean.ScreensManagerNonCaching;
 import org.hibernate.SessionFactory;
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -19,7 +20,7 @@ import org.junit.runners.BlockJUnit4ClassRunner;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.mock.web.MockServletContext;
-import unittests.support.ScreensEntityTestSupport;
+import unittests.support.ScreensUnitTestData;
 import unittests.support.TestSupport;
 import unittests.support.TestSupportSessionFactory;
 
@@ -49,17 +50,23 @@ public class ViewScreenTest {
         RequestStatus requestStatus = new RequestStatus();
         request.getSession().setAttribute("requestStatus", requestStatus);
         response = new MockHttpServletResponse();
+
+        TestSupport.clearDatabase(factory);
+        ScreensUnitTestData.initialiseAndCheckTestData();
    }
+
+    @AfterClass
+    public static void afterAll() {
+        TestSupport.clearDatabase(factory);
+    }
 
     @Test
     public void testPerform1() {
         // Set up test record
-        ScreensEntity testScreen = ScreensEntityTestSupport.getTestCase(1);
-        manager.addScreen(testScreen);
-        String testScreenName = testScreen.getName();
+        ScreensEntity testScreen = ScreensUnitTestData.getTestCase(1);
 
         // Set up request to represent request for test case
-        request.setParameter("screen", "test-case-01");
+        TestSupport.testViewScreenRequestSetup(request, testScreen.getName());
         ViewScreen viewScreen = new ViewScreen(request, response);
         RequestResult requestResult = viewScreen.perform();
 
@@ -68,7 +75,7 @@ public class ViewScreenTest {
         Assert.assertFalse(requestResult.isRedirectFlag());
 
         Assert.assertNotNull(requestResult);
-        Assert.assertEquals("WEB-INF/mistress-05.jsp", requestResult.getNextRequest());
+        Assert.assertEquals("WEB-INF/mistress-02.jsp", requestResult.getNextRequest());
 
         MistressScreenData screenData = (MistressScreenData) request.getAttribute("screenData");
         Assert.assertNotNull(screenData);
@@ -76,29 +83,23 @@ public class ViewScreenTest {
         ScreenMenuBean screenMenuBean = screenData.getScreenMenus();
         String mistressMenu = screenMenuBean.getMenu("mistressLinkBar");
         Assert.assertNotNull(mistressMenu);
-
-        manager.deleteScreen(testScreenName);
     }
 
     @Test
     public void testPerform2() {
         // Set up test record
-        ScreensEntity testScreen = ScreensEntityTestSupport.getTestCase(2);
-        manager.addScreen(testScreen);
-        String testScreenName = testScreen.getName();
+        ScreensEntity testScreen = ScreensUnitTestData.getTestCase(2);
 
         // Set up request to represent request for test case
-        request.setParameter("screen", "test-case-02");
+        TestSupport.testViewScreenRequestSetup(request, testScreen.getName());
         ViewScreen viewScreen = new ViewScreen(request, response);
         RequestResult requestResult = viewScreen.perform();
 
-        Assert.assertEquals(401, response.getStatus());
+        Assert.assertEquals(404, response.getStatus());
 
         Assert.assertFalse(requestResult.isRedirectFlag());
 
         Assert.assertNotNull(requestResult);
         Assert.assertEquals("WEB-INF/error.jsp", requestResult.getNextRequest());
-
-        manager.deleteScreen(testScreenName);
     }
 }

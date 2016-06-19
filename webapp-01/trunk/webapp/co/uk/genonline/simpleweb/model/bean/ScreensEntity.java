@@ -169,6 +169,15 @@ public class ScreensEntity {
         this.screenDisplayType = screenDisplayType;
     }
 
+    /**
+     * Modified by TG.
+     *
+     * Removed test for modified and created date as I want the objects to be the same if the data is
+     * the same regardless of when they were created or last updated.
+     *
+     * @param o
+     * @return
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -178,11 +187,11 @@ public class ScreensEntity {
 
         if (id != that.id) return false;
         if (parentId != that.parentId) return false;
-        if (created != null ? !created.equals(that.created) : that.created != null) return false;
+        // **TG** if (created != null ? !created.equals(that.created) : that.created != null) return false;
         if (enabledFlag != null ? !enabledFlag.equals(that.enabledFlag) : that.enabledFlag != null) return false;
         if (galleryFlag != null ? !galleryFlag.equals(that.galleryFlag) : that.galleryFlag != null) return false;
         if (metaDescription != null ? !metaDescription.equals(that.metaDescription) : that.metaDescription != null) return false;
-        if (modified != null ? !modified.equals(that.modified) : that.modified != null) return false;
+        // **TG** if (modified != null ? !modified.equals(that.modified) : that.modified != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (screenContents != null ? !screenContents.equals(that.screenContents) : that.screenContents != null) return false;
         if (screenDisplayType != null ? !screenDisplayType.equals(that.screenDisplayType) : that.screenDisplayType != null) return false;

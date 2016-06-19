@@ -164,7 +164,7 @@ public class MistressScreenData extends ScreenData {
         screenMenus.setMenu("lucinaLinkBar", webHelper.generateLinkBarCategory("Lucina"));
         screenMenus.setMenu("chambersLinkBar", webHelper.generateLinkBarCategory("Chambers"));
         screenMenus.setMenu("mistressLinkBar", webHelper.generateLinkBarCategory("Mistress"));
-        screenMenus.setMenu("testimonialLinkBar", webHelper.generateLinkBarCategory("Testimonials"));
+        screenMenus.setMenu("testimonialLinkBar", webHelper.generateLinkBarCategory("Testimonial"));
         screenMenus.setMenu("galleryLinkBar", webHelper.generateLinkBarCategory("Gallery"));
     }
 

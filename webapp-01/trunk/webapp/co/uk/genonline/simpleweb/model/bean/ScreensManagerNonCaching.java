@@ -5,6 +5,7 @@ import org.hibernate.*;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -34,6 +35,7 @@ public class ScreensManagerNonCaching implements ScreensManager {
             enabledClause = " and enabledFlag is true";
         }
         screen = getScreenFromDatabase(String.format("from ScreensEntity s where name = '%s'%s", screenName, enabledClause));
+        cleanScreen(screen);
         return screen;
     }
 
@@ -42,6 +44,8 @@ public class ScreensManagerNonCaching implements ScreensManager {
             logger.error("Attempt to add screen with null or empty screenName");
             return false;
         } else {
+            // Update created timestamp to current time
+            screen.setCreated(new Timestamp(Calendar.getInstance().getTime().getTime()));
             if (saveScreenInDatabase(screen, false)) {
                 return true;
             } else {
@@ -51,10 +55,12 @@ public class ScreensManagerNonCaching implements ScreensManager {
     }
 
     public boolean updateScreen(ScreensEntity screen) {
-        if (screen.getName() == null || screen.getName().isEmpty()) {
+        if (screen.getName() == null || screen.getName().equals("")) {
             logger.error("Attempt to update screen with null or empty screenName");
             return false;
         } else {
+            // Update modified timestamp to current time
+            screen.setModified(new Timestamp(Calendar.getInstance().getTime().getTime()));
             if (saveScreenInDatabase(screen, true)) {
                 return true;
             } else {
@@ -63,13 +69,16 @@ public class ScreensManagerNonCaching implements ScreensManager {
         }
     }
 
-    public List<ScreensEntity> getScreensByType(String screenType, ScreensSortType sortType) {
-        String query = String.format("from ScreensEntity s where screenType = '%s' %s", screenType, sortType.getSortClause());
+    public List<ScreensEntity> getScreensByType(String screenType, ScreensSortType sortType, boolean enabledOverride) {
+        String enabledClause = enabledOverride ? "" : " and enabledFlag = true ";
+        String query = String.format("from ScreensEntity s where screenType = '%s'%s%s", screenType, enabledClause, sortType.getSortClause());
         return getScreensFromDatabase(query);
     }
 
-    public List<ScreensEntity> getScreensByType(String screenType) {
-        String query = String.format("from ScreensEntity s where screenType = '%s'", screenType);
+    public List<ScreensEntity> getScreensByType(String screenType, boolean enabledOverride) {
+        String enabledClause = enabledOverride ? "" : " and enabledFlag = true ";
+        String query = String.format("from ScreensEntity s where screenType = '%s'%s", screenType, enabledClause);
+
         List<ScreensEntity> screens;
         screens = getScreensFromDatabase(query);
         if (screens == null || screens.size() == 0) {
@@ -180,6 +189,7 @@ public class ScreensManagerNonCaching implements ScreensManager {
         if (error) {
             return null;
         } else {
+            cleanScreens(screens);
             return screens;
         }
     }
@@ -237,6 +247,33 @@ public class ScreensManagerNonCaching implements ScreensManager {
             logger.error(String.format("Wrong number of rows (%d) deleted when attempting to delete Screen %s", result, screenName));
         }
         return status;
+    }
+
+    /**
+     *  Checks values of fields in a ScreensEntity object and cleans things up, such as:
+     *  - Replaces null values in certain fields with default values to avoid causing crashes.  This is
+     *    a safety precaution but shouldn't happen often as database doesn't allow null values
+     *  - ??
+     */
+    private void cleanScreen(ScreensEntity screen) {
+        if (screen != null) {
+            if (screen.getEnabledFlag() == null) screen.setEnabledFlag(false);
+            if (screen.getGalleryFlag() == null) screen.setGalleryFlag(false);
+            if (screen.getCreated() == null) screen.setCreated(new Timestamp(0));
+            if (screen.getModified() == null) screen.setModified(new Timestamp(0));
+        }
+    }
+
+    /**
+     *  Checks values of fields in a ScreensEntity object and cleans things up, such as:
+     *  - Replaces null values in certain fields with default values to avoid causing crashes.  This is
+     *    a safety precaution but shouldn't happen often as database doesn't allow null values
+     *  - ??
+     */
+    private void cleanScreens(List<ScreensEntity> screens) {
+        for (ScreensEntity screen : screens) {
+            cleanScreen(screen);
+        }
     }
 
     private boolean isInDatabase(String screenName) {

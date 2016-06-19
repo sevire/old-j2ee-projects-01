@@ -9,10 +9,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import support.TestSupportLogger;
-import unittests.support.ScreensEntityTestSupport;
+import unittests.support.ScreensUnitTestData;
 import unittests.support.TestSupport;
 import unittests.support.TestSupportSessionFactory;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.List;
 
 @RunWith(value=BlockJUnit4ClassRunner.class)
@@ -36,7 +38,7 @@ public class ScreensManagerNonCachingTest {
 
     @Test
     public void testGetScreen() throws Exception {
-        ScreensEntity screen = ScreensEntityTestSupport.getTestScreensEntity("general-disabled", "testGS-01");
+        ScreensEntity screen = ScreensUnitTestData.getTestScreensEntity("general-disabled", "testGS-01");
 
         // Get screen before it exists to check get right result
         ScreensEntity screen1b = manager.getScreen("testGS-01", false);
@@ -71,18 +73,29 @@ public class ScreensManagerNonCachingTest {
 
     @Test
     public void testAddScreen() throws Exception {
-        ScreensEntity screen1 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testAS-01");
+        ScreensEntity screen1 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testAS-01");
 
         boolean status;
+        long timestampErrorMargin = 60000; // 60 Sec. This allows a check whether the created or modified timestamps have been updated
 
         // --- Scenarios ---
 
         // --- Scenario 1: Successful add screen
 
+        // Record time we are adding so we can see whether created time in database is similar to confirm correctly added
+        Timestamp created1 = new Timestamp(Calendar.getInstance().getTime().getTime());
         status = manager.addScreen(screen1);
         Assert.assertTrue(status);
 
         ScreensEntity screen2 = manager.getScreen("testAS-01", false);
+
+        // Check that Created Timestamp has been updated to a time "close" to the time recorded before adding screen
+        Timestamp created2 = screen2.getCreated();
+
+        long timeDiffMilliseconds = StrictMath.abs(created1.getTime() - created2.getTime());
+
+        Assert.assertTrue(String.format("Created time not updated: addTime <%d>, getTime <%d>",
+                created1.getTime(), created2.getTime()), timeDiffMilliseconds < timestampErrorMargin);
 
         // Check that retrieved screen is the same as the one added.
         Assert.assertEquals(screen1, screen2);
@@ -97,14 +110,14 @@ public class ScreensManagerNonCachingTest {
         // --- Scenario 2: Add with invalid or null name
 
         // First with empty name
-        ScreensEntity screen4 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "");
+        ScreensEntity screen4 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "");
         status = manager.addScreen(screen4);
         Assert.assertFalse(status);
 
         // Shouldn't need to clean up as database entry shouldn't be created.
 
         // Then with null name
-        ScreensEntity screen5 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", null);
+        ScreensEntity screen5 = ScreensUnitTestData.getTestScreensEntity("general-enabled", null);
         status = manager.addScreen(screen5);
         Assert.assertFalse(status);
 
@@ -112,7 +125,7 @@ public class ScreensManagerNonCachingTest {
 
         // --- Scenario 3: Add with screenName too long (20 max)
 
-        ScreensEntity screen6 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "012345678901234567890");
+        ScreensEntity screen6 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "012345678901234567890");
         status = manager.addScreen(screen6);
         Assert.assertFalse(status);
 
@@ -121,7 +134,7 @@ public class ScreensManagerNonCachingTest {
         // --- Scenario 4: Add duplicate screenName
 
         // First add record successfully
-        ScreensEntity screen7 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testAS-02");
+        ScreensEntity screen7 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testAS-02");
         status = manager.addScreen(screen7);
         Assert.assertTrue(status);
 
@@ -135,7 +148,7 @@ public class ScreensManagerNonCachingTest {
 
     @Test
     public void testUpdateScreen() throws Exception {
-        ScreensEntity screen1 = ScreensEntityTestSupport.getTestScreensEntity("general-disabled", "testUS-01");
+        ScreensEntity screen1 = ScreensUnitTestData.getTestScreensEntity("general-disabled", "testUS-01");
 
         boolean status;
 
@@ -151,6 +164,8 @@ public class ScreensManagerNonCachingTest {
         // Update screen changing screenTitleLong
 
         screen1.setScreenTitleLong("Update Screen Title");
+
+        Timestamp created1 = new Timestamp(Calendar.getInstance().getTime().getTime());
         status = manager.updateScreen(screen1);
         Assert.assertTrue(status);
 
@@ -160,6 +175,15 @@ public class ScreensManagerNonCachingTest {
 
         ScreensEntity screen2 = manager.getScreen("testUS-01", true);
         Assert.assertEquals("Update Screen Title", screen2.getScreenTitleLong());
+
+        // Check that Modified Timestamp has been updated to a time "close" to the time recorded before adding screen
+        Timestamp created2 = screen2.getCreated();
+
+        long timeDiffMilliseconds = StrictMath.abs(created1.getTime() - created2.getTime());
+
+        Assert.assertTrue(String.format("Created time not updated: addTime <%d>, getTime <%d>",
+                created1.getTime(), created2.getTime()), timeDiffMilliseconds < 60000);
+
 
         // Update screen changing enabledFlag
 
@@ -208,7 +232,7 @@ public class ScreensManagerNonCachingTest {
 
         // First add second record, then update first record to same screenName
 
-        ScreensEntity screen6 = ScreensEntityTestSupport.getTestScreensEntity("general-disabled", "testUS-02");
+        ScreensEntity screen6 = ScreensUnitTestData.getTestScreensEntity("general-disabled", "testUS-02");
         status = manager.addScreen(screen6);
         Assert.assertTrue(status);
 
@@ -226,16 +250,16 @@ public class ScreensManagerNonCachingTest {
 
         // Create records...
 
-        ScreensEntity screen01 = ScreensEntityTestSupport.getTestScreensEntity("general-disabled", "testGSBT-01");
-        ScreensEntity screen02 = ScreensEntityTestSupport.getTestScreensEntity("general-disabled", "testGSBT-02");
-        ScreensEntity screen03 = ScreensEntityTestSupport.getTestScreensEntity("general-disabled", "testGSBT-03");
-        ScreensEntity screen04 = ScreensEntityTestSupport.getTestScreensEntity("general-disabled", "testGSBT-04");
-        ScreensEntity screen05 = ScreensEntityTestSupport.getTestScreensEntity("general-disabled", "testGSBT-05");
-        ScreensEntity screen06 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testGSBT-06");
-        ScreensEntity screen07 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testGSBT-07");
-        ScreensEntity screen08 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testGSBT-08");
-        ScreensEntity screen09 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testGSBT-09");
-        ScreensEntity screen10 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testGSBT-10");
+        ScreensEntity screen01 = ScreensUnitTestData.getTestScreensEntity("general-disabled", "testGSBT-01");
+        ScreensEntity screen02 = ScreensUnitTestData.getTestScreensEntity("general-disabled", "testGSBT-02");
+        ScreensEntity screen03 = ScreensUnitTestData.getTestScreensEntity("general-disabled", "testGSBT-03");
+        ScreensEntity screen04 = ScreensUnitTestData.getTestScreensEntity("general-disabled", "testGSBT-04");
+        ScreensEntity screen05 = ScreensUnitTestData.getTestScreensEntity("general-disabled", "testGSBT-05");
+        ScreensEntity screen06 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testGSBT-06");
+        ScreensEntity screen07 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testGSBT-07");
+        ScreensEntity screen08 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testGSBT-08");
+        ScreensEntity screen09 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testGSBT-09");
+        ScreensEntity screen10 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testGSBT-10");
 
         // Set Screen Type for each record
 
@@ -278,7 +302,7 @@ public class ScreensManagerNonCachingTest {
 
         // Check that method returns the right screens
 
-        List<ScreensEntity> screens1 = manager.getScreensByType("Category-01");
+        List<ScreensEntity> screens1 = manager.getScreensByType("Category-01", true);
         Assert.assertEquals(3, screens1.size());
 
         for (ScreensEntity screen : screens1) {
@@ -286,16 +310,16 @@ public class ScreensManagerNonCachingTest {
         }
 
         // --- Test when no screens of given category.  Should return null
-        List<ScreensEntity> screens2 = manager.getScreensByType("XXXX");
+        List<ScreensEntity> screens2 = manager.getScreensByType("XXXX", true);
         Assert.assertNull(screens2);
 
         // --- Test when no category too long (>45).  Should return null
         List<ScreensEntity> screens3 =
-                manager.getScreensByType("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+                manager.getScreensByType("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", true);
         Assert.assertNull(screens3);
 
         // --- Test null category.  Should return null
-        List<ScreensEntity> screens4 = manager.getScreensByType(null);
+        List<ScreensEntity> screens4 = manager.getScreensByType(null, true);
         Assert.assertNull(screens4);
     }
 
@@ -308,16 +332,16 @@ public class ScreensManagerNonCachingTest {
 
         // Create records...
 
-        ScreensEntity screen01 = ScreensEntityTestSupport.getTestScreensEntity("general-disabled", "testGSBT-01");
-        ScreensEntity screen02 = ScreensEntityTestSupport.getTestScreensEntity("general-disabled", "testGSBT-02");
-        ScreensEntity screen03 = ScreensEntityTestSupport.getTestScreensEntity("general-disabled", "testGSBT-03");
-        ScreensEntity screen04 = ScreensEntityTestSupport.getTestScreensEntity("general-disabled", "testGSBT-04");
-        ScreensEntity screen05 = ScreensEntityTestSupport.getTestScreensEntity("general-disabled", "testGSBT-05");
-        ScreensEntity screen06 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testGSBT-06");
-        ScreensEntity screen07 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testGSBT-07");
-        ScreensEntity screen08 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testGSBT-08");
-        ScreensEntity screen09 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testGSBT-09");
-        ScreensEntity screen10 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testGSBT-10");
+        ScreensEntity screen01 = ScreensUnitTestData.getTestScreensEntity("general-disabled", "testGSBT-01");
+        ScreensEntity screen02 = ScreensUnitTestData.getTestScreensEntity("general-disabled", "testGSBT-02");
+        ScreensEntity screen03 = ScreensUnitTestData.getTestScreensEntity("general-disabled", "testGSBT-03");
+        ScreensEntity screen04 = ScreensUnitTestData.getTestScreensEntity("general-disabled", "testGSBT-04");
+        ScreensEntity screen05 = ScreensUnitTestData.getTestScreensEntity("general-disabled", "testGSBT-05");
+        ScreensEntity screen06 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testGSBT-06");
+        ScreensEntity screen07 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testGSBT-07");
+        ScreensEntity screen08 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testGSBT-08");
+        ScreensEntity screen09 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testGSBT-09");
+        ScreensEntity screen10 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testGSBT-10");
 
         // Set Screen Type for each record
 
@@ -360,7 +384,7 @@ public class ScreensManagerNonCachingTest {
 
         // Check that method returns the right screens
 
-        List<ScreensEntity> screens1 = manager.getScreensByType("Category-01", ScreensSortType.ADMIN_SCREEN);
+        List<ScreensEntity> screens1 = manager.getScreensByType("Category-01", ScreensSortType.ADMIN_SCREEN, true);
         Assert.assertEquals(3, screens1.size());
 
         System.out.println((new ScreensEntityDecorator(screens1.get(0)).toString()));
@@ -371,7 +395,7 @@ public class ScreensManagerNonCachingTest {
         Assert.assertEquals(("testGSBT-06"), screens1.get(1).getName());
         Assert.assertEquals(("testGSBT-01"), screens1.get(2).getName());
 
-        List<ScreensEntity> screens2 = manager.getScreensByType("Category-02", ScreensSortType.ADMIN_SCREEN);
+        List<ScreensEntity> screens2 = manager.getScreensByType("Category-02", ScreensSortType.ADMIN_SCREEN,true );
         Assert.assertEquals(3, screens2.size());
 
         System.out.println((new ScreensEntityDecorator(screens2.get(0)).toString()));
@@ -383,16 +407,16 @@ public class ScreensManagerNonCachingTest {
         Assert.assertEquals(("testGSBT-04"), screens2.get(2).getName());
 
         // --- Test when no screens of given category.  Should return null
-        List<ScreensEntity> screens3 = manager.getScreensByType("XXXX");
+        List<ScreensEntity> screens3 = manager.getScreensByType("XXXX", true);
         Assert.assertNull(screens3);
 
         // --- Test when no category too long (>45).  Should return null
         List<ScreensEntity> screens4 =
-                manager.getScreensByType("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+                manager.getScreensByType("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", true);
         Assert.assertNull(screens4);
 
         // --- Test null category.  Should return null
-        List<ScreensEntity> screens5 = manager.getScreensByType(null);
+        List<ScreensEntity> screens5 = manager.getScreensByType(null, true);
         Assert.assertNull(screens5);
     }
 
@@ -405,16 +429,16 @@ public class ScreensManagerNonCachingTest {
 
         // Create records...
 
-        ScreensEntity screen01 = ScreensEntityTestSupport.getTestScreensEntity("general-disabled", "testGAS-01");
-        ScreensEntity screen02 = ScreensEntityTestSupport.getTestScreensEntity("general-disabled", "testGAS-02");
-        ScreensEntity screen03 = ScreensEntityTestSupport.getTestScreensEntity("general-disabled", "testGAS-03");
-        ScreensEntity screen04 = ScreensEntityTestSupport.getTestScreensEntity("general-disabled", "testGAS-04");
-        ScreensEntity screen05 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testGAS-05");
-        ScreensEntity screen06 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testGAS-06");
-        ScreensEntity screen07 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testGAS-07");
-        ScreensEntity screen08 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testGAS-08");
-        ScreensEntity screen09 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testGAS-09");
-        ScreensEntity screen10 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testGAS-10");
+        ScreensEntity screen01 = ScreensUnitTestData.getTestScreensEntity("general-disabled", "testGAS-01");
+        ScreensEntity screen02 = ScreensUnitTestData.getTestScreensEntity("general-disabled", "testGAS-02");
+        ScreensEntity screen03 = ScreensUnitTestData.getTestScreensEntity("general-disabled", "testGAS-03");
+        ScreensEntity screen04 = ScreensUnitTestData.getTestScreensEntity("general-disabled", "testGAS-04");
+        ScreensEntity screen05 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testGAS-05");
+        ScreensEntity screen06 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testGAS-06");
+        ScreensEntity screen07 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testGAS-07");
+        ScreensEntity screen08 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testGAS-08");
+        ScreensEntity screen09 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testGAS-09");
+        ScreensEntity screen10 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testGAS-10");
 
         // Set Screen Type for each record
 
@@ -512,16 +536,16 @@ public class ScreensManagerNonCachingTest {
 
         // Create records...
 
-        ScreensEntity screen01 = ScreensEntityTestSupport.getTestScreensEntity("general-disabled", "testGASN-01");
-        ScreensEntity screen02 = ScreensEntityTestSupport.getTestScreensEntity("general-disabled", "testGASN-02");
-        ScreensEntity screen03 = ScreensEntityTestSupport.getTestScreensEntity("general-disabled", "testGASN-03");
-        ScreensEntity screen04 = ScreensEntityTestSupport.getTestScreensEntity("general-disabled", "testGASN-04");
-        ScreensEntity screen05 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testGASN-05");
-        ScreensEntity screen06 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testGASN-06");
-        ScreensEntity screen07 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testGASN-07");
-        ScreensEntity screen08 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testGASN-08");
-        ScreensEntity screen09 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testGASN-09");
-        ScreensEntity screen10 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testGASN-10");
+        ScreensEntity screen01 = ScreensUnitTestData.getTestScreensEntity("general-disabled", "testGASN-01");
+        ScreensEntity screen02 = ScreensUnitTestData.getTestScreensEntity("general-disabled", "testGASN-02");
+        ScreensEntity screen03 = ScreensUnitTestData.getTestScreensEntity("general-disabled", "testGASN-03");
+        ScreensEntity screen04 = ScreensUnitTestData.getTestScreensEntity("general-disabled", "testGASN-04");
+        ScreensEntity screen05 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testGASN-05");
+        ScreensEntity screen06 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testGASN-06");
+        ScreensEntity screen07 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testGASN-07");
+        ScreensEntity screen08 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testGASN-08");
+        ScreensEntity screen09 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testGASN-09");
+        ScreensEntity screen10 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testGASN-10");
 
         // Set Screen Type for each record
 
@@ -630,7 +654,7 @@ public class ScreensManagerNonCachingTest {
 
     @Test
     public void testDeleteScreen() throws Exception {
-        ScreensEntity screen1 = ScreensEntityTestSupport.getTestScreensEntity("general-disabled", "testDS-01");
+        ScreensEntity screen1 = ScreensUnitTestData.getTestScreensEntity("general-disabled", "testDS-01");
         // Check that screen was correctly instantiated.
         Assert.assertEquals("testDS-01", screen1.getName());
 
@@ -662,16 +686,16 @@ public class ScreensManagerNonCachingTest {
 
         // Create records...
 
-        ScreensEntity screen01 = ScreensEntityTestSupport.getTestScreensEntity("general-disabled", "testDS-01");
-        ScreensEntity screen02 = ScreensEntityTestSupport.getTestScreensEntity("general-disabled", "testDS-02");
-        ScreensEntity screen03 = ScreensEntityTestSupport.getTestScreensEntity("general-disabled", "testDS-03");
-        ScreensEntity screen04 = ScreensEntityTestSupport.getTestScreensEntity("general-disabled", "testDS-04");
-        ScreensEntity screen05 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testDS-05");
-        ScreensEntity screen06 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testDS-06");
-        ScreensEntity screen07 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testDS-07");
-        ScreensEntity screen08 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testDS-08");
-        ScreensEntity screen09 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testDS-09");
-        ScreensEntity screen10 = ScreensEntityTestSupport.getTestScreensEntity("general-enabled", "testDS-10");
+        ScreensEntity screen01 = ScreensUnitTestData.getTestScreensEntity("general-disabled", "testDS-01");
+        ScreensEntity screen02 = ScreensUnitTestData.getTestScreensEntity("general-disabled", "testDS-02");
+        ScreensEntity screen03 = ScreensUnitTestData.getTestScreensEntity("general-disabled", "testDS-03");
+        ScreensEntity screen04 = ScreensUnitTestData.getTestScreensEntity("general-disabled", "testDS-04");
+        ScreensEntity screen05 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testDS-05");
+        ScreensEntity screen06 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testDS-06");
+        ScreensEntity screen07 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testDS-07");
+        ScreensEntity screen08 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testDS-08");
+        ScreensEntity screen09 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testDS-09");
+        ScreensEntity screen10 = ScreensUnitTestData.getTestScreensEntity("general-enabled", "testDS-10");
 
         // Set Screen Type and sortKeyfor each record
 
