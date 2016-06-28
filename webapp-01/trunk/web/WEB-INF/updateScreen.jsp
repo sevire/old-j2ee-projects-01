@@ -69,7 +69,7 @@
                         <label>Screen Title Long:</label>
                     </td>
                     <td>
-                        <input type='text' name='screenTitleLong' value="${helper.screen.screenTitleLong}">
+                        <input type='text' name='screenTitleLong' value="${screen.screenTitleLong}">
                     </td>
                 </tr>
                 <tr>

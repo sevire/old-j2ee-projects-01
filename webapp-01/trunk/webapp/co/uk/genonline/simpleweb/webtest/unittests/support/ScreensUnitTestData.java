@@ -94,9 +94,10 @@ public class ScreensUnitTestData {
     static void initData() {
         testScreenData = new HashMap<Integer, ScreensEntity>();
         // Set up 50 base records using a loop, then modify individual test cases to test different scenarios
+        // Use i for sort key which is a little hack to allow the code to know which original test case a db record is from
         for (int i = 1; i <= 50; i++) {
             testScreenData.put(i, createScreen(-1, -1, "test-case-" + i, "", "", "", "Metadescription for test case " + i,
-                    true, false, new Timestamp(0), new Timestamp(0), "", 0, ""));
+                    true, false, new Timestamp(0), new Timestamp(0), "", i, ""));
 
             // Set up disabled screens
             if (Arrays.asList(disabledCases).contains(i)) {
@@ -241,10 +242,10 @@ public class ScreensUnitTestData {
 
         for (int i = 1; i <= 50; i++) {
             boolean status = screensManager.addScreen(testScreenData.get(i));
-            if (Arrays.asList(nullScreenType).contains(i)) {
-                Assert.assertFalse(String.format("Failure to add test record <%d>", i), status);
-            } else {
+            if (ScreensUnitTestData.testCaseShouldBeInDatabase(i)) {
                 Assert.assertTrue(String.format("Failure to add test record <%d>", i), status);
+            } else {
+                Assert.assertFalse(String.format("Test record should have failed but didn't <%d>", i), status);
             }
         }
     }
@@ -499,10 +500,9 @@ public class ScreensUnitTestData {
      * @return
      */
     public static boolean testCaseShouldBeInDatabase(int i) {
-        if (Arrays.asList(nullEnabledFlagCases).contains(i) ||
-                Arrays.asList(nullGalleryFlagCases).contains(i) ||
-                Arrays.asList(nullScreenType).contains(i) ||
-                Arrays.asList(mistressNullScreenDisplayType).contains(i)) {
+        // At time of writing (my belief is that) only cases with null ScreenType will fail
+
+        if (Arrays.asList(nullScreenType).contains(i)) {
             return false;
         } else {
             return true;

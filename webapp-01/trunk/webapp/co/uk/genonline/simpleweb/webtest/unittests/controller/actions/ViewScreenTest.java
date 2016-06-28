@@ -66,7 +66,7 @@ public class ViewScreenTest {
         ScreensEntity testScreen = ScreensUnitTestData.getTestCase(1);
 
         // Set up request to represent request for test case
-        TestSupport.testViewScreenRequestSetup(request, testScreen.getName());
+        TestSupport.viewScreenRequestSetup(request, testScreen.getName());
         ViewScreen viewScreen = new ViewScreen(request, response);
         RequestResult requestResult = viewScreen.perform();
 
@@ -91,7 +91,7 @@ public class ViewScreenTest {
         ScreensEntity testScreen = ScreensUnitTestData.getTestCase(2);
 
         // Set up request to represent request for test case
-        TestSupport.testViewScreenRequestSetup(request, testScreen.getName());
+        TestSupport.viewScreenRequestSetup(request, testScreen.getName());
         ViewScreen viewScreen = new ViewScreen(request, response);
         RequestResult requestResult = viewScreen.perform();
 

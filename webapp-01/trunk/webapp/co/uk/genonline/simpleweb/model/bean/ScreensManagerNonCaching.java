@@ -203,26 +203,33 @@ public class ScreensManagerNonCaching implements ScreensManager {
     private boolean saveScreenInDatabase(ScreensEntity screen, boolean updateFlag) {
         boolean status = true; //true means success
         Session session = sessionFactory.getCurrentSession();
-        Transaction transaction = session.beginTransaction();
-        if (updateFlag) {
-            try {
-                session.update(screen);
-                transaction.commit();
-            }
-            catch (HibernateException e) {
-                logger.error("Error updating screen <%s>, error = '%s'", screen.getName(), e.getMessage());
-                transaction.rollback();
-                status = false;
-            }
-        } else {
-            try {
-                session.save(screen);
-                transaction.commit();
-            }
-            catch (HibernateException e) {
-                logger.error("Error adding screen <%s>, error = '%s'", screen.getName(), e.getMessage());
-                transaction.rollback();
-                status = false;
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+        }
+        catch (Exception e) {
+            logger.error("Error starting transaction, error message: %s", e.getMessage());
+            status = false;
+        }
+        if (status) {
+            if (updateFlag) {
+                try {
+                    session.update(screen);
+                    transaction.commit();
+                } catch (HibernateException e) {
+                    logger.error("Error updating screen <%s>, error = '%s'", screen.getName(), e.getMessage());
+                    transaction.rollback();
+                    status = false;
+                }
+            } else {
+                try {
+                    session.save(screen);
+                    transaction.commit();
+                } catch (HibernateException e) {
+                    logger.error("Error adding screen <%s>, error = '%s'", screen.getName(), e.getMessage());
+                    transaction.rollback();
+                    status = false;
+                }
             }
         }
         return status; // Not sure how to detect an error!
@@ -309,7 +316,6 @@ public class ScreensManagerNonCaching implements ScreensManager {
 
         screen.setId(0);
     }
-
 
     /**
      * NOTE: Main use is in testing and debugging.  Quite resource hungry so should be used in live code.

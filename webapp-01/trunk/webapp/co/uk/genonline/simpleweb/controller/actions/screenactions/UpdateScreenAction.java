@@ -57,6 +57,7 @@ abstract class UpdateScreenAction extends ScreenAction {
             } else {
                 logger.info("Re-displaying update screen");
             }
+            request.setAttribute("screen", updatedScreen);
             request.setAttribute("addFlag", addFlag);
             return new RequestResult(request, "updateScreen.jsp", false);
         } else {

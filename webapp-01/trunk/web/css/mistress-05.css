@@ -86,7 +86,8 @@ div.header-image {
   vertical-align: top; }
 
 div.header-image img {
-  max-width: 75px; }
+  max-width: 75px;
+  max-height: 115px; }
 
 div#upperHeader {
   float: left;
@@ -314,3 +315,5 @@ table.mistressLinks {
     width: 250px; }
     ul.mainLinkBar li img {
       width: 50px; } }
+
+/*# sourceMappingURL=mistress-05.css.map */

@@ -38,7 +38,6 @@ public abstract class UpdateScreenDisplayForm extends ScreenAction {
         } else {
             String screenName = request.getParameter("screen");
             screenRecord = screensManager.getScreen(screenName, true);
-            sessionData.setScreen(screenRecord);
             logger.info(String.format("Editing screen <%s>", screenRecord.getName()));
         }
         sessionData.setScreen(screenRecord); // Replaces screen in session data so will be persisted

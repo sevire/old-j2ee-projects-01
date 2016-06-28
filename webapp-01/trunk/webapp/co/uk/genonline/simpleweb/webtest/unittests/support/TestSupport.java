@@ -2,6 +2,7 @@ package unittests.support;
 
 import co.uk.genonline.simpleweb.controller.RequestStatus;
 import co.uk.genonline.simpleweb.controller.SessionData;
+import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -51,13 +52,47 @@ public class TestSupport {
         session.getTransaction().commit();
     }
 
-    public static void testViewScreenRequestSetup(MockHttpServletRequest request, String screenName) {
+    public static void viewScreenRequestSetup(MockHttpServletRequest request, String screenName) {
         String queryString = "screen=" + screenName;
         request.setQueryString(queryString);
         request.setRequestURI("/view");
         request.setServletPath("/view");
         request.setMethod("get");
         request.setParameter("screen", screenName);
+    }
+
+    public static void addScreenRequestSetup(MockHttpServletRequest request, ScreensEntity screen) {
+        String requestURI = "/Controller.do";
+        request.setRequestURI(requestURI);
+        request.setServletPath(requestURI);
+        request.setMethod("post");
+
+        // Used to indicate which action to process. Not sure what value it should be, just needs to be not null
+        request.setParameter("addButton", "");
+
+        requestSetupFromScreen(request, screen);
+    }
+
+    /**
+     * Used to populate a Request object as though it came from an add or update screen form.  Set attributes in
+     * request according to what the value is in ScreensEntity object.
+     *
+     * May want to move this to a live Class (ScreensEntityDecorator maybe?)
+     *
+     * ToDo: Decide whether to move requestSetupFromScreen method into a live Class
+     */
+    public static void requestSetupFromScreen(MockHttpServletRequest request, ScreensEntity screen) {
+        request.setParameter("name", screen.getName()==null ? "" : screen.getName());
+        request.setParameter("sortKey", screen.getSortKey().toString()==null ? "" : screen.getSortKey().toString());
+        request.setParameter("screenTitleShort", screen.getScreenTitleShort()==null ? "" : screen.getScreenTitleShort());
+        request.setParameter("screenTitleLong", screen.getScreenTitleLong()==null ? "" : screen.getScreenTitleLong());
+        request.setParameter("screenType", screen.getScreenType()==null ? "" : screen.getScreenType());
+        request.setParameter("screenDisplayType", screen.getScreenDisplayType()==null ? "" : screen.getScreenDisplayType());
+        request.setParameter("screenContents", screen.getScreenContents()==null ? "" : screen.getScreenContents());
+        request.setParameter("metaDescription", screen.getMetaDescription()==null ? "" : screen.getMetaDescription());
+
+        request.setParameter("enabledFlag", (screen.getEnabledFlag() != null && screen.getEnabledFlag()) ? "true" : "");
+        request.setParameter("galleryFlag", (screen.getGalleryFlag() != null && screen.getGalleryFlag()) ? "true" : "");
     }
 
     public static MockHttpServletRequest getTestRequest(ServletContext context) {
