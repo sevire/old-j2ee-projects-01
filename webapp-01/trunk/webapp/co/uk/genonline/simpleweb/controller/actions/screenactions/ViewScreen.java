@@ -25,7 +25,7 @@ public class ViewScreen extends ScreenAction {
         String viewScreenName = request.getParameter("screen");
         ScreensEntity viewScreenRecord;
 
-        String screenType;
+        String screenDisplayType;
 
         if (viewScreenName == null) {
             response.setStatus(404);
@@ -37,14 +37,14 @@ public class ViewScreen extends ScreenAction {
                 response.setStatus(404);
                 return new RequestResult(request, "error.jsp", false);
             } else {
-                screenType = viewScreenRecord.getScreenDisplayType();
-                logger.debug(String.format("Screen = <%s>, display type = <%s>", sessionData.getScreen().getName(), screenType));
+                screenDisplayType = viewScreenRecord.getScreenDisplayType();
+                logger.debug(String.format("Screen = <%s>, display type = <%s>", sessionData.getScreen().getName(), screenDisplayType));
 
                 /**
                  * The screen type determines which ScreenData object is used to collect the data together to be
                  * rendered.  The ScreenData object tell us which JSP to use to render the data.
                  */
-                ScreenData screenData = ScreenDataFactory.getScreenData(screenType);
+                ScreenData screenData = ScreenDataFactory.getScreenData(screenDisplayType);
 
                 /**
                  * Request result will tell us whether to forward to a JSP for rendering (when just viewing data) or whether to

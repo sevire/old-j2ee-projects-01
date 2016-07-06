@@ -222,9 +222,10 @@ public class ScreensEntity {
         return result;
     }
 
-/*
     public String toString() {
-        int contentLength = getScreenContents().length();
+        String contents = getScreenContents();
+        contents = contents == null ? "" : contents;
+        int contentLength =  contents.length();
         String included = contentLength > 10 ? getScreenContents().substring(0,9) : getScreenContents();
 
         return String.format("ScreensEntity::id:%d, name:%s, short:%s, long:%s, text:<%s>",
@@ -234,5 +235,4 @@ public class ScreensEntity {
                 getScreenTitleLong(),
                 included);
     }
-*/
 }

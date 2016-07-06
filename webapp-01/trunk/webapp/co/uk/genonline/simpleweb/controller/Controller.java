@@ -78,7 +78,7 @@ public class Controller extends HttpServlet {
      */
     public void init() {
         ServletContext context = getServletContext();
-        Level level = Level.ALL;
+        Level level;
         if (context == null) {
             logger.warn("null Context while setting logger level, setting to ALL");
         } else {

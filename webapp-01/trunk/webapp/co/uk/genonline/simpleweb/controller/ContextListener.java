@@ -91,7 +91,7 @@ public class ContextListener implements ServletContextListener {
             System.out.format("BeforeLogging:getAppender: Start of try\n");
             System.out.format("BeforeLogging:getAppender: before new RollingFileAppender\n");
             appender = new RollingFileAppender(
-                    new PatternLayout("%-5p %c %t%n%29d - %m%n"),
+                    new PatternLayout("%-5p %c{1} %t %29d - %m%n"),
                     event.getServletContext().getRealPath(fileName), true
             );
             System.out.format("BeforeLogging:getAppender: after new RollingFileAppender\n");

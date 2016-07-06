@@ -17,9 +17,9 @@ import java.util.List;
  * caching version of the ScreensManager but for now I will keep things simple and focussed.
  */
 public class ScreensManagerNonCaching implements ScreensManager {
-    WebLogger logger = new WebLogger();
+    private WebLogger logger = new WebLogger();
 
-    SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     public ScreensManagerNonCaching(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
@@ -46,11 +46,7 @@ public class ScreensManagerNonCaching implements ScreensManager {
         } else {
             // Update created timestamp to current time
             screen.setCreated(new Timestamp(Calendar.getInstance().getTime().getTime()));
-            if (saveScreenInDatabase(screen, false)) {
-                return true;
-            } else {
-                return false;
-            }
+            return saveScreenInDatabase(screen, false);
         }
     }
 
@@ -61,11 +57,7 @@ public class ScreensManagerNonCaching implements ScreensManager {
         } else {
             // Update modified timestamp to current time
             screen.setModified(new Timestamp(Calendar.getInstance().getTime().getTime()));
-            if (saveScreenInDatabase(screen, true)) {
-                return true;
-            } else {
-                return false;
-            }
+            return saveScreenInDatabase(screen, true);
         }
     }
 
@@ -152,55 +144,87 @@ public class ScreensManagerNonCaching implements ScreensManager {
      * @return Returned screen or null if not found.
      */
     private ScreensEntity getScreenFromDatabase(String hqlQuery) {
+        logger.trace("getScreenFromDatabase start : hqlQuery = <%s>", hqlQuery);
         Session session = sessionFactory.getCurrentSession();
-        Transaction transaction = session.getTransaction();
-        transaction.begin();
-        ScreensEntity screen = (ScreensEntity)session.createQuery(hqlQuery).uniqueResult();
+        ScreensEntity screen;
+        Transaction transaction = null;
         try {
+            transaction = session.beginTransaction();
+            logger.debug("getScreenFromDatabase: Have begun transaction, transaction is <%s>", transaction.toString());
+
+            screen = (ScreensEntity)session.createQuery(hqlQuery).uniqueResult();
+            logger.debug("getScreenFromDatabase: About to commit transaction, transaction is <%s>", transaction.toString());
             transaction.commit();
         } catch (HibernateException e) {
+            transaction.rollback();
             logger.error(String.format("Hibernate error reading screen, error is %s", e.getMessage()));
-            return null;
+            screen = null;
         }
+
+        logger.trace("getScreenFromDatabase end, returning screen <%s>",
+                screen == null ? "null" : screen.toString());
         return screen;
     }
 
     private List<ScreensEntity> getScreensFromDatabase(String hqlQuery) {
+        logger.trace("getScreensFromDatabase start : hqlQuery = <%s>", hqlQuery);
         boolean error = false;
         Session session = sessionFactory.getCurrentSession();
         List<ScreensEntity> screens = new ArrayList<ScreensEntity>();
-        Transaction transaction = session.getTransaction();
-        transaction.begin();
-        Query query = session.createQuery(hqlQuery);
-        List records = query.list();
-        transaction.commit();
+        Transaction transaction = null;
+        List records;
 
-        // Avoids unchecked casting warning from compiler.  Not sure how necessary this is!
-        for (Object record : records) {
-            if (!error) {
-                if (record instanceof ScreensEntity) {
-                    ScreensEntity screen = (ScreensEntity) record;
-                    screens.add(screen);
-                } else {
-                    error = true;
+        try {
+            transaction = session.beginTransaction();
+
+            logger.debug("getScreensFromDatabase: Have begun transaction, transaction is <%s>", transaction.toString());
+            Query query = session.createQuery(hqlQuery);
+            records = query.list();
+            logger.debug("getScreensFromDatabase: About to commit transaction, transaction is <%s>", transaction.toString());
+            transaction.commit();
+        } catch (HibernateException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            logger.error(String.format("Hibernate error reading screens, error is %s", e.getMessage()));
+            records = null;
+        }
+
+        if (records != null) {
+
+            // Avoids unchecked casting warning from compiler.  Not sure how necessary this is!
+            for (Object record : records) {
+                if (!error) {
+                    if (record instanceof ScreensEntity) {
+                        ScreensEntity screen = (ScreensEntity) record;
+                        screens.add(screen);
+                    } else {
+                        error = true;
+                    }
                 }
             }
+            if (error) {
+                screens = null;
+            } else {
+                cleanScreens(screens);
+            }
+            logger.trace(String.format("getScreenFromDatabase end, returning <%d> screens",
+                    screens == null ? -1 : screens.size()));
         }
-        if (error) {
-            return null;
-        } else {
-            cleanScreens(screens);
-            return screens;
-        }
+        return screens;
     }
 
     /**
      * Adds or updates Screens record in database.
      * @param screen ScreensEntity object to be saved
      * @param updateFlag If false, Add record, if true, Update record
-     * @return
+     * @return Returns true if successful, false if an error
      */
     private boolean saveScreenInDatabase(ScreensEntity screen, boolean updateFlag) {
+        logger.trace("saveScreenInDatabase start : screen = <%s>, updateFlag <%b>",
+                screen == null ? "null" : screen.toString(),
+                Boolean.toString(updateFlag));
+
         boolean status = true; //true means success
         Session session = sessionFactory.getCurrentSession();
         Transaction transaction = null;
@@ -217,7 +241,9 @@ public class ScreensManagerNonCaching implements ScreensManager {
                     session.update(screen);
                     transaction.commit();
                 } catch (HibernateException e) {
-                    logger.error("Error updating screen <%s>, error = '%s'", screen.getName(), e.getMessage());
+                    logger.error("Error updating screen <%s>, error = '%s'",
+                            screen == null ? "null" : screen.getName(),
+                            e.getMessage());
                     transaction.rollback();
                     status = false;
                 }
@@ -226,7 +252,9 @@ public class ScreensManagerNonCaching implements ScreensManager {
                     session.save(screen);
                     transaction.commit();
                 } catch (HibernateException e) {
-                    logger.error("Error adding screen <%s>, error = '%s'", screen.getName(), e.getMessage());
+                    logger.error("Error adding screen <%s>, error = '%s'",
+                            screen == null ? "null" : screen.getName(),
+                            e.getMessage());
                     transaction.rollback();
                     status = false;
                 }
@@ -245,13 +273,12 @@ public class ScreensManagerNonCaching implements ScreensManager {
         transaction.commit();
         if (result == 1) {
             logger.info("Screen %s deleted", screenName);
-
-            return true;
         } else if (result == 0) {
             logger.error("Screen %s was not deleted", screenName);
-            return false;
+            status = false;
         } else {
             logger.error(String.format("Wrong number of rows (%d) deleted when attempting to delete Screen %s", result, screenName));
+            status = false;
         }
         return status;
     }
@@ -300,7 +327,7 @@ public class ScreensManagerNonCaching implements ScreensManager {
     /**
      * Sets default values in a newly created ScreensEntity object.
      *
-     * @param screen
+     * @param screen ScreensEntity object to initialise
      */
     public void initialiseBean(ScreensEntity screen) {
         screen.setEnabledFlag(true);
