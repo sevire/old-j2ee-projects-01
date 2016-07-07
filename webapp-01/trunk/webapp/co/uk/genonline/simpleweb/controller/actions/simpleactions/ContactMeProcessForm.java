@@ -36,7 +36,7 @@ public class ContactMeProcessForm extends Action {
         String emailMessage = "Name: " + name + "\n" +
                 "Email: " + emailAddress + "\n" +
                 "Reason: " + reason + "\n" +
-                "Message" + message + "\n";
+                "Message" + "\n\n" + message + "\n";
 
         Authenticator authenticator = new SMTPAuthenticator("sevire+genonline.co.uk","avoids");
         SMTPDetails emailDetails = new SMTPDetails("newport.theukhost.net", true, "sevire@genonline.co.uk", authenticator);
@@ -44,7 +44,8 @@ public class ContactMeProcessForm extends Action {
         SendMail sendMail = new SendMail();
 
         List<String> toEmailAddresses = new ArrayList<String>(Arrays.asList(
-                "lucinaslittleboy@genonline.co.uk"
+                "princess_lucina@yahoo.co.uk",
+                "lda-contactform@genonline.co.uk"
         ));
         sendMail.sendMessage(emailDetails.getMailSession(),
                 emailDetails.getFromEmailAddress(),

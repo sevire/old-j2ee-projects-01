@@ -155,7 +155,6 @@
                     <div class="fieldlabelpair">
                         <label for="Reason">Reason:</label>
                         <select name="reason">
-                            <option value="blank"></option>
                             <option value="session">Book A Session</option>
                             <option value="sessionEnquiry">Ask A Question About A Session</option>
                             <option value="generalEnquiry">Ask A General Question</option>
