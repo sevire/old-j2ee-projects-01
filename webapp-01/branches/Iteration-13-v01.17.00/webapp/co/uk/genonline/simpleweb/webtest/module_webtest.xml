@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_webtest" default="compile.module.webtest">
+  <dirname property="module.webtest.basedir" file="${ant.file.module_webtest}"/>
+  
+  <property name="module.jdk.home.webtest" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.webtest" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.webtest" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.webtest" value="${compiler.args}"/>
+  
+  <property name="webtest.output.dir" value="${module.webtest.basedir}/../../../../../../out/production/WebTest"/>
+  <property name="webtest.testoutput.dir" value="${module.webtest.basedir}/../../../../../../out/test/WebTest"/>
+  
+  <path id="webtest.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="webtest.module.production.classpath">
+    <path refid="${module.jdk.classpath.webtest}"/>
+    <path refid="library.log4j-1.2.17.classpath"/>
+    <path refid="library.commons-beanutils-1.8.3-javadoc.classpath"/>
+    <path refid="library.commons-io-2.4-javadoc.classpath"/>
+    <path refid="library.junit-4.10.classpath"/>
+    <path refid="library.htmlunit.classpath"/>
+    <path refid="library.commons-logging-1.1.3.classpath"/>
+  </path>
+  
+  <path id="webtest.runtime.production.module.classpath">
+    <pathelement location="${webtest.output.dir}"/>
+    <path refid="library.log4j-1.2.17.classpath"/>
+    <path refid="library.commons-beanutils-1.8.3-javadoc.classpath"/>
+    <path refid="library.commons-io-2.4-javadoc.classpath"/>
+    <path refid="library.junit-4.10.classpath"/>
+    <path refid="library.htmlunit.classpath"/>
+    <path refid="library.commons-logging-1.1.3.classpath"/>
+  </path>
+  
+  <path id="webtest.module.classpath">
+    <path refid="${module.jdk.classpath.webtest}"/>
+    <pathelement location="${webtest.output.dir}"/>
+    <path refid="library.log4j-1.2.17.classpath"/>
+    <path refid="library.commons-beanutils-1.8.3-javadoc.classpath"/>
+    <path refid="library.commons-io-2.4-javadoc.classpath"/>
+    <path refid="library.junit-4.10.classpath"/>
+    <path refid="library.htmlunit.classpath"/>
+    <path refid="library.commons-logging-1.1.3.classpath"/>
+  </path>
+  
+  <path id="webtest.runtime.module.classpath">
+    <pathelement location="${webtest.testoutput.dir}"/>
+    <pathelement location="${webtest.output.dir}"/>
+    <path refid="library.log4j-1.2.17.classpath"/>
+    <path refid="library.commons-beanutils-1.8.3-javadoc.classpath"/>
+    <path refid="library.commons-io-2.4-javadoc.classpath"/>
+    <path refid="library.junit-4.10.classpath"/>
+    <path refid="library.htmlunit.classpath"/>
+    <path refid="library.commons-logging-1.1.3.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.webtest">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.webtest">
+    <patternset refid="excluded.from.module.webtest"/>
+  </patternset>
+  
+  <path id="webtest.module.sourcepath">
+    <dirset dir="${module.webtest.basedir}/../../simpleweb">
+      <include name="webtest"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.webtest" depends="compile.module.webtest.production,compile.module.webtest.tests" description="Compile module WebTest"/>
+  
+  <target name="compile.module.webtest.production" depends="register.custom.compilers" description="Compile module WebTest; production classes">
+    <mkdir dir="${webtest.output.dir}"/>
+    <javac2 destdir="${webtest.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.webtest}/javac">
+      <compilerarg line="${compiler.args.webtest}"/>
+      <bootclasspath refid="webtest.module.bootclasspath"/>
+      <classpath refid="webtest.module.production.classpath"/>
+      <src refid="webtest.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.webtest"/>
+    </javac2>
+    
+    <copy todir="${webtest.output.dir}">
+      <fileset dir="${module.webtest.basedir}">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.webtest.tests" depends="register.custom.compilers,compile.module.webtest.production" description="compile module WebTest; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.webtest" description="cleanup module">
+    <delete dir="${webtest.output.dir}"/>
+    <delete dir="${webtest.testoutput.dir}"/>
+  </target>
+</project>

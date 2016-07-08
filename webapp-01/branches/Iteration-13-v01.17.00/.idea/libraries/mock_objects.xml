@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="mock-objects">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/Downloads/spring-test-mvc-htmlunit-master/mail-webapp/src/main/java" />
+      <root url="file://$USER_HOME$/Downloads/spring-test-mvc-htmlunit-master/mail-webapp/src/test/java" />
+      <root url="file://$USER_HOME$/Downloads/spring-test-mvc-htmlunit-master/src/main/java" />
+      <root url="file://$USER_HOME$/Downloads/spring-test-mvc-htmlunit-master/src/test/java" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="dom4j-1.6">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/lib/dom4j-1.6.1" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file://$PROJECT_DIR$/lib/dom4j-1.6.1/docs/apidocs" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/lib/dom4j-1.6.1/src/java" />
+      <root url="file://$PROJECT_DIR$/lib/dom4j-1.6.1/src/test" />
+      <root url="file://$PROJECT_DIR$/lib/dom4j-1.6.1/src/samples" />
+      <root url="file://$PROJECT_DIR$/lib/dom4j-1.6.1/docs/benchmarks/xpath" />
+      <root url="file://$PROJECT_DIR$/lib/dom4j-1.6.1/xdocs/benchmarks/xpath" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/lib/dom4j-1.6.1" recursive="false" />
+  </library>
+</component>
