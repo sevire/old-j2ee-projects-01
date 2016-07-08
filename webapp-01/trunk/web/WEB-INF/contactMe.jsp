@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
     <link rel="stylesheet" href="css/contactMe.css" type="text/css" media="all">
     <link rel="stylesheet" href="flexNav/css/flexnav.css" type="text/css" media="all">
-    <link rel="stylesheet" href="css/flexnavoverride-05.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/flexnavoverride.css" type="text/css" media="all">
     <meta name="keywords" content="mistress, mistresses, manchester, link, domina, lucina, links, princess">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="css/style.css" />
@@ -118,10 +118,12 @@
                 <a>Princess Lucina</a>
                 <%=((MistressScreenData)request.getAttribute("screenData")).getScreenMenus().getMenu("lucinaLinkBar")%>
             </li>
+<%--
             <li>
                 <a>My Facilities</a>
                 <%=((MistressScreenData)request.getAttribute("screenData")).getScreenMenus().getMenu("chambersLinkBar")%>
             </li>
+--%>
             <li>
                 <a>Galleries</a>
                 <%=((MistressScreenData)request.getAttribute("screenData")).getScreenMenus().getMenu("galleryLinkBar")%>
