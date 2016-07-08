@@ -63,7 +63,7 @@
         div#middle-header {
             display: inline-block;
             width: 68%;
-            vertical-align: top;;
+            vertical-align: top;
         }
     </style>
 </head>
