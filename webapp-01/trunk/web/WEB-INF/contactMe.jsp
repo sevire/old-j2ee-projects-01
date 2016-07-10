@@ -55,7 +55,7 @@
         </div>
     </script>
     <link rel="icon" type="image/png" href="favicon.png">
-    <title>Manchester Mistress Princess Lucina - Contact Me</title>
+    <title>BRANCH? Manchester Mistress Princess Lucina - Contact Me</title>
     <style>
         div.header-image img {
             width: 100%;
@@ -63,7 +63,7 @@
         div#middle-header {
             display: inline-block;
             width: 68%;
-            vertical-align: top;;
+            vertical-align: top;
         }
     </style>
 </head>
