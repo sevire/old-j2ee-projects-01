@@ -407,7 +407,6 @@ public class ScreensUnitTestData {
 
         screen.setId(id);
         screen.setName(name);
-        screen.setParentId(parentId);
         screen.setScreenTitleLong(screenTitleLong);
         screen.setScreenTitleShort(screenTitleShort);
         screen.setScreenContents(screenContents);
