@@ -1,0 +1,44 @@
+One-Off Pre-configuration Steps
+-------------------------------
+
+1. Create gallery folder with galleries built around test data scenarios including:
+
+    - Gallery folder existence
+    - Gallery image existence
+    - Thumbnail folder existence
+    - Thumbnail existence (correct, incorrect, none)
+    
+2. Create database built around test data scenarios including:
+    - Page enabled
+    - Gallery enabled
+    - Name of page linked to correct gallery test data
+    
+Steps For Each Test
+-------------------   
+
+Before each test the following steps will be carried out:
+
+-- General Preparation --
+
+1.  Stop webapp
+2.  Take dump of current development database
+3.  Take copy of development gallery folders
+4.  Restore pre-configured test database
+5.  Restore development gallery folders
+6.  Start webapp for test.
+
+-- Carry Out Test --
+
+7.  Carry out steps of test using database entries and gallery folders set out in test 
+    data setup.
+8.  Check expected results against actual results.
+
+-- Post Test Steps --
+
+10. Stop webapp
+11. Restore development database
+12. Restore development gallery folders
+13. Restart webapp.
+
+
+
