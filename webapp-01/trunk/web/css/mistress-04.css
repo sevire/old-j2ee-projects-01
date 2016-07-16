@@ -159,6 +159,10 @@ div#rightColumn {
   margin-left: 10px;
   float: right; }
 
+div#mainNav {
+  z-index: 99;
+  position: relative; }
+
 div#content {
   border-radius: 30px;
   padding: 50px 10px;

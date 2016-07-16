@@ -32,11 +32,6 @@ public class ScreensEntityDecorator extends ScreensEntity {
     }
 
     @Override
-    public int getParentId() {
-        return screen.getParentId();
-    }
-
-    @Override
     public String getName() {
         return screen.getName();
     }

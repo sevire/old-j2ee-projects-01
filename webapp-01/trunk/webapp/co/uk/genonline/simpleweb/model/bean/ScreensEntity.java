@@ -10,11 +10,10 @@ import java.sql.Timestamp;
  * Time: 17:31
  * To change this template use File | Settings | File Templates.
  */
-@Table(name = "Screens", schema = "") // ToDo Suppress inclusion of catalog when generating entity class (hard codes db name)
+@Table(name = "Screens", schema = "lda_v02") // ToDo Suppress inclusion of catalog when generating entity class (hard codes db name)
 @Entity
 public class ScreensEntity {
     private int id;
-    private int parentId;
     private String name;
     private String screenTitleLong;
     private String screenTitleShort;
@@ -39,17 +38,7 @@ public class ScreensEntity {
         this.id = id;
     }
 
-    @Column(name = "parent_id")
-    @Basic
-    public int getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(int parentId) {
-        this.parentId = parentId;
-    }
-
-    @Column(name = "name")
+    @Column(name = "name", nullable = true, length = 20)
     @Basic
     public String getName() {
         return name;
@@ -59,7 +48,7 @@ public class ScreensEntity {
         this.name = name;
     }
 
-    @Column(name = "ScreenTitleLong")
+    @Column(name = "ScreenTitleLong", nullable = true, length = 50)
     @Basic
     public String getScreenTitleLong() {
         return screenTitleLong;
@@ -69,7 +58,7 @@ public class ScreensEntity {
         this.screenTitleLong = screenTitleLong;
     }
 
-    @Column(name = "ScreenTitleShort")
+    @Column(name = "ScreenTitleShort", nullable = true, length = 20)
     @Basic
     public String getScreenTitleShort() {
         return screenTitleShort;
@@ -79,7 +68,7 @@ public class ScreensEntity {
         this.screenTitleShort = screenTitleShort;
     }
 
-    @Column(name = "ScreenContents")
+    @Column(name = "ScreenContents", nullable = true, length = -1)
     @Basic
     public String getScreenContents() {
         return screenContents;
@@ -89,7 +78,7 @@ public class ScreensEntity {
         this.screenContents = screenContents;
     }
 
-    @Column(name = "MetaDescription")
+    @Column(name = "MetaDescription", nullable = true, length = -1)
     @Basic
     public String getMetaDescription() {
         return metaDescription;
@@ -99,7 +88,7 @@ public class ScreensEntity {
         this.metaDescription = metaDescription;
     }
 
-    @Column(name = "EnabledFlag")
+    @Column(name = "EnabledFlag", nullable = true)
     @Basic
     public Boolean getEnabledFlag() {
         return enabledFlag;
@@ -109,7 +98,7 @@ public class ScreensEntity {
         this.enabledFlag = enabledFlag;
     }
 
-    @Column(name = "GalleryFlag")
+    @Column(name = "GalleryFlag", nullable = true)
     @Basic
     public Boolean getGalleryFlag() {
         return galleryFlag;
@@ -119,7 +108,7 @@ public class ScreensEntity {
         this.galleryFlag = galleryFlag;
     }
 
-    @Column(name = "created")
+    @Column(name = "created", nullable = true)
     @Basic
     public Timestamp getCreated() {
         return created;
@@ -129,7 +118,7 @@ public class ScreensEntity {
         this.created = created;
     }
 
-    @Column(name = "modified")
+    @Column(name = "modified", nullable = true)
     @Basic
     public Timestamp getModified() {
         return modified;
@@ -139,7 +128,7 @@ public class ScreensEntity {
         this.modified = modified;
     }
 
-    @Column(name = "ScreenType")
+    @Column(name = "ScreenType", nullable = false, length = 45)
     @Basic
     public String getScreenType() {
         return screenType;
@@ -149,7 +138,7 @@ public class ScreensEntity {
         this.screenType = screenType;
     }
 
-    @Column(name = "SortKey")
+    @Column(name = "SortKey", nullable = true)
     @Basic
     public Integer getSortKey() {
         return sortKey;
@@ -159,7 +148,7 @@ public class ScreensEntity {
         this.sortKey = sortKey;
     }
 
-    @Column(name = "ScreenDisplayType")
+    @Column(name = "ScreenDisplayType", nullable = true, length = 45)
     @Basic
     public String getScreenDisplayType() {
         return screenDisplayType;
@@ -186,7 +175,6 @@ public class ScreensEntity {
         ScreensEntity that = (ScreensEntity) o;
 
         if (id != that.id) return false;
-        if (parentId != that.parentId) return false;
         // **TG** if (created != null ? !created.equals(that.created) : that.created != null) return false;
         if (enabledFlag != null ? !enabledFlag.equals(that.enabledFlag) : that.enabledFlag != null) return false;
         if (galleryFlag != null ? !galleryFlag.equals(that.galleryFlag) : that.galleryFlag != null) return false;
@@ -206,7 +194,6 @@ public class ScreensEntity {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + parentId;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (screenTitleLong != null ? screenTitleLong.hashCode() : 0);
         result = 31 * result + (screenTitleShort != null ? screenTitleShort.hashCode() : 0);
