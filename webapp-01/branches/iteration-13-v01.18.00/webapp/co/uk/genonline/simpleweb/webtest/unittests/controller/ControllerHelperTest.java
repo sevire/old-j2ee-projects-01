@@ -46,6 +46,9 @@ public class ControllerHelperTest extends TestCase {
 
         context = TestSupport.getNewServletContext();
         factory = (SessionFactory) context.getAttribute("sessionFactory");
+
+        TestSupport.checkDatabaseName();
+
         configuration = new Configuration(factory);
 
         context.setAttribute("configuration", configuration);

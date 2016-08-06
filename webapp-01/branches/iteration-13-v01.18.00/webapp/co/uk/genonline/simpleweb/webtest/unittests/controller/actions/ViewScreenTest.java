@@ -41,7 +41,7 @@ public class ViewScreenTest {
     @BeforeClass
     public static void beforeAll() {
         context = TestSupport.getNewServletContext();
-        factory = new TestSupportSessionFactory().getSessionFactory();
+        factory = TestSupportSessionFactory.getSessionFactory();
         configuration = new Configuration(factory);
         context.setAttribute("configuration", configuration);
         request = new MockHttpServletRequest(context);

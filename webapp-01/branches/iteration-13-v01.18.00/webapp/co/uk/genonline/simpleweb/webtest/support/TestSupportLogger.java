@@ -21,7 +21,7 @@ public class TestSupportLogger {
             try {
                 Appender appender = new RollingFileAppender(
                         new PatternLayout("%-5p %c %t%n%29d - %m%n"),
-                        "/Users/thomassecondary/Projects/webapp-01(trunk)/documents/testing/logs/testlogfile.log", true
+                        "/Users/thomassecondary/Projects/lda-webapp/documents/testing/logs/testlogfile.log", true
                 );
                 logger.addAppender(appender);
                 setLevel("org.hibernate", Level.OFF);

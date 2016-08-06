@@ -37,7 +37,7 @@ public class ActionFactoryTest extends TestCase {
     // Database access
     static private SessionFactory factory;
 
-    private static final String contextBaseDir = "/Users/thomassecondary/Projects/webapp-01(trunk)/web";
+    private static final String contextBaseDir = "/Users/thomassecondary/Projects/lda-webapp/web";
     private static final String contextBaseDirPrefix = "file:";
 
     private MockHttpServletRequest createNewTestRequest(String command, String parameterName, String parameterValue) {
@@ -75,9 +75,9 @@ public class ActionFactoryTest extends TestCase {
          * - Configuration
          * - GalleryManager
          */
-        context = new MockServletContext("file:/Users/thomassecondary/Projects/webapp-01(trunk)/web", null);
+        context = new MockServletContext("file:/Users/thomassecondary/Projects/lda-webapp/web", null);
         String realPath = context.getRealPath("/");
-        assertEquals("/Users/thomassecondary/Projects/webapp-01(trunk)/web", realPath);
+        assertEquals("/Users/thomassecondary/Projects/lda-webapp/web", realPath);
 
         factory = TestSupportSessionFactory.getSessionFactory();
 

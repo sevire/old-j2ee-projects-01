@@ -14,13 +14,11 @@ public class ScreenRequestDecoratorTest {
 
     @After
     public void tearDown() throws Exception {
-        Assert.assertTrue(false);
 
     }
 
     @Test
     public void testGetScreen() throws Exception {
-        Assert.assertTrue(true);
 
     }
 
