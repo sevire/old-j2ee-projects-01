@@ -16,7 +16,7 @@ public class GalleryManagerConfigurationDefault implements GalleryManagerConfigu
      * File system full path for folder where all the galleries are.  There will be a sub-folder underneath this one for each
      * gallery.
      */
-    final File galleriesRootFullPath;
+    private final File galleriesRootFullPath;
 
     /**
      * Path, relative from web app root of gallery folder.  Used to construct URLs within gallery HTML to access
@@ -28,25 +28,25 @@ public class GalleryManagerConfigurationDefault implements GalleryManagerConfigu
      *
      *       So it would be wrong to try to validate the relPath against the FullPath!
      */
-    final String galleriesRootRelPath;
+    private final String galleriesUrlRelPath;
     /**
      * Path (typically just a sub-folder), relative to a specific gallery folder, where the thumbnails reside.  This is used
      * both to calculate the full path of the thumbnail folder within the filesystem, and to generate the URL for the images in the
      * gallery HTML.
      */
-    final String thumbnailRelPath;
+    private final String thumbnailRelPath;
 
     /**
      * Used in creation of thumbnails to calculate the proportions of each thumnbnail.  The thumbnail will be sized so that either the
      * height or width is at the maximum allowed value, depending upon aspect ratio and the values of the max height and max width.
      */
-    final int maxThumbnailHeight;
+    private final int maxThumbnailHeight;
 
     /**
      * Used in creation of thumbnails to calculate the proportions of each thumnbnail.  The thumbnail will be sized so that either the
      * height or width is at the maximum allowed value, depending upon aspect ratio and the values of the max height and max width.
      */
-    final int maxThumbnailWidth;
+    private final int maxThumbnailWidth;
 
     /**
      * A list of extensions which are used to select which files within the galleries folder are to be included in the list of gallery
@@ -56,7 +56,7 @@ public class GalleryManagerConfigurationDefault implements GalleryManagerConfigu
 
     public GalleryManagerConfigurationDefault(
             File galleriesRootFullPath,
-            String galleriesRootRelPath,
+            String galleriesUrlRelPath,
             String thumbnailRelPath,
             int maxThumbnailHeight,
             int maxThumbnailWidth,
@@ -82,14 +82,14 @@ public class GalleryManagerConfigurationDefault implements GalleryManagerConfigu
             throw new IllegalArgumentException(errorString);
         }
 
-        this.galleriesRootRelPath = galleriesRootRelPath;
-        if (this.galleriesRootRelPath == null) {
+        this.galleriesUrlRelPath = galleriesUrlRelPath;
+        if (this.galleriesUrlRelPath == null) {
             errorString = "GalleryManagerConfigurationDefault: galleriesRootRelPath is null";
             logger.error(errorString);
             throw new NullPointerException(errorString);
         }
 
-        if (this.galleriesRootRelPath.equals("")) {
+        if (this.galleriesUrlRelPath.equals("")) {
             errorString = "GalleryManagerConfigurationDefault: galleriesRootRelPath is empty string";
             logger.error(errorString);
             throw new IllegalArgumentException(errorString);
@@ -143,8 +143,8 @@ public class GalleryManagerConfigurationDefault implements GalleryManagerConfigu
         return this.galleriesRootFullPath;
     }
 
-    public String getGalleriesRootRelPath() {
-        return this.galleriesRootRelPath;
+    public String getGalleriesUrlRelPath() {
+        return this.galleriesUrlRelPath;
     }
 
     public String getThumbnailRelPath() {

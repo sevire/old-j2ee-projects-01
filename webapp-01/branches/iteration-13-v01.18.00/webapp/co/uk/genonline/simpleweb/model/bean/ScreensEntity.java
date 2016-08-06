@@ -10,7 +10,7 @@ import java.sql.Timestamp;
  * Time: 17:31
  * To change this template use File | Settings | File Templates.
  */
-@Table(name = "Screens", schema = "lda_v02") // ToDo Suppress inclusion of catalog when generating entity class (hard codes db name)
+@Table(name = "Screens") // ToDo Suppress inclusion of catalog when generating entity class (hard codes db name)
 @Entity
 public class ScreensEntity {
     private int id;

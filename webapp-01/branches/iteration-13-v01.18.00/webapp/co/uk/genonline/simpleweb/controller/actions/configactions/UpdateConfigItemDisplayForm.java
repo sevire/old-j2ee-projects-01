@@ -40,6 +40,6 @@ abstract class UpdateConfigItemDisplayForm extends ConfigurationAction {
             logger.info(String.format("Editing config item <%s>", configItems.getName()));
         }
         request.setAttribute("addFlag", addFlag);
-        return new RequestResult(request, "updateConfigItem", false);
+        return new RequestResult(request, "updateConfigItem.jsp", false);
     }
 }

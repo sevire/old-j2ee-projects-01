@@ -1,6 +1,6 @@
 package co.uk.genonline.simpleweb.controller.actions.screenactions;
 
-import co.uk.genonline.simpleweb.configuration.configitems.GalleryRoot;
+import co.uk.genonline.simpleweb.configuration.configitems.GalleryRootFullPath;
 import co.uk.genonline.simpleweb.configuration.configitems.MaxImageWidth;
 import co.uk.genonline.simpleweb.configuration.general.Configuration;
 import co.uk.genonline.simpleweb.controller.actions.RequestResult;
@@ -24,7 +24,7 @@ public class ViewImage extends ScreenAction {
 
     public RequestResult perform() {
         Configuration configuration = (Configuration)request.getAttribute("configuration");
-        String galleryRoot = ((GalleryRoot)configuration.getConfigurationItem("galleryRoot")).get();
+        String galleryRoot = ((GalleryRootFullPath)configuration.getConfigurationItem("galleryRoot")).get();
         int maxImageWidth = ((MaxImageWidth)(configuration.getConfigurationItem("maxImageWidth"))).get();
 
         String separator = File.separator;

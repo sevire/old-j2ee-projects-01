@@ -1,6 +1,7 @@
 package co.uk.genonline.simpleweb.model;
 
 
+import co.uk.genonline.simpleweb.controller.WebLogger;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
@@ -14,6 +15,7 @@ import org.hibernate.service.ServiceRegistryBuilder;
  * To change this template use File | Settings | File Templates.
  */
 public class HibernateUtil {
+    private static WebLogger logger = new WebLogger();
     private static SessionFactory sessionFactory = buildSessionFactory();
     private static ServiceRegistry serviceRegistry;
 
@@ -28,6 +30,7 @@ public class HibernateUtil {
         }
         catch (Throwable ex) {
             // Make sure you log the exception, as it might be swallowed
+            logger.error("Couldn't configure Hibernate, error is <%s>", ex.getMessage());
             System.err.println("Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
         }

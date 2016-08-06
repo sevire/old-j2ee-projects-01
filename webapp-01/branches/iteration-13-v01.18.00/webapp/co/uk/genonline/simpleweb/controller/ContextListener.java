@@ -138,14 +138,20 @@ public class ContextListener implements ServletContextListener {
         }
 
         String webRootFullPath = this.context.getRealPath("/");
-        String galleryRootRelPath = ((GalleryRoot)configurationManager.getConfigurationItem("galleryRoot")).get();
-        File galleryRootFullPathFile = new File(webRootFullPath + File.separator + galleryRootRelPath);
+
+        // Change this to hard coded value while testing putting galleries outside webapp
+        // String galleryRootRelPath = ((GalleryRoot)configurationManager.getConfigurationItem("galleryRoot")).get();
+        // File galleryRootFullPathFile = new File(webRootFullPath + File.separator + galleryRootRelPath);
+
+        String galleryRootUrlPath = ((GalleryRootUrlPath)configurationManager.getConfigurationItem("galleryRootUrlPath")).get();
+        File galleryRootFullPathFile = new File(((GalleryRootFullPath)configurationManager.getConfigurationItem("galleryRootFullPath")).get());
+
         String thumbnailRelPath = ((ThumbnailRelPath)configurationManager.getConfigurationItem("thumbnailRelPath")).get();
         String[] imageExtensionList = {"jpg", "jpeg", "png"};
 
         GalleryManagerConfiguration galleryManagerConfiguration = new GalleryManagerConfigurationDefault(
                 galleryRootFullPathFile,
-                galleryRootRelPath,
+                galleryRootUrlPath,
                 thumbnailRelPath,
                 maxThumbnailHeight,
                 maxThumbnailWidth,
