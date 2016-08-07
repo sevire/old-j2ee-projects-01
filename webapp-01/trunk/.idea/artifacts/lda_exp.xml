@@ -8,9 +8,9 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="commons-beanutils" />
-          <element id="library" level="project" name="apache-log4j-1-1.2" />
           <element id="library" level="project" name="hibernate" />
           <element id="library" level="project" name="jstl" />
+          <element id="library" level="project" name="apache-log4j-1-1.2" />
           <element id="library" level="project" name="markdownj-1.0.2b4-0.3.0" />
           <element id="library" level="project" name="mysql-connector-java-5-1.1" />
           <element id="library" level="project" name="junit-4.10" />
@@ -21,9 +21,12 @@
           <element id="library" level="project" name="commons-io-2" />
           <element id="library" level="project" name="javassist-3.15.0-GA" />
           <element id="library" level="project" name="antlr-2.7.7" />
+          <element id="library" level="project" name="javax.mail" />
+          <element id="library" level="project" name="gagawa-1.0.1" />
         </element>
       </element>
-      <element id="javaee-facet-resources" facet="WebApp/web/Web" />
+      <element id="library" level="project" name="spring-mock-1.1" />
+      <element id="javaee-facet-resources" facet="WebApp/web/LDA-webapp-module1" />
       <element id="javaee-facet-resources" facet="WebApp/javaeeApplication/javaEEApplication" />
     </root>
   </artifact>

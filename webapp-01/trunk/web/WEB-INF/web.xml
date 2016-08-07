@@ -4,6 +4,7 @@
           xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 		  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
+
     <display-name>LDA Website and Administration Application</display-name>
     <listener>
         <listener-class>
@@ -14,57 +15,6 @@
         <error-code>404</error-code>
         <location>/WEB-INF/error.jsp</location>
     </error-page>
-<!--
-    <context-param>
-        <param-name>homePage</param-name>
-        <param-value>lucina</param-value>
-    </context-param>
-    <context-param>
-        <param-name>galleryRoot</param-name>
-        <param-value>gallery</param-value>
-    </context-param>
-    <context-param>
-        <param-name>numGalleryColumns</param-name>
-        <param-value>6</param-value>
-    </context-param>
-    <context-param>
-        <param-name>thumbnailRelPath</param-name>
-        <param-value>thumb</param-value>
-    </context-param>
-    <context-param>
-        <param-name>maxThumbnailWidth</param-name>
-        <param-value>70</param-value>
-    </context-param>
-    <context-param>
-        <param-name>maxThumbnailHeight</param-name>
-        <param-value>70</param-value>
-    </context-param>
-    <context-param>
-        <param-name>maxImageWidth</param-name>
-        <param-value>800</param-value>
-    </context-param>
-    <context-param>
-        <param-name>maxImageHeight</param-name>
-        <param-value>800</param-value>
-    </context-param>
-    <context-param>
-        <param-name>forceGallery</param-name>
-        <param-value>false</param-value>
-    </context-param>
-    <context-param>
-        <param-name>forceThumbnail</param-name>
-        <param-value>true</param-value>
-    </context-param>
-    <context-param>
-        <param-name>loggingLevel</param-name>
-        <param-value>debug</param-value>
-    </context-param>
-    <context-param>
-        <param-name>blogEnabled</param-name>
-        <param-value>true</param-value>
-    </context-param>
--->
-
     <servlet>
         <servlet-name>Controller</servlet-name>
         <servlet-class>co.uk.genonline.simpleweb.controller.Controller</servlet-class>

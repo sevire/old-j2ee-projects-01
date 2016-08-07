@@ -82,7 +82,7 @@
         </div>
         <div id="middle-header">
             <div id="contact-phone" class="contact">
-                <img src="site_images/phone.png" />
+                <img src="/lda-static-files/images/phone.png" />
                 <p class='leftFloat'>07719 415496</p>
             </div>
             <div id="contact-email" class="contact">

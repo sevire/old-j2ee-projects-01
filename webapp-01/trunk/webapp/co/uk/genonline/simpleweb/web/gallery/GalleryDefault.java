@@ -96,7 +96,7 @@ public class GalleryDefault implements Gallery {
             this.galleryUrl = null;
             throw new IllegalArgumentException(error);
         } else {
-            this.galleryUrl = this.galleryManagerConfiguration.getGalleriesRootRelPath() + "/" + galleryName;
+            this.galleryUrl = this.galleryManagerConfiguration.getGalleriesUrlRelPath() + "/" + galleryName;
             initialiseGallery();
         }
 }
@@ -269,7 +269,7 @@ public class GalleryDefault implements Gallery {
     public String getHtml(boolean forceRegenerate) {
         if (forceRegenerate || html == null) {
             if (galleryStatus.isGalleryError()) {
-                html = ""; // Not sure this should be coded here as it is also in getHtml.  May change later to return something else.
+                html = "";
             } else {
                 html = htmlGenerator.getHtml(galleryName, getImageList());
             }

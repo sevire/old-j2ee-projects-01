@@ -1,6 +1,5 @@
 package co.uk.genonline.simpleweb.controller.actions.configactions;
 
-import co.uk.genonline.simpleweb.configuration.general.Configuration;
 import co.uk.genonline.simpleweb.controller.actions.Action;
 import co.uk.genonline.simpleweb.controller.actions.RequestResult;
 
@@ -15,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
  * To change this template use File | Settings | File Templates.
  */
 public class ReloadConfigAction extends Action {
-    HttpServletRequest request;
     public ReloadConfigAction(HttpServletRequest request, HttpServletResponse response) {
         super(request, response);
     }
@@ -27,7 +25,6 @@ public class ReloadConfigAction extends Action {
      */
     @Override
     public RequestResult perform() {
-        Configuration configuration = (Configuration)request.getServletContext().getAttribute("configuration");
         configuration.loadConfiguration();
 
         return new RequestResult(request, "/editConfigIndex", true);

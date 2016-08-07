@@ -48,7 +48,7 @@ public class GalleryHelper {
 
         forceGallery = ((ForceGallery)configuration.getConfigurationItem("forceGallery")).get();
         forceThumbnails = ((ForceThumbnails)configuration.getConfigurationItem("forceThumbnails")).get();
-        galleryRootRelPath = ((GalleryRoot)configuration.getConfigurationItem("galleryRoot")).get();
+        galleryRootRelPath = ((GalleryRootFullPath)configuration.getConfigurationItem("galleryRoot")).get();
         galleryRootFullPathFile = new File(webRootFullPath + File.separator + galleryRootRelPath);
         galleryThumbnailFullPathFile = new File(webRootFullPath + File.separator + thumbnailRelPath);
         thumbnailRelPath = ((ThumbnailRelPath)configuration.getConfigurationItem("thumbnailRelPath")).get();

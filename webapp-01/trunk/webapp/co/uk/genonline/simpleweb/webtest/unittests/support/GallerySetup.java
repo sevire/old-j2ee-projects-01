@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
  * Created by thomassecondary on 19/05/15.
  */
 public class GallerySetup {
-    private static final String contextBaseDir = "/Users/thomassecondary/Projects/webapp-01(trunk)/web";
+    private static final String contextBaseDir = "/Users/thomassecondary/Projects/lda-webapp/web";
     private static final String galleryRelPath = "gallery";
     private static final File testGalleryRootPath = new File(contextBaseDir + File.separator + galleryRelPath);
 
@@ -20,7 +20,7 @@ public class GallerySetup {
     private static GalleryHtmlGenerator defaultHtmlGenerator;
 
     public static GalleryManager gallerySetup() {
-        assertEquals("/Users/thomassecondary/Projects/webapp-01(trunk)/web/gallery", testGalleryRootPath.toString());
+        assertEquals("/Users/thomassecondary/Projects/lda-webapp/web/gallery", testGalleryRootPath.toString());
         String[] imageExtensionList = {"jpg", "jpeg", "png"};
         galleryManagerConfiguration = new GalleryManagerConfigurationDefault(
                 testGalleryRootPath,

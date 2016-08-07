@@ -21,6 +21,6 @@ public class CancelConfigAction extends ScreenAction {
 
     public RequestResult perform() {
         status.setStatusMessage("Action cancelled", "info");
-        return new RequestResult(request, "/editIndex", true);
+        return new RequestResult(request, "/editConfigIndex", true);
     }
 }

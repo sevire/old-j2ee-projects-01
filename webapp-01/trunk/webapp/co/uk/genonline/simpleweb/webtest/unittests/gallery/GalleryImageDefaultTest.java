@@ -10,7 +10,7 @@ import java.io.File;
 
 public class GalleryImageDefaultTest extends TestCase {
 
-    private final File testGalleryPath = new File("/Users/thomassecondary/Projects/webapp-01(trunk)/documents/testing/unit-galleries/testgallery01");
+    private final File testGalleryPath = new File("/Users/thomassecondary/Projects/lda-webapp/documents/testing/unit-galleries/testgallery01");
     private final File testImageFile1 = new File(testGalleryPath, "testimage00001.JPG");
     private final File testImageFile2 = new File(testGalleryPath, "testimage00002.JPG");
 

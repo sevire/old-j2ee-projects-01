@@ -57,7 +57,7 @@ public class ConfigurationEntity {
     }
 
     public String toString() {
-        return "ScreenEntity:" + "name:" + name + "value:" + value;
+        return "ConfigurationEntity:" + "name:" + name + "value:" + value;
     }
 
     @Column(name = "id")

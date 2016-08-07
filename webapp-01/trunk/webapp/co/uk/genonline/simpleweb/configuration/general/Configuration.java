@@ -68,6 +68,10 @@ public class Configuration {
                 addConfigItem(new BlogEnabled(value));
             } else if (name.equals("galleryRoot")) {
                 addConfigItem(new GalleryRoot(value));
+            } else if (name.equals("galleryRootFullPathFile")) {
+                addConfigItem(new GalleryRootFullPath(value));
+            } else if (name.equals("galleryRootUrlPath")) {
+                addConfigItem(new GalleryRootUrlPath(value));
             } else if (name.equals("loggingLevel")) {
                 addConfigItem(new LoggingLevel(value));
             } else if (name.equals("thumbnailRelPath")) {

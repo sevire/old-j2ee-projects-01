@@ -27,7 +27,7 @@ public class TestSupport {
         assertNotNull(context);
 
         String realPath = context.getRealPath("/");
-        assertEquals("/Users/thomassecondary/Projects/webapp-01(trunk)/web", realPath);
+        assertEquals("/Users/thomassecondary/Projects/lda-webapp/web", realPath);
 
         factory = new TestSupportSessionFactory().getSessionFactory();
         context.setAttribute("sessionFactory", factory);
@@ -45,11 +45,21 @@ public class TestSupport {
      */
     public static void clearDatabase(SessionFactory factory) {
         System.out.println("Cleaning up...\n");
+        checkDatabaseName();
 
         Session session = factory.getCurrentSession();
         session.beginTransaction();
         session.createQuery("delete from ScreensEntity").executeUpdate();
         session.getTransaction().commit();
+    }
+
+    public static void checkDatabaseName() {
+        Session session = factory.getCurrentSession();
+        session.beginTransaction();
+        String dbName = (String)session.createSQLQuery("SELECT database()").uniqueResult();
+        session.getTransaction().commit();
+
+        assertEquals("lda_v02_unit", dbName);
     }
 
     public static void viewScreenRequestSetup(MockHttpServletRequest request, String screenName) {

@@ -28,7 +28,6 @@ public class GalleryCarouselHtmlGenerator extends GalleryHtml {
             // Not an error but no gallery to create, return appropriate html
 
             html = ""; // Note it has to be empty string as there is a check in the jsp (may not be best way!)
-            return html;
         } else {
             imagesAdded = 0;
             html = String.format("<ul class='gallery'>%n%n");
@@ -37,8 +36,8 @@ public class GalleryCarouselHtmlGenerator extends GalleryHtml {
             }
             html += String.format("</ul>%n");
             logger.debug("html = \n" + html);
-            return html;
         }
+        return html;
     }
 
     /**
@@ -66,6 +65,6 @@ public class GalleryCarouselHtmlGenerator extends GalleryHtml {
     }
 
     private String getHTMLRelPath(String path) {
-        return galleryManagerConfiguration.getGalleriesRootRelPath() + File.separator + path;
+        return galleryManagerConfiguration.getGalleriesUrlRelPath() + File.separator + path;
     }
 }

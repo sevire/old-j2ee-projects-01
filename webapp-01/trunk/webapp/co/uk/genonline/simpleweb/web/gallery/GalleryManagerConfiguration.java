@@ -11,9 +11,19 @@ import java.io.File;
  * parameter lists) when a new configuration item is identified.
  */
 public interface GalleryManagerConfiguration {
+    /**
+     * Full path in file system of folder where galleries are to be placed.  Not to be used for
+     * generating URLs!
+     * @return
+     */
     public File getGalleriesRootFullPath();
 
-    public String getGalleriesRootRelPath(); // Rel Path used to generate URL
+    /**
+     * Path to be used in URLs to refer to gallery images.  Must include as first part the reference
+     * path set up in server.xml in Context tag.
+     * @return
+     */
+    public String getGalleriesUrlRelPath();
 
     public String getThumbnailRelPath();
 
