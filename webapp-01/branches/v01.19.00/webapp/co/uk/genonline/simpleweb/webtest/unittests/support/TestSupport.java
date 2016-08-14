@@ -27,7 +27,7 @@ public class TestSupport {
         assertNotNull(context);
 
         String realPath = context.getRealPath("/");
-        assertEquals("/Users/thomassecondary/Projects/lda-webapp/web", realPath);
+        assertEquals(TestSupportConstants.contextBaseDir, realPath);
 
         factory = new TestSupportSessionFactory().getSessionFactory();
         context.setAttribute("sessionFactory", factory);
