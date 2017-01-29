@@ -6,6 +6,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 /**
  * Created by thomassecondary on 20/04/15.
@@ -118,7 +119,9 @@ public class GalleryImageDefault implements GalleryImage {
     }
 
     public String toString() {
-        return String.format("<%s>:<%d>:<%d>:<%d>", getImageFullName(), getImageHeight(), getImageWidth(), getLastModified());
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String lastModifiedString = simpleDateFormat.format(getLastModified());
+        return String.format("<%s>:<%d>:<%d>:<%s>", getImageFullName(), getImageHeight(), getImageWidth(), lastModifiedString);
     }
 
 

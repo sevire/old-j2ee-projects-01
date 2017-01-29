@@ -3,9 +3,9 @@ package unittests.controller;
 import co.uk.genonline.simpleweb.configuration.configitems.BlogEnabled;
 import co.uk.genonline.simpleweb.configuration.general.Configuration;
 import co.uk.genonline.simpleweb.controller.ControllerHelper;
+import co.uk.genonline.simpleweb.controller.SessionData;
 import co.uk.genonline.simpleweb.controller.actions.Action;
 import co.uk.genonline.simpleweb.controller.actions.ActionFactory;
-import co.uk.genonline.simpleweb.controller.SessionData;
 import co.uk.genonline.simpleweb.controller.actions.screenactions.ViewScreen;
 import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
 import co.uk.genonline.simpleweb.web.gallery.GalleryManager;
@@ -19,6 +19,7 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.mock.web.MockServletContext;
 import support.TestSupportLogger;
+import unittests.support.TestSupportConstants;
 import unittests.support.TestSupportSessionFactory;
 
 import javax.servlet.ServletContext;
@@ -36,9 +37,6 @@ public class ActionFactoryTest extends TestCase {
 
     // Database access
     static private SessionFactory factory;
-
-    private static final String contextBaseDir = "/Users/thomassecondary/Projects/lda-webapp/web";
-    private static final String contextBaseDirPrefix = "file:";
 
     private MockHttpServletRequest createNewTestRequest(String command, String parameterName, String parameterValue) {
         /**
@@ -75,9 +73,9 @@ public class ActionFactoryTest extends TestCase {
          * - Configuration
          * - GalleryManager
          */
-        context = new MockServletContext("file:/Users/thomassecondary/Projects/lda-webapp/web", null);
+        context = new MockServletContext(TestSupportConstants.contextBaseDirPrefix + TestSupportConstants.contextBaseDir, null);
         String realPath = context.getRealPath("/");
-        assertEquals("/Users/thomassecondary/Projects/lda-webapp/web", realPath);
+        assertEquals(TestSupportConstants.contextBaseDir, realPath);
 
         factory = TestSupportSessionFactory.getSessionFactory();
 

@@ -88,7 +88,7 @@
             <div id="contact-email" class="contact">
                 <img src="site_images/mail.png" />
                 <p class='rightFloat'>
-                    <a href='mailto:princess_lucina@yahoo.co.uk'>princess_lucina@yahoo.co.uk</a>
+                    <a href='mailto:princess_lucina@yahoo.co.uk' onClick="_gaq.push(['_trackEvent', 'Link', 'Email Address', 'Click Email Address'])">princess_lucina@yahoo.co.uk</a>
                 </p>
             </div>
             <div id="externalLinks">
@@ -113,30 +113,7 @@
         </div>
     </div>
     <div class="menu-button">Menu</div>
-    <div id="mainNav">
-        <ul class="flexnav" data-breakpoint="800">
-            <li>
-                <a>Princess Lucina</a>
-                <%=((MistressScreenData)request.getAttribute("screenData")).getScreenMenus().getMenu("lucinaLinkBar")%>
-            </li>
-            <li>
-                <a>My Facilities</a>
-                <%=((MistressScreenData)request.getAttribute("screenData")).getScreenMenus().getMenu("chambersLinkBar")%>
-            </li>
-            <li>
-                <a>Galleries</a>
-                <%=((MistressScreenData)request.getAttribute("screenData")).getScreenMenus().getMenu("galleryLinkBar")%>
-            </li>
-            <li>
-                <a>Testimonials</a>
-                <%=((MistressScreenData)request.getAttribute("screenData")).getScreenMenus().getMenu("testimonialLinkBar")%>
-            </li>
-            <li>
-                <a>Other Mistresses</a>
-                <%=((MistressScreenData)request.getAttribute("screenData")).getScreenMenus().getMenu("mistressLinkBar")%>
-            </li>
-        </ul>
-    </div>
+    <%@include file="main-menu-02.jspf"%>
     <div id="content">
         <div id="pageText">
             <h1>${screenData.screenData.screensEntityDecorator.screenTitleLong}</h1>
