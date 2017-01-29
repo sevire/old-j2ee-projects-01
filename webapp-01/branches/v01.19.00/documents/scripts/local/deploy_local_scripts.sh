@@ -19,6 +19,6 @@ __WEBAPP__=$webappdir/lda##$war_version
 # End Of Common script pre-amble
 ######################################################
 
-cp "$project_local_scripts_dir"/*.sh "$common_scripts_dir"
-cp "$project_common_scripts_dir"/*.sh "$common_scripts_dir"
-chmod +x "$common_scripts_dir"/*.sh
+cp "$project_local_scripts_dir"/* "$common_scripts_dir"
+cp "$project_common_scripts_dir"/* "$common_scripts_dir"
+chmod +x "$common_scripts_dir"/*

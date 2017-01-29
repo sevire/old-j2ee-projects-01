@@ -37,9 +37,8 @@
       <sourceFolder url="file://$MODULE_DIR$/webapp" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/webapp/co/uk/genonline/simpleweb/webtest" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="Tomcat 7.0" level="application_server_libraries" />
     <orderEntry type="library" name="commons-beanutils" level="project" />
     <orderEntry type="library" name="hibernate" level="project" />
     <orderEntry type="library" name="jstl" level="project" />
@@ -57,5 +56,14 @@
     <orderEntry type="library" name="spring-mock-1.1" level="project" />
     <orderEntry type="library" name="javax.mail" level="project" />
     <orderEntry type="library" name="gagawa-1.0.1" level="project" />
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library>
+        <CLASSES>
+          <root url="jar:///usr/local/apache-tomcat-7.0.42/lib/servlet-api.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>

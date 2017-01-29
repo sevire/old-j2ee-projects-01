@@ -11,7 +11,7 @@ gallery=gallery
 
 # Local Directories Within Project Structure
 
-project_name='webapp-01(trunk)'
+project_name='lda-webapp(b)'
 projects_dir="/Users/thomassecondary/Projects"
 project_dir="$projects_dir"/"$project_name"
 project_web_dir="$project_dir"/web
