@@ -11,7 +11,6 @@ import static org.junit.Assert.assertEquals;
  * Created by thomassecondary on 19/05/15.
  */
 public class GallerySetup {
-//    private static final String contextBaseDir = "/Users/thomassecondary/Projects/lda-webapp/web";
     private static final String galleryRelPath = "gallery";
     private static final File testGalleryRootPath = new File(TestSupportConstants.contextBaseDir + File.separator + galleryRelPath);
 

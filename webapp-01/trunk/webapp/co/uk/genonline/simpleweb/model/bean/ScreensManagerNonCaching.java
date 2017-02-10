@@ -1,6 +1,7 @@
 package co.uk.genonline.simpleweb.model.bean;
 
 import co.uk.genonline.simpleweb.controller.WebLogger;
+import co.uk.genonline.simpleweb.model.HibernateUtil;
 import org.hibernate.*;
 
 import java.sql.Timestamp;
@@ -22,7 +23,10 @@ public class ScreensManagerNonCaching implements ScreensManager {
     private SessionFactory sessionFactory;
 
     public ScreensManagerNonCaching(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
+        //this.sessionFactory = sessionFactory;
+        // While debugging Hibernate issue...
+
+        this.sessionFactory = HibernateUtil.getSessionFactory();
     }
 
     public ScreensEntity getScreen(String screenName, boolean enabledOverride) {
@@ -156,7 +160,9 @@ public class ScreensManagerNonCaching implements ScreensManager {
             logger.debug("getScreenFromDatabase: About to commit transaction, transaction is <%s>", transaction.toString());
             transaction.commit();
         } catch (HibernateException e) {
-            transaction.rollback();
+            if (transaction != null) {
+                transaction.rollback();
+            }
             logger.error(String.format("Hibernate error reading screen, error is %s", e.getMessage()));
             screen = null;
         }
@@ -183,6 +189,7 @@ public class ScreensManagerNonCaching implements ScreensManager {
             logger.debug("getScreensFromDatabase: About to commit transaction, transaction is <%s>", transaction.toString());
             transaction.commit();
         } catch (HibernateException e) {
+            logger.error("Error reading Screens, error is <%s>", e.getMessage());
             if (transaction != null) {
                 transaction.rollback();
             }

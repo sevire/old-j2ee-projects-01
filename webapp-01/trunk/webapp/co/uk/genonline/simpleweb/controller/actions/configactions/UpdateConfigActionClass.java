@@ -39,27 +39,26 @@ abstract class UpdateConfigActionClass extends ConfigurationAction {
             errorFlag = true;
         } else {
             configItemBeanManager.getRequestIntoBean(request, configItems);
-            Session session = factory.openSession();
-            logger.info(String.format("About to update config item data, name is <%s>, value is <%s>", name, this.configItems.getValue()));
-            Transaction transaction = session.beginTransaction();
-            if (addFlag) {
-                session.save(this.configItems);
-            } else {
-                session.update(this.configItems);
-            }
+            Session session;
+            Transaction transaction = null;
             try {
-                logger.info("About to flush session");
+                session = factory.getCurrentSession();
+                logger.info(String.format("About to update config item data, name is <%s>, value is <%s>", name, this.configItems.getValue()));
+                transaction = session.beginTransaction();
+                if (addFlag) {
+                    session.save(this.configItems);
+                } else {
+                    session.update(this.configItems);
+                    logger.info("About to flush session");
+                }
                 transaction.commit();
             } catch (Exception e) {
                 status.setStatusMessage(e.getMessage(), "error");
                 logger.info("Error saving config data : %s", e.getMessage());
-                transaction.rollback();
-                errorFlag = true;
-            }
-            finally {
-                if (session.isOpen()) {
-                    session.close();
+                if (transaction != null) {
+                    transaction.rollback();
                 }
+                errorFlag = true;
             }
         }
         if (errorFlag) {

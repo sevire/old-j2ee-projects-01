@@ -7,6 +7,7 @@ import co.uk.genonline.simpleweb.web.gallery.ImageFileFilter;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 import javax.servlet.http.HttpServletRequest;
@@ -114,22 +115,32 @@ public class WebHelper {
 
     public void getScreenIntoBean(ScreensEntity screen, String screenName) {
         if (screen != null && screenName != null) {
-            Session session = factory.openSession();
-            Criteria criteria = session.createCriteria(ScreensEntity.class).add(Restrictions.eq("name", screenName));
-            ScreensEntity dbBean = (ScreensEntity) criteria.uniqueResult();
-            session.close();
+            Session session;
+            Transaction tx = null;
+            try {
+                session = factory.openSession();
+                tx = session.beginTransaction();
+                Criteria criteria = session.createCriteria(ScreensEntity.class).add(Restrictions.eq("name", screenName));
+                ScreensEntity dbBean = (ScreensEntity) criteria.uniqueResult();
+                tx.commit();
 
-            if (dbBean != null) {
-                screen.setName(dbBean.getName());
-                screen.setSortKey(dbBean.getSortKey());
-                screen.setEnabledFlag(dbBean.getEnabledFlag());
-                screen.setGalleryFlag(dbBean.getGalleryFlag());
-                screen.setScreenContents(dbBean.getScreenContents());
-                screen.setMetaDescription(dbBean.getMetaDescription());
-                screen.setScreenTitleLong(dbBean.getScreenTitleLong());
-                screen.setScreenTitleShort(dbBean.getScreenTitleShort());
-                screen.setScreenType(dbBean.getScreenType());
-                screen.setId(dbBean.getId());
+                if (dbBean != null) {
+                    screen.setName(dbBean.getName());
+                    screen.setSortKey(dbBean.getSortKey());
+                    screen.setEnabledFlag(dbBean.getEnabledFlag());
+                    screen.setGalleryFlag(dbBean.getGalleryFlag());
+                    screen.setScreenContents(dbBean.getScreenContents());
+                    screen.setMetaDescription(dbBean.getMetaDescription());
+                    screen.setScreenTitleLong(dbBean.getScreenTitleLong());
+                    screen.setScreenTitleShort(dbBean.getScreenTitleShort());
+                    screen.setScreenType(dbBean.getScreenType());
+                    screen.setId(dbBean.getId());
+                }
+            } catch (Exception e) {
+                logger.error("Error reading Screen data, error is <%s>", e.getMessage());
+                if (tx != null) {
+                    tx.rollback();
+                }
             }
         }
     }

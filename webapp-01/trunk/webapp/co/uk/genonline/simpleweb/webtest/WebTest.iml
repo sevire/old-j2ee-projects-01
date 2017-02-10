@@ -14,7 +14,6 @@
     <orderEntry type="library" name="hibernate" level="project" />
     <orderEntry type="module" module-name="WebApp" />
     <orderEntry type="library" name="apache-log4j-1-1.2" level="project" />
-    <orderEntry type="library" name="Tomcat 7.0" level="application_server_libraries" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
@@ -43,14 +42,7 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="spring-mock-1.1" level="project" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///usr/local/apache-tomcat-7.0.42/lib/servlet-api.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
+    <orderEntry type="library" name="tomcat-j2ee-jars" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-5.1" level="project" />
   </component>
 </module>

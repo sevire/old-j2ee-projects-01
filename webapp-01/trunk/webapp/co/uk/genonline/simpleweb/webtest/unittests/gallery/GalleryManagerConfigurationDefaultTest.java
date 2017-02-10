@@ -11,7 +11,7 @@ import java.io.File;
 
 @RunWith(value=BlockJUnit4ClassRunner.class)
 public class GalleryManagerConfigurationDefaultTest extends TestCase {
-    private final File testGalleryRootPath = new File("/Users/thomassecondary/Projects/lda-webapp/documents/testing/unit-galleries");
+    private final File testGalleryRootPath = new File("/Users/thomassecondary/Projects/webapp-01/documents/testing/unit-galleries");
 
 
     public void setUp() throws Exception {

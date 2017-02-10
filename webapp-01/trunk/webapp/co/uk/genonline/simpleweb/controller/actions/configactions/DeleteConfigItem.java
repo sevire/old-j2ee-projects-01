@@ -29,12 +29,22 @@ public class DeleteConfigItem extends ConfigurationAction {
 
         logger.debug("About to execute HQL query to delete config item : " + query);
 
-        Session session = factory.openSession();
-        Transaction transaction = session.beginTransaction();
-        java.util.List configItems = session.createQuery(query).list();
-        session.delete(configItems.get(0));
-        transaction.commit();
-        session.close();
-        return new RequestResult(request, "/editConfigIndex", true);
+        RequestResult requestResult = null;
+        Session session;
+        Transaction transaction = null;
+        try {
+            session = factory.getCurrentSession();
+            transaction = session.beginTransaction();
+            java.util.List configItems = session.createQuery(query).list();
+            session.delete(configItems.get(0));
+            transaction.commit();
+            requestResult = new RequestResult(request, "/editConfigIndex", true);
+        } catch (Exception e) {
+            logger.error("Error deleting a configuration item, message is <%s>", e.getMessage());
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+        return requestResult;
     }
 }

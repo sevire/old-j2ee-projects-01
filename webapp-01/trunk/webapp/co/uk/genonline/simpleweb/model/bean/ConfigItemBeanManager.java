@@ -4,6 +4,7 @@ import co.uk.genonline.simpleweb.controller.WebLogger;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,22 +47,41 @@ public class ConfigItemBeanManager {
     }
 
     public List<Object> readConfigItems(SessionFactory factory) {
-        Session session = factory.openSession();
-        String query = String.format("from ConfigurationEntity c order by name");
-        logger.debug("About to execute HQL query : " + query);
-        List<Object> configItems =  session.createQuery(query).list();
-        session.close();
-        return configItems;
+        Transaction tx = null;
+        Session session;
+
+        try {
+            session = factory.getCurrentSession();
+            tx = session.beginTransaction();
+            String query = String.format("from ConfigurationEntity c order by name");
+            logger.debug("About to execute HQL query : " + query);
+            List<Object> configItems = session.createQuery(query).list();
+                tx.commit();
+            return configItems;
+        } catch (Exception e) {
+            logger.error("Error reading configuration, error is <%s>", e.getMessage());
+            if (tx != null) {
+                tx.rollback();
+            }
+            return null;
+        }
     }
 
     public void getConfigItemIntoBean(String name) {
-        Session session = factory.openSession();
-        Criteria criteria = session.createCriteria(ConfigurationEntity.class).add(Restrictions.eq("name", name));
-        ConfigurationEntity dbBean = (ConfigurationEntity) criteria.uniqueResult();
-        session.close();
-
-        configBean.setName(dbBean.getName());
-        configBean.setValue(dbBean.getValue());
+        Session session = factory.getCurrentSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Criteria criteria = session.createCriteria(ConfigurationEntity.class).add(Restrictions.eq("name", name));
+            ConfigurationEntity dbBean = (ConfigurationEntity) criteria.uniqueResult();
+            tx.commit();
+            configBean.setName(dbBean.getName());
+            configBean.setValue(dbBean.getValue());
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        }
     }
 
     public void getRequestIntoBean(HttpServletRequest request, ConfigurationEntity configBean) {

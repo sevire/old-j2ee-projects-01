@@ -10,7 +10,7 @@ import java.io.File;
 
 public class GalleryImageDefaultTest extends TestCase {
 
-    private final File testGalleryPath = new File("/Users/thomassecondary/Projects/lda-webapp(b)/documents/testing/unit-galleries/testgallery01");
+    private final File testGalleryPath = new File("/Users/thomassecondary/Projects/webapp-01/documents/testing/unit-galleries/testgallery01");
     private final File testImageFile1 = new File(testGalleryPath, "testimage00001.JPG");
     private final File testImageFile2 = new File(testGalleryPath, "testimage00002.JPG");
 
@@ -61,6 +61,6 @@ public class GalleryImageDefaultTest extends TestCase {
     public void testToString() {
         GalleryImage galleryImage1 = new GalleryImageDefault(testImageFile1);
 
-        Assert.assertEquals("<testimage00001.JPG>:<596>:<400>:<2016-08-12 08:30>", galleryImage1.toString());
+        Assert.assertEquals("<testimage00001.JPG>:<596>:<400>:<2017-01-26 08:08>", galleryImage1.toString());
     }
 }

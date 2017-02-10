@@ -21,7 +21,7 @@ public class ThumbnailManagerDefaultTest extends TestCase {
     private final String invalidImage01 = "xxxxx.jpg";
     private final String invalidImage02 = "xxxxx.yyy";
 
-    private final File testGalleryRootPath = new File("/Users/thomassecondary/Projects/lda-webapp/documents/testing/unit-galleries");
+    private final File testGalleryRootPath = new File("/Users/thomassecondary/Projects/webapp-01/documents/testing/unit-galleries");
 
     // Constant paths for Gallery 1
     private final File testGallery1Path = new File(testGalleryRootPath, "testgallery01");

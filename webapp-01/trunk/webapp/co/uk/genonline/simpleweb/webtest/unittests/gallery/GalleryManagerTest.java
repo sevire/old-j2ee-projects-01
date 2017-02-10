@@ -8,7 +8,7 @@ import java.io.File;
 
 public class GalleryManagerTest extends TestCase {
 
-    private final File testGalleryRootPath = new File("/Users/thomassecondary/Projects/lda-webapp/documents/testing/unit-galleries");
+    private final File testGalleryRootPath = new File("/Users/thomassecondary/Projects/webapp-01/documents/testing/unit-galleries");
 
     private GalleryManagerConfiguration galleryManagerConfiguration;
     private GalleryManager galleryManager;

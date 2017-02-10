@@ -25,8 +25,7 @@ public class ScreensManagerNonCachingTest {
     @Before
     public void setUp() throws Exception {
         TestSupportLogger.initLogger();
-        TestSupportSessionFactory supportSessionFactory = new TestSupportSessionFactory();
-        this.factory = supportSessionFactory.getSessionFactory();
+        this.factory = TestSupportSessionFactory.getSessionFactory();
         TestSupport.clearDatabase(factory);
         manager = new ScreensManagerNonCaching(factory);
     }

@@ -14,7 +14,8 @@ import static org.junit.Assert.assertTrue;
  * Created by thomassecondary on 15/05/15.
  */
 public class TestSupportSessionFactory {
-    static File hibernateConfig = new File("/Users/thomassecondary/Projects/lda-webapp/webapp/co/uk/genonline/simpleweb/webtest/hibernate.cfg.xml");
+    static File hibernateConfig = new File("/Users/thomassecondary/Projects/webapp-01/webapp/co/uk/genonline/simpleweb/webtest/hibernate.cfg.xml");
+
     static SessionFactory factory;
 
     public static SessionFactory getSessionFactory() {

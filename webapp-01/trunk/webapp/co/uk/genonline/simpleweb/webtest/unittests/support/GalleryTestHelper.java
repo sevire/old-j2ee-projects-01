@@ -10,7 +10,7 @@ import java.io.File;
 public class GalleryTestHelper {
 
     // Path name related
-    private final File testGalleryRootPath = new File("/Users/thomassecondary/Projects/lda-webapp/documents/testing/unit-galleries");
+    private final File testGalleryRootPath = new File("/Users/thomassecondary/Projects/webapp-01/documents/testing/unit-galleries");
     private final String thumbnailRelPath = "thumbnails";
     private final String testimagesRelPath = "testimages";
 
