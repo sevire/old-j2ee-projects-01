@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
     <link rel="stylesheet" href="css/contactMe.css" type="text/css" media="all">
     <link rel="stylesheet" href="flexNav/css/flexnav.css" type="text/css" media="all">
-    <link rel="stylesheet" href="css/flexnavoverride.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/flexnavoverride-05.css" type="text/css" media="all">
     <meta name="keywords" content="mistress, mistresses, manchester, link, domina, lucina, links, princess">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="css/style.css" />
@@ -73,7 +73,7 @@
 <div id="container">
     <%@ include file="header-01.jspf" %>
     <div class="menu-button">Menu</div>
-    <%@include file="main-menu-01.jspf"%>
+    <%@include file="main-menu-02.jspf"%>
     <div id="content">
         <div id="pageText">
             <h1>${screenData.screenData.screensEntityDecorator.screenTitleLong}</h1>
