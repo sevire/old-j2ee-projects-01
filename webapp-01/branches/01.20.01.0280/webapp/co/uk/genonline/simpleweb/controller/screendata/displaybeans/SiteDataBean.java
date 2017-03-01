@@ -9,13 +9,14 @@ package co.uk.genonline.simpleweb.controller.screendata.displaybeans;
  * can be modified without delivering a new version of the webapp.
  */
 public class SiteDataBean {
-    String staticFileRootFullPath;
-
-    public String getStaticFileRootFullPath() {
-        return staticFileRootFullPath;
+    public String getStaticFileRootURLPath() {
+        return staticFileRootURLPath;
     }
 
-    public void setStaticFileRootFullPath(String staticFileRootFullPath) {
-        this.staticFileRootFullPath = staticFileRootFullPath;
+    public void setStaticFileRootURLPath(String staticFileRootURLPath) {
+        this.staticFileRootURLPath = staticFileRootURLPath;
     }
+
+    String staticFileRootURLPath;
+
 }

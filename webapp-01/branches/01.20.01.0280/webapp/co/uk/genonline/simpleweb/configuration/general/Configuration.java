@@ -68,16 +68,14 @@ public class Configuration {
                 addConfigItem(new BlogEnabled(value));
             } else if (name.equals("galleryRoot")) {
                 addConfigItem(new GalleryRoot(value));
-            } else if (name.equals("galleryRootFullPathFile")) {
-                addConfigItem(new GalleryRootFullPath(value));
-            } else if (name.equals("galleryRootUrlPath")) {
-                addConfigItem(new GalleryRootUrlPath(value));
             } else if (name.equals("loggingLevel")) {
                 addConfigItem(new LoggingLevel(value));
             } else if (name.equals("thumbnailRelPath")) {
                 addConfigItem(new ThumbnailRelPath(value));
-            } else if (name.equals("staticFileRootFullPath")) {
-                addConfigItem(new StaticFileRootFullPath(value));
+            } else if (name.equals("staticFileRootURL")) {
+                addConfigItem(new StaticFileRootURL(value));
+            } else if (name.equals("staticFileRootFile")) {
+                addConfigItem(new StaticFileRootFile(value));
             } else {
                 logger.warn(String.format("Configuration item name not recognised <%s>", name));
             }

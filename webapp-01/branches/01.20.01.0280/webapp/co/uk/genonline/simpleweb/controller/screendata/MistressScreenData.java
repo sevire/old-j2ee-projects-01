@@ -1,7 +1,8 @@
 package co.uk.genonline.simpleweb.controller.screendata;
 
 import co.uk.genonline.simpleweb.configuration.configitems.BlogEnabled;
-import co.uk.genonline.simpleweb.configuration.configitems.StaticFileRootFullPath;
+import co.uk.genonline.simpleweb.configuration.configitems.StaticFileRootFile;
+import co.uk.genonline.simpleweb.configuration.configitems.StaticFileRootURL;
 import co.uk.genonline.simpleweb.configuration.general.Configuration;
 import co.uk.genonline.simpleweb.controller.RequestStatus;
 import co.uk.genonline.simpleweb.controller.SessionData;
@@ -17,6 +18,7 @@ import co.uk.genonline.simpleweb.web.gallery.GalleryManagerDefault;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.util.List;
 
 /**
@@ -136,7 +138,7 @@ public class MistressScreenData extends ScreenData {
     }
 
     public void setSiteData() {
-        siteData.setStaticFileRootFullPath(((StaticFileRootFullPath) (configuration.getConfigurationItem("staticFileRootFullPath"))).get());
+        siteData.setStaticFileRootURLPath(((StaticFileRootURL) (configuration.getConfigurationItem("staticFileRootURL"))).get());
     }
 
     public SiteDataBean getSiteData() { return siteData; }
@@ -158,8 +160,8 @@ public class MistressScreenData extends ScreenData {
     }
 
     public void setScreenHeader() {
-        String headerImagesFullPath = ((StaticFileRootFullPath) configuration.getConfigurationItem("staticFileRootFullPath")).get()
-                + "site-images/left-right-header-images";
+        String headerImagesFullPath = ((StaticFileRootFile) configuration.getConfigurationItem("staticFileRootFile")).get()
+                + File.separator + "site-images/left-right-header-images";
         List<String> headerImages = webHelper.selectRandomImage(headerImagesFullPath, 2);
         screenHeader.setHeaderImageLeft(headerImages.get(0));
         screenHeader.setHeaderImageRight(headerImages.get(1));

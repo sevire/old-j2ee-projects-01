@@ -1,7 +1,6 @@
 package co.uk.genonline.simpleweb.controller.actions.screenactions;
 
-import co.uk.genonline.simpleweb.configuration.configitems.GalleryRootFullPath;
-import co.uk.genonline.simpleweb.configuration.configitems.MaxImageWidth;
+import co.uk.genonline.simpleweb.configuration.configitems.*;
 import co.uk.genonline.simpleweb.configuration.general.Configuration;
 import co.uk.genonline.simpleweb.controller.actions.RequestResult;
 
@@ -24,13 +23,18 @@ public class ViewImage extends ScreenAction {
 
     public RequestResult perform() {
         Configuration configuration = (Configuration)request.getAttribute("configuration");
-        String galleryRoot = ((GalleryRootFullPath)configuration.getConfigurationItem("galleryRoot")).get();
+
+        String staticFileRootURL = ((StaticFileRootURL)configuration.getConfigurationItem("staticFileRootURL")).get();
+        String galleryRoot = ((GalleryRoot)configuration.getConfigurationItem("galleryRoot")).get();
+
+        String galleryRootUrlPath = staticFileRootURL + File.separator + galleryRoot;
+
         int maxImageWidth = ((MaxImageWidth)(configuration.getConfigurationItem("maxImageWidth"))).get();
 
         String separator = File.separator;
         String gallery = request.getParameter("gallery");
         String image = request.getParameter("image");
-        String img = galleryRoot + separator + gallery + separator + request.getParameter("image");
+        String img = galleryRootUrlPath + separator + gallery + separator + request.getParameter("image");
         logger.debug(String.format("Displaying image for gallery <%s>, image <%s>, img = <%s>", gallery, image, img));
         request.setAttribute("gallery", gallery);
         request.setAttribute("image", img);
