@@ -1,1 +1,0 @@
-mysqldump -u root -pOC7AaWC77B lda_v02 > /Users/thomassecondary/Projects/webapp-01\(trunk\)/Documents/sqldump/lda_v02\(dev\).sql
