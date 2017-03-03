@@ -180,8 +180,9 @@ public class WebHelper {
     public List<String> selectRandomImage(String imagePath, int numberOfImages) {
 
         List<String> outputImages = new ArrayList<String>();
-        String webRootFullPath = this.request.getServletContext().getRealPath("/");
-        File imagePathFile = new File(webRootFullPath + File.separator + imagePath);
+        //String webRootFullPath = this.request.getServletContext().getRealPath("/");
+        //String staticFileFullPath = ((StaticFileRootURL) configuration.getConfigurationItem("staticFileRootPath")).get();
+        File imagePathFile = new File(imagePath);
 
         // Set up to get listing of all image files within imagePath
 

@@ -1,15 +1,14 @@
 package co.uk.genonline.simpleweb.controller.screendata;
 
 import co.uk.genonline.simpleweb.configuration.configitems.BlogEnabled;
+import co.uk.genonline.simpleweb.configuration.configitems.StaticFileRootFile;
+import co.uk.genonline.simpleweb.configuration.configitems.StaticFileRootURL;
 import co.uk.genonline.simpleweb.configuration.general.Configuration;
 import co.uk.genonline.simpleweb.controller.RequestStatus;
 import co.uk.genonline.simpleweb.controller.SessionData;
 import co.uk.genonline.simpleweb.controller.WebLogger;
 import co.uk.genonline.simpleweb.controller.actions.RequestResult;
-import co.uk.genonline.simpleweb.controller.screendata.displaybeans.ScreenDataBean;
-import co.uk.genonline.simpleweb.controller.screendata.displaybeans.ScreenGalleryBean;
-import co.uk.genonline.simpleweb.controller.screendata.displaybeans.ScreenHeaderBean;
-import co.uk.genonline.simpleweb.controller.screendata.displaybeans.ScreenMenuBean;
+import co.uk.genonline.simpleweb.controller.screendata.displaybeans.*;
 import co.uk.genonline.simpleweb.model.bean.ScreensEntityDecorator;
 import co.uk.genonline.simpleweb.model.bean.ScreensManager;
 import co.uk.genonline.simpleweb.web.WebHelper;
@@ -19,6 +18,7 @@ import co.uk.genonline.simpleweb.web.gallery.GalleryManagerDefault;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.util.List;
 
 /**
@@ -31,6 +31,8 @@ import java.util.List;
 public class MistressScreenData extends ScreenData {
 
     // Member variables which will be accessed by JSP via getters and setters
+
+    private SiteDataBean siteData = new SiteDataBean();
 
     private ScreenDataBean screenData = new ScreenDataBean();
     private ScreenHeaderBean screenHeader = new ScreenHeaderBean();
@@ -120,6 +122,7 @@ public class MistressScreenData extends ScreenData {
         } else {
             if (screenRecord.getEnabledFlag()) {
 
+                setSiteData();
                 setScreenData();
                 setScreenHeader();
                 setScreenMenus();
@@ -133,6 +136,12 @@ public class MistressScreenData extends ScreenData {
             }
         }
     }
+
+    public void setSiteData() {
+        siteData.setStaticFileRootURLPath(((StaticFileRootURL) (configuration.getConfigurationItem("staticFileRootURL"))).get());
+    }
+
+    public SiteDataBean getSiteData() { return siteData; }
 
     public ScreenDataBean getScreenData() {
         return screenData;
@@ -151,7 +160,9 @@ public class MistressScreenData extends ScreenData {
     }
 
     public void setScreenHeader() {
-        List<String> headerImages = webHelper.selectRandomImage("site_images/header_images", 2);
+        String headerImagesFullPath = ((StaticFileRootFile) configuration.getConfigurationItem("staticFileRootFile")).get()
+                + File.separator + "site-images/left-right-header-images";
+        List<String> headerImages = webHelper.selectRandomImage(headerImagesFullPath, 2);
         screenHeader.setHeaderImageLeft(headerImages.get(0));
         screenHeader.setHeaderImageRight(headerImages.get(1));
     }

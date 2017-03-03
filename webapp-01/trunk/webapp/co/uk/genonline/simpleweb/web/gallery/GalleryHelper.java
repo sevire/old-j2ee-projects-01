@@ -26,7 +26,7 @@ public class GalleryHelper {
 
     private boolean forceGallery; // Determines whether to re-generate gallery even if exists
     private boolean forceThumbnails ; // Determines whether to re-generate thumbnails even if they exist
-    private String galleryRootRelPath; // Path from web root to parent gallery root (e.g. gallery)
+    private String galleryRoot; // Path from web root to parent gallery root (e.g. gallery)
     private String thumbnailRelPath; // Path from a gallery's folder to its thumbnail folder (e.g. thumbnail)
 
     File galleryRootFullPathFile; // Full path to parent gallery root folder for file i/o operations
@@ -48,8 +48,8 @@ public class GalleryHelper {
 
         forceGallery = ((ForceGallery)configuration.getConfigurationItem("forceGallery")).get();
         forceThumbnails = ((ForceThumbnails)configuration.getConfigurationItem("forceThumbnails")).get();
-        galleryRootRelPath = ((GalleryRootFullPath)configuration.getConfigurationItem("galleryRoot")).get();
-        galleryRootFullPathFile = new File(webRootFullPath + File.separator + galleryRootRelPath);
+        galleryRoot = ((GalleryRoot)configuration.getConfigurationItem("galleryRoot")).get();
+        galleryRootFullPathFile = new File(webRootFullPath + File.separator + galleryRoot);
         galleryThumbnailFullPathFile = new File(webRootFullPath + File.separator + thumbnailRelPath);
         thumbnailRelPath = ((ThumbnailRelPath)configuration.getConfigurationItem("thumbnailRelPath")).get();
         maxThumbnailHeight = ((MaxThumbnailHeight)configuration.getConfigurationItem("maxThumbnailHeight")).get();
@@ -71,7 +71,7 @@ public class GalleryHelper {
     }
 
     public String getGalleryRootRelPath() {
-        return galleryRootRelPath;
+        return galleryRoot;
     }
 
     public int getNumGalleryColumns() {

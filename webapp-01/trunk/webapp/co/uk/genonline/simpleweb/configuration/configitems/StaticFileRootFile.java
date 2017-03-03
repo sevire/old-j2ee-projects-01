@@ -7,13 +7,13 @@ package co.uk.genonline.simpleweb.configuration.configitems;
  * Time: 07:27
  * To change this template use File | Settings | File Templates.
  */
-public class GalleryRootFullPath extends ConfigurationItemString {
+public class StaticFileRootFile extends ConfigurationItemString {
 
-    public GalleryRootFullPath(String value) {
+    public StaticFileRootFile(String value) {
         super(value);
     }
 
     public String getName() {
-        return "galleryRootFullPath";
+        return "staticFileRootFile";
     }
 }

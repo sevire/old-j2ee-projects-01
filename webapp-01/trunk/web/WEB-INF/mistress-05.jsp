@@ -72,46 +72,7 @@
 <body id='${screenData.screenData.screensEntityDecorator.name}'>
 
 <div id="container">
-    <div id="header">
-        <div id="banner">
-            <h1>Princess Lucina - Lucifer's Dark Angel</h1>
-
-        </div>
-        <div id="left-image" class="header-image">
-            <img src='site_images/header_images/${screenData.screenHeader.headerImageLeft}' />
-        </div>
-        <div id="middle-header">
-            <div id="contact-phone" class="contact">
-                <img src="/lda-static-files/images/phone.png" />
-                <p class='leftFloat'>07719 415496</p>
-            </div>
-            <div id="contact-email" class="contact">
-                <img src="site_images/mail.png" />
-                <p class='rightFloat'>
-                    <a href='mailto:princess_lucina@yahoo.co.uk' onClick="_gaq.push(['_trackEvent', 'Link', 'Email Address', 'Click Email Address'])">princess_lucina@yahoo.co.uk</a>
-                </p>
-            </div>
-            <div id="externalLinks">
-                <ul class='mainLinkBar'>
-                    <li class='headerLink home'>
-                        <a href="view?screen=lucina" title="My home page"><img src="site_images/home.png"/></a>
-                    </li>
-                    <li class='headerLink blog'>
-                        <a href="http://manchestermistresslucina.blogspot.co.uk" title="Read my blog"><img src="site_images/Blog_Icon.png"/></a>
-                    </li>
-                    <li class='headerLink yahoo'>
-                        <a href="http://groups.yahoo.com/group/lucifersdarkangel" title="My Yahoo group"><img src="site_images/yahoo.png"/></a>
-                    </li>
-                    <li class='headerLink twitter'>
-                        <a href="https://twitter.com/intent/user?screen_name=Lucina_Princess" title="Follow me on Twitter"><img src="site_images/twitter-icon-80.png"/></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div id="right-image" class="header-image">
-            <img src='site_images/header_images/${screenData.screenHeader.headerImageRight}' />
-        </div>
-    </div>
+    <%@ include file="header-01.jspf" %>
     <div class="menu-button">Menu</div>
     <%@include file="main-menu-02.jspf"%>
     <div id="content">
