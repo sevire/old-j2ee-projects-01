@@ -11,5 +11,8 @@
       <user-password>dfe5dfe9df9ddfebdfcbdffddfe9df9ddf9ddfe8</user-password>
       <resolve-scope>lda_v02:*</resolve-scope>
     </data-source>
+    <data-source name="MySQL - lda_v03@localhost" uuid="06cd0ab8-9ea8-43e7-83f0-6164ad70c9d1">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+    </data-source>
   </component>
 </project>
