@@ -9,11 +9,13 @@ import co.uk.genonline.simpleweb.controller.SessionData;
 import co.uk.genonline.simpleweb.controller.WebLogger;
 import co.uk.genonline.simpleweb.controller.actions.RequestResult;
 import co.uk.genonline.simpleweb.controller.screendata.displaybeans.*;
-import co.uk.genonline.simpleweb.model.bean.ScreensEntityDecorator;
-import co.uk.genonline.simpleweb.model.bean.ScreensManager;
+import co.uk.genonline.simpleweb.model.bean.*;
 import co.uk.genonline.simpleweb.web.WebHelper;
 import co.uk.genonline.simpleweb.web.gallery.Gallery;
 import co.uk.genonline.simpleweb.web.gallery.GalleryManagerDefault;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import org.hibernate.SessionFactory;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -37,8 +39,8 @@ public class MistressScreenData extends ScreenData {
     private ScreenDataBean screenData = new ScreenDataBean();
     private ScreenHeaderBean screenHeader = new ScreenHeaderBean();
     private ScreenMenuBean screenMenus = new ScreenMenuBean();
-
     private ScreenGalleryBean screenGallery = new ScreenGalleryBean();
+    private LinksDataBean linksData = new LinksDataBean();
 
     protected HttpServletResponse response;
     protected HttpServletRequest request;
@@ -51,6 +53,9 @@ public class MistressScreenData extends ScreenData {
     protected WebHelper webHelper; // WebHelper class helps with formatting HTML elements to be passed to page
     protected ScreensEntityDecorator screenRecord; // Populated
 
+    // Add flags for which elements appear on this page (part of refactoring to make more generic)
+    protected MistressScreenDataFlags mistressScreenDataFlags;
+
     // Properties used for containing output data (HTML etc)
     protected WebLogger logger = new WebLogger();
 
@@ -58,6 +63,14 @@ public class MistressScreenData extends ScreenData {
 
     public MistressScreenData(String screenType) {
         super(screenType);
+        mistressScreenDataFlags = new MistressScreenDataFlags(
+                true,
+                true,
+                true,
+                true,
+                true,
+                false
+        );
     }
 
     protected void init(HttpServletRequest request,
@@ -122,11 +135,12 @@ public class MistressScreenData extends ScreenData {
         } else {
             if (screenRecord.getEnabledFlag()) {
 
-                setSiteData();
-                setScreenData();
-                setScreenHeader();
-                setScreenMenus();
-                setScreenGallery();
+                if (mistressScreenDataFlags.includeSiteData) setSiteData();
+                if (mistressScreenDataFlags.includeScreenDetails)setScreenDetailsData();
+                if (mistressScreenDataFlags.includeScreenHeader)setScreenHeader();
+                if (mistressScreenDataFlags.includeScreenMenus)setScreenMenus();
+                if (mistressScreenDataFlags.includeScreenGallery)setScreenGallery();
+                if (mistressScreenDataFlags.includeLinksData) setLinksData();
 
                 return new RequestResult(request, getJSPname(), false);
             } else {
@@ -147,7 +161,7 @@ public class MistressScreenData extends ScreenData {
         return screenData;
     }
 
-    public void setScreenData() {
+    public void setScreenDetailsData() {
         screenData.setScreensEntityDecorator(screenRecord);
         screenData.setBlogEnabledFlag(((BlogEnabled) configuration.getConfigurationItem("blogEnabled")).get());
         screenData.setBlogLink(webHelper.generateBlogLink());
@@ -203,4 +217,27 @@ public class MistressScreenData extends ScreenData {
             screenGallery.setGalleryData("");
         }
     }
+
+    /**
+     * Note: Getter isn't called within the app, but from the JSP so don't delete!  This is true for all the data
+     * element getters.
+     *
+     * @return
+     */
+    public LinksDataBean getLinksData() {
+        return linksData;
+    }
+
+    public void setLinksData() {
+        ServletContext context = request.getServletContext();
+        SessionFactory factory = (SessionFactory) context.getAttribute("sessionFactory");
+        LinksConfiguration linksConfiguration = configuration.getLinksConfiguration();
+        LinksManager linksManager = new LinksManagerNonCaching(factory, linksConfiguration);
+        List<LinksEntityExtended> liveLinks = linksManager.getLiveBannerLinks();
+
+        GsonBuilder builder = new GsonBuilder();
+        Gson gson = builder.create();
+        linksData.setJsonString(gson.toJson(liveLinks));
+    }
+
 }

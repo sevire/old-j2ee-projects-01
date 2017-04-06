@@ -12,7 +12,6 @@
     <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow&v1' rel='stylesheet' type='text/css' />
     <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css' />
     <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
-    <link rel="stylesheet" href="css/mistress-05.css" type="text/css" media="all">
     <link rel="stylesheet" href="css/contactMe.css" type="text/css" media="all">
     <link rel="stylesheet" href="flexNav/css/flexnav.css" type="text/css" media="all">
     <link rel="stylesheet" href="css/flexnavoverride-05.css" type="text/css" media="all">
@@ -56,7 +55,7 @@
         </div>
     </script>
     <link rel="icon" type="image/png" href="favicon.png">
-    <title>Manchester Mistress Princess Lucina - ${screenData.screenData.screensEntityDecorator.screenTitleLong}</title>
+    <title>Manchester Mistress Princess Lucina - Contact Me</title>
     <style>
         div.header-image img {
             width: 100%;
@@ -64,12 +63,23 @@
         div#middle-header {
             display: inline-block;
             width: 68%;
-            vertical-align: top;;
+            vertical-align: top;
+        }
+        table#linksTable {
+            margin-top: 10px;
+        }
+
+        table#linksTable td {
+            padding: 5px 0;
+            height: 60px;
+            background-color: #ffffff;
+            color: #000000;
+            border: black solid 1px;
         }
     </style>
 </head>
 
-<body id='${screenData.screenData.screensEntityDecorator.name}'>
+<body id='contactMe'>
 
 <div id="container">
     <%@ include file="header-01.jspf" %>
@@ -80,24 +90,10 @@
             <h1>${screenData.screenData.screensEntityDecorator.screenTitleLong}</h1>
             ${screenData.screenData.screensEntityDecorator.screenContentsHtml}
         </div>
-        <core:if test='${(screenData.screenGallery.galleryData != null) && (screenData.screenGallery.galleryData != "")}'>
-            <div id="rg-gallery" class="rg-gallery">
-                <div class="rg-thumbs">
-                    <!-- Elastislide Carousel Thumbnail Viewer -->
-                    <div class="es-carousel-wrapper">
-                        <div class="es-nav">
-                            <span class="es-nav-prev">Previous</span>
-                            <span class="es-nav-next">Next</span>
-                        </div>
-                        <div class="es-carousel">
-                            ${screenData.screenGallery.galleryData}
-                        </div>
-                    </div>
-                    <!-- End Elastislide Carousel Thumbnail Viewer -->
-                </div><!-- rg-thumbs -->
-            </div><!-- rg-gallery -->
-        </core:if>
+        <div class="links">
+
         </div>
+    </div>
 
     <div id="footer">
         <p>
@@ -118,5 +114,31 @@
 <script type="text/javascript">
     $('.flexnav').flexNav();
 </script>
+<script>
+    $(document).ready(function() {
+        var linkData = ${screenData.linksData.jsonString}; // Note JS recognises this as JSON and parses it (surprisingly)
+        var html = "<table id='linksTable' class='table table-striped'>";
+        html += "<tbody>";
+
+        for (row=0; row<linkData.length; row++) {
+            html += "<tr>";
+            html += "<td>";
+            html += "<a href='" + linkData[row].url + "'>";
+            if (linkData[row].bannerImageName == "") {
+                html += linkData[row].name;
+            } else {
+                html += "<img src='${screenData.siteData.staticFileRootURLPath}/" + "links/" + linkData[row].bannerImageName + "'img>";
+            }
+            html += "</a>";
+            html += "</td>";
+            html += "</tr>";
+        }
+        html += "</tbody>";
+        html += "</table>";
+        $('div.links').html(html);
+    })
+</script>
+
 </body>
 </html>
+

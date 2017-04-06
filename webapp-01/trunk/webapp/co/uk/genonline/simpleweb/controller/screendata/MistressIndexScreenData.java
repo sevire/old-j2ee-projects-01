@@ -30,7 +30,7 @@ public class MistressIndexScreenData extends MistressScreenData {
      * NOTE:
      *
      * This is a step in the journey to refactor MistressScreenData to be a little more structured and modular.  I have
-     * overridden setScreenData from MistressScreenData but have copied all the code across so that I can add in the
+     * overridden setScreenDetailsData from MistressScreenData but have copied all the code across so that I can add in the
      * code to create the MistressIndex table.  This still repeats code but not as badly as if I hadn't re-factored
      * MistressScreenData.  The next step would be to put more of this code in methods so I'm not repeating it.
      *
@@ -53,7 +53,7 @@ public class MistressIndexScreenData extends MistressScreenData {
             return new RequestResult(request, "error.jsp", false);
         } else {
             if (screenRecord.getEnabledFlag()) {
-                setScreenData();
+                setScreenDetailsData();
                 setScreenHeader();
                 setScreenMenus();
                 setScreenGallery();

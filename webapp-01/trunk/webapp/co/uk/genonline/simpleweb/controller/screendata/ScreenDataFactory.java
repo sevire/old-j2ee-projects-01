@@ -26,6 +26,10 @@ public class ScreenDataFactory {
             return new ContactMeScreenData(screenDisplayType);
         } else if (screenDisplayType.equals("mistress-index-01")) {
             return new MistressIndexScreenData(screenDisplayType);
+        } else if (screenDisplayType.equals("general-01")) {
+            return new GeneralScreenData(screenDisplayType);
+        } else if (screenDisplayType.equals("links")) {
+            return new LinksScreenData(screenDisplayType);
         } else {
             return new DefaultScreenData("mistress-05");
         }

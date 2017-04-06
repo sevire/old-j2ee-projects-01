@@ -4,6 +4,7 @@ import co.uk.genonline.simpleweb.configuration.configitems.*;
 import co.uk.genonline.simpleweb.controller.WebLogger;
 import co.uk.genonline.simpleweb.model.bean.ConfigItemBeanManager;
 import co.uk.genonline.simpleweb.model.bean.ConfigurationEntity;
+import co.uk.genonline.simpleweb.model.bean.LinksConfiguration;
 import org.hibernate.SessionFactory;
 
 import java.util.*;
@@ -76,6 +77,8 @@ public class Configuration {
                 addConfigItem(new StaticFileRootURL(value));
             } else if (name.equals("staticFileRootFile")) {
                 addConfigItem(new StaticFileRootFile(value));
+            } else if (name.equals("linkDaysBetweenChecks")) {
+                addConfigItem(new LinkDaysBetweenChecks(value));
             } else {
                 logger.warn(String.format("Configuration item name not recognised <%s>", name));
             }
@@ -97,6 +100,22 @@ public class Configuration {
             itemName = iterator.next();
             item = getConfigurationItem(itemName);
             logger.debug(String.format("Configuration item <%15s> : <%s>", itemName, item.toString()));
+        }
+    }
+
+    /**
+     * Added this method to allow me to put in one place the gathering together of configuration items for a given task
+     * (in this case the managing of links).  I should extend this idea to other groups of related configitems such as
+     * Galleries.
+     *
+     * ToDo: Refactor to group together gallery and other groups of related config items.
+     * @return
+     */
+    public LinksConfiguration getLinksConfiguration() {
+        if (configurationItems.containsKey("linkDaysBetweenChecks")) {
+            return new LinksConfiguration(((LinkDaysBetweenChecks)(configurationItems.get("linkDaysBetweenChecks"))).get());
+        } else {
+            return new LinksConfiguration(0);
         }
     }
 }
