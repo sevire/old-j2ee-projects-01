@@ -12,7 +12,13 @@
       <resolve-scope>lda_v02:*</resolve-scope>
     </data-source>
     <data-source name="MySQL - lda_v03@localhost" uuid="06cd0ab8-9ea8-43e7-83f0-6164ad70c9d1">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <database-info product="MySQL" version="5.7.17" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
     </data-source>
   </component>
 </project>
