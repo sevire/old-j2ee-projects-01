@@ -66,15 +66,16 @@
             vertical-align: top;
         }
         table#linksTable {
-            margin-top: 10px;
+            margin: 20px auto 0 auto;
         }
 
         table#linksTable td {
             padding: 5px 0;
             height: 60px;
-            background-color: #ffffff;
             color: #000000;
             border: black solid 1px;
+            background-color: #f54a40;
+            text-align: center;
         }
     </style>
 </head>

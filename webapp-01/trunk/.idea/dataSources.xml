@@ -21,5 +21,15 @@
         <property name="tinyInt1isBit" value="false" />
       </driver-properties>
     </data-source>
+    <data-source source="LOCAL" name="MySQL - lda_v04@localhost" uuid="2acdd547-c2fa-4033-a827-4595199dc1c0">
+      <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/lda_v04</jdbc-url>
+      <driver-properties>
+        <property name="zeroDateTimeBehavior" value="convertToNull" />
+        <property name="tinyInt1isBit" value="false" />
+      </driver-properties>
+    </data-source>
   </component>
 </project>

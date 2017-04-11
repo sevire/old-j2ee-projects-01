@@ -404,6 +404,10 @@ table.mistressLinks {
   }
 }
 
+table#linksTable {
+  margin: 10px auto 0 auto;
+}
+
 $break-large: 800px;
 
 @media (min-width: $break-large) {
