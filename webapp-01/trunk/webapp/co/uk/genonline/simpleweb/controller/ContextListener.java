@@ -27,6 +27,7 @@ public class ContextListener implements ServletContextListener {
     private static final String logPath = "/WEB-INF/logs/error.log";
     private ServletContext context;
     private Configuration configurationManager;
+    private String appVersion = "nn.nn.nn.xxxx";
 
     public ContextListener() {
         System.out.format("ContextListener started (before logging)\n");
@@ -36,7 +37,9 @@ public class ContextListener implements ServletContextListener {
         Level level;
 
         context = event.getServletContext();
+        appVersion = context.getInitParameter("app-version");
 
+        System.out.format("contextInitialised: v%s\n", appVersion);
         System.out.format("BeforeLogging:contextInitialized called - is logging working?\n");
         level = Level.DEBUG; // Initial value until we have read configuration.
         logger.setLevel(Level.DEBUG);

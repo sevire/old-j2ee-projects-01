@@ -6,7 +6,10 @@
          version="3.0">
 
     <display-name>LDA Website and Administration Application</display-name>
-    <listener>
+    <context-param>
+        <param-name>app-version</param-name>
+        <param-value>01.20.02.0298</param-value>
+    </context-param><listener>
         <listener-class>
             co.uk.genonline.simpleweb.controller.ContextListener
         </listener-class>

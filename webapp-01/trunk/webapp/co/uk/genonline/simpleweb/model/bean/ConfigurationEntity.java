@@ -9,7 +9,7 @@ import javax.persistence.*;
  * Time: 13:00
  * To change this template use File | Settings | File Templates.
  */
-@Table(name = "Configuration", schema = "", catalog = "lda_v03")
+@Table(name = "Configuration")
 @Entity
 public class ConfigurationEntity {
     private String name;

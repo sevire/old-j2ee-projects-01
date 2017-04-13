@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="lda-war">
     <output-path>/usr/local/apache-tomcat-8.5.11/webapps</output-path>
-    <root id="archive" name="lda##01.20.02.dev.war">
+    <root id="archive" name="lda##01.20.02.0298.war">
       <element id="artifact" artifact-name="lda-exp" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="lib">
