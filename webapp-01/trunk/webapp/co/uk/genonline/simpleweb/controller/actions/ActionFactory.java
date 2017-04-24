@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ActionFactory {
     public static Action createAction(HttpServletRequest request, HttpServletResponse response) {
-        WebLogger logger = new WebLogger();
+        WebLogger logger = new WebLogger(); // ToDo: Confirm whether this will work (Should logger be a field?)
         RequestStatus status;
         String command = request.getServletPath();
         Action action = null;
