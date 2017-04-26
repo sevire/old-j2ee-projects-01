@@ -79,6 +79,8 @@ public class Configuration {
                 addConfigItem(new StaticFileRootFile(value));
             } else if (name.equals("linkDaysBetweenChecks")) {
                 addConfigItem(new LinkDaysBetweenChecks(value));
+            } else if (name.equals("linksRoot")) {
+                addConfigItem(new LinksRoot(value));
             } else {
                 logger.warn(String.format("Configuration item name not recognised <%s>", name));
             }
@@ -112,10 +114,19 @@ public class Configuration {
      * @return
      */
     public LinksConfiguration getLinksConfiguration() {
+        int daysBetween;
+        String linksRoot;
+
         if (configurationItems.containsKey("linkDaysBetweenChecks")) {
-            return new LinksConfiguration(((LinkDaysBetweenChecks)(configurationItems.get("linkDaysBetweenChecks"))).get());
+            daysBetween = ((LinkDaysBetweenChecks) (configurationItems.get("linkDaysBetweenChecks"))).get();
         } else {
-            return new LinksConfiguration(0);
+            daysBetween = 0;
         }
+        if (configurationItems.containsKey("linksRoot")) {
+            linksRoot = ((LinksRoot) (configurationItems.get("linksRoot"))).get();
+        } else {
+            linksRoot = "linksShouldNotWork"; // Gives us a fighting chance of finding the right folder if not in database!
+        }
+        return new LinksConfiguration(daysBetween, linksRoot);
     }
 }

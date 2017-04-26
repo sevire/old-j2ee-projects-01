@@ -238,6 +238,7 @@ public class MistressScreenData extends ScreenData {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
         linksData.setJsonString(gson.toJson(liveLinks));
+        linksData.setLinksRoot(linksConfiguration.getLinksRoot());
     }
 
 }

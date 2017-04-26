@@ -128,7 +128,7 @@
             if (linkData[row].bannerImageName == "") {
                 html += linkData[row].name;
             } else {
-                html += "<img src='${screenData.siteData.staticFileRootURLPath}/" + "links/" + linkData[row].bannerImageName + "'img>";
+                html += "<img src='${screenData.siteData.staticFileRootURLPath}/" + "${screenData.linksData.linksRoot}/" + linkData[row].bannerImageName + "'img>";
             }
             html += "</a>";
             html += "</td>";

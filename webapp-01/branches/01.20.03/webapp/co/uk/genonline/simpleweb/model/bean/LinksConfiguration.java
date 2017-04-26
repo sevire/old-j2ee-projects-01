@@ -5,12 +5,18 @@ package co.uk.genonline.simpleweb.model.bean;
  */
 public class LinksConfiguration {
     private final int daysBetweenChecks;
+    private final String linksRoot;
 
-    public LinksConfiguration(int daysBetweenChecks) {
+    public LinksConfiguration(int daysBetweenChecks, String linksRoot) {
         this.daysBetweenChecks = daysBetweenChecks;
+        this.linksRoot = linksRoot;
     }
 
     public int getDaysBetweenChecks() {
         return daysBetweenChecks;
+    }
+
+    public String getLinksRoot() {
+        return linksRoot;
     }
 }
