@@ -11,15 +11,15 @@ import static org.junit.Assert.assertEquals;
  * Created by thomassecondary on 19/05/15.
  */
 public class GallerySetup {
-    private static final String galleryRelPath = "gallery";
-    private static final File testGalleryRootPath = new File(TestSupportConstants.contextBaseDir + File.separator + galleryRelPath);
+    private static final String galleryRelPath = "galleries";
+    private static final File testGalleryRootPath = new File(TestSupportConstants.testGalleryRootPath);
 
     private static GalleryManagerConfiguration galleryManagerConfiguration;
     private static GalleryManager galleryManager;
     private static GalleryHtmlGenerator defaultHtmlGenerator;
 
     public static GalleryManager gallerySetup() {
-        assertEquals(TestSupportConstants.contextBaseDir + "/gallery", testGalleryRootPath.toString());
+        assertEquals(TestSupportConstants.testGalleryRootPath, testGalleryRootPath.toString());
         String[] imageExtensionList = {"jpg", "jpeg", "png"};
         galleryManagerConfiguration = new GalleryManagerConfigurationDefault(
                 testGalleryRootPath,

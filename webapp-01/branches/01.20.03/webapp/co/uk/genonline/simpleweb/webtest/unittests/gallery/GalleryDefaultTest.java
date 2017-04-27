@@ -266,7 +266,7 @@ public class GalleryDefaultTest extends TestCase {
         // assertion fails.
         testHelper.getGalleryImageFullPath(3, 1).setLastModified(testHelper.getGalleryImageFullPath(3, 1).lastModified()-1000);
 
-        assertFalse(beforeLastModified == afterLastModified);
+        assertFalse(String.format("beforeLastModified <%d> should be different from afterLastModified <%d>", beforeLastModified, afterLastModified), beforeLastModified == afterLastModified);
     }
 
     /**
