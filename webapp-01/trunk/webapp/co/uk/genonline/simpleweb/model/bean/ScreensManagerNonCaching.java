@@ -26,7 +26,7 @@ public class ScreensManagerNonCaching implements ScreensManager {
         //this.sessionFactory = sessionFactory;
         // While debugging Hibernate issue...
 
-        this.sessionFactory = HibernateUtil.getSessionFactory();
+        this.sessionFactory = sessionFactory;
     }
 
     public ScreensEntity getScreen(String screenName, boolean enabledOverride) {
