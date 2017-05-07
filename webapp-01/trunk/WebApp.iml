@@ -67,5 +67,6 @@
     <orderEntry type="library" name="tomcat-j2ee-jars" level="project" />
     <orderEntry type="library" name="mysql-connector-java-5.1" level="project" />
     <orderEntry type="library" name="com.google.code.gson:gson:2.8.0" level="project" />
+    <orderEntry type="library" name="joda-time-2.9" level="project" />
   </component>
 </module>

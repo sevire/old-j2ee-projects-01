@@ -23,6 +23,7 @@
           <element id="library" level="project" name="javax.mail" />
           <element id="library" level="project" name="gagawa-1.0.1" />
           <element id="library" level="project" name="mysql-connector-java-5.1" />
+          <element id="library" level="project" name="joda-time-2.9" />
         </element>
       </element>
       <element id="library" level="project" name="spring-mock-1.1" />
