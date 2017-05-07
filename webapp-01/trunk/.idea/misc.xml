@@ -26,7 +26,7 @@
   <component name="ProjectResources">
     <default-html-doctype>http://www.w3.org/1999/xhtml</default-html-doctype>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
   <component name="SvnBranchConfigurationManager">
@@ -59,6 +59,71 @@
             </SvnBranchConfiguration>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/.idea/copyright">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/branches" />
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/.idea/dataSources">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/branches" />
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/.idea/inspectionProfiles">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/branches" />
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/.idea/libraries">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/branches" />
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/.idea/scopes">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/branches" />
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/META-INF">
           <value>
             <SvnBranchConfiguration>
@@ -86,6 +151,266 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/documents">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/branches" />
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/documents/Architecture">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/branches" />
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/documents/DebugTrace.oo3">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/branches" />
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/documents/GalleryCallingSequence.oo3">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/branches" />
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/documents/LDA-GalleryManagement-v01 (version 1).xlsx">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/branches" />
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/documents/LDA-Restructure.oo3">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/branches" />
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/documents/ObjectModel.oo3">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/branches" />
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/documents/Procedures">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/branches" />
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/documents/ReleaseDocumentation/REL-01.20.02">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/branches" />
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/documents/Tickets - LDA (J2EE) - tbg01.pdf">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/branches" />
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/documents/Untitled.oo3">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/branches" />
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/documents/co">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/branches" />
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/documents/design">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/branches" />
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/documents/index-files">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/branches" />
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/documents/live-galleries-2015-07-06">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/branches" />
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/documents/live-logs">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/branches" />
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/documents/new-galleries">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/branches" />
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/documents/resources">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/branches" />
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/documents/scripts">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/branches" />
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/documents/sqldump">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/branches" />
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/documents/testing">
           <value>
             <SvnBranchConfiguration>
               <option name="branchUrls">
@@ -138,6 +463,19 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/web/WEB-INF">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/branches" />
+                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/web/WEB-INF/old">
           <value>
             <SvnBranchConfiguration>
               <option name="branchUrls">
