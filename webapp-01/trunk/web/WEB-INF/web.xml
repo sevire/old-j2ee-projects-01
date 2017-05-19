@@ -8,7 +8,7 @@
     <display-name>LDA Website and Administration Application</display-name>
     <context-param>
         <param-name>app-version</param-name>
-        <param-value>01.20.06.xxxx</param-value>
+        <param-value>01.20.06.0326</param-value>
     </context-param><listener>
         <listener-class>
             co.uk.genonline.simpleweb.controller.ContextListener
