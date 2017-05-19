@@ -49,7 +49,6 @@ public class ControllerHelper {
         this.factory = factory;
 
         logger.setSession(request);
-        logger.setLevel(Level.DEBUG);
         logger.info("Logger initiated");
     }
 

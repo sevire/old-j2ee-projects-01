@@ -10,7 +10,6 @@ import org.hibernate.SessionFactory;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import java.io.File;
 import java.io.IOException;
 
 /**
@@ -23,8 +22,9 @@ import java.io.IOException;
  * of context (.e.g contextInitialised).
  */
 public class ContextListener implements ServletContextListener {
+    private static final String LOG_PATH = "/WEB-INF/logs/error.log";
+
     private WebLogger logger = new WebLogger();
-    private static final String logPath = "/WEB-INF/logs/error.log";
     private ServletContext context;
     private Configuration configurationManager;
     private String appVersion = "nn.nn.nn.xxxx";
@@ -34,19 +34,10 @@ public class ContextListener implements ServletContextListener {
     }
 
     public void contextInitialized(ServletContextEvent event) {
-        Level level;
-
         context = event.getServletContext();
         appVersion = context.getInitParameter("app-version");
 
-        System.out.format("contextInitialised: v%s\n", appVersion);
-        System.out.format("BeforeLogging:contextInitialized called - is logging working?\n");
-        level = Level.DEBUG; // Initial value until we have read configuration.
-        logger.setLevel(Level.DEBUG);
-        System.out.format("BeforeLogging:contextInitialized before getAppender\n");
-        FileAppender appender = getAppender(event, logPath);
-        System.out.format("BeforeLogging:contextInitialized before initLogger\n");
-        initLogger(null,appender,level);
+        initLogger();
         String contextPath = event.getServletContext().getContextPath();
 
         logger.info(String.format("ContextListener invoked, path = %s", contextPath));
@@ -65,11 +56,13 @@ public class ContextListener implements ServletContextListener {
         configurationManager = new Configuration(factory);
         event.getServletContext().setAttribute("configuration", configurationManager);
 
-        level = ((LoggingLevel)configurationManager.getConfigurationItem("loggingLevel")).get();
+        Level level = ((LoggingLevel)configurationManager.getConfigurationItem("loggingLevel")).get();
         if (level == null) {
-            logger.setLevel(Level.ALL);
+            logger.warn("Logging level not configured, using DEBUG");
+            logger.setRootLevel(Level.DEBUG);
         } else {
-            logger.setLevel(level);
+            logger.info("Logging level configured as %s", level.toString());
+            logger.setRootLevel(level);
         }
 
         initialiseGallery();
@@ -87,7 +80,7 @@ public class ContextListener implements ServletContextListener {
         sessionFactory.close();
     }
 
-    private FileAppender getAppender(ServletContextEvent event, String fileName) {
+    private FileAppender getAppender(String fileName) {
         System.out.format("BeforeLogging:getAppender: file = %s\n", fileName);
         RollingFileAppender appender = null;
         try {
@@ -95,7 +88,7 @@ public class ContextListener implements ServletContextListener {
             System.out.format("BeforeLogging:getAppender: before new RollingFileAppender\n");
             appender = new RollingFileAppender(
                     new PatternLayout("%-5p %c{1} %t %29d - %m%n"),
-                    event.getServletContext().getRealPath(fileName), true
+                    context.getRealPath(fileName), true
             );
             System.out.format("BeforeLogging:getAppender: after new RollingFileAppender\n");
             appender.setMaxBackupIndex(5);
@@ -110,61 +103,34 @@ public class ContextListener implements ServletContextListener {
             );
             System.out.format("BeforeLogging:getAppender: End of catch\n");
         }
-        System.out.format("BeforeLogging:getAppender: End\n", fileName);
+        System.out.format("BeforeLogging:getAppender: End\n");
         return appender;
     }
 
-    private void initLogger(String name, FileAppender appender, Level level) {
-        Logger logger;
-        System.out.format("BeforeLogging:initLogger: Entering \n");
-        if (name == null) {
-            logger = Logger.getRootLogger();
-        } else {
-            logger = Logger.getLogger(name);
-        }
-        logger.setLevel(level);
-        logger.addAppender(appender);
-        logger.info("Starting " + logger.getName());
+    private void initLogger() {
+        System.out.format("BeforeLogging:initLogger: v%s\n", appVersion);
+        System.out.format("BeforeLogging:initLogger called - is logging working?\n");
+
+        // Initialise level to fine grain in case configured value not set correctly
+        logger.setRootLevel(Level.DEBUG);
+
+        System.out.format("BeforeLogging:initLogger: before getAppender\n");
+        FileAppender appender = getAppender(LOG_PATH);
+
+        System.out.format("BeforeLogging:initLogger: before addAppender\n");
+        logger.addAppenderToRoot(appender);
+
+        System.out.format("BeforeLogging:Logger initialised - %s\n", logger.toString());
+        System.out.format("BeforeLogging:Root logger level set to <%s>\n", logger.getRootLevel());
+        System.out.format("BeforeLogging:Logger started - should see this message in first logger message now as INFO...\n");
+        logger.info("BeforeLogging:Logger started - should see this message in first logger message now...");
         System.out.format("BeforeLogging:initLogger: Leaving \n");
     }
 
     private void initialiseGallery() {
-        int maxThumbnailHeight = ((MaxThumbnailHeight)configurationManager.getConfigurationItem("maxThumbnailHeight")).get();
-        if (maxThumbnailHeight <= 0) {
-            logger.warn(String.format("Invalid value for 'maxHeight' (%s), setting to 100", maxThumbnailHeight));
-            maxThumbnailHeight = 100;
-        }
-        int maxThumbnailWidth = ((MaxThumbnailWidth)configurationManager.getConfigurationItem("maxThumbnailWidth")).get();
-        if (maxThumbnailWidth <= 0) {
-            logger.warn(String.format("Invalid value for 'maxWidth' (%s), setting to 100", maxThumbnailWidth));
-            maxThumbnailWidth = 100;
-        }
 
-        String webRootFullPath = this.context.getRealPath("/");
-
-        // Change this to hard coded value while testing putting galleries outside webapp
-        // String galleryRootRelPath = ((GalleryRoot)configurationManager.getConfigurationItem("galleryRoot")).get();
-        // File galleryRootFullPathFile = new File(webRootFullPath + File.separator + galleryRootRelPath);
-
-        String staticFileRootURL = ((StaticFileRootURL)configurationManager.getConfigurationItem("staticFileRootURL")).get();
-        String staticFileRootFile = ((StaticFileRootFile)configurationManager.getConfigurationItem("staticFileRootFile")).get();
-        String galleryRoot = ((GalleryRoot)configurationManager.getConfigurationItem("galleryRoot")).get();
-
-        String galleryRootFilePath = staticFileRootFile + File.separator + galleryRoot;
-        String galleryRootUrlPath = staticFileRootURL + File.separator + galleryRoot;
-
-        File galleryRootFullPathFile = new File(galleryRootFilePath);
-
-        String thumbnailRelPath = ((ThumbnailRelPath)configurationManager.getConfigurationItem("thumbnailRelPath")).get();
-        String[] imageExtensionList = {"jpg", "jpeg", "png"};
-
-        GalleryManagerConfiguration galleryManagerConfiguration = new GalleryManagerConfigurationDefault(
-                galleryRootFullPathFile,
-                galleryRootUrlPath,
-                thumbnailRelPath,
-                maxThumbnailHeight,
-                maxThumbnailWidth,
-                imageExtensionList);
+        GalleryManagerConfiguration galleryManagerConfiguration =
+                new GalleryManagerConfigurationDefault(configurationManager);
 
         ThumbnailManager thumbnailManager = new ThumbnailManagerDefault(galleryManagerConfiguration);
 

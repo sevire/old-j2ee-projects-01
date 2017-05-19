@@ -1,5 +1,7 @@
 package co.uk.genonline.simpleweb.web.gallery;
 
+import co.uk.genonline.simpleweb.configuration.configitems.*;
+import co.uk.genonline.simpleweb.configuration.general.Configuration;
 import co.uk.genonline.simpleweb.controller.WebLogger;
 
 import java.io.File;
@@ -10,7 +12,7 @@ import java.io.File;
  * ToDo: I think this should be immutable (e.g. imageExtensionList should be copied into final structure).  Need to read up!.
  */
 public class GalleryManagerConfigurationDefault implements GalleryManagerConfiguration {
-    WebLogger logger = new WebLogger();
+    private WebLogger logger = new WebLogger();
 
     /**
      * File system full path for folder where all the galleries are.  There will be a sub-folder underneath this one for each
@@ -54,6 +56,56 @@ public class GalleryManagerConfigurationDefault implements GalleryManagerConfigu
      */
     private String[] imageExtensionList = null;
 
+    /**
+     * Provide two constructors.  One creates Gallery configuration items from Configuration items and the other which
+     * has all items passed in.  The second one will be used for testing or in contexts where the Configuration object
+     * isn't available.
+     *
+     * @param configuration
+     */
+    public GalleryManagerConfigurationDefault(Configuration configuration) {
+        int maxThumbnailWidthTemp;
+        int maxThumbnailHeightTemp;
+        maxThumbnailHeightTemp = ((MaxThumbnailHeight)configuration.getConfigurationItem("maxThumbnailHeight")).get();
+        if (maxThumbnailHeightTemp <= 0) {
+            logger.warn(String.format("Invalid value for 'maxHeight' (%s), setting to 100", maxThumbnailHeightTemp));
+            maxThumbnailHeightTemp = 100;
+        }
+        this.maxThumbnailHeight = maxThumbnailHeightTemp;
+        maxThumbnailWidthTemp = ((MaxThumbnailWidth)configuration.getConfigurationItem("maxThumbnailWidth")).get();
+        if (maxThumbnailWidthTemp <= 0) {
+            logger.warn(String.format("Invalid value for 'maxWidth' (%s), setting to 100", maxThumbnailWidthTemp));
+            maxThumbnailWidthTemp = 100;
+        }
+
+        this.maxThumbnailWidth = maxThumbnailWidthTemp;
+        String staticFileRootURL = ((StaticFileRootURL)configuration.getConfigurationItem("staticFileRootURL")).get();
+        String staticFileRootFile = ((StaticFileRootFile)configuration.getConfigurationItem("staticFileRootFile")).get();
+        String galleryRoot = ((GalleryRoot)configuration.getConfigurationItem("galleryRoot")).get();
+
+        String galleryRootFilePath = staticFileRootFile + File.separator + galleryRoot;
+        this.galleriesUrlRelPath = staticFileRootURL + File.separator + galleryRoot;
+
+        this.galleriesRootFullPath = new File(galleryRootFilePath);
+
+        this.thumbnailRelPath = ((ThumbnailRelPath)configuration.getConfigurationItem("thumbnailRelPath")).get();
+
+        String[] imageExtensionList = {"jpg", "jpeg", "png"};
+        this.imageExtensionList = new String[imageExtensionList.length];
+        System.arraycopy(imageExtensionList, 0, this.imageExtensionList, 0, imageExtensionList.length);
+    }
+
+    /**
+     * Now unused (in live app) constructor with all parameters passed in.  Was changed to help with getting
+     * Reload Configuration functionality to work.
+     *
+     * @param galleriesRootFullPath
+     * @param galleriesUrlRelPath
+     * @param thumbnailRelPath
+     * @param maxThumbnailHeight
+     * @param maxThumbnailWidth
+     * @param imageExtensionList
+     */
     public GalleryManagerConfigurationDefault(
             File galleriesRootFullPath,
             String galleriesUrlRelPath,
@@ -107,7 +159,6 @@ public class GalleryManagerConfigurationDefault implements GalleryManagerConfigu
             logger.error(errorString);
             throw new IllegalArgumentException(errorString);
         }
-
         this.maxThumbnailHeight = maxThumbnailHeight;
         // Check that maxThumbnailHeight is half way reasonable value.  Shouldn't be less than 10px
         if (this.maxThumbnailHeight <= 10) {

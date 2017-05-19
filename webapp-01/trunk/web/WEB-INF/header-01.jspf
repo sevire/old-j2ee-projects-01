@@ -20,7 +20,7 @@
         <div id="externalLinks">
             <ul class='mainLinkBar'>
                 <li class='headerLink home'>
-                    <a href="view?screen=lucina" title="My home page">
+                    <a href="view?screen=home" title="My home page">
                         <img src='${screenData.siteData.staticFileRootURLPath}/site-images/main-menu-images/home-icon.png' />
                     </a>
                 </li>

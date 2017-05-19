@@ -1,6 +1,7 @@
 package co.uk.genonline.simpleweb.controller;
 
 
+import org.apache.log4j.Appender;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
@@ -23,7 +24,7 @@ public class WebLogger {
 
     public WebLogger() {
         logger = Logger.getLogger(loggerName);
-        trace("Logger initiated");
+        trace("Logger initiated, name = <%s>", logger.getName());
     }
 
     public WebLogger(HttpServletRequest request) {
@@ -43,6 +44,14 @@ public class WebLogger {
         return getSessionInformation() + getCallingInformation();
     }
 
+    void addAppenderToRoot(Appender appender) {
+        logger.getRootLogger().addAppender(appender);
+    }
+
+    String getName() {
+        return logger.getName();
+    }
+
     public void setSession(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session != null) {
@@ -52,6 +61,14 @@ public class WebLogger {
 
     public void setLevel(Level level) {
         logger.setLevel(level);
+    }
+
+    public void setRootLevel(Level level) {
+        Logger.getRootLogger().setLevel(level);
+    }
+
+    public Level getRootLevel() {
+        return Logger.getRootLogger().getLevel();
     }
 
     void log(Level level, String formatString, String[] values) {
@@ -80,5 +97,9 @@ public class WebLogger {
 
     public void warn(String formatString, String ... values) {
         log(Level.WARN, formatString, values);
+    }
+
+    public String toString() {
+        return String.format("Logger name <%s>, level <%s>", logger.getName(), logger.getLevel());
     }
 }
