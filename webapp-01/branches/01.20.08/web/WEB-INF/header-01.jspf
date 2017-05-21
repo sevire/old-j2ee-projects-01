@@ -1,0 +1,48 @@
+<div id="header">
+    <div id="banner">
+        <h1>Princess Lucina - Lucifer's Dark Angel</h1>
+
+    </div>
+    <div id="left-image" class="header-image">
+        <img src='${screenData.siteData.staticFileRootURLPath}/site-images/left-right-header-images/${screenData.screenHeader.headerImageLeft}' />
+|    </div>
+    <div id="middle-header">
+        <div id="contact-phone" class="contact">
+            <img src='${screenData.siteData.staticFileRootURLPath}/site-images/contact-images/phone.png' />
+            <p class='leftFloat'>07719 415496</p>
+        </div>
+        <div id="contact-email" class="contact">
+            <img src='${screenData.siteData.staticFileRootURLPath}/site-images/contact-images/mail.png' />
+            <p class='rightFloat'>
+                <a href='mailto:princess_lucina@yahoo.co.uk' onClick="ga('send', 'event', 'Contact', 'Email', 'Create')">princess_lucina@yahoo.co.uk</a>
+            </p>
+        </div>
+        <div id="externalLinks">
+            <ul class='mainLinkBar'>
+                <li class='headerLink home'>
+                    <a href="view?screen=home" title="My home page">
+                        <img src='${screenData.siteData.staticFileRootURLPath}/site-images/main-menu-images/home-icon.png' />
+                    </a>
+                </li>
+                <li class='headerLink blog'>
+                    <a href="http://manchestermistresslucina.blogspot.co.uk" title="Read my blog">
+                        <img src='${screenData.siteData.staticFileRootURLPath}/site-images/main-menu-images/blog-icon.png' />
+                    </a>
+                </li>
+                <li class='headerLink yahoo'>
+                    <a href="http://groups.yahoo.com/group/lucifersdarkangel" title="My Yahoo group">
+                        <img src='${screenData.siteData.staticFileRootURLPath}/site-images/main-menu-images/yahoo-icon.png' />
+                    </a>
+                </li>
+                <li class='headerLink twitter'>
+                    <a href="https://twitter.com/intent/user?screen_name=Lucina_Princess" title="Follow me on Twitter">
+                        <img src='${screenData.siteData.staticFileRootURLPath}/site-images/main-menu-images/twitter-icon.png' />
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="right-image" class="header-image">
+        <img src='${screenData.siteData.staticFileRootURLPath}/site-images/left-right-header-images/${screenData.screenHeader.headerImageRight}' />
+    </div>
+</div>
