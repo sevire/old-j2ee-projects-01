@@ -10,11 +10,11 @@ import co.uk.genonline.simpleweb.model.bean.ScreensEntityDecorator;
  */
 public class ScreenDataBean {
 
-    ScreensEntityDecorator screensEntityDecorator;
-    boolean blogEnabledFlag;
-    String blogLink;
-    String mistressPageLink;
-    String homePageLink;
+    private ScreensEntityDecorator screensEntityDecorator;
+    private boolean blogEnabledFlag;
+    private String blogLink;
+    private String mistressPageLink;
+    private String homePageLink;
 
     public String getMistressPageLink() {
         return mistressPageLink;
@@ -32,7 +32,7 @@ public class ScreenDataBean {
         this.homePageLink = homePageLink;
     }
 
-    public boolean isBlogEnabledFlag() {
+    public boolean getBlogEnabledFlag() {
         return blogEnabledFlag;
     }
 

@@ -51,20 +51,12 @@ public class Configuration {
             logger.debug(String.format("Next configuration record is: name = <%s>, value = <%s>", name, value));
             if (name.equals("homePage")) {
                 addConfigItem(new HomePage(value));
-            } else if (name.equals("numGalleryColumns")) {
-                addConfigItem(new NumGalleryColumns(value));
             } else if (name.equals("maxThumbnailHeight")) {
                 addConfigItem(new MaxThumbnailHeight(value));
             } else if (name.equals("maxThumbnailWidth")) {
                 addConfigItem(new MaxThumbnailWidth(value));
             } else if (name.equals("maxImageWidth")) {
                 addConfigItem(new MaxImageWidth(value));
-            } else if (name.equals("maxImageHeight")) {
-                addConfigItem(new MaxImageHeight(value));
-            } else if (name.equals("forceGallery")) {
-                addConfigItem(new ForceGallery(value));
-            } else if (name.equals("forceThumbnails")) {
-                addConfigItem(new ForceThumbnails(value));
             } else if (name.equals("blogEnabled")) {
                 addConfigItem(new BlogEnabled(value));
             } else if (name.equals("galleryRoot")) {
