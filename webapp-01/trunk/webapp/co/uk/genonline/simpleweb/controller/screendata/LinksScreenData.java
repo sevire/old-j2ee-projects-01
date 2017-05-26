@@ -28,6 +28,7 @@ public class LinksScreenData extends MistressScreenData {
                 true,
                 true,
                 true,
+                false,
                 true
         );
     }
