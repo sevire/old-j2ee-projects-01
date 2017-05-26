@@ -10,6 +10,7 @@ public class MistressScreenDataFlags {
     boolean includeScreenMenus;
     boolean includeScreenGallery;
     boolean includeLinksData;
+    boolean includeMistressTable;
 
 
     public MistressScreenDataFlags(
@@ -18,12 +19,14 @@ public class MistressScreenDataFlags {
             boolean includeScreenHeader,
             boolean includeScreenMenus,
             boolean includeScreenGallery,
+            boolean includeMistressTable,
             boolean includeLinksData) {
         this.includeSiteData = includeSiteData;
         this.includeScreenDetails = includeScreenDetails;
         this.includeScreenHeader = includeScreenHeader;
         this.includeScreenMenus = includeScreenMenus;
         this.includeScreenGallery = includeScreenGallery;
+        this.includeMistressTable = includeMistressTable;
         this.includeLinksData = includeLinksData;
     }
 }

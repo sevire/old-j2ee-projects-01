@@ -24,11 +24,14 @@
                         <img src='${screenData.siteData.staticFileRootURLPath}/site-images/main-menu-images/home-icon.png' />
                     </a>
                 </li>
-                <li class='headerLink blog'>
-                    <a href="http://manchestermistresslucina.blogspot.co.uk" title="Read my blog">
-                        <img src='${screenData.siteData.staticFileRootURLPath}/site-images/main-menu-images/blog-icon.png' />
-                    </a>
-                </li>
+                <!-- Blog can be disabled so check whether required -->
+                <core:if test='${(screenData.screenData.blogEnabledFlag != null) && (screenData.screenData.blogEnabledFlag)}'>
+                    <li class='headerLink blog'>
+                        <a href="http://manchestermistresslucina.blogspot.co.uk" title="Read my blog">
+                            <img src='${screenData.siteData.staticFileRootURLPath}/site-images/main-menu-images/blog-icon.png' />
+                        </a>
+                    </li>
+                </core:if>
                 <li class='headerLink yahoo'>
                     <a href="http://groups.yahoo.com/group/lucifersdarkangel" title="My Yahoo group">
                         <img src='${screenData.siteData.staticFileRootURLPath}/site-images/main-menu-images/yahoo-icon.png' />

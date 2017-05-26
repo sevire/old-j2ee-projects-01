@@ -15,6 +15,7 @@ import co.uk.genonline.simpleweb.web.gallery.Gallery;
 import co.uk.genonline.simpleweb.web.gallery.GalleryManagerDefault;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.hp.gagawa.java.elements.*;
 import org.hibernate.SessionFactory;
 
 import javax.servlet.ServletContext;
@@ -40,6 +41,7 @@ public class MistressScreenData extends ScreenData {
     private ScreenHeaderBean screenHeader = new ScreenHeaderBean();
     private ScreenMenuBean screenMenus = new ScreenMenuBean();
     private ScreenGalleryBean screenGallery = new ScreenGalleryBean();
+    private ScreenMistressTableBean screenMistressTable = new ScreenMistressTableBean();
     private LinksDataBean linksData = new LinksDataBean();
 
     protected HttpServletResponse response;
@@ -69,6 +71,7 @@ public class MistressScreenData extends ScreenData {
                 true,
                 true,
                 true,
+                false,
                 false
         );
     }
@@ -141,6 +144,7 @@ public class MistressScreenData extends ScreenData {
                 if (mistressScreenDataFlags.includeScreenMenus)setScreenMenus();
                 if (mistressScreenDataFlags.includeScreenGallery)setScreenGallery();
                 if (mistressScreenDataFlags.includeLinksData) setLinksData();
+                if (mistressScreenDataFlags.includeMistressTable) setScreenMistressTable();
 
                 return new RequestResult(request, getJSPname(), false);
             } else {
@@ -217,6 +221,42 @@ public class MistressScreenData extends ScreenData {
             screenGallery.setGalleryData("");
         }
     }
+
+    public ScreenMistressTableBean getScreenMistressTable() {
+        return screenMistressTable;
+    }
+
+    public void setScreenMistressTable() {
+        List<ScreensEntity> mistressScreens = screensManager.getScreensByType("Mistress", false);
+
+        Table tableElement = new Table();
+        tableElement.setCSSClass("mistressLinks");
+        for (ScreensEntity screen : mistressScreens) {
+            Tr tableRow = new Tr();
+
+            Td imageCell = new Td();
+            imageCell.setCSSClass("imageCell");
+
+            Td linkCell = new Td();
+            linkCell.setCSSClass("linkCell");
+
+            Img imageElement = new Img(screen.getName(), "site_images/" + screen.getName() + ".jpg");
+            imageCell.appendChild(imageElement);
+
+            A mistressLink = new A("view?screen="+screen.getName());
+            mistressLink.appendText(screen.getScreenTitleShort());
+            mistressLink.setCSSClass("mistressLink");
+            linkCell.appendChild(mistressLink);
+
+            tableRow.appendChild(imageCell);
+            tableRow.appendChild(linkCell);
+
+            tableElement.appendChild(tableRow);
+        }
+        String Html = tableElement.write();
+        screenMistressTable.setMistressTable(Html);
+    }
+
 
     /**
      * Note: Getter isn't called within the app, but from the JSP so don't delete!  This is true for all the data
