@@ -1,0 +1,45 @@
+Use Cases
+
+1. Use Case:        A user requests a page for which a gallery is enabled.  The folder for the
+                    gallery exists and there are images in it.
+
+   Expected Result: The page is displayed with a gallery.
+
+2. Use Case:        A user requests a page for which a gallery is enabled.  The folder for the 
+                    gallery does not exist.  
+
+   Expected Result: Page is displayed with no gallery.  An error message appears where the gallery
+                    should be.
+
+3. Use Case:        A user requests a page for which a gallery is enabled.  The folder for the
+                    gallery does exist, but there are no files in the folder.
+
+   Expected Result: Page is displayed with no gallery.  A message appears where the gallery should
+                    be saying that there are no images currently in this gallery.
+
+4. Use Case:        A page is requested for which a gallery is enabled.  The page has been 
+                    requested before and the folder didn’t exist or there were no images in it.
+                    Now the folder does exist and there are images in it.
+
+   Expected Result: The page is displayed with a gallery.
+
+5. Use Case:        A page is requested for which a gallery is enabled.  The folder relating to
+                    gallery exists and there are images in it.  When the app attempts to create a
+                    thumbnail folder for the gallery an IO error occurs (e.g. no permission to 
+                    create the folder).
+
+   Expected Result: The page is displayed with no gallery.  An error message appears where the
+                    gallery should be.
+
+6. Use Case:        A page is requested for which a gallery is enabled.  Last time the page was
+                    requested the thumbnail folder could not be created.  This is still true.
+
+   Expected Result: The page is displayed with no gallery.  An error message appears where the
+                    gallery should be.
+
+7. Use Case:        A page is requested for which a gallery is enabled.  Last time the page was
+                    requested the thumbnail folder could not be created.  This time it can be.
+
+   Expected Result: The page is displayed with a gallery.
+
+8+ (Something similar with the thumbnail images)
