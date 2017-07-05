@@ -10,6 +10,7 @@ import co.uk.genonline.simpleweb.controller.WebLogger;
 import co.uk.genonline.simpleweb.controller.actions.RequestResult;
 import co.uk.genonline.simpleweb.controller.screendata.displaybeans.*;
 import co.uk.genonline.simpleweb.model.bean.*;
+import co.uk.genonline.simpleweb.monitoring.Collator;
 import co.uk.genonline.simpleweb.web.WebHelper;
 import co.uk.genonline.simpleweb.web.gallery.Gallery;
 import co.uk.genonline.simpleweb.web.gallery.GalleryManagerDefault;
@@ -272,7 +273,7 @@ public class MistressScreenData extends ScreenData {
         ServletContext context = request.getServletContext();
         SessionFactory factory = (SessionFactory) context.getAttribute("sessionFactory");
         LinksConfiguration linksConfiguration = configuration.getLinksConfiguration();
-        LinksManager linksManager = new LinksManagerNonCaching(factory, linksConfiguration);
+        LinksManager linksManager = new LinksManagerNonCaching(factory, linksConfiguration, (Collator)request.getServletContext().getAttribute("monitoringCollator"));
         List<LinksEntityExtended> liveLinks = linksManager.getLiveBannerLinks();
 
         GsonBuilder builder = new GsonBuilder();

@@ -1,5 +1,6 @@
 package unittests.support;
 
+import co.uk.genonline.simpleweb.monitoring.Collator;
 import co.uk.genonline.simpleweb.web.gallery.*;
 
 import java.io.File;
@@ -94,5 +95,9 @@ public class GalleryTestHelper {
 
     public File getGalleryImageThumbnailFullPath(int galleryNumber, int imageNumber) {
         return new File(getGalleryThumbnailFullPath(galleryNumber), testImageNames[imageNumber]);
+    }
+
+    public Collator getMonitoringCollator() {
+        return Collator.getInstance();
     }
 }

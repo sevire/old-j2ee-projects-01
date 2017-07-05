@@ -1,5 +1,6 @@
 package unittests.support;
 
+import co.uk.genonline.simpleweb.monitoring.Collator;
 import co.uk.genonline.simpleweb.web.gallery.*;
 
 import java.io.File;
@@ -17,6 +18,7 @@ public class GallerySetup {
     private static GalleryManagerConfiguration galleryManagerConfiguration;
     private static GalleryManager galleryManager;
     private static GalleryHtmlGenerator defaultHtmlGenerator;
+    private static Collator monitoringCollator;
 
     public static GalleryManager gallerySetup() {
         assertEquals(TestSupportConstants.testGalleryRootPath, testGalleryRootPath.toString());
@@ -32,10 +34,12 @@ public class GallerySetup {
         ThumbnailManager thumbnailManager = new ThumbnailManagerDefault(galleryManagerConfiguration);
 
         defaultHtmlGenerator = new GalleryCarouselHtmlGenerator(galleryManagerConfiguration);
+        monitoringCollator = Collator.getInstance();
         galleryManager = new GalleryManagerDefault(
                 galleryManagerConfiguration,
                 thumbnailManager,
-                defaultHtmlGenerator);
+                defaultHtmlGenerator,
+                monitoringCollator);
         return galleryManager;
     }
 

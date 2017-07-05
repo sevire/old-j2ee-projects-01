@@ -6,6 +6,7 @@ import co.uk.genonline.simpleweb.controller.SessionData;
 import co.uk.genonline.simpleweb.controller.actions.RequestResult;
 import co.uk.genonline.simpleweb.controller.screendata.displaybeans.LinksDataBean;
 import co.uk.genonline.simpleweb.model.bean.*;
+import co.uk.genonline.simpleweb.monitoring.Collator;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.hibernate.SessionFactory;
@@ -36,7 +37,7 @@ public class GeneralScreenData extends ScreenData {
         SessionFactory factory = (SessionFactory)(request.getServletContext().getAttribute("sessionFactory"));
 
         LinksConfiguration linksConfiguration = configuration.getLinksConfiguration();
-        LinksManager linksManager = new LinksManagerNonCaching(factory, linksConfiguration);
+        LinksManager linksManager = new LinksManagerNonCaching(factory, linksConfiguration, (Collator)(request.getServletContext().getAttribute("monitoringCollator")));
         List<LinksEntityExtended> links = linksManager.getAllLinks();
 
         // Convert list of objects to JSON array of records to pass to front end

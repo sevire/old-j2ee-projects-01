@@ -1,6 +1,11 @@
 package co.uk.genonline.simpleweb.web.gallery;
 
 import co.uk.genonline.simpleweb.controller.WebLogger;
+import co.uk.genonline.simpleweb.monitoring.Collator;
+import co.uk.genonline.simpleweb.monitoring.CollectableCategory;
+import co.uk.genonline.simpleweb.monitoring.collectables.Collectable;
+import co.uk.genonline.simpleweb.monitoring.collectables.CollectableDataObject;
+import co.uk.genonline.simpleweb.monitoring.collectables.CollectableImpl;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -30,12 +35,17 @@ public class GalleryDefault implements Gallery {
     private final File galleryRootFolder;
     private final String galleryUrl;
 
+    // Monitoring related fields
+    private Collator monitoringCollator;
+    private Collectable galleryStatusCollector;
+
     private String html;
 
     public GalleryDefault(GalleryManagerConfiguration galleryConfiguration,
                           String galleryName,
                           ThumbnailManager thumbnailManager,
-                          GalleryHtmlGenerator htmlGenerator) {
+                          GalleryHtmlGenerator htmlGenerator,
+                          Collator monitoringCollator) {
 
         // Initialise Status object to record error and status values as we go
         this.galleryStatus = new GalleryStatus();
@@ -77,14 +87,22 @@ public class GalleryDefault implements Gallery {
         }
 
         this.htmlGenerator = htmlGenerator;
-        if (htmlGenerator == null) {
+        if (this.htmlGenerator == null) {
             error = "Attempt to create GalleryDefault object with null htmlGenerator";
             logger.error(error);
             galleryStatus.setGalleryError(true);
             throw new NullPointerException(error);
         }
 
-        // Can only get here is there hasn't been an error
+        this.monitoringCollator = monitoringCollator;
+        if (this.monitoringCollator == null) {
+            error = "Collator for monitoring objects is null, can't maintain monitoring data";
+            logger.warn(error);
+            galleryStatus.setGalleryError(true);
+            // Note don't throw exception here.  Can continue without collator.
+        }
+
+        // Can only get here if there hasn't been an error
         // Initialise some other member variables
         this.galleryRootFolder = new File(this.galleryManagerConfiguration.getGalleriesRootFullPath(), galleryName);
         if (!this.galleryRootFolder.exists()) {
@@ -154,10 +172,25 @@ public class GalleryDefault implements Gallery {
 
                 galleryStatus.setThumbnailGenerated(success);
 
-                // Re-generate HTML every time gallery is initialised.
-                getHtml(true);
+                // Note am not calling getHtml here.  Will be called first time page is requested.  This is to
+                // allow Galleries to be created at start up for monitoring purposes, without having to generate
+                // HTML for every gallery straight away.
             }
         }
+        initialiseMonitoringCollators();
+    }
+
+    private void initialiseMonitoringCollators() {
+        galleryStatusCollector = new CollectableImpl(
+                CollectableCategory.GALLERY,
+                getName(),
+                false) {
+            @Override
+            public CollectableDataObject getData() {
+                return getGalleryStatus();
+            }
+        };
+        monitoringCollator.addOrUpdateCollector(galleryStatusCollector);
     }
 
     private void createGalleryImageList() {
@@ -272,6 +305,10 @@ public class GalleryDefault implements Gallery {
                 html = "";
             } else {
                 html = htmlGenerator.getHtml(galleryName, getImageList());
+                galleryStatus.incrementRequestCount();
+                if (html != null) {
+                    galleryStatus.setHtmlGenerated(true);
+                }
             }
         }
         return html;

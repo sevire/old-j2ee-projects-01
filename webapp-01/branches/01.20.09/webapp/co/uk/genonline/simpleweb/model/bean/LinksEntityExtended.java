@@ -1,9 +1,8 @@
 package co.uk.genonline.simpleweb.model.bean;
 
-import org.joda.time.*;
-
 import java.sql.Date;
-
+import java.time.LocalDate;
+import static java.time.temporal.ChronoUnit.DAYS;
 /**
  * Created by thomassecondary on 15/03/2017.
  */
@@ -36,10 +35,10 @@ public class LinksEntityExtended extends LinksEntity {
     private long numDaysSinceChecked() {
         //return ChronoUnit.DAYS.between(getLastCheckedDate().toLocalDate(), dateToday().toLocalDate());
 
-        DateTime lastChecked = new DateTime(getLastCheckedDate());
-        DateTime today = new DateTime(); // Empty constructor returns current date / time.
+        LocalDate lastChecked = getLastCheckedDate().toLocalDate();
+        LocalDate today = LocalDate.now();
 
-        return Days.daysBetween(lastChecked.toLocalDate(), today.toLocalDate()).getDays();
+        return DAYS.between(lastChecked, today);
     }
 
     boolean timeToCheck(int daysBetweenChecks) {
@@ -47,8 +46,8 @@ public class LinksEntityExtended extends LinksEntity {
     }
 
     Date dateOfNextCheck(int daysBetweenChecks) {
-        DateTime lastChecked = new DateTime(getLastCheckedDate());
-        return new Date(lastChecked.plusDays(daysBetweenChecks).getMillis());
+        LocalDate lastChecked = getLastCheckedDate().toLocalDate();
+        return Date.valueOf(lastChecked.plusDays(daysBetweenChecks));
     }
 
     private Date dateToday() {

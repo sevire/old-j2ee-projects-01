@@ -1,9 +1,17 @@
 package co.uk.genonline.simpleweb.web.gallery;
 
 import co.uk.genonline.simpleweb.controller.WebLogger;
+import co.uk.genonline.simpleweb.monitoring.Collator;
+import co.uk.genonline.simpleweb.monitoring.CollectableCategory;
+import co.uk.genonline.simpleweb.monitoring.collectables.Collectable;
+import co.uk.genonline.simpleweb.monitoring.collectables.CollectableDataObject;
+import co.uk.genonline.simpleweb.monitoring.collectables.CollectableImpl;
+import co.uk.genonline.simpleweb.monitoring.collectables.MonitoringGallerySummary;
 
+import javax.xml.bind.annotation.XmlElement;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -23,10 +31,30 @@ public class GalleryManagerDefault implements GalleryManager {
 
     private GalleryManagerConfiguration galleryManagerConfiguration;
 
+    // Data items to manage Monitoring information.  One reference to single monitoringCollator and a number of collectables
+    private Collator monitoringCollator; // Collator of data for Monitoring and control functionality
+    private Collectable gallerySummaryCollector = new CollectableImpl(
+            CollectableCategory.GALLERY,
+            "XXXX",
+            true) {
+        @Override
+        public CollectableDataObject getData() {
+            return new MonitoringGallerySummary(getNumGalleries());
+        }
+    };
+
+    /**
+     *
+     * @param galleryManagerConfiguration Information required to manage galleries.
+     * @param thumbnailManager Object which manages and creates thumbnail folders and images.
+     * @param defaultHtmlGenerator Object which generate the HTML for galleries
+     * @param collator Object which collects data for Monitoring functionality.
+     */
     public GalleryManagerDefault (
             GalleryManagerConfiguration galleryManagerConfiguration,
             ThumbnailManager thumbnailManager,
-            GalleryHtmlGenerator defaultHtmlGenerator) {
+            GalleryHtmlGenerator defaultHtmlGenerator,
+            Collator collator) {
 
         if (galleryManagerConfiguration == null) {
             logger.error("Null value for GalleryManagerConfiguration");
@@ -37,13 +65,22 @@ public class GalleryManagerDefault implements GalleryManager {
         } else if (defaultHtmlGenerator == null) {
             logger.error("Null value for GalleryHtmlGenerator");
             throw new NullPointerException("Null value for GalleryHtmlGenerator");
+        } else if (collator == null) {
+            logger.warn("No monitoringCollator for Monitoring, can't add Monitoring data");
+            this.monitoringCollator = null;
         } else {
             this.thumbnailManager = thumbnailManager;
             this.defaultHtmlGenerator = defaultHtmlGenerator;
             this.galleryManagerConfiguration = galleryManagerConfiguration;
+            this.monitoringCollator = collator;
+            addCollectors();
 
-            galleries = new HashMap<String, Gallery>();
+            galleries = new HashMap<>();
         }
+    }
+
+    private void addCollectors() {
+        this.monitoringCollator.addOrUpdateCollector(gallerySummaryCollector);
     }
 
     public void addGallery(String galleryName) {
@@ -57,12 +94,19 @@ public class GalleryManagerDefault implements GalleryManager {
                         galleryManagerConfiguration,
                         galleryName,
                         thumbnailManager,
-                        defaultHtmlGenerator);
+                        defaultHtmlGenerator,
+                        monitoringCollator);
                 galleries.put(galleryName, newGallery);
             }
             catch (Exception e) {
                 logger.error("Error creating and adding new gallery for gallery <%s>, no gallery added", galleryName);
             }
+        }
+    }
+
+    public void addGalleries(List<String> galleryNames) {
+        for (String name : galleryNames) {
+            addGallery(name);
         }
     }
 
@@ -89,7 +133,8 @@ public class GalleryManagerDefault implements GalleryManager {
                             galleryManagerConfiguration,
                             galleryName,
                             thumbnailManager,
-                            htmlGenerator)
+                            htmlGenerator,
+                            monitoringCollator)
             );
         }
     }
