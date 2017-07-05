@@ -85,19 +85,43 @@ public class ScreensManagerNonCaching implements ScreensManager {
     }
 
     public List<ScreensEntity> getAllScreens(ScreensSortType sortType, boolean enabledOverride) {
-        String enabledClause = enabledOverride ? "" : "where enabledFlag = true";
+        String enabledClause = enabledOverride ? "" : "where enabledFlag is true";
         String query = String.format("from ScreensEntity %s %s", enabledClause, sortType.getSortClause());
         return getScreensFromDatabase(query);
     }
 
-    public List<String> getAllScreenNames(ScreensSortType sortType, boolean enabledOverride) {
-        String enabledClause;
+    public List<ScreensEntity> getAllGalleryScreens(ScreensSortType sortType, boolean enabledOverride) {
+        String enabledClause = enabledOverride ? "where galleryFlag is true" : "where enabledFlag is true and galleryFlag is true";
+        String query = String.format("from ScreensEntity %s %s", enabledClause, sortType.getSortClause());
+        return getScreensFromDatabase(query);
+    }
+
+    /**
+     * Returns a list of the names of all Screens.
+     *
+     * If the enabledOverride flag is set then all screens are returned, otherwise only enabled ones.
+     *
+     * If the galleryFlag is set then only Screens which have a gallery are returned.
+     *
+     * @param sortType
+     * @param enabledOverride
+     * @param galleryFlag
+     * @return
+     */
+    public List<String> getAllScreenNames(ScreensSortType sortType, boolean enabledOverride, boolean galleryFlag) {
+        String whereClause;
         if (enabledOverride) {
-            enabledClause = "";
+            whereClause = "";
+            if (galleryFlag) {
+                whereClause += "where galleryFlag is true";
+            }
         } else {
-            enabledClause = " where enabledFlag is true";
+            whereClause = " where enabledFlag is true";
+            if (galleryFlag) {
+                whereClause += " and galleryFlag is true";
+            }
         }
-        List<ScreensEntity> screens = getScreensFromDatabase("from ScreensEntity" + enabledClause);
+        List<ScreensEntity> screens = getScreensFromDatabase("from ScreensEntity" + whereClause);
         if (screens == null || screens.isEmpty()) {
             return null;
         } else {
@@ -349,6 +373,14 @@ public class ScreensManagerNonCaching implements ScreensManager {
         screen.setSortKey(100);
 
         screen.setId(0);
+    }
+
+    /**
+     */
+    @Override
+    public void initialiseMonitoring() {
+
+
     }
 
     /**

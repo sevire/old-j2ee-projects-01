@@ -1,8 +1,10 @@
 package unittests.gallery;
 
+import co.uk.genonline.simpleweb.monitoring.Collator;
 import co.uk.genonline.simpleweb.web.gallery.*;
 import junit.framework.TestCase;
 import org.apache.commons.io.FileUtils;
+import unittests.support.GallerySetup;
 
 import java.io.File;
 
@@ -13,24 +15,10 @@ public class GalleryManagerTest extends TestCase {
     private GalleryManagerConfiguration galleryManagerConfiguration;
     private GalleryManager galleryManager;
     private GalleryHtmlGenerator defaultHtmlGenerator;
+    private Collator monitoringCollator;
 
     public void gallerySetup() {
-        String[] imageExtensionList = {"jpg", "jpeg", "png"};
-        galleryManagerConfiguration = new GalleryManagerConfigurationDefault(
-                testGalleryRootPath,
-                "galleries",
-                "thumbnails",
-                200,
-                100,
-                imageExtensionList);
-
-        ThumbnailManager thumbnailManager = new ThumbnailManagerDefault(galleryManagerConfiguration);
-
-        defaultHtmlGenerator = new GalleryCarouselHtmlGenerator(galleryManagerConfiguration);
-        galleryManager = new GalleryManagerDefault(
-                galleryManagerConfiguration,
-                thumbnailManager,
-                defaultHtmlGenerator);
+        galleryManager = GallerySetup.gallerySetup();
     }
 
     public void setUp() throws Exception {

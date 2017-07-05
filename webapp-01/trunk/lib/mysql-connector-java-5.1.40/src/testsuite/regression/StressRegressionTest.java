@@ -405,7 +405,7 @@ public class StressRegressionTest extends BaseTestCase {
 
         do {
             if (recheckWaitTimeCountdown == 1) {
-                // time to stop monitoring and finish the jobs
+                // time to stop Monitoring and finish the jobs
                 SharedInfoForTestBug67760.running = false;
             }
             Thread.sleep(recheckWaitTimeUnit);

@@ -3,14 +3,25 @@ package co.uk.genonline.simpleweb.controller;
 import co.uk.genonline.simpleweb.configuration.configitems.*;
 import co.uk.genonline.simpleweb.configuration.general.Configuration;
 import co.uk.genonline.simpleweb.model.HibernateUtil;
+import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
+import co.uk.genonline.simpleweb.model.bean.ScreensManagerNonCaching;
+import co.uk.genonline.simpleweb.model.bean.ScreensSortType;
+import co.uk.genonline.simpleweb.monitoring.Collator;
+import co.uk.genonline.simpleweb.monitoring.CollectableCategory;
+import co.uk.genonline.simpleweb.monitoring.collectables.Collectable;
+import co.uk.genonline.simpleweb.monitoring.collectables.CollectableDataObject;
+import co.uk.genonline.simpleweb.monitoring.collectables.CollectableImpl;
+import co.uk.genonline.simpleweb.monitoring.collectables.MonitoringDatabaseSummary;
 import co.uk.genonline.simpleweb.web.gallery.*;
 import org.apache.log4j.*;
 import org.hibernate.SessionFactory;
+import org.hibernate.internal.SessionFactoryImpl;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created with Intelli J IDEA.
@@ -28,34 +39,49 @@ public class ContextListener implements ServletContextListener {
     private ServletContext context;
     private Configuration configurationManager;
     private String appVersion = "nn.nn.nn.xxxx";
+    private Collator collator;
+    private SessionFactory factory;
+    private GalleryManagerDefault galleryManager;
 
     public ContextListener() {
         System.out.format("ContextListener started (before logging)\n");
     }
 
     public void contextInitialized(ServletContextEvent event) {
+        // Start by initialising things that are used by other things
+
         context = event.getServletContext();
         appVersion = context.getInitParameter("app-version");
-
         initLogger();
-        String contextPath = event.getServletContext().getContextPath();
 
+        // As soon as logger is initialised, output status message
+        String contextPath = context.getContextPath();
         logger.info(String.format("ContextListener invoked, path = %s", contextPath));
 
+        // Set up Hibernate SessionFactory and place in context attribute for access by other parts of the app
         logger.debug("Getting session factory...");
-        SessionFactory factory = HibernateUtil.getSessionFactory();
-        factory.getStatistics().setStatisticsEnabled(true);
-        System.out.format("Result of getSessionFactory is %s\n", factory);
 
+        factory = HibernateUtil.getSessionFactory();
+        factory.getStatistics().setStatisticsEnabled(true);
+
+        // Set up Monitoring Collector for Database Name
+        Collectable databaseSummaryCollector = new CollectableImpl(CollectableCategory.DATABASE, "XXXX", true) {
+            @Override
+            public CollectableDataObject getData() {
+                return new MonitoringDatabaseSummary((SessionFactoryImpl) (factory));
+            }
+        };
+        logger.info(String.format("Result of getSessionFactory is %s\n", factory));
         logger.debug(String.format("Saving session factory in context attribute"));
         context.setAttribute("sessionFactory", factory);
-
         logger.info(String.format("context = <%s>, sessionFactory stored in context = <%s>", context, factory));
         logger.info("Creating and saving ConfigManager");
 
+        // Read in and store configuration items from database
         configurationManager = new Configuration(factory);
-        event.getServletContext().setAttribute("configuration", configurationManager);
+        context.setAttribute("configuration", configurationManager);
 
+        // We can now set logging level based on configuration
         Level level = ((LoggingLevel)configurationManager.getConfigurationItem("loggingLevel")).get();
         if (level == null) {
             logger.warn("Logging level not configured, using DEBUG");
@@ -65,12 +91,18 @@ public class ContextListener implements ServletContextListener {
             logger.setRootLevel(level);
         }
 
+        // Initialise session level variable for status message and status type used in JSPs to display error messages etc.
+        context.setAttribute("statusMessage", "");
+        context.setAttribute("statusType", "none");
+
+        // Initialise Monitoring data collector and store
+        collator = Collator.getInstance();
+        collator.addOrUpdateCollector(databaseSummaryCollector);
+        context.setAttribute("monitoringCollator", collator);
+
+        // Set up galleries for use on Screens where indicated
         initialiseGallery();
 
-        // Initialise session level variable for status message and status type used in JSPs to display error messages etc.
-
-        event.getServletContext().setAttribute("statusMessage", "");
-        event.getServletContext().setAttribute("statusType", "none");
     }
 
     public void contextDestroyed(ServletContextEvent event) {
@@ -136,10 +168,15 @@ public class ContextListener implements ServletContextListener {
 
         logger.info("Creating and saving Gallery Manager in context attribute");
 
-        GalleryManager galleryManager = new GalleryManagerDefault(
+        galleryManager = new GalleryManagerDefault(
                 galleryManagerConfiguration,
                 thumbnailManager,
-                new GalleryCarouselHtmlGenerator(galleryManagerConfiguration));
+                new GalleryCarouselHtmlGenerator(galleryManagerConfiguration),
+                collator);
+
+        ScreensManagerNonCaching screensManager = new ScreensManagerNonCaching(factory);
+        List<String> galleryScreenNames = screensManager.getAllScreenNames(ScreensSortType.DEFAULT, false, true);
+        galleryManager.addGalleries(galleryScreenNames);
         context.setAttribute("Galleries",galleryManager);
     }
 }

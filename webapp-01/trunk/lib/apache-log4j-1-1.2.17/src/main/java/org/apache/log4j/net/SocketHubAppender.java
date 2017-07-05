@@ -429,7 +429,7 @@ public class SocketHubAppender extends AppenderSkeleton {
     }
 
     /**
-      Method that runs, monitoring the ServerSocket and adding connections as
+      Method that runs, Monitoring the ServerSocket and adding connections as
       they connect to the socket. */
     public
     void run() {
