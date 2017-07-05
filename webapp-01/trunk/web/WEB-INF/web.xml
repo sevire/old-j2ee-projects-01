@@ -6,9 +6,19 @@
          version="3.0">
 
     <display-name>LDA Website and Administration Application</display-name>
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>default.html</welcome-file>
+        <welcome-file>default.htm</welcome-file>
+        <welcome-file>default.jsp</welcome-file>
+    </welcome-file-list>
+
     <context-param>
         <param-name>app-version</param-name>
-        <param-value>01.20.08.0333</param-value>
+        <param-value>01.20.09.0339</param-value>
     </context-param><listener>
         <listener-class>
             co.uk.genonline.simpleweb.controller.ContextListener
@@ -23,6 +33,19 @@
         <servlet-class>co.uk.genonline.simpleweb.controller.Controller</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>REST Controller</servlet-name>
+        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>com.sun.jersey.config.property.packages</param-name>
+            <param-value>co.uk.genonline.simpleweb.controller</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>REST Controller</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>
         <url-pattern>/Controller.do</url-pattern>
@@ -75,18 +98,4 @@
         <servlet-name>Controller</servlet-name>
         <url-pattern>/contactMe</url-pattern>
     </servlet-mapping>
-<!--
-    <servlet-mapping>
-        <servlet-name>default</servlet-name>
-        <url-pattern>*.css</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>default</servlet-name>
-        <url-pattern>*.jpg</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>default</servlet-name>
-        <url-pattern>*.png</url-pattern>
-    </servlet-mapping>
--->
 </web-app>

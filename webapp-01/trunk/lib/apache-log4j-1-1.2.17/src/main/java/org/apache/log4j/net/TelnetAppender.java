@@ -35,7 +35,7 @@ import java.util.Vector;
   writing to a read-only socket.  The output is provided in a
   telnet-friendly way so that a log can be monitored over TCP/IP.
   Clients using telnet connect to the socket and receive log data.
-  This is handy for remote monitoring, especially when monitoring a
+  This is handy for remote Monitoring, especially when Monitoring a
   servlet.
 
   <p>Here is a list of the available configuration options:

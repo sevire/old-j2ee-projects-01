@@ -1,0 +1,17 @@
+body {
+  background: #eee; }
+
+.table-striped > tbody > tr:nth-child(2n+1) > td {
+  background-color: #b6c3e2; }
+
+table td table.table-striped > tbody > tr:nth-child(2n+1) > td {
+  background-color: #d3e4ff; }
+
+table > tbody > tr td.monitor-label {
+  width: 300px;
+  text-align: right;
+  padding-right: 10px; }
+table > tbody > tr td.monitor-value {
+  padding-left: 10px; }
+
+/*# sourceMappingURL=monitor.css.map */

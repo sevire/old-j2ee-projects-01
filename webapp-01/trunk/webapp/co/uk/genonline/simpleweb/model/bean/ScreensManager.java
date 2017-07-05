@@ -65,7 +65,7 @@ public interface ScreensManager {
      * @param enabledOverride If not set only returns enabled screens, otherwise all screens.
      * @return
      */
-    List<String> getAllScreenNames(ScreensSortType sortType, boolean enabledOverride);
+    List<String> getAllScreenNames(ScreensSortType sortType, boolean enabledOverride, boolean galleryFlag);
 
     boolean deleteScreen(ScreensEntity screen);
 
@@ -86,4 +86,9 @@ public interface ScreensManager {
      * @param screen
      */
     void initialiseBean(ScreensEntity screen);
+
+    /**
+     * Sets up a summary collector and a detail collecctor for every screen for inclusion in monitoring information.
+     */
+    void initialiseMonitoring();
 }

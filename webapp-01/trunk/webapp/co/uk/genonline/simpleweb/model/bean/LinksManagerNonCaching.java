@@ -1,18 +1,28 @@
 package co.uk.genonline.simpleweb.model.bean;
 
 import co.uk.genonline.simpleweb.controller.WebLogger;
+import co.uk.genonline.simpleweb.monitoring.Collator;
+import co.uk.genonline.simpleweb.monitoring.CollectableCategory;
+import co.uk.genonline.simpleweb.monitoring.collectables.Collectable;
+import co.uk.genonline.simpleweb.monitoring.collectables.CollectableDataObject;
+import co.uk.genonline.simpleweb.monitoring.collectables.CollectableImpl;
+import co.uk.genonline.simpleweb.monitoring.collectables.MonitoringLinksData;
 import org.hibernate.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.xml.bind.annotation.XmlElement;
+import java.util.*;
 
 /**
  * Created by thomassecondary on 14/03/2017.
  */
 public class LinksManagerNonCaching implements LinksManager {
     private WebLogger logger = new WebLogger();
-    SessionFactory factory = null;
-    LinksConfiguration linksConfiguration;
+    private SessionFactory factory = null;
+    private LinksConfiguration linksConfiguration;
+
+    // Monitoring data
+    private Collator collator;
+    private Collectable linksSummary;
 
     /**
      *
@@ -21,9 +31,18 @@ public class LinksManagerNonCaching implements LinksManager {
      *
      *                ToDo: I should be consistent about how I make Session Factory available
      */
-    public LinksManagerNonCaching(SessionFactory factory, LinksConfiguration linksConfiguration) {
+    public LinksManagerNonCaching(SessionFactory factory, LinksConfiguration linksConfiguration, Collator collator) {
         this.factory = factory;
         this.linksConfiguration = linksConfiguration;
+
+        this.collator = collator;
+        this.linksSummary = new CollectableImpl(CollectableCategory.LINK, "XXXX", true) {
+            @Override
+            public CollectableDataObject getData() {
+                return new MonitoringLinksData(getLiveLinks().size(),0);
+            }
+       };
+        collator.addOrUpdateCollector(linksSummary);
     }
 
     public boolean addLink(LinksEntity linkData) {
@@ -39,7 +58,8 @@ public class LinksManagerNonCaching implements LinksManager {
     }
 
     public List<LinksEntityExtended> getLiveLinks() {
-        return getLinksFromDatabase("from LinksEntity l where l.status = 'live' order by l.number");
+        List<LinksEntityExtended> links = getLinksFromDatabase("from LinksEntity l where l.status = 'live' order by l.number");
+        return links;
         // ToDo: Add specific sort key to allow decoupling from number which is based on when the link was added
     }
 

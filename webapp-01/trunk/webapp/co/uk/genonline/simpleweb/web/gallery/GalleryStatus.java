@@ -1,9 +1,18 @@
 package co.uk.genonline.simpleweb.web.gallery;
 
+import co.uk.genonline.simpleweb.monitoring.collectables.CollectableDataObject;
+
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by thomassecondary on 01/05/15.
  *
- * Maintains status for a number of different attributes of a Gallery, to help with monitoring and control.
+ * Maintains status for a number of different attributes of a Gallery, to help with Monitoring and control.
  *
  * Following status information is maintained:
  *
@@ -12,47 +21,67 @@ package co.uk.genonline.simpleweb.web.gallery;
  * - Thumbnails Generated Flag : Set if a thumbnail folder has been generated for this Gallery
  * - Gallery Modified Flag : Set if the Gallery has been modified since last time thumbnails were generated
  */
-public class GalleryStatus {
+
+@XmlRootElement(name="displayData")
+public class GalleryStatus extends CollectableDataObject {
 
     /**
      * Error Status: If errors occurred during the creation of a gallery, then true.  This will help later on when trying to
      * display galleries.
      */
-    boolean galleryError;
+    Boolean galleryError;
 
     /**
      * Error Status: During creation, if the folder associted with the gallery doesn't exist, then this will be set to true, and
      * so will galleryError, as the gallery is unusable.
      */
-    boolean folderExists;
+    Boolean folderExists;
 
     /**
      * General Status: It will allow for lazy instantiation of thumbnails. Set to
      * true if the thumbnails have been successfully generated for this gallery.
      */
-    boolean thumbnailGenerated;
+    Boolean thumbnailGenerated;
 
     /**
      * General Status: If (last time it was checked) the gallery had been modified since thumbnails have been generated, then
      * set to true.
      */
-    boolean galleryModified;
+    Boolean galleryModified;
 
     /**
      * General Status: The number of images within this gallery.
      */
-    int numImages;
+    Integer numImages;
+
+    /**
+     * Time at which the gallery was created.
+     */
+    LocalDateTime timeCreated;
+
+    /**
+     * Keep track of number of times gallery is requested (through calls to getHtml()).
+     */
+    Integer numRequests;
+
+    /**
+     * Indicates whether HTML has been generated for this gallery yet
+     */
+    Boolean htmlGenerated;
 
     public GalleryStatus() {
         reset();
     }
 
     public void reset() {
-        galleryError = false;
-        folderExists = false;
-        numImages = 0;
-        thumbnailGenerated = false;
-        galleryModified = false;
+        this.galleryError = false;
+        this.folderExists = false;
+        this.numImages = 0;
+        this.thumbnailGenerated = false;
+        this.galleryModified = false;
+        this.timeCreated = LocalDateTime.now();
+        this.numRequests = 0;
+        this.htmlGenerated = false;
     }
 
     public boolean isGalleryError() {
@@ -98,10 +127,56 @@ public class GalleryStatus {
         this.galleryModified = galleryModified;
     }
 
+    /**
+     * Set time created to now (i.e. when method is called).
+     */
+    public String getTimeCreated() {
+        return this.timeCreated.toString();
+    }
+
+    public void setHtmlGenerated(Boolean htmlGenerated) {
+        this.htmlGenerated = htmlGenerated;
+    }
+
+    public boolean isHtmlGenerated() {
+        return this.htmlGenerated;
+    }
+
+    protected void incrementRequestCount() {
+            this.numRequests++;
+    }
+
+    public int getNumRequests() {
+        return this.numRequests;
+    }
+
     public String toString() {
-        return String.format("galleryError:<%b>, folderExists:<%b>, numImages:<%d>, thumbnailGenerated:<%b>, galleryModified:<%b>",
-                isGalleryError(), isFolderExists(), getNumImages(), isThumbnailGenerated(), isGalleryModified());
+        return String.format(
+                        "Num Requests: %d<br>" +
+                        "Time Created: %s<br>" +
+                        "Error: %b<br>" +
+                        "Folder Exists: %b<br>" +
+                        "Num Images: %d<br>" +
+                        "Thumbnails Generated?: %b<br>" +
+                        "Gallery Modified?: %b<br>",
+                getNumRequests(), getTimeCreated().toString(), isGalleryError(), isFolderExists(), getNumImages(), isThumbnailGenerated(), isGalleryModified());
     }
 
 
+    @XmlElement
+    @Override
+    public Map<String, String> getDisplayData() {
+        return Collections.unmodifiableMap(new HashMap<String, String>() {
+            {
+                put("galleryError",galleryError.toString());
+                put("folderExists",folderExists.toString());
+                put("numImages",numImages.toString());
+                put("thumbnailGenerated",thumbnailGenerated.toString());
+                put("galleryModified",galleryModified.toString());
+                put("timeCreated",timeCreated.toString());
+                put("numRequests",numRequests.toString());
+                put("htmlGenerated",htmlGenerated.toString());
+            }
+        });
+    }
 }

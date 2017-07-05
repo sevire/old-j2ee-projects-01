@@ -1,5 +1,7 @@
 package co.uk.genonline.simpleweb.web.gallery;
 
+import java.util.List;
+
 /**
  * Generic type to manage the folders of images which will be used to generate galleries for
  * display on a website.
@@ -34,6 +36,13 @@ public interface GalleryManager {
      * @param galleryName The name of the gallery which defines the folder where the images are stored.
      */
     public void addGallery(String galleryName);
+
+    /**
+     * Calls addGallery for every galleryName in List provided.
+     *
+     * @param galleryNames
+     */
+    public void addGalleries(List<String> galleryNames);
 
     /**
      * Causes binding to a given gallery by creating appropriate objects which help to manage the data about the

@@ -585,7 +585,7 @@ public class ScreensManagerNonCachingTest {
         Assert.assertTrue(manager.isScreenExist("testGASN-09"));
         Assert.assertTrue(manager.isScreenExist("testGASN-10"));
 
-        List<String> names1 = manager.getAllScreenNames(ScreensSortType.NAME_ORDER, false);
+        List<String> names1 = manager.getAllScreenNames(ScreensSortType.NAME_ORDER, false, false);
         Assert.assertNotNull(names1);
         Assert.assertEquals(6, names1.size());
 
@@ -600,7 +600,7 @@ public class ScreensManagerNonCachingTest {
         Assert.assertTrue(names1.contains("testGASN-08"));
         Assert.assertTrue(names1.contains("testGASN-09"));
 
-        List<String> names2 = manager.getAllScreenNames(ScreensSortType.NAME_ORDER, true);
+        List<String> names2 = manager.getAllScreenNames(ScreensSortType.NAME_ORDER, true, false);
         Assert.assertNotNull(names2);
         Assert.assertEquals(10, names2.size());
 
@@ -620,7 +620,7 @@ public class ScreensManagerNonCachingTest {
         manager.deleteScreen("testGASN-09");
         manager.deleteScreen("testGASN-02");
 
-        List<String> names3 = manager.getAllScreenNames(ScreensSortType.NAME_ORDER, false);
+        List<String> names3 = manager.getAllScreenNames(ScreensSortType.NAME_ORDER, false, false);
         Assert.assertNotNull(names3);
         Assert.assertEquals(5, names3.size());
 
@@ -635,7 +635,7 @@ public class ScreensManagerNonCachingTest {
         Assert.assertTrue(names3.contains("testGASN-08"));
         Assert.assertFalse(names3.contains("testGASN-09"));
 
-        List<String> names4 = manager.getAllScreenNames(ScreensSortType.NAME_ORDER, true);
+        List<String> names4 = manager.getAllScreenNames(ScreensSortType.NAME_ORDER, true, false);
         Assert.assertNotNull(names4);
         Assert.assertEquals(7, names4.size());
 
@@ -737,7 +737,7 @@ public class ScreensManagerNonCachingTest {
 
         // --- Delete some screens in different ways and check a few things are still correct
 
-        List<String> names1 = manager.getAllScreenNames(ScreensSortType.DEFAULT, true);
+        List<String> names1 = manager.getAllScreenNames(ScreensSortType.DEFAULT, true, false);
         Assert.assertEquals(10, names1.size());
         Assert.assertTrue(names1.contains("testDS-01"));
 
@@ -746,14 +746,14 @@ public class ScreensManagerNonCachingTest {
         status = manager.deleteScreen(screen01);
         Assert.assertTrue(status);
 
-        List<String> names2 = manager.getAllScreenNames(ScreensSortType.DEFAULT, true);
+        List<String> names2 = manager.getAllScreenNames(ScreensSortType.DEFAULT, true, false);
         Assert.assertEquals(9, names2.size());
         Assert.assertFalse(names2.contains("testDS-01"));
 
         status = manager.deleteScreen("testDS-10");
         Assert.assertTrue(status);
 
-        List<String> names3 = manager.getAllScreenNames(ScreensSortType.DEFAULT, true);
+        List<String> names3 = manager.getAllScreenNames(ScreensSortType.DEFAULT, true, false);
         Assert.assertEquals(8, names3.size());
         Assert.assertFalse(names3.contains("testDS-10"));
 
@@ -767,7 +767,7 @@ public class ScreensManagerNonCachingTest {
         manager.deleteScreen("testDS-08");
         manager.deleteScreen("testDS-09");
 
-        List<String> names4 = manager.getAllScreenNames(ScreensSortType.DEFAULT, true);
+        List<String> names4 = manager.getAllScreenNames(ScreensSortType.DEFAULT, true, false);
         Assert.assertNull(names4);
 
         // --- Some invalid conditions
