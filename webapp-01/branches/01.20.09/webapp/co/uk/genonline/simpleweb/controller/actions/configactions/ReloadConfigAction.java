@@ -3,6 +3,7 @@ package co.uk.genonline.simpleweb.controller.actions.configactions;
 import co.uk.genonline.simpleweb.configuration.configitems.LoggingLevel;
 import co.uk.genonline.simpleweb.controller.actions.Action;
 import co.uk.genonline.simpleweb.controller.actions.RequestResult;
+import co.uk.genonline.simpleweb.monitoring.Collator;
 import co.uk.genonline.simpleweb.web.gallery.*;
 import org.apache.log4j.Level;
 
@@ -49,10 +50,13 @@ public class ReloadConfigAction extends Action {
 
         logger.info("Creating and saving Gallery Manager in context attribute");
 
+        Collator collator = (Collator)(request.getServletContext().getAttribute("monitoringCollator"));
+
         GalleryManager galleryManager = new GalleryManagerDefault(
                 galleryManagerConfiguration,
                 thumbnailManager,
-                new GalleryCarouselHtmlGenerator(galleryManagerConfiguration));
+                new GalleryCarouselHtmlGenerator(galleryManagerConfiguration),
+                collator);
 
         // Overwrite existing GalleryManager with new one generated from reloaded configuration.
         request.getServletContext().setAttribute("Galleries",galleryManager);

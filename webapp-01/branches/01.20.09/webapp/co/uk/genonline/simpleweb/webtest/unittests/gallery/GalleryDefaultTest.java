@@ -38,7 +38,8 @@ public class GalleryDefaultTest extends TestCase {
                 testHelper.getGalleryManagerConfiguration(),
                 testHelper.getGalleryName(3),
                 testHelper.getThumbnailManager(),
-                testHelper.getGalleryHtmlGenerator());
+                testHelper.getGalleryHtmlGenerator(),
+                testHelper.getMonitoringCollator());
 
         // A couple of tests to check instantiation worked ok.
         assertFalse(galleryTestInstantiation.getGalleryStatus().isGalleryError());
@@ -55,7 +56,8 @@ public class GalleryDefaultTest extends TestCase {
                 null,
                 testHelper.getGalleryName(3),
                 testHelper.getThumbnailManager(),
-                testHelper.getGalleryHtmlGenerator());
+                testHelper.getGalleryHtmlGenerator(),
+                null);
         assertTrue(galleryTestInstantiation.getGalleryStatus().isGalleryError());
     }
 
@@ -69,7 +71,8 @@ public class GalleryDefaultTest extends TestCase {
                 testHelper.getGalleryManagerConfiguration(),
                 null,
                 testHelper.getThumbnailManager(),
-                testHelper.getGalleryHtmlGenerator());
+                testHelper.getGalleryHtmlGenerator(),
+                null);
         assertTrue(galleryTestInstantiation.getGalleryStatus().isGalleryError());
     }
 
@@ -83,7 +86,8 @@ public class GalleryDefaultTest extends TestCase {
                 testHelper.getGalleryManagerConfiguration(),
                 "",
                 testHelper.getThumbnailManager(),
-                testHelper.getGalleryHtmlGenerator());
+                testHelper.getGalleryHtmlGenerator(),
+                null);
         assertTrue(galleryTestInstantiation.getGalleryStatus().isGalleryError());
         assertFalse(galleryTestInstantiation.getGalleryStatus().isFolderExists());
         assertFalse(galleryTestInstantiation.getGalleryStatus().isThumbnailGenerated());
@@ -98,7 +102,8 @@ public class GalleryDefaultTest extends TestCase {
                 testHelper.getGalleryManagerConfiguration(),
                 "XXXXX",
                 testHelper.getThumbnailManager(),
-                testHelper.getGalleryHtmlGenerator());
+                testHelper.getGalleryHtmlGenerator(),
+                null);
         assertTrue(galleryTestInstantiation.getGalleryStatus().isGalleryError());
         assertFalse(galleryTestInstantiation.getGalleryStatus().isFolderExists());
         assertFalse(galleryTestInstantiation.getGalleryStatus().isThumbnailGenerated());
@@ -114,7 +119,8 @@ public class GalleryDefaultTest extends TestCase {
                 testHelper.getGalleryManagerConfiguration(),
                 testHelper.getGalleryName(3),
                 null,
-                testHelper.getGalleryHtmlGenerator());
+                testHelper.getGalleryHtmlGenerator(),
+                null);
 
         assertTrue(galleryTestInstantiation.getGalleryStatus().isGalleryError());
     }
@@ -129,6 +135,7 @@ public class GalleryDefaultTest extends TestCase {
                 testHelper.getGalleryManagerConfiguration(),
                 testHelper.getGalleryName(3),
                 testHelper.getThumbnailManager(),
+                null,
                 null);
 
         assertTrue(galleryTestInstantiation.getGalleryStatus().isGalleryError());
@@ -148,7 +155,9 @@ public class GalleryDefaultTest extends TestCase {
                 testHelper.getGalleryManagerConfiguration(),
                 testHelper.getGalleryName(3),
                 testHelper.getThumbnailManager(),
-                testHelper.getGalleryHtmlGenerator());
+                testHelper.getGalleryHtmlGenerator(),
+                testHelper.getMonitoringCollator()
+                );
 
 
         // Check number of images in gallery in two ways - should get same answer.
@@ -166,7 +175,8 @@ public class GalleryDefaultTest extends TestCase {
                 testHelper.getGalleryManagerConfiguration(),
                 testHelper.getGalleryName(3),
                 testHelper.getThumbnailManager(),
-                testHelper.getGalleryHtmlGenerator());
+                testHelper.getGalleryHtmlGenerator(),
+                testHelper.getMonitoringCollator());
 
         assertEquals(testHelper.getGalleryName(3), gallery.getName());
     }
@@ -188,7 +198,8 @@ public class GalleryDefaultTest extends TestCase {
                 testHelper.getGalleryManagerConfiguration(),
                 testHelper.getGalleryName(3),
                 testHelper.getThumbnailManager(),
-                testHelper.getGalleryHtmlGenerator());
+                testHelper.getGalleryHtmlGenerator(),
+                testHelper.getMonitoringCollator());
 
         // Set up files to be used in this test.
         File testImageGallery3AddedFile = new File (testHelper.getGalleryImageFullPath(3, 1).getParent(), "AddedFile.JPG");
@@ -246,7 +257,8 @@ public class GalleryDefaultTest extends TestCase {
                 testHelper.getGalleryManagerConfiguration(),
                 testHelper.getGalleryName(3),
                 testHelper.getThumbnailManager(),
-                testHelper.getGalleryHtmlGenerator());
+                testHelper.getGalleryHtmlGenerator(),
+                testHelper.getMonitoringCollator());
 
         // Get lastModified property from one or two of the thumbnails.  Then check whether changed after call to
         // updateGallery().
@@ -286,7 +298,8 @@ public class GalleryDefaultTest extends TestCase {
                 testHelper.getGalleryManagerConfiguration(),
                 testHelper.getGalleryName(3),
                 testHelper.getThumbnailManager(),
-                testHelper.getGalleryHtmlGenerator());
+                testHelper.getGalleryHtmlGenerator(),
+                testHelper.getMonitoringCollator());
 
         assertEquals(testHelper.getGalleryName(3), galleryTest.getName());
         String newLine = String.format("%n");
@@ -329,7 +342,8 @@ public class GalleryDefaultTest extends TestCase {
                 testHelper.getGalleryManagerConfiguration(),
                 testHelper.getGalleryName(3),
                 testHelper.getThumbnailManager(),
-                testHelper.getGalleryHtmlGenerator());
+                testHelper.getGalleryHtmlGenerator(),
+                testHelper.getMonitoringCollator());
 
         GalleryStatus galleryStatus = galleryTest.getGalleryStatus();
 

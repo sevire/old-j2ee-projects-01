@@ -4,7 +4,6 @@ import co.uk.genonline.simpleweb.controller.actions.Action;
 import co.uk.genonline.simpleweb.controller.actions.ActionFactory;
 import co.uk.genonline.simpleweb.controller.actions.RequestResult;
 import co.uk.genonline.simpleweb.model.bean.ScreensEntity;
-import org.apache.log4j.Level;
 import org.hibernate.SessionFactory;
 
 import javax.servlet.RequestDispatcher;

@@ -10,7 +10,7 @@
 package org.dom4j.samples.performance;
 
 /**
- * A timer for use in performance monitoring
+ * A timer for use in performance Monitoring
  * 
  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan </a>
  * @version $Revision: 1.4 $

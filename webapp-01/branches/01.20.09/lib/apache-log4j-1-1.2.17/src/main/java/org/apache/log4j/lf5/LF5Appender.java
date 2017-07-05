@@ -61,7 +61,7 @@ public class LF5Appender extends AppenderSkeleton {
    * the <code>LogBrokerMonitor</code>. This constructor should <bold>always
    * </bold> be  preferred over the
    * <code>LF5Appender(LogBrokerMonitor monitor)</code>
-   * constructor, unless you need to spawn additional log monitoring
+   * constructor, unless you need to spawn additional log Monitoring
    * windows.
    */
   public LF5Appender() {
@@ -72,7 +72,7 @@ public class LF5Appender extends AppenderSkeleton {
    * Constructs a <code>LF5Appender<code> using an instance of
    * a <code>LogBrokerMonitor<code> supplied by the user. This
    * constructor should only be used when you need to spawn
-   * additional log monitoring windows.
+   * additional log Monitoring windows.
    *
    * @param monitor An instance of a <code>LogBrokerMonitor<code>
    * created by the user.
