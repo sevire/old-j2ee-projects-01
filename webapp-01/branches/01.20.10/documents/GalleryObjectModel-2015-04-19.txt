@@ -1,0 +1,86 @@
+Gallery Object Model
+
+Classes
+
+- Class:GalleryManager             Manages all the Galleries in the website
+
+- Class:Gallery                    Manages a single Gallery
+
+- Class:GalleryImage               Encapsulates an image which is part of a gallery
+
+- Class:ThumbnailManager           Creates Thumbnail folders and Thumbnails on behalf of a gallery
+                                   Sort of utility class to deal with thumbnails.
+
+- Interface:GalleryHtmlGenerator   Defines interface for Classes which generate Html for a gallery.
+                                   Implementors will implement different styles of gallery.
+
+- Class:ImageResizer               Class used to encapsulate image resizing functionality.  Will be used to
+                                   generate thumbnail and also to reduce size of very large images.
+
+Methods
+
+- GalleryManager
+    - Public Methods
+        - addGallery()
+        - removeGallery()
+        - getGallery()
+        - regenerateAllGalleries()
+
+- Gallery
+    - Public Methods
+        - regenerateGallery() 
+        - getGalleryImageList()
+        - getGalleryName()
+        - isGalleryModified()       Determines whether a Gallery has been changed from when it was created.
+                                    Used to determine whether to refresh gallery or not when a user requests a
+                                    page with the gallery on.
+
+    - Private Methods
+        - initialiseGallery()  
+        - addGalleryImages() 
+        - createGalleryImageList()
+        - createGalleryThumbnails()
+
+- GalleryImage
+    - Public Methods
+        - getImageName()
+        - getImageWidth()
+        - getImageHeight()
+        - getImageFullPath()
+        - getImageSize()
+        - isImageExist()
+        - isImageModified()          Determines whether an image has changed since Image object was created (or
+                                     last time checked).  True if a property has changed or the image no longer
+                                     exists.
+        - deleteImage()
+
+    - Private Methods
+        - getImageModifiedDateTime()
+        - updateImageDetails()
+
+
+
+- ThumbnailManager
+    - Public Methods
+        - createThumbnailFolder()
+        - deleteThumbnailFolder()
+        - createThumbnail()
+	- deleteThumbnail()
+	- createAllThumbnails()
+	- deleteAllThumbnails()
+
+    - Private Methods
+        - getThumbnailWidth()
+        - getThumbnailHeight()
+
+- GalleryHtmlGenerator
+    - Public Methods
+        - getHtml          
+
+- ImageResizer
+    - Public Methods
+        - scaleImageMaxDimension     Scales an image to fit within a supplied maximum height and width
+
+    - Private Methods
+        - getScaledInstance          (Downloaded) method to scale an image.        
+
