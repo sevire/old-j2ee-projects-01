@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="lda-war-new">
+    <output-path>$PROJECT_DIR$/out/artifacts/lda_war_new</output-path>
+    <root id="archive" name="lda##01.20.10.war">
+      <element id="artifact" artifact-name="lda-exp-new" />
+    </root>
+  </artifact>
+</component>

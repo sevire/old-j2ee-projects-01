@@ -24,7 +24,6 @@ import unittests.support.ScreensUnitTestData;
 import unittests.support.TestSupport;
 import unittests.support.TestSupportSessionFactory;
 
-
 /**
  * Created by thomassecondary on 16/05/2016.
  */
