@@ -305,12 +305,12 @@ public class GalleryDefault implements Gallery {
                 html = "";
             } else {
                 html = htmlGenerator.getHtml(galleryName, getImageList());
-                galleryStatus.incrementRequestCount();
                 if (html != null) {
                     galleryStatus.setHtmlGenerated(true);
                 }
             }
         }
+        galleryStatus.incrementRequestCount();
         return html;
     }
 
