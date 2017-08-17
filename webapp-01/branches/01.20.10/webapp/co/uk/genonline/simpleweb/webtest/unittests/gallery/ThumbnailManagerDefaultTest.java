@@ -152,7 +152,7 @@ public class ThumbnailManagerDefaultTest extends TestCase {
         imageList.add(galleryImage1);
         imageList.add(galleryImage2);
 
-        thumbnailManager.createAllThumbnails(testGallery2Path, imageList);
+        thumbnailManager.checkAndCreateThumbnails(testGallery2Path, imageList);
         assertTrue(testImageG2F1Thumbnail.exists());
         assertTrue(testImageG2F1Thumbnail.isFile());
         assertTrue(testImageG2F2Thumbnail.exists());
@@ -160,7 +160,7 @@ public class ThumbnailManagerDefaultTest extends TestCase {
 
         // Shouldn't get an error if I try to create when they already exist.  Result should be the same.
 
-        thumbnailManager.createAllThumbnails(testGallery2Path, imageList);
+        thumbnailManager.checkAndCreateThumbnails(testGallery2Path, imageList);
         assertTrue(testImageG2F1Thumbnail.exists());
         assertTrue(testImageG2F1Thumbnail.isFile());
         assertTrue(testImageG2F2Thumbnail.exists());
@@ -177,7 +177,7 @@ public class ThumbnailManagerDefaultTest extends TestCase {
         assertFalse(testImageG2F2Thumbnail.exists());
 
         // Now create them again and delete them not using the list (i.e. just delete all files in the thumbnail folder).
-        thumbnailManager.createAllThumbnails(testGallery2Path, imageList);
+        thumbnailManager.checkAndCreateThumbnails(testGallery2Path, imageList);
         // Don't bother with asserts - we have already test them.  Assume it works.  Just call the deleteThumbnails method.
         thumbnailManager.deleteAllThumbnails(testGallery2Path);
         assertFalse(testImageG2F1Thumbnail.exists());

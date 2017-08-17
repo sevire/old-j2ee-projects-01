@@ -9,6 +9,7 @@ import co.uk.genonline.simpleweb.monitoring.collectables.CollectableImpl;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -29,11 +30,13 @@ public class GalleryDefault implements Gallery {
     private final ThumbnailManager thumbnailManager;
     private final GalleryHtmlGenerator htmlGenerator;
     private final GalleryStatus galleryStatus;
+    private final LocalDateTime timeCreated;
 
-    //Member variables which are calculated within the object
+    //Member variables which are calculated or maintained within the object
     private List<GalleryImage> imageList;
     private final File galleryRootFolder;
     private final String galleryUrl;
+    private LocalDateTime lastGeneratedTime; // Used to work out whether anything has changed when generating a Gallery
 
     // Monitoring related fields
     private Collator monitoringCollator;
@@ -47,8 +50,13 @@ public class GalleryDefault implements Gallery {
                           GalleryHtmlGenerator htmlGenerator,
                           Collator monitoringCollator) {
 
+        timeCreated = LocalDateTime.now();
+
+        // Initialise Last Generated Date / Time to be a long time in the past to force generation of gallery.
+        lastGeneratedTime = LocalDateTime.of(1900, 1, 1, 0, 0, 0, 0); // 1/1/1900 00:00:00.0
+
         // Initialise Status object to record error and status values as we go
-        this.galleryStatus = new GalleryStatus();
+        this.galleryStatus = new GalleryStatus(this);
 
         // Initialise injected member variables
 
@@ -58,7 +66,6 @@ public class GalleryDefault implements Gallery {
         if (this.galleryManagerConfiguration == null) {
             error = String.format("Attempt to create gallery <%s> with null GalleryConfiguration", galleryName);
             logger.error(error);
-            galleryStatus.setGalleryError(true);
             throw new NullPointerException(error);
         }
 
@@ -67,14 +74,12 @@ public class GalleryDefault implements Gallery {
         if (this.galleryName == null) {
             error = "Attempt to create GalleryDefault object with null galleryName";
             logger.error(error);
-            galleryStatus.setGalleryError(true);
             throw new NullPointerException(error);
         }
         // Check for empty galleryName
         if (this.galleryName.equals("")) {
             error = "Attempt to create GalleryDefault object with empty galleryName";
             logger.error(error);
-            galleryStatus.setGalleryError(true);
             throw new IllegalArgumentException(error);
         }
 
@@ -82,7 +87,6 @@ public class GalleryDefault implements Gallery {
         if (this.thumbnailManager == null) {
             error = "Attempt to create GalleryDefault object with null thumbnailManager";
             logger.error(error);
-            galleryStatus.setGalleryError(true);
             throw new NullPointerException(error);
         }
 
@@ -90,7 +94,6 @@ public class GalleryDefault implements Gallery {
         if (this.htmlGenerator == null) {
             error = "Attempt to create GalleryDefault object with null htmlGenerator";
             logger.error(error);
-            galleryStatus.setGalleryError(true);
             throw new NullPointerException(error);
         }
 
@@ -98,7 +101,6 @@ public class GalleryDefault implements Gallery {
         if (this.monitoringCollator == null) {
             error = "Collator for monitoring objects is null, can't maintain monitoring data";
             logger.warn(error);
-            galleryStatus.setGalleryError(true);
             // Note don't throw exception here.  Can continue without collator.
         }
 
@@ -110,12 +112,11 @@ public class GalleryDefault implements Gallery {
                     galleryName,
                     this.galleryRootFolder.toString());
             logger.error(error);
-            galleryStatus.setGalleryError(true);
             this.galleryUrl = null;
             throw new IllegalArgumentException(error);
         } else {
             this.galleryUrl = this.galleryManagerConfiguration.getGalleriesUrlRelPath() + "/" + galleryName;
-            initialiseGallery();
+            checkAndUpdateGallery();
         }
 }
 
@@ -128,17 +129,17 @@ public class GalleryDefault implements Gallery {
      * - CASE 1:
      *     - Gallery folder not present
      *
-     *       No gallery so can't do anything.  Folder will have been there at instantiation or
-     *       gallery wouldn't have been stored.  So raise File Not Found exception.
+     *       No gallery so can't do anything. A WARNing needs to be raised as the user will have configured a gallery
+     *       for this screen so will expect one, but there's nothing we can do.
      *
      * - CASE 2:
      *     - Gallery folder present
      *     - No images in folder
      *
-     *       Not an error but no images so no gallery to display and no thumbnails to create. Don't bother creating
-     *       thumbnail folder.  Just return.  getHtml will return empty gallery (one way or another).
+     *       Not an error but no gallery can be generated so issue a WARNing.  Just return.  getHtml will return
+     *       empty gallery (one way or another).
      *
-     * - CASE 3:
+     * - CASE 3 (this is the normal situation for a new gallery):
      *     - Gallery folder present
      *     - Images in folder
      *     - No thumbnail folder present
@@ -150,34 +151,39 @@ public class GalleryDefault implements Gallery {
      *     - Images in folder
      *     - Thumbnail folder present
      *
-     *     Regardless of contents of thumbnail folder, need to clear it out and recreate thumbnails.
+     *     To ensure the gallery is fully dynamic, check thumbnails to confirm they are up to date and regenerate if not
+     *     and also check whether any images have been deleted leaving orphan thumbnails and delete them.
+     *
+     *     Return true if gallery was updated.  This will trigger re-calculation of HTML.
      */
-    private void initialiseGallery() {
-        galleryStatus.reset();
-        String error;
-        if (!this.galleryRootFolder.exists()) {
-            error = String.format("Attempt to (re)initialise gallery <%s> for which no folder <%s> exists",
-                    galleryName,
-                    this.galleryRootFolder.toString());
-            logger.error(error);
-            galleryStatus.setFolderExists(false);
-        } else {
-            galleryStatus.setFolderExists(true);
-            createGalleryImageList();
-            if (this.getNumberOfImages() > 0) {
-                if (thumbnailManager.createThumbnailFolder(this.galleryRootFolder));
+    private boolean checkAndUpdateGallery() {
 
-                // Don't need to delete thumbnails as createAllThumbnails will deal with that
-                boolean success = thumbnailManager.createAllThumbnails(this.galleryRootFolder, this.getImageList());
+        String error; // If an error occurs during Gallery checking / creation then store it here.
 
-                galleryStatus.setThumbnailGenerated(success);
+        if (galleryFolderExists()) {
+            if (getNumberOfImages() > 0 ) {
+                if (thumbnailManager.createThumbnailFolder(this.galleryRootFolder)) {
 
-                // Note am not calling getHtml here.  Will be called first time page is requested.  This is to
-                // allow Galleries to be created at start up for monitoring purposes, without having to generate
-                // HTML for every gallery straight away.
+                    thumbnailManager.checkAndCreateThumbnails(this.galleryRootFolder, this.getImageList());
+
+                    // Note am not calling getHtml here.  Will be called first time page is requested.  This is to
+                    // allow Galleries to be created at start up for monitoring purposes, without having to generate
+                    // HTML for every gallery straight away.
+                }
             }
+            else {
+                // No images in gallery folder so issue a WARNing as user will expect to see something.
+                error = String.format("No images in gallery <%s>, gallery not generated", getName());
+                logger.warn(error);
+            }
+        } else {
+            // No gallery folder so issue a WARNing as user will be expecting to see a gallery.
+            error = String.format("No folder for gallery <%s>, gallery not generated", getName());
+            logger.warn(error);
         }
         initialiseMonitoringCollators();
+        return true; //For now force html to be recalculated.
+        // ToDo: Correctly return indicator that gallery has changed or not.
     }
 
     private void initialiseMonitoringCollators() {
@@ -193,36 +199,14 @@ public class GalleryDefault implements Gallery {
         monitoringCollator.addOrUpdateCollector(galleryStatusCollector);
     }
 
-    private void createGalleryImageList() {
-        imageList = new ArrayList<GalleryImage>(20);
-        File[] imageFileList = getGalleryFileList();
-
-        // Check whether there is an error on the gallery before continuing
-        if (!galleryStatus.isGalleryError()) {
-
-            /**
-             * It's not necessarily an error if imageFileList is null, it may just means there are no images
-             * so just return a zero length imageList.
-             */
-            if (imageFileList != null) {
-                for (File galleryImage : imageFileList) {
-                    this.imageList.add(new GalleryImageDefault(galleryImage));
-                }
-            }
-        }
-        galleryStatus.setNumImages(getNumberOfImages());
-    }
-
     private File[] getGalleryFileList() {
         logger.trace(String.format("Generating image file list for gallery <%s>", galleryName));
 
         if (!galleryRootFolder.exists() || !galleryRootFolder.isDirectory()) {
-            galleryStatus.setFolderExists(false);
             // No folder so no gallery!  Update status to reflect.
             logger.warn("No gallery folder exists at <%s>", galleryRootFolder.toString());
             return null;
         } else {
-            galleryStatus.setFolderExists(true);
             File[] list;
             FileFilter filter = new ImageFileFilter(galleryManagerConfiguration.getImageExtensionList());
             logger.debug("Looking for files with these extensions: <%s>", (galleryManagerConfiguration.getImageExtensionList()).toString());
@@ -239,10 +223,22 @@ public class GalleryDefault implements Gallery {
 
 
     public int getNumberOfImages() {
-        return imageList.size();
+        return getGalleryFileList().length;
     }
 
     public List<GalleryImage> getImageList() {
+        List<GalleryImage> imageList = new ArrayList<>();
+        File[] imageFileList = getGalleryFileList();
+
+        /**
+         * It's not necessarily an error if imageFileList is null, it may just means there are no images
+         * so just return a zero length imageList.
+         */
+        if (imageFileList != null) {
+            for (File galleryImage : imageFileList) {
+                imageList.add(new GalleryImageDefault(galleryImage));
+            }
+        }
         return imageList;
     }
 
@@ -286,39 +282,60 @@ public class GalleryDefault implements Gallery {
                  isModified = true;
              }
         }
-        // Whatever result we got, make sure that the gallery status reflects it
-        galleryStatus.setGalleryModified(isModified);
         return isModified;
     }
 
     public void updateGallery() {
-        // Not sure if this is the best way but I think it will work - just check whether gallery has changed
-        // and if so initialise from scratch!
-        if (isModified() || galleryStatus.isGalleryError()) {
-            initialiseGallery();
-        }
+        checkAndUpdateGallery();
     }
 
+    /**
+     * Returns HTML for Gallery.
+     *
+     * A call to this method will trigger:
+     * - An increment of the number of requests for this gallery
+     * - An update to the timeLastRequested field, which then enables...
+     * - A check as to whether anything has been modified since last request
+     *
+     * This allows galleries to be fully dynamic, and reduces the need for state to be held for a gallery.
+     *
+     * @param forceRegenerate if true then html will be regenerated from scratch
+     *
+     * @return
+     */
     public String getHtml(boolean forceRegenerate) {
-        if (forceRegenerate || html == null) {
-            if (galleryStatus.isGalleryError()) {
-                html = "";
-            } else {
-                html = htmlGenerator.getHtml(galleryName, getImageList());
-                if (html != null) {
-                    galleryStatus.setHtmlGenerated(true);
-                }
-            }
-        }
         galleryStatus.incrementRequestCount();
+        if (forceRegenerate || checkAndUpdateGallery()) {
+            html = htmlGenerator.getHtml(galleryName, getImageList());
+        }
         return html;
     }
 
+    public boolean isHtmlGenerated() {
+        return (!(html == null));
+    }
+
     public GalleryStatus getGalleryStatus() {
-        if (!galleryStatus.isGalleryError()) {
-            isModified(); // Will automatically update isModified statusFlag
+        if (galleryStatus != null) {
+            return galleryStatus;
+        } else {
+            return null;
         }
-        return galleryStatus;
+    }
+
+    public boolean galleryFolderExists() {
+        boolean exists = this.galleryRootFolder.exists();
+        String error;
+
+        if (!exists) {
+            error = String.format("Gallery folder doesn't exist. Gallery name is <%s>, folder path is <%s>", getName(), this.galleryRootFolder.getPath());
+            logger.error(error);
+        }
+        return exists;
+    }
+
+    public LocalDateTime getTimeCreated() {
+        return timeCreated;
     }
 
     public String toString() {

@@ -15,60 +15,55 @@ import java.text.SimpleDateFormat;
  */
 public class GalleryImageDefault implements GalleryImage {
     WebLogger logger = new WebLogger();
-    private final String imageFullName;
-    private final int imageWidth;
-    private final int imageHeight;
-    private final File imageFullPath;
-    private final long dateTimeLastModified;
+    private final File imageFullPathFile;
 
     public GalleryImageDefault(File galleryImage) {
-        this.imageFullName = galleryImage.getName();
+        this.imageFullPathFile = galleryImage;
+    }
+
+    private BufferedImage getBufferedImage(File imageFile) {
         BufferedImage bufferedImage = null;
         boolean abandon = false;
         try {
-            bufferedImage = ImageIO.read(galleryImage);
+            bufferedImage = ImageIO.read(imageFile);
         } catch (IOException e) {
-            logger.error(String.format("Error reading image <%s>", galleryImage));
+            logger.error(String.format("Error reading image <%s>", imageFile));
             e.printStackTrace();
             abandon = true;
         }
-
-        if (!abandon) {
-            this.imageWidth = bufferedImage.getWidth();
-            this.imageHeight = bufferedImage.getHeight();
-            this.imageFullPath = galleryImage;
-            this.dateTimeLastModified = imageFullPath.lastModified();
+        if (abandon) {
+            return null;
         } else {
-            this.imageWidth = 0;
-            this.imageHeight = 0;
-            this.imageFullPath = null;
-            this.dateTimeLastModified = 0;
+            return bufferedImage;
         }
     }
 
-
     public String getImageFullName() {
-        return imageFullName;
+        return imageFullPathFile.getName();
     }
 
     public String getImageName() {
-        return getFilenameNoExtension(imageFullName);
+        return getFilenameNoExtension(getImageFullName());
     }
 
     public String getImageExtension() {
-        return getFileExtension(imageFullName);
+        return getFileExtension(getImageFullName());
     }
 
     public int getImageWidth() {
-        return imageWidth;
+        return getBufferedImage(getImageFullPath()).getWidth();
     }
 
     public int getImageHeight() {
-        return imageHeight;
+        return getBufferedImage(getImageFullPath()).getHeight();
     }
 
     public File getImageFullPath() {
-        return imageFullPath;
+        if (getBufferedImage(imageFullPathFile) == null) {
+            return null;
+        } else {
+            return imageFullPathFile;
+        }
     }
 
     /**
@@ -79,14 +74,14 @@ public class GalleryImageDefault implements GalleryImage {
      */
     public boolean isModified() {
         boolean isModified = false;
-        boolean imageExists = imageFullPath.exists();
-        boolean imageIsFile = imageFullPath.isFile();
+        boolean imageExists = getImageFullPath().exists();
+        boolean imageIsFile = getImageFullPath().isFile();
 
         if (!(imageExists && imageIsFile)) {
             isModified = true;
         } else {
-            long imageLastModified = imageFullPath.lastModified();
-            if (imageLastModified != dateTimeLastModified) {
+            long imageLastModified = getImageFullPath().lastModified();
+            if (imageLastModified != getLastModified()) {
                 isModified = true;
             }
         }
@@ -94,7 +89,7 @@ public class GalleryImageDefault implements GalleryImage {
     }
 
     public long getLastModified() {
-        return dateTimeLastModified;
+        return getImageFullPath().lastModified();
     }
 
     /**

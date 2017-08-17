@@ -7,7 +7,9 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileFilter;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -41,7 +43,7 @@ public class ThumbnailManagerDefault implements ThumbnailManager {
      *
      * Case 1, File of same name as folder exists but isn't a folder: Abandon gallery (nothing we can do safely)
      * Case 2, Folder doesn't exist: Create it.
-     * Case 3, Folder does exist: Do nothing
+     * Case 3, Folder does exist: All good.
      *
      * @param galleryRootFolder The full path of the gallery folder under which to create a thumbnail folder.
      *                          NOTE: this is the specific folder for a specific gallery - not the root of all
@@ -51,8 +53,6 @@ public class ThumbnailManagerDefault implements ThumbnailManager {
      *         false otherwise.
      */
     public boolean createThumbnailFolder(File galleryRootFolder) {
-
-        // ToDo: Probably should just pass the name of the gallery as all the information is in the configuration object passed in
 
         File thumbnailFolderFullPath = new File(galleryRootFolder, galleryManagerConfiguration.getThumbnailRelPath());
         logger.trace(String.format("Creating thumbnail directory at <%s>", thumbnailFolderFullPath));
@@ -160,31 +160,112 @@ public class ThumbnailManagerDefault implements ThumbnailManager {
         deleteFile(thumbnail);
     }
 
+    private File getFullPathForImageFile(File galleryRootFolder, GalleryImage galleryImage) {
+        return new File(galleryRootFolder, galleryImage.getImageFullName());
+    }
+
+    private File getThumbnailFolderFullPathFile(File galleryRootFolder) {
+        return new File(galleryRootFolder, galleryManagerConfiguration.getThumbnailRelPath());
+    }
+
+    private File thumbnailFullPathFile(File galleryRootFolder, GalleryImage image) {
+        return new File (getThumbnailFolderFullPathFile(galleryRootFolder), image.getImageFullName());
+    }
+
     /**
-     * Creates all the thumbnails from scratch from the list of images read from the image folder.  Begins by deleting
-     * all thumbnails to ensure that they are up to date.  This is necessary because as we have just created the gallery
-     * so can't check whether it has been modified since last time.
+     * Gets a list of all the image files in the thumbnail folder.
      *
-     * There are potentially more intelligent ways of deleting the thumbnails to avoid a situation where we delete all
-     * the files and then run into an error which stops us re-creating them.  For example we could just delete the file
-     * before re-creating it so we have the opportunity to abandon if we need to.  This approach would potentially
-     * leave some old thumbnails lying around for images which have been deleted.  For now take the blunt approach
-     * of deleting all the files in the folder and come back to it if we need to.
+     * @param galleryRootFolder
+     * @return
+     */
+    private List<File> getAllThumbnails(File galleryRootFolder) {
+        FileFilter filter = new ImageFileFilter(galleryManagerConfiguration.getImageExtensionList());
+        File thumbnailFullPath = getThumbnailFolderFullPathFile(galleryRootFolder);
+        logger.debug("Looking for thumbnails with these extensions: <%s>", (galleryManagerConfiguration.getImageExtensionList()).toString());
+        logger.debug(String.format("About to list files in <%s>", galleryRootFolder));
+
+        File[] list = thumbnailFullPath.listFiles(filter);
+        if (list == null) {
+            logger.warn(String.format("No image files found in <%s>", galleryRootFolder));
+            return null;
+        } else {
+            logger.debug(String.format("Found <%d> files in <%s>", list.length, galleryRootFolder));
+            return Arrays.asList(list);
+        }
+    }
+
+    public boolean validThumbnailExists(File galleryRootFolder, GalleryImage image) {
+        File thumbnailFullPathFile = thumbnailFullPathFile(galleryRootFolder, image);
+        if (thumbnailFullPathFile.exists()) {
+            // Thumbnail exists but need to check whether it was created after the corresponding image.  If not then it
+            // isn't valid.
+
+            long imageModified = image.getImageFullPath().lastModified(); // ToDo Work out what to do with GalleryImage.getLastModified() method as may not be useful
+            long thumbnailModified = thumbnailFullPathFile.lastModified();
+
+            if (imageModified >= thumbnailModified) {
+                // Image has been modified since thumbnail was created so thumbnail invalid.  Return false
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            // Thumbnail file for given image doesn't exist, so return false
+            return false;
+        }
+    }
+
+    /**
      *
-     * Have taken a relaxed approach to error checking as it is unlikely that we would get this far into the code without
-     * having generated an error for null values etc.  Hope this is right :-)
+     * 16/7/2017 Re-write.
+     *
+     * In order to make the galleries more dynamic, the intention is to go through the whole create gallery sequence
+     * every time but only generate when there has been an update since the last generation.  So for thumbnails I
+     * need to:
+     *
+     * [1] Go through every Gallery Image and...
+     *     - Check whether there is a thumbnail.  If not create it.
+     *     - If there is a thumbnail, check whether the thumbnail was modified after the image was created.  If not
+     *       then it is out of date so needs to be created.
+     *
+     * [2] Go through every Thumbnail Image and...
+     *     - Check whether there is still a Gallery Image of the same name.  If not then this is an orphan thumbnail
+     *       and can be deleted.
      *
      * @param galleryRootFolder The full path of the gallery folder under which to create the thumbnails.
      * @param imageList
      */
-    public boolean createAllThumbnails(File galleryRootFolder, List<GalleryImage> imageList) {
-        deleteAllThumbnails(galleryRootFolder);
-        for (GalleryImage thumbnailImage : imageList) {
-            if(!createThumbnail(galleryRootFolder, thumbnailImage)) {
-                return false;
+    public void checkAndCreateThumbnails(File galleryRootFolder, List<GalleryImage> imageList) {
+
+        // [1] Ensure there is an up to date thumbnail for each image.
+        for(GalleryImage image : imageList) {
+            if (!validThumbnailExists(galleryRootFolder, image)) {
+                logger.info("Gallery image <%s> has been created/modified, regenerating thumbnail", image.getImageFullName());
+                createThumbnail(galleryRootFolder, image);
             }
         }
-        return true;
+
+        // [2] Ensure that any orphan thumbnails are deleted.
+        List<File> thumbnails = getAllThumbnails(galleryRootFolder);
+        for (File thumbnail : thumbnails) {
+            String thumbnailName = thumbnail.getName(); // Not sure whether this gets just the filename or the full path.  Need filename only.
+            if (!imageExistsInGallery(thumbnailName, imageList)) {
+                logger.info("Orphan thumbnail for image <%s>, deleting", thumbnail.toString());
+                deleteFile(thumbnail);
+            }
+        }
+    }
+
+    private boolean imageExistsInGallery(String imageName, List<GalleryImage> galleryImageList) {
+
+        int index = 0;
+
+        while (index < galleryImageList.size() && !galleryImageList.get(index).getImageName().equals(imageName)) index++;
+        if (index > galleryImageList.size()) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public void deleteAllThumbnails(File galleryRootFolder) {
