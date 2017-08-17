@@ -17,13 +17,13 @@ public interface ThumbnailManager {
      *
      * @param galleryRootFolder The full path of the gallery folder under which to create a thumbnail folder.
      */
-    public boolean createThumbnailFolder(File galleryRootFolder);
+    boolean createThumbnailFolder(File galleryRootFolder);
 
     /**
      *
      * @param galleryRootFolder The full path of the gallery folder under which to delete a thumbnail folder.
      */
-    public void deleteThumbnailFolder(File galleryRootFolder);
+    void deleteThumbnailFolder(File galleryRootFolder);
 
     /**
      * Takes details of a gallery image and its folder, then creates a resized version of the corresponding image and places
@@ -35,7 +35,7 @@ public interface ThumbnailManager {
      *
      * @return true if successful, false if error.
      */
-    public boolean createThumbnail(File galleryRootFolder, GalleryImage image);
+    boolean createThumbnail(File galleryRootFolder, GalleryImage image);
 
     /**
      *
@@ -45,7 +45,17 @@ public interface ThumbnailManager {
      * @param image Object containting details of the image (including its file location) used to locate file and delete
      *              thumbnail.
      */
-    public void deleteThumbnail(File galleryRootFolder, GalleryImage image);
+    void deleteThumbnail(File galleryRootFolder, GalleryImage image);
+
+    /**
+     * Checks whether there is an up to date thumbnail for the given image.  This means that:
+     * - There is a file of the same name as the image.
+     * - The modified date of the file is greater than the modified date of the image.
+     *
+     * @param image
+     * @return
+     */
+    boolean validThumbnailExists(File galleryRootFolder, GalleryImage image);
 
     /**
      * Takes a list of gallery images and uses this to create a thumbnail for every image, in the location defined by the gallery
@@ -57,7 +67,7 @@ public interface ThumbnailManager {
      * @return Returns false if there is an error creating creating the thumbnails or other error which stops thumbnails
      *         being generated.
      */
-    public boolean createAllThumbnails(File galleryRootFolder, List<GalleryImage> imageList);
+    void checkAndCreateThumbnails(File galleryRootFolder, List<GalleryImage> imageList);
 
     /**
      * Takes the root folder for a gallery, works out where the thumbnails are and deletes them all.  Note this method doesn't use a
@@ -65,7 +75,7 @@ public interface ThumbnailManager {
      *
      * @param galleryRootFolder The full path of the gallery folder under which to create the thumbnails.
      */
-    public void deleteAllThumbnails(File galleryRootFolder);
+    void deleteAllThumbnails(File galleryRootFolder);
 
     /**
      * Takes the root folder for a gallery, and a list of images within the gallery, and deletes all the thumbnails for the images.
@@ -73,6 +83,6 @@ public interface ThumbnailManager {
      * @param galleryRootFolder
      * @param imageList
      */
-    public void deleteAllThumbnails(File galleryRootFolder, List<GalleryImage> imageList);
+    void deleteAllThumbnails(File galleryRootFolder, List<GalleryImage> imageList);
 
 }

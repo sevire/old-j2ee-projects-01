@@ -176,19 +176,6 @@
             </SvnBranchConfiguration>
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/web/WEB-INF/old">
-          <value>
-            <SvnBranchConfiguration>
-              <option name="branchUrls">
-                <list>
-                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/branches" />
-                  <option value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/tags" />
-                </list>
-              </option>
-              <option name="trunkUrl" value="https://tbg01.svn.beanstalkapp.com/j2ee-projects-01/webapp-01/trunk" />
-            </SvnBranchConfiguration>
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/web/css">
           <value>
             <SvnBranchConfiguration>

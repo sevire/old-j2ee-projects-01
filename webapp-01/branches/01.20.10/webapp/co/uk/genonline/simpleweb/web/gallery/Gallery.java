@@ -1,5 +1,6 @@
 package co.uk.genonline.simpleweb.web.gallery;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -48,10 +49,16 @@ public interface Gallery {
      *
      * @return
      */
-    public String getHtml(boolean forceRegenerate);
+    String getHtml(boolean forceRegenerate);
 
-    public int getNumberOfImages();
+    boolean isHtmlGenerated();
 
-    public GalleryStatus getGalleryStatus();
+    int getNumberOfImages();
+
+    GalleryStatus getGalleryStatus();
+
+    boolean galleryFolderExists();
+
+    LocalDateTime getTimeCreated();
 
 }

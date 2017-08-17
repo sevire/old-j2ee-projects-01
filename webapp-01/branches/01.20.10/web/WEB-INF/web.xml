@@ -18,7 +18,7 @@
 
     <context-param>
         <param-name>app-version</param-name>
-        <param-value>01.20.08.0333</param-value>
+        <param-value>01.20.10</param-value>
     </context-param><listener>
         <listener-class>
             co.uk.genonline.simpleweb.controller.ContextListener
