@@ -31,161 +31,135 @@ public class WebsiteTestData {
 
     protected static Map<String, String[][]> websiteData = new HashMap<String, String[][]>() {
         {
-            put("sessions", new String[][]{{
+            put("beforevisit", new String[][]{{
                     "",
                     "",
-                    "",
-                    "",
+                    "Before Visiting",
+                    "Before Arranging A Visit",
                     "",
                     "-1",
                     "",
                     "",
                     ""},
                     {
-                            "Dummy content",
+                            "please ensure you have read",
                     }});
-            put("reginascarlet", new String[][]{{
+            put("luci", new String[][]{{
                     "",
                     "",
-                    "",
-                    "",
+                    "Mistress Luci",
+                    "Mistress Luci",
                     "",
                     "-1",
                     "",
                     "",
                     ""},
                     {
-                            "Dummy content",
+                            "A beautiful Northern Lady",
                     }});
-            put("helena", new String[][]{{
+            put("othermistresses", new String[][]{{
                     "",
                     "",
-                    "",
-                    "",
+                    "Other Mistresses",
+                    "Other Mistresses",
                     "",
                     "-1",
                     "",
                     "",
                     ""},
                     {
-                            "Dummy content",
+                            "There are a number of other Mistresses",
                     }});
-            put("wishlist", new String[][]{{
+            put("chloe", new String[][]{{
                     "",
                     "",
-                    "",
-                    "",
+                    "Chloe",
+                    "Mistress Chloe",
                     "",
                     "-1",
                     "",
                     "",
                     ""},
                     {
-                            "Dummy content",
+                            "I am a Professional Mistress",
                     }});
-            put("contact", new String[][]{{
+            put("contactMe", new String[][]{{
                     "",
                     "",
-                    "",
-                    "",
+                    "Contact Me",
+                    "Contact Me",
                     "",
                     "-1",
                     "",
                     "",
                     ""},
                     {
-                            "Dummy content",
+                            "If you would like to ask me a question",
                     }});
             put("aboutme", new String[][]{{
                     "",
                     "",
-                    "",
-                    "",
+                    "About Me",
+                    "About Me",
                     "",
                     "-1",
                     "",
                     "",
                     ""},
                     {
-                            "Dummy content",
+                            "I am Princess Lucina,",
                     }});
-            put("philosophy", new String[][]{{
+            put("musing-05", new String[][]{{
                     "",
                     "",
-                    "",
-                    "",
-                    "",
-                    "-1",
-                    "",
-                    "",
-                    ""},
-                    {
-                            "Dummy content",
-                    }});
-            put("cornelia", new String[][]{{
-                    "",
-                    "",
-                    "",
-                    "",
+                    "Testimonial 05",
+                    "Testimonial - Slave Phil",
                     "",
                     "-1",
                     "",
                     "",
                     ""},
                     {
-                            "Dummy content",
-                    }});
-            put("mistresses", new String[][]{{
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "-1",
-                    "",
-                    "",
-                    ""},
-                    {
-                            "Dummy content",
-                    }});
-            put("musing-01", new String[][]{{
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "-1",
-                    "",
-                    "",
-                    ""},
-                    {
-                            "Dummy content",
-                    }});
-            put("musing-02", new String[][]{{
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "-1",
-                    "",
-                    "",
-                    ""},
-                    {
-                            "Dummy content",
+                            "My Princess Lucina, I am writing to let you know",
                     }});
             put("musing-03", new String[][]{{
                     "",
                     "",
-                    "",
-                    "",
+                    "Testimonial 05",
+                    "Testimonial - Slave Ian",
                     "",
                     "-1",
                     "",
                     "",
                     ""},
                     {
-                            "Dummy content",
+                            "Cotton clouds float in the empty air",
+                    }});
+            put("musing-02", new String[][]{{
+                    "",
+                    "",
+                    "Testimonial 02",
+                    "Testimonial - Anonymous Slave 2",
+                    "",
+                    "-1",
+                    "",
+                    "",
+                    ""},
+                    {
+                            "The second visit was even better",
+                    }});
+            put("musing-01", new String[][]{{
+                    "",
+                    "",
+                    "Testimonial 01",
+                    "Testimonial - Anonymous Slave 1",
+                    "",
+                    "-1",
+                    "",
+                    "",
+                    ""},
+                    {
+                            "That would suit me very well",
                     }});
             put("splash", new String[][]{{
                     "index",
@@ -203,40 +177,39 @@ public class WebsiteTestData {
             put("lucina", new String[][]{{
                     "", // 0 - (Optional) Name of HTML file for static version of site
                     "", // 1 - (Optional) Text used in header link for static version of site
-                    "Princess Lucina", // 2 - (Mandatory) Short name, used in link text for J2EE version of site and as start point to generate other strings
-                    "", // 3 - (Optional) Long name, used in <title> element in HTML version of site
+                    "Welcome", // 2 - (Mandatory) Short name, used in link text for J2EE version of site and as start point to generate other strings
+                    "Welcome From Princess Lucina", // 3 - (Optional) Long name, used in <title> element in HTML version of site
                     "", // 4 - (Optional) Long name, J2EE version
                     "-1",   // Number of images in gallery - "-1" means No Gallery.
                     "", // Set to 'No Page' if checking that page doesn't exist (useful to check that a delete has been propagated)
                     "", // Name of first gallery image on page
                     ""}, // Name of last gallery image on page
                 {
-                        "I have that broken glass feeling",
-                        "please email me with a photo"
+                        "Please browse the pages of My website",
+                        "When you are ready"
                 }});
             put("wishlist", new String[][]{{
                     "",
                     "",
                     "Wish List",
-                    "",
+                    "My Wish List",
                     "",
                     "-1",
                     "",
                     "",
                     ""},
                     {
-                            "Make Me smile and become one of My favoured slaves by surprising Me with a gift",
-                            "My favourite perfumes are anything by Dior Poison, or John Paul Gautier. I adore cosmetics by Christian Dior and Yves" +
-                                    " St Laurent. But I will allow you the privilege of choosing, if you feel capable."
+                            "What woman doesn't like a gift",
+                            "As a Mistress I expect to be spoilt"
                     }});
             put("images", new String[][]{{
                     "",
                     "",
                     "Images",
-                    "",
+                    "Images",
                     "",
                     "55",
-                    "",
+                    "No Page",
                     "",
                     ""},
                     {
@@ -248,19 +221,19 @@ public class WebsiteTestData {
                     "",
                     "",
                     "12",
-                    "",
+                    "No Page",
                     "",
                     ""},
                     {
                             "This is where I publically humiliate my naughtiest slaves...",
                     }});
-            put("contact", new String[][]{{
+            put("courtney", new String[][]{{
                     "",
                     "",
-                    "Contact",
-                    "How To Contact Princess Lucina",
+                    "Miss Courtney",
+                    "Miss Courtney",
                     "",
-                    "-1",
+                    "6",
                     "",
                     "",
                     ""},
@@ -272,7 +245,7 @@ public class WebsiteTestData {
                     "",
                     "",
                     "Links",
-                    "",
+                    "Links",
                     "",
                     "-1",
                     "",
@@ -283,12 +256,12 @@ public class WebsiteTestData {
                     }});
             put("moreimages", new String[][]{{
                     "",
-                    "",
+                    "More Images",
                     "More Images",
                     "",
                     "",
                     "63",
-                    "",
+                    "No Page",
                     "",
                     ""},
                     {
@@ -300,7 +273,7 @@ public class WebsiteTestData {
                     "Mistress Regina Scarlet",
                     "",
                     "12",
-                    "",
+                    "No Page",
                     "",
                     ""},
                     {

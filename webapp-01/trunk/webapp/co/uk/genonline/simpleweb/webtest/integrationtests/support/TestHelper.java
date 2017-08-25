@@ -1,10 +1,13 @@
 package integrationtests.support;
 
+import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.*;
+import com.gargoylesoftware.htmlunit.javascript.host.html.HTMLAnchorElement;
 import org.junit.Assert;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -26,6 +29,7 @@ public class TestHelper {
     public TestHelper(TestConfiguration testConfiguration) {
         this.configuration = testConfiguration;
         webClient = new WebClient();
+        webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
        // WebClientOptions.setThrowExceptionOnFailingStatusCode(false);
     }
 
@@ -41,7 +45,7 @@ public class TestHelper {
         HtmlPage page = null;
         try {
             page = webClient.getPage(configuration.getHost() + requestString);
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return page;
@@ -96,6 +100,28 @@ public class TestHelper {
             assertEquals(assertMessage(String.format("Disabled screen found: screen <%s> at <%s>", screenName, host)),
                     404, page.getWebResponse().getStatusCode());
         }
+    }
+
+    /**
+     * For some reason page.getAnchorByText() doesn't do what I expect it to so I'm writing my own equivalent.
+     *
+     * This looks for an Anchor element in a supplied HtmlPage and tries to find an anchor element which has the
+     * supplied text.  Returns true if it does and false otherwise.
+     *
+     * @param page
+     * @param text
+     * @return
+     */
+    Boolean anchorInPageByText(HtmlPage page, String text) {
+        List<HtmlAnchor> anchors = page.getAnchors();
+        Iterator<HtmlAnchor> anchorIterator = anchors.iterator();
+        HtmlAnchor anchor;
+        String anchorText;
+        do {
+            anchor = anchorIterator.next();
+            anchorText = anchor.getTextContent();
+        } while (!anchorText.equals(text) && anchorIterator.hasNext());
+        return (anchorText.equals(text));
     }
 
     String getScreenRequestString(WebsitePlatform platform, String screenName) {
@@ -168,37 +194,34 @@ public class TestHelper {
             for (String innerScreen : innerScreens) {
                 if (WebsiteTestData.getInstance().isConfigured(innerScreen)) {
                     linkText = WebsiteTestData.getInstance().getLinkName(configuration.getPlatform(), innerScreen);
-                    try {
-                        element = page.getAnchorByText(linkText);
-                    } catch (Exception e) {
-                        element = null;
-                    }
-                    Assert.assertNotNull(assertMessage(String.format("Link for <%s> does not exist in <%s>",
-                            linkText, screenName)), element);
+                    Assert.assertTrue(assertMessage(String.format("Link for <%s> does not exist in <%s>",
+                            linkText, screenName)), anchorInPageByText(page, linkText));
                 }
             }
         }
     }
 
     public void galleryTestScreen(String screenName) {
-        HtmlPage page = getScreen(screenName);
-        assertEquals("Page " + screenName + " not found", 200, page.getWebResponse().getStatusCode());
+        if (WebsiteTestData.getInstance().isConfigured(screenName)) {
+            HtmlPage page = getScreen(screenName);
+            assertEquals("Page " + screenName + " not found", 200, page.getWebResponse().getStatusCode());
 
-        // Get all table elements in page - should be one if gallery and none otherwise
-        DomNodeList<DomElement> galleryTable = page.getElementsByTagName("table");
-        int numGalleryElements = galleryTable.size();
+            // Get all table elements in page - should be one if gallery and none otherwise
+            DomNodeList<DomElement> galleryTable = page.getElementsByTagName("table");
+            int numGalleryElements = galleryTable.size();
 
-        assertFalse(assertMessage(String.format("Too many table elements in page <%s>", screenName)), galleryTable.size() > 1);
-        assertFalse(assertMessage(String.format("Gallery present in none gallery page <%s>", screenName)),
-                !WebsiteTestData.getInstance().isGallery(screenName) && numGalleryElements == 1) ;
-        assertFalse(assertMessage(String.format("No Gallery present when there should be one for <%s>", screenName)),
-                WebsiteTestData.getInstance().isGallery(screenName) && numGalleryElements != 1);
+            assertFalse(assertMessage(String.format("Too many table elements in page <%s>", screenName)), galleryTable.size() > 1);
+            assertFalse(assertMessage(String.format("Gallery present in none gallery page <%s>", screenName)),
+                    !WebsiteTestData.getInstance().isGallery(screenName) && numGalleryElements == 1);
+            assertFalse(assertMessage(String.format("No Gallery present when there should be one for <%s>", screenName)),
+                    WebsiteTestData.getInstance().isGallery(screenName) && numGalleryElements != 1);
 
-        if (WebsiteTestData.getInstance().isGallery(screenName)) {
-            HtmlElement galleryElement = (HtmlElement) galleryTable.item(0);
-            List<HtmlElement> imageElements = galleryElement.getHtmlElementsByTagName("img");
-            assertEquals(assertMessage(String.format("Wrong number of images in page <%s>", screenName)),
-                    WebsiteTestData.getInstance().getNumGalleryImages(screenName), imageElements.size());
+            if (WebsiteTestData.getInstance().isGallery(screenName)) {
+                HtmlElement galleryElement = (HtmlElement) galleryTable.item(0);
+                List<HtmlElement> imageElements = galleryElement.getHtmlElementsByTagName("img");
+                assertEquals(assertMessage(String.format("Wrong number of images in page <%s>", screenName)),
+                        WebsiteTestData.getInstance().getNumGalleryImages(screenName), imageElements.size());
+            }
         }
     }
 
