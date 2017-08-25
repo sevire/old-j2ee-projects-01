@@ -1,0 +1,1 @@
+sudo catalina.sh stop
