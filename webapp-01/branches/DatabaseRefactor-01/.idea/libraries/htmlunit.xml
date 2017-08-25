@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="htmlunit">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/lib/htmlunit-2.12/lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ideaLibSources/htmlunit-2.12-sources.jar!/" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/lib/htmlunit-2.12/lib" recursive="false" />
+  </library>
+</component>

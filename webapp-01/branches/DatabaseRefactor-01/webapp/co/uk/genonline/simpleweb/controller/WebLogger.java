@@ -1,0 +1,105 @@
+package co.uk.genonline.simpleweb.controller;
+
+
+import org.apache.log4j.Appender;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+/**
+ * Created with IntelliJ IDEA.
+ * User: thomassecondary
+ * Date: 16/12/2012
+ * Time: 12:40
+ *
+ * Logs more information about where message comes from, also removes need for initialisation
+ */
+public class WebLogger {
+    StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
+    String loggerName = stackTraceElements[2].getClassName();
+    Logger logger;
+    String sessionInformation =  "(No Session) : ";
+
+    public WebLogger() {
+        logger = Logger.getLogger(loggerName);
+        trace("Logger initiated, name = <%s>", logger.getName());
+    }
+
+    public WebLogger(HttpServletRequest request) {
+        this();
+        setSession(request);
+    }
+
+    String getCallingInformation() {
+        return Thread.currentThread().getStackTrace()[5].toString() + " : ";
+    }
+
+    String getSessionInformation() {
+        return sessionInformation;
+    }
+
+    String getMessagePrefix() {
+        return getSessionInformation() + getCallingInformation();
+    }
+
+    void addAppenderToRoot(Appender appender) {
+        logger.getRootLogger().addAppender(appender);
+    }
+
+    String getName() {
+        return logger.getName();
+    }
+
+    public void setSession(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            sessionInformation = session.toString() + " : ";
+        }
+    }
+
+    public void setLevel(Level level) {
+        logger.setLevel(level);
+    }
+
+    public void setRootLevel(Level level) {
+        Logger.getRootLogger().setLevel(level);
+    }
+
+    public Level getRootLevel() {
+        return Logger.getRootLogger().getLevel();
+    }
+
+    void log(Level level, String formatString, String[] values) {
+        logger.log(level, getMessagePrefix() + String.format(formatString, (Object[])values));
+    }
+
+    public void info(String formatString, String ... values) {
+        log(Level.INFO, formatString, values);
+    }
+
+    public void error(String formatString, String ... values) {
+        log(Level.ERROR, formatString, values);
+    }
+
+    public void debug(String formatString, String ... values) {
+        log(Level.DEBUG, formatString, values);
+    }
+
+    public void fatal(String formatString, String ... values) {
+        log(Level.FATAL, formatString, values);
+    }
+
+    public void trace(String formatString, String ... values) {
+        log(Level.TRACE, formatString, values);
+    }
+
+    public void warn(String formatString, String ... values) {
+        log(Level.WARN, formatString, values);
+    }
+
+    public String toString() {
+        return String.format("Logger name <%s>, level <%s>", logger.getName(), logger.getLevel());
+    }
+}

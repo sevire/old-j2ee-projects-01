@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - lda_v02@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="lda_v02">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="sys"/>
+    <schema id="7" parent="1" name="lda_v02_unit">
+      <Visible>1</Visible>
+    </schema>
+    <schema id="8" parent="1" name="lda_v03"/>
+    <schema id="9" parent="1" name="lda_v04"/>
+    <table id="10" parent="2" name="Screen_type"/>
+    <table id="11" parent="2" name="Screens"/>
+    <table id="12" parent="2" name="configuration"/>
+    <table id="13" parent="7" name="Configuration"/>
+    <table id="14" parent="7" name="Screen_type"/>
+    <table id="15" parent="7" name="Screens"/>
+    <column id="16" parent="10" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="17" parent="10" name="category">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="18" parent="10" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="19" parent="11" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="20" parent="11" name="name">
+      <Position>2</Position>
+      <DataType>char(20)|0</DataType>
+    </column>
+    <column id="21" parent="11" name="ScreenTitleLong">
+      <Position>3</Position>
+      <DataType>char(50)|0</DataType>
+    </column>
+    <column id="22" parent="11" name="ScreenTitleShort">
+      <Position>4</Position>
+      <DataType>char(20)|0</DataType>
+    </column>
+    <column id="23" parent="11" name="ScreenContents">
+      <Position>5</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="24" parent="11" name="MetaDescription">
+      <Position>6</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="25" parent="11" name="EnabledFlag">
+      <Position>7</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <column id="26" parent="11" name="GalleryFlag">
+      <Position>8</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <column id="27" parent="11" name="created">
+      <Position>9</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="28" parent="11" name="modified">
+      <Position>10</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="29" parent="11" name="ScreenType">
+      <Position>11</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="30" parent="11" name="SortKey">
+      <Position>12</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="31" parent="11" name="ScreenDisplayType">
+      <Position>13</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <index id="32" parent="11" name="BK_unique_name">
+      <ColNames>name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="33" parent="11" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="34" parent="11" name="BK_unique_name">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>BK_unique_name</UnderlyingIndexName>
+    </key>
+    <column id="35" parent="12" name="name">
+      <Position>1</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="36" parent="12" name="value">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="37" parent="12" name="id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="38" parent="12" name="PRIMARY">
+      <ColNames>name</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="39" parent="13" name="name">
+      <Position>1</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="13" name="value">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="41" parent="13" name="id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="14" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="43" parent="14" name="category">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="44" parent="14" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="45" parent="15" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="46" parent="15" name="parent_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="47" parent="15" name="name">
+      <Position>3</Position>
+      <DataType>char(20)|0</DataType>
+    </column>
+    <column id="48" parent="15" name="ScreenTitleLong">
+      <Position>4</Position>
+      <DataType>char(50)|0</DataType>
+    </column>
+    <column id="49" parent="15" name="ScreenTitleShort">
+      <Position>5</Position>
+      <DataType>char(20)|0</DataType>
+    </column>
+    <column id="50" parent="15" name="ScreenContents">
+      <Position>6</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="51" parent="15" name="MetaDescription">
+      <Position>7</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="52" parent="15" name="EnabledFlag">
+      <Position>8</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <column id="53" parent="15" name="GalleryFlag">
+      <Position>9</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <column id="54" parent="15" name="created">
+      <Position>10</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="55" parent="15" name="modified">
+      <Position>11</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="56" parent="15" name="ScreenType">
+      <Position>12</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="57" parent="15" name="SortKey">
+      <Position>13</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="58" parent="15" name="new_column">
+      <Position>14</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="59" parent="15" name="ScreenDisplayType">
+      <Position>15</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="60" parent="15" name="column_15">
+      <Position>16</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="61" parent="15" name="BK_unique_name">
+      <ColNames>name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="62" parent="15" name="FK_index01">
+      <ColNames>parent_id</ColNames>
+    </index>
+    <key id="63" parent="15" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="64" parent="15" name="BK_unique_name">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>BK_unique_name</UnderlyingIndexName>
+    </key>
+  </database-model>
+</dataSource>
